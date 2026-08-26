@@ -14,50 +14,54 @@
 const STRIPE_EDGE_MONTHLY='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
 const core=document.getElementById('core');
 let coreReady=false,pendingSection=null;
-function forceStripe(win,doc){
+function goStripe(){window.open(STRIPE_EDGE_MONTHLY,'_blank','noopener,noreferrer')}
+function patchDoc(win,doc){
   try{
     if(!win||!doc)return;
-    win.startTrial=function(){window.open(STRIPE_EDGE_MONTHLY,'_blank','noopener,noreferrer')};
+    win.startTrial=goStripe;
     doc.querySelectorAll('a.join,button.join,.trialbuttons .join').forEach(el=>{
       el.removeAttribute('href');el.removeAttribute('target');el.style.cursor='pointer';
-      el.onclick=(e)=>{e.preventDefault();e.stopPropagation();window.open(STRIPE_EDGE_MONTHLY,'_blank','noopener,noreferrer')};
+      el.onclick=(e)=>{e.preventDefault();e.stopPropagation();goStripe()};
     });
     doc.querySelectorAll('.plan.edge').forEach(edge=>{
-      const big=edge.querySelector('.big'); if(big)big.textContent='$9.88';
-      const sub=edge.querySelector('.sub'); if(sub)sub.textContent='per month after 7-day free trial • cancel anytime';
-      const trial=edge.querySelector('.trialbuttons .join'); if(trial)trial.textContent='START 7-DAY FREE TRIAL • $9.88/MONTH';
+      const big=edge.querySelector('.big');if(big)big.textContent='$9.88';
+      const sub=edge.querySelector('.sub');if(sub)sub.textContent='per month after 7-day free trial • cancel anytime';
+      const btn=edge.querySelector('.trialbuttons .join');if(btn)btn.textContent='START 7-DAY FREE TRIAL • $9.88/MONTH';
     });
-  }catch(e){console.error('Stripe patch failed',e)}
+    doc.querySelectorAll('.ownerSetup,.domainStatus').forEach(el=>el.style.display='none');
+    if(typeof win.show==='function'&&!win.__plansRedirected){
+      const originalShow=win.show;
+      win.__plansRedirected=true;
+      win.show=function(section){if(section==='plans'){goStripe();return}return originalShow.apply(win,arguments)};
+    }
+  }catch(e){console.error('CardStorm patch failed',e)}
 }
-function patchNestedApp(w,d){
+function patchNested(d){
   try{
-    const frame=d.getElementById('appFrame');
-    if(!frame||frame.dataset.stripePatched)return;
-    frame.dataset.stripePatched='1';
-    frame.addEventListener('load',()=>{
-      try{forceStripe(frame.contentWindow,frame.contentDocument);setTimeout(()=>forceStripe(frame.contentWindow,frame.contentDocument),250);setTimeout(()=>forceStripe(frame.contentWindow,frame.contentDocument),1200)}catch(e){}
-    });
-    if(frame.contentDocument)forceStripe(frame.contentWindow,frame.contentDocument);
+    const f=d.getElementById('appFrame');if(!f)return;
+    if(!f.dataset.cardstormPatched){
+      f.dataset.cardstormPatched='1';
+      f.addEventListener('load',()=>{patchDoc(f.contentWindow,f.contentDocument);setTimeout(()=>patchDoc(f.contentWindow,f.contentDocument),400)});
+    }
+    if(f.contentDocument)patchDoc(f.contentWindow,f.contentDocument);
   }catch(e){}
 }
 function patchCore(){
   try{
     const w=core.contentWindow,d=core.contentDocument;if(!w||!d)return;
-    if(!d.getElementById('cardstorm-live-polish')){
-      const style=d.createElement('style');style.id='cardstorm-live-polish';style.textContent='.hero p,.card p,.feature p,.sectionTitle p,.starPlate span{color:#f4f8fc!important}.footer{color:#c8d7e5!important}.navlinks button,.join,.primary,.secondary,.appReturn{color:#fff!important}.card h3,.feature h3,.sectionTitle h2,.starPlate strong{color:#fff!important}.join{box-shadow:0 0 24px rgba(226,27,45,.24)}';d.head.appendChild(style);
+    patchDoc(w,d);
+    const oldOpen=w.openApp;
+    if(typeof oldOpen==='function'&&!w.__plansOpenRedirected){
+      w.__plansOpenRedirected=true;
+      w.openApp=function(section){if(section==='plans'){goStripe();return}const r=oldOpen.apply(w,arguments);setTimeout(()=>patchNested(d),50);return r};
     }
-    forceStripe(w,d);
-    const brand=d.querySelector('.brand');if(brand){brand.style.cursor='pointer';brand.onclick=()=>{if(typeof w.home==='function')w.home();else w.scrollTo({top:0,behavior:'smooth'})}};
-    const starNote=d.querySelector('.starPlate span');if(starNote)starNote.textContent='Lightning rotates the chase automatically. Tap a marker to jump to any featured chase.';
-    const footer=d.querySelector('.footer');if(footer)footer.innerHTML='<span>© 2026 CardStorm • AI-Powered Card Value Intelligence</span><span>Know the card. Own the chase.</span>';
-    patchNestedApp(w,d);
-    const originalOpen=w.openApp;
-    if(typeof originalOpen==='function'&&!w.__stripeWrapped){w.__stripeWrapped=true;w.openApp=function(section){const r=originalOpen.call(w,section);setTimeout(()=>patchNestedApp(w,d),50);setTimeout(()=>{const f=d.getElementById('appFrame');if(f&&f.contentDocument)forceStripe(f.contentWindow,f.contentDocument)},500);return r;}}
-    coreReady=true;if(pendingSection&&typeof w.show==='function'){w.show(pendingSection);pendingSection=null;setTimeout(patchCore,0)}
+    patchNested(d);
+    coreReady=true;
+    if(pendingSection){if(pendingSection==='plans'){goStripe();pendingSection=null}else if(typeof w.show==='function'){w.show(pendingSection);pendingSection=null}}
   }catch(e){console.error('CardStorm live patch failed',e)}
 }
-core.addEventListener('load',()=>{patchCore();setTimeout(patchCore,500);setTimeout(patchCore,1800)});
-function show(section){pendingSection=section||null;try{const w=core.contentWindow;if(coreReady&&typeof w.show==='function'){w.show(section);pendingSection=null;setTimeout(patchCore,0)}}catch(e){}}
+core.addEventListener('load',()=>{patchCore();setTimeout(patchCore,500);setTimeout(patchCore,1500)});
+function show(section){pendingSection=section||null;try{const w=core.contentWindow;if(section==='plans'){goStripe();pendingSection=null;return}if(coreReady&&typeof w.show==='function'){w.show(section);pendingSection=null;setTimeout(patchCore,0)}}catch(e){}}
 function home(){try{const w=core.contentWindow;if(typeof w.home==='function')w.home();else w.scrollTo({top:0,behavior:'smooth'})}catch(e){}}
 </script>
 </body>
