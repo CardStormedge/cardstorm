@@ -9,25 +9,36 @@ function installHeroRotation(win,doc){
     const slides=[...doc.querySelectorAll('.hero .slide')];
     if(slides.length<2)return;
     const heroData=[
-      {name:'ROOKIE • NEXT UP',kicker:'FOOTBALL • NEXT UP',sub:'The next breakout chase starts here.',img:'https://res.cloudinary.com/rfbvfxpo/image/upload/v1787775593/cardstorm/hero/rookie-next-up.webp'},
-      {name:'ROOKIE • BREAKOUT',kicker:'FOOTBALL • ROOKIE BREAKOUT',sub:'Quarterback heat, rookie momentum and the cards collectors chase first.',img:'assets/boxes/box-football-2025-donrussoptic.webp'},
-      {name:'ROOKIE • POWER',kicker:'FOOTBALL • CHASE POWER',sub:'Big-play rookies, premium parallels and explosive upside.',img:'assets/boxes/box-football-2026-prizm.webp'},
-      {name:'GOATS • LEGENDS',kicker:'FOOTBALL • GOAT MODE',sub:'Trophies, legends and the cards that define greatness.',img:'assets/boxes/box-football-2024-donruss.webp'},
-      {name:'ROOKIE • FRANCHISE',kicker:'FOOTBALL • FRANCHISE WATCH',sub:'The rookie who can change a franchise becomes the next chase.',img:'assets/boxes/box-football-2026-select.webp'},
-      {name:'ROOKIE • GAME CHANGER',kicker:'FOOTBALL • GAME CHANGER',sub:'The throw, the breakout and the card that suddenly matters.',img:'assets/boxes/box-football-2026-toppsresurgence.webp'},
-      {name:'ACE • ON THE RISE',kicker:'BASEBALL • ACE WATCH',sub:'Power arms, breakout stars and the baseball cards moving fastest.',img:'assets/boxes/box-baseball-2026-toppschrome.webp'},
-      {name:'NEXT GEN • SUPERSTAR',kicker:'BASKETBALL • NEXT GEN',sub:'Young stars with hobby-scale upside and global collector demand.',img:'assets/boxes/box-basketball-2026-toppschrome.webp'},
-      {name:'HOLY GRAILS • ALL WORLDS',kicker:'HOLY GRAILS • ALL WORLDS',sub:'Football. Basketball. Baseball. Pokémon. One impossible chase.',img:'assets/pokemontcglogo.webp'}
+      {name:'Travis Hunter',kicker:'NFL • JACKSONVILLE JAGUARS',sub:'Two-way electricity in Jacksonville. Football remains the heartbeat of the CardStorm chase.',img:'assets/herocardfootball.webp',team:'Jaguars',teamLogo:'https://a.espncdn.com/i/teamlogos/nfl/500/jax.png'},
+      {name:'Jaxon Dart',kicker:'NFL • NEW YORK GIANTS',sub:'Quarterback upside, rookie-card heat and a chase collectors are watching.',img:'assets/boxes/box-football-2025-donrussoptic.webp',team:'Giants',teamLogo:'https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png'},
+      {name:'Ashton Jeanty',kicker:'NFL • LAS VEGAS RAIDERS',sub:'Explosive rookie demand with inserts, parallels, autos and numbered upside.',img:'assets/boxes/box-football-2026-prizm.webp',team:'Raiders',teamLogo:'https://a.espncdn.com/i/teamlogos/nfl/500/lv.png'},
+      {name:'Tom Brady',kicker:'NFL • NEW ENGLAND PATRIOTS',sub:'The GOAT benchmark. Icon cards define the ceiling modern football chases are measured against.',img:'assets/boxes/box-football-2024-donruss.webp',team:'Patriots',teamLogo:'https://a.espncdn.com/i/teamlogos/nfl/500/ne.png'},
+      {name:'Jayden Daniels',kicker:'NFL • WASHINGTON COMMANDERS',sub:'Elite quarterback demand and premium rookie-card attention across the football hobby.',img:'assets/boxes/box-football-2026-select.webp',team:'Commanders',teamLogo:'https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png'},
+      {name:'Cam Ward',kicker:'NFL • TENNESSEE TITANS',sub:'New-generation quarterback chase with the kind of upside collectors track early.',img:'assets/boxes/box-football-2026-toppsresurgence.webp',team:'Titans',teamLogo:'https://a.espncdn.com/i/teamlogos/nfl/500/ten.png'},
+      {name:'Paul Skenes',kicker:'MLB • PITTSBURGH PIRATES',sub:'One baseball slot, one monster arm. Skenes brings the modern baseball chase into the Storm.',img:'assets/boxes/box-baseball-2026-toppschrome.webp',team:'Pirates',teamLogo:'https://a.espncdn.com/i/teamlogos/mlb/500/pit.png'},
+      {name:'Victor Wembanyama',kicker:'NBA • SAN ANTONIO SPURS',sub:'Wemby gives CardStorm a basketball anchor with true hobby-scale star power.',img:'assets/boxes/box-basketball-2026-toppschrome.webp',team:'Spurs',teamLogo:'https://a.espncdn.com/i/teamlogos/nba/500/sas.png'},
+      {name:'Pikachu + Charizard',kicker:'POKÉMON • ICON CHASE',sub:'The two names that instantly tell collectors CardStorm covers the TCG chase too.',img:'assets/pokemontcglogo.webp',team:'Pokémon',teamLogo:'assets/pokemontcglogo.webp'}
     ];
     slides.forEach((slide,i)=>{
       const d=heroData[i%heroData.length];
-      slide.dataset.player=d.name;slide.dataset.kicker=d.kicker;slide.dataset.sub=d.sub;
+      slide.dataset.player=d.name;slide.dataset.kicker=d.kicker;slide.dataset.sub=d.sub;slide.dataset.team=d.team;
       const img=slide.querySelector('.heroimg');
-      if(img){img.src=d.img;img.alt=d.name;img.onerror=()=>{img.onerror=null;img.src='assets/dashboard.webp'}}
+      if(img){img.src=d.img;img.alt=d.name+' — '+d.team;img.onerror=()=>{img.onerror=null;img.src='assets/herocardfootball.webp'}}
+      let badge=slide.querySelector('.csTeamBadge');
+      if(!badge){badge=doc.createElement('div');badge.className='csTeamBadge';badge.innerHTML='<img><span></span>';slide.appendChild(badge)}
+      const badgeImg=badge.querySelector('img'),badgeText=badge.querySelector('span');
+      if(badgeImg){badgeImg.src=d.teamLogo;badgeImg.alt=d.team+' logo';badgeImg.onerror=()=>{badgeImg.style.display='none'}}
+      if(badgeText)badgeText.textContent=d.team;
     });
     if(!doc.getElementById('csHeroFit')){
-      const st=doc.createElement('style');st.id='csHeroFit';st.textContent='.hero .slide .heroimg{object-fit:cover!important;object-position:center!important;padding:0!important}.hero .slide.categorySlide .heroimg{object-fit:cover!important;object-position:center!important;padding:0!important}';doc.head.appendChild(st)
+      const st=doc.createElement('style');st.id='csHeroFit';st.textContent='.hero .slide .heroimg{object-fit:cover!important;object-position:center!important;padding:0!important}.hero .slide.categorySlide .heroimg{object-fit:cover!important;object-position:center!important;padding:0!important}.csTeamBadge{position:absolute;z-index:7;right:clamp(22px,4vw,64px);top:clamp(22px,4vw,48px);display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(255,255,255,.28);border-radius:14px;background:rgba(2,9,20,.82);backdrop-filter:blur(12px);box-shadow:0 10px 35px rgba(0,0,0,.42)}.csTeamBadge img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(85,216,255,.25))}.csTeamBadge span{font-size:11px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;color:#fff}.dots{gap:8px!important;align-items:center}.dot{width:38px!important;height:38px!important;border-radius:10px!important;background:#071522!important;border:1px solid #31516a!important;display:grid!important;place-items:center!important;overflow:hidden!important}.dot img{width:30px!important;height:30px!important;object-fit:contain!important}.dot.active{border-color:#55d8ff!important;box-shadow:0 0 14px rgba(85,216,255,.72)!important;background:#0a2741!important}@media(max-width:760px){.csTeamBadge{top:18px;right:18px;padding:6px 9px}.csTeamBadge img{width:38px;height:38px}.csTeamBadge span{display:none}.dot{width:32px!important;height:32px!important}.dot img{width:25px!important;height:25px!important}}';doc.head.appendChild(st)
     }
+    const dots=[...doc.querySelectorAll('.dot')];
+    dots.forEach((dot,i)=>{
+      const d=heroData[i%heroData.length];
+      dot.innerHTML='';
+      const logo=doc.createElement('img');logo.src=d.teamLogo;logo.alt=d.team+' thumbnail';logo.loading='eager';logo.onerror=()=>{logo.style.display='none';dot.textContent=String(i+1)};dot.appendChild(logo);dot.title=d.name+' — '+d.team;
+    });
     const showSlide=(idx)=>{
       const i=((idx%slides.length)+slides.length)%slides.length;
       slides.forEach((s,n)=>s.classList.toggle('active',n===i));
@@ -36,11 +47,12 @@ function installHeroRotation(win,doc){
       if(kicker)kicker.textContent=d.kicker;if(sub)sub.textContent=d.sub;if(name)name.textContent=d.name;if(num)num.textContent='FEATURED CHASE '+String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
       doc.querySelectorAll('.dot').forEach((dot,n)=>dot.classList.toggle('active',n===i));
       win.__csHeroIndex=i;
+      const hero=doc.getElementById('hero');if(hero){hero.classList.remove('strike');void hero.offsetWidth;hero.classList.add('strike')}
     };
     if(!win.__csHeroRotationInstalled){
       win.__csHeroRotationInstalled=true;win.__csHeroIndex=0;showSlide(0);
       win.__csHeroTimer=setInterval(()=>showSlide((win.__csHeroIndex||0)+1),6000);
-      doc.addEventListener('click',e=>{const dot=e.target.closest&&e.target.closest('.dot');if(dot){const dots=[...doc.querySelectorAll('.dot')],i=dots.indexOf(dot);if(i>=0)showSlide(i)}},true);
+      doc.addEventListener('click',e=>{const dot=e.target.closest&&e.target.closest('.dot');if(dot){const ds=[...doc.querySelectorAll('.dot')],i=ds.indexOf(dot);if(i>=0)showSlide(i)}},true);
     }
   }catch(e){console.error('Hero rotation patch failed',e)}
 }
@@ -59,7 +71,7 @@ function injectCatalog(doc){try{const path=(doc.location&&doc.location.pathname)
 function patchDoc(win,doc){
   try{
     if(!win||!doc)return;
-    doc.querySelectorAll('img').forEach(img=>{const s=(img.getAttribute('src')||'').toLowerCase(),a=(img.getAttribute('alt')||'').toLowerCase();if(s.includes('logo')||a.includes('cardstorm logo')||a==='cardstorm')img.src=LOGO;});
+    doc.querySelectorAll('img').forEach(img=>{const s=(img.getAttribute('src')||'').toLowerCase(),a=(img.getAttribute('alt')||'').toLowerCase();if(s.includes('assets/logo')||a.includes('cardstorm logo')||a==='cardstorm')img.src=LOGO;});
     installHeroRotation(win,doc);
     doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE;}});
     try{win.startTrial=stripe}catch(e){}
