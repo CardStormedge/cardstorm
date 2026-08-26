@@ -1,35 +1,65 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#020914"><meta name="description" content="CardStorm collector intelligence"><title>CardStorm Edge</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}#core{display:block;width:100%;height:100%;border:0;background:#020914}</style></head><body><iframe id="core" src="app-core.html" title="CardStorm Edge"></iframe><script>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020914">
+<meta name="description" content="CardStorm collector intelligence">
+<title>CardStorm Edge</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}
+#core{display:block;width:100%;height:100%;border:0;background:#020914}
+</style>
+</head>
+<body>
+<iframe id="core" src="app-core.html" title="CardStorm Edge"></iframe>
+<script>
 const STRIPE='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
-const HLOGO='assets/logo-horizontal.webp';
-const TRAVIS='assets/herocardfootball.webp';
-const ROOKIE='https://res.cloudinary.com/rfbvfxpo/image/upload/v1787776591/cardstorm/hero/rookie-nextup.webp';
-const POKE='assets/pokemontcglogo.webp';
-const PIKACHU='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png';
-const CHARIZARD='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png';
-const MEWTWO='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png';
 const core=document.getElementById('core');
-const THEMES=[
- {title:'ROOKIES',kicker:'THE FUTURE BREAKS HERE',sub:'Breakout rookies, first-year cards and the chases with the most upside.',img:ROOKIE},
- {title:'GOATs',kicker:'LEGENDS NEVER FADE',sub:'The cards that define eras and set the ceiling for the hobby.',img:TRAVIS},
- {title:'HOLY GRAILS',kicker:'THE RAREST OF THE RARE',sub:'Collection-defining cards, impossible chases and true centerpieces.',img:TRAVIS},
- {title:'CASE HITS',kicker:'BIGGER BOXES. BIGGER MOMENTS.',sub:'Ultra-short prints, SSPs and the hits that stop a break cold.',img:ROOKIE},
- {title:'DOWNTOWN / UPTOWN',kicker:'ART MEETS THE HOBBY',sub:'The inserts collectors recognize from across the room.',img:TRAVIS},
- {title:'BREAK & PLAY',kicker:'GAME • BREAKS • COMMUNITY',sub:'The CardStorm challenge and social-break action in one destination.',img:ROOKIE},
- {title:'POKÉMON TCG',kicker:'CATCH THE STORM',sub:'Sealed product, chase cards and iconic TCG heat.',img:PIKACHU}
-];
-function stripe(){top.location.href=STRIPE}
-function addStyle(doc){if(doc.getElementById('csPremium2026'))return;const st=doc.createElement('style');st.id='csPremium2026';st.textContent=`
-:root{--cs-bg:#020914;--cs-panel:#071522;--cs-cyan:#55d8ff;--cs-muted:#8fa8bc}.nav{min-height:104px!important;padding:10px clamp(18px,3.4vw,54px)!important;background:linear-gradient(180deg,rgba(2,9,20,.985),rgba(2,9,20,.93))!important;border-bottom:1px solid rgba(85,216,255,.13)!important}.brand{min-width:330px!important}.brand img{width:clamp(245px,22vw,350px)!important;height:78px!important;max-width:none!important;object-fit:contain!important;object-position:left center!important}.top{height:104px!important;padding:10px 22px!important;background:linear-gradient(180deg,#030b16,#020914)!important;border-bottom:1px solid rgba(85,216,255,.13)!important}.top .logo,.logoImg,.csGlobalBrand{width:clamp(240px,22vw,350px)!important;height:78px!important;max-width:none!important;object-fit:contain!important;object-position:left center!important;flex:0 0 auto!important}.content{height:calc(100vh - 104px)!important}.starPlate{display:none!important}
-#csThemeRail{position:absolute;z-index:12;left:clamp(20px,4vw,64px);right:clamp(20px,4vw,64px);bottom:18px;display:flex;gap:8px;align-items:center;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}.csThemeBtn{flex:0 0 auto;border:1px solid rgba(120,190,235,.24);background:rgba(2,9,20,.78);color:#aebfd0;border-radius:9px;padding:9px 13px;font:850 10px/1 Segoe UI,Arial,sans-serif;letter-spacing:.105em;text-transform:uppercase;cursor:pointer}.csThemeBtn.active{color:#fff;border-color:rgba(85,216,255,.7);background:#0a2741;box-shadow:0 0 18px rgba(85,216,255,.18)}
-.grid{gap:14px!important}.card{min-height:210px!important;padding:24px 22px 22px!important;border:1px solid rgba(111,169,210,.18)!important;border-radius:14px!important;background:linear-gradient(155deg,rgba(9,30,49,.96),rgba(3,12,22,.98))!important}.card .icon{display:none!important}.card .csCardKicker{display:block;color:#66d8ff;font-size:9px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;margin:0 0 38px}.card h3{font-size:22px!important;margin:0 0 9px!important}.card p{font-size:12px!important;line-height:1.58!important;color:#95adbf!important}.card:before{content:attr(data-cs-index);position:absolute;right:15px;top:7px;color:rgba(135,191,229,.075);font-size:66px;font-weight:950}
-#csPokemonPage{position:absolute;z-index:90;inset:104px 0 0;background:radial-gradient(circle at 82% 8%,rgba(255,205,58,.16),transparent 25%),radial-gradient(circle at 18% 12%,rgba(38,123,255,.18),transparent 32%),linear-gradient(180deg,#07162a,#020914 68%);display:none;overflow:auto;padding:24px clamp(18px,3vw,42px) 50px}#csPokemonPage.open{display:block}.csPokeHero{position:relative;min-height:430px;border:1px solid rgba(101,153,216,.35);border-radius:22px;overflow:hidden;background:linear-gradient(120deg,#07101e 0,#0b2440 48%,#151326 100%);box-shadow:0 32px 80px -48px rgba(55,148,255,.6)}.csPokeHeroCopy{position:relative;z-index:4;max-width:560px;padding:54px}.csPokeHeroLogo{width:210px;height:auto;object-fit:contain;margin-bottom:20px}.csPokeHero h1{font-size:clamp(42px,6vw,82px);line-height:.92;margin:0 0 16px;letter-spacing:-.055em}.csPokeHero h1 span{color:#ffd34e}.csPokeHero p{font-size:17px;line-height:1.55;color:#c6d6e5;max-width:520px}.csPokemonArt{position:absolute;right:3%;bottom:-3%;width:52%;height:98%;z-index:2}.csPokemonArt img{position:absolute;object-fit:contain;filter:drop-shadow(0 28px 28px rgba(0,0,0,.55))}.csPokemonArt .char{width:62%;height:84%;right:4%;bottom:0}.csPokemonArt .pika{width:40%;height:55%;left:4%;bottom:4%}.csPokemonArt .mew{width:34%;height:48%;left:30%;top:4%;opacity:.9}.csPokeGlow{position:absolute;inset:0;background:radial-gradient(circle at 78% 40%,rgba(255,221,71,.12),transparent 26%),radial-gradient(circle at 67% 62%,rgba(89,168,255,.14),transparent 33%);z-index:1}.csPokeNav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 14px}.csPokeNav button{border:1px solid rgba(115,175,218,.28);background:#061521;color:#d7e8f5;border-radius:999px;padding:8px 12px;font-weight:850;font-size:11px;cursor:pointer}.csPokeGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.csPokeCard{display:block;text-decoration:none;color:white;border:1px solid rgba(111,169,210,.2);border-radius:16px;overflow:hidden;background:linear-gradient(160deg,#0a2138,#05101b);transition:.18s}.csPokeCard:hover{transform:translateY(-3px);border-color:#55d8ff}.csPokeVisual{height:235px;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,rgba(69,140,211,.28),transparent 45%),#06111c}.csPokeVisual img{width:78%;height:84%;object-fit:contain;filter:drop-shadow(0 22px 22px rgba(0,0,0,.5))}.csPokeBody{padding:15px}.csPokeBody b{display:block;font-size:17px;margin-bottom:6px}.csPokeBody span{font-size:12px;line-height:1.45;color:#95afc3}.csClosePokemon{position:sticky;top:0;z-index:6;float:right;border:1px solid rgba(85,216,255,.4);background:rgba(2,9,20,.88);color:#fff;padding:9px 12px;border-radius:9px;font-weight:900;cursor:pointer}
-@media(max-width:1050px){.brand{min-width:250px!important}.brand img,.top .logo,.logoImg,.csGlobalBrand{width:245px!important;height:68px!important}.nav{min-height:92px!important}.top{height:92px!important}.content{height:calc(100vh - 92px)!important}#csPokemonPage{inset:92px 0 0}.csPokeGrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.nav{min-height:82px!important}.brand{min-width:190px!important}.brand img{width:200px!important;height:60px!important}.top{height:82px!important}.top .logo,.logoImg,.csGlobalBrand{width:190px!important;height:60px!important}.content{height:calc(100vh - 82px)!important}#csPokemonPage{inset:82px 0 0;padding:14px}.csPokeHero{min-height:600px}.csPokeHeroCopy{padding:28px 22px 280px}.csPokemonArt{width:100%;height:55%;right:0}.csPokeGrid{grid-template-columns:1fr}}
-`;doc.head.appendChild(st)}
-function premiumChrome(doc){addStyle(doc);const top=doc.querySelector('.top');if(top){let logo=top.querySelector('.logo,.logoImg,.csGlobalBrand');if(!logo){logo=doc.createElement('img');logo.className='csGlobalBrand';logo.alt='CardStorm';top.prepend(logo)}logo.src=HLOGO}const brand=doc.querySelector('.brand img');if(brand)brand.src=HLOGO;doc.querySelectorAll('.grid .card').forEach((card,i)=>{card.dataset.csIndex=String(i+1).padStart(2,'0');let k=card.querySelector('.csCardKicker');if(!k){k=doc.createElement('span');k.className='csCardKicker';card.insertBefore(k,card.firstChild)}const h=(card.querySelector('h3')?.textContent||'').toLowerCase();k.textContent=h.includes('hunt')?'CHASE INTELLIGENCE':h.includes('market')?'MARKET SIGNALS':h.includes('set')?'PRODUCT INTELLIGENCE':h.includes('game')||h.includes('challenge')?'BREAK & PLAY':h.includes('watch')?'COLLECTOR WATCHLIST':h.includes('alive')||h.includes('break')?'SOCIAL BREAKS':'CARDSTORM EDGE'})}
-function installHero(win,doc){const all=[...doc.querySelectorAll('.hero .slide')];if(!all.length)return;const slides=all.slice(0,THEMES.length);all.slice(THEMES.length).forEach(s=>s.style.display='none');slides.forEach((slide,i)=>{const d=THEMES[i];slide.style.display='block';const img=slide.querySelector('.heroimg');if(img){img.src=d.img;img.alt='CardStorm '+d.title;img.style.objectFit='cover';img.style.objectPosition='center';img.onerror=()=>{img.onerror=null;img.src=TRAVIS}}});let rail=doc.getElementById('csThemeRail');if(!rail){rail=doc.createElement('div');rail.id='csThemeRail';doc.querySelector('.hero')?.appendChild(rail)}rail.innerHTML='';const show=i=>{i=((i%slides.length)+slides.length)%slides.length;slides.forEach((s,n)=>s.classList.toggle('active',n===i));const d=THEMES[i];const k=doc.getElementById('heroKicker'),sub=doc.getElementById('heroSub');if(k)k.textContent=d.kicker;if(sub)sub.textContent=d.sub;[...rail.children].forEach((b,n)=>b.classList.toggle('active',n===i));win.__csThemeIndex=i;const h=doc.getElementById('hero');if(h){h.classList.remove('strike');void h.offsetWidth;h.classList.add('strike')}};THEMES.forEach((d,i)=>{const b=doc.createElement('button');b.className='csThemeBtn';b.textContent=d.title;b.onclick=e=>{e.preventDefault();e.stopPropagation();show(i)};rail.appendChild(b)});if(!win.__csPremiumHero){win.__csPremiumHero=true;clearInterval(win.__csHeroTimer);show(0);win.__csThemeTimer=setInterval(()=>show((win.__csThemeIndex||0)+1),6500)}}
-function buildPokemonPage(doc){const path=((doc.location&&doc.location.pathname)||'').toLowerCase();if(!path.endsWith('app.html'))return null;let page=doc.getElementById('csPokemonPage');if(page)return page;page=doc.createElement('section');page.id='csPokemonPage';page.innerHTML=`<button class="csClosePokemon" type="button">BACK TO CARDSTORM</button><div class="csPokeHero"><div class="csPokeGlow"></div><div class="csPokeHeroCopy"><img class="csPokeHeroLogo" src="${POKE}" alt="Pokemon TCG"><div class="k">POKÉMON TCG • CARDSTORM</div><h1>CHASE THE <span>ICONS.</span></h1><p>One dedicated Pokémon destination for sealed products, major sets, chase cards and collector heat — with the visuals where they belong.</p><div class="csPokeNav"><button>SEALED</button><button>MEGA EVOLUTION</button><button>CHASE CARDS</button><button>COLLECTOR BOXES</button></div></div><div class="csPokemonArt"><img class="char" src="${CHARIZARD}" alt="Charizard"><img class="pika" src="${PIKACHU}" alt="Pikachu"><img class="mew" src="${MEWTWO}" alt="Mewtwo"></div></div><div style="margin:24px 0 12px"><div class="k">POKÉMON COMMAND CENTER</div><h2 style="margin:4px 0 0;font-size:30px">Explore the chase</h2></div><div class="csPokeGrid"><a class="csPokeCard" href="https://www.pokemoncenter.com/category/tcg-cards" target="_blank" rel="noopener"><div class="csPokeVisual"><img src="${PIKACHU}" alt="Current sealed Pokémon"></div><div class="csPokeBody"><b>Current Sealed</b><span>Boxes, bundles, ETBs and packs in one lane.</span></div></a><a class="csPokeCard" href="https://www.pokemoncenter.com/search/megacards" target="_blank" rel="noopener"><div class="csPokeVisual"><img src="${CHARIZARD}" alt="Mega Evolution Pokémon"></div><div class="csPokeBody"><b>Mega Evolution</b><span>Current Mega-era product and chase focus.</span></div></a><a class="csPokeCard" href="https://www.pokemoncenter.com/category/tcg-cards" target="_blank" rel="noopener"><div class="csPokeVisual"><img src="${MEWTWO}" alt="Pokemon chase cards"></div><div class="csPokeBody"><b>Chase Radar</b><span>Track the cards and sets collectors care about most.</span></div></a><a class="csPokeCard" href="https://www.pokemoncenter.com/category/tcg-cards" target="_blank" rel="noopener"><div class="csPokeVisual"><img src="${CHARIZARD}" alt="Pokemon collector boxes"></div><div class="csPokeBody"><b>Collector Boxes</b><span>Premium collections and special releases.</span></div></a></div>`;doc.body.appendChild(page);page.querySelector('.csClosePokemon').onclick=()=>page.classList.remove('open');return page}
-function wirePokemon(win,doc){const page=buildPokemonPage(doc);if(!page)return;const top=doc.querySelector('.top');if(top&&!doc.getElementById('csPokemonNav')){const b=doc.createElement('button');b.id='csPokemonNav';b.type='button';b.textContent='POKÉMON';b.onclick=e=>{e.preventDefault();page.classList.add('open')};const nav=top.querySelector('.nav');(nav||top).appendChild(b)}doc.querySelectorAll('button,a').forEach(el=>{if(el.closest('#csPokemonPage'))return;const t=(el.textContent||'').trim().toLowerCase();if(t.includes('pokemon')||t.includes('pokémon')){el.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();page.classList.add('open')},true)}else if(el.closest('.nav')){el.addEventListener('click',()=>page.classList.remove('open'),true)}})}
-function patchDoc(win,doc){try{if(!win||!doc)return;premiumChrome(doc);installHero(win,doc);wirePokemon(win,doc);doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE}if(t.includes('daily game'))el.textContent='BREAK & PLAY'});doc.querySelectorAll('iframe').forEach(fr=>{if(!fr.dataset.csPremium){fr.dataset.csPremium='1';fr.addEventListener('load',()=>{try{patchDoc(fr.contentWindow,fr.contentDocument)}catch(e){}})}try{if(fr.contentDocument)patchDoc(fr.contentWindow,fr.contentDocument)}catch(e){}})}catch(e){console.error('CardStorm patch failed',e)}}
-function patchAll(){try{patchDoc(core.contentWindow,core.contentDocument)}catch(e){}}
-core.addEventListener('load',()=>{patchAll();setTimeout(patchAll,250);setTimeout(patchAll,900);setTimeout(patchAll,2200)});setInterval(patchAll,1800);
-</script></body></html>
+
+function stripe(){ top.location.href=STRIPE; }
+
+function patchPaymentsOnly(win,doc){
+  try{
+    if(!win||!doc)return;
+
+    // IMPORTANT: do not replace logos, hero images, page imagery, navigation,
+    // Pokemon content, or native app routing here. Each page owns its visuals.
+    doc.querySelectorAll('a[href],button').forEach(el=>{
+      const t=(el.textContent||'').trim().toLowerCase();
+      if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){
+        el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};
+        if(el.tagName==='A')el.href=STRIPE;
+      }
+    });
+
+    try{ win.startTrial=stripe; }catch(e){}
+
+    doc.querySelectorAll('iframe').forEach(fr=>{
+      if(!fr.dataset.csPaymentPatch){
+        fr.dataset.csPaymentPatch='1';
+        fr.addEventListener('load',()=>{
+          try{ patchPaymentsOnly(fr.contentWindow,fr.contentDocument); }catch(e){}
+        });
+      }
+      try{
+        if(fr.contentDocument)patchPaymentsOnly(fr.contentWindow,fr.contentDocument);
+      }catch(e){}
+    });
+  }catch(e){
+    console.error('CardStorm payment patch failed',e);
+  }
+}
+
+function patchAll(){
+  try{ patchPaymentsOnly(core.contentWindow,core.contentDocument); }catch(e){}
+}
+
+core.addEventListener('load',()=>{
+  patchAll();
+  setTimeout(patchAll,300);
+  setTimeout(patchAll,1200);
+});
+</script>
+</body>
+</html>
