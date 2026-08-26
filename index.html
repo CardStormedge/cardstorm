@@ -26,6 +26,17 @@ const HOME_THEMES=[
  {title:'POKÉMON',kicker:'CATCH THE STORM',sub:'Pokémon sets, chase cards and TCG collector heat.',img:'https://images.pexels.com/photos/9661254/pexels-photo-9661254.jpeg?auto=compress&dpr=1&h=900&w=1600'}
 ];
 function stripe(){top.location.href=STRIPE}
+function returnToNewHome(){
+ try{
+  const cw=core.contentWindow,cd=core.contentDocument;
+  if(!cw||!cd)return;
+  const layer=cd.getElementById('appLayer');
+  if(layer)layer.classList.remove('open');
+  cd.body.style.overflow='';
+  if(typeof cw.scheduleStorm==='function')cw.scheduleStorm(true);
+  cw.scrollTo(0,0);
+ }catch(e){}
+}
 function ensureStyles(doc){
  if(doc.getElementById('csCollectorFix'))return;
  const st=doc.createElement('style');
@@ -99,11 +110,30 @@ function patchCards(doc){
   doc.querySelectorAll('#view .top .nav button').forEach(b=>{if((b.textContent||'').trim().toUpperCase()==='TCG')b.style.display='none'});
  }catch(e){}
 }
+function patchInternalBack(win,doc){
+ try{
+  const path=((doc.location&&doc.location.pathname)||'').toLowerCase();
+  if(!path.endsWith('/app.html')&&!path.endsWith('app.html'))return;
+  doc.querySelectorAll('button,a').forEach(el=>{
+   if(el.dataset.csReturnHome)return;
+   const t=(el.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();
+   const isReturn=t==='home'||t==='back'||t.includes('back to command center')||t.includes('back to cardstorm')||t.includes('cardstorm home')||t.includes('command center');
+   if(!isReturn)return;
+   el.dataset.csReturnHome='1';
+   el.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    returnToNewHome();
+   },true);
+  });
+ }catch(e){}
+}
 function patchPage(win,doc){
  try{
   if(!win||!doc)return;
   patchHomepageThemes(win,doc);
   patchCards(doc);
+  patchInternalBack(win,doc);
   doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE}});
   try{win.startTrial=stripe}catch(e){}
   doc.querySelectorAll('iframe').forEach(fr=>{if(!fr.dataset.csCollectorFix){fr.dataset.csCollectorFix='1';fr.addEventListener('load',()=>{try{patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}try{if(fr.contentDocument)patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}});
