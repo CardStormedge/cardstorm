@@ -15,9 +15,31 @@ const STRIPE_EDGE_MONTHLY='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
 const core=document.getElementById('core');
 let coreReady=false,pendingSection=null;
 function goStripe(){window.open(STRIPE_EDGE_MONTHLY,'_blank','noopener,noreferrer')}
+function patchHero(doc){
+  try{
+    const imgs=[
+      'assets/boxes/box-football-2026-toppschrome.webp',
+      'assets/boxes/box-football-2026-select.webp',
+      'assets/boxes/box-football-2026-prizm.webp',
+      'assets/boxes/box-football-2024-donruss.webp',
+      'assets/boxes/box-football-2025-donrussoptic.webp',
+      'assets/boxes/box-football-2026-toppsresurgence.webp',
+      'assets/boxes/box-baseball-2026-toppschrome.webp',
+      'assets/boxes/box-basketball-2026-toppschrome.webp',
+      'assets/pokemontcglogo.webp'
+    ];
+    const slides=[...doc.querySelectorAll('.slide')];
+    slides.forEach((slide,i)=>{
+      const img=slide.querySelector('.heroimg');if(!img||!imgs[i])return;
+      img.src=imgs[i];
+      if(i<8){slide.classList.add('categorySlide');img.style.objectFit='contain';img.style.objectPosition='78% 45%';img.style.padding='65px 7% 65px 52%';}
+    });
+  }catch(e){console.error('Hero patch failed',e)}
+}
 function patchDoc(win,doc){
   try{
     if(!win||!doc)return;
+    patchHero(doc);
     win.startTrial=goStripe;
     doc.querySelectorAll('a.join,button.join,.trialbuttons .join').forEach(el=>{
       el.removeAttribute('href');el.removeAttribute('target');el.style.cursor='pointer';
