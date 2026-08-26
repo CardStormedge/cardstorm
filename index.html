@@ -11,7 +11,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}#co
 <body>
 <iframe id="core" src="app-core.html" title="CardStorm Command Center"></iframe>
 <script>
-const STRIPE_EDGE_MONTHLY='https://buy.stripe.com/7sYeV6gwLagoa6md0ocjS00';
+const STRIPE_EDGE_MONTHLY='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
 const core=document.getElementById('core');
 let coreReady=false,pendingSection=null;
 function patchCore(){
@@ -22,12 +22,21 @@ function patchCore(){
     style.textContent='.ownerSetup,.domainStatus{display:none!important}.trialbuttons .cta{display:none!important}.trialbuttons{grid-template-columns:1fr!important}.plan.edge .trialterms{margin-top:12px}';
     d.head.appendChild(style);
     w.startTrial=function(){window.open(STRIPE_EDGE_MONTHLY,'_blank','noopener,noreferrer')};
+    const edge=d.querySelector('.plan.edge');
+    if(edge){
+      const big=edge.querySelector('.big');
+      if(big)big.textContent='$9.88';
+      const sub=edge.querySelector('.sub');
+      if(sub)sub.textContent='per month after 7-day free trial • cancel anytime';
+      const trialButton=edge.querySelector('.trialbuttons .join');
+      if(trialButton)trialButton.textContent='START 7-DAY FREE TRIAL • $9.88/MONTH';
+    }
     coreReady=true;
-    if(pendingSection&&typeof w.show==='function'){w.show(pendingSection);pendingSection=null;}
+    if(pendingSection&&typeof w.show==='function'){w.show(pendingSection);pendingSection=null;setTimeout(patchCore,0);}
   }catch(e){console.error('CardStorm payment patch failed',e)}
 }
 core.addEventListener('load',patchCore);
-function show(section){pendingSection=section||null;try{const w=core.contentWindow;if(coreReady&&typeof w.show==='function'){w.show(section);pendingSection=null;}}catch(e){}}
+function show(section){pendingSection=section||null;try{const w=core.contentWindow;if(coreReady&&typeof w.show==='function'){w.show(section);pendingSection=null;setTimeout(patchCore,0);}}catch(e){}}
 function home(){try{const w=core.contentWindow;if(typeof w.home==='function')w.home();}catch(e){}}
 </script>
 </body>
