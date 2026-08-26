@@ -17,27 +17,98 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}
 const STRIPE='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
 const core=document.getElementById('core');
 const HOME_THEMES=[
- {title:'ROOKIES',kicker:'THE FUTURE BREAKS HERE',sub:'Rookie heat, first-year cards and the next generation of hobby stars.',img:'assets/themes/rookies.svg'},
- {title:'GOATs',kicker:'LEGENDS NEVER FADE',sub:'The all-time names and cards that define the ceiling of the hobby.',img:'assets/themes/goats.svg'},
- {title:'HOLY GRAILS',kicker:'THE RAREST OF THE RARE',sub:'Collection-defining cards, impossible chases and true centerpieces.',img:'assets/themes/holy-grails.svg'},
- {title:'CASE HITS',kicker:'BIGGER PULLS. BIGGER MOMENTS.',sub:'SSPs, case hits and the pulls that stop a break cold.',img:'assets/themes/case-hits.svg'},
- {title:'DOWNTOWN / UPTOWN',kicker:'ART MEETS THE HOBBY',sub:'The iconic art inserts collectors recognize instantly.',img:'assets/themes/downtown-uptown.svg'},
- {title:'BREAK & PLAY',kicker:'GAME • BREAKS • COMMUNITY',sub:'CardStorm games and social-break energy in one collector lane.',img:'assets/themes/break-play.svg'},
- {title:'POKÉMON',kicker:'CATCH THE STORM',sub:'Pokémon sets, chase cards and TCG collector heat.',img:'assets/themes/pokemon.svg'}
+ {title:'ROOKIES',kicker:'THE FUTURE BREAKS HERE',sub:'Rookie heat, first-year cards and the next generation of hobby stars.',img:'assets/herocardfootball.webp'},
+ {title:'GOATs',kicker:'LEGENDS NEVER FADE',sub:'The all-time names and cards that define the ceiling of the hobby.',img:'https://images.pexels.com/photos/7005503/pexels-photo-7005503.jpeg?auto=compress&dpr=1&h=900&w=1600'},
+ {title:'HOLY GRAILS',kicker:'THE RAREST OF THE RARE',sub:'Collection-defining cards, impossible chases and true centerpieces.',img:'https://images.pexels.com/photos/7783409/pexels-photo-7783409.jpeg?auto=compress&dpr=1&h=900&w=1600'},
+ {title:'CASE HITS',kicker:'BIGGER PULLS. BIGGER MOMENTS.',sub:'SSPs, case hits and the pulls that stop a break cold.',img:'https://images.pexels.com/photos/7809125/pexels-photo-7809125.jpeg?auto=compress&dpr=1&h=900&w=1600'},
+ {title:'DOWNTOWN / UPTOWN',kicker:'ART MEETS THE HOBBY',sub:'The iconic art inserts collectors recognize instantly.',img:'https://images.pexels.com/photos/4606704/pexels-photo-4606704.jpeg?auto=compress&dpr=1&h=900&w=1600'},
+ {title:'BREAK & PLAY',kicker:'GAME • BREAKS • COMMUNITY',sub:'CardStorm games and social-break energy in one collector lane.',img:'https://images.pexels.com/photos/10782398/pexels-photo-10782398.jpeg?auto=compress&dpr=1&h=900&w=1600'},
+ {title:'POKÉMON',kicker:'CATCH THE STORM',sub:'Pokémon sets, chase cards and TCG collector heat.',img:'https://images.pexels.com/photos/9661254/pexels-photo-9661254.jpeg?auto=compress&dpr=1&h=900&w=1600'}
 ];
 function stripe(){top.location.href=STRIPE}
-function ensureStyles(doc){if(doc.getElementById('csCollectorFix'))return;const st=doc.createElement('style');st.id='csCollectorFix';st.textContent=`
-.hero .slide .heroimg{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;padding:0!important;filter:saturate(1.05) contrast(1.05)!important}
-.hero .slide{background:#04101b!important}
-.starPlate{display:none!important}
-#csThemeRail{position:absolute;z-index:8;left:clamp(20px,4vw,64px);right:clamp(20px,4vw,64px);bottom:18px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
-#csThemeRail::-webkit-scrollbar{display:none}.csThemeBtn{flex:0 0 auto;border:1px solid rgba(104,177,226,.3);background:rgba(2,9,20,.82);color:#b9cbd9;border-radius:7px;padding:9px 12px;font-size:10px;font-weight:900;letter-spacing:.08em;cursor:pointer}.csThemeBtn.active{color:#fff;border-color:#55d8ff;background:#0a2741;box-shadow:0 0 14px rgba(85,216,255,.22)}
-.grid{gap:0!important;border-top:1px solid rgba(79,132,172,.22)!important;border-left:1px solid rgba(79,132,172,.22)!important}.grid .card{border:0!important;border-right:1px solid rgba(79,132,172,.22)!important;border-bottom:1px solid rgba(79,132,172,.22)!important;border-radius:0!important;background:linear-gradient(155deg,rgba(8,26,43,.86),rgba(3,12,22,.96))!important;box-shadow:none!important}.grid .card .icon{display:none!important}.grid .card h3{margin-top:42px!important}.grid .card:before{content:attr(data-cs-index);position:absolute;top:18px;left:18px;color:#55d8ff;font-size:10px;font-weight:900;letter-spacing:.18em}.grid .card:hover{transform:none!important;box-shadow:inset 0 3px 0 #55d8ff!important}.funStrip .feature{border-radius:0!important}.funStrip .feature.gold{background:linear-gradient(155deg,rgba(8,26,43,.86),rgba(3,12,22,.96))!important;border-color:#2d648c!important}
-@media(max-width:760px){.heroCopy{padding-bottom:115px!important}.csThemeBtn{padding:8px 9px;font-size:9px}}
-`;doc.head.appendChild(st)}
-function patchHomepageThemes(win,doc){try{const hero=doc.querySelector('.hero'),slides=[...doc.querySelectorAll('.hero .slide')];if(!hero||!slides.length)return;ensureStyles(doc);slides.forEach((slide,i)=>{if(i<7){slide.style.display='block';slide.dataset.theme=HOME_THEMES[i].title;const img=slide.querySelector('.heroimg');if(img){img.src=HOME_THEMES[i].img;img.alt='CardStorm '+HOME_THEMES[i].title+' collector theme'}}else{slide.style.display='none';slide.classList.remove('active')}});let rail=doc.getElementById('csThemeRail');if(!rail){rail=doc.createElement('div');rail.id='csThemeRail';hero.appendChild(rail)}const active=slides.slice(0,7);const show=i=>{i=((i%7)+7)%7;active.forEach((s,n)=>s.classList.toggle('active',n===i));const d=HOME_THEMES[i],k=doc.getElementById('heroKicker'),sub=doc.getElementById('heroSub');if(k)k.textContent=d.kicker;if(sub)sub.textContent=d.sub;[...rail.children].forEach((b,n)=>b.classList.toggle('active',n===i));win.__csThemeIndex=i;hero.classList.remove('strike');void hero.offsetWidth;hero.classList.add('strike')};rail.innerHTML='';HOME_THEMES.forEach((d,i)=>{const b=doc.createElement('button');b.className='csThemeBtn';b.type='button';b.textContent=d.title;b.onclick=e=>{e.preventDefault();e.stopPropagation();show(i)};rail.appendChild(b)});if(!win.__csCollectorThemeInstalled){win.__csCollectorThemeInstalled=true;clearInterval(win.__csHeroTimer);show(0);win.__csThemeTimer=setInterval(()=>show((win.__csThemeIndex||0)+1),6500)}}catch(e){console.error(e)}}
-function patchCards(doc){try{ensureStyles(doc);doc.querySelectorAll('.grid .card').forEach((c,i)=>c.dataset.csIndex=String(i+1).padStart(2,'0'));doc.querySelectorAll('#view .top .nav button').forEach(b=>{if((b.textContent||'').trim().toUpperCase()==='TCG')b.style.display='none'})}catch(e){}}
-function patchPage(win,doc){try{if(!win||!doc)return;patchHomepageThemes(win,doc);patchCards(doc);doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE}});try{win.startTrial=stripe}catch(e){};doc.querySelectorAll('iframe').forEach(fr=>{if(!fr.dataset.csCollectorFix){fr.dataset.csCollectorFix='1';fr.addEventListener('load',()=>{try{patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}try{if(fr.contentDocument)patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}catch(e){console.error('CardStorm patch failed',e)}}
+function ensureStyles(doc){
+ if(doc.getElementById('csCollectorFix'))return;
+ const st=doc.createElement('style');
+ st.id='csCollectorFix';
+ st.textContent=`
+ .hero .slide .heroimg{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;padding:0!important;filter:saturate(1.06) contrast(1.08)!important}
+ .hero .slide{background:#04101b!important}
+ .hero .shade{background:linear-gradient(90deg,rgba(1,7,15,.97) 0%,rgba(1,7,15,.88) 34%,rgba(1,7,15,.34) 66%,rgba(1,7,15,.12) 100%),linear-gradient(0deg,rgba(2,9,20,.8),transparent 35%)!important}
+ .starPlate{display:none!important}
+ #csThemeRail{position:absolute;z-index:8;left:clamp(20px,4vw,64px);right:clamp(20px,4vw,64px);bottom:18px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
+ #csThemeRail::-webkit-scrollbar{display:none}
+ .csThemeBtn{flex:0 0 auto;border:1px solid rgba(104,177,226,.3);background:rgba(2,9,20,.82);color:#b9cbd9;border-radius:7px;padding:9px 12px;font-size:10px;font-weight:900;letter-spacing:.08em;cursor:pointer}
+ .csThemeBtn.active{color:#fff;border-color:#55d8ff;background:#0a2741;box-shadow:0 0 14px rgba(85,216,255,.22)}
+ .grid{gap:0!important;border-top:1px solid rgba(79,132,172,.22)!important;border-left:1px solid rgba(79,132,172,.22)!important}
+ .grid .card{border:0!important;border-right:1px solid rgba(79,132,172,.22)!important;border-bottom:1px solid rgba(79,132,172,.22)!important;border-radius:0!important;background:linear-gradient(155deg,rgba(8,26,43,.86),rgba(3,12,22,.96))!important;box-shadow:none!important}
+ .grid .card .icon{display:none!important}
+ .grid .card h3{margin-top:42px!important}
+ .grid .card:before{content:attr(data-cs-index);position:absolute;top:18px;left:18px;color:#55d8ff;font-size:10px;font-weight:900;letter-spacing:.18em}
+ .grid .card:hover{transform:none!important;box-shadow:inset 0 3px 0 #55d8ff!important}
+ .funStrip .feature{border-radius:0!important}
+ .funStrip .feature.gold{background:linear-gradient(155deg,rgba(8,26,43,.86),rgba(3,12,22,.96))!important;border-color:#2d648c!important}
+ @media(max-width:760px){.heroCopy{padding-bottom:115px!important}.csThemeBtn{padding:8px 9px;font-size:9px}.hero .slide .heroimg{object-position:center top!important}}
+ `;
+ doc.head.appendChild(st);
+}
+function patchHomepageThemes(win,doc){
+ try{
+  const hero=doc.querySelector('.hero');
+  const slides=[...doc.querySelectorAll('.hero .slide')];
+  if(!hero||slides.length<7)return;
+  ensureStyles(doc);
+  slides.forEach((slide,i)=>{
+   if(i<7){
+    const theme=HOME_THEMES[i];
+    slide.style.display='block';
+    slide.classList.remove('categorySlide','pokemonSlide');
+    slide.dataset.theme=theme.title;
+    let img=slide.querySelector('.heroimg');
+    if(!img){img=doc.createElement('img');img.className='heroimg';slide.prepend(img)}
+    if(img.getAttribute('src')!==theme.img)img.setAttribute('src',theme.img);
+    img.setAttribute('alt',theme.title+' collector theme');
+   }else{
+    slide.style.display='none';
+    slide.classList.remove('active');
+   }
+  });
+  let rail=doc.getElementById('csThemeRail');
+  if(!rail){rail=doc.createElement('div');rail.id='csThemeRail';hero.appendChild(rail)}
+  const active=slides.slice(0,7);
+  const show=i=>{
+   i=((i%7)+7)%7;
+   active.forEach((s,n)=>s.classList.toggle('active',n===i));
+   const d=HOME_THEMES[i];
+   const k=doc.getElementById('heroKicker');
+   const sub=doc.getElementById('heroSub');
+   if(k)k.textContent=d.kicker;
+   if(sub)sub.textContent=d.sub;
+   [...rail.children].forEach((b,n)=>b.classList.toggle('active',n===i));
+   win.__csThemeIndex=i;
+   hero.classList.remove('strike');void hero.offsetWidth;hero.classList.add('strike');
+  };
+  rail.innerHTML='';
+  HOME_THEMES.forEach((d,i)=>{const b=doc.createElement('button');b.className='csThemeBtn';b.type='button';b.textContent=d.title;b.onclick=e=>{e.preventDefault();e.stopPropagation();show(i)};rail.appendChild(b)});
+  if(!win.__csCollectorThemeInstalled){win.__csCollectorThemeInstalled=true;clearInterval(win.__csHeroTimer);show(0);win.__csThemeTimer=setInterval(()=>show((win.__csThemeIndex||0)+1),6500)}
+ }catch(e){console.error(e)}
+}
+function patchCards(doc){
+ try{
+  ensureStyles(doc);
+  doc.querySelectorAll('.grid .card').forEach((c,i)=>c.dataset.csIndex=String(i+1).padStart(2,'0'));
+  doc.querySelectorAll('#view .top .nav button').forEach(b=>{if((b.textContent||'').trim().toUpperCase()==='TCG')b.style.display='none'});
+ }catch(e){}
+}
+function patchPage(win,doc){
+ try{
+  if(!win||!doc)return;
+  patchHomepageThemes(win,doc);
+  patchCards(doc);
+  doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE}});
+  try{win.startTrial=stripe}catch(e){}
+  doc.querySelectorAll('iframe').forEach(fr=>{if(!fr.dataset.csCollectorFix){fr.dataset.csCollectorFix='1';fr.addEventListener('load',()=>{try{patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}try{if(fr.contentDocument)patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}});
+ }catch(e){console.error('CardStorm patch failed',e)}
+}
 function patchAll(){try{patchPage(core.contentWindow,core.contentDocument)}catch(e){}}
 core.addEventListener('load',()=>{patchAll();setTimeout(patchAll,300);setTimeout(patchAll,1200)});
 </script>
