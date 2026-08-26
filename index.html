@@ -19,9 +19,23 @@ const core=document.getElementById('core');
 
 function stripe(){ top.location.href=STRIPE; }
 
+function hideDuplicateTcgTab(doc){
+  try{
+    // Keep the main POKEMON / TCG destination. Hide only the duplicate
+    // inner-page navigation button whose visible label is exactly "TCG".
+    doc.querySelectorAll('#view .top .nav button').forEach(btn=>{
+      if((btn.textContent||'').trim().toUpperCase()==='TCG'){
+        btn.style.display='none';
+      }
+    });
+  }catch(e){}
+}
+
 function patchPaymentsOnly(win,doc){
   try{
     if(!win||!doc)return;
+
+    hideDuplicateTcgTab(doc);
 
     // IMPORTANT: do not replace logos, hero images, page imagery, navigation,
     // Pokemon content, or native app routing here. Each page owns its visuals.
