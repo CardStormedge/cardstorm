@@ -4,59 +4,69 @@ const STRIPE='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
 const LOGO='assets/logo-approved.webp';
 const core=document.getElementById('core');
 function stripe(){top.location.href=STRIPE}
+function installHeroRotation(win,doc){
+  try{
+    const slides=[...doc.querySelectorAll('.hero .slide')];
+    if(slides.length<2)return;
+    const heroData=[
+      {name:'ROOKIE • NEXT UP',kicker:'FOOTBALL • NEXT UP',sub:'The next breakout chase starts here.',img:'https://res.cloudinary.com/rfbvfxpo/image/upload/v1787775593/cardstorm/hero/rookie-next-up.webp'},
+      {name:'ROOKIE • BREAKOUT',kicker:'FOOTBALL • ROOKIE BREAKOUT',sub:'Quarterback heat, rookie momentum and the cards collectors chase first.',img:'assets/boxes/box-football-2025-donrussoptic.webp'},
+      {name:'ROOKIE • POWER',kicker:'FOOTBALL • CHASE POWER',sub:'Big-play rookies, premium parallels and explosive upside.',img:'assets/boxes/box-football-2026-prizm.webp'},
+      {name:'GOATS • LEGENDS',kicker:'FOOTBALL • GOAT MODE',sub:'Trophies, legends and the cards that define greatness.',img:'assets/boxes/box-football-2024-donruss.webp'},
+      {name:'ROOKIE • FRANCHISE',kicker:'FOOTBALL • FRANCHISE WATCH',sub:'The rookie who can change a franchise becomes the next chase.',img:'assets/boxes/box-football-2026-select.webp'},
+      {name:'ROOKIE • GAME CHANGER',kicker:'FOOTBALL • GAME CHANGER',sub:'The throw, the breakout and the card that suddenly matters.',img:'assets/boxes/box-football-2026-toppsresurgence.webp'},
+      {name:'ACE • ON THE RISE',kicker:'BASEBALL • ACE WATCH',sub:'Power arms, breakout stars and the baseball cards moving fastest.',img:'assets/boxes/box-baseball-2026-toppschrome.webp'},
+      {name:'NEXT GEN • SUPERSTAR',kicker:'BASKETBALL • NEXT GEN',sub:'Young stars with hobby-scale upside and global collector demand.',img:'assets/boxes/box-basketball-2026-toppschrome.webp'},
+      {name:'HOLY GRAILS • ALL WORLDS',kicker:'HOLY GRAILS • ALL WORLDS',sub:'Football. Basketball. Baseball. Pokémon. One impossible chase.',img:'assets/pokemontcglogo.webp'}
+    ];
+    slides.forEach((slide,i)=>{
+      const d=heroData[i%heroData.length];
+      slide.dataset.player=d.name;slide.dataset.kicker=d.kicker;slide.dataset.sub=d.sub;
+      const img=slide.querySelector('.heroimg');
+      if(img){img.src=d.img;img.alt=d.name;img.onerror=()=>{img.onerror=null;img.src='assets/dashboard.webp'}}
+    });
+    if(!doc.getElementById('csHeroFit')){
+      const st=doc.createElement('style');st.id='csHeroFit';st.textContent='.hero .slide .heroimg{object-fit:cover!important;object-position:center!important;padding:0!important}.hero .slide.categorySlide .heroimg{object-fit:cover!important;object-position:center!important;padding:0!important}';doc.head.appendChild(st)
+    }
+    const showSlide=(idx)=>{
+      const i=((idx%slides.length)+slides.length)%slides.length;
+      slides.forEach((s,n)=>s.classList.toggle('active',n===i));
+      const d=heroData[i%heroData.length];
+      const kicker=doc.getElementById('heroKicker'),sub=doc.getElementById('heroSub'),name=doc.getElementById('starName'),num=doc.getElementById('slideNum');
+      if(kicker)kicker.textContent=d.kicker;if(sub)sub.textContent=d.sub;if(name)name.textContent=d.name;if(num)num.textContent='FEATURED CHASE '+String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+      doc.querySelectorAll('.dot').forEach((dot,n)=>dot.classList.toggle('active',n===i));
+      win.__csHeroIndex=i;
+    };
+    if(!win.__csHeroRotationInstalled){
+      win.__csHeroRotationInstalled=true;win.__csHeroIndex=0;showSlide(0);
+      win.__csHeroTimer=setInterval(()=>showSlide((win.__csHeroIndex||0)+1),6000);
+      doc.addEventListener('click',e=>{const dot=e.target.closest&&e.target.closest('.dot');if(dot){const dots=[...doc.querySelectorAll('.dot')],i=dots.indexOf(dot);if(i>=0)showSlide(i)}},true);
+    }
+  }catch(e){console.error('Hero rotation patch failed',e)}
+}
 function addCommandCenterBack(win,doc){
   try{
     const path=((doc.location&&doc.location.pathname)||'').toLowerCase();
     if(!path.endsWith('/app.html')&&!path.endsWith('app.html'))return;
     if(doc.getElementById('csCommandCenterBack'))return;
-    const btn=doc.createElement('button');
-    btn.id='csCommandCenterBack';
-    btn.type='button';
-    btn.textContent='← CARDSTORM COMMAND CENTER';
-    btn.setAttribute('aria-label','Back to CardStorm Command Center');
+    const btn=doc.createElement('button');btn.id='csCommandCenterBack';btn.type='button';btn.textContent='← CARDSTORM COMMAND CENTER';btn.setAttribute('aria-label','Back to CardStorm Command Center');
     btn.style.cssText='position:fixed;top:12px;left:12px;z-index:2147483647;padding:10px 14px;border-radius:10px;border:1px solid #55d8ff;background:rgba(2,9,20,.96);color:#fff;font:900 12px/1.1 Segoe UI,Arial,sans-serif;letter-spacing:.02em;box-shadow:0 0 20px rgba(85,216,255,.28);cursor:pointer;';
-    btn.onmouseenter=()=>{btn.style.background='#0a2741';btn.style.borderColor='#8be8ff'};
-    btn.onmouseleave=()=>{btn.style.background='rgba(2,9,20,.96)';btn.style.borderColor='#55d8ff'};
-    btn.onclick=(e)=>{
-      e.preventDefault();e.stopPropagation();
-      try{
-        const p=win.parent;
-        if(p&&p!==win){
-          try{if(typeof p.closeApp==='function'){p.closeApp();return}}catch(_e){}
-          try{if(typeof p.home==='function'){p.home();return}}catch(_e){}
-          try{
-            const pd=p.document;
-            const layer=pd.querySelector('.appLayer');
-            if(layer){layer.classList.remove('open');layer.style.display='none';return}
-          }catch(_e){}
-        }
-      }catch(_e){}
-      try{top.location.href='/'}catch(_e){location.href='/'}
-    };
+    btn.onclick=e=>{e.preventDefault();e.stopPropagation();try{const p=win.parent;if(p&&p!==win){try{if(typeof p.closeApp==='function'){p.closeApp();return}}catch(_e){}try{const layer=p.document.querySelector('.appLayer');if(layer){layer.classList.remove('open');layer.style.display='none';return}}catch(_e){}}}catch(_e){}try{top.location.href='/'}catch(_e){location.href='/'}};
     doc.body.appendChild(btn);
   }catch(e){console.error('Back button injection failed',e)}
 }
-function injectCatalog(doc){
-  try{
-    const path=(doc.location&&doc.location.pathname)||'';
-    if(!path.endsWith('/app.html')&&!path.endsWith('app.html'))return;
-    if(doc.getElementById('cardstormSetCatalog'))return;
-    const a=doc.createElement('script');a.id='cardstormSetCatalog';a.src='data/set-catalog.js';
-    a.onload=()=>{const b=doc.createElement('script');b.id='cardstormSetUi';b.src='data/set-ui-patch.js';doc.head.appendChild(b)};
-    doc.head.appendChild(a);
-  }catch(e){console.error('Catalog injection failed',e)}
-}
+function injectCatalog(doc){try{const path=(doc.location&&doc.location.pathname)||'';if(!path.endsWith('/app.html')&&!path.endsWith('app.html'))return;if(doc.getElementById('cardstormSetCatalog'))return;const a=doc.createElement('script');a.id='cardstormSetCatalog';a.src='data/set-catalog.js';a.onload=()=>{const b=doc.createElement('script');b.id='cardstormSetUi';b.src='data/set-ui-patch.js';doc.head.appendChild(b)};doc.head.appendChild(a)}catch(e){console.error('Catalog injection failed',e)}}
 function patchDoc(win,doc){
   try{
     if(!win||!doc)return;
     doc.querySelectorAll('img').forEach(img=>{const s=(img.getAttribute('src')||'').toLowerCase(),a=(img.getAttribute('alt')||'').toLowerCase();if(s.includes('logo')||a.includes('cardstorm logo')||a==='cardstorm')img.src=LOGO;});
-    doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=(e)=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE;}});
+    installHeroRotation(win,doc);
+    doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE;}});
     try{win.startTrial=stripe}catch(e){}
     doc.querySelectorAll('.ownerSetup,.domainStatus').forEach(el=>el.style.display='none');
     doc.querySelectorAll('.plan.edge').forEach(edge=>{const big=edge.querySelector('.big');if(big)big.textContent='$9.88';const sub=edge.querySelector('.sub');if(sub)sub.textContent='per month after 7-day free trial • cancel anytime';});
-    const fixGame=()=>{try{if(Array.isArray(win.GAME_POOL)){win.GAME_POOL=win.GAME_POOL.filter(c=>c&&c.img);if(Array.isArray(win.GAMECARDS))win.GAMECARDS=win.GAME_POOL.slice();}}catch(e){}};fixGame();
-    injectCatalog(doc);
-    addCommandCenterBack(win,doc);
+    try{if(Array.isArray(win.GAME_POOL)){win.GAME_POOL=win.GAME_POOL.filter(c=>c&&c.img);if(Array.isArray(win.GAMECARDS))win.GAMECARDS=win.GAME_POOL.slice()}}catch(e){}
+    injectCatalog(doc);addCommandCenterBack(win,doc);
     doc.querySelectorAll('iframe').forEach(fr=>{if(!fr.dataset.csPatched){fr.dataset.csPatched='1';fr.addEventListener('load',()=>{try{patchDoc(fr.contentWindow,fr.contentDocument)}catch(e){}})}try{if(fr.contentDocument)patchDoc(fr.contentWindow,fr.contentDocument)}catch(e){}});
   }catch(e){console.error('CardStorm patch failed',e)}
 }
