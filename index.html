@@ -17,28 +17,111 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}
 const STRIPE='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
 const core=document.getElementById('core');
 
+const HOME_THEMES=[
+  {title:'ROOKIES',kicker:'THE FUTURE BREAKS HERE',sub:'Rookie heat, first-year cards and the next generation of hobby stars.'},
+  {title:'GOATs',kicker:'LEGENDS NEVER FADE',sub:'The all-time names and cards that define the ceiling of the hobby.'},
+  {title:'HOLY GRAILS',kicker:'THE RAREST OF THE RARE',sub:'Collection-defining cards, impossible chases and true centerpieces.'},
+  {title:'CASE HITS',kicker:'BIGGER BOXES. BIGGER MOMENTS.',sub:'SSPs, case hits and the pulls that stop a break cold.'},
+  {title:'DOWNTOWN / UPTOWN',kicker:'ART MEETS THE HOBBY',sub:'The iconic art inserts collectors recognize instantly.'},
+  {title:'BREAK & PLAY',kicker:'GAME • BREAKS • COMMUNITY',sub:'CardStorm games and social-break energy in one collector lane.'},
+  {title:'POKÉMON',kicker:'CATCH THE STORM',sub:'Pokémon sets, chase cards and TCG collector heat.'}
+];
+
 function stripe(){ top.location.href=STRIPE; }
+
+function patchHomepageThemes(win,doc){
+  try{
+    const hero=doc.querySelector('.hero');
+    const slides=[...doc.querySelectorAll('.hero .slide')];
+    if(!hero||!slides.length)return;
+
+    // Leave all logos and all existing image sources alone.
+    // Use only the first seven native hero slides for the seven collector themes.
+    slides.forEach((slide,i)=>{
+      if(i<HOME_THEMES.length){
+        slide.style.display='block';
+        slide.dataset.theme=HOME_THEMES[i].title;
+      }else{
+        slide.style.display='none';
+        slide.classList.remove('active');
+      }
+    });
+
+    // Remove the old player-name box completely.
+    const oldPlate=doc.querySelector('.starPlate');
+    if(oldPlate)oldPlate.style.display='none';
+
+    if(!doc.getElementById('csThemeOnlyStyle')){
+      const st=doc.createElement('style');
+      st.id='csThemeOnlyStyle';
+      st.textContent=`
+        #csThemeRail{position:absolute;z-index:8;left:clamp(20px,4vw,64px);right:clamp(20px,4vw,64px);bottom:20px;display:flex;gap:7px;align-items:center;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+        #csThemeRail::-webkit-scrollbar{display:none}
+        .csThemeBtn{flex:0 0 auto;border:1px solid rgba(104,177,226,.35);background:rgba(2,9,20,.82);color:#b9cbda;border-radius:9px;padding:9px 12px;font-size:10px;font-weight:900;letter-spacing:.09em;cursor:pointer;backdrop-filter:blur(10px)}
+        .csThemeBtn.active{color:#fff;border-color:#55d8ff;background:#0a2741;box-shadow:0 0 15px rgba(85,216,255,.25)}
+        @media(max-width:760px){#csThemeRail{left:14px;right:14px;bottom:16px}.csThemeBtn{padding:8px 9px;font-size:9px}.heroCopy{padding-bottom:120px!important}}
+      `;
+      doc.head.appendChild(st);
+    }
+
+    let rail=doc.getElementById('csThemeRail');
+    if(!rail){
+      rail=doc.createElement('div');
+      rail.id='csThemeRail';
+      hero.appendChild(rail);
+    }
+
+    const activeSlides=slides.slice(0,HOME_THEMES.length);
+    const show=(i)=>{
+      i=((i%activeSlides.length)+activeSlides.length)%activeSlides.length;
+      activeSlides.forEach((s,n)=>s.classList.toggle('active',n===i));
+      const d=HOME_THEMES[i];
+      const kicker=doc.getElementById('heroKicker');
+      const sub=doc.getElementById('heroSub');
+      if(kicker)kicker.textContent=d.kicker;
+      if(sub)sub.textContent=d.sub;
+      [...rail.children].forEach((b,n)=>b.classList.toggle('active',n===i));
+      win.__csThemeIndex=i;
+      hero.classList.remove('strike');
+      void hero.offsetWidth;
+      hero.classList.add('strike');
+    };
+
+    rail.innerHTML='';
+    HOME_THEMES.forEach((d,i)=>{
+      const b=doc.createElement('button');
+      b.type='button';
+      b.className='csThemeBtn';
+      b.textContent=d.title;
+      b.onclick=(e)=>{e.preventDefault();e.stopPropagation();show(i)};
+      rail.appendChild(b);
+    });
+
+    if(!win.__csThemeOnlyInstalled){
+      win.__csThemeOnlyInstalled=true;
+      clearInterval(win.__csHeroTimer);
+      show(0);
+      win.__csThemeOnlyTimer=setInterval(()=>show((win.__csThemeIndex||0)+1),6500);
+    }
+  }catch(e){console.error('CardStorm theme patch failed',e)}
+}
 
 function hideDuplicateTcgTab(doc){
   try{
-    // Keep the main POKEMON / TCG destination. Hide only the duplicate
-    // inner-page navigation button whose visible label is exactly "TCG".
     doc.querySelectorAll('#view .top .nav button').forEach(btn=>{
-      if((btn.textContent||'').trim().toUpperCase()==='TCG'){
-        btn.style.display='none';
-      }
+      if((btn.textContent||'').trim().toUpperCase()==='TCG')btn.style.display='none';
     });
   }catch(e){}
 }
 
-function patchPaymentsOnly(win,doc){
+function patchPage(win,doc){
   try{
     if(!win||!doc)return;
 
+    // Only the homepage theme presentation is changed. Logos and imagery are untouched.
+    patchHomepageThemes(win,doc);
     hideDuplicateTcgTab(doc);
 
-    // IMPORTANT: do not replace logos, hero images, page imagery, navigation,
-    // Pokemon content, or native app routing here. Each page owns its visuals.
     doc.querySelectorAll('a[href],button').forEach(el=>{
       const t=(el.textContent||'').trim().toLowerCase();
       if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){
@@ -50,23 +133,19 @@ function patchPaymentsOnly(win,doc){
     try{ win.startTrial=stripe; }catch(e){}
 
     doc.querySelectorAll('iframe').forEach(fr=>{
-      if(!fr.dataset.csPaymentPatch){
-        fr.dataset.csPaymentPatch='1';
+      if(!fr.dataset.csThemePatch){
+        fr.dataset.csThemePatch='1';
         fr.addEventListener('load',()=>{
-          try{ patchPaymentsOnly(fr.contentWindow,fr.contentDocument); }catch(e){}
+          try{ patchPage(fr.contentWindow,fr.contentDocument); }catch(e){}
         });
       }
-      try{
-        if(fr.contentDocument)patchPaymentsOnly(fr.contentWindow,fr.contentDocument);
-      }catch(e){}
+      try{ if(fr.contentDocument)patchPage(fr.contentWindow,fr.contentDocument); }catch(e){}
     });
-  }catch(e){
-    console.error('CardStorm payment patch failed',e);
-  }
+  }catch(e){console.error('CardStorm patch failed',e)}
 }
 
 function patchAll(){
-  try{ patchPaymentsOnly(core.contentWindow,core.contentDocument); }catch(e){}
+  try{ patchPage(core.contentWindow,core.contentDocument); }catch(e){}
 }
 
 core.addEventListener('load',()=>{
