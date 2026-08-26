@@ -1,90 +1,19 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#020914">
-<meta name="description" content="CardStorm gives collectors AI-powered card value intelligence, market context, chase guidance, set data and collector tools.">
-<title>CardStorm — AI-Powered Card Value Intelligence</title>
-<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}#core{display:block;width:100%;height:100%;border:0;background:#020914}</style>
-</head>
-<body>
-<iframe id="core" src="app-core.html" title="CardStorm"></iframe>
-<script>
-const STRIPE_EDGE_MONTHLY='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
-const core=document.getElementById('core');
-let coreReady=false,pendingSection=null;
-function goStripe(){window.open(STRIPE_EDGE_MONTHLY,'_blank','noopener,noreferrer')}
-function patchHero(doc){
-  try{
-    const imgs=[
-      'assets/boxes/box-football-2026-toppschrome.webp',
-      'assets/boxes/box-football-2026-select.webp',
-      'assets/boxes/box-football-2026-prizm.webp',
-      'assets/boxes/box-football-2024-donruss.webp',
-      'assets/boxes/box-football-2025-donrussoptic.webp',
-      'assets/boxes/box-football-2026-toppsresurgence.webp',
-      'assets/boxes/box-baseball-2026-toppschrome.webp',
-      'assets/boxes/box-basketball-2026-toppschrome.webp',
-      'assets/pokemontcglogo.webp'
-    ];
-    const slides=[...doc.querySelectorAll('.slide')];
-    slides.forEach((slide,i)=>{
-      const img=slide.querySelector('.heroimg');if(!img||!imgs[i])return;
-      img.src=imgs[i];
-      if(i<8){slide.classList.add('categorySlide');img.style.objectFit='contain';img.style.objectPosition='78% 45%';img.style.padding='65px 7% 65px 52%';}
-    });
-  }catch(e){console.error('Hero patch failed',e)}
-}
-function patchDoc(win,doc){
-  try{
-    if(!win||!doc)return;
-    patchHero(doc);
-    win.startTrial=goStripe;
-    doc.querySelectorAll('a.join,button.join,.trialbuttons .join').forEach(el=>{
-      el.removeAttribute('href');el.removeAttribute('target');el.style.cursor='pointer';
-      el.onclick=(e)=>{e.preventDefault();e.stopPropagation();goStripe()};
-    });
-    doc.querySelectorAll('.plan.edge').forEach(edge=>{
-      const big=edge.querySelector('.big');if(big)big.textContent='$9.88';
-      const sub=edge.querySelector('.sub');if(sub)sub.textContent='per month after 7-day free trial • cancel anytime';
-      const btn=edge.querySelector('.trialbuttons .join');if(btn)btn.textContent='START 7-DAY FREE TRIAL • $9.88/MONTH';
-    });
-    doc.querySelectorAll('.ownerSetup,.domainStatus').forEach(el=>el.style.display='none');
-    if(typeof win.show==='function'&&!win.__plansRedirected){
-      const originalShow=win.show;
-      win.__plansRedirected=true;
-      win.show=function(section){if(section==='plans'){goStripe();return}return originalShow.apply(win,arguments)};
-    }
-  }catch(e){console.error('CardStorm patch failed',e)}
-}
-function patchNested(d){
-  try{
-    const f=d.getElementById('appFrame');if(!f)return;
-    if(!f.dataset.cardstormPatched){
-      f.dataset.cardstormPatched='1';
-      f.addEventListener('load',()=>{patchDoc(f.contentWindow,f.contentDocument);setTimeout(()=>patchDoc(f.contentWindow,f.contentDocument),400)});
-    }
-    if(f.contentDocument)patchDoc(f.contentWindow,f.contentDocument);
-  }catch(e){}
-}
-function patchCore(){
-  try{
-    const w=core.contentWindow,d=core.contentDocument;if(!w||!d)return;
-    patchDoc(w,d);
-    const oldOpen=w.openApp;
-    if(typeof oldOpen==='function'&&!w.__plansOpenRedirected){
-      w.__plansOpenRedirected=true;
-      w.openApp=function(section){if(section==='plans'){goStripe();return}const r=oldOpen.apply(w,arguments);setTimeout(()=>patchNested(d),50);return r};
-    }
-    patchNested(d);
-    coreReady=true;
-    if(pendingSection){if(pendingSection==='plans'){goStripe();pendingSection=null}else if(typeof w.show==='function'){w.show(pendingSection);pendingSection=null}}
-  }catch(e){console.error('CardStorm live patch failed',e)}
-}
-core.addEventListener('load',()=>{patchCore();setTimeout(patchCore,500);setTimeout(patchCore,1500)});
-function show(section){pendingSection=section||null;try{const w=core.contentWindow;if(section==='plans'){goStripe();pendingSection=null;return}if(coreReady&&typeof w.show==='function'){w.show(section);pendingSection=null;setTimeout(patchCore,0)}}catch(e){}}
-function home(){try{const w=core.contentWindow;if(typeof w.home==='function')w.home();else w.scrollTo({top:0,behavior:'smooth'})}catch(e){}}
-</script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CardStorm Edge</title><style>html,body{margin:0;height:100%;background:#020814}iframe{width:100%;height:100%;border:0;display:block}</style></head><body><iframe id="core" src="app-core.html" title="CardStorm Edge"></iframe><script>
+const LOGO='assets/logo-approved.webp';
+const HERO=[
+  'assets/hero/hero-rookie.webp',
+  'assets/hero/hero-grails.webp',
+  'assets/hero/hero-goat.webp',
+  'assets/hero/promo-break-game.webp',
+  'assets/hero/hero-pokemon.webp'
+];
+const f=document.getElementById('core');
+f.addEventListener('load',()=>{try{const d=f.contentDocument||f.contentWindow.document;
+  d.querySelectorAll('img').forEach(img=>{const s=(img.getAttribute('src')||'').toLowerCase();const alt=(img.getAttribute('alt')||'').toLowerCase();if(s.includes('logo')||alt.includes('cardstorm')) img.src=LOGO;});
+  const heroImgs=[...d.querySelectorAll('.slide .heroimg')]; heroImgs.forEach((img,i)=>img.src=HERO[i%HERO.length]);
+  d.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial'].some(x=>t.includes(x))){el.onclick=(e)=>{e.preventDefault();top.location.href='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';};if(el.tagName==='A')el.href='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';}});
+  const w=f.contentWindow;
+  const patchGame=()=>{try{if(Array.isArray(w.GAME_POOL)){w.GAME_POOL=w.GAME_POOL.filter(c=>c&&c.img);if('GAMECARDS' in w)w.GAMECARDS=w.GAME_POOL;}}catch(e){}};patchGame();setInterval(patchGame,1000);
+}catch(e){console.error(e);}});
+</script></body></html>
