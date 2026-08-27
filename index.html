@@ -17,7 +17,7 @@ img{max-width:100%}
 
 /* ---------- NAV ---------- */
 .nav{position:sticky;top:0;z-index:20;min-height:84px;display:flex;align-items:center;gap:14px;padding:12px clamp(14px,3vw,42px);background:rgba(2,9,20,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(85,216,255,.15)}
-.brand{display:flex;align-items:center;gap:12px;min-width:260px}
+.brand{display:flex;align-items:center;gap:12px;min-width:260px;cursor:pointer}
 .brand img{height:66px;width:auto;max-width:300px;object-fit:contain;image-rendering:-webkit-optimize-contrast;filter:drop-shadow(0 0 9px rgba(85,216,255,.22))}
 .brand .tag{font-size:9.5px;font-weight:900;letter-spacing:.16em;color:#8fb4d6;line-height:1.35;text-transform:uppercase;border-left:1px solid rgba(85,216,255,.3);padding-left:12px;max-width:120px}
 .navlinks{display:flex;align-items:center;gap:6px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
@@ -34,6 +34,12 @@ img{max-width:100%}
 .scene.active{opacity:1}
 .scene .bg{position:absolute;inset:0}
 .scene.photo .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 18%);transform:scale(var(--zoom,1));filter:saturate(1.05) contrast(1.06)}
+.scene.split .bg{display:flex}
+.splitHalf{position:relative;flex:1 1 50%;overflow:hidden}
+.splitHalf+.splitHalf{border-left:1px solid rgba(255,255,255,.14)}
+.splitHalf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(1.05) contrast(1.06)}
+.splitTag{position:absolute;z-index:2;left:12px;top:12px;padding:6px 11px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(2,9,20,.82);color:#fff;font:900 10.5px Inter,Arial,sans-serif;letter-spacing:.08em;white-space:nowrap}
+.splitShade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,9,20,.85),transparent 46%)}
 
 .shade{position:absolute;inset:0;z-index:5;background:linear-gradient(90deg,rgba(1,7,15,.98) 0%,rgba(1,7,15,.9) 33%,rgba(1,7,15,.28) 63%,rgba(1,7,15,.08) 100%),linear-gradient(0deg,rgba(2,9,20,.8),transparent 38%)}
 .lightning{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;background:radial-gradient(circle at 74% 25%,rgba(255,255,255,.98),rgba(85,216,255,.32) 11%,transparent 34%),linear-gradient(116deg,transparent 61%,rgba(220,248,255,.75) 61.2%,rgba(85,216,255,.2) 61.6%,transparent 62%)}
@@ -96,6 +102,8 @@ img{max-width:100%}
  .heroCopy{min-height:640px;justify-content:flex-end;padding:22px 18px 40px;max-width:100%}
  .hero h1{font-size:clamp(34px,10vw,54px)}
  .shade{background:linear-gradient(180deg,rgba(2,9,20,.15),rgba(2,9,20,.55) 46%,rgba(2,9,20,.98) 76%)}
+ .scene.split .bg{flex-direction:row}
+ .splitTag{font-size:9.5px;padding:5px 9px}
  #starRail{display:none}
  .mobDots{display:flex}
  .grid{grid-template-columns:1fr;gap:12px}
@@ -108,7 +116,7 @@ img{max-width:100%}
 <body>
 <div class="shell">
 <header class="nav">
- <div class="brand" id="brand">
+ <div class="brand" id="brand" onclick="goHome()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goHome()}" role="button" tabindex="0" aria-label="CardStorm home">
   <img src="assets/logo-horizontal.webp" alt="CardStorm">
   <span class="tag">AI-Powered Card Value Intelligence</span>
  </div>
@@ -132,8 +140,8 @@ img{max-width:100%}
   <h1>KNOW THE CARD.<br><span>OWN THE CHASE.</span></h1>
   <p id="heroSub">Rookie heat and a slab-breaking chase that starts the storm.</p>
   <div class="actions">
-   <button class="primary" onclick="openApp('team')">EXPLORE WHAT TO HUNT</button>
-   <button class="secondary" onclick="openApp('market')">CHECK THE MARKET</button>
+   <button class="primary" id="ctaPrimary" onclick="openApp('team')">EXPLORE WHAT TO HUNT</button>
+   <button class="secondary" id="ctaSecondary" onclick="openApp('market')">CHECK THE MARKET</button>
   </div>
   <div id="starRail"></div>
   <div class="mobDots" id="mobDots"></div>
@@ -150,38 +158,55 @@ img{max-width:100%}
 <div class="appLayer" id="appLayer"><iframe class="appFrame" id="appFrame" title="CardStorm Command Center"></iframe><button class="appReturn" onclick="closeApp()">← CARDSTORM HOME</button></div>
 
 <script>
-/* ---------------- HERO DATA (fixed, deliberate — 6 local photos, no external images) ---------------- */
+/* ---------------- HERO DATA ----------------
+   Category-based rotation (not city/team based). Six collector chase categories,
+   sourced entirely from the approved CardStorm category artwork pack — no
+   external images, no city/team photos, no synthetic/SVG fallback art. The
+   "BREAKS + KNOW THE WORTH" tab is a single hero slot that stays two distinct
+   destinations: a split scene with two images and two separate CTAs. */
+const DEFAULT_ACTIONS=[{label:'EXPLORE WHAT TO HUNT',key:'team'},{label:'CHECK THE MARKET',key:'market'}];
 const STARS=[
- {team:'JACKSONVILLE',kicker:'THE NEXT GENERATION',sub:'Rookie heat and a slab-breaking chase that starts the storm.',p:'#19c6ff',img:'assets/homepage/heroes/jacksonville-rising-rookie.jpg'},
- {team:'NEW YORK',kicker:'BREAKOUT WATCH',sub:'Quarterback power and rookie momentum collectors are chasing right now.',p:'#2e69ff',img:'assets/homepage/heroes/new-york-rookie-star.jpg',pos:'32% 8%',zoom:1.32},
- {team:'NEW ENGLAND',kicker:'LEGENDS NEVER FADE',sub:'Six championships. One standard. The ultimate benchmark card.',p:'#b3222f',img:'assets/homepage/heroes/goat-new-england-12.jpg'},
- {team:'LAS VEGAS',kicker:'BUILT DIFFERENT',sub:'Black-and-silver rookie energy built for numbered parallels and big hits.',p:'#9aa4ad',img:'assets/homepage/heroes/las-vegas-rookie-2.jpg'},
- {team:'WASHINGTON',kicker:'FRANCHISE HEAT',sub:'A mobile-quarterback breakout chase collectors can\'t stop watching.',p:'#ffb52e',img:'assets/homepage/heroes/washington-breakout-5.jpg'},
- {team:'KANSAS CITY',kicker:'CHAMPIONSHIP CHASE',sub:'Modern hobby royalty and the grail that anchors a collection.',p:'#ff334d',img:'assets/homepage/heroes/kansas-city-modern-grail-15.jpg'}
+ {tab:'ROOKIES',kicker:'THE NEXT GENERATION',sub:'Rookie heat and the first-year cards collectors are chasing now.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp'},
+ {tab:'ROOKIE STARS',kicker:'BREAKOUT WATCH',sub:'The rookies turning into hobby stars and the cards moving with them.',p:'#2e69ff',mode:'photo',img:'assets/homepage/categories/rookie-stars.webp'},
+ {tab:'GOATS',kicker:'LEGENDS NEVER FADE',sub:'The iconic names and cards that set the standard for the hobby.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp'},
+ {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Case hits, iconic inserts and the hobby’s biggest chase cards.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/holy-grails.webp'},
+ {tab:'BREAKS + KNOW THE WORTH',kicker:'PLAY. BREAK. LEARN.',sub:'Find the action, then test your hobby knowledge.',p:'#ff8a3d',mode:'split',
+  left:{img:'assets/homepage/categories/break-center.webp',label:'BREAK CENTER'},
+  right:{img:'assets/homepage/categories/know-the-worth.webp',label:'KNOW THE WORTH'},
+  actions:[{label:'FIND YOUR NEXT BREAK',key:'breaks'},{label:'PLAY KNOW THE WORTH',key:'game'}]},
+ {tab:'POKÉMON / TCG',kicker:'THE TCG CHASE',sub:'Iconic cards, premium sets and the biggest TCG chases.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp'}
 ];
 
 const scenesEl=document.getElementById('scenes');
 STARS.forEach((d,i)=>{
  const sc=document.createElement('div');
- sc.className='scene photo'+(i===0?' active':'');
+ sc.className='scene '+(d.mode==='split'?'split':'photo')+(i===0?' active':'');
  sc.style.setProperty('--p',d.p);
  if(d.pos)sc.style.setProperty('--pos',d.pos);
  if(d.zoom)sc.style.setProperty('--zoom',d.zoom);
- sc.innerHTML='<div class="bg"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.team+'"></div>';
+ if(d.mode==='split'){
+  sc.innerHTML='<div class="bg">'
+   +'<div class="splitHalf"><img src="'+d.left.img+'" alt="'+d.left.label+'"><span class="splitTag">'+d.left.label+'</span><div class="splitShade"></div></div>'
+   +'<div class="splitHalf"><img src="'+d.right.img+'" alt="'+d.right.label+'"><span class="splitTag">'+d.right.label+'</span><div class="splitShade"></div></div>'
+   +'</div>';
+ }else{
+  sc.innerHTML='<div class="bg"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.tab+'"></div>';
+ }
  scenesEl.appendChild(sc);
 });
 
 /* ---------------- HERO CONTROLS / ROTATION ---------------- */
 const hero=document.getElementById('hero'),scenes=[...document.querySelectorAll('.scene')],
  rail=document.getElementById('starRail'),mobDots=document.getElementById('mobDots'),
- heroKicker=document.getElementById('heroKicker'),heroSub=document.getElementById('heroSub');
+ heroKicker=document.getElementById('heroKicker'),heroSub=document.getElementById('heroSub'),
+ ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary');
 let idx=0,timer=null,striking=false;
 
 STARS.forEach((d,i)=>{
  const b=document.createElement('button');
  b.className='starBtn'+(i===0?' active':'');
  b.style.setProperty('--p',d.p);
- b.innerHTML='<span class="dotc"></span>'+d.team;
+ b.innerHTML='<span class="dotc"></span>'+d.tab;
  b.onclick=()=>{show(i);resetTimer()};
  rail.appendChild(b);
  const dt=document.createElement('button');
@@ -199,6 +224,9 @@ function show(n){
  [...mobDots.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
  heroKicker.textContent=d.kicker;
  heroSub.textContent=d.sub;
+ const acts=d.actions||DEFAULT_ACTIONS;
+ ctaPrimary.textContent=acts[0].label;ctaPrimary.onclick=()=>openApp(acts[0].key);
+ ctaSecondary.textContent=acts[1].label;ctaSecondary.onclick=()=>openApp(acts[1].key);
  if(!striking){
   striking=true;
   hero.classList.remove('strike');void hero.offsetWidth;hero.classList.add('strike');
@@ -256,6 +284,10 @@ function openApp(section){
 }
 function goSection(section){if(!section)return;try{const w=frame.contentWindow;if(typeof w.show==='function')w.show(section)}catch(e){}}
 function closeApp(){layer.classList.remove('open');document.body.style.overflow='';resetTimer()}
+// Single source of truth for "home" on the CardStorm homepage itself: close any open tool
+// overlay and land back on this hero page. app.html's goHome() calls window.parent.closeApp()
+// to reach this exact same page — there is only ever one CardStorm homepage.
+function goHome(){if(layer.classList.contains('open'))closeApp();window.scrollTo({top:0,behavior:'smooth'})}
 window.addEventListener('keydown',e=>{if(e.key==='Escape'&&layer.classList.contains('open'))closeApp()});
 </script>
 </body>
