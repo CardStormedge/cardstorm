@@ -13,109 +13,65 @@
 <script>
 const STRIPE='https://buy.stripe.com/8x228k6Wb4W4diyaSgcjS01';
 const core=document.getElementById('core');
-const HOME_THEMES=[
- {title:'ROOKIES',kicker:'THE FUTURE BREAKS HERE',sub:'Rookie heat, first-year cards and the next generation of hobby stars.',mode:'rookies'},
- {title:'GOATs',kicker:'LEGENDS NEVER FADE',sub:'The all-time names and cards that define the ceiling of the hobby.',mode:'goats'},
- {title:'HOLY GRAILS',kicker:'THE RAREST OF THE RARE',sub:'Collection-defining cards, impossible chases and true centerpieces.',mode:'grails'},
- {title:'CASE HITS',kicker:'BIGGER PULLS. BIGGER MOMENTS.',sub:'SSPs, case hits and the pulls that stop a break cold.',mode:'case'},
- {title:'DOWNTOWN / UPTOWN',kicker:'ART MEETS THE HOBBY',sub:'The iconic art inserts collectors recognize instantly.',mode:'downtown'},
- {title:'BREAK & PLAY',kicker:'GAME • BREAKS • COMMUNITY',sub:'CardStorm games and social-break energy in one collector lane.',mode:'break'},
- {title:'POKÉMON',kicker:'CATCH THE STORM',sub:'Pokémon sets, chase cards and TCG collector heat.',mode:'pokemon'}
+const HEROES=[
+ {name:'Travis Hunter',kicker:'NFL • JACKSONVILLE JAGUARS',sub:'Two-way rookie electricity. The first CardStorm chase and the visual standard for the homepage.',img:'assets/herocardfootball.webp',logo:'https://a.espncdn.com/i/teamlogos/nfl/500/jax.png',team:'Jaguars',local:true},
+ {name:'Jaxson Dart',kicker:'NFL • NEW YORK GIANTS',sub:'Giants blue. Number 6. Quarterback power and one of the rookie chases collectors are watching hardest.',img:'https://a.espncdn.com/i/headshots/nfl/players/full/4689114.png',logo:'https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png',team:'Giants'},
+ {name:'Tom Brady',kicker:'NFL • GOAT CHASE',sub:'The benchmark for football grails, iconic cards and the ceiling every modern quarterback chase is measured against.',img:'https://a.espncdn.com/i/headshots/nfl/players/full/2330.png',logo:'https://a.espncdn.com/i/teamlogos/nfl/500/ne.png',team:'Patriots'},
+ {name:'Ashton Jeanty',kicker:'NFL • LAS VEGAS RAIDERS',sub:'Built Different. Rookie inserts, numbered parallels and autos make Jeanty a perfect CardStorm learning chase.',img:'https://a.espncdn.com/i/headshots/nfl/players/full/4890973.png',logo:'https://a.espncdn.com/i/teamlogos/nfl/500/lv.png',team:'Raiders'},
+ {name:'Jayden Daniels',kicker:'NFL • WASHINGTON COMMANDERS',sub:'Breakout-star demand, premium rookie attention and the kind of card ladder collectors need to understand.',img:'https://a.espncdn.com/i/headshots/nfl/players/full/4426348.png',logo:'https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png',team:'Commanders'},
+ {name:'Patrick Mahomes',kicker:'NFL • MODERN GRAIL',sub:'Modern hobby royalty. Mahomes anchors the jump from rookie chase to true collection centerpiece.',img:'https://a.espncdn.com/i/headshots/nfl/players/full/3139477.png',logo:'https://a.espncdn.com/i/teamlogos/nfl/500/kc.png',team:'Chiefs'}
 ];
-let CARD_ART=null;
 function stripe(){top.location.href=STRIPE}
-function returnToNewHome(){try{const cw=core.contentWindow,cd=core.contentDocument;if(!cw||!cd)return;const layer=cd.getElementById('appLayer');if(layer)layer.classList.remove('open');cd.body.style.overflow='';if(typeof cw.scheduleStorm==='function')cw.scheduleStorm(true);cw.scrollTo(0,0)}catch(e){}}
-function chooseCardArt(data){
- const cards=(Array.isArray(data)?data:[]).filter(x=>x&&x.img&&String(x.img).startsWith('data:image'));
- const sorted=[...cards].sort((a,b)=>(Number(b.value)||0)-(Number(a.value)||0));
- const used=new Set();
- const take=(test)=>{let c=sorted.find(x=>!used.has(x.id||x.player+x.card)&&test(x));if(!c)c=sorted.find(x=>!used.has(x.id||x.player+x.card));if(c)used.add(c.id||c.player+x.card);return c||null};
- const rookie=take(x=>/dart|jeanty|hunter|ward|daniels|rookie/i.test((x.player||'')+' '+(x.card||'')));
- const goat=take(x=>/brady|mahomes|jordan|lebron|kobe|curry|ohtani|trout|griffey|jeter|montana|manning|rice/i.test(x.player||''));
- const grail=take(()=>true);
- const caseHit=take(x=>/kaboom|color blast|genesis|stained glass|manga|color wheel|night moves|home field|case hit|ssp/i.test(x.card||''));
- const downtown=take(x=>/downtown|uptown/i.test(x.card||''));
- const break1=take(()=>true),break2=take(()=>true),break3=take(()=>true);
- return {rookie,goat,grail,caseHit,downtown,breakCards:[break1,break2,break3].filter(Boolean)};
-}
-async function loadCardArt(){if(CARD_ART)return CARD_ART;try{const r=await fetch('game-data.json',{cache:'no-store'});CARD_ART=chooseCardArt(await r.json())}catch(e){CARD_ART={}}return CARD_ART}
-function ensureStyles(doc){
- if(doc.getElementById('csCollectorFix'))return;
- const st=doc.createElement('style');st.id='csCollectorFix';st.textContent=`
- .hero .slide{background:#04101b!important;overflow:hidden!important}
- .hero .slide .heroimg{display:none!important}
- .hero .slide[data-cs-mode="rookies"] .heroimg{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 35%!important;filter:saturate(1.08) contrast(1.08)!important}
- .hero .shade{background:linear-gradient(90deg,rgba(1,7,15,.98) 0%,rgba(1,7,15,.88) 30%,rgba(1,7,15,.24) 56%,rgba(1,7,15,.06) 100%),linear-gradient(0deg,rgba(2,9,20,.78),transparent 36%)!important}
- .starPlate{display:none!important}
- .csScene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
- .csSceneBg{position:absolute;inset:-7%;width:114%;height:114%;object-fit:cover;filter:blur(28px) saturate(1.4) brightness(.56) contrast(1.15);transform:scale(1.08)}
- .csSceneWash{position:absolute;inset:0;background:radial-gradient(circle at 78% 44%,rgba(74,205,255,.34),transparent 34%),linear-gradient(120deg,transparent 38%,rgba(255,255,255,.08) 48%,transparent 58%)}
- .csHeroCard{position:absolute;right:2.5%;top:-7%;height:116%;width:auto;max-width:58%;object-fit:contain;filter:drop-shadow(0 35px 55px rgba(0,0,0,.65));transform:rotate(-4deg) scale(1.04)}
- .csHeroCard.alt{right:24%;top:4%;height:92%;opacity:.34;filter:blur(.4px) saturate(.8) brightness(.72);transform:rotate(8deg) scale(.98)}
- .csHeroCard.alt2{right:-9%;top:10%;height:88%;opacity:.27;filter:blur(.6px) saturate(.8) brightness(.65);transform:rotate(-13deg) scale(.96)}
- .csLightning{position:absolute;right:5%;top:0;width:58%;height:100%;background:linear-gradient(116deg,transparent 0 42%,rgba(94,216,255,.12) 42.5% 43.2%,transparent 43.7% 55%,rgba(255,255,255,.12) 55.5% 56.2%,transparent 56.7%);mix-blend-mode:screen}
- .csThemeGOATs .csSceneWash{background:radial-gradient(circle at 76% 42%,rgba(215,230,244,.34),transparent 36%),linear-gradient(110deg,transparent 35%,rgba(255,255,255,.09),transparent 61%)}
- .csThemeHOLYGRAILS .csSceneWash{background:radial-gradient(circle at 77% 43%,rgba(255,194,45,.42),transparent 34%),linear-gradient(110deg,transparent 34%,rgba(255,222,120,.1),transparent 61%)}
- .csThemeCASEHITS .csSceneWash{background:radial-gradient(circle at 77% 43%,rgba(255,71,84,.4),transparent 34%),linear-gradient(110deg,transparent 34%,rgba(255,255,255,.09),transparent 61%)}
- .csThemeDOWNTOWNUPTOWN .csSceneWash{background:radial-gradient(circle at 77% 43%,rgba(75,165,255,.42),transparent 34%),linear-gradient(0deg,rgba(3,18,34,.5),transparent 45%)}
- .csCity{position:absolute;right:-2%;bottom:0;width:63%;height:32%;background:repeating-linear-gradient(90deg,rgba(40,119,176,.42) 0 42px,rgba(8,24,41,.75) 42px 74px);clip-path:polygon(0 65%,7% 30%,13% 58%,20% 12%,28% 49%,34% 24%,42% 62%,50% 18%,59% 48%,68% 8%,76% 53%,84% 27%,92% 60%,100% 36%,100% 100%,0 100%);opacity:.72}
- .csBreakGrid{position:absolute;right:0;top:0;width:66%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:24px;box-sizing:border-box;transform:skewX(-4deg)}
- .csBreakTile{position:relative;overflow:hidden;border:1px solid rgba(117,191,240,.22);background:#071524}
- .csBreakTile img{width:100%;height:100%;object-fit:cover;filter:saturate(1.18) contrast(1.06)}
- .csBreakTile:first-child{grid-row:1/3}.csBreakTile:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(3,10,18,.5))}
- .csPokemonStorm{position:absolute;inset:0;background:radial-gradient(circle at 76% 42%,rgba(255,224,67,.38),transparent 28%),radial-gradient(circle at 82% 52%,rgba(66,150,255,.36),transparent 40%),linear-gradient(135deg,#04101d 0,#102a4b 52%,#5a490a 100%)}
- .csPokemonLogo{position:absolute;right:3%;top:7%;width:54%;height:86%;object-fit:contain;filter:drop-shadow(0 30px 50px rgba(0,0,0,.58)) drop-shadow(0 0 30px rgba(255,216,54,.24))}
- .csPokemonBurst{position:absolute;right:10%;top:6%;width:46%;height:88%;background:conic-gradient(from 8deg,transparent 0 7deg,rgba(255,232,103,.2) 7deg 9deg,transparent 9deg 23deg,rgba(91,191,255,.18) 23deg 25deg,transparent 25deg 42deg);border-radius:50%;filter:blur(.3px)}
- #csThemeRail{position:absolute;z-index:8;left:clamp(20px,4vw,64px);right:clamp(20px,4vw,64px);bottom:18px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
- #csThemeRail::-webkit-scrollbar{display:none}.csThemeBtn{flex:0 0 auto;border:1px solid rgba(104,177,226,.3);background:rgba(2,9,20,.82);color:#b9cbd9;border-radius:7px;padding:9px 12px;font-size:10px;font-weight:900;letter-spacing:.08em;cursor:pointer}.csThemeBtn.active{color:#fff;border-color:#55d8ff;background:#0a2741;box-shadow:0 0 14px rgba(85,216,255,.22)}
- .grid{gap:0!important;border-top:1px solid rgba(79,132,172,.22)!important;border-left:1px solid rgba(79,132,172,.22)!important}.grid .card{border:0!important;border-right:1px solid rgba(79,132,172,.22)!important;border-bottom:1px solid rgba(79,132,172,.22)!important;border-radius:0!important;background:linear-gradient(155deg,rgba(8,26,43,.86),rgba(3,12,22,.96))!important;box-shadow:none!important}.grid .card .icon{display:none!important}.grid .card h3{margin-top:42px!important}.grid .card:before{content:attr(data-cs-index);position:absolute;top:18px;left:18px;color:#55d8ff;font-size:10px;font-weight:900;letter-spacing:.18em}.grid .card:hover{transform:none!important;box-shadow:inset 0 3px 0 #55d8ff!important}.funStrip .feature{border-radius:0!important}.funStrip .feature.gold{background:linear-gradient(155deg,rgba(8,26,43,.86),rgba(3,12,22,.96))!important;border-color:#2d648c!important}
- @media(max-width:760px){.heroCopy{padding-bottom:115px!important}.csThemeBtn{padding:8px 9px;font-size:9px}.csHeroCard{right:-18%;top:0;height:93%;max-width:78%}.csHeroCard.alt{right:11%;height:76%}.csHeroCard.alt2{right:-24%;height:70%}.csBreakGrid{width:74%;right:-16%;padding:10px;gap:8px}.csPokemonLogo{right:-8%;width:72%}}
- `;doc.head.appendChild(st);
-}
-function clearScene(slide){slide.querySelectorAll('.csScene').forEach(x=>x.remove())}
-function addFullScene(doc,slide,primary,extras=[],mode=''){
- clearScene(slide);if(!primary||!primary.img)return;
- const scene=doc.createElement('div');scene.className='csScene';
- const bg=doc.createElement('img');bg.className='csSceneBg';bg.src=primary.img;scene.appendChild(bg);
- const wash=doc.createElement('div');wash.className='csSceneWash';scene.appendChild(wash);
- if(mode==='downtown'){const city=doc.createElement('div');city.className='csCity';scene.appendChild(city)}
- if(extras[0]&&extras[0].img){const a=doc.createElement('img');a.className='csHeroCard alt';a.src=extras[0].img;scene.appendChild(a)}
- if(extras[1]&&extras[1].img){const a=doc.createElement('img');a.className='csHeroCard alt2';a.src=extras[1].img;scene.appendChild(a)}
- const p=doc.createElement('img');p.className='csHeroCard';p.src=primary.img;p.alt='Collector card';scene.appendChild(p);
- const bolt=doc.createElement('div');bolt.className='csLightning';scene.appendChild(bolt);
- slide.appendChild(scene);
-}
-function addBreakScene(doc,slide,cards){
- clearScene(slide);const scene=doc.createElement('div');scene.className='csScene';
- const wash=doc.createElement('div');wash.className='csSceneWash';scene.appendChild(wash);
- const grid=doc.createElement('div');grid.className='csBreakGrid';(cards||[]).slice(0,3).forEach(c=>{if(!c||!c.img)return;const t=doc.createElement('div');t.className='csBreakTile';const i=doc.createElement('img');i.src=c.img;i.alt='';t.appendChild(i);grid.appendChild(t)});scene.appendChild(grid);
- const bolt=doc.createElement('div');bolt.className='csLightning';scene.appendChild(bolt);slide.appendChild(scene);
-}
-function addPokemonScene(doc,slide){clearScene(slide);const scene=doc.createElement('div');scene.className='csScene';const bg=doc.createElement('div');bg.className='csPokemonStorm';scene.appendChild(bg);const burst=doc.createElement('div');burst.className='csPokemonBurst';scene.appendChild(burst);const logo=doc.createElement('img');logo.className='csPokemonLogo';logo.src='assets/pokemontcglogo.webp';logo.alt='Pokémon Trading Card Game';scene.appendChild(logo);slide.appendChild(scene)}
-async function patchHomepageThemes(win,doc){
+function returnHome(){try{const w=core.contentWindow,d=core.contentDocument;const layer=d&&d.getElementById('appLayer');if(layer)layer.classList.remove('open');if(d)d.body.style.overflow='';if(w&&typeof w.scheduleStorm==='function')w.scheduleStorm(true);if(w)w.scrollTo(0,0)}catch(e){}}
+function installHomepage(win,doc){
  try{
-  const hero=doc.querySelector('.hero'),slides=[...doc.querySelectorAll('.hero .slide')];if(!hero||slides.length<7)return;ensureStyles(doc);const art=await loadCardArt();
+  const hero=doc.querySelector('.hero');
+  const allSlides=[...doc.querySelectorAll('.hero .slide')];
+  if(!hero||allSlides.length<6)return;
+  const slides=allSlides.slice(0,6);
+  allSlides.slice(6).forEach(s=>{s.style.display='none';s.classList.remove('active')});
+  if(!doc.getElementById('csSixStarHome')){
+   const st=doc.createElement('style');st.id='csSixStarHome';st.textContent=`
+   .brand{min-width:260px!important}.brand img{height:62px!important;max-width:300px!important;width:auto!important}
+   .hero .slide{background:radial-gradient(circle at 78% 38%,rgba(46,146,220,.28),transparent 30%),linear-gradient(125deg,#020914 0%,#071827 48%,#102b42 73%,#020914 100%)!important;overflow:hidden!important}
+   .hero .slide .heroimg{padding:0!important;z-index:2!important}
+   .hero .slide:not(:first-child) .heroimg{position:absolute!important;left:auto!important;right:1%!important;top:auto!important;bottom:-3%!important;width:55%!important;height:94%!important;object-fit:contain!important;object-position:center bottom!important;filter:drop-shadow(0 32px 44px rgba(0,0,0,.92)) drop-shadow(0 0 32px rgba(85,216,255,.24)) saturate(1.08) contrast(1.08)!important}
+   .hero .slide:first-child .heroimg{object-fit:cover!important;object-position:center 35%!important}
+   .csTeamMark{position:absolute;z-index:1;right:7%;top:7%;width:38%;height:77%;object-fit:contain;opacity:.15;filter:drop-shadow(0 0 42px rgba(85,216,255,.5));transform:rotate(-7deg) scale(1.08)}
+   .csStormClouds{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 76% 18%,rgba(129,204,255,.22),transparent 27%),radial-gradient(ellipse at 88% 72%,rgba(44,104,151,.3),transparent 34%),linear-gradient(100deg,transparent 44%,rgba(3,11,20,.08) 58%,rgba(3,11,20,.72) 100%);mix-blend-mode:screen}
+   .csSlabBreak{position:absolute;z-index:2;right:8%;bottom:4%;width:40%;height:59%;border:2px solid rgba(185,237,255,.19);border-radius:22px;transform:rotate(-5deg);box-shadow:0 0 0 9px rgba(255,255,255,.02),0 0 48px rgba(71,184,255,.14),inset 0 0 34px rgba(255,255,255,.04);opacity:.72}
+   .csShards{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(128deg,transparent 54%,rgba(225,249,255,.2) 54.2%,transparent 54.8%),linear-gradient(42deg,transparent 68%,rgba(255,255,255,.14) 68.3%,transparent 68.8%),linear-gradient(155deg,transparent 77%,rgba(85,216,255,.17) 77.3%,transparent 77.8%),linear-gradient(24deg,transparent 84%,rgba(255,255,255,.1) 84.2%,transparent 84.6%)}
+   .csTeamBadge{position:absolute;z-index:8;right:clamp(22px,4vw,64px);top:clamp(22px,4vw,48px);display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(255,255,255,.28);border-radius:14px;background:rgba(2,9,20,.84);backdrop-filter:blur(12px);box-shadow:0 10px 35px rgba(0,0,0,.45)}
+   .csTeamBadge img{width:48px;height:48px;object-fit:contain}.csTeamBadge span{font-size:11px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+   .starPlate span{font-size:0!important}.starPlate span:after{content:'Six stars. Six distinct chases. Team identity stays visible.';font-size:12px!important}
+   .dots{gap:8px!important}.dot{width:38px!important;height:38px!important;border-radius:10px!important;border:1px solid #31516a!important;background:#071522!important;display:grid!important;place-items:center!important;overflow:hidden!important}.dot img{width:30px!important;height:30px!important;object-fit:contain!important}.dot.active{border-color:#55d8ff!important;background:#0a2741!important;box-shadow:0 0 14px rgba(85,216,255,.72)!important}
+   .csBreakFeature{border-color:#3278a8!important;background:radial-gradient(circle at 88% 18%,rgba(85,216,255,.13),transparent 35%),linear-gradient(150deg,#0a2948,#05101c)!important}.csBreakFeature .eyebrow{color:#55d8ff!important}
+   @media(max-width:760px){.brand{min-width:auto!important}.brand img{height:48px!important;max-width:190px!important}.hero .slide:not(:first-child) .heroimg{width:78%!important;height:51%!important;right:-2%!important;bottom:auto!important;top:3%!important}.csTeamMark{width:56%;height:47%;right:3%;top:2%}.csSlabBreak{width:53%;height:35%;right:8%;top:8%;bottom:auto}.csTeamBadge{top:16px;right:16px;padding:6px 8px}.csTeamBadge img{width:36px;height:36px}.csTeamBadge span{display:none}.dot{width:32px!important;height:32px!important}.dot img{width:25px!important;height:25px!important}}
+   `;doc.head.appendChild(st);
+  }
   slides.forEach((slide,i)=>{
-   if(i<7){const theme=HOME_THEMES[i];slide.style.display='block';slide.classList.remove('categorySlide','pokemonSlide');slide.className=slide.className.replace(/\bcsTheme\S+/g,'').trim();slide.classList.add('csTheme'+theme.title.replace(/[^A-Za-z]/g,''));slide.dataset.theme=theme.title;slide.dataset.csMode=theme.mode;let img=slide.querySelector('.heroimg');if(!img){img=doc.createElement('img');img.className='heroimg';slide.prepend(img)}
-    if(theme.mode==='rookies'){img.src='assets/herocardfootball.webp';img.alt='CardStorm rookie chase';clearScene(slide)}
-    if(theme.mode==='goats')addFullScene(doc,slide,art.goat,[art.grail,art.caseHit],'goats');
-    if(theme.mode==='grails')addFullScene(doc,slide,art.grail,[art.goat,art.caseHit],'grails');
-    if(theme.mode==='case')addFullScene(doc,slide,art.caseHit,[art.downtown,art.grail],'case');
-    if(theme.mode==='downtown')addFullScene(doc,slide,art.downtown,[art.caseHit,art.goat],'downtown');
-    if(theme.mode==='break')addBreakScene(doc,slide,art.breakCards||[]);
-    if(theme.mode==='pokemon')addPokemonScene(doc,slide);
-   }else{slide.style.display='none';slide.classList.remove('active')}
+   const d=HEROES[i];slide.style.display='block';slide.dataset.player=d.name;slide.dataset.kicker=d.kicker;slide.dataset.sub=d.sub;
+   let img=slide.querySelector('.heroimg');if(!img){img=doc.createElement('img');img.className='heroimg';slide.prepend(img)}
+   img.src=d.img;img.alt=d.name+' — '+d.team;img.onerror=()=>{img.onerror=null;img.src='assets/herocardfootball.webp'};
+   let mark=slide.querySelector('.csTeamMark');if(!mark){mark=doc.createElement('img');mark.className='csTeamMark';slide.appendChild(mark)}mark.src=d.logo;mark.alt='';
+   if(!slide.querySelector('.csStormClouds')){const x=doc.createElement('div');x.className='csStormClouds';slide.appendChild(x)}
+   if(!slide.querySelector('.csSlabBreak')){const x=doc.createElement('div');x.className='csSlabBreak';slide.appendChild(x)}
+   if(!slide.querySelector('.csShards')){const x=doc.createElement('div');x.className='csShards';slide.appendChild(x)}
+   let badge=slide.querySelector('.csTeamBadge');if(!badge){badge=doc.createElement('div');badge.className='csTeamBadge';badge.innerHTML='<img><span></span>';slide.appendChild(badge)}badge.querySelector('img').src=d.logo;badge.querySelector('span').textContent=d.team;
   });
-  let rail=doc.getElementById('csThemeRail');if(!rail){rail=doc.createElement('div');rail.id='csThemeRail';hero.appendChild(rail)}
-  const active=slides.slice(0,7);const show=i=>{i=((i%7)+7)%7;active.forEach((s,n)=>s.classList.toggle('active',n===i));const d=HOME_THEMES[i],k=doc.getElementById('heroKicker'),sub=doc.getElementById('heroSub');if(k)k.textContent=d.kicker;if(sub)sub.textContent=d.sub;[...rail.children].forEach((b,n)=>b.classList.toggle('active',n===i));win.__csThemeIndex=i;hero.classList.remove('strike');void hero.offsetWidth;hero.classList.add('strike')};
-  rail.innerHTML='';HOME_THEMES.forEach((d,i)=>{const b=doc.createElement('button');b.className='csThemeBtn';b.type='button';b.textContent=d.title;b.onclick=e=>{e.preventDefault();e.stopPropagation();show(i)};rail.appendChild(b)});win.setSlide=show;if(!win.__csCollectorThemeInstalled){win.__csCollectorThemeInstalled=true;show(0)}
- }catch(e){console.error('CardStorm theme patch failed',e)}
+  const dots=doc.getElementById('dots');if(dots){dots.innerHTML='';HEROES.forEach((d,i)=>{const b=doc.createElement('button');b.className='dot'+(i===0?' active':'');b.type='button';b.setAttribute('aria-label','Show '+d.name);const im=doc.createElement('img');im.src=d.logo;im.alt=d.team;b.appendChild(im);b.onclick=e=>{e.preventDefault();e.stopPropagation();show(i)};dots.appendChild(b)})}
+  let idx=0;function show(n){idx=((n%6)+6)%6;slides.forEach((s,i)=>s.classList.toggle('active',i===idx));const d=HEROES[idx],k=doc.getElementById('heroKicker'),sub=doc.getElementById('heroSub'),name=doc.getElementById('starName'),num=doc.getElementById('slideNum');if(k)k.textContent=d.kicker;if(sub)sub.textContent=d.sub;if(name)name.textContent=d.name;if(num)num.textContent='FEATURED CHASE '+String(idx+1).padStart(2,'0')+' / 06';if(dots)[...dots.children].forEach((x,i)=>x.classList.toggle('active',i===idx));hero.classList.remove('strike');void hero.offsetWidth;hero.classList.add('strike')}
+  win.setSlide=show;win.__csHeroIndex=0;if(!win.__csSixTimer){win.__csSixTimer=setInterval(()=>{win.__csHeroIndex=(win.__csHeroIndex+1)%6;show(win.__csHeroIndex)},6200)}show(0);
+  const brand=doc.querySelector('.brand img');if(brand)brand.src='assets/logo-horizontal.webp';
+  const cards=[...doc.querySelectorAll('.grid .card')];const gameCard=cards.find(c=>/CardStorm Challenge/i.test(c.textContent||''));if(gameCard){const p=gameCard.querySelector('p');if(p)p.textContent='10 rounds. Rank three real card examples from highest recent sale to lowest and learn why one hit beats another.'}
+  const liveCard=cards.find(c=>/Cards Come Alive/i.test(c.textContent||''));if(liveCard){const h=liveCard.querySelector('h3'),p=liveCard.querySelector('p');if(h)h.textContent='Break Center';if(p)p.textContent='A separate breaker lane for finding live breaks, chats and communities — built to help breakers fill spots and collectors find action.';liveCard.classList.add('csBreakFeature')}
+  const features=[...doc.querySelectorAll('.funStrip .feature')];if(features[0]){features[0].classList.add('csBreakFeature');const e=features[0].querySelector('.eyebrow'),h=features[0].querySelector('h3'),p=features[0].querySelector('p'),b=features[0].querySelector('button');if(e)e.textContent='⚡ BREAK CENTER';if(h)h.textContent='Find the break. Find the chat.';if(p)p.textContent='Breaker promotion and break discovery are their own CardStorm feature — separate from the educational game.';if(b){b.textContent='BREAK CENTER — BUILD NEXT';b.onclick=e=>{e.preventDefault()}}}
+  if(features[1]){const h=features[1].querySelector('h3'),p=features[1].querySelector('p');if(h)h.textContent='Can you rank the hits correctly?';if(p)p.textContent='Ten educational rounds. Three related cards each round. Rank highest sale to lowest, then learn the insert, parallel, numbering and autograph clues that explain the result.'}
+ }catch(e){console.error('CardStorm homepage patch failed',e)}
 }
-function patchCards(doc){try{ensureStyles(doc);doc.querySelectorAll('.grid .card').forEach((c,i)=>c.dataset.csIndex=String(i+1).padStart(2,'0'));doc.querySelectorAll('#view .top .nav button').forEach(b=>{if((b.textContent||'').trim().toUpperCase()==='TCG')b.style.display='none'})}catch(e){}}
-function patchInternalBack(win,doc){try{const path=((doc.location&&doc.location.pathname)||'').toLowerCase();if(!path.endsWith('/app.html')&&!path.endsWith('app.html'))return;doc.querySelectorAll('button,a').forEach(el=>{if(el.dataset.csReturnHome)return;const t=(el.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();const isReturn=t==='home'||t==='back'||t.includes('back to command center')||t.includes('back to cardstorm')||t.includes('cardstorm home')||t.includes('command center');if(!isReturn)return;el.dataset.csReturnHome='1';el.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();returnToNewHome()},true)})}catch(e){}}
-function patchPage(win,doc){try{if(!win||!doc)return;patchHomepageThemes(win,doc);patchCards(doc);patchInternalBack(win,doc);doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE}});try{win.startTrial=stripe}catch(e){};doc.querySelectorAll('iframe').forEach(fr=>{if(!fr.dataset.csCollectorFix){fr.dataset.csCollectorFix='1';fr.addEventListener('load',()=>{try{patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}try{if(fr.contentDocument)patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}catch(e){console.error('CardStorm patch failed',e)}}
+function patchPage(win,doc){try{if(!win||!doc)return;installHomepage(win,doc);doc.querySelectorAll('a[href],button').forEach(el=>{const t=(el.textContent||'').trim().toLowerCase();if(['join cardstorm','plans','start trial','start free trial','7-day trial'].some(x=>t.includes(x))){el.onclick=e=>{e.preventDefault();e.stopPropagation();stripe()};if(el.tagName==='A')el.href=STRIPE}});try{win.startTrial=stripe}catch(e){};doc.querySelectorAll('iframe').forEach(fr=>{if(!fr.dataset.csHomePatch){fr.dataset.csHomePatch='1';fr.addEventListener('load',()=>{try{patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}try{if(fr.contentDocument)patchPage(fr.contentWindow,fr.contentDocument)}catch(e){}})}catch(e){}}
 function patchAll(){try{patchPage(core.contentWindow,core.contentDocument)}catch(e){}}
-core.addEventListener('load',()=>{patchAll();setTimeout(patchAll,450);setTimeout(patchAll,1400)});
+core.addEventListener('load',()=>{patchAll();setTimeout(patchAll,500);setTimeout(patchAll,1500)});
 </script>
 </body>
 </html>
