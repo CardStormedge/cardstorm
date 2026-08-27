@@ -33,33 +33,7 @@ img{max-width:100%}
 .scene{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;background:#020914}
 .scene.active{opacity:1}
 .scene .bg{position:absolute;inset:0}
-.scene.photo .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 28%;filter:saturate(1.06) contrast(1.08)}
-.scene.crafted .bg{background:
- radial-gradient(circle at 78% 20%,color-mix(in srgb,var(--p) 42%,transparent),transparent 42%),
- linear-gradient(125deg,#020914,color-mix(in srgb,var(--p) 22%,#071827) 46%,color-mix(in srgb,var(--s) 30%,#0c1a2c) 78%,#020914)}
-.scene.crafted .bg:before{content:'';position:absolute;inset:0;opacity:.5;
- background:linear-gradient(127deg,transparent 54%,rgba(225,249,255,.22) 54.3%,transparent 55%),
- linear-gradient(42deg,transparent 70%,rgba(255,255,255,.15) 70.3%,transparent 71%),
- linear-gradient(155deg,transparent 80%,color-mix(in srgb,var(--p) 45%,white) 80.2%,transparent 81%)}
-.rig{position:absolute;right:6%;top:6%;width:44%;height:80%;z-index:1}
-.slab{position:absolute;inset:0;border:2px solid rgba(255,255,255,.28);border-radius:26px;transform:rotate(-5deg);box-shadow:0 0 0 9px rgba(255,255,255,.03),0 0 60px color-mix(in srgb,var(--p) 40%,transparent),inset 0 0 36px rgba(255,255,255,.05);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(3,13,23,.14))}
-.jersey{position:absolute;left:10%;right:10%;top:10%;bottom:6%;display:flex;align-items:flex-end;justify-content:center;filter:drop-shadow(0 26px 40px rgba(0,0,0,.75))}
-.jersey:before{content:'';position:absolute;inset:6% 0 0 0;border-radius:34% 34% 16% 16%;background:linear-gradient(155deg,var(--p),#050b12 46%,var(--s));clip-path:polygon(24% 0,76% 0,100% 22%,82% 36%,78% 100%,22% 100%,18% 36%,0 22%);box-shadow:inset 0 0 34px rgba(255,255,255,.16),0 0 40px color-mix(in srgb,var(--p) 38%,transparent)}
-.jerseyNum{position:relative;z-index:2;font:950 clamp(84px,10vw,150px)/.8 Inter,Arial,sans-serif;color:#fff;text-shadow:0 8px 20px #000,0 0 14px var(--p);margin-bottom:12%}
-.teamTag{position:absolute;z-index:3;right:5%;bottom:5%;padding:9px 14px;border:1px solid rgba(255,255,255,.26);border-radius:999px;background:rgba(2,9,20,.86);color:#fff;font:900 11px Inter,Arial,sans-serif;letter-spacing:.1em;white-space:nowrap}
-.shard{position:absolute;z-index:2;background:linear-gradient(140deg,rgba(255,255,255,.5),rgba(255,255,255,.05));opacity:.7;pointer-events:none}
-.shard1{width:70px;height:70px;top:4%;right:34%;clip-path:polygon(0 0,100% 20%,60% 100%);transform:rotate(18deg)}
-.shard2{width:54px;height:90px;top:46%;right:6%;clip-path:polygon(20% 0,100% 12%,80% 100%,0 70%);transform:rotate(-10deg)}
-.shard3{width:46px;height:46px;bottom:8%;right:40%;clip-path:polygon(0 30%,60% 0,100% 60%,40% 100%);transform:rotate(6deg)}
-
-/* GOAT scene */
-.goatRig{position:absolute;right:5%;top:5%;width:46%;height:82%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;filter:drop-shadow(0 26px 40px rgba(0,0,0,.75))}
-.throne{position:absolute;left:6%;right:6%;bottom:0;top:36%;border-radius:18px 18px 10px 10px;background:linear-gradient(160deg,#1c3358,#050b12 60%,#3a4652);border:2px solid rgba(255,255,255,.22);box-shadow:0 0 60px color-mix(in srgb,var(--p) 40%,transparent)}
-.goatHead{position:relative;z-index:2;width:46%;margin-bottom:-2%}
-.goatBody{position:relative;z-index:1;width:66%;margin-top:-4%}
-.goatBody:before{content:'';display:block;padding-top:82%;border-radius:30% 30% 14% 14%;background:linear-gradient(155deg,#142f55,#070d16 48%,#b9c2ca);clip-path:polygon(22% 0,78% 0,100% 22%,84% 34%,80% 100%,20% 100%,16% 34%,0 22%);box-shadow:inset 0 0 30px rgba(255,255,255,.14),0 0 34px rgba(179,34,47,.35)}
-.goatNum{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);font:950 clamp(52px,6vw,86px)/1 Inter,Arial,sans-serif;color:#fff;text-shadow:0 6px 16px #000;z-index:2}
-.trophyRow{position:relative;z-index:3;display:flex;gap:10px;margin-top:14px;font-size:clamp(22px,2.6vw,34px);filter:drop-shadow(0 8px 14px rgba(0,0,0,.6))}
+.scene.photo .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:saturate(1.05) contrast(1.06)}
 
 .shade{position:absolute;inset:0;z-index:5;background:linear-gradient(90deg,rgba(1,7,15,.98) 0%,rgba(1,7,15,.9) 33%,rgba(1,7,15,.28) 63%,rgba(1,7,15,.08) 100%),linear-gradient(0deg,rgba(2,9,20,.8),transparent 38%)}
 .lightning{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;background:radial-gradient(circle at 74% 25%,rgba(255,255,255,.98),rgba(85,216,255,.32) 11%,transparent 34%),linear-gradient(116deg,transparent 61%,rgba(220,248,255,.75) 61.2%,rgba(85,216,255,.2) 61.6%,transparent 62%)}
@@ -122,9 +96,7 @@ img{max-width:100%}
  .heroCopy{min-height:640px;justify-content:flex-end;padding:22px 18px 40px;max-width:100%}
  .hero h1{font-size:clamp(34px,10vw,54px)}
  .shade{background:linear-gradient(180deg,rgba(2,9,20,.15),rgba(2,9,20,.55) 46%,rgba(2,9,20,.98) 76%)}
- .rig{right:2%;top:2%;width:78%;height:52%}
- .goatRig{right:2%;top:2%;width:78%;height:52%}
- .teamTag{right:3%;bottom:3%;padding:7px 10px;font-size:9.5px}
+ .scene.photo .bg img{object-position:50% 18%}
  #starRail{display:none}
  .mobDots{display:flex}
  .grid{grid-template-columns:1fr;gap:12px}
@@ -179,29 +151,22 @@ img{max-width:100%}
 <div class="appLayer" id="appLayer"><iframe class="appFrame" id="appFrame" title="CardStorm Command Center"></iframe><button class="appReturn" onclick="closeApp()">← CARDSTORM HOME</button></div>
 
 <script>
-/* ---------------- HERO DATA (fixed, deliberate — no external images, no reused art) ---------------- */
+/* ---------------- HERO DATA (fixed, deliberate — 6 local photos, no external images) ---------------- */
 const STARS=[
- {team:'JACKSONVILLE',number:'12',kicker:'THE NEXT GENERATION',sub:'Rookie heat and a slab-breaking chase that starts the storm.',p:'#19c6ff',s:'#0f6e6a',mode:'photo',img:'assets/herocardfootball.webp'},
- {team:'NEW YORK',number:'6',kicker:'BREAKOUT WATCH',sub:'Quarterback power and rookie momentum collectors are chasing right now.',p:'#2e69ff',s:'#8f1626',mode:'slab'},
- {team:'NEW ENGLAND',number:'12',kicker:'LEGENDS NEVER FADE',sub:'Six championships. One standard. The ultimate benchmark card.',p:'#b3222f',s:'#c7d2dc',mode:'goat'},
- {team:'LAS VEGAS',number:'2',kicker:'BUILT DIFFERENT',sub:'Black-and-silver rookie energy built for numbered parallels and big hits.',p:'#9aa4ad',s:'#111418',mode:'slab'},
- {team:'WASHINGTON',number:'5',kicker:'FRANCHISE HEAT',sub:'A mobile-quarterback breakout chase collectors can\'t stop watching.',p:'#ffb52e',s:'#6c1f2e',mode:'slab'},
- {team:'KANSAS CITY',number:'15',kicker:'CHAMPIONSHIP CHASE',sub:'Modern hobby royalty and the grail that anchors a collection.',p:'#ff334d',s:'#ffb612',mode:'slab'}
+ {team:'JACKSONVILLE',kicker:'THE NEXT GENERATION',sub:'Rookie heat and a slab-breaking chase that starts the storm.',p:'#19c6ff',img:'assets/homepage/heroes/jacksonville-rising-rookie.jpg'},
+ {team:'NEW YORK',kicker:'BREAKOUT WATCH',sub:'Quarterback power and rookie momentum collectors are chasing right now.',p:'#2e69ff',img:'assets/homepage/heroes/new-york-rookie-star.jpg'},
+ {team:'NEW ENGLAND',kicker:'LEGENDS NEVER FADE',sub:'Six championships. One standard. The ultimate benchmark card.',p:'#b3222f',img:'assets/homepage/heroes/goat-new-england-12.jpg'},
+ {team:'LAS VEGAS',kicker:'BUILT DIFFERENT',sub:'Black-and-silver rookie energy built for numbered parallels and big hits.',p:'#9aa4ad',img:'assets/homepage/heroes/las-vegas-rookie-2.jpg'},
+ {team:'WASHINGTON',kicker:'FRANCHISE HEAT',sub:'A mobile-quarterback breakout chase collectors can\'t stop watching.',p:'#ffb52e',img:'assets/homepage/heroes/washington-breakout-5.jpg'},
+ {team:'KANSAS CITY',kicker:'CHAMPIONSHIP CHASE',sub:'Modern hobby royalty and the grail that anchors a collection.',p:'#ff334d',img:'assets/homepage/heroes/kansas-city-modern-grail-15.jpg'}
 ];
 
 const scenesEl=document.getElementById('scenes');
 STARS.forEach((d,i)=>{
  const sc=document.createElement('div');
- sc.className='scene '+(d.mode==='photo'?'photo':'crafted')+(i===0?' active':'');
- sc.style.setProperty('--p',d.p);sc.style.setProperty('--s',d.s);
- sc.dataset.i=i;
- let inner='<div class="bg">'+(d.mode==='photo'?'<img src="'+d.img+'" alt="CardStorm featured chase">':'')+'</div>';
- if(d.mode==='slab'){
-  inner+='<div class="rig"><div class="shard shard1"></div><div class="shard shard2"></div><div class="shard shard3"></div><div class="slab"></div><div class="jersey"><span class="jerseyNum">'+d.number+'</span></div></div><div class="teamTag">'+d.team+' • #'+d.number+'</div>';
- }else if(d.mode==='goat'){
-  inner+='<div class="goatRig"><div class="throne"></div><div class="goatHead"><svg viewBox="0 0 200 170" fill="none"><defs><linearGradient id="goatFace" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe6ec"/><stop offset="1" stop-color="#8d98a3"/></linearGradient><linearGradient id="goatHorn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2d98a"/><stop offset="1" stop-color="#a9791f"/></linearGradient></defs><polygon points="58,46 18,4 6,34 40,58" fill="url(#goatHorn)"/><polygon points="142,46 182,4 194,34 160,58" fill="url(#goatHorn)"/><polygon points="100,20 66,52 60,110 78,150 100,164 122,150 140,110 134,52" fill="url(#goatFace)" stroke="#4b5560" stroke-width="2"/><polygon points="100,58 84,102 100,96 116,102" fill="#5c6670" opacity=".55"/><polygon points="75,74 88,80 76,90" fill="#b3222f"/><polygon points="125,74 112,80 124,90" fill="#b3222f"/><polygon points="90,132 100,150 110,132" fill="#5c6670"/></svg></div><div class="goatBody"><span class="goatNum">12</span></div><div class="trophyRow"><span>🏆</span><span>🏆</span><span>🏆</span><span>🏆</span><span>🏆</span><span>🏆</span></div></div><div class="teamTag">'+d.team+' • #'+d.number+'</div>';
- }
- sc.innerHTML=inner;
+ sc.className='scene photo'+(i===0?' active':'');
+ sc.style.setProperty('--p',d.p);
+ sc.innerHTML='<div class="bg"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.team+'"></div>';
  scenesEl.appendChild(sc);
 });
 
