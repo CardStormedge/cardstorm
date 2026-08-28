@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CardStormGuide</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}iframe{display:block;width:100%;height:100%;border:0;background:#020914}
+</style>
+</head>
+<body>
+<iframe id="cardstorm" src="/index.html?cardstorm-home-v2=1" title="CardStormGuide"></iframe>
+<script>
+const frame=document.getElementById('cardstorm');
+const HERO_HEADLINES={
+ 'THE NEXT GENERATION':'CHASE THE <span>ROOKIES.</span>',
+ 'BREAKOUT WATCH':'FIND THE <span>NEXT STAR.</span>',
+ 'LEGENDS NEVER FADE':'COLLECT THE <span>ICONS.</span>',
+ 'THE CARDS EVERYONE WANTS':'HUNT THE <span>GRAILS.</span>',
+ 'BUILD YOUR PERSONAL HUNT':'BUILD YOUR <span>BREAK.</span>',
+ 'PLAY. LEARN. COLLECT SMARTER.':'PROVE YOUR <span>KNOWLEDGE.</span>',
+ 'THE TCG CHASE':'CHASE THE <span>CARDS.</span>'
+};
+function polish(){
+ const d=frame.contentDocument,w=frame.contentWindow;
+ if(!d||!d.body)return;
+ if(d.getElementById('cardstormV2Patch'))return;
+ const st=d.createElement('style');st.id='cardstormV2Patch';st.textContent=`
+ .scene.photo .bg img{filter:saturate(1.16) contrast(1.05) brightness(1.16)!important}
+ .shade{background:linear-gradient(90deg,rgba(1,7,15,.86) 0%,rgba(1,7,15,.69) 31%,rgba(1,7,15,.15) 62%,rgba(1,7,15,.02) 100%),linear-gradient(0deg,rgba(2,9,20,.56),transparent 36%)!important}
+ .hero{box-shadow:0 36px 95px -40px rgba(23,140,255,.68)!important}
+ .hero h1{text-shadow:0 8px 28px #000,0 0 18px rgba(85,216,255,.10)!important}
+ .cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(4,minmax(0,1fr))!important;max-width:none!important;margin:0!important;gap:18px!important}
+ .cmdCard{box-shadow:0 18px 42px rgba(0,0,0,.32);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+ .cmdCard:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(0,0,0,.48),0 0 25px rgba(85,216,255,.13)}
+ .cmdCardArt img{filter:saturate(1.10) brightness(1.10) contrast(1.03)!important}
+ @media(max-width:980px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.shade{background:linear-gradient(180deg,transparent 0,rgba(2,9,20,.02) 26%,#061421 43%,#020914 59%)!important}.scene.photo .bg img{filter:saturate(1.14) contrast(1.04) brightness(1.13)!important}}
+ @media(max-width:620px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:1fr!important}}
+ `;d.head.appendChild(st);
+ const applyHero=()=>{const k=d.getElementById('heroKicker');const h=d.querySelector('#hero h1');if(k&&h&&HERO_HEADLINES[k.textContent.trim()])h.innerHTML=HERO_HEADLINES[k.textContent.trim()]};
+ applyHero();
+ const kicker=d.getElementById('heroKicker');if(kicker)new MutationObserver(applyHero).observe(kicker,{childList:true,subtree:true,characterData:true});
+ const cards=[...d.querySelectorAll('.cmdCard')];
+ cards.forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('CHECKLISTS')||t.includes('DOWNTOWN /')||t.includes('DOWNTOWN/UPTOWN')||t.includes('NEVER MISS'))c.remove();});
+ const remaining=[...d.querySelectorAll('.cmdCard')];
+ remaining.forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('KNOW MORE')||t.includes('COLLECT SMARTER')){const h3=c.querySelector('h3');if(h3)h3.innerHTML='COLLECTOR <span>INTEL</span>';const p=c.querySelector('p');if(p)p.textContent='What’s hot, what’s coming and what matters — smarter hobby intelligence in one place.';const btn=c.querySelector('button,.cmdCta');if(btn)btn.textContent='OPEN COLLECTOR INTEL →';}});
+ const grids=[...d.querySelectorAll('.cmdGrid')];if(grids.length){const first=grids[0];const visible=[...d.querySelectorAll('.cmdCard')];first.innerHTML='';visible.forEach(c=>first.appendChild(c));grids.slice(1).forEach(g=>g.remove());first.classList.remove('cmdGrid3');}
+ const section=d.querySelector('.sectionTitle p');if(section)section.textContent='Eight focused destinations. No clutter. Just the tools collectors actually use.';
+}
+frame.addEventListener('load',()=>{try{polish()}catch(e){console.error(e)}});
+</script>
+</body>
+</html>
