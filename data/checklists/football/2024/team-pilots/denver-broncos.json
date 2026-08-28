@@ -1,0 +1,49 @@
+{
+  "sport":"Football",
+  "season":2024,
+  "team":"Denver Broncos",
+  "slug":"denver-broncos",
+  "status":"pilot_verified_partial",
+  "priorityTargets":[
+    {"player":"Bo Nix","type":"2024 Rookie","priority":1},
+    {"player":"Courtland Sutton","type":"Star","priority":2},
+    {"player":"Troy Franklin","type":"2024 Rookie","priority":3},
+    {"player":"Audric Estime","type":"2024 Rookie","priority":4}
+  ],
+  "referenceCard":{
+    "player":"Bo Nix",
+    "product":"Donruss",
+    "card":"Rated Rookie #369",
+    "filename":"den-bo-nix-donruss-rated-rookie-369.webp",
+    "productionReady":false,
+    "note":"Selected visual reference only. Do not render publicly until image is localized and visually QA'd."
+  },
+  "exactHits":[
+    {"product":"Donruss","category":"Rated Rookie","cardNumber":369,"player":"Bo Nix","tags":["rookie"],"coverage":"verified"},
+    {"product":"Donruss Optic","category":"Rated Rookie","cardNumber":209,"player":"Bo Nix","tags":["rookie"],"coverage":"verified"},
+    {"product":"Donruss Optic","category":"Downtown","cardNumber":19,"player":"Bo Nix","tags":["case_hit","ssp"],"coverage":"verified"},
+    {"product":"Prizm","category":"Base Rookie","cardNumber":309,"player":"Bo Nix","tags":["rookie"],"coverage":"verified"},
+    {"product":"Prizm","category":"Color Blast","cardNumber":4,"player":"Bo Nix","tags":["case_hit","ssp"],"coverage":"verified"},
+    {"product":"Prizm","category":"Manga Vertical","cardNumber":3,"player":"Bo Nix","tags":["case_hit","ssp"],"coverage":"verified"},
+    {"product":"Prizm","category":"Color Blast Duals","cardNumber":15,"player":"Bo Nix / Courtland Sutton","tags":["case_hit","ssp","dual"],"coverage":"verified"},
+    {"product":"Prizm","category":"Aurora","cardNumber":3,"player":"Courtland Sutton","tags":["case_hit","ssp"],"coverage":"verified"},
+    {"product":"Mosaic","category":"Stained Glass","cardNumber":7,"player":"Bo Nix","tags":["case_hit","ssp"],"coverage":"verified_existing_manifest"},
+    {"product":"Mosaic","category":"Micro Mosaic","cardNumber":9,"player":"Bo Nix","tags":["case_hit","ssp"],"coverage":"verified_existing_manifest"}
+  ],
+  "productSections":[
+    {"product":"Donruss","coverage":"partial","visibleRows":1},
+    {"product":"Donruss Optic","coverage":"partial","visibleRows":2},
+    {"product":"Prizm","coverage":"partial","visibleRows":5},
+    {"product":"Mosaic","coverage":"partial","visibleRows":2},
+    {"product":"Select","coverage":"blocked_pending_rookie_validation","visibleRows":0}
+  ],
+  "ownedStatePrototype":{
+    "storagePrefix":"cardstorm:owned:football:2024:denver-broncos",
+    "enabledForPublicUI":false
+  },
+  "warnings":[
+    "This pilot intentionally exposes only verified rows; it is not a claim that the Denver 2024 checklist is complete.",
+    "Select remains blocked until rookie-validation overlay is applied to base records.",
+    "Reference image remains non-production until localized and visually QA'd."
+  ]
+}
