@@ -1,44 +1,126 @@
 category,card_number,player_or_subject,team,serial_or_notes,source
-Downtown,1,Lamar Jackson,Baltimore Ravens,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,2,Josh Allen,Buffalo Bills,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,3,Tyreek Hill,Miami Dolphins,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,4,Brock Purdy,San Francisco 49ers,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,5,Jordan Love,Green Bay Packers,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,6,Sam LaPorta,Detroit Lions,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,7,Travis Kelce,Kansas City Chiefs,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,8,Terrell Owens,Dallas Cowboys,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,9,Dick Butkus,Chicago Bears,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,10,Terry Bradshaw,Pittsburgh Steelers,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,11,J.J. McCarthy,Minnesota Vikings,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,12,Marvin Harrison Jr.,Arizona Cardinals,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,13,Drake Maye,New England Patriots,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,14,Michael Penix Jr.,Atlanta Falcons,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,15,Rome Odunze,Chicago Bears,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,16,Jayden Daniels,Washington Commanders,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,17,Brock Bowers,Las Vegas Raiders,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,18,Malik Nabers,New York Giants,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,19,Bo Nix,Denver Broncos,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,20,Puka Nacua,Los Angeles Rams,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,21,Caleb Williams,Chicago Bears,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,22,Breece Hall,New York Jets,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,23,Maxx Crosby,Las Vegas Raiders,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,24,Terrell Davis,Denver Broncos,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Downtown,25,Michael Vick,Atlanta Falcons,"Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Beckett
-Rated Rookie,201,Caleb Williams,Chicago Bears,"Rated Rookie; Holo and full parallel rainbow available",Beckett
-Rated Rookie,219,Chop Robinson,Miami Dolphins,"Rated Rookie",Beckett
-Rated Rookie,221,Cooper DeJean,Philadelphia Eagles,"Rated Rookie",Beckett
-Rated Rookie,229,Drake Maye,New England Patriots,"Rated Rookie",Beckett
-Rated Rookie,238,Jaheim Bell,New England Patriots,"Rated Rookie",Beckett
-Rated Rookie,240,Ja'Lynn Polk,New England Patriots,"Rated Rookie",Beckett
-Rated Rookie,245,Javon Baker,New England Patriots,"Rated Rookie",Beckett
-Rated Rookie,249,Jaylen Wright,Miami Dolphins,"Rated Rookie",Beckett
-Rated Rookie,250,Jeremiah Trotter Jr.,Philadelphia Eagles,"Rated Rookie",Beckett
-Rated Rookie,255,Joe Milton III,New England Patriots,"Rated Rookie",Beckett
-Rated Rookie,256,Johnny Wilson,Philadelphia Eagles,"Rated Rookie",Beckett
-Rated Rookie,263,Keon Coleman,Buffalo Bills,"Rated Rookie",Beckett
-Rated Rookie,272,Malik Washington,Miami Dolphins,"Rated Rookie",Beckett
-Rated Rookie,278,Tory Taylor,Chicago Bears,"Rated Rookie",Beckett
-Rated Rookie,282,Quinyon Mitchell,Philadelphia Eagles,"Rated Rookie",Beckett
-Rated Rookie,283,Ray Davis,Buffalo Bills,"Rated Rookie",Beckett
-Rated Rookie,286,Rome Odunze,Chicago Bears,"Rated Rookie",Beckett
-Rated Rookie,298,Will Shipley,Philadelphia Eagles,"Rated Rookie",Beckett
+Rated Rookie,201,Caleb Williams,Chicago Bears,"Rated Rookie; full Optic parallel rainbow",Checklist Insider
+Rated Rookie,202,Adisa Isaac,Baltimore Ravens,"Rated Rookie",Checklist Insider
+Rated Rookie,203,Adonai Mitchell,Indianapolis Colts,"Rated Rookie",Checklist Insider
+Rated Rookie,204,AJ Barner,Seattle Seahawks,"Rated Rookie",Checklist Insider
+Rated Rookie,205,Anthony Gould,Indianapolis Colts,"Rated Rookie",Checklist Insider
+Rated Rookie,206,Audric Estime,Denver Broncos,"Rated Rookie",Checklist Insider
+Rated Rookie,207,Ben Sinnott,Washington Commanders,"Rated Rookie",Checklist Insider
+Rated Rookie,208,Blake Corum,Los Angeles Rams,"Rated Rookie",Checklist Insider
+Rated Rookie,209,Bo Nix,Denver Broncos,"Rated Rookie",Checklist Insider
+Rated Rookie,210,Braden Fiske,Los Angeles Rams,"Rated Rookie",Checklist Insider
+Rated Rookie,211,Braelon Allen,New York Jets,"Rated Rookie",Checklist Insider
+Rated Rookie,212,Bralen Trice,Atlanta Falcons,"Rated Rookie",Checklist Insider
+Rated Rookie,213,Brenden Rice,Los Angeles Chargers,"Rated Rookie",Checklist Insider
+Rated Rookie,214,Brian Thomas Jr.,Jacksonville Jaguars,"Rated Rookie",Checklist Insider
+Rated Rookie,215,Brock Bowers,Las Vegas Raiders,"Rated Rookie",Checklist Insider
+Rated Rookie,216,Bucky Irving,Tampa Bay Buccaneers,"Rated Rookie",Checklist Insider
+Rated Rookie,217,Byron Murphy II,Seattle Seahawks,"Rated Rookie",Checklist Insider
+Rated Rookie,218,Cade Stover,Houston Texans,"Rated Rookie",Checklist Insider
+Rated Rookie,219,Chop Robinson,Miami Dolphins,"Rated Rookie",Checklist Insider
+Rated Rookie,220,Cody Schrader,Los Angeles Rams,"Rated Rookie",Checklist Insider
+Rated Rookie,221,Cooper DeJean,Philadelphia Eagles,"Rated Rookie",Checklist Insider
+Rated Rookie,222,Cornelius Johnson,Los Angeles Chargers,"Rated Rookie",Checklist Insider
+Rated Rookie,223,Daijun Edwards,Pittsburgh Steelers,"Rated Rookie",Checklist Insider
+Rated Rookie,224,Dallas Turner,Minnesota Vikings,"Rated Rookie",Checklist Insider
+Rated Rookie,225,Darius Robinson,Arizona Cardinals,"Rated Rookie",Checklist Insider
+Rated Rookie,226,Devaughn Vele,Denver Broncos,"Rated Rookie",Checklist Insider
+Rated Rookie,227,Devin Leary,Baltimore Ravens,"Rated Rookie",Checklist Insider
+Rated Rookie,228,Dylan Laube,Las Vegas Raiders,"Rated Rookie",Checklist Insider
+Rated Rookie,229,Drake Maye,New England Patriots,"Rated Rookie",Checklist Insider
+Rated Rookie,230,Edgerrin Cooper,Green Bay Packers,"Rated Rookie",Checklist Insider
+Rated Rookie,231,Ennis Rakestraw Jr.,Detroit Lions,"Rated Rookie",Checklist Insider
+Rated Rookie,232,Frank Gore Jr.,Buffalo Bills,"Rated Rookie",Checklist Insider
+Rated Rookie,233,Gabe Hall,Philadelphia Eagles,"Rated Rookie",Checklist Insider
+Rated Rookie,234,Isaac Guerendo,San Francisco 49ers,"Rated Rookie",Checklist Insider
+Rated Rookie,235,Jaden Hicks,Kansas City Chiefs,"Rated Rookie",Checklist Insider
+Rated Rookie,236,Jaheim Bell,New England Patriots,"Rated Rookie",Checklist Insider
+Rated Rookie,237,Ja'Lynn Polk,New England Patriots,"Rated Rookie",Checklist Insider
+Rated Rookie,238,Jamari Thrash,Cleveland Browns,"Rated Rookie",Checklist Insider
+Rated Rookie,239,Jared Wiley,Kansas City Chiefs,"Rated Rookie",Checklist Insider
+Rated Rookie,240,Javon Baker,New England Patriots,"Rated Rookie",Checklist Insider
+Rated Rookie,241,Jayden Daniels,Washington Commanders,"Rated Rookie",Checklist Insider
+Rated Rookie,242,Jaylen Wright,Miami Dolphins,"Rated Rookie",Checklist Insider
+Rated Rookie,243,Jeremiah Trotter Jr.,Philadelphia Eagles,"Rated Rookie",Checklist Insider
+Rated Rookie,244,Jermaine Burton,Cincinnati Bengals,"Rated Rookie",Checklist Insider
+Rated Rookie,245,Joe Milton III,New England Patriots,"Rated Rookie",Checklist Insider
+Rated Rookie,246,Johnny Wilson,Philadelphia Eagles,"Rated Rookie",Checklist Insider
+Rated Rookie,247,Jonathon Brooks,Carolina Panthers,"Rated Rookie",Checklist Insider
+Rated Rookie,248,Jordan Travis,New York Jets,"Rated Rookie",Checklist Insider
+Rated Rookie,249,Keon Coleman,Buffalo Bills,"Rated Rookie",Checklist Insider
+Rated Rookie,250,Khyree Jackson,Minnesota Vikings,"Rated Rookie",Checklist Insider
+Rated Rookie,251,Kool-Aid McKinstry,New Orleans Saints,"Rated Rookie",Checklist Insider
+Rated Rookie,252,Ladd McConkey,Los Angeles Chargers,"Rated Rookie",Checklist Insider
+Rated Rookie,253,Laiatu Latu,Indianapolis Colts,"Rated Rookie",Checklist Insider
+Rated Rookie,254,Luke McCaffrey,Washington Commanders,"Rated Rookie",Checklist Insider
+Rated Rookie,255,Malachi Corley,New York Jets,"Rated Rookie",Checklist Insider
+Rated Rookie,256,Malik Nabers,New York Giants,"Rated Rookie",Checklist Insider
+Rated Rookie,257,Malik Washington,Miami Dolphins,"Rated Rookie",Checklist Insider
+Rated Rookie,258,MarShawn Lloyd,Green Bay Packers,"Rated Rookie",Checklist Insider
+Rated Rookie,259,Marvin Harrison Jr.,Arizona Cardinals,"Rated Rookie",Checklist Insider
+Rated Rookie,260,Michael Penix Jr.,Atlanta Falcons,"Rated Rookie",Checklist Insider
+Rated Rookie,261,Michael Pratt,Green Bay Packers,"Rated Rookie",Checklist Insider
+Rated Rookie,262,Quinyon Mitchell,Philadelphia Eagles,"Rated Rookie",Checklist Insider
+Rated Rookie,263,Ray Davis,Buffalo Bills,"Rated Rookie",Checklist Insider
+Rated Rookie,264,Ricky Pearsall,San Francisco 49ers,"Rated Rookie",Checklist Insider
+Rated Rookie,265,Roman Wilson,Pittsburgh Steelers,"Rated Rookie",Checklist Insider
+Rated Rookie,266,Rome Odunze,Chicago Bears,"Rated Rookie",Checklist Insider
+Rated Rookie,267,Spencer Rattler,New Orleans Saints,"Rated Rookie",Checklist Insider
+Rated Rookie,268,Taliese Fuaga,New Orleans Saints,"Rated Rookie",Checklist Insider
+Rated Rookie,269,Trey Benson,Arizona Cardinals,"Rated Rookie",Checklist Insider
+Rated Rookie,270,Troy Franklin,Denver Broncos,"Rated Rookie",Checklist Insider
+Rated Rookie,271,Xavier Legette,Carolina Panthers,"Rated Rookie",Checklist Insider
+Rated Rookie,272,Xavier Worthy,Kansas City Chiefs,"Rated Rookie",Checklist Insider
+Rated Rookie,273,Will Shipley,Philadelphia Eagles,"Rated Rookie",Checklist Insider
+Rated Rookie,274,J.J. McCarthy,Minnesota Vikings,"Rated Rookie",Checklist Insider
+Rated Rookie,275,Tip Reiman,Arizona Cardinals,"Rated Rookie",Checklist Insider
+Rated Rookie,276,Theo Johnson,New York Giants,"Rated Rookie",Checklist Insider
+Rated Rookie,277,Tyrone Tracy Jr.,New York Giants,"Rated Rookie",Checklist Insider
+Rated Rookie,278,Blake Watson,Denver Broncos,"Rated Rookie",Checklist Insider
+Rated Rookie,279,Kimani Vidal,Los Angeles Chargers,"Rated Rookie",Checklist Insider
+Rated Rookie,280,Rasheen Ali,Baltimore Ravens,"Rated Rookie",Checklist Insider
+Rated Rookie,281,Bub Means,New Orleans Saints,"Rated Rookie",Checklist Insider
+Rated Rookie,282,Jha'Quan Jackson,Tennessee Titans,"Rated Rookie",Checklist Insider
+Rated Rookie,283,Jacob Cowing,San Francisco 49ers,"Rated Rookie",Checklist Insider
+Rated Rookie,284,Jordan Whittington,Los Angeles Rams,"Rated Rookie",Checklist Insider
+Rated Rookie,285,Casey Washington,Atlanta Falcons,"Rated Rookie",Checklist Insider
+Rated Rookie,286,Tez Walker,Baltimore Ravens,"Rated Rookie",Checklist Insider
+Rated Rookie,287,Jamree Kromah,Chicago Bears,"Rated Rookie",Checklist Insider
+Rated Rookie,288,Tyler Owens,Washington Commanders,"Rated Rookie",Checklist Insider
+Rated Rookie,289,Tyler Harrell,Tennessee Titans,"Rated Rookie",Checklist Insider
+Rated Rookie,290,Dallin Holker,New Orleans Saints,"Rated Rookie",Checklist Insider
+Rated Rookie,291,AJ Woods,Washington Commanders,"Rated Rookie",Checklist Insider
+Rated Rookie,292,Ryan Flournoy,Dallas Cowboys,"Rated Rookie",Checklist Insider
+Rated Rookie,293,Tory Taylor,Chicago Bears,"Rated Rookie",Checklist Insider
+Rated Rookie,294,Marist Liufau,Dallas Cowboys,"Rated Rookie",Checklist Insider
+Rated Rookie,295,Caelen Carson,Dallas Cowboys,"Rated Rookie",Checklist Insider
+Rated Rookie,296,Tyler Guyton,Dallas Cowboys,"Rated Rookie",Checklist Insider
+Rated Rookie,297,Nathan Thomas,Dallas Cowboys,"Rated Rookie",Checklist Insider
+Rated Rookie,298,Brevyn Spann-Ford,Dallas Cowboys,"Rated Rookie",Checklist Insider
+Rated Rookie,299,Carson Steele,Kansas City Chiefs,"Rated Rookie",Checklist Insider
+Rated Rookie,300,Jordan Magee,Washington Commanders,"Rated Rookie",Checklist Insider
+Downtown,1,Lamar Jackson,Baltimore Ravens,"SSP chase; parallels include Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",Checklist Insider
+Downtown,2,Josh Allen,Buffalo Bills,"SSP chase",Checklist Insider
+Downtown,3,Tyreek Hill,Miami Dolphins,"SSP chase",Checklist Insider
+Downtown,4,Brock Purdy,San Francisco 49ers,"SSP chase",Checklist Insider
+Downtown,5,Jordan Love,Green Bay Packers,"SSP chase",Checklist Insider
+Downtown,6,Sam LaPorta,Detroit Lions,"SSP chase",Checklist Insider
+Downtown,7,Travis Kelce,Kansas City Chiefs,"SSP chase",Checklist Insider
+Downtown,8,Terrell Owens,Dallas Cowboys,"SSP chase",Checklist Insider
+Downtown,9,Dick Butkus,Chicago Bears,"SSP chase",Checklist Insider
+Downtown,10,Terry Bradshaw,Pittsburgh Steelers,"SSP chase",Checklist Insider
+Downtown,11,J.J. McCarthy,Minnesota Vikings,"SSP chase",Checklist Insider
+Downtown,12,Marvin Harrison Jr.,Arizona Cardinals,"SSP chase",Checklist Insider
+Downtown,13,Drake Maye,New England Patriots,"SSP chase",Checklist Insider
+Downtown,14,Michael Penix Jr.,Atlanta Falcons,"SSP chase",Checklist Insider
+Downtown,15,Rome Odunze,Chicago Bears,"SSP chase",Checklist Insider
+Downtown,16,Jayden Daniels,Washington Commanders,"SSP chase",Checklist Insider
+Downtown,17,Brock Bowers,Las Vegas Raiders,"SSP chase",Checklist Insider
+Downtown,18,Malik Nabers,New York Giants,"SSP chase",Checklist Insider
+Downtown,19,Bo Nix,Denver Broncos,"SSP chase",Checklist Insider
+Downtown,20,Puka Nacua,Los Angeles Rams,"SSP chase",Checklist Insider
+Downtown,21,Caleb Williams,Chicago Bears,"SSP chase",Checklist Insider
+Downtown,22,Breece Hall,New York Jets,"SSP chase",Checklist Insider
+Downtown,23,Maxx Crosby,Las Vegas Raiders,"SSP chase",Checklist Insider
+Downtown,24,Terrell Davis,Denver Broncos,"SSP chase",Checklist Insider
+Downtown,25,Michael Vick,Atlanta Falcons,"SSP chase",Checklist Insider
