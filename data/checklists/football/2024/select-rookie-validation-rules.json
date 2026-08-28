@@ -1,0 +1,20 @@
+{
+  "sport":"Football",
+  "season":2024,
+  "product":"Panini Select",
+  "status":"validation_overlay_required",
+  "sourceFile":"data/football/2024/select.json",
+  "problem":"The existing Select JSON contains incorrect rookie booleans, so its rookie=true field cannot be trusted directly by Team Hunt.",
+  "knownExample":{"cardNumber":6,"player":"Andrew Van Ginkel","sourceRookieFlag":true,"correctedRookieFlag":false,"reason":"Established NFL veteran, not a 2024 rookie."},
+  "rules":[
+    "Never use select.json rookie=true by itself to classify a player as a 2024 rookie.",
+    "A Select card may surface as Rookie in 2024 Team Hunt only when the player appears in CardStorm's verified 2024 rookie registry or a verified Select checklist explicitly identifies the card as a rookie.",
+    "Cards 501-520 are XRC redemptions and always have teamHuntEligible2024=false.",
+    "Established veterans and legends may remain valid 2024 Select cards, but rookie=false.",
+    "When rookie status is unresolved, classify the card as Base/Core with rookieStatus=unverified rather than guessing.",
+    "Team Hunt should prefer verified chase data over unvalidated Select base-card rookie flags."
+  ],
+  "trustedRookieRegistry":"data/checklists/football/2024/prizm-rookies.csv",
+  "xrcQuarantine":"data/checklists/football/2024/select-xrc-quarantine.csv",
+  "launchBlocker":true
+}
