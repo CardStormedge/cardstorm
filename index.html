@@ -34,6 +34,9 @@ img{max-width:100%}
 .scene.active{opacity:1}
 .scene .bg{position:absolute;inset:0}
 .scene.photo .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 18%);transform:scale(var(--zoom,1));filter:saturate(1.05) contrast(1.06)}
+.scene.cards .bg{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#174a77 0,#071827 42%,#020914 76%)}
+.cardShowcase{position:absolute;inset:22px 8% 105px;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px)}
+.cardShowcase img{height:94%;width:auto;max-width:30%;object-fit:contain;border-radius:9px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.7));transform:rotate(var(--tilt,0deg))}.cardShowcase img:nth-child(1){--tilt:-5deg}.cardShowcase img:nth-child(2){--tilt:1deg;z-index:2}.cardShowcase img:nth-child(3){--tilt:5deg}
 .scene.split .bg{display:flex}
 .splitHalf{position:relative;flex:1 1 50%;overflow:hidden}
 .splitHalf+.splitHalf{border-left:1px solid rgba(255,255,255,.14)}
@@ -62,6 +65,7 @@ img{max-width:100%}
 .hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:950;font-style:normal;font-size:clamp(42px,6.4vw,88px);line-height:.92;letter-spacing:-.05em;margin:20px 0 16px;text-shadow:0 10px 34px #000}
 .hero h1 span{color:var(--cyan)}
 .hero p{max-width:560px;color:#d1e0ed;font-size:clamp(15px,1.4vw,19px);line-height:1.55;margin:0 0 26px}
+.heroExtra{display:none;margin:-8px 0 14px;max-width:700px}.heroExtra.active{display:block}.heroExtraLabel{font-size:10px;font-weight:950;letter-spacing:.12em;color:#7fdcff;margin-bottom:7px}.heroExtraChips{display:flex;gap:6px;flex-wrap:wrap}.heroExtraChips span{border:1px solid #34698a;background:rgba(5,28,45,.9);border-radius:999px;padding:5px 8px;color:#e7f7ff;font-size:9px;font-weight:850}.heroExtraNote{font-size:11px;line-height:1.4;color:#c8dbea}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
 .primary,.secondary{border-radius:10px;padding:13px 18px;font-weight:950;cursor:pointer;color:#fff}
 .primary{border:0;background:linear-gradient(135deg,#2088ff,#0e63d6)}
@@ -109,11 +113,15 @@ img{max-width:100%}
  .wrap{padding:16px 12px 34px}
  .hero{min-height:590px;border-radius:17px;background:linear-gradient(180deg,#071a2b,#020914)}
  .scene.photo .bg{height:245px;bottom:auto;background:#061421}
- .scene.photo .bg img{object-fit:cover;object-position:center center;transform:none}
+ .scene.photo .bg img{object-fit:contain;object-position:center top;transform:none}
+ .scene.cards .bg{height:245px;bottom:auto}
+ .scene.cards .cardShowcase{inset:12px 3% 12px;gap:7px}
+ .scene.cards .cardShowcase img{height:92%;max-width:31%;border-radius:5px}
  .heroCopy{min-height:590px;justify-content:flex-end;padding:258px 18px 18px;max-width:100%}
  .heroPill{padding:6px 10px;font-size:9px}
  .hero h1{font-size:clamp(31px,9vw,43px);line-height:.94;margin:12px 0 10px}
  .hero p{font-size:13.5px;line-height:1.42;margin-bottom:13px}
+ .hero.hasExtra{min-height:640px}.hero.hasExtra .heroCopy{min-height:640px}.heroExtra{margin:-2px 0 10px}.heroExtraChips{gap:4px}.heroExtraChips span{padding:4px 6px;font-size:8px}.heroExtraNote{font-size:10px}
  .actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:8px}
  .primary,.secondary{width:100%;min-height:44px;padding:10px 8px;font-size:11px;line-height:1.15}
  .shade{background:linear-gradient(180deg,transparent 0,rgba(2,9,20,.05) 25%,#061421 42%,#020914 58%)}
@@ -167,6 +175,7 @@ img{max-width:100%}
   <div class="heroPill" id="heroKicker">THE NEXT GENERATION</div>
   <h1>KNOW THE CARD.<br><span>OWN THE CHASE.</span></h1>
   <p id="heroSub">Rookie heat and a slab-breaking chase that starts the storm.</p>
+  <div class="heroExtra" id="heroExtra"></div>
   <div class="actions">
    <button class="primary" id="ctaPrimary" onclick="openApp('team')">EXPLORE WHAT TO HUNT</button>
    <button class="secondary" id="ctaSecondary" onclick="openApp('market')">CHECK THE MARKET</button>
@@ -187,28 +196,24 @@ img{max-width:100%}
 
 <script>
 /* ---------------- HERO DATA ----------------
-   Category-based rotation (not city/team based). Six collector chase categories,
-   sourced entirely from the approved CardStorm category artwork pack — no
-   external images, no city/team photos, no synthetic/SVG fallback art. The
-   "BREAKS + KNOW THE WORTH" tab is a single hero slot that stays two distinct
-   destinations: a split scene with two images and two separate CTAs. */
+   Category-based rotation (not city/team based). Break Center and Know the Worth
+   remain separate destinations. Downtown examples are locally stored reference
+   photographs of real 2024 Donruss cards; no price or live-listing claim is made. */
 const DEFAULT_ACTIONS=[{label:'EXPLORE WHAT TO HUNT',key:'team'},{label:'CHECK THE MARKET',key:'market'}];
 const STARS=[
  {tab:'ROOKIES',kicker:'THE NEXT GENERATION',sub:'Rookie heat and the first-year cards collectors are chasing now.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp'},
  {tab:'ROOKIE STARS',kicker:'BREAKOUT WATCH',sub:'The rookies turning into hobby stars and the cards moving with them.',p:'#2e69ff',mode:'photo',img:'assets/homepage/categories/rookie-stars.webp'},
  {tab:'GOATS',kicker:'LEGENDS NEVER FADE',sub:'The iconic names and cards that set the standard for the hobby.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp'},
- {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Case hits, iconic inserts and the hobby’s biggest chase cards.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/holy-grails.webp'},
- {tab:'BREAKS + KNOW THE WORTH',kicker:'PLAY. BREAK. LEARN.',sub:'Build your hunt around the teams, rookies and cards you want — then find the breaks where they’re live. Know what to hunt. Know what to look for. Know what you’re bidding on.',p:'#ff8a3d',mode:'split',
-  left:{img:'assets/homepage/categories/break-center.webp',label:'BUILD YOUR HUNT'},
-  right:{img:'assets/homepage/categories/know-the-worth.webp',label:'KNOW THE WORTH'},
-  actions:[{label:'BUILD YOUR HUNT',key:'breaks'},{label:'PLAY KNOW THE WORTH',key:'game'}]},
+ {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Real Downtown case hits and the hobby’s biggest chase cards.',p:'#ffd35a',mode:'cards',cards:['assets/homepage/cards/downtown-jayden-daniels.webp','assets/homepage/cards/downtown-bo-nix.webp']},
+ {tab:'BREAK CENTER',kicker:'BUILD YOUR PERSONAL HUNT',sub:'Choose the team, players, rookies, inserts and cards you want — then find the right break opportunities.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-studio.webp',extra:'hunt',actions:[{label:'BUILD YOUR HUNT',key:'breaks'},{label:'EXPLORE SETS',key:'sets'}]},
+ {tab:'KNOW THE WORTH',kicker:'PLAY. LEARN. COLLECT SMARTER.',sub:'Rank three real Jayden Daniels rookie cards from highest recent sale to lowest — then learn what drives the difference.',p:'#d7a92d',mode:'cards',cards:['assets/homepage/cards/game-optic-rated-rookie.webp','assets/homepage/cards/game-select-rookie.webp','assets/homepage/cards/game-mosaic-red.webp'],extra:'worth',actions:[{label:'PLAY KNOW THE WORTH',key:'game'},{label:'CHECK THE MARKET',key:'market'}]},
  {tab:'POKÉMON / TCG',kicker:'THE TCG CHASE',sub:'Iconic cards, premium sets and the biggest TCG chases.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp'}
 ];
 
 const scenesEl=document.getElementById('scenes');
 STARS.forEach((d,i)=>{
  const sc=document.createElement('div');
- sc.className='scene '+(d.mode==='split'?'split':'photo')+(i===0?' active':'');
+ sc.className='scene '+d.mode+(i===0?' active':'');
  sc.style.setProperty('--p',d.p);
  if(d.pos)sc.style.setProperty('--pos',d.pos);
  if(d.zoom)sc.style.setProperty('--zoom',d.zoom);
@@ -219,6 +224,8 @@ STARS.forEach((d,i)=>{
    +'<div class="splitHalf"><img src="'+d.left.img+'" alt="'+d.left.label+'"><span class="splitTag">'+d.left.label+'</span><div class="splitShade"></div>'+hunt+'</div>'
    +'<div class="splitHalf"><img src="'+d.right.img+'" alt="'+d.right.label+'"><span class="splitTag">'+d.right.label+'</span><div class="splitShade"></div>'+worth+'</div>'
    +'</div>';
+ }else if(d.mode==='cards'){
+  sc.innerHTML='<div class="bg"><div class="cardShowcase">'+d.cards.map((src,n)=>'<img src="'+src+'" alt="Real Downtown card example '+(n+1)+'">').join('')+'</div></div>';
  }else{
   sc.innerHTML='<div class="bg"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.tab+'"></div>';
  }
@@ -229,7 +236,7 @@ STARS.forEach((d,i)=>{
 const hero=document.getElementById('hero'),scenes=[...document.querySelectorAll('.scene')],
  rail=document.getElementById('starRail'),mobDots=document.getElementById('mobDots'),
  heroKicker=document.getElementById('heroKicker'),heroSub=document.getElementById('heroSub'),
- ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary');
+ ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary'),heroExtra=document.getElementById('heroExtra');
 let idx=0,timer=null,striking=false;
 
 STARS.forEach((d,i)=>{
@@ -255,7 +262,12 @@ function show(n){
  [...mobDots.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
  heroKicker.textContent=d.kicker;
  heroSub.textContent=d.sub;
- hero.classList.toggle('breakMode',d.mode==='split');
+ hero.classList.remove('breakMode');
+ hero.classList.toggle('hasExtra',!!d.extra);
+ if(d.extra==='hunt')heroExtra.innerHTML='<div class="heroExtraLabel">YOUR HUNT</div><div class="heroExtraChips"><span>TEAM</span><span>PLAYER</span><span>ROOKIES</span><span>DOWNTOWN</span><span>AUTOS</span><span>SSPs</span><span>NUMBERED</span><span>SETS</span></div>';
+ else if(d.extra==='worth')heroExtra.innerHTML='<div class="heroExtraNote">Three related cards. One correct ranking. Learn how inserts, parallels, autos, numbering, rarity, grading and player demand change value.</div>';
+ else heroExtra.innerHTML='';
+ heroExtra.classList.toggle('active',!!d.extra);
  const acts=d.actions||DEFAULT_ACTIONS;
  ctaPrimary.textContent=acts[0].label;ctaPrimary.onclick=()=>openApp(acts[0].key);
  ctaSecondary.textContent=acts[1].label;ctaSecondary.onclick=()=>openApp(acts[1].key);
