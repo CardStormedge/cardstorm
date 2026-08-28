@@ -88,24 +88,22 @@ img{max-width:100%}
 .sectionTitle{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:40px 0 16px}
 .sectionTitle h2{margin:4px 0 0;font-size:clamp(22px,2vw,30px)}
 .sectionTitle p{margin:0;color:#8fa9bf;font-size:13px}
-.cmdStack{display:flex;flex-direction:column;gap:20px}
-.cmdModule{position:relative;min-height:380px;border:1px solid #265a80;border-radius:22px;overflow:hidden;background:#061421;cursor:pointer;text-align:left;color:#fff;transition:.18s;display:flex;flex-direction:column;padding:0;font-family:inherit}
-.cmdModule:hover{transform:translateY(-3px);border-color:var(--ac,#55d8ff)}
-.cmdBgWrap{position:absolute;inset:0;z-index:0}
-.cmdBg{position:absolute;inset:0}
-.cmdBg img,.cmdBg svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.cmdShade{position:absolute;inset:0;background:linear-gradient(100deg,#050d18 0%,rgba(5,13,24,.92) 32%,rgba(5,13,24,.48) 56%,transparent 76%)}
-.cmdLive{position:absolute;top:16px;left:18px;z-index:2;background:#e21b2d;color:#fff;font:900 10px Inter,sans-serif;letter-spacing:.08em;padding:5px 9px;border-radius:6px}
-.cmdTagline{position:absolute;top:20px;right:24px;z-index:2;text-align:right;font-style:italic;font-weight:800;font-size:12px;line-height:1.4;color:#e7f7ff;text-shadow:0 2px 10px #000;max-width:210px}
-.cmdText{position:relative;z-index:1;max-width:54%;padding:34px 24px 26px 32px;flex:1;display:flex;flex-direction:column;justify-content:center}
-.cmdNum{display:inline-flex;width:max-content;padding:5px 11px;border:1px solid var(--ac,#55d8ff);border-radius:999px;background:rgba(2,9,20,.72);font:900 10.5px Inter,sans-serif;letter-spacing:.1em;color:var(--ac,#55d8ff);margin-bottom:10px}
-.cmdKicker{font:900 10.5px Inter,sans-serif;letter-spacing:.12em;color:#8fa9bf;margin-bottom:8px}
-.cmdText h3{margin:0 0 12px;font-size:clamp(23px,2.7vw,34px);line-height:1.04;font-weight:950;letter-spacing:-.02em}
-.cmdText h3 span{color:var(--ac,#55d8ff)}
-.cmdText p{margin:0 0 18px;color:#c7dae8;font-size:13.5px;line-height:1.5;max-width:420px}
-.cmdCta{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:12px 20px;border-radius:999px;background:var(--ac,#55d8ff);color:#04101c;font-weight:950;font-size:12.5px}
-.cmdChips{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;padding:0 32px 24px}
-.cmdChips span{border:1px solid var(--ac,#34698a);background:rgba(5,28,45,.88);border-radius:999px;padding:6px 11px;color:#e7f7ff;font-size:10.5px;font-weight:850}
+.cmdStack{display:flex;flex-direction:column;gap:18px}
+.cmdGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.cmdGrid.cmdGrid3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:calc(75% - 4.5px);margin:0 auto}
+.cmdCard{position:relative;display:flex;flex-direction:column;border:1px solid #265a80;border-radius:18px;background:#06131f;overflow:hidden;cursor:pointer;text-align:left;color:#fff;transition:.18s;padding:0;font-family:inherit}
+.cmdCard:hover{transform:translateY(-4px);border-color:var(--ac,#55d8ff);box-shadow:0 22px 40px -20px var(--ac,#55d8ff)}
+.cmdCard:hover .cmdCardArt img{transform:scale(1.06)}
+.cmdCard:hover .cmdCardCta{gap:10px}
+.cmdCardArt{position:relative;height:0;padding-top:58%;overflow:hidden;background:#061421}
+.cmdCardArt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.cmdCardArt .cmdLive{position:absolute;top:10px;left:10px;z-index:2;background:#e21b2d;color:#fff;font:900 9px Inter,sans-serif;letter-spacing:.08em;padding:4px 7px;border-radius:5px}
+.cmdCardBody{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+.cmdCardNum{font:900 10px Inter,sans-serif;letter-spacing:.1em;color:var(--ac,#55d8ff);margin-bottom:4px}
+.cmdCard h3{margin:0 0 8px;font-size:17px;line-height:1.1;font-weight:950;letter-spacing:-.01em}
+.cmdCard h3 span{color:var(--ac,#55d8ff)}
+.cmdCard p{margin:0 0 12px;color:#a8bfd1;font-size:12px;line-height:1.42;flex:1}
+.cmdCardCta{display:inline-flex;align-items:center;gap:6px;color:var(--ac,#55d8ff);font-weight:900;font-size:11.5px;letter-spacing:.02em;transition:gap .18s}
 
 .footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:30px 2px 0;color:#6f8ca6;font-size:11px}
 
@@ -114,7 +112,7 @@ img{max-width:100%}
 .appFrame{width:100%;height:100%;border:0}
 .appReturn{position:fixed;z-index:110;left:12px;bottom:12px;border:1px solid #58d8ff;background:rgba(2,9,20,.94);color:#fff;padding:10px 13px;border-radius:9px;font-weight:900;cursor:pointer}
 
-@media(max-width:1050px){.cmdText{max-width:64%}}
+@media(max-width:1050px){.cmdGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr));max-width:100%;margin:0}}
 @media(max-width:760px){
  .nav{min-height:70px;padding:10px 12px}
  .brand{min-width:auto;gap:0}
@@ -164,15 +162,10 @@ img{max-width:100%}
  .starBtn .dotc{width:7px;height:7px}
  .mobDots{display:none}
  .cmdStack{gap:14px}
- .cmdModule{min-height:auto}
- .cmdBgWrap{position:relative;height:190px}
- .cmdShade{background:linear-gradient(180deg,transparent 38%,#050d18 94%)}
- .cmdLive{top:10px;left:10px}
- .cmdTagline{display:none}
- .cmdText{max-width:100%;padding:16px 16px 4px}
- .cmdText h3{font-size:clamp(20px,6.5vw,27px)}
- .cmdText p{max-width:100%}
- .cmdChips{padding:0 16px 16px}
+ .cmdGrid{grid-template-columns:1fr;gap:14px}
+ .cmdGrid.cmdGrid3{grid-template-columns:1fr;max-width:100%;margin:0}
+ .cmdCardArt{padding-top:52%}
+ .cmdCard h3{font-size:18px}
 }
 @media(prefers-reduced-motion:reduce){.hero.strike .lightning,.hero.strike .scene.active .bg,.cardTickerTrack{animation:none}}
 </style>
@@ -343,55 +336,48 @@ hero.addEventListener('pointerenter',()=>clearTimeout(timer));
 hero.addEventListener('pointerleave',resetTimer);
 
 /* ---------------- DASHBOARD / COMMAND CENTER ---------------- */
-const boxCollage='<div style="position:absolute;inset:0;display:flex;gap:1px;background:#050d18">'
- +['football','baseball','basketball'].map(sp=>'<div style="flex:1 1 0;min-width:0;height:100%;overflow:hidden;position:relative"><img src="assets/boxes/box-'+sp+'-2026-toppschrome.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></div>').join('')
- +'</div>';
-const checklistArt='<svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#071522"/><rect x="24" y="34" width="168" height="154" rx="12" fill="#0d2a46" stroke="#2c6690"/><g stroke="#55d8ff" stroke-width="7" stroke-linecap="round"><path d="M44 68l12 12 22-24"/><path d="M44 104l12 12 22-24"/><path d="M44 140l12 12 22-24"/></g><rect x="98" y="62" width="80" height="9" rx="4.5" fill="#2c6690"/><rect x="98" y="98" width="80" height="9" rx="4.5" fill="#2c6690"/><rect x="98" y="134" width="80" height="9" rx="4.5" fill="#2c6690"/><rect x="228" y="24" width="82" height="128" rx="12" fill="#101f33" stroke="#3a7aa8" stroke-width="2" transform="rotate(-6 269 88)"/><rect x="308" y="40" width="82" height="128" rx="12" fill="#101f33" stroke="#55d8ff" stroke-width="2" transform="rotate(5 349 104)"/></svg>';
-const marketArt='<svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#071522"/><rect x="256" y="22" width="132" height="176" rx="14" fill="#0d2a46" stroke="#2c6690" stroke-width="2" transform="rotate(6 322 110)"/><polyline points="20,168 72,128 116,148 162,80 206,102 250,38" fill="none" stroke="#55d8ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="250" cy="38" r="8" fill="#fff"/><polyline points="20,196 72,186 116,194 162,164 206,172 250,142" fill="none" stroke="#6cff9e" stroke-width="4.5" stroke-linecap="round" opacity=".75"/></svg>';
-const watchArt='<svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#071522"/><rect x="238" y="18" width="132" height="188" rx="22" fill="#0a1c2e" stroke="#2c6690" stroke-width="3"/><rect x="250" y="34" width="108" height="156" rx="10" fill="#0d2a46"/><circle cx="130" cy="112" r="72" fill="none" stroke="#55d8ff" stroke-width="2" opacity=".32"/><path d="M130 62l15 30 33 4.8-24 23.4 5.6 32.8L130 137l-29.6 15.6 5.6-32.8-24-23.4 33-4.8z" fill="#ffd35a"/><polyline points="20,200 62,174 98,188 144,138 180,158 216,108" fill="none" stroke="#55d8ff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const challengeArt='<svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#0d0720"/><rect x="26" y="72" width="88" height="132" rx="12" fill="#1a1032" stroke="#7657ff" stroke-width="2" transform="rotate(-6 70 138)"/><rect x="160" y="38" width="98" height="150" rx="12" fill="#1e1440" stroke="#c58bff" stroke-width="3.5"/><rect x="298" y="68" width="88" height="132" rx="12" fill="#1a1032" stroke="#7657ff" stroke-width="2" transform="rotate(6 342 134)"/><circle cx="209" cy="26" r="20" fill="#c58bff"/><text x="209" y="34" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="950" font-size="20" fill="#1a1032">1</text><path d="M120 158l32-12M300 154l-32-12" stroke="#c58bff" stroke-width="3.5" stroke-linecap="round" opacity=".75"/></svg>';
-const liveArt='<svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#160f04"/><rect x="150" y="30" width="106" height="164" rx="16" fill="#241a08" stroke="#806820" stroke-width="2" transform="rotate(-6 203 112)"/><rect x="248" y="42" width="106" height="164" rx="16" fill="#0d1c2e" stroke="#55d8ff" stroke-width="3.5" transform="rotate(6 301 124)"/><circle cx="212" cy="120" r="52" fill="rgba(255,211,90,.18)" stroke="#ffd35a" stroke-width="3"/><path d="M196 96l34 24-34 24z" fill="#ffd35a"/><path d="M52 46l38 52-24 5 44 66-60-46 22-6z" fill="#55d8ff" opacity=".88"/><g stroke="#ffd35a" stroke-width="2.4" opacity=".65"><path d="M26 182l28-20 11 24-30 16z"/><path d="M362 202l-20-22 27-9-5-26z"/></g></svg>';
-const edgeArt='<svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#050d18"/><rect x="118" y="20" width="112" height="178" rx="14" fill="#0a1c2e" stroke="#9aa4ad" stroke-width="2" transform="rotate(-6 174 108)"/><rect x="234" y="30" width="112" height="178" rx="14" fill="#0a1626" stroke="#55d8ff" stroke-width="3.5" transform="rotate(5 290 118)"/><polyline points="44,196 88,162 120,178 164,118 202,138 244,74" fill="none" stroke="#55d8ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="244" cy="74" r="7" fill="#fff"/><rect x="30" y="160" width="74" height="50" rx="9" fill="#0a1c2e" stroke="#8b7230" stroke-width="1.6"/><g stroke="#ffd35a" stroke-width="2.6" stroke-linecap="round"><path d="M48 178h14M48 190h14M72 178h14M72 190h14M96 178h4M96 190h4"/></g></svg>';
-
 const DASH=[
- {key:'team',num:'01',kicker:'START HERE',h1:'WHAT TO',h2:'HUNT',desc:'Team-by-team players, rookies and chase cards before the break starts.',cta:'START HUNTING →',tagline:['ROOKIES','INSERTS DOWNTOWNS','CASE HITS YOUR TEAM'],chips:['PLAYERS','TEAMS','ROOKIES','INSERTS','DOWNTOWNS','CASE HITS'],ac:'#55d8ff',art:'assets/homepage/categories/rookies.webp'},
- {key:'sets',num:'02',kicker:'LATEST RELEASES',h1:'SETS &',h2:'PACKS',desc:'Product intelligence for the releases collectors are opening.',cta:'EXPLORE SETS & PACKS →',tagline:['NEW SETS. NEW HITS.','BIGGER OPPORTUNITIES.'],chips:['NEW RELEASES','CONFIGS & ODDS','HIT RATES','SET ANALYSIS','PRODUCT TRACKER','RELEASE CALENDAR'],ac:'#55d8ff',art:boxCollage,html:true},
- {key:'checks',num:'03',kicker:'2025–2026 CHECKLISTS',h1:'',h2:'CHECKLISTS',desc:'Current-season checklists across sets, teams and parallels.',cta:'BROWSE CHECKLISTS →',tagline:['ROOKIES. PARALLELS.','VARIATIONS. ALL IN ONE PLACE.'],chips:['SET LISTS','BY TEAM','PARALLELS','VARIATIONS','TOP ROOKIES','SAVE LISTS'],ac:'#7fd8ff',art:checklistArt,html:true},
- {key:'sets',num:'04',kicker:'INSERTS & CASE HITS',h1:'DOWNTOWN /',h2:'UPTOWN CENTER',desc:'A dedicated center for the hobby\'s hottest chase-insert hits.',cta:'EXPLORE DOWNTOWNS →',tagline:['ICONIC CITIES. LEGENDARY CARDS.','ULTIMATE CHASES.'],chips:['DOWNTOWN','UPTOWN','CASE HITS','RECENT SALES','TRACK VALUES','WISHLIST'],ac:'#ffd35a',art:'assets/themes/downtown-uptown.svg'},
- {key:'market',num:'05',kicker:'MARKET INTELLIGENCE',h1:'MARKET &',h2:'COMPS',desc:'Real sales, real trends and smarter decisions built on live comps.',cta:'EXPLORE MARKET →',tagline:['REAL DATA. REAL VALUE.','REAL EDGE.'],chips:['RECENT SALES','PRICE TRENDS','COMP SHOP','MARKET MOVERS','PRICE ALERTS','SMART DECISIONS'],ac:'#6cff9e',art:marketArt,html:true},
- {key:'watch',num:'06',kicker:'WATCHLIST',h1:'NEVER MISS',h2:'A MOVE',desc:'Track the cards, players and opportunities you care about most.',cta:'OPEN WATCHLIST →',tagline:['YOUR CARDS. YOUR LIST.','YOUR NEXT BIG MOVE.'],chips:['TRACK CARDS','SET ALERTS','PRICE CHANGES','PLAYER NEWS','BUILD LISTS','STAY AHEAD'],ac:'#55d8ff',art:watchArt,html:true},
- {key:'breaks',num:'08',kicker:'LIVE BREAKS',h1:'BREAK',h2:'CENTER',desc:'Find live breaks, breaker communities and chats — breaker tools are coming next.',cta:'FIND YOUR NEXT BREAK →',tagline:['LIVE BREAKS. REAL COMMUNITIES.','NONSTOP ACTION.'],chips:['LIVE BREAKS','BREAKERS','CHAT','SCHEDULE','PLATFORMS','NOTIFY ME'],ac:'#ffb35a',art:'assets/homepage/categories/break-center.webp',live:true},
- {key:'game',num:'07',kicker:'CARDSTORM CHALLENGE',h1:'PROVE YOUR',h2:'KNOWLEDGE',desc:'Rank three related cards from highest sale to lowest and prove you know value.',cta:'PLAY THE CHALLENGE →',tagline:['SAME PLAYERS. DIFFERENT VALUES.','CAN YOU GET IT RIGHT?'],chips:['10 ROUNDS','RANK CARDS','TRACK SCORE','COMPARE','CHALLENGE FRIENDS','CLIMB THE LEADERBOARD'],ac:'#c58bff',art:challengeArt,html:true},
- {key:'pokemon',num:'09',kicker:'POKÉMON / TCG',h1:'THE TCG',h2:'CHASE',desc:'Sets, chase cards, market intelligence and collector tools for Pokémon and TCG collectors.',cta:'EXPLORE POKÉMON / TCG →',tagline:['ICONIC SETS. CHASE CARDS.','ENDLESS ADVENTURE.'],chips:['SETS','CHASE CARDS','CHECKLISTS','RARITIES','MARKET','WATCHLIST'],ac:'#ffde59',art:'assets/homepage/categories/pokemon-tcg.webp'},
- {key:'live',num:'10',kicker:'ENTERTAINMENT',h1:'CARDS COME',h2:'ALIVE',desc:'The social, high-energy side of the hobby — cards, collectors and unforgettable hobby moments on screen.',cta:'WATCH CARDS COME ALIVE →',tagline:['REAL CARDS. REAL STORIES.','REAL FANS.'],chips:['VIDEOS','BREAK HIGHLIGHTS','COLLECTOR STORIES','HOBBY NEWS','COMMUNITY','GO VIRAL'],ac:'#ffd35a',art:liveArt,html:true},
- {key:'plans',num:'11',kicker:'PREMIUM TOOLS',h1:'KNOW MORE.',h2:'COLLECT SMARTER.',desc:'Deeper intelligence, calculators and premium market tools for collectors who want an edge.',cta:'GET THE EDGE →',tagline:['BETTER DATA. SMARTER TOOLS.','A BIGGER EDGE.'],chips:['VALUE TOOLS','ADVANCED COMPS','MARKET SIGNALS','CALCULATORS','COLLECTION INTELLIGENCE','CARDSTORM AI'],ac:'#55d8ff',art:edgeArt,html:true}
+ {key:'team',num:'01',h1:'WHAT TO',h2:'HUNT',desc:'Team-by-team players, rookies and chase cards before the break starts.',cta:'START HUNTING →',ac:'#55d8ff',art:'assets/homepage/dashboard/01-what-to-hunt.webp',pos:'center center'},
+ {key:'sets',num:'02',h1:'SETS &',h2:'PACKS',desc:'Product intelligence for the releases collectors are opening.',cta:'EXPLORE SETS & PACKS →',ac:'#55d8ff',art:'assets/homepage/dashboard/02-sets-packs.webp',pos:'center center'},
+ {key:'checks',num:'03',h1:'',h2:'CHECKLISTS',desc:'Comprehensive checklists across sets, teams and parallels — football, basketball and baseball.',cta:'BROWSE CHECKLISTS →',ac:'#7fd8ff',art:'assets/homepage/dashboard/03-checklists.webp',pos:'center center'},
+ {key:'sets',num:'04',h1:'DOWNTOWN /',h2:'UPTOWN',desc:'A dedicated center for the hobby\'s hottest chase-insert hits.',cta:'EXPLORE DOWNTOWNS →',ac:'#ffd35a',art:'assets/homepage/dashboard/04-downtown-uptown.webp',pos:'center center'},
+ {key:'market',num:'05',h1:'MARKET &',h2:'COMPS',desc:'Real sales, real trends and smarter decisions built on live comps.',cta:'EXPLORE MARKET →',ac:'#6cff9e',art:'assets/homepage/dashboard/05-market-comps.webp',pos:'center center'},
+ {key:'watch',num:'06',h1:'NEVER MISS',h2:'A MOVE',desc:'Track the cards, players and opportunities you care about most.',cta:'OPEN WATCHLIST →',ac:'#55d8ff',art:'assets/homepage/dashboard/06-watchlist.webp',pos:'center center'},
+ {key:'game',num:'07',h1:'PROVE YOUR',h2:'KNOWLEDGE',desc:'Rank three related cards from highest sale to lowest and prove you know value.',cta:'PLAY THE CHALLENGE →',ac:'#c58bff',art:'assets/homepage/dashboard/07-cardstorm-challenge.webp',pos:'center center'},
+ {key:'breaks',num:'08',h1:'BREAK',h2:'CENTER',desc:'Find live breaks, breaker communities and chats — breaker tools are coming next.',cta:'FIND YOUR NEXT BREAK →',ac:'#ffb35a',art:'assets/homepage/categories/break-center.webp',pos:'center 30%',live:true},
+ {key:'pokemon',num:'09',h1:'THE TCG',h2:'CHASE',desc:'Sets, chase cards, market intelligence and collector tools for Pokémon and TCG.',cta:'EXPLORE POKÉMON / TCG →',ac:'#ffde59',art:'assets/homepage/dashboard/09-pokemon-tcg.webp',pos:'center center'},
+ {key:'live',num:'10',h1:'CARDS COME',h2:'ALIVE',desc:'The social, high-energy side of the hobby — cards, collectors and unforgettable moments on screen.',cta:'WATCH CARDS COME ALIVE →',ac:'#ffd35a',art:'assets/homepage/dashboard/10-cards-come-alive.webp',pos:'center center'},
+ {key:'plans',num:'11',h1:'KNOW MORE.',h2:'COLLECT SMARTER.',desc:'Deeper intelligence, calculators and premium market tools for collectors who want an edge.',cta:'GET THE EDGE →',ac:'#55d8ff',art:'assets/homepage/dashboard/11-cardstorm-edge.webp',pos:'center center'}
 ];
 
 const dashGrid=document.getElementById('dashGrid');
-DASH.forEach(c=>{
+function buildCard(c){
  const el=document.createElement('button');
- el.className='cmdModule';
+ el.className='cmdCard';
  el.style.setProperty('--ac',c.ac);
- const artInner=c.html?c.art:'<img src="'+c.art+'" loading="lazy">';
  const headline=(c.h1?c.h1+'<br>':'')+'<span>'+c.h2+'</span>';
  el.innerHTML=
-  '<div class="cmdBgWrap">'
-   +'<div class="cmdBg">'+artInner+'</div>'
-   +'<div class="cmdShade"></div>'
+  '<div class="cmdCardArt">'
+   +'<img src="'+c.art+'" style="object-position:'+c.pos+'" loading="lazy" alt="'+c.h1+' '+c.h2+'">'
    +(c.live?'<span class="cmdLive">LIVE</span>':'')
-   +'<div class="cmdTagline">'+c.tagline.join('<br>')+'</div>'
   +'</div>'
-  +'<div class="cmdText">'
-   +'<div class="cmdNum">'+c.num+'</div>'
-   +'<div class="cmdKicker">'+c.kicker+'</div>'
+  +'<div class="cmdCardBody">'
+   +'<div class="cmdCardNum">'+c.num+'</div>'
    +'<h3>'+headline+'</h3>'
    +'<p>'+c.desc+'</p>'
-   +'<span class="cmdCta">'+c.cta+'</span>'
-  +'</div>'
-  +'<div class="cmdChips">'+c.chips.map(x=>'<span>'+x+'</span>').join('')+'</div>';
+   +'<span class="cmdCardCta">'+c.cta+'</span>'
+  +'</div>';
  el.onclick=()=>openApp(c.key);
- dashGrid.appendChild(el);
-});
+ return el;
+}
+const rowsGrid=document.createElement('div');
+rowsGrid.className='cmdGrid';
+DASH.slice(0,8).forEach(c=>rowsGrid.appendChild(buildCard(c)));
+const row3Grid=document.createElement('div');
+row3Grid.className='cmdGrid cmdGrid3';
+DASH.slice(8).forEach(c=>row3Grid.appendChild(buildCard(c)));
+dashGrid.appendChild(rowsGrid);
+dashGrid.appendChild(row3Grid);
 
 /* ---------------- APP OVERLAY (unchanged working routing) ---------------- */
 const layer=document.getElementById('appLayer'),frame=document.getElementById('appFrame');
