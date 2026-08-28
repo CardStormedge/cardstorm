@@ -194,13 +194,13 @@ img{max-width:100%}
  <button class="imageTap active" id="imageTap" type="button" aria-label="Explore rookie hunts" onclick="openApp('team')"></button>
  <div class="cardTicker" aria-label="Real card showcase"><div class="cardTickerTrack" id="cardTickerTrack"></div></div>
  <div class="heroCopy">
-  <div class="heroPill" id="heroKicker">THE NEXT GENERATION</div>
-  <h1>KNOW THE CARD.<br><span>OWN THE CHASE.</span></h1>
-  <p id="heroSub">Rookie heat and a slab-breaking chase that starts the storm.</p>
+  <div class="heroPill" id="heroKicker">ROOKIE SEASON</div>
+  <h1 id="heroH1">ROOKIES TODAY.<br><span>STARS TOMORROW.</span></h1>
+  <p id="heroSub">Discover the rookies, track their rise, and find the cards before the hobby does.</p>
   <div class="heroExtra" id="heroExtra"></div>
   <div class="actions">
-   <button class="primary" id="ctaPrimary" onclick="openApp('team')">EXPLORE ROOKIE HUNTS</button>
-   <button class="secondary" id="ctaSecondary" onclick="openApp('market')">CHECK THE MARKET</button>
+   <button class="primary" id="ctaPrimary" onclick="openApp('team')">EXPLORE ROOKIES</button>
+   <button class="secondary" id="ctaSecondary" onclick="openApp('market')">VIEW TOP MOVERS</button>
   </div>
   <div id="starRail"></div>
   <div class="mobDots" id="mobDots"></div>
@@ -223,13 +223,12 @@ img{max-width:100%}
    photographs of real 2024 Donruss cards; no price or live-listing claim is made. */
 const DEFAULT_ACTIONS=[{label:'EXPLORE WHAT TO HUNT',key:'team'},{label:'CHECK THE MARKET',key:'market'}];
 const STARS=[
- {tab:'ROOKIES',kicker:'THE NEXT GENERATION',sub:'Rookie heat and the first-year cards collectors are chasing now.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp',imageKey:'team',actions:[{label:'EXPLORE ROOKIE HUNTS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'ROOKIE STARS',kicker:'BREAKOUT WATCH',sub:'The rookies turning into hobby stars and the cards moving with them.',p:'#2e69ff',mode:'photo',img:'assets/homepage/categories/rookie-stars.webp',imageKey:'team',actions:[{label:'FIND BREAKOUT ROOKIES',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'GOATS',kicker:'LEGENDS NEVER FADE',sub:'The iconic names and cards that set the standard for the hobby.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp',imageKey:'team',actions:[{label:'EXPLORE THE LEGENDS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Case hits, iconic inserts and the hobby’s biggest chase cards.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/case-hits-shedeur-downtown.webp',pos:'center 34%',mobileFill:true,imageKey:'team',actions:[{label:'EXPLORE HOLY GRAILS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'BREAK CENTER',kicker:'BUILD YOUR PERSONAL HUNT',sub:'Choose the team, players, rookies, inserts and cards you want — then find the right break opportunities.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-center.webp?v=2',imageKey:'breaks',extra:'hunt',actions:[{label:'BUILD YOUR HUNT',key:'breaks'},{label:'EXPLORE SETS',key:'sets'}]},
- {tab:'KNOW THE WORTH',kicker:'PLAY. LEARN. COLLECT SMARTER.',sub:'Ten rounds. Rank three related cards, build your score and challenge your friends while learning what to hunt.',p:'#d7a92d',mode:'photo',img:'assets/homepage/categories/know-the-worth-game.webp',imageKey:'game',extra:'worth',actions:[{label:'PLAY KNOW THE WORTH',key:'game'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'POKÉMON / TCG',kicker:'THE TCG CHASE',sub:'Iconic cards, premium sets and the biggest TCG chases.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON / TCG',key:'pokemon'},{label:'CHECK THE MARKET',key:'market'}]}
+ {tab:'ROOKIES',dd:'rookies',kicker:'ROOKIE SEASON',h1:'ROOKIES TODAY.<br><span>STARS TOMORROW.</span>',sub:'Discover the rookies, track their rise, and find the cards before the hobby does.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp',imageKey:'team',actions:[{label:'EXPLORE ROOKIES',key:'team'},{label:'VIEW TOP MOVERS',key:'market'}]},
+ {tab:'BREAK CENTER',dd:'breaks',kicker:'BREAK CENTER',h1:'REAL BREAKS.<br><span>REAL HITS.</span>',sub:'Find live and upcoming breaks, check team availability, and chase the biggest hits with the CardStorm community.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-studio.webp',imageKey:'breaks',extra:'hunt',actions:[{label:'ENTER BREAK CENTER',key:'breaks'},{label:'VIEW UPCOMING BREAKS',key:'breaks'}]},
+ {tab:'GOATS',dd:'goats',kicker:'GOATS',h1:'ICONIC PLAYERS.<br><span>TIMELESS CARDS.</span>',sub:'Explore the legends, their most iconic cards, and the value that never fades.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp',imageKey:'team',actions:[{label:'EXPLORE GOATS',key:'team'},{label:'VIEW LEGEND LIST',key:'market'}]},
+ {tab:'HOLY GRAILS',dd:'grails',kicker:'HOLY GRAILS',h1:'THE RAREST CARDS.<br><span>THE BIGGEST CHASES.</span>',sub:'Explore the holy grails, track values, and see what collectors are chasing now.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/case-hits-shedeur-downtown.webp',pos:'center 34%',mobileFill:true,imageKey:'sets',actions:[{label:'EXPLORE HOLY GRAILS',key:'sets'},{label:'VIEW TOP CHASES',key:'market'}]},
+ {tab:'KNOW THE WORTH',dd:'worth',kicker:'KNOW THE WORTH',h1:'REAL DATA.<br><span>REAL ANSWERS.</span>',sub:'Check current values, view market trends, and make smarter decisions.',p:'#d7a92d',mode:'photo',img:'assets/homepage/categories/know-the-worth.webp',imageKey:'market',actions:[{label:'CHECK A CARD',key:'market'},{label:'VIEW MARKET TRENDS',key:'market'}]},
+ {tab:'POKÉMON / TCG',dd:'tcg',kicker:'POKÉMON / TCG',h1:'COLLECT. BATTLE.<br><span>BELONG.</span>',sub:'Explore top sets, track values, and dive into the world of Pokémon TCG.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON',key:'pokemon'},{label:'VIEW TOP CARDS',key:'pokemon'}]}
 ];
 
 const scenesEl=document.getElementById('scenes');
@@ -336,17 +335,14 @@ hero.addEventListener('pointerleave',resetTimer);
 
 /* ---------------- DASHBOARD / COMMAND CENTER ---------------- */
 const DASH=[
- {key:'team',num:'01',h1:'WHAT TO',h2:'HUNT',desc:'Team-by-team players, rookies and chase cards before the break starts.',cta:'START HUNTING →',ac:'#55d8ff',art:'assets/homepage/dashboard/01-what-to-hunt.webp',pos:'center center'},
- {key:'sets',num:'02',h1:'SETS &',h2:'PACKS',desc:'Product intelligence for the releases collectors are opening.',cta:'EXPLORE SETS & PACKS →',ac:'#55d8ff',art:'assets/homepage/dashboard/02-sets-packs.webp',pos:'center center'},
- {key:'checks',num:'03',h1:'',h2:'CHECKLISTS',desc:'Comprehensive checklists across sets, teams and parallels — football, basketball and baseball.',cta:'BROWSE CHECKLISTS →',ac:'#7fd8ff',art:'assets/homepage/dashboard/03-checklists.webp',pos:'center center'},
- {key:'sets',num:'04',h1:'DOWNTOWN /',h2:'UPTOWN',desc:'A dedicated center for the hobby\'s hottest chase-insert hits.',cta:'EXPLORE DOWNTOWNS →',ac:'#ffd35a',art:'assets/homepage/dashboard/04-downtown-uptown.webp',pos:'center center'},
- {key:'market',num:'05',h1:'MARKET &',h2:'COMPS',desc:'Real sales, real trends and smarter decisions built on live comps.',cta:'EXPLORE MARKET →',ac:'#6cff9e',art:'assets/homepage/dashboard/05-market-comps.webp',pos:'center center'},
- {key:'watch',num:'06',h1:'NEVER MISS',h2:'A MOVE',desc:'Track the cards, players and opportunities you care about most.',cta:'OPEN WATCHLIST →',ac:'#55d8ff',art:'assets/homepage/dashboard/06-watchlist.webp',pos:'center center'},
- {key:'game',num:'07',h1:'PROVE YOUR',h2:'KNOWLEDGE',desc:'Rank three related cards from highest sale to lowest and prove you know value.',cta:'PLAY THE CHALLENGE →',ac:'#c58bff',art:'assets/homepage/dashboard/07-cardstorm-challenge.webp',pos:'center center'},
- {key:'breaks',num:'08',h1:'BREAK',h2:'CENTER',desc:'Find live breaks, breaker communities and chats — breaker tools are coming next.',cta:'FIND YOUR NEXT BREAK →',ac:'#ffb35a',art:'assets/homepage/categories/break-center.webp',pos:'center 30%',live:true},
- {key:'pokemon',num:'09',h1:'THE TCG',h2:'CHASE',desc:'Sets, chase cards, market intelligence and collector tools for Pokémon and TCG.',cta:'EXPLORE POKÉMON / TCG →',ac:'#ffde59',art:'assets/homepage/dashboard/09-pokemon-tcg.webp',pos:'center center'},
- {key:'live',num:'10',h1:'CARDS COME',h2:'ALIVE',desc:'The social, high-energy side of the hobby — cards, collectors and unforgettable moments on screen.',cta:'WATCH CARDS COME ALIVE →',ac:'#ffd35a',art:'assets/homepage/dashboard/10-cards-come-alive.webp',pos:'center center'},
- {key:'plans',num:'11',h1:'KNOW MORE.',h2:'COLLECT SMARTER.',desc:'Deeper intelligence, calculators and premium market tools for collectors who want an edge.',cta:'GET THE EDGE →',ac:'#55d8ff',art:'assets/homepage/dashboard/11-cardstorm-edge.webp',pos:'center center'}
+ {key:'team',dd:'rookies',num:'01',h1:'',h2:'ROOKIES',desc:'Today\'s rookies. Tomorrow\'s stars.',cta:'EXPLORE ROOKIES →',ac:'#55d8ff',art:'assets/homepage/categories/rookies.webp',pos:'center center'},
+ {key:'market',dd:'market',num:'02',h1:'MARKET',h2:'RADAR',desc:'Track the market. Find the edge.',cta:'EXPLORE MARKET →',ac:'#6cff9e',art:'assets/homepage/dashboard/05-market-comps.webp',pos:'center center'},
+ {key:'sets',dd:'sets',num:'03',h1:'SETS &',h2:'PACKS',desc:'Explore sets. Know what to hunt.',cta:'EXPLORE SETS & PACKS →',ac:'#55d8ff',art:'assets/homepage/dashboard/02-sets-packs.webp',pos:'center center'},
+ {key:'breaks',dd:'breaks',num:'04',h1:'BREAK',h2:'CENTER',desc:'Live & upcoming breaks.',cta:'FIND YOUR NEXT BREAK →',ac:'#ffb35a',art:'assets/homepage/categories/break-studio.webp',pos:'center 30%',live:true},
+ {key:'team',dd:'goats',num:'05',h1:'',h2:'GOATS',desc:'The greatest. All-time legends.',cta:'EXPLORE GOATS →',ac:'#ff6a72',art:'assets/homepage/categories/goats.webp',pos:'center center'},
+ {key:'sets',dd:'grails',num:'06',h1:'HOLY',h2:'GRAILS',desc:'The rarest cards. The biggest chases.',cta:'EXPLORE HOLY GRAILS →',ac:'#ffd35a',art:'assets/homepage/categories/case-hits-shedeur-downtown.webp',pos:'center 30%'},
+ {key:'plans',dd:'intel',num:'07',h1:'COLLECTOR',h2:'INTEL',desc:'Data. Insights. Smarter moves.',cta:'GET THE EDGE →',ac:'#55d8ff',art:'assets/homepage/dashboard/11-cardstorm-edge.webp',pos:'center center'},
+ {key:'pokemon',dd:'tcg',num:'08',h1:'POKÉMON /',h2:'TCG',desc:'Cards. Sets. Culture. All in one place.',cta:'EXPLORE POKÉMON / TCG →',ac:'#ffde59',art:'assets/homepage/dashboard/09-pokemon-tcg.webp',pos:'center center'}
 ];
 
 const dashGrid=document.getElementById('dashGrid');
@@ -369,14 +365,15 @@ function buildCard(c){
  el.onclick=()=>openApp(c.key);
  return el;
 }
-const rowsGrid=document.createElement('div');
-rowsGrid.className='cmdGrid';
-DASH.slice(0,8).forEach(c=>rowsGrid.appendChild(buildCard(c)));
-const row3Grid=document.createElement('div');
-row3Grid.className='cmdGrid cmdGrid3';
-DASH.slice(8).forEach(c=>row3Grid.appendChild(buildCard(c)));
-dashGrid.appendChild(rowsGrid);
-dashGrid.appendChild(row3Grid);
+const cmdGridEl=document.createElement('div');
+cmdGridEl.className='cmdGrid';
+dashGrid.appendChild(cmdGridEl);
+let cmdActiveDD=null;
+function renderCommandCenter(){
+ cmdGridEl.innerHTML='';
+ DASH.filter(c=>!cmdActiveDD||c.dd!==cmdActiveDD).forEach(c=>cmdGridEl.appendChild(buildCard(c)));
+}
+renderCommandCenter();
 
 /* ---------------- APP OVERLAY (unchanged working routing) ---------------- */
 const layer=document.getElementById('appLayer'),frame=document.getElementById('appFrame');
