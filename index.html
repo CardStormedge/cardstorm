@@ -223,12 +223,13 @@ img{max-width:100%}
    photographs of real 2024 Donruss cards; no price or live-listing claim is made. */
 const DEFAULT_ACTIONS=[{label:'EXPLORE WHAT TO HUNT',key:'team'},{label:'CHECK THE MARKET',key:'market'}];
 const STARS=[
- {tab:'ROOKIES',dd:'rookies',kicker:'ROOKIE SEASON',h1:'ROOKIES TODAY.<br><span>STARS TOMORROW.</span>',sub:'Discover the rookies, track their rise, and find the cards before the hobby does.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp',imageKey:'team',actions:[{label:'EXPLORE ROOKIES',key:'team'},{label:'VIEW TOP MOVERS',key:'market'}]},
+ {tab:'ROOKIES',dd:'rookies',kicker:'ROOKIE SEASON',h1:'ROOKIES TODAY.<br><span>STARS TOMORROW.</span>',sub:'Discover the rookies, track their rise, and find the cards before the hobby does.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies-hero.webp',imageKey:'team',actions:[{label:'EXPLORE ROOKIES',key:'team'},{label:'VIEW TOP MOVERS',key:'market'}]},
  {tab:'BREAK CENTER',dd:'breaks',kicker:'BREAK CENTER',h1:'REAL BREAKS.<br><span>REAL HITS.</span>',sub:'Find live and upcoming breaks, check team availability, and chase the biggest hits with the CardStorm community.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-studio.webp',imageKey:'breaks',extra:'hunt',actions:[{label:'ENTER BREAK CENTER',key:'breaks'},{label:'VIEW UPCOMING BREAKS',key:'breaks'}]},
- {tab:'GOATS',dd:'goats',kicker:'GOATS',h1:'ICONIC PLAYERS.<br><span>TIMELESS CARDS.</span>',sub:'Explore the legends, their most iconic cards, and the value that never fades.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp',imageKey:'team',actions:[{label:'EXPLORE GOATS',key:'team'},{label:'VIEW LEGEND LIST',key:'market'}]},
- {tab:'HOLY GRAILS',dd:'grails',kicker:'HOLY GRAILS',h1:'THE RAREST CARDS.<br><span>THE BIGGEST CHASES.</span>',sub:'Explore the holy grails, track values, and see what collectors are chasing now.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/case-hits-shedeur-downtown.webp',pos:'center 34%',mobileFill:true,imageKey:'sets',actions:[{label:'EXPLORE HOLY GRAILS',key:'sets'},{label:'VIEW TOP CHASES',key:'market'}]},
- {tab:'KNOW THE WORTH',dd:'worth',kicker:'KNOW THE WORTH',h1:'REAL DATA.<br><span>REAL ANSWERS.</span>',sub:'Check current values, view market trends, and make smarter decisions.',p:'#d7a92d',mode:'photo',img:'assets/homepage/categories/know-the-worth.webp',imageKey:'market',actions:[{label:'CHECK A CARD',key:'market'},{label:'VIEW MARKET TRENDS',key:'market'}]},
- {tab:'POKÉMON / TCG',dd:'tcg',kicker:'POKÉMON / TCG',h1:'COLLECT. BATTLE.<br><span>BELONG.</span>',sub:'Explore top sets, track values, and dive into the world of Pokémon TCG.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON',key:'pokemon'},{label:'VIEW TOP CARDS',key:'pokemon'}]}
+ {tab:'GOATS',dd:'goats',kicker:'GOATS',h1:'ICONIC PLAYERS.<br><span>TIMELESS CARDS.</span>',sub:'Explore the legends, their most iconic cards, and the value that never fades.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats-hero.webp',imageKey:'team',actions:[{label:'EXPLORE GOATS',key:'team'},{label:'VIEW LEGEND LIST',key:'market'}]},
+ {tab:'HOLY GRAILS',dd:'grails',kicker:'HOLY GRAILS',h1:'THE RAREST CARDS.<br><span>THE BIGGEST CHASES.</span>',sub:'Explore the holy grails, track values, and see what collectors are chasing now.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/case-hits-hero.webp',imageKey:'sets',actions:[{label:'EXPLORE HOLY GRAILS',key:'sets'},{label:'VIEW TOP CHASES',key:'market'}]},
+ {tab:'KNOW THE WORTH',dd:'intel',kicker:'KNOW THE WORTH',h1:'REAL DATA.<br><span>REAL ANSWERS.</span>',sub:'Check current values, view market trends, and make smarter decisions.',p:'#d7a92d',mode:'photo',img:'assets/homepage/dashboard/05-market-comps.webp',imageKey:'market',actions:[{label:'CHECK A CARD',key:'market'},{label:'VIEW MARKET TRENDS',key:'market'}]},
+ {tab:'POKÉMON / TCG',dd:'tcg',kicker:'POKÉMON / TCG',h1:'COLLECT. BATTLE.<br><span>BELONG.</span>',sub:'Explore top sets, track values, and dive into the world of Pokémon TCG.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg-hero.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON',key:'pokemon'},{label:'VIEW TOP CARDS',key:'pokemon'}]},
+ {tab:'LIVE CARDS',dd:'live',kicker:'LIVE CARDS',h1:'LIVE CARDS.<br><span>REAL ACTION.</span><br><span>RIGHT NOW.</span>',sub:'Live listings. Live sales. Live momentum. Be in the action as it happens.',p:'#ff3d4d',mode:'photo',img:'assets/homepage/categories/live-cards-hero.webp',imageKey:'live',actions:[{label:'EXPLORE LIVE CARDS',key:'live'},{label:'VIEW RECENT SALES',key:'market'}]}
 ];
 
 const scenesEl=document.getElementById('scenes');
@@ -277,7 +278,7 @@ STARS.forEach((d,i)=>{
 /* ---------------- HERO CONTROLS / ROTATION ---------------- */
 const hero=document.getElementById('hero'),scenes=[...document.querySelectorAll('.scene')],
  rail=document.getElementById('starRail'),mobDots=document.getElementById('mobDots'),
- heroKicker=document.getElementById('heroKicker'),heroSub=document.getElementById('heroSub'),
+ heroKicker=document.getElementById('heroKicker'),heroH1=document.getElementById('heroH1'),heroSub=document.getElementById('heroSub'),
  ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary'),heroExtra=document.getElementById('heroExtra'),imageTap=document.getElementById('imageTap');
 let idx=0,timer=null,striking=false;
 
@@ -308,6 +309,8 @@ function show(n){
  [...mobDots.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
  fillTicker(d.tab==='POKÉMON / TCG'?POKEMON_CARDS:CAROUSEL_CARDS);
  heroKicker.textContent=d.kicker;
+ if(heroH1)heroH1.innerHTML=d.h1;
+ cmdActiveDD=d.dd;if(typeof renderCommandCenter==='function')renderCommandCenter();
  heroSub.textContent=d.sub;
  imageTap.classList.toggle('active',!!d.imageKey);
  imageTap.onclick=d.imageKey?()=>openApp(d.imageKey):null;
@@ -342,7 +345,8 @@ const DASH=[
  {key:'team',dd:'goats',num:'05',h1:'',h2:'GOATS',desc:'The greatest. All-time legends.',cta:'EXPLORE GOATS →',ac:'#ff6a72',art:'assets/homepage/categories/goats.webp',pos:'center center'},
  {key:'sets',dd:'grails',num:'06',h1:'HOLY',h2:'GRAILS',desc:'The rarest cards. The biggest chases.',cta:'EXPLORE HOLY GRAILS →',ac:'#ffd35a',art:'assets/homepage/categories/case-hits-shedeur-downtown.webp',pos:'center 30%'},
  {key:'plans',dd:'intel',num:'07',h1:'COLLECTOR',h2:'INTEL',desc:'Data. Insights. Smarter moves.',cta:'GET THE EDGE →',ac:'#55d8ff',art:'assets/homepage/dashboard/11-cardstorm-edge.webp',pos:'center center'},
- {key:'pokemon',dd:'tcg',num:'08',h1:'POKÉMON /',h2:'TCG',desc:'Cards. Sets. Culture. All in one place.',cta:'EXPLORE POKÉMON / TCG →',ac:'#ffde59',art:'assets/homepage/dashboard/09-pokemon-tcg.webp',pos:'center center'}
+ {key:'pokemon',dd:'tcg',num:'08',h1:'POKÉMON /',h2:'TCG',desc:'Cards. Sets. Culture. All in one place.',cta:'EXPLORE POKÉMON / TCG →',ac:'#ffde59',art:'assets/homepage/dashboard/09-pokemon-tcg.webp',pos:'center center'},
+ {key:'live',dd:'live',num:'09',h1:'LIVE',h2:'CARDS',desc:'Live listings.<br>Real sales. Real action.',cta:'EXPLORE LIVE CARDS →',ac:'#ff3d4d',art:'assets/homepage/categories/live-cards-tile.webp',pos:'center center'}
 ];
 
 const dashGrid=document.getElementById('dashGrid');
@@ -371,7 +375,7 @@ dashGrid.appendChild(cmdGridEl);
 let cmdActiveDD=null;
 function renderCommandCenter(){
  cmdGridEl.innerHTML='';
- DASH.filter(c=>!cmdActiveDD||c.dd!==cmdActiveDD).forEach(c=>cmdGridEl.appendChild(buildCard(c)));
+ DASH.filter(c=>c.dd!==cmdActiveDD).slice(0,8).forEach(c=>cmdGridEl.appendChild(buildCard(c)));
 }
 renderCommandCenter();
 
