@@ -1,0 +1,22 @@
+{
+  "sport":"Football",
+  "season":2024,
+  "lastVerified":"2026-08-28",
+  "categories":[
+    {"id":"rookie","label":"Rookies","priority":1,"examples":["Rated Rookie","Base Rookie","Rookie Ticket","Rookie Auto","Rookie Patch Auto"],"collectorIntent":"First-year cards and rookie-designated chase cards."},
+    {"id":"case_hit","label":"Case Hits / SSPs","priority":2,"examples":["Downtown","Kaboom","Color Blast","Stained Glass","Manga","Blank Slate","Zebra","Genesis","Honeycomb","Peacock","Clearly Downtown"],"collectorIntent":"Low-frequency or short-printed cards that breakers and collectors actively hunt."},
+    {"id":"parallel","label":"Parallels","priority":3,"examples":["Silver","Holo","Tie-Dye","Gold","Green","Blue","Red","Disco","Dragon Scale","White Sparkle"],"collectorIntent":"Color/finish variations of base or insert cards."},
+    {"id":"numbered","label":"Numbered","priority":4,"examples":["/199","/99","/75","/50","/35","/25","/15","/10","/5","1/1"],"collectorIntent":"Serial-numbered scarcity. Never infer numbering; use only verified product data."},
+    {"id":"autograph","label":"Autographs","priority":5,"examples":["Rookie Ticket Auto","Rated Rookie Auto","Rookie Auto","Patch Auto"],"collectorIntent":"On-card or sticker autograph content."},
+    {"id":"memorabilia","label":"Memorabilia","priority":6,"examples":["Jersey","Patch","Prime Patch","Rookie Premiere Materials"],"collectorIntent":"Relic/memorabilia content, with autograph hybrids also tagged autograph."},
+    {"id":"insert","label":"Inserts","priority":7,"examples":["The Rookies","Mythical","Blazers","Gridiron Marvels","Bomb Squad","Vortex","Holoheroes"],"collectorIntent":"Named non-base subsets that may range from common to rare."},
+    {"id":"base","label":"Base / Core","priority":8,"examples":["Base","Concourse","Premier Level","Club Level","Suite Level","Field Level"],"collectorIntent":"Core checklist cards. Useful for completeness but usually lower hunt priority than the categories above."}
+  ],
+  "classificationRules":[
+    "A card may have multiple tags, e.g. rookie + autograph + numbered.",
+    "Case hit/SSP status must be verified from a reputable checklist/product source.",
+    "Serial numbering must be stored exactly as verified and never guessed from parallel names.",
+    "2024 Select XRC cards remain product-checklist records but are excluded from 2024 Team Hunt player eligibility.",
+    "Team Hunt display order should favor collector-intent categories above generic base cards."
+  ]
+}
