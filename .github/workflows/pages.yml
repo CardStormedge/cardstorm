@@ -23,6 +23,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Apply homepage mobile repair
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          s=s.replace('assets/homepage/categories/holy-grails-three-sport.webp?v=2','assets/homepage/categories/holy-grails-final.webp?v=20260828c')
+          tag='<script src="mobile-fixes.js?v=20260828c"></script>'
+          if tag not in s:
+              s=s.replace('</body>',tag+'\n</body>')
+          p.write_text(s)
+          PY
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
