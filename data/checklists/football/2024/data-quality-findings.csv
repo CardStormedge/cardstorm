@@ -1,0 +1,10 @@
+file_or_area,finding,severity,action,status
+"data/football/2024/donruss.json","Main already contains 2024 Donruss Rated Rookies #301-400 with explicit NFL team mappings plus Downtown chase data.",INFO,"Use as the first normalized Team Hunt source instead of rebuilding.",READY_FOR_AUDIT
+"data/football/2024/select.json","Main contains 520 enumerated rows: 500 base-tier cards plus 20 XRC redemption records.",INFO,"Reuse base-tier records after QA; isolate XRC records from 2024 Team Hunt.",READY_FOR_AUDIT
+"data/football/2024/select.json","At least one visible record is incorrectly flagged rookie: Andrew Van Ginkel is marked rookie=true in Concourse.",HIGH,"Do not trust Select rookie boolean wholesale. Revalidate rookie flags before Team Hunt ingestion.",BLOCKING
+"data/football/2024/select.json","XRC records belong to following rookie class despite 2024 product branding.",HIGH,"Set teamHuntEligible2024=false for all XRC records and never use them as 2024 team chase players.",RULE_DEFINED
+"data/football/2024/prizm.json","File exists on main but is empty.",HIGH,"Do not wire it to UI. Populate only from verified checklist sources.",BLOCKING
+"Reference card source map","32 source URLs are selected but binary image files are not localized.",HIGH,"Download/localize, visually inspect, optimize and then update production paths.",BLOCKING
+"Team targets","32 teams now have curated priority targets with 2024 year logic.",INFO,"Use as ranking layer; card-level product hits still need verification.",PASS
+"Product coverage","18 mainstream products have verified coverage sources; core product priority is defined.",INFO,"Normalize core products before secondary products.",PASS
+"UI","Data work is intentionally not wired to live Team Hunt yet.",INFO,"Keep live UI untouched until blocking data/image QA passes.",PASS
