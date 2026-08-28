@@ -211,9 +211,17 @@ function openInsight(k){navPush();const d=INSIGHT_DATA[k];C.innerHTML=shell('CAR
 function insights(){return shell('AI INSIGHTS','Powered by CardStorm AI','Click an intelligence module to open the collector guidance behind it.',`<div class=teamgrid>${Object.keys(INSIGHT_DATA).map(x=>`<div class="teamcard aiCard" style="grid-template-columns:1fr" onclick="openInsight('${x}')"><div><div class=teamname>${x}</div><div class=target>${INSIGHT_DATA[x].text}</div><div class=aiOpen>OPEN INTELLIGENCE →</div></div></div>`).join('')}</div>`)}
 const F={team,sets,market,live,breaks,plans,game,watch,checks,insights};
 let navStack=[];
-function navPush(){if(V.style.display!=='none'&&C.innerHTML)navStack.push({home:false,html:C.innerHTML,hash:location.hash,scroll:C.scrollTop});else navStack.push({home:true});if(navStack.length>30)navStack.shift()}
-function goBack(){const s=navStack.pop();if(!s||s.home){goHome();return}H.style.display='none';V.style.display='block';C.innerHTML=s.html;C.scrollTop=s.scroll||0;history.replaceState(null,'',s.hash||location.pathname)}
-function show(v){navPush();H.style.display='none';V.style.display='block';C.innerHTML=(F[v]||team)();C.scrollTop=0;location.hash=v}
+// Every real navigation (show() or any open*() drill-down) calls navPush() exactly once
+// before rendering. navPush() is therefore the single choke point where we also create a
+// matching real browser history entry, so navStack and history.length stay in lockstep and
+// the native browser Back button and the on-page BACK button drive the exact same restore
+// logic via the popstate listener below - no more divergence between "our" back state and
+// the browser's real history stack.
+function navPush(){if(V.style.display!=='none'&&C.innerHTML)navStack.push({home:false,html:C.innerHTML,hash:location.hash,scroll:C.scrollTop});else navStack.push({home:true});if(navStack.length>30)navStack.shift();history.pushState({cardstormDepth:navStack.length},'',location.hash||location.pathname)}
+function restoreFromNavStack(){const s=navStack.pop();if(!s||s.home){goHome();return}H.style.display='none';V.style.display='block';C.innerHTML=s.html;C.scrollTop=s.scroll||0}
+window.addEventListener('popstate',restoreFromNavStack);
+function goBack(){history.back()}
+function show(v){navPush();H.style.display='none';V.style.display='block';C.innerHTML=(F[v]||team)();C.scrollTop=0;history.replaceState(history.state,'','#'+v)}
 // Single source of truth for "home": app.html is the tool layer embedded by index.html's
 // CardStorm homepage. Every logo/Home/Back-to-CardStorm control routes through here instead
 // of ever re-showing the retired #home/#homeNew legacy dashboard below.
@@ -401,6 +409,35 @@ document.title='CardStorm V8.1 — 10-Round Daily Game';
 .marketSportSummary{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.marketSportSummary .metric{min-width:150px}
 .libraryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.libraryCard{border:1px solid #2c668e;border-radius:12px;background:#071724;padding:12px}.libraryCard button{margin-top:9px}
 @media(max-width:900px){.hitlibgrid,.libraryGrid{grid-template-columns:repeat(2,1fr)}.hitref{grid-template-columns:1fr}}@media(max-width:600px){.hitlibgrid,.libraryGrid{grid-template-columns:1fr}}
+.exactHitList{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.exactHit{border:1px solid #2b6488;border-radius:11px;background:#061521;overflow:hidden}
+.exactHit summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.exactHit summary::-webkit-details-marker{display:none}
+.exactHit summary strong{flex:1 1 auto}
+.exactHit summary:hover{background:#0a2135}
+.exactHit[open] summary{border-bottom:1px solid #17364d}
+.exactHitBody{padding:14px}
+.checklistStats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 8px}
+.statChip{border:1px solid #2c668e;background:#071724;border-radius:999px;padding:7px 12px;font-size:11px;font-weight:850;color:#a8bfd1}
+.statChip b{color:#fff;font-size:13px;margin-right:4px}
+.statChip.accent{border-color:#55d8ff;color:#55d8ff}.statChip.accent b{color:#55d8ff}
+.progressTrack{height:8px;border-radius:999px;background:#0a1c2c;border:1px solid #1c4360;overflow:hidden;margin-bottom:14px}
+.progressFill{height:100%;background:linear-gradient(90deg,#55d8ff,#126de1);transition:width .3s ease}
+.prodGroup{border:1px solid #2b6488;border-radius:11px;background:#061521;margin-bottom:8px;overflow:hidden}
+.prodGroup summary{cursor:pointer;list-style:none;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.prodGroup summary::-webkit-details-marker{display:none}
+.prodGroup summary:hover{background:#0a2135}
+.prodGroup[open] summary{border-bottom:1px solid #17364d}
+.prodMeta{margin-left:auto;font-size:10.5px;color:#7ba9c7;font-weight:800;letter-spacing:.04em}
+.prodBody{padding:10px 14px 14px;display:flex;flex-direction:column;gap:2px}
+.ckRow{display:flex;align-items:center;gap:10px;padding:9px 4px;border-bottom:1px solid #101f2f;cursor:pointer;font-size:12.5px}
+.ckRow:last-of-type{border-bottom:0}
+.ckRow input[type=checkbox]{width:19px;height:19px;flex:0 0 auto;accent-color:#55d8ff;cursor:pointer}
+.ckNum{color:#7ba9c7;font-weight:800;min-width:34px}
+.ckPlayer{flex:1 1 auto;font-weight:750;color:#fff}
+.ckCat{color:#7ba9c7;font-size:10.5px}
+.ckTag{border:1px solid #3e86b1;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:900;color:#55d8ff}
+@media(max-width:600px){.checklistStats{gap:6px}.statChip{padding:6px 10px;font-size:10px}.ckCat{display:none}}
 </style>
 <script>
 // V8.3: sport-filtered market, clickable exact-hit library, checklist library navigation.
@@ -448,7 +485,74 @@ function renderHitLibrary(player){
 }
 function openAllHitLibrary(){navPush();hitLibSport=sport;hitLibYear=year;hitLibFocus='';renderHitLibrary('')}
 
-function openTeam(ab){navPush();const t=DATA[sport].find(x=>x[0]===ab);const players=t[2];const hits=hitList(players[0]);C.innerHTML=shell('ROOKIE & CHASE BOARD',t[1],year+' '+sport+' intelligence',`<div class=feature><div style="display:flex;align-items:center;gap:18px"><img class=teamlogo style="width:92px;height:92px" src="${logoUrl(t[0])}" width=92 height=92 loading=lazy decoding=async alt="${t[1]} logo"><div><h2>${t[1]} Chase Board</h2><div class=sub>Rookies first, then young stars and major veteran card-market targets.</div></div></div><div class=playergrid>${players.map((p,i)=>`<div class=player><div class=num>${i===0?'FEATURED CHASE':i===1?'PRIORITY TARGET':'TEAM TARGET'}</div><b>${p}</b><div class=target>${i<2?'Rookie / young-star priority':'Established card-market chase'}</div>${['Downtown','Kaboom','Color','Auto'].map(x=>`<span class=pill>${x}</span>`).join('')}</div>`).join('')}</div></div><div class=panel style="margin-top:14px"><div class=feature><h2>EXACT HITS TO HUNT</h2><div class=sub>Each chase tile is clickable. Open it to see a card-type example plus the full hit library across every product/year currently mapped in CardStorm.</div><div class=hitgrid>${hits.map((h,i)=>`<div class=hit onclick="openHitLibrary('${ab}','${h.replace(/'/g,"\\'")}','${players[i%players.length].replace(/'/g,"\\'")}')"><div class=rarity>${['CORE ROOKIE','PARALLEL','PREMIUM','SSP','CASE HIT','ULTRA RARE'][i]}</div><strong>${h}</strong><div class=target>${players[i%players.length]} • prioritize numbered, SSP and gem-mint examples.</div><div class=openhint>OPEN EXAMPLE + FULL HIT LIBRARY →</div></div>`).join('')}</div><p><button class=cta onclick="openAllHitLibrary()">BROWSE ALL SETS / YEARS / SPORTS →</button></p></div><div class=feature><h2>WHAT TO HUNT</h2>${['Prizm','Select','Donruss','Donruss Optic','Mosaic','Topps Chrome','Topps Resurgence'].map(x=>`<div style="padding:8px;border-bottom:1px solid #173950"><b>${x}</b><div class=target>Parallel hierarchy → player checklist → ${t[1]} hits</div></div>`).join('')}</div></div><div class=rookiebar><h2 style="margin:0">${rookieLabel()}</h2><div class=sub>Quick-view rookie card families for the selected team and season.</div><div class=rookiecards>${players.map((p,i)=>`<div class=rookie><div class=rr>${i<2?'ROOKIE PRIORITY':'CHASE COLLECTION'}</div><b>${p}</b><div class=target>${sport==='baseball'?'Rated Rookie • RC • Chrome • Refractor':'Rated Rookie • Optic • Prizm • Select'}</div><div style="margin-top:8px"><span class=pill>Base</span><span class=pill>Holo/Silver</span><span class=pill>Numbered</span></div></div>`).join('')}</div></div>`)}
+/* ---------------- TEAM HUNT: verified checklist data layer ---------------- */
+const CHECKLIST_MANIFEST={
+ 'football|2024':[
+  {key:'donruss',name:'Donruss',file:'data/football/2024/donruss.json',teamMapped:true,status:'RELEASED'},
+  {key:'prizm',name:'Prizm',file:'data/football/2024/prizm.json',teamMapped:true,status:'RELEASED'},
+  {key:'select',name:'Select',file:'data/football/2024/select.json',teamMapped:false,status:'RELEASED'}
+ ]
+};
+const _checklistCache={};
+function loadChecklistProduct(sportKey,yr,prodKey){
+ const k=sportKey+'|'+yr+'|'+prodKey,entry=(CHECKLIST_MANIFEST[sportKey+'|'+yr]||[]).find(p=>p.key===prodKey);
+ if(!entry)return Promise.resolve(null);
+ if(!_checklistCache[k])_checklistCache[k]=fetch(entry.file).then(r=>r.json()).catch(()=>null);
+ return _checklistCache[k];
+}
+function normalizeDonruss(raw){const out=[];Object.entries(raw.categories||{}).forEach(([catName,cat])=>{if(cat.kind!=='cards')return;(cat.cards||[]).forEach(c=>{out.push({product:'Donruss',category:catName,cardNumber:c.cardNumber,player:c.player||'',team:c.team||'',rookie:!!c.rookie,ratedRookie:!!c.ratedRookie,id:donrussCardKey(catName,c)})})});return out}
+function normalizePrizm(raw){const out=[];Object.entries(raw.categories||{}).forEach(([catName,groups])=>{(groups||[]).forEach(g=>{(g.cards||[]).forEach(c=>{out.push({product:'Prizm',category:catName,group:g.name,cardNumber:c.cardNumber,player:c.athlete||'',team:c.team||'',serialNumberedTo:c.serialNumberedTo||g.serialNumberedTo||null,id:prizmCardKey(catName,g.name,c)})})})});return out}
+function normalizeSelect(raw){const out=[];Object.entries(raw.categories||{}).forEach(([catName,cat])=>{if(cat.kind!=='cards')return;(cat.cards||[]).forEach(c=>{out.push({product:'Select',category:catName,cardNumber:c.cardNumber,player:c.player||'',team:'',rookie:!!c.rookie,id:selectCardKey(catName,c)})})});return out}
+function teamMatches(cardTeam,teamFullName){return !!cardTeam&&cardTeam.trim().toLowerCase()===teamFullName.trim().toLowerCase()}
+function loadTeamChecklist(sportKey,yr,teamFullName){
+ const manifest=CHECKLIST_MANIFEST[sportKey+'|'+yr]||[];
+ return Promise.all(manifest.map(entry=>entry.teamMapped===false?Promise.resolve({entry,cards:[]}):
+  loadChecklistProduct(sportKey,yr,entry.key).then(raw=>{
+   if(!raw)return{entry,cards:[]};
+   let norm=[];
+   if(entry.key==='donruss')norm=normalizeDonruss(raw);else if(entry.key==='prizm')norm=normalizePrizm(raw);else if(entry.key==='select')norm=normalizeSelect(raw);
+   return{entry,cards:norm.filter(c=>teamMatches(c.team,teamFullName))}
+  })));
+}
+const REFERENCE_CARDS={DEN:{img:'assets/reference-cards/2024-donruss-bo-nix.webp',player:'Bo Nix',setName:'2024 Donruss Rated Rookie'}};
+function toggleTeamCardOwned(id,checked,ab){const o=loadOwned();if(checked)o[id]=true;else delete o[id];saveOwned(o);refreshTeamChecklistStats(ab)}
+function refreshTeamChecklistStats(){const host=document.getElementById('teamChecklistStats');if(!host||!host.dataset.ids)return;const ids=JSON.parse(host.dataset.ids),o=loadOwned(),owned=ids.filter(id=>o[id]).length,total=ids.length,pct=total?Math.round(owned/total*100):0;host.innerHTML=`<span class=statChip><b>${owned}</b> OWNED</span><span class=statChip><b>${total}</b> TOTAL</span><span class="statChip accent"><b>${pct}%</b> COMPLETE</span>`;const bar=document.getElementById('teamChecklistBar');if(bar)bar.style.width=pct+'%'}
+function renderTeamChecklistBlock(ab,teamFullName){
+ loadTeamChecklist(sport,year,teamFullName).then(results=>{
+  const host=document.getElementById('teamChecklistHost');
+  if(!host)return;
+  if(!(CHECKLIST_MANIFEST[sport+'|'+year]||[]).length){host.innerHTML=`<div class=notice>CardStorm hasn't ingested verified per-card checklist data for ${sport.toUpperCase()} ${year} yet. Team checklist will appear here once that data is added.</div>`;return}
+  const owned=loadOwned();let allIds=[];
+  host.innerHTML=results.map(({entry,cards})=>{
+   if(entry.teamMapped===false)return `<details class=prodGroup><summary><b>${entry.name}</b><span class=prodMeta>CHECKLIST NOT YET MAPPED BY TEAM</span></summary><div class=prodBody><p class=sub>${entry.name} is a verified released product, but its checklist data doesn't include a per-card team field yet, so it can't be filtered to ${teamFullName} here.</p><button class=cta onclick="sport='${sport}';year='${year}';openSetChecklist('${entry.name}')">VIEW FULL ${entry.name.toUpperCase()} CHECKLIST →</button></div></details>`;
+   if(!cards.length)return `<details class=prodGroup><summary><b>${entry.name}</b><span class=prodMeta>0 cards found for ${teamFullName}</span></summary><div class=prodBody><p class=sub>No ${teamFullName} cards found in the verified ${entry.name} checklist.</p></div></details>`;
+   cards.forEach(c=>allIds.push(c.id));
+   const rows=cards.map(c=>`<label class=ckRow><input type=checkbox ${owned[c.id]?'checked':''} onchange="toggleTeamCardOwned('${c.id.replace(/'/g,"\\'")}',this.checked,'${ab}')"><span class=ckNum>#${c.cardNumber}</span><span class=ckPlayer>${c.player}</span><span class=ckCat>${c.category}${c.group?' • '+c.group:''}</span>${c.ratedRookie||c.rookie?'<span class=ckTag>RC</span>':''}${c.serialNumberedTo?'<span class=ckTag>/'+c.serialNumberedTo+'</span>':''}</label>`).join('');
+   return `<details class=prodGroup open><summary><b>${entry.name}</b><span class=prodMeta>${cards.length} card${cards.length===1?'':'s'}</span></summary><div class=prodBody>${rows}<button class=cta style="margin-top:10px" onclick="sport='${sport}';year='${year}';openSetChecklist('${entry.name}')">VIEW FULL ${entry.name.toUpperCase()} CHECKLIST →</button></div></details>`;
+  }).join('');
+  const statsHost=document.getElementById('teamChecklistStats');
+  if(statsHost)statsHost.dataset.ids=JSON.stringify(allIds);
+  refreshTeamChecklistStats();
+ });
+}
+function openTeam(ab){
+ navPush();
+ const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1],hits=hitList(players[0]),ref=REFERENCE_CARDS[ab];
+ const refBlock=ref?
+  `<div class=hitref><div class=refcard style="padding:0;overflow:hidden"><img src="${ref.img}" style="width:100%;height:100%;object-fit:contain;background:#eef2f5" loading=lazy decoding=async alt="${ref.player} ${ref.setName} reference card"></div><div class=feature><div class=k>REFERENCE CARD</div><h2>${ref.player}</h2><div class=target>${ref.setName}</div><div class=refnote>Example of what you're hunting — a visual reference, not necessarily the exact card you own or currently for sale.</div></div></div>`:
+  `<div class=hitref><div class=refcard><div class=foil>REFERENCE CARD</div><div><div class=refplayer>${players[0]}</div><div class=refset>Reference artwork coming soon</div></div><div class=refnote>CardStorm will show a real card photo here once verified reference artwork is loaded for ${teamFullName}.</div></div><div class=feature><h2>REFERENCE CARD</h2><p class=sub>A representative chase-card example for ${teamFullName} will appear here as verified artwork is added — this area is built to rotate between several team/player chase cards over time.</p></div></div>`;
+ const exactHitsHtml=hits.map((h,i)=>{
+  const p=players[i%players.length],rarity=['CORE ROOKIE','PARALLEL','PREMIUM','SSP','CASE HIT','ULTRA RARE'][i];
+  return `<details class=exactHit><summary><span class=rarity>${rarity}</span><strong>${h}</strong><span class=target>${p}</span></summary><div class=exactHitBody>${hitExampleFor(p,h)}<button class=cta style="margin-top:10px" onclick="openAllHitLibrary()">COMPARE ACROSS SETS & SEASONS →</button></div></details>`;
+ }).join('');
+ C.innerHTML=shell('TEAM HUNT',teamFullName,year+' '+sport.toUpperCase()+' • Chase Board + master checklist',
+  `<div class=feature><div style="display:flex;align-items:center;gap:18px"><img class=teamlogo style="width:92px;height:92px" src="${logoUrl(t[0])}" width=92 height=92 loading=lazy decoding=async alt="${teamFullName} logo"><div><h2>${teamFullName} Chase Board</h2><div class=sub>Rookies first, then young stars and major veteran card-market targets.</div></div></div><div class=playergrid>${players.map((p,i)=>`<div class=player><div class=num>${i===0?'FEATURED CHASE':i===1?'PRIORITY TARGET':'TEAM TARGET'}</div><b>${p}</b><div class=target>${i<2?'Rookie / young-star priority':'Established card-market chase'}</div>${['Downtown','Kaboom','Color','Auto'].map(x=>`<span class=pill>${x}</span>`).join('')}</div>`).join('')}</div></div>
+  ${refBlock}
+  <div class=feature><h2>EXACT HITS TO HUNT</h2><div class=sub>Tap a chase tile to see a card-type example inline — no extra page. Full hit-library comparison stays optional.</div><div class=exactHitList>${exactHitsHtml}</div></div>
+  <div class=feature><h2>${teamFullName.toUpperCase()} MASTER CHECKLIST</h2><div class=sub>${year} ${sport.toUpperCase()} • every ${teamFullName} card CardStorm has verified, grouped by product. Check off what you own — it's saved on this device.</div><div class=checklistStats id=teamChecklistStats></div><div class=progressTrack><div class=progressFill id=teamChecklistBar style="width:0%"></div></div><div id=teamChecklistHost class=notice>Loading ${teamFullName} checklist…</div></div>`
+ );
+ renderTeamChecklistBlock(ab,teamFullName);
+}
 
 function libraryProducts(s,y){const savedSport=sport,savedYear=year;sport=s;year=y;let a=[];try{a=productSlate().map(p=>p.name)}catch(e){}sport=savedSport;year=savedYear;const extra=Object.keys((HIT_LIBRARY_V83[s]||{})[y]||{});return [...new Set([...a,...extra])]}
 function openChecklistLibrary(){navPush();renderChecklistLibrary()}
@@ -617,7 +721,7 @@ openSetChecklist=function(name){
  if(sport==='football'&&year==='2024'&&name==='Prizm'){
   if(!PRIZM_FULL){
    C.innerHTML=shell('SET CHECKLIST','2024 Prizm','FOOTBALL • Loading full verified checklist (30,106 rows)…','<div class=gameinstructions>Loading the full 2024 Prizm Football checklist…</div>');
-   loadPrizmFull().then(()=>openSetChecklist(name));
+   loadPrizmFull().then(()=>_openSetChecklistEntry(name));
    return;
   }
   if(PRIZM_FULL==='error'){
@@ -690,7 +794,7 @@ openSetChecklist=function(name){
  if(sport==='football'&&year==='2024'&&name==='Select'){
   if(!SELECT_FULL){
    C.innerHTML=shell('SET CHECKLIST','2024 Select','FOOTBALL • Loading verified checklist…','<div class=gameinstructions>Loading the 2024 Select Football checklist…</div>');
-   loadSelectFull().then(()=>openSetChecklist(name));
+   loadSelectFull().then(()=>_openSetChecklistEntry(name));
    return;
   }
   if(SELECT_FULL==='error'){
@@ -787,7 +891,7 @@ openSetChecklist=function(name){
  if(sport==='football'&&year==='2024'&&name==='Donruss'){
   if(!DONRUSS_FULL){
    C.innerHTML=shell('SET CHECKLIST','2024 Donruss','FOOTBALL • Loading verified checklist…','<div class=gameinstructions>Loading the 2024 Donruss Football checklist…</div>');
-   loadDonrussFull().then(()=>openSetChecklist(name));
+   loadDonrussFull().then(()=>_openSetChecklistEntry(name));
    return;
   }
   if(DONRUSS_FULL==='error'){
