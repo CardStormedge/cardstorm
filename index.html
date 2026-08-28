@@ -1,41 +1,38 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CardStormGuide</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}iframe{display:block;width:100%;height:100%;border:0;background:#020914}</style></head>
-<body><iframe id="cardstorm" src="/legacy-home.html?cardstorm-home-v4=1" title="CardStormGuide"></iframe>
-<script>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CardStormGuide</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}iframe{display:block;width:100%;height:100%;border:0;background:#020914}</style></head>
+<body><iframe id="cardstorm" src="/legacy-home.html?cardstorm-home-v5=1" title="CardStormGuide"></iframe><script>
 const frame=document.getElementById('cardstorm');
-function polish(){
- const d=frame.contentDocument;if(!d||!d.body||d.getElementById('cardstormV4Patch'))return;
- const st=d.createElement('style');st.id='cardstormV4Patch';st.textContent=`
- .brand .tag{display:none!important}.brand{min-width:170px!important}.brand img{height:54px!important;width:auto!important;max-width:190px!important;object-fit:contain!important}
- .hero{min-height:0!important;height:auto!important;aspect-ratio:16/9!important;background:#020914!important;overflow:hidden!important}
- .scene.photo .bg{display:flex!important;align-items:center!important;justify-content:center!important;background:#020914!important}
- .scene.photo .bg img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;transform:none!important;filter:saturate(1.10) contrast(1.03) brightness(1.06)!important}
- .heroCopy,.shade{display:none!important}
- .heroBrandLock{position:absolute;z-index:11;left:20px;top:18px;width:178px;height:72px;display:flex;align-items:center;justify-content:center;background:#020914;border-radius:8px;padding:7px 10px;box-shadow:0 5px 22px rgba(0,0,0,.55)}
- .heroBrandLock img{display:block;width:100%;height:100%;object-fit:contain}
- .heroCta{position:absolute;z-index:13;left:28px;bottom:28px;border:1px solid #55d8ff;border-radius:10px;background:linear-gradient(135deg,#1689ff,#075dc6);color:white;padding:14px 22px;font-weight:950;font-size:13px;letter-spacing:.03em;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.45);text-decoration:none}
- .heroCta:hover{filter:brightness(1.1)}
- .heroNavOverlay{position:absolute;z-index:12;right:24px;bottom:30px;pointer-events:none}.heroNavOverlay #starRail{pointer-events:auto;margin:0!important;padding:6px!important;gap:5px!important;border-radius:12px;background:rgba(2,9,20,.72);backdrop-filter:blur(8px)}.heroNavOverlay .starBtn{padding:7px 9px!important;font-size:9px!important}
- .cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(4,minmax(0,1fr))!important;max-width:none!important;margin:0!important;gap:18px!important}
- .cmdCard{box-shadow:0 18px 42px rgba(0,0,0,.32);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}.cmdCard:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(0,0,0,.48),0 0 25px rgba(85,216,255,.13)}.cmdCardArt img{filter:saturate(1.08) brightness(1.06) contrast(1.02)!important}
- @media(max-width:980px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.heroBrandLock{width:145px;height:60px;left:12px;top:12px}.heroCta{left:16px;bottom:16px;padding:11px 15px}.heroNavOverlay{right:12px;bottom:16px}.heroNavOverlay .starBtn{font-size:0!important;padding:6px!important}.heroNavOverlay .starBtn .dotc{margin:0!important}}
- @media(max-width:620px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:1fr!important}.heroBrandLock{width:112px;height:48px}.heroCta{font-size:10px;padding:9px 11px}.heroNavOverlay{display:none!important}}
- `;d.head.appendChild(st);
- [...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('CHECKLISTS')||t.includes('DOWNTOWN /')||t.includes('DOWNTOWN/UPTOWN')||t.includes('NEVER MISS'))c.remove();});
- [...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('KNOW MORE')||t.includes('COLLECT SMARTER')){const h3=c.querySelector('h3');if(h3)h3.innerHTML='COLLECTOR <span>INTEL</span>';const p=c.querySelector('p');if(p)p.textContent='What’s hot, what’s coming and what matters — smarter hobby intelligence in one place.';}});
- const grids=[...d.querySelectorAll('.cmdGrid')];if(grids.length){const first=grids[0],visible=[...d.querySelectorAll('.cmdCard')];first.innerHTML='';visible.forEach(c=>first.appendChild(c));grids.slice(1).forEach(g=>g.remove());first.classList.remove('cmdGrid3');}
- const section=d.querySelector('.sectionTitle p');if(section)section.textContent='Eight focused destinations. No clutter. Just the tools collectors actually use.';
- const hero=d.getElementById('hero'),rail=d.getElementById('starRail');if(hero){const lock=d.createElement('div');lock.className='heroBrandLock';lock.innerHTML='<img src="assets/logo-horizontal.webp" alt="CardStorm">';hero.appendChild(lock);const cta=d.createElement('button');cta.className='heroCta';cta.type='button';hero.appendChild(cta);}
- if(rail&&hero){const overlay=d.createElement('div');overlay.className='heroNavOverlay';rail.parentNode.insertBefore(overlay,rail);overlay.appendChild(rail);}
- const buttons=[...d.querySelectorAll('.starBtn')],rookieBtn=buttons.find(b=>(b.innerText||'').trim().toUpperCase()==='ROOKIES'),starsBtn=buttons.find(b=>(b.innerText||'').toUpperCase().includes('ROOKIE STARS'));
- if(rookieBtn)rookieBtn.style.display='none';if(starsBtn){[...starsBtn.childNodes].forEach(n=>{if(n.nodeType===3&&n.textContent.includes('ROOKIE STARS'))n.textContent=n.textContent.replace('ROOKIE STARS','ROOKIES')});starsBtn.click();}
- const cta=d.querySelector('.heroCta');
- function syncHero(){const active=d.querySelector('.starBtn.active');if(!active)return;if(active===rookieBtn&&starsBtn){starsBtn.click();return}const label=(active.innerText||'').trim().toUpperCase();let route='hunt',text='START HUNTING →',aliases=['ROOKIES'];if(label.includes('GOATS')){route='market';text='EXPLORE GOATS →';aliases=['GOATS']}else if(label.includes('HOLY')){route='market';text='EXPLORE CASE HITS →';aliases=['HOLY GRAILS']}else if(label.includes('BREAK')){route='breaks';text='GO TO BREAK CENTER →';aliases=['BREAK CENTER']}else if(label.includes('KNOW')){route='game';text='PLAY THE CHALLENGE →';aliases=['CARDSTORM CHALLENGE','PROVE YOUR KNOWLEDGE']}else if(label.includes('POK')){route='tcg';text='EXPLORE POKÉMON / TCG →';aliases=['POKÉMON','POKEMON']}else{aliases=['ROOKIES']}
- if(cta){cta.textContent=text;cta.onclick=()=>{if(typeof d.defaultView.openScreen==='function')d.defaultView.openScreen(route);else location.hash=route}}
- [...d.querySelectorAll('.cmdCard')].forEach(c=>c.style.display='');if(aliases.length)[...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(aliases.some(a=>t.includes(a)))c.style.display='none'});
- }
- buttons.forEach(b=>new MutationObserver(syncHero).observe(b,{attributes:true,attributeFilter:['class']}));syncHero();
+function polish(){const d=frame.contentDocument;if(!d||!d.body||d.getElementById('cardstormV5Patch'))return;
+const st=d.createElement('style');st.id='cardstormV5Patch';st.textContent=`
+.brand .tag{display:none!important}.brand{min-width:210px!important}.brand img{height:62px!important;width:auto!important;max-width:235px!important;object-fit:contain!important}
+.hero{min-height:min(600px,70vh)!important;height:auto!important;aspect-ratio:auto!important;overflow:hidden!important;background:#020914!important}.scene.photo .bg img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transform:none!important;filter:saturate(1.10) contrast(1.04) brightness(1.08)!important}.heroBrandLock,.heroCta,.heroNavOverlay{display:none!important}.heroCopy{display:flex!important}.shade{display:block!important;background:linear-gradient(90deg,rgba(1,7,15,.78) 0%,rgba(1,7,15,.50) 31%,rgba(1,7,15,.08) 59%,transparent 76%)!important}.hero h1,.hero h1 span{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;font-style:normal!important;font-weight:950!important;letter-spacing:-.045em!important}.hero h1{line-height:.92!important}.hero p{max-width:520px!important}.heroPill{font-family:Inter,ui-sans-serif,system-ui!important;font-style:normal!important}.actions{display:flex!important}
+#starRail{display:none!important}.mobDots{display:flex!important;position:absolute!important;z-index:12!important;left:50%!important;bottom:15px!important;transform:translateX(-50%)!important;margin:0!important}
+.cmdStack{gap:12px!important}.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(8,minmax(0,1fr))!important;max-width:none!important;margin:0!important;gap:12px!important}.cmdCard{min-height:0!important;border-radius:12px!important}.cmdCardArt{height:150px!important}.cmdCardBody{padding:11px 10px 12px!important}.cmdCard h3{font-size:15px!important;line-height:1.05!important}.cmdCard p{font-size:10.5px!important;line-height:1.3!important}.cmdCardArt img{filter:saturate(1.10) brightness(1.08) contrast(1.03)!important}.sectionTitle{margin:22px 0 10px!important}.sectionTitle h2{font-size:25px!important}
+@media(max-width:1200px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(4,minmax(0,1fr))!important}.cmdCardArt{height:175px!important}}
+@media(max-width:980px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.shade{background:linear-gradient(180deg,transparent 0,rgba(2,9,20,.08) 30%,#061421 54%,#020914 72%)!important}.heroCopy{justify-content:flex-end!important;padding-bottom:52px!important}.cmdCardArt{height:190px!important}}
+@media(max-width:620px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:1fr!important}.cmdCardArt{height:210px!important}}
+`;d.head.appendChild(st);
+// remove all temporary overlays from prior patch
+['.heroBrandLock','.heroCta','.heroNavOverlay'].forEach(s=>d.querySelectorAll(s).forEach(n=>n.remove()));
+// one rookie slide: Rookie Stars artwork/copy becomes Rookies
+const buttons=[...d.querySelectorAll('.starBtn')],rookieBtn=buttons.find(b=>(b.innerText||'').trim().toUpperCase()==='ROOKIES'),starsBtn=buttons.find(b=>(b.innerText||'').toUpperCase().includes('ROOKIE STARS'));if(rookieBtn)rookieBtn.style.display='none';if(starsBtn){[...starsBtn.childNodes].forEach(n=>{if(n.nodeType===3&&n.textContent.includes('ROOKIE STARS'))n.textContent=n.textContent.replace('ROOKIE STARS','ROOKIES')});starsBtn.click();}
+// keep only the approved eight command-center destinations
+[...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('CHECKLISTS')||t.includes('DOWNTOWN /')||t.includes('DOWNTOWN/UPTOWN')||t.includes('NEVER MISS'))c.remove();});
+[...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('KNOW MORE')||t.includes('COLLECT SMARTER')){const h3=c.querySelector('h3');if(h3)h3.innerHTML='COLLECTOR <span>INTEL</span>';const p=c.querySelector('p');if(p)p.textContent='Data. Insights. Smarter moves.';}});
+const grids=[...d.querySelectorAll('.cmdGrid')];if(grids.length){const first=grids[0],visible=[...d.querySelectorAll('.cmdCard')];first.innerHTML='';visible.forEach(c=>first.appendChild(c));grids.slice(1).forEach(g=>g.remove());first.classList.remove('cmdGrid3');}
+const section=d.querySelector('.sectionTitle p');if(section)section.textContent='Eight focused destinations. No clutter. Just the tools collectors actually use.';
+// restore the original built-in hero copy/buttons and make routes explicit
+const kicker=d.getElementById('heroKicker'),h=d.querySelector('#hero h1'),p=d.getElementById('heroSub'),primary=d.getElementById('heroPrimary'),secondary=d.getElementById('heroSecondary');
+const cfg={
+'THE NEXT GENERATION':['ROOKIE SEASON','ROOKIES TODAY.<br><span>STARS TOMORROW.</span>','Discover the rookies, track their rise, and find the cards before the hobby does.','EXPLORE ROOKIES →','VIEW TOP MOVERS','hunt','market'],
+'BREAKOUT WATCH':['ROOKIE SEASON','ROOKIES TODAY.<br><span>STARS TOMORROW.</span>','Discover the rookies, track their rise, and find the cards before the hobby does.','EXPLORE ROOKIES →','VIEW TOP MOVERS','hunt','market'],
+'LEGENDS NEVER FADE':['GOATS','ICONIC PLAYERS.<br><span>TIMELESS CARDS.</span>','Explore the legends, their most iconic cards, and the value that never fades.','EXPLORE GOATS →','VIEW LEGEND LIST','market','market'],
+'THE CARDS EVERYONE WANTS':['HOLY GRAILS','THE RAREST CARDS.<br><span>THE BIGGEST CHASES.</span>','Explore the holy grails, track values, and see what collectors are chasing now.','EXPLORE HOLY GRAILS →','VIEW TOP CHASES','market','market'],
+'BUILD YOUR PERSONAL HUNT':['BREAK CENTER','REAL BREAKS.<br><span>REAL HITS.</span>','Find live and upcoming breaks, check team availability, and chase the biggest hits with the CardStorm community.','ENTER BREAK CENTER →','VIEW UPCOMING BREAKS','breaks','breaks'],
+'PLAY. LEARN. COLLECT SMARTER.':['KNOW THE WORTH','REAL DATA.<br><span>REAL ANSWERS.</span>','Check current values, view market trends, and make smarter decisions.','CHECK A CARD →','VIEW MARKET TRENDS','market','market'],
+'THE TCG CHASE':['POKÉMON / TCG','COLLECT. BATTLE.<br><span>BELONG.</span>','Explore top sets, track values, and dive into the world of Pokémon TCG.','EXPLORE POKÉMON →','VIEW TOP CARDS','tcg','tcg']};
+function apply(){if(!kicker)return;const c=cfg[kicker.textContent.trim()];if(!c)return;kicker.textContent=c[0];if(h)h.innerHTML=c[1];if(p)p.textContent=c[2];if(primary){primary.textContent=c[3];primary.onclick=()=>d.defaultView.openScreen&&d.defaultView.openScreen(c[5])}if(secondary){secondary.textContent=c[4];secondary.onclick=()=>d.defaultView.openScreen&&d.defaultView.openScreen(c[6])}}
+apply();if(kicker)new MutationObserver(apply).observe(kicker,{childList:true,subtree:true,characterData:true});
 }
 frame.addEventListener('load',()=>{try{polish()}catch(e){console.error(e)}});
 </script></body></html>
