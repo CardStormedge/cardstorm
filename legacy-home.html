@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020914">
+<meta name="description" content="CardStormGuide — AI-powered card value intelligence">
+<title>CardStormGuide — AI-Powered Card Value Intelligence</title>
+<style>
+:root{--bg:#020914;--panel:#071522;--cyan:#55d8ff;--gold:#ffd35a;--ink:#fff}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+body{overflow-x:hidden}
+button,a{font:inherit}
+img{max-width:100%}
+.shell{min-height:100vh;background:radial-gradient(circle at 70% -10%,#143b67 0,#071827 36%,#020914 70%)}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:0;z-index:20;min-height:84px;display:flex;align-items:center;gap:14px;padding:12px clamp(14px,3vw,42px);background:rgba(2,9,20,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(85,216,255,.15)}
+.brand{display:flex;align-items:center;gap:12px;min-width:260px;cursor:pointer}
+.brand img{height:66px;width:auto;max-width:300px;object-fit:contain;image-rendering:-webkit-optimize-contrast;filter:drop-shadow(0 0 9px rgba(85,216,255,.22))}
+.brand .tag{font-size:9.5px;font-weight:900;letter-spacing:.16em;color:#8fb4d6;line-height:1.35;text-transform:uppercase;border-left:1px solid rgba(85,216,255,.3);padding-left:12px;max-width:120px}
+.navlinks{display:flex;align-items:center;gap:6px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.navlinks button{border:1px solid #294f71;background:#071522;color:#fff;padding:10px 12px;border-radius:9px;font-weight:850;font-size:11px;letter-spacing:.03em;white-space:nowrap;cursor:pointer}
+.navlinks button:hover{border-color:#55d8ff;background:#0a2741}
+.join{border:1px solid #ff4150;background:linear-gradient(135deg,#e21b2d,#b70e1a);color:#fff;padding:11px 16px;border-radius:9px;font-weight:900;font-size:11px;letter-spacing:.04em;white-space:nowrap;cursor:pointer}
+
+.wrap{max-width:1500px;margin:auto;padding:26px clamp(14px,3vw,42px) 48px}
+.eyebrow{font-size:11px;color:var(--cyan);letter-spacing:.16em;font-weight:950;text-transform:uppercase}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:min(600px,70vh);border:1px solid #275f89;border-radius:24px;overflow:hidden;background:#061421;box-shadow:0 34px 85px -42px #178cff88;isolation:isolate}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;background:#020914}
+.scene.active{opacity:1}
+.scene .bg{position:absolute;inset:0}
+.scene.photo .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 18%);transform:scale(var(--zoom,1));filter:saturate(1.05) contrast(1.06)}
+.scene.stretchFit .bg img{object-fit:fill}
+.scene.cards .bg{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#174a77 0,#071827 42%,#020914 76%)}
+.cardShowcase{position:absolute;inset:22px 8% 105px;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px)}
+.cardShowcase>img{height:94%;width:auto;max-width:23%;object-fit:contain;border-radius:9px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.7));transform:rotate(var(--tilt,0deg))}.cardShowcase>img:nth-child(1){--tilt:-5deg}.cardShowcase>img:nth-child(2){--tilt:-1deg;z-index:2}.cardShowcase>img:nth-child(3){--tilt:2deg}.cardShowcase>img:nth-child(4){--tilt:5deg}
+.gameShowcase{inset:24px 4% 110px 43%;gap:14px;justify-content:flex-end}.gameCardTile{position:relative;height:88%;min-width:0;flex:0 1 31%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,211,90,.55);border-radius:13px;background:linear-gradient(160deg,rgba(26,39,53,.96),rgba(5,12,20,.96));box-shadow:0 18px 32px #0009;padding:9px}.gameCardTile:nth-of-type(3){transform:translateY(-10px)}.gameCardTile img{display:block;width:100%;height:100%;max-width:100%;object-fit:contain;border-radius:7px;filter:none;transform:none}.gameRank{position:absolute;z-index:2;top:-10px;left:50%;transform:translateX(-50%);display:grid;place-items:center;width:28px;height:28px;border:2px solid #ffd35a;border-radius:50%;background:#1a1204;color:#ffd35a;font-size:17px;font-weight:950;box-shadow:0 0 16px #ffd35a88}.gamePromptBadge{position:absolute;z-index:3;left:50%;bottom:-32px;transform:translateX(-50%);border:1px solid #8b6d27;border-radius:999px;background:rgba(17,12,3,.92);color:#ffe28a;padding:7px 12px;font-size:9px;font-weight:950;letter-spacing:.12em;white-space:nowrap}
+.scene.split .bg{display:flex}
+.splitHalf{position:relative;flex:1 1 50%;overflow:hidden}
+.splitHalf+.splitHalf{border-left:1px solid rgba(255,255,255,.14)}
+.splitHalf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(1.05) contrast(1.06)}
+.splitTag{position:absolute;z-index:2;left:12px;top:12px;padding:6px 11px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(2,9,20,.82);color:#fff;font:900 10.5px Inter,Arial,sans-serif;letter-spacing:.08em;white-space:nowrap}
+.splitShade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,9,20,.85),transparent 46%)}
+.splitContent{position:absolute;z-index:3;inset:52px 18px 104px;display:flex;align-items:center;justify-content:flex-end;pointer-events:none}
+.splitContent.right{justify-content:flex-start}
+.huntPanel,.worthPanel{width:min(340px,90%);border:1px solid rgba(85,216,255,.48);border-radius:16px;background:linear-gradient(150deg,rgba(3,15,27,.94),rgba(7,30,49,.9));box-shadow:0 18px 45px rgba(0,0,0,.48);padding:15px;backdrop-filter:blur(10px)}
+.huntTitle,.worthTitle{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#fff;font-size:15px;font-weight:950;letter-spacing:.08em}.sampleFlag{font-size:8px;color:#9bc9e6;border:1px solid #315d79;border-radius:999px;padding:4px 7px;letter-spacing:.1em}
+.huntRow{display:grid;grid-template-columns:70px 1fr;gap:8px;align-items:start;padding:8px 0;border-bottom:1px solid rgba(85,216,255,.13)}.huntRow:last-child{border-bottom:0;padding-bottom:0}.huntRowLabel{color:#7ba9c7;font-size:9px;font-weight:950;letter-spacing:.1em;padding-top:3px}
+.huntChips{display:flex;gap:5px;flex-wrap:wrap}.huntChip,.huntPlatform{display:inline-flex;border:1px solid #2f6687;border-radius:999px;background:#0a2940;color:#e8f7ff;padding:4px 7px;font-size:9px;font-weight:850}.huntChip.chase{border-color:#b86b2c;background:#3b210f;color:#ffd9aa}.huntPlatform{border-color:#694d82;background:#23152f;color:#f1dfff}
+.huntCalendar{display:grid;gap:4px;color:#fff;font-size:10px;font-weight:800}.huntCalendar span:before{content:'●';color:#ff8a3d;font-size:7px;margin-right:6px}
+.worthPanel{border-color:rgba(255,211,90,.55);background:linear-gradient(150deg,rgba(18,13,4,.94),rgba(41,29,7,.9))}.worthTitle{color:#ffe38d}.worthCards{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}.worthCard{aspect-ratio:.72;border:1px solid #8e7230;border-radius:7px;background:linear-gradient(145deg,#273748,#0b1119);display:grid;place-items:center;color:#ffd35a;font-size:24px;font-weight:950;box-shadow:0 7px 15px #0008}.worthCard:nth-child(2){transform:translateY(-5px)}.worthCopy{font-size:10px;line-height:1.45;color:#e5d7b5}.worthFactors{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.worthFactors span{border:1px solid #6f5b2b;border-radius:999px;padding:3px 6px;color:#ffe6a5;font-size:8px;font-weight:850}
+
+.shade{position:absolute;inset:0;z-index:5;background:linear-gradient(90deg,rgba(1,7,15,.98) 0%,rgba(1,7,15,.9) 33%,rgba(1,7,15,.28) 63%,rgba(1,7,15,.08) 100%),linear-gradient(0deg,rgba(2,9,20,.8),transparent 38%)}
+.lightning{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;background:radial-gradient(circle at 74% 25%,rgba(255,255,255,.98),rgba(85,216,255,.32) 11%,transparent 34%),linear-gradient(116deg,transparent 61%,rgba(220,248,255,.75) 61.2%,rgba(85,216,255,.2) 61.6%,transparent 62%)}
+.hero.strike .lightning{animation:storm .72s ease-out}
+.hero.strike .scene.active .bg{animation:shock .72s ease-out}
+@keyframes storm{0%{opacity:0}7%{opacity:1}12%{opacity:.08}18%{opacity:.75}25%{opacity:0}37%{opacity:.9}46%{opacity:.08}100%{opacity:0}}
+@keyframes shock{8%{filter:saturate(1.15) contrast(1.2) brightness(1.5)}36%{filter:saturate(1.12) contrast(1.15) brightness(1.25)}100%{filter:saturate(1.06) contrast(1.08)}}
+
+.heroCopy{position:relative;z-index:7;display:flex;flex-direction:column;justify-content:center;min-height:min(600px,70vh);max-width:660px;padding:clamp(30px,5vw,74px)}
+.hero.breakMode .heroCopy{max-width:100%;justify-content:flex-end;padding-bottom:28px}.hero.breakMode .heroCopy h1{display:none}.hero.breakMode .heroCopy p{max-width:850px;margin-bottom:12px}.hero.breakMode .shade{background:linear-gradient(0deg,rgba(2,9,20,.98),rgba(2,9,20,.72) 21%,transparent 43%)}
+.heroPill{display:inline-flex;width:max-content;padding:8px 12px;border:1px solid rgba(85,216,255,.5);border-radius:999px;background:rgba(6,28,47,.8);font-size:11px;font-weight:900;letter-spacing:.08em}
+.hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:950;font-style:normal;font-size:clamp(42px,6.4vw,88px);line-height:.92;letter-spacing:-.05em;margin:20px 0 16px;text-shadow:0 10px 34px #000}
+.hero h1 span{color:var(--cyan)}
+.hero p{max-width:560px;color:#d1e0ed;font-size:clamp(15px,1.4vw,19px);line-height:1.55;margin:0 0 26px}
+.heroExtra{display:none;margin:-8px 0 14px;max-width:700px}.heroExtra.active{display:block}.heroExtraLabel{font-size:10px;font-weight:950;letter-spacing:.12em;color:#7fdcff;margin-bottom:7px}.heroExtraChips{display:flex;gap:6px;flex-wrap:wrap}.heroExtraChips span{border:1px solid #34698a;background:rgba(5,28,45,.9);border-radius:999px;padding:5px 8px;color:#e7f7ff;font-size:9px;font-weight:850}.heroExtraNote{font-size:11px;line-height:1.4;color:#c8dbea}
+.cardTicker{display:none}
+.imageTap{display:none;position:absolute;z-index:6;inset:0 0 auto;height:210px;border:0;background:transparent;cursor:pointer}.imageTap:focus-visible{outline:3px solid #55d8ff;outline-offset:-5px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.primary,.secondary{border-radius:10px;padding:13px 18px;font-weight:950;cursor:pointer;color:#fff}
+.primary{border:0;background:linear-gradient(135deg,#2088ff,#0e63d6)}
+.secondary{background:rgba(4,18,31,.8);border:1px solid #386787}
+
+/* rail / thumbnails */
+#starRail{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.starBtn{display:flex;align-items:center;gap:8px;border:1px solid rgba(112,179,226,.32);background:rgba(2,9,20,.7);color:#c8daea;padding:8px 12px;border-radius:11px;cursor:pointer;font-size:11px;font-weight:850;letter-spacing:.03em}
+.starBtn .dotc{width:10px;height:10px;border-radius:50%;background:var(--p,#55d8ff)}
+.starBtn.active{border-color:var(--p,#55d8ff);background:#0a2741;color:#fff;box-shadow:0 0 14px color-mix(in srgb,var(--p) 32%,transparent)}
+.mobDots{display:none;gap:6px;margin-top:16px}
+.mobDots .dot{width:22px;height:4px;border:0;border-radius:99px;background:#31516a;cursor:pointer;padding:0}
+.mobDots .dot.active{background:#55d8ff;box-shadow:0 0 10px #55d8ff}
+
+/* ---------- DASHBOARD ---------- */
+.sectionTitle{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:40px 0 16px}
+.sectionTitle h2{margin:4px 0 0;font-size:clamp(22px,2vw,30px)}
+.sectionTitle p{margin:0;color:#8fa9bf;font-size:13px}
+.cmdStack{display:flex;flex-direction:column;gap:18px}
+.cmdGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.cmdGrid.cmdGrid3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:calc(75% - 4.5px);margin:0 auto}
+.cmdCard{position:relative;display:flex;flex-direction:column;border:1px solid #265a80;border-radius:18px;background:#06131f;overflow:hidden;cursor:pointer;text-align:left;color:#fff;transition:.18s;padding:0;font-family:inherit}
+.cmdCard:hover{transform:translateY(-4px);border-color:var(--ac,#55d8ff);box-shadow:0 22px 40px -20px var(--ac,#55d8ff)}
+.cmdCard:hover .cmdCardArt img{transform:scale(1.06)}
+.cmdCard:hover .cmdCardCta{gap:10px}
+.cmdCardArt{position:relative;height:0;padding-top:58%;overflow:hidden;background:#061421}
+.cmdCardArt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.cmdCardArt .cmdLive{position:absolute;top:10px;left:10px;z-index:2;background:#e21b2d;color:#fff;font:900 9px Inter,sans-serif;letter-spacing:.08em;padding:4px 7px;border-radius:5px}
+.cmdCardBody{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+.cmdCardNum{font:900 10px Inter,sans-serif;letter-spacing:.1em;color:var(--ac,#55d8ff);margin-bottom:4px}
+.cmdCard h3{margin:0 0 8px;font-size:17px;line-height:1.1;font-weight:950;letter-spacing:-.01em}
+.cmdCard h3 span{color:var(--ac,#55d8ff)}
+.cmdCard p{margin:0 0 12px;color:#a8bfd1;font-size:12px;line-height:1.42;flex:1}
+.cmdCardCta{display:inline-flex;align-items:center;gap:6px;color:var(--ac,#55d8ff);font-weight:900;font-size:11.5px;letter-spacing:.02em;transition:gap .18s}
+
+.footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:30px 2px 0;color:#6f8ca6;font-size:11px}
+
+.appLayer{position:fixed;inset:0;z-index:100;background:#020914;display:none}
+.appLayer.open{display:block}
+.appFrame{width:100%;height:100%;border:0}
+.appReturn{position:fixed;z-index:110;left:12px;bottom:12px;border:1px solid #58d8ff;background:rgba(2,9,20,.94);color:#fff;padding:10px 13px;border-radius:9px;font-weight:900;cursor:pointer}
+
+@media(max-width:1050px){.cmdGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr));max-width:100%;margin:0}}
+@media(max-width:760px){
+ .nav{min-height:70px;padding:10px 12px}
+ .brand{min-width:auto;gap:0}
+ .brand img{height:42px;max-width:175px}
+ .brand .tag{display:none}
+ .navlinks button{display:none}
+ .join{padding:9px 12px;font-size:10px}
+ .wrap{padding:16px 12px 34px}
+ .hero{min-height:590px;border-radius:17px;background:linear-gradient(180deg,#071a2b,#020914)}
+ .scene.photo .bg{height:210px;bottom:auto;background:#061421}
+ .scene.photo .bg img{object-fit:contain;object-position:center top;transform:none}
+ .scene.stretchFit .bg img{object-fit:fill}
+ .scene.mobileFill .bg img{object-fit:fill}
+ .scene.cards .bg{height:210px;bottom:auto}
+ .scene.cards .cardShowcase{inset:10px 2% 10px;gap:5px}
+ .scene.cards .cardShowcase>img{height:92%;max-width:23%;border-radius:5px}
+ .scene.cards .gameShowcase{inset:12px 3% 20px;gap:6px;justify-content:center}.scene.cards .gameCardTile{height:86%;flex-basis:31%;padding:4px;border-radius:8px}.scene.cards .gameCardTile:nth-of-type(3){transform:translateY(-5px)}.scene.cards .gameCardTile img{height:100%;max-width:100%;border-radius:4px}.scene.cards .gameRank{top:-7px;width:22px;height:22px;font-size:13px}.scene.cards .gamePromptBadge{bottom:-12px;padding:4px 8px;font-size:7px}
+ .cardTicker{display:block;position:absolute;z-index:8;top:210px;left:0;right:0;height:92px;overflow:hidden;border-top:1px solid rgba(85,216,255,.2);border-bottom:1px solid rgba(85,216,255,.2);background:linear-gradient(90deg,#020914,#082036 50%,#020914)}
+ .imageTap.active{display:block}
+ .cardTicker:before,.cardTicker:after{content:'';position:absolute;z-index:2;top:0;bottom:0;width:34px;pointer-events:none}.cardTicker:before{left:0;background:linear-gradient(90deg,#020914,transparent)}.cardTicker:after{right:0;background:linear-gradient(-90deg,#020914,transparent)}
+ .cardTickerTrack{display:flex;align-items:center;gap:8px;width:max-content;height:100%;padding:7px 0;animation:cardDrift 78s linear infinite}.cardTicker img{flex:0 0 auto;width:54px;height:76px;object-fit:cover;border-radius:5px;border:1px solid #315d79;box-shadow:0 5px 12px #000}
+ @keyframes cardDrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+ .heroCopy{min-height:590px;justify-content:flex-start;padding:370px 18px 18px;max-width:100%}
+ .hero.pokemonMode .scene.photo .bg{height:210px}.hero.pokemonMode .scene.photo .bg img{object-fit:cover;object-position:center 30%}.hero.pokemonMode .cardTicker{display:block;top:210px;height:88px}.hero.pokemonMode .imageTap{height:210px}
+ .heroPill{padding:6px 10px;font-size:9px}
+ .hero h1{font-size:clamp(31px,9vw,43px);line-height:.94;margin:12px 0 10px}
+ .hero p{font-size:13.5px;line-height:1.42;margin-bottom:13px}
+ .hero.hasExtra,.hero.breakMode,.hero.pokemonMode{min-height:720px}
+ .hero.hasExtra .heroCopy,.hero.breakMode .heroCopy,.hero.pokemonMode .heroCopy{min-height:720px;padding-top:370px;padding-bottom:18px;justify-content:flex-start}
+ .heroExtra{margin:-2px 0 10px}.heroExtraChips{gap:4px}.heroExtraChips span{padding:4px 6px;font-size:8px}.heroExtraNote{font-size:10px}
+ .actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:8px}
+ .primary,.secondary{width:100%;min-height:44px;padding:10px 8px;font-size:11px;line-height:1.15}
+ .shade{background:linear-gradient(180deg,transparent 0,rgba(2,9,20,.05) 25%,#061421 42%,#020914 58%)}
+ .hero.breakMode .heroCopy p{font-size:12px;line-height:1.35;margin-bottom:10px}
+ .scene.split .bg{flex-direction:column}
+ .scene.split .splitHalf{flex:1 1 50%;min-height:0}
+ .scene.split .splitHalf+.splitHalf{border-left:0;border-top:1px solid rgba(255,255,255,.14)}
+ .scene.split .splitHalf img{object-position:center 20%}
+ .scene.split .splitContent{inset:42px 10px 94px;align-items:center;justify-content:flex-end}
+ .scene.split .huntPanel,.scene.split .worthPanel{width:min(315px,88%);padding:10px}
+ .scene.split .huntRow{padding:5px 0}.scene.split .huntTitle,.scene.split .worthTitle{font-size:12px}
+ .scene.split .worthCards{margin:7px 0}.scene.split .worthCard{aspect-ratio:1.35;font-size:17px}
+ .splitTag{font-size:9.5px;padding:5px 9px}
+ .cardTicker{z-index:12}
+ #starRail{position:absolute;z-index:18;top:304px;left:10px;right:10px;width:auto;margin:0;padding:7px 6px;display:flex;flex-wrap:nowrap;overflow-x:auto;background:rgba(2,9,20,.88);border:1px solid rgba(85,216,255,.2);border-radius:999px;backdrop-filter:blur(12px);scrollbar-width:none}
+ .starBtn{display:flex;flex:0 0 auto;padding:6px 9px;font-size:9px;border-radius:999px}
+ .starBtn .dotc{width:7px;height:7px}
+ .mobDots{display:none}
+ .cmdStack{gap:14px}
+ .cmdGrid{grid-template-columns:1fr;gap:14px}
+ .cmdGrid.cmdGrid3{grid-template-columns:1fr;max-width:100%;margin:0}
+ .cmdCardArt{padding-top:52%}
+ .cmdCard h3{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.hero.strike .lightning,.hero.strike .scene.active .bg,.cardTickerTrack{animation:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="nav">
+ <div class="brand" id="brand" onclick="goHome()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goHome()}" role="button" tabindex="0" aria-label="CardStorm home">
+  <img src="assets/logo-horizontal.webp" alt="CardStorm">
+  <span class="tag">AI-Powered Card Value Intelligence</span>
+ </div>
+ <div class="navlinks">
+  <button onclick="openApp('team')">WHAT TO HUNT</button>
+  <button onclick="openApp('market')">MARKET</button>
+  <button onclick="openApp('sets')">SETS &amp; PACKS</button>
+  <button onclick="openApp('checks')">CHECKLISTS</button>
+  <button onclick="openApp('game')">CHALLENGE</button>
+  <button onclick="openApp('watch')">WATCHLIST</button>
+ </div>
+ <button class="join" onclick="openApp('plans')">JOIN CARDSTORM</button>
+</header>
+
+<main class="wrap">
+<section class="hero" id="hero" aria-label="CardStorm featured chase">
+ <div id="scenes"></div>
+ <div class="shade"></div><div class="lightning"></div>
+ <button class="imageTap active" id="imageTap" type="button" aria-label="Explore rookie hunts" onclick="openApp('team')"></button>
+ <div class="cardTicker" aria-label="Real card showcase"><div class="cardTickerTrack" id="cardTickerTrack"></div></div>
+ <div class="heroCopy">
+  <div class="heroPill" id="heroKicker">THE NEXT GENERATION</div>
+  <h1>KNOW THE CARD.<br><span>OWN THE CHASE.</span></h1>
+  <p id="heroSub">Rookie heat and a slab-breaking chase that starts the storm.</p>
+  <div class="heroExtra" id="heroExtra"></div>
+  <div class="actions">
+   <button class="primary" id="ctaPrimary" onclick="openApp('team')">EXPLORE ROOKIE HUNTS</button>
+   <button class="secondary" id="ctaSecondary" onclick="openApp('market')">CHECK THE MARKET</button>
+  </div>
+  <div id="starRail"></div>
+  <div class="mobDots" id="mobDots"></div>
+ </div>
+</section>
+
+<div class="sectionTitle"><div><div class="eyebrow">CARDSTORM COMMAND CENTER</div><h2>Serious hobby intelligence. Built for collectors.</h2></div><p>Every tool below is already live.</p></div>
+<section class="cmdStack" id="dashGrid"></section>
+
+<div class="footer"><span>CardStorm • AI-Powered Card Value Intelligence</span><span>Football first. Whole hobby covered.</span></div>
+</main>
+</div>
+
+<div class="appLayer" id="appLayer"><iframe class="appFrame" id="appFrame" title="CardStorm Command Center"></iframe><button class="appReturn" onclick="closeApp()">← CARDSTORM HOME</button></div>
+
+<script>
+/* ---------------- HERO DATA ----------------
+   Category-based rotation (not city/team based). Break Center and Know the Worth
+   remain separate destinations. Downtown examples are locally stored reference
+   photographs of real 2024 Donruss cards; no price or live-listing claim is made. */
+const DEFAULT_ACTIONS=[{label:'EXPLORE WHAT TO HUNT',key:'team'},{label:'CHECK THE MARKET',key:'market'}];
+const STARS=[
+ {tab:'ROOKIES',kicker:'THE NEXT GENERATION',sub:'Rookie heat and the first-year cards collectors are chasing now.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp',imageKey:'team',actions:[{label:'EXPLORE ROOKIE HUNTS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'ROOKIE STARS',kicker:'BREAKOUT WATCH',sub:'The rookies turning into hobby stars and the cards moving with them.',p:'#2e69ff',mode:'photo',img:'assets/homepage/categories/rookie-stars.webp',imageKey:'team',actions:[{label:'FIND BREAKOUT ROOKIES',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'GOATS',kicker:'LEGENDS NEVER FADE',sub:'The iconic names and cards that set the standard for the hobby.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp',imageKey:'team',actions:[{label:'EXPLORE THE LEGENDS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Case hits, iconic inserts and the hobby’s biggest chase cards.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/case-hits-shedeur-downtown.webp',pos:'center 34%',mobileFill:true,imageKey:'team',actions:[{label:'EXPLORE HOLY GRAILS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'BREAK CENTER',kicker:'BUILD YOUR PERSONAL HUNT',sub:'Choose the team, players, rookies, inserts and cards you want — then find the right break opportunities.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-center.webp?v=2',imageKey:'breaks',extra:'hunt',actions:[{label:'BUILD YOUR HUNT',key:'breaks'},{label:'EXPLORE SETS',key:'sets'}]},
+ {tab:'KNOW THE WORTH',kicker:'PLAY. LEARN. COLLECT SMARTER.',sub:'Ten rounds. Rank three related cards, build your score and challenge your friends while learning what to hunt.',p:'#d7a92d',mode:'photo',img:'assets/homepage/categories/know-the-worth-game.webp',imageKey:'game',extra:'worth',actions:[{label:'PLAY KNOW THE WORTH',key:'game'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'POKÉMON / TCG',kicker:'THE TCG CHASE',sub:'Iconic cards, premium sets and the biggest TCG chases.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON / TCG',key:'pokemon'},{label:'CHECK THE MARKET',key:'market'}]}
+];
+
+const scenesEl=document.getElementById('scenes');
+const CAROUSEL_CARDS=[
+ 'assets/homepage/cards/downtown-jayden-daniels.webp','assets/homepage/cards/downtown-caleb-williams.webp','assets/homepage/cards/downtown-bo-nix.webp',
+ 'assets/homepage/cards/game-optic-rated-rookie.webp','assets/homepage/cards/game-select-rookie.webp','assets/homepage/cards/game-mosaic-red.webp',
+ 'assets/homepage/carousel/downtown-shedeur-sanders.webp','assets/homepage/carousel/josh-allen-downtown.webp','assets/homepage/carousel/caleb-prizm.webp','assets/homepage/carousel/bo-select.webp',
+ 'assets/homepage/carousel/travis-chrome.webp','assets/homepage/carousel/dart-chrome.webp','assets/homepage/carousel/jeanty-chrome.webp','assets/homepage/carousel/tetairoa-instant.webp',
+ 'assets/homepage/carousel/cam-chrome.webp','assets/homepage/carousel/nabers-optic.webp','assets/homepage/carousel/travis-radiating.webp','assets/homepage/carousel/jayden-stained.webp',
+ 'assets/homepage/carousel/mahomes-2022.webp','assets/homepage/carousel/caleb-snakeskin.webp'
+];
+const POKEMON_CARDS=[
+ 'assets/homepage/categories/pokemon-tcg-pikachu-tile.webp','assets/homepage/categories/pokemon-tcg-dashboard-tile.webp',
+ 'assets/homepage/categories/pokemon-tcg-homepage-panel.webp','assets/homepage/categories/pokemon-tcg.webp'
+];
+const ticker=document.getElementById('cardTickerTrack');
+let tickerSet=null;
+function fillTicker(cards){
+ if(tickerSet===cards)return;
+ tickerSet=cards;
+ ticker.innerHTML=[...cards,...cards,...cards].map((src,i)=>'<img src="'+src+'" loading="lazy" decoding="async" alt="Card '+((i%cards.length)+1)+'">').join('');
+}
+fillTicker(CAROUSEL_CARDS);
+STARS.forEach((d,i)=>{
+ const sc=document.createElement('div');
+ sc.className='scene '+d.mode+(d.stretch?' stretchFit':'')+(d.mobileFill?' mobileFill':'')+(i===0?' active':'');
+ sc.style.setProperty('--p',d.p);
+ if(d.pos)sc.style.setProperty('--pos',d.pos);
+ if(d.zoom)sc.style.setProperty('--zoom',d.zoom);
+ if(d.mode==='split'){
+  const hunt='<div class="splitContent"><div class="huntPanel"><div class="huntTitle">YOUR HUNT <span class="sampleFlag">SAMPLE VIEW</span></div><div class="huntRow"><span class="huntRowLabel">TEAM</span><div class="huntChips"><span class="huntChip">Jacksonville</span></div></div><div class="huntRow"><span class="huntRowLabel">ROOKIES</span><div class="huntChips"><span class="huntChip">Top 2025 / 2026 Rookies</span></div></div><div class="huntRow"><span class="huntRowLabel">CHASE</span><div class="huntChips"><span class="huntChip chase">Downtown</span><span class="huntChip chase">Autos</span><span class="huntChip chase">SSPs</span><span class="huntChip chase">Numbered</span></div></div><div class="huntRow"><span class="huntRowLabel">PLATFORMS</span><div class="huntChips"><span class="huntPlatform">TikTok</span><span class="huntPlatform">Whatnot</span><span class="huntPlatform">Facebook</span></div></div><div class="huntRow"><span class="huntRowLabel">NEXT</span><div class="huntCalendar"><span>Tonight • 8:00 PM</span><span>Tonight • 9:30 PM</span><span>Tomorrow • 7:00 PM</span></div></div></div></div>';
+  const worth='<div class="splitContent right"><div class="worthPanel"><div class="worthTitle">RANK THE 3 CARDS <span class="sampleFlag">HOW IT WORKS</span></div><div class="worthCards"><div class="worthCard">1</div><div class="worthCard">?</div><div class="worthCard">3</div></div><div class="worthCopy">Rank highest recent sale to lowest — then learn why one card is worth more.</div><div class="worthFactors"><span>INSERTS</span><span>PARALLELS</span><span>AUTOS</span><span>NUMBERING</span><span>RARITY</span><span>GRADING</span><span>DEMAND</span></div></div></div>';
+  sc.innerHTML='<div class="bg">'
+   +'<div class="splitHalf"><img src="'+d.left.img+'" alt="'+d.left.label+'"><span class="splitTag">'+d.left.label+'</span><div class="splitShade"></div>'+hunt+'</div>'
+   +'<div class="splitHalf"><img src="'+d.right.img+'" alt="'+d.right.label+'"><span class="splitTag">'+d.right.label+'</span><div class="splitShade"></div>'+worth+'</div>'
+   +'</div>';
+ }else if(d.mode==='cards'){
+  if(d.extra==='worth')sc.innerHTML='<div class="bg"><div class="cardShowcase gameShowcase"><div class="gamePromptBadge">RANK HIGHEST SALE → LOWEST</div>'+d.cards.map((src,n)=>'<div class="gameCardTile"><span class="gameRank">?</span><img src="'+src+'" alt="Real card game example '+(n+1)+'"></div>').join('')+'</div></div>';
+  else sc.innerHTML='<div class="bg"><div class="cardShowcase">'+d.cards.map((src,n)=>'<img src="'+src+'" alt="Real Downtown card example '+(n+1)+'">').join('')+'</div></div>';
+ }else{
+  sc.innerHTML='<div class="bg"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.tab+'"></div>';
+ }
+ scenesEl.appendChild(sc);
+});
+
+/* ---------------- HERO CONTROLS / ROTATION ---------------- */
+const hero=document.getElementById('hero'),scenes=[...document.querySelectorAll('.scene')],
+ rail=document.getElementById('starRail'),mobDots=document.getElementById('mobDots'),
+ heroKicker=document.getElementById('heroKicker'),heroSub=document.getElementById('heroSub'),
+ ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary'),heroExtra=document.getElementById('heroExtra'),imageTap=document.getElementById('imageTap');
+let idx=0,timer=null,striking=false;
+
+STARS.forEach((d,i)=>{
+ const b=document.createElement('button');
+ b.className='starBtn'+(i===0?' active':'');
+ b.style.setProperty('--p',d.p);
+ b.innerHTML='<span class="dotc"></span>'+d.tab;
+ b.onclick=()=>{show(i);resetTimer()};
+ rail.appendChild(b);
+ const dt=document.createElement('button');
+ dt.className='dot'+(i===0?' active':'');
+ dt.setAttribute('aria-label','Show chase '+(i+1));
+ dt.onclick=()=>{show(i);resetTimer()};
+ mobDots.appendChild(dt);
+});
+
+function show(n){
+ idx=((n%STARS.length)+STARS.length)%STARS.length;
+ const d=STARS[idx];
+ scenes.forEach((s,j)=>s.classList.toggle('active',j===idx));
+ [...rail.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
+ if(matchMedia('(max-width:760px)').matches&&rail.children[idx]){
+  const activeRailItem=rail.children[idx];
+  const railLeft=activeRailItem.offsetLeft-(rail.clientWidth-activeRailItem.offsetWidth)/2;
+  rail.scrollTo({left:Math.max(0,railLeft),behavior:'smooth'});
+ }
+ [...mobDots.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
+ fillTicker(d.tab==='POKÉMON / TCG'?POKEMON_CARDS:CAROUSEL_CARDS);
+ heroKicker.textContent=d.kicker;
+ heroSub.textContent=d.sub;
+ imageTap.classList.toggle('active',!!d.imageKey);
+ imageTap.onclick=d.imageKey?()=>openApp(d.imageKey):null;
+ imageTap.setAttribute('aria-label',d.imageKey?'Open '+d.tab:'');
+ hero.classList.remove('breakMode');
+ hero.classList.toggle('pokemonMode',d.tab==='POKÉMON / TCG');
+ hero.classList.toggle('hasExtra',!!d.extra);
+ if(d.extra==='hunt')heroExtra.innerHTML='<div class="heroExtraLabel">YOUR HUNT</div><div class="heroExtraChips"><span>TEAM</span><span>PLAYER</span><span>ROOKIES</span><span>DOWNTOWN</span><span>AUTOS</span><span>SSPs</span><span>NUMBERED</span><span>SETS</span></div>';
+ else if(d.extra==='worth')heroExtra.innerHTML='<div class="heroExtraNote">Three related cards. One correct ranking. Learn how inserts, parallels, autos, numbering, rarity, grading and player demand change value.</div>';
+ else heroExtra.innerHTML='';
+ heroExtra.classList.toggle('active',!!d.extra);
+ const acts=d.actions||DEFAULT_ACTIONS;
+ ctaPrimary.textContent=acts[0].label;ctaPrimary.onclick=()=>openApp(acts[0].key);
+ ctaSecondary.textContent=acts[1].label;ctaSecondary.onclick=()=>openApp(acts[1].key);
+ if(!striking){
+  striking=true;
+  hero.classList.remove('strike');void hero.offsetWidth;hero.classList.add('strike');
+  setTimeout(()=>{hero.classList.remove('strike');striking=false},760);
+ }
+}
+function resetTimer(){clearTimeout(timer);timer=setTimeout(()=>{show(idx+1);resetTimer()},6800)}
+resetTimer();
+hero.addEventListener('pointerenter',()=>clearTimeout(timer));
+hero.addEventListener('pointerleave',resetTimer);
+
+/* ---------------- DASHBOARD / COMMAND CENTER ---------------- */
+const DASH=[
+ {key:'team',num:'01',h1:'WHAT TO',h2:'HUNT',desc:'Team-by-team players, rookies and chase cards before the break starts.',cta:'START HUNTING →',ac:'#55d8ff',art:'assets/homepage/dashboard/01-what-to-hunt.webp',pos:'center center'},
+ {key:'sets',num:'02',h1:'SETS &',h2:'PACKS',desc:'Product intelligence for the releases collectors are opening.',cta:'EXPLORE SETS & PACKS →',ac:'#55d8ff',art:'assets/homepage/dashboard/02-sets-packs.webp',pos:'center center'},
+ {key:'checks',num:'03',h1:'',h2:'CHECKLISTS',desc:'Comprehensive checklists across sets, teams and parallels — football, basketball and baseball.',cta:'BROWSE CHECKLISTS →',ac:'#7fd8ff',art:'assets/homepage/dashboard/03-checklists.webp',pos:'center center'},
+ {key:'sets',num:'04',h1:'DOWNTOWN /',h2:'UPTOWN',desc:'A dedicated center for the hobby\'s hottest chase-insert hits.',cta:'EXPLORE DOWNTOWNS →',ac:'#ffd35a',art:'assets/homepage/dashboard/04-downtown-uptown.webp',pos:'center center'},
+ {key:'market',num:'05',h1:'MARKET &',h2:'COMPS',desc:'Real sales, real trends and smarter decisions built on live comps.',cta:'EXPLORE MARKET →',ac:'#6cff9e',art:'assets/homepage/dashboard/05-market-comps.webp',pos:'center center'},
+ {key:'watch',num:'06',h1:'NEVER MISS',h2:'A MOVE',desc:'Track the cards, players and opportunities you care about most.',cta:'OPEN WATCHLIST →',ac:'#55d8ff',art:'assets/homepage/dashboard/06-watchlist.webp',pos:'center center'},
+ {key:'game',num:'07',h1:'PROVE YOUR',h2:'KNOWLEDGE',desc:'Rank three related cards from highest sale to lowest and prove you know value.',cta:'PLAY THE CHALLENGE →',ac:'#c58bff',art:'assets/homepage/dashboard/07-cardstorm-challenge.webp',pos:'center center'},
+ {key:'breaks',num:'08',h1:'BREAK',h2:'CENTER',desc:'Find live breaks, breaker communities and chats — breaker tools are coming next.',cta:'FIND YOUR NEXT BREAK →',ac:'#ffb35a',art:'assets/homepage/categories/break-center.webp',pos:'center 30%',live:true},
+ {key:'pokemon',num:'09',h1:'THE TCG',h2:'CHASE',desc:'Sets, chase cards, market intelligence and collector tools for Pokémon and TCG.',cta:'EXPLORE POKÉMON / TCG →',ac:'#ffde59',art:'assets/homepage/dashboard/09-pokemon-tcg.webp',pos:'center center'},
+ {key:'live',num:'10',h1:'CARDS COME',h2:'ALIVE',desc:'The social, high-energy side of the hobby — cards, collectors and unforgettable moments on screen.',cta:'WATCH CARDS COME ALIVE →',ac:'#ffd35a',art:'assets/homepage/dashboard/10-cards-come-alive.webp',pos:'center center'},
+ {key:'plans',num:'11',h1:'KNOW MORE.',h2:'COLLECT SMARTER.',desc:'Deeper intelligence, calculators and premium market tools for collectors who want an edge.',cta:'GET THE EDGE →',ac:'#55d8ff',art:'assets/homepage/dashboard/11-cardstorm-edge.webp',pos:'center center'}
+];
+
+const dashGrid=document.getElementById('dashGrid');
+function buildCard(c){
+ const el=document.createElement('button');
+ el.className='cmdCard';
+ el.style.setProperty('--ac',c.ac);
+ const headline=(c.h1?c.h1+'<br>':'')+'<span>'+c.h2+'</span>';
+ el.innerHTML=
+  '<div class="cmdCardArt">'
+   +'<img src="'+c.art+'" style="object-position:'+c.pos+'" loading="lazy" alt="'+c.h1+' '+c.h2+'">'
+   +(c.live?'<span class="cmdLive">LIVE</span>':'')
+  +'</div>'
+  +'<div class="cmdCardBody">'
+   +'<div class="cmdCardNum">'+c.num+'</div>'
+   +'<h3>'+headline+'</h3>'
+   +'<p>'+c.desc+'</p>'
+   +'<span class="cmdCardCta">'+c.cta+'</span>'
+  +'</div>';
+ el.onclick=()=>openApp(c.key);
+ return el;
+}
+const rowsGrid=document.createElement('div');
+rowsGrid.className='cmdGrid';
+DASH.slice(0,8).forEach(c=>rowsGrid.appendChild(buildCard(c)));
+const row3Grid=document.createElement('div');
+row3Grid.className='cmdGrid cmdGrid3';
+DASH.slice(8).forEach(c=>row3Grid.appendChild(buildCard(c)));
+dashGrid.appendChild(rowsGrid);
+dashGrid.appendChild(row3Grid);
+
+/* ---------------- APP OVERLAY (unchanged working routing) ---------------- */
+const layer=document.getElementById('appLayer'),frame=document.getElementById('appFrame');
+let appLoaded=false,pendingSection=null;
+function openApp(section){
+ pendingSection=section||null;
+ layer.classList.add('open');document.body.style.overflow='hidden';clearTimeout(timer);
+ if(!appLoaded){frame.onload=()=>{appLoaded=true;goSection(pendingSection)};frame.src='app.html'}
+ else goSection(pendingSection);
+}
+function goSection(section){if(!section)return;try{const w=frame.contentWindow;if(typeof w.show==='function')w.show(section)}catch(e){}}
+function closeApp(){layer.classList.remove('open');document.body.style.overflow='';resetTimer()}
+// Single source of truth for "home" on the CardStorm homepage itself: close any open tool
+// overlay and land back on this hero page. app.html's goHome() calls window.parent.closeApp()
+// to reach this exact same page — there is only ever one CardStorm homepage.
+function goHome(){if(layer.classList.contains('open'))closeApp();window.scrollTo({top:0,behavior:'smooth'})}
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&layer.classList.contains('open'))closeApp()});
+</script>
+</body>
+</html>
