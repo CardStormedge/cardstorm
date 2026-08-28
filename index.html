@@ -69,6 +69,7 @@ img{max-width:100%}
 .hero p{max-width:560px;color:#d1e0ed;font-size:clamp(15px,1.4vw,19px);line-height:1.55;margin:0 0 26px}
 .heroExtra{display:none;margin:-8px 0 14px;max-width:700px}.heroExtra.active{display:block}.heroExtraLabel{font-size:10px;font-weight:950;letter-spacing:.12em;color:#7fdcff;margin-bottom:7px}.heroExtraChips{display:flex;gap:6px;flex-wrap:wrap}.heroExtraChips span{border:1px solid #34698a;background:rgba(5,28,45,.9);border-radius:999px;padding:5px 8px;color:#e7f7ff;font-size:9px;font-weight:850}.heroExtraNote{font-size:11px;line-height:1.4;color:#c8dbea}
 .cardTicker{display:none}
+.imageTap{display:none;position:absolute;z-index:6;inset:0 0 auto;height:210px;border:0;background:transparent;cursor:pointer}.imageTap:focus-visible{outline:3px solid #55d8ff;outline-offset:-5px}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
 .primary,.secondary{border-radius:10px;padding:13px 18px;font-weight:950;cursor:pointer;color:#fff}
 .primary{border:0;background:linear-gradient(135deg,#2088ff,#0e63d6)}
@@ -124,11 +125,12 @@ img{max-width:100%}
  .scene.hasArtTheme.cards .cardShowcase{inset:12px 1% 12px 40%;gap:3px}.scene.hasArtTheme.cards .cardShowcase>img{height:82%;max-width:23%}
  .artTheme.active{display:block}.artTheme{left:14px;top:105px;width:39%;transform:translateY(-50%)}.artTheme strong{font-size:clamp(28px,8.5vw,37px);line-height:.84}.artTheme small{margin-top:8px;font-size:7px;line-height:1.35;letter-spacing:.09em}
  .cardTicker{display:block;position:absolute;z-index:8;top:210px;left:0;right:0;height:92px;overflow:hidden;border-top:1px solid rgba(85,216,255,.2);border-bottom:1px solid rgba(85,216,255,.2);background:linear-gradient(90deg,#020914,#082036 50%,#020914)}
+ .imageTap.active{display:block}
  .cardTicker:before,.cardTicker:after{content:'';position:absolute;z-index:2;top:0;bottom:0;width:34px;pointer-events:none}.cardTicker:before{left:0;background:linear-gradient(90deg,#020914,transparent)}.cardTicker:after{right:0;background:linear-gradient(-90deg,#020914,transparent)}
  .cardTickerTrack{display:flex;align-items:center;gap:8px;width:max-content;height:100%;padding:7px 0;animation:cardDrift 78s linear infinite}.cardTicker img{flex:0 0 auto;width:54px;height:76px;object-fit:cover;border-radius:5px;border:1px solid #315d79;box-shadow:0 5px 12px #000}
  @keyframes cardDrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
  .heroCopy{min-height:590px;justify-content:flex-start;padding:316px 18px 18px;max-width:100%}
- .hero.pokemonMode .scene.photo .bg{height:302px}.hero.pokemonMode .scene.photo .bg img{object-fit:contain;object-position:center}.hero.pokemonMode .cardTicker{display:none}
+ .hero.pokemonMode .scene.photo .bg{height:302px}.hero.pokemonMode .scene.photo .bg img{object-fit:contain;object-position:center}.hero.pokemonMode .cardTicker{display:none}.hero.pokemonMode .imageTap{height:302px}
  .heroPill{padding:6px 10px;font-size:9px}
  .hero h1{font-size:clamp(31px,9vw,43px);line-height:.94;margin:12px 0 10px}
  .hero p{font-size:13.5px;line-height:1.42;margin-bottom:13px}
@@ -182,6 +184,7 @@ img{max-width:100%}
 <section class="hero" id="hero" aria-label="CardStorm featured chase">
  <div id="scenes"></div>
  <div class="shade"></div><div class="lightning"></div>
+ <button class="imageTap active" id="imageTap" type="button" aria-label="Explore rookie hunts" onclick="openApp('team')"></button>
  <div class="artTheme" id="artTheme" aria-hidden="true"></div>
  <div class="cardTicker" aria-label="Real card showcase"><div class="cardTickerTrack" id="cardTickerTrack"></div></div>
  <div class="heroCopy">
@@ -214,13 +217,13 @@ img{max-width:100%}
    photographs of real 2024 Donruss cards; no price or live-listing claim is made. */
 const DEFAULT_ACTIONS=[{label:'EXPLORE WHAT TO HUNT',key:'team'},{label:'CHECK THE MARKET',key:'market'}];
 const STARS=[
- {tab:'ROOKIES',kicker:'THE NEXT GENERATION',sub:'Rookie heat and the first-year cards collectors are chasing now.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp',actions:[{label:'EXPLORE ROOKIE HUNTS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'ROOKIE STARS',kicker:'BREAKOUT WATCH',sub:'The rookies turning into hobby stars and the cards moving with them.',p:'#2e69ff',mode:'photo',img:'assets/homepage/categories/rookie-stars.webp',actions:[{label:'FIND BREAKOUT ROOKIES',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'GOATS',kicker:'LEGENDS NEVER FADE',sub:'The iconic names and cards that set the standard for the hobby.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp',actions:[{label:'EXPLORE THE LEGENDS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'ROOKIES',kicker:'THE NEXT GENERATION',sub:'Rookie heat and the first-year cards collectors are chasing now.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp',imageKey:'team',actions:[{label:'EXPLORE ROOKIE HUNTS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'ROOKIE STARS',kicker:'BREAKOUT WATCH',sub:'The rookies turning into hobby stars and the cards moving with them.',p:'#2e69ff',mode:'photo',img:'assets/homepage/categories/rookie-stars.webp',imageKey:'team',actions:[{label:'FIND BREAKOUT ROOKIES',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'GOATS',kicker:'LEGENDS NEVER FADE',sub:'The iconic names and cards that set the standard for the hobby.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp',imageKey:'team',actions:[{label:'EXPLORE THE LEGENDS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
  {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Real Downtown case hits—including Patrick Mahomes—plus clearly labeled CardStorm concept art.',p:'#ffd35a',mode:'cards',artTop:'HOLY',artAccent:'GRAILS',artSub:'DOWNTOWNS. CASE HITS. ICONS.',cards:['assets/homepage/cards/downtown-jayden-daniels.webp','assets/homepage/cards/downtown-bo-nix.webp','assets/homepage/carousel/mahomes-downtown.webp','assets/homepage/cards/kansas-city-concept.webp'],actions:[{label:'EXPLORE HOLY GRAILS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
  {tab:'BREAK CENTER',kicker:'BUILD YOUR PERSONAL HUNT',sub:'Choose the team, players, rookies, inserts and cards you want — then find the right break opportunities.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-studio.webp',artTop:'BREAK',artAccent:'CENTER',artSub:'BUILD YOUR HUNT. FIND THE BREAK.',extra:'hunt',actions:[{label:'BUILD YOUR HUNT',key:'breaks'},{label:'EXPLORE SETS',key:'sets'}]},
  {tab:'KNOW THE WORTH',kicker:'PLAY. LEARN. COLLECT SMARTER.',sub:'Rank three real Jayden Daniels rookie cards from highest recent sale to lowest — then learn what drives the difference.',p:'#d7a92d',mode:'cards',cards:['assets/homepage/cards/game-optic-rated-rookie.webp','assets/homepage/cards/game-select-rookie.webp','assets/homepage/cards/game-mosaic-red.webp'],extra:'worth',actions:[{label:'PLAY KNOW THE WORTH',key:'game'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'POKÉMON / TCG',kicker:'THE TCG CHASE',sub:'Iconic cards, premium sets and the biggest TCG chases.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp',actions:[{label:'EXPLORE POKÉMON / TCG',key:'pokemon'},{label:'CHECK THE MARKET',key:'market'}]}
+ {tab:'POKÉMON / TCG',kicker:'THE TCG CHASE',sub:'Iconic cards, premium sets and the biggest TCG chases.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON / TCG',key:'pokemon'},{label:'CHECK THE MARKET',key:'market'}]}
 ];
 
 const scenesEl=document.getElementById('scenes');
@@ -261,7 +264,7 @@ STARS.forEach((d,i)=>{
 const hero=document.getElementById('hero'),scenes=[...document.querySelectorAll('.scene')],
  rail=document.getElementById('starRail'),mobDots=document.getElementById('mobDots'),
  heroKicker=document.getElementById('heroKicker'),heroSub=document.getElementById('heroSub'),
- ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary'),heroExtra=document.getElementById('heroExtra'),artTheme=document.getElementById('artTheme');
+ ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary'),heroExtra=document.getElementById('heroExtra'),artTheme=document.getElementById('artTheme'),imageTap=document.getElementById('imageTap');
 let idx=0,timer=null,striking=false;
 
 STARS.forEach((d,i)=>{
@@ -290,6 +293,9 @@ function show(n){
  artTheme.innerHTML=d.artTop?'<strong>'+d.artTop+'<br><span>'+d.artAccent+'</span></strong><small>'+d.artSub+'</small>':'';
  artTheme.style.setProperty('--p',d.p);
  artTheme.classList.toggle('active',!!d.artTop);
+ imageTap.classList.toggle('active',!!d.imageKey);
+ imageTap.onclick=d.imageKey?()=>openApp(d.imageKey):null;
+ imageTap.setAttribute('aria-label',d.imageKey?'Open '+d.tab:'');
  hero.classList.remove('breakMode');
  hero.classList.toggle('pokemonMode',d.tab==='POKÉMON / TCG');
  hero.classList.toggle('hasExtra',!!d.extra);
