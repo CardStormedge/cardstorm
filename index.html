@@ -66,14 +66,14 @@ img{max-width:100%}
 .hero.finishedMode .heroCopy{pointer-events:none}
 .hero.finishedMode #starRail{pointer-events:auto}
 .hero.finishedMode .heroPill,.hero.finishedMode .heroCopy>h1,.hero.finishedMode #heroSub,.hero.finishedMode .heroExtra,.hero.finishedMode .actions{display:none}
-.hero.finishedMode #starRail{position:absolute;left:clamp(30px,5vw,74px);right:clamp(30px,5vw,74px);max-width:640px;margin:0;z-index:8;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.hero.finishedMode #starRail{position:absolute;left:clamp(30px,5vw,74px);right:clamp(30px,5vw,74px);max-width:640px;margin:0;z-index:14;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .hero.finishedMode #starRail::-webkit-scrollbar{display:none}
 .hero.finishedMode .starBtn{flex:0 0 auto}
 .scene.finished .bg{display:flex;align-items:center;justify-content:center}
 .artFrame{position:relative}
 .scene.finished .bg .artFrame img{display:block;width:100%;height:100%;object-fit:fill;object-position:center;transform:none}
 .artBtn{position:absolute;background:transparent;border:0;cursor:pointer;padding:0}
-@media(max-width:760px){.hero.finishedMode #starRail{position:absolute;left:10px;right:10px;top:auto;bottom:8px;height:auto}}
+@media(max-width:760px){.hero.finishedMode #starRail{position:absolute;left:10px;right:10px;height:auto}}
 .hero.breakMode .heroCopy{max-width:100%;justify-content:flex-end;padding-bottom:28px}.hero.breakMode .heroCopy h1{display:none}.hero.breakMode .heroCopy p{max-width:850px;margin-bottom:12px}.hero.breakMode .shade{background:linear-gradient(0deg,rgba(2,9,20,.98),rgba(2,9,20,.72) 21%,transparent 43%)}
 .heroPill{display:inline-flex;width:max-content;padding:8px 12px;border:1px solid rgba(85,216,255,.5);border-radius:999px;background:rgba(6,28,47,.8);font-size:11px;font-weight:900;letter-spacing:.08em}
 .hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:950;font-style:normal;font-size:clamp(42px,6.4vw,88px);line-height:.92;letter-spacing:-.05em;margin:20px 0 16px;text-shadow:0 10px 34px #000}
@@ -147,6 +147,8 @@ img{max-width:100%}
  .cardTickerTrack{display:flex;align-items:center;gap:8px;width:max-content;height:100%;padding:7px 0;animation:cardDrift 78s linear infinite}.cardTicker img{flex:0 0 auto;width:54px;height:76px;object-fit:cover;border-radius:5px;border:1px solid #315d79;box-shadow:0 5px 12px #000}
  @keyframes cardDrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
  .heroCopy{min-height:590px;justify-content:flex-start;padding:370px 18px 18px;max-width:100%}
+ .hero.finishedMode .heroCopy{min-height:0;padding:0}
+ .hero.finishedMode .cardTicker{display:none}
  .hero.pokemonMode .scene.photo .bg{height:210px}.hero.pokemonMode .scene.photo .bg img{object-fit:cover;object-position:center 30%}.hero.pokemonMode .cardTicker{display:block;top:210px;height:88px}.hero.pokemonMode .imageTap{height:210px}
  .heroPill{padding:6px 10px;font-size:9px}
  .hero h1{font-size:clamp(31px,9vw,43px);line-height:.94;margin:12px 0 10px}
@@ -241,7 +243,7 @@ const STARS=[
  {tab:'HOLY GRAILS',dd:'grails',kicker:'HOLY GRAILS',h1:'THE RAREST CARDS.<br><span>THE BIGGEST CHASES.</span>',sub:'Explore the holy grails, track values, and see what collectors are chasing now.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/case-hits-hero.webp',imageKey:'sets',actions:[{label:'EXPLORE HOLY GRAILS',key:'sets'},{label:'VIEW TOP CHASES',key:'market'}]},
  {tab:'KNOW THE WORTH',dd:'intel',kicker:'KNOW THE WORTH',h1:'REAL DATA.<br><span>REAL ANSWERS.</span>',sub:'Check current values, view market trends, and make smarter decisions.',p:'#d7a92d',mode:'photo',img:'assets/homepage/dashboard/05-market-comps.webp',imageKey:'market',actions:[{label:'CHECK A CARD',key:'market'},{label:'VIEW MARKET TRENDS',key:'market'}]},
  {tab:'POKÉMON / TCG',dd:'tcg',kicker:'POKÉMON / TCG',h1:'COLLECT. BATTLE.<br><span>BELONG.</span>',sub:'Explore top sets, track values, and dive into the world of Pokémon TCG.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg-hero.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON',key:'pokemon'},{label:'VIEW TOP CARDS',key:'pokemon'}]},
- {tab:'LIVE CARDS',dd:'live',kicker:'LIVE CARDS',h1:'LIVE CARDS.<br><span>REAL ACTION.</span><br><span>RIGHT NOW.</span>',sub:'Live listings. Live sales. Live momentum. Be in the action as it happens.',p:'#ff3d4d',mode:'photo',img:'assets/homepage/categories/live-cards-hero.webp',imageKey:'live',actions:[{label:'EXPLORE LIVE CARDS',key:'live'},{label:'VIEW RECENT SALES',key:'market'}]}
+ {tab:'LIVE CARDS',dd:'live',kicker:'LIVE CARDS',h1:'LIVE CARDS.<br><span>REAL ACTION.</span><br><span>RIGHT NOW.</span>',sub:'Live listings. Live sales. Live momentum. Be in the action as it happens.',p:'#ff3d4d',mode:'photo',finished:true,img:'assets/homepage/categories/live-cards-hero.webp',artRatio:'1672/941',artButtons:[{x:2.27,y:75.24,w:21.65,h:6.16,key:'live',label:'Explore Live Cards'},{x:25.0,y:75.24,w:19.86,h:6.16,key:'market',label:'View Recent Sales'}],imageKey:'live',actions:[{label:'EXPLORE LIVE CARDS',key:'live'},{label:'VIEW RECENT SALES',key:'market'}]}
 ];
 
 const scenesEl=document.getElementById('scenes');
@@ -267,7 +269,7 @@ function fillTicker(cards){
 fillTicker(CAROUSEL_CARDS);
 STARS.forEach((d,i)=>{
  const sc=document.createElement('div');
- sc.className='scene '+d.mode+(d.stretch?' stretchFit':'')+(d.mobileFill?' mobileFill':'')+(i===0?' active':'');
+ sc.className='scene '+d.mode+(d.stretch?' stretchFit':'')+(d.mobileFill?' mobileFill':'')+(d.finished?' finished':'')+(i===0?' active':'');
  sc.style.setProperty('--p',d.p);
  if(d.pos)sc.style.setProperty('--pos',d.pos);
  if(d.zoom)sc.style.setProperty('--zoom',d.zoom);
@@ -292,6 +294,7 @@ STARS.forEach((d,i)=>{
  scenesEl.appendChild(sc);
 });
 function sizeArtFrames(){
+ const mobile=matchMedia('(max-width:760px)').matches;
  document.querySelectorAll('.artFrame').forEach(f=>{
   const parts=(f.dataset.ratio||'16/9').split('/');
   const ratio=parseFloat(parts[0])/parseFloat(parts[1]);
@@ -303,14 +306,38 @@ function sizeArtFrames(){
   f.style.width=w+'px';
   f.style.height=h+'px';
  });
+ if(mobile){
+  const activeFrame=document.querySelector('.scene.active.finished .artFrame');
+  if(activeFrame){
+   const parts=(activeFrame.dataset.ratio||'16/9').split('/');
+   const ratio=parseFloat(parts[0])/parseFloat(parts[1]);
+   const pw=activeFrame.parentElement.clientWidth;
+   const h=pw/ratio;
+   activeFrame.style.width=pw+'px';
+   activeFrame.style.height=h+'px';
+   hero.style.minHeight=Math.round(h+60)+'px';
+  }else{
+   hero.style.minHeight='';
+  }
+ }else{
+  hero.style.minHeight='';
+ }
  positionFinishedRail();
 }
 function positionFinishedRail(){
- if(matchMedia('(max-width:760px)').matches)return;
  const scene=document.querySelector('.scene.active'),frame=scene&&scene.querySelector('.artFrame'),rail=document.getElementById('starRail');
  if(!frame||!rail)return;
- const heroRect=hero.getBoundingClientRect(),frameRect=frame.getBoundingClientRect();
- rail.style.top=Math.round((frameRect.top-heroRect.top)+frameRect.height*0.785)+'px';
+ const d=STARS[idx];
+ if(!d||!d.finished)return;
+ const heroRect=hero.getBoundingClientRect();
+ if(matchMedia('(max-width:760px)').matches){
+  const railH=rail.offsetHeight||35;
+  rail.style.top=Math.round(heroRect.height-railH-8)+'px';
+  return;
+ }
+ const maxBottom=Math.max(...(d.artButtons||[{y:0,h:0}]).map(b=>b.y+b.h));
+ const frameRect=frame.getBoundingClientRect();
+ rail.style.top=Math.round((frameRect.top-heroRect.top)+frameRect.height*(maxBottom/100)+14)+'px';
 }
 window.addEventListener('resize',sizeArtFrames);
 
