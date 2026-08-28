@@ -1,0 +1,62 @@
+{
+  "sport": "Football",
+  "season": 2024,
+  "status": "research_complete_foundation_not_live",
+  "eligibility": {
+    "rule": "A player must belong to the 2024 NFL hobby/player class or be an established NFL player appearing in the 2024 product. Product branding alone does not move a later rookie into 2024 Team Hunt.",
+    "excludeFrom2024TeamHunt": [
+      "2025 rookie-class players appearing only as 2024 Select XRC redemptions",
+      "2025 rookie-class players such as Cam Ward, Ashton Jeanty, Jaxson Dart, Shedeur Sanders and Travis Hunter",
+      "future-class prospects and unverified checklist entries"
+    ],
+    "selectXRCPolicy": "Keep 2024 Select XRC records in the product checklist for completeness, but tag them xrc=true and teamHuntEligible2024=false. Never surface them as 2024 team rookie targets."
+  },
+  "teamHuntRanking": [
+    "High-interest 2024 rookie",
+    "Major established hobby star",
+    "Breakout young player",
+    "Strong secondary 2024 rookie",
+    "Legend only when product/team relevance makes it useful"
+  ],
+  "referenceImage": {
+    "countPerTeam": 1,
+    "requirements": [
+      "sharp and well-lit",
+      "front-facing card",
+      "no visibly blurry image",
+      "no dark or badly exposed listing photo",
+      "minimal glare",
+      "no distracting hand or clutter when a cleaner source exists",
+      "prefer raw card over slab when image quality is comparable",
+      "preserve aspect ratio",
+      "localize before production deployment"
+    ],
+    "variety": "Rotate major products and chase types. Do not use the same card design for all 32 teams."
+  },
+  "checklistUX": {
+    "primaryFlow": "Sport > Year > Team > Team Hunt page",
+    "teamPage": [
+      "one reference card",
+      "top chase targets",
+      "exact hits to hunt expandable inline",
+      "one master checklist grouped by product",
+      "owned checkboxes",
+      "owned/chasing/total/completion counters"
+    ],
+    "navigation": "Back returns to the immediate previous CardStorm state and preserves team/year/scroll state; it must not default to Home.",
+    "productChecklist": "Full product checklist remains a secondary destination."
+  },
+  "deploymentGate": [
+    "32 reference selections verified",
+    "32 production image files localized and visually QA'd",
+    "year eligibility verified",
+    "team mappings verified",
+    "core product checklist data validated",
+    "no invented unreleased or unverified checklist data",
+    "mobile layout QA complete",
+    "native and in-app Back navigation QA complete",
+    "zero missing images",
+    "zero broken links",
+    "homepage hero and unrelated Command Center modules unchanged"
+  ]
+}
