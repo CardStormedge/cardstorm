@@ -1,0 +1,61 @@
+{
+  "sport":"Football",
+  "season":2024,
+  "purpose":"Define the exact data contract used to build each NFL team's What to Hunt page from verified sources without leaking unsafe or future-year records.",
+  "primaryFlow":"Football > 2024 > Team > Team Hunt",
+  "teamPageContract":{
+    "team":"NFL team name",
+    "season":2024,
+    "priorityTargets":"Take up to four players from team-targets.csv in listed order.",
+    "referenceCard":"Take exactly one team-matched reference from 2024-football-reference-map.csv only after the image has been localized and visually QA'd.",
+    "exactHits":"Aggregate only verified chase records whose team matches the selected team.",
+    "masterChecklist":"Group verified team-matched card rows by product. Products with partial data must be labeled coverage=partial rather than implying completeness.",
+    "ownedStateKey":"cardstorm:owned:football:2024:<team>:<product>:<card-id>",
+    "completion":"owned verified rows / total verified rows currently exposed; UI must label partial product coverage where applicable."
+  },
+  "sourceOrder":[
+    "team-targets.csv",
+    "donruss.json after audit",
+    "optic-chase-manifest.csv",
+    "prizm-rookies.csv",
+    "prizm-chase-manifest.csv",
+    "mosaic-chase-manifest.csv",
+    "select.json only through select-rookie-validation-rules.json",
+    "select-xrc-quarantine.csv as exclusion source",
+    "reference-card map after local image QA"
+  ],
+  "hardFilters":[
+    "season must equal 2024",
+    "team must match selected NFL team",
+    "teamHuntEligible2024 must not be false",
+    "XRC rows #501-520 are excluded from 2024 Team Hunt",
+    "Select rookie=true is ignored unless validated against trusted 2024 rookie registry or verified checklist",
+    "do not infer SSP/case-hit/serial-number/autograph/memorabilia status",
+    "do not expose a reference image until the local asset exists and passes visual QA"
+  ],
+  "sortOrder":{
+    "exactHits":["case_hit","rookie","numbered","autograph","parallel","insert","memorabilia","base"],
+    "products":["Donruss","Donruss Optic","Prizm","Mosaic","Select","Absolute","Phoenix","Contenders","Topps Chrome","Origins","Clearly Donruss"],
+    "withinProduct":"card number ascending unless a verified chase priority overrides display order"
+  },
+  "coverageLabels":{
+    "complete":"CardStorm has verified and normalized the full intended team-visible scope for that product.",
+    "partial":"Only verified portions are exposed; UI must not claim full set completeness.",
+    "blocked":"Known unsafe/unverified data exists and must not render.",
+    "upcoming":"Not applicable to completed 2024 football products, reserved for future seasons."
+  },
+  "navigationRequirements":[
+    "Browser Back returns to prior team-selection state.",
+    "In-app Back uses history when available rather than routing directly Home.",
+    "Selected sport/year/team and scroll position should be restored when returning from a full product checklist.",
+    "Deep links remain valid."
+  ],
+  "mobileRequirements":[
+    "single-column team page",
+    "collapsible product groups",
+    "minimum comfortable tap targets for owned checkboxes",
+    "no horizontal overflow",
+    "reference card remains fully visible without forcing an oversized hero"
+  ],
+  "productionGate":"Do not wire this aggregation into the public Team Hunt route until launch-audit.csv has no blocking OPEN/PARTIAL items related to data safety, images, navigation or mobile QA."
+}
