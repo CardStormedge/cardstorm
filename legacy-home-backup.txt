@@ -1,0 +1,1 @@
+Production routing fix preserves the prior CardStorm homepage at legacy-home.html using the existing index.html blob. This marker documents the migration and can be removed after QA.
