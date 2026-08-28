@@ -1,38 +1,54 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CardStormGuide</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}iframe{display:block;width:100%;height:100%;border:0;background:#020914}</style></head>
-<body><iframe id="cardstorm" src="/legacy-home.html?cardstorm-home-v5=1" title="CardStormGuide"></iframe><script>
+<body><iframe id="cardstorm" src="/legacy-home.html?cardstorm-home-v6=1" title="CardStormGuide"></iframe><script>
 const frame=document.getElementById('cardstorm');
-function polish(){const d=frame.contentDocument;if(!d||!d.body||d.getElementById('cardstormV5Patch'))return;
-const st=d.createElement('style');st.id='cardstormV5Patch';st.textContent=`
-.brand .tag{display:none!important}.brand{min-width:210px!important}.brand img{height:62px!important;width:auto!important;max-width:235px!important;object-fit:contain!important}
-.hero{min-height:min(600px,70vh)!important;height:auto!important;aspect-ratio:auto!important;overflow:hidden!important;background:#020914!important}.scene.photo .bg img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transform:none!important;filter:saturate(1.10) contrast(1.04) brightness(1.08)!important}.heroBrandLock,.heroCta,.heroNavOverlay{display:none!important}.heroCopy{display:flex!important}.shade{display:block!important;background:linear-gradient(90deg,rgba(1,7,15,.78) 0%,rgba(1,7,15,.50) 31%,rgba(1,7,15,.08) 59%,transparent 76%)!important}.hero h1,.hero h1 span{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;font-style:normal!important;font-weight:950!important;letter-spacing:-.045em!important}.hero h1{line-height:.92!important}.hero p{max-width:520px!important}.heroPill{font-family:Inter,ui-sans-serif,system-ui!important;font-style:normal!important}.actions{display:flex!important}
-#starRail{display:none!important}.mobDots{display:flex!important;position:absolute!important;z-index:12!important;left:50%!important;bottom:15px!important;transform:translateX(-50%)!important;margin:0!important}
-.cmdStack{gap:12px!important}.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(8,minmax(0,1fr))!important;max-width:none!important;margin:0!important;gap:12px!important}.cmdCard{min-height:0!important;border-radius:12px!important}.cmdCardArt{height:150px!important}.cmdCardBody{padding:11px 10px 12px!important}.cmdCard h3{font-size:15px!important;line-height:1.05!important}.cmdCard p{font-size:10.5px!important;line-height:1.3!important}.cmdCardArt img{filter:saturate(1.10) brightness(1.08) contrast(1.03)!important}.sectionTitle{margin:22px 0 10px!important}.sectionTitle h2{font-size:25px!important}
-@media(max-width:1200px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(4,minmax(0,1fr))!important}.cmdCardArt{height:175px!important}}
-@media(max-width:980px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.shade{background:linear-gradient(180deg,transparent 0,rgba(2,9,20,.08) 30%,#061421 54%,#020914 72%)!important}.heroCopy{justify-content:flex-end!important;padding-bottom:52px!important}.cmdCardArt{height:190px!important}}
-@media(max-width:620px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:1fr!important}.cmdCardArt{height:210px!important}}
-`;d.head.appendChild(st);
-// remove all temporary overlays from prior patch
-['.heroBrandLock','.heroCta','.heroNavOverlay'].forEach(s=>d.querySelectorAll(s).forEach(n=>n.remove()));
-// one rookie slide: Rookie Stars artwork/copy becomes Rookies
-const buttons=[...d.querySelectorAll('.starBtn')],rookieBtn=buttons.find(b=>(b.innerText||'').trim().toUpperCase()==='ROOKIES'),starsBtn=buttons.find(b=>(b.innerText||'').toUpperCase().includes('ROOKIE STARS'));if(rookieBtn)rookieBtn.style.display='none';if(starsBtn){[...starsBtn.childNodes].forEach(n=>{if(n.nodeType===3&&n.textContent.includes('ROOKIE STARS'))n.textContent=n.textContent.replace('ROOKIE STARS','ROOKIES')});starsBtn.click();}
-// keep only the approved eight command-center destinations
-[...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('CHECKLISTS')||t.includes('DOWNTOWN /')||t.includes('DOWNTOWN/UPTOWN')||t.includes('NEVER MISS'))c.remove();});
-[...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('KNOW MORE')||t.includes('COLLECT SMARTER')){const h3=c.querySelector('h3');if(h3)h3.innerHTML='COLLECTOR <span>INTEL</span>';const p=c.querySelector('p');if(p)p.textContent='Data. Insights. Smarter moves.';}});
-const grids=[...d.querySelectorAll('.cmdGrid')];if(grids.length){const first=grids[0],visible=[...d.querySelectorAll('.cmdCard')];first.innerHTML='';visible.forEach(c=>first.appendChild(c));grids.slice(1).forEach(g=>g.remove());first.classList.remove('cmdGrid3');}
-const section=d.querySelector('.sectionTitle p');if(section)section.textContent='Eight focused destinations. No clutter. Just the tools collectors actually use.';
-// restore the original built-in hero copy/buttons and make routes explicit
-const kicker=d.getElementById('heroKicker'),h=d.querySelector('#hero h1'),p=d.getElementById('heroSub'),primary=d.getElementById('heroPrimary'),secondary=d.getElementById('heroSecondary');
-const cfg={
-'THE NEXT GENERATION':['ROOKIE SEASON','ROOKIES TODAY.<br><span>STARS TOMORROW.</span>','Discover the rookies, track their rise, and find the cards before the hobby does.','EXPLORE ROOKIES →','VIEW TOP MOVERS','hunt','market'],
-'BREAKOUT WATCH':['ROOKIE SEASON','ROOKIES TODAY.<br><span>STARS TOMORROW.</span>','Discover the rookies, track their rise, and find the cards before the hobby does.','EXPLORE ROOKIES →','VIEW TOP MOVERS','hunt','market'],
-'LEGENDS NEVER FADE':['GOATS','ICONIC PLAYERS.<br><span>TIMELESS CARDS.</span>','Explore the legends, their most iconic cards, and the value that never fades.','EXPLORE GOATS →','VIEW LEGEND LIST','market','market'],
-'THE CARDS EVERYONE WANTS':['HOLY GRAILS','THE RAREST CARDS.<br><span>THE BIGGEST CHASES.</span>','Explore the holy grails, track values, and see what collectors are chasing now.','EXPLORE HOLY GRAILS →','VIEW TOP CHASES','market','market'],
-'BUILD YOUR PERSONAL HUNT':['BREAK CENTER','REAL BREAKS.<br><span>REAL HITS.</span>','Find live and upcoming breaks, check team availability, and chase the biggest hits with the CardStorm community.','ENTER BREAK CENTER →','VIEW UPCOMING BREAKS','breaks','breaks'],
-'PLAY. LEARN. COLLECT SMARTER.':['KNOW THE WORTH','REAL DATA.<br><span>REAL ANSWERS.</span>','Check current values, view market trends, and make smarter decisions.','CHECK A CARD →','VIEW MARKET TRENDS','market','market'],
-'THE TCG CHASE':['POKÉMON / TCG','COLLECT. BATTLE.<br><span>BELONG.</span>','Explore top sets, track values, and dive into the world of Pokémon TCG.','EXPLORE POKÉMON →','VIEW TOP CARDS','tcg','tcg']};
-function apply(){if(!kicker)return;const c=cfg[kicker.textContent.trim()];if(!c)return;kicker.textContent=c[0];if(h)h.innerHTML=c[1];if(p)p.textContent=c[2];if(primary){primary.textContent=c[3];primary.onclick=()=>d.defaultView.openScreen&&d.defaultView.openScreen(c[5])}if(secondary){secondary.textContent=c[4];secondary.onclick=()=>d.defaultView.openScreen&&d.defaultView.openScreen(c[6])}}
-apply();if(kicker)new MutationObserver(apply).observe(kicker,{childList:true,subtree:true,characterData:true});
+function polish(){
+ const d=frame.contentDocument;if(!d||!d.body||d.getElementById('cardstormV6Patch'))return;
+ const st=d.createElement('style');st.id='cardstormV6Patch';st.textContent=`
+ .brand .tag{display:none!important}.brand{min-width:180px!important}.brand img{height:54px!important;width:auto!important;max-width:185px!important;object-fit:contain!important}
+ .hero{min-height:min(590px,68vh)!important;border-radius:20px!important;overflow:hidden!important;background:#020914!important}
+ .scene.photo .bg img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:64% center!important;transform:none!important;filter:saturate(1.12) contrast(1.05) brightness(1.08)!important}
+ .shade{display:block!important;z-index:5!important;background:linear-gradient(90deg,#020914 0%,#020914 34%,rgba(2,9,20,.96) 40%,rgba(2,9,20,.64) 49%,rgba(2,9,20,.08) 66%,transparent 78%)!important}
+ .heroCopy{display:flex!important;z-index:7!important;max-width:610px!important;padding:58px 54px 70px!important;justify-content:center!important}
+ .heroPill{font-family:Inter,ui-sans-serif,system-ui!important;font-style:normal!important;font-weight:900!important;background:rgba(5,25,43,.84)!important}
+ .hero h1,.hero h1 span{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;font-style:normal!important;font-weight:950!important;letter-spacing:-.045em!important;text-transform:uppercase!important}
+ .hero h1{font-size:clamp(46px,5.2vw,78px)!important;line-height:.94!important;margin:18px 0 14px!important}.hero p{font-size:17px!important;line-height:1.45!important;max-width:510px!important;margin-bottom:20px!important}.actions{display:flex!important;gap:10px!important}.primary,.secondary{font-size:12px!important;padding:13px 17px!important;border-radius:9px!important}
+ .heroBrandLock,.heroCta,.heroNavOverlay{display:none!important}
+ #starRail{display:none!important}.mobDots{display:flex!important;position:absolute!important;z-index:12!important;left:50%!important;bottom:15px!important;transform:translateX(-50%)!important;margin:0!important}.mobDots .dot{width:18px!important;height:4px!important}
+ .sectionTitle{margin:24px 0 10px!important}.sectionTitle h2{font-size:26px!important}.sectionTitle p{font-size:12px!important}
+ .cmdStack{display:block!important}.cmdGrid,.cmdGrid.cmdGrid3{display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;gap:12px!important;max-width:none!important;margin:0!important}.cmdCard{display:flex!important;flex-direction:column!important;min-height:315px!important;border-radius:13px!important;overflow:hidden!important;border:1px solid #225f83!important;background:#061421!important}.cmdCardArt{height:158px!important;flex:0 0 158px!important}.cmdCardArt img{width:100%!important;height:100%!important;object-fit:cover!important;filter:saturate(1.12) brightness(1.08) contrast(1.04)!important}.cmdCardBody{padding:12px 11px 13px!important;display:flex!important;flex-direction:column!important;flex:1!important}.cmdCard h3{font-size:15px!important;line-height:1.03!important;margin:0 0 6px!important}.cmdCard p{font-size:10.5px!important;line-height:1.3!important;margin:0!important}.cmdCardCta{margin-top:auto!important;font-size:10px!important}.cmdCard:hover{transform:translateY(-4px)!important;box-shadow:0 18px 38px rgba(0,0,0,.48),0 0 20px rgba(85,216,255,.12)!important}
+ @media(max-width:1250px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(4,minmax(0,1fr))!important}.cmdCardArt{height:180px!important;flex-basis:180px!important}}
+ @media(max-width:900px){.hero{min-height:560px!important}.scene.photo .bg img{object-position:70% center!important}.shade{background:linear-gradient(180deg,transparent 0%,rgba(2,9,20,.10) 34%,rgba(2,9,20,.94) 55%,#020914 72%)!important}.heroCopy{justify-content:flex-end!important;max-width:none!important;padding:230px 24px 58px!important}.hero h1{font-size:clamp(38px,9vw,60px)!important}.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+ @media(max-width:560px){.brand img{height:46px!important;max-width:150px!important}.hero{min-height:520px!important}.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:1fr!important}.cmdCardArt{height:210px!important;flex-basis:210px!important}}
+ `;d.head.appendChild(st);
+ ['.heroBrandLock','.heroCta','.heroNavOverlay'].forEach(s=>d.querySelectorAll(s).forEach(n=>n.remove()));
+ const buttons=[...d.querySelectorAll('.starBtn')],rookieBtn=buttons.find(b=>(b.innerText||'').trim().toUpperCase()==='ROOKIES'),starsBtn=buttons.find(b=>(b.innerText||'').toUpperCase().includes('ROOKIE STARS'));
+ if(rookieBtn)rookieBtn.style.display='none';if(starsBtn){[...starsBtn.childNodes].forEach(n=>{if(n.nodeType===3&&n.textContent.includes('ROOKIE STARS'))n.textContent=n.textContent.replace('ROOKIE STARS','ROOKIES')});starsBtn.click();}
+ const kicker=d.getElementById('heroKicker'),h=d.querySelector('#hero h1'),p=d.getElementById('heroSub'),primary=d.getElementById('heroPrimary'),secondary=d.getElementById('heroSecondary');
+ const cfg={
+ 'THE NEXT GENERATION':['ROOKIE SEASON','ROOKIES TODAY.<br><span>STARS TOMORROW.</span>','Discover the rookies, track their rise, and find the cards before the hobby does.','EXPLORE ROOKIES →','VIEW TOP MOVERS','hunt','market'],
+ 'BREAKOUT WATCH':['ROOKIE SEASON','ROOKIES TODAY.<br><span>STARS TOMORROW.</span>','Discover the rookies, track their rise, and find the cards before the hobby does.','EXPLORE ROOKIES →','VIEW TOP MOVERS','hunt','market'],
+ 'LEGENDS NEVER FADE':['GOATS','ICONIC PLAYERS.<br><span>TIMELESS CARDS.</span>','Explore the legends, their most iconic cards, and the value that never fades.','EXPLORE GOATS →','VIEW LEGEND LIST','market','market'],
+ 'THE CARDS EVERYONE WANTS':['HOLY GRAILS','THE RAREST CARDS.<br><span>THE BIGGEST CHASES.</span>','Explore the holy grails, track values, and see what collectors are chasing now.','EXPLORE HOLY GRAILS →','VIEW TOP CHASES','market','market'],
+ 'BUILD YOUR PERSONAL HUNT':['BREAK CENTER','REAL BREAKS.<br><span>REAL HITS.</span>','Find live and upcoming breaks, check team availability, and chase the biggest hits with the CardStorm community.','ENTER BREAK CENTER →','VIEW UPCOMING BREAKS','breaks','breaks'],
+ 'PLAY. LEARN. COLLECT SMARTER.':['KNOW THE WORTH','REAL DATA.<br><span>REAL ANSWERS.</span>','Check current values, view market trends, and make smarter decisions.','CHECK A CARD →','VIEW MARKET TRENDS','market','market'],
+ 'THE TCG CHASE':['POKÉMON / TCG','COLLECT. BATTLE.<br><span>BELONG.</span>','Explore top sets, track values, and dive into the world of Pokémon TCG.','EXPLORE POKÉMON →','VIEW TOP CARDS','tcg','tcg']};
+ function applyHero(){if(!kicker)return;const c=cfg[kicker.textContent.trim()];if(!c)return;kicker.textContent=c[0];if(h)h.innerHTML=c[1];if(p)p.textContent=c[2];if(primary){primary.textContent=c[3];primary.onclick=()=>d.defaultView.openScreen&&d.defaultView.openScreen(c[5])}if(secondary){secondary.textContent=c[4];secondary.onclick=()=>d.defaultView.openScreen&&d.defaultView.openScreen(c[6])}}
+ applyHero();if(kicker)new MutationObserver(applyHero).observe(kicker,{childList:true,subtree:true,characterData:true});
+ const cards=[...d.querySelectorAll('.cmdCard')];
+ const byText=(s)=>cards.find(c=>(c.innerText||'').toUpperCase().includes(s));
+ const hunt=byText('WHAT TO HUNT'),sets=byText('SETS & PACKS'),market=byText('MARKET & COMPS'),challenge=byText('PROVE YOUR KNOWLEDGE'),breakc=byText('BREAK CENTER'),tcg=byText('THE TCG CHASE'),alive=byText('CARDS COME ALIVE'),intel=byText('COLLECTOR INTEL');
+ const configure=(c,title,desc,img,cta,route)=>{if(!c)return;const im=c.querySelector('.cmdCardArt img');if(im&&img)im.src=img;const h3=c.querySelector('h3');if(h3)h3.innerHTML=title;const pp=c.querySelector('p');if(pp)pp.textContent=desc;const b=c.querySelector('.cmdCardCta');if(b)b.textContent=cta;c.onclick=()=>d.defaultView.openScreen&&d.defaultView.openScreen(route)};
+ configure(hunt,'ROOKIES','Today’s rookies. Tomorrow’s stars.','assets/homepage/categories/rookie-stars.webp','EXPLORE ROOKIES →','hunt');
+ configure(market,'MARKET <span>RADAR</span>','Track the market. Find the edge.',null,'EXPLORE MARKET →','market');
+ configure(sets,'SETS & <span>PACKS</span>','Explore sets. Know what to hunt.',null,'EXPLORE SETS →','sets');
+ configure(breakc,'BREAK <span>CENTER</span>','Live & upcoming breaks.','assets/homepage/categories/break-studio.webp','FIND A BREAK →','breaks');
+ configure(challenge,'GOATS','The greatest. All-time legends.','assets/homepage/categories/goats.webp','EXPLORE GOATS →','market');
+ configure(alive,'HOLY <span>GRAILS</span>','The rarest cards. The biggest chases.','assets/homepage/categories/case-hits-shedeur-downtown.webp','EXPLORE GRAILS →','market');
+ configure(intel,'COLLECTOR <span>INTEL</span>','Data. Insights. Smarter moves.',null,'GET THE EDGE →','market');
+ configure(tcg,'POKÉMON / <span>TCG</span>','Cards. Sets. Culture. All in one place.','assets/homepage/categories/pokemon-tcg-dashboard-tile.webp','EXPLORE TCG →','tcg');
+ const order=[hunt,market,sets,breakc,challenge,alive,intel,tcg].filter(Boolean);const grid=d.querySelector('.cmdGrid');if(grid){grid.innerHTML='';order.forEach(c=>grid.appendChild(c));[...d.querySelectorAll('.cmdGrid')].slice(1).forEach(g=>g.remove())}
+ const sec=d.querySelector('.sectionTitle p');if(sec)sec.textContent='Eight focused destinations. No clutter. Just the tools collectors actually use.';
 }
 frame.addEventListener('load',()=>{try{polish()}catch(e){console.error(e)}});
 </script></body></html>
