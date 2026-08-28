@@ -40,8 +40,8 @@ img{max-width:100%}
 .splitHalf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(1.05) contrast(1.06)}
 .splitTag{position:absolute;z-index:2;left:12px;top:12px;padding:6px 11px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(2,9,20,.82);color:#fff;font:900 10.5px Inter,Arial,sans-serif;letter-spacing:.08em;white-space:nowrap}
 .splitShade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,9,20,.85),transparent 46%)}
-.splitContent{position:absolute;z-index:3;inset:52px 18px 104px;display:flex;align-items:center;pointer-events:none}
-.splitContent.right{justify-content:flex-end}
+.splitContent{position:absolute;z-index:3;inset:52px 18px 104px;display:flex;align-items:center;justify-content:flex-end;pointer-events:none}
+.splitContent.right{justify-content:flex-start}
 .huntPanel,.worthPanel{width:min(340px,90%);border:1px solid rgba(85,216,255,.48);border-radius:16px;background:linear-gradient(150deg,rgba(3,15,27,.94),rgba(7,30,49,.9));box-shadow:0 18px 45px rgba(0,0,0,.48);padding:15px;backdrop-filter:blur(10px)}
 .huntTitle,.worthTitle{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#fff;font-size:15px;font-weight:950;letter-spacing:.08em}.sampleFlag{font-size:8px;color:#9bc9e6;border:1px solid #315d79;border-radius:999px;padding:4px 7px;letter-spacing:.1em}
 .huntRow{display:grid;grid-template-columns:70px 1fr;gap:8px;align-items:start;padding:8px 0;border-bottom:1px solid rgba(85,216,255,.13)}.huntRow:last-child{border-bottom:0;padding-bottom:0}.huntRowLabel{color:#7ba9c7;font-size:9px;font-weight:950;letter-spacing:.1em;padding-top:3px}
@@ -57,6 +57,7 @@ img{max-width:100%}
 @keyframes shock{8%{filter:saturate(1.15) contrast(1.2) brightness(1.5)}36%{filter:saturate(1.12) contrast(1.15) brightness(1.25)}100%{filter:saturate(1.06) contrast(1.08)}}
 
 .heroCopy{position:relative;z-index:7;display:flex;flex-direction:column;justify-content:center;min-height:min(600px,70vh);max-width:660px;padding:clamp(30px,5vw,74px)}
+.hero.breakMode .heroCopy{max-width:100%;justify-content:flex-end;padding-bottom:28px}.hero.breakMode .heroCopy h1{display:none}.hero.breakMode .heroCopy p{max-width:850px;margin-bottom:12px}.hero.breakMode .shade{background:linear-gradient(0deg,rgba(2,9,20,.98),rgba(2,9,20,.72) 21%,transparent 43%)}
 .heroPill{display:inline-flex;width:max-content;padding:8px 12px;border:1px solid rgba(85,216,255,.5);border-radius:999px;background:rgba(6,28,47,.8);font-size:11px;font-weight:900;letter-spacing:.08em}
 .hero h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:950;font-style:normal;font-size:clamp(42px,6.4vw,88px);line-height:.92;letter-spacing:-.05em;margin:20px 0 16px;text-shadow:0 10px 34px #000}
 .hero h1 span{color:var(--cyan)}
@@ -101,29 +102,38 @@ img{max-width:100%}
 @media(max-width:760px){
  .nav{min-height:70px;padding:10px 12px}
  .brand{min-width:auto;gap:0}
- .brand img{height:40px;max-width:190px}
+ .brand img{height:42px;max-width:175px}
  .brand .tag{display:none}
  .navlinks button{display:none}
  .join{padding:9px 12px;font-size:10px}
  .wrap{padding:16px 12px 34px}
- .hero{min-height:640px;border-radius:17px}
- .heroCopy{min-height:640px;justify-content:flex-end;padding:22px 18px 40px;max-width:100%}
- .hero h1{font-size:clamp(34px,10vw,54px)}
- .shade{background:linear-gradient(180deg,rgba(2,9,20,.15),rgba(2,9,20,.55) 46%,rgba(2,9,20,.98) 76%)}
- .hero.breakMode{min-height:980px}
- .hero.breakMode .heroCopy{min-height:980px;padding:0 18px 24px;justify-content:flex-end}
+ .hero{min-height:590px;border-radius:17px;background:linear-gradient(180deg,#071a2b,#020914)}
+ .scene.photo .bg{height:245px;bottom:auto;background:#061421}
+ .scene.photo .bg img{object-fit:cover;object-position:center center;transform:none}
+ .heroCopy{min-height:590px;justify-content:flex-end;padding:258px 18px 18px;max-width:100%}
+ .heroPill{padding:6px 10px;font-size:9px}
+ .hero h1{font-size:clamp(31px,9vw,43px);line-height:.94;margin:12px 0 10px}
+ .hero p{font-size:13.5px;line-height:1.42;margin-bottom:13px}
+ .actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:8px}
+ .primary,.secondary{width:100%;min-height:44px;padding:10px 8px;font-size:11px;line-height:1.15}
+ .shade{background:linear-gradient(180deg,transparent 0,rgba(2,9,20,.05) 25%,#061421 42%,#020914 58%)}
+ .hero.breakMode{min-height:830px}
+ .hero.breakMode .heroCopy{min-height:830px;padding:0 18px 18px;justify-content:flex-end}
  .hero.breakMode .heroCopy h1{display:none}
- .hero.breakMode .heroCopy p{font-size:13px;margin-bottom:12px}
+ .hero.breakMode .heroCopy p{font-size:12px;line-height:1.35;margin-bottom:10px}
  .scene.split .bg{flex-direction:column}
  .scene.split .splitHalf{flex:1 1 50%;min-height:0}
  .scene.split .splitHalf+.splitHalf{border-left:0;border-top:1px solid rgba(255,255,255,.14)}
  .scene.split .splitHalf img{object-position:center 20%}
- .scene.split .splitContent{inset:46px 12px 20px;align-items:flex-start;justify-content:flex-end}
- .scene.split .huntPanel,.scene.split .worthPanel{width:min(330px,88%);padding:12px}
- .scene.split .worthCards{margin:8px 0}.scene.split .worthCard{aspect-ratio:1.1;font-size:18px}
+ .scene.split .splitContent{inset:42px 10px 94px;align-items:center;justify-content:flex-end}
+ .scene.split .huntPanel,.scene.split .worthPanel{width:min(315px,88%);padding:10px}
+ .scene.split .huntRow{padding:5px 0}.scene.split .huntTitle,.scene.split .worthTitle{font-size:12px}
+ .scene.split .worthCards{margin:7px 0}.scene.split .worthCard{aspect-ratio:1.35;font-size:17px}
  .splitTag{font-size:9.5px;padding:5px 9px}
- #starRail{display:none}
- .mobDots{display:flex}
+ #starRail{display:flex;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-top:12px;padding-bottom:2px;scrollbar-width:none}
+ .starBtn{flex:0 0 auto;padding:6px 9px;font-size:9px;border-radius:999px}
+ .starBtn .dotc{width:7px;height:7px}
+ .mobDots{display:none}
  .grid{grid-template-columns:1fr;gap:12px}
  .card{min-height:auto}
  .cardArt{height:96px}
@@ -241,6 +251,7 @@ function show(n){
  const d=STARS[idx];
  scenes.forEach((s,j)=>s.classList.toggle('active',j===idx));
  [...rail.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
+ if(matchMedia('(max-width:760px)').matches&&rail.children[idx])rail.children[idx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
  [...mobDots.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
  heroKicker.textContent=d.kicker;
  heroSub.textContent=d.sub;
