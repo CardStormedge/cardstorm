@@ -73,6 +73,8 @@ img{max-width:100%}
 .artFrame{position:relative}
 .scene.finished .bg .artFrame img{display:block;width:100%;height:100%;object-fit:fill;object-position:center;transform:none}
 .artBtn{position:absolute;background:transparent;border:0;cursor:pointer;padding:0}
+.artBtn.visibleArtBtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;height:auto;max-width:calc(100% - 20px);font:900 clamp(11px,1.6vw,15px) Inter,Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;padding:11px 16px;border-radius:10px;box-shadow:0 10px 24px -8px rgba(0,0,0,.6)}
+@media(max-width:760px){.artBtn.visibleArtBtn{font-size:12px;padding:9px 13px}}
 @media(max-width:760px){.hero.finishedMode #starRail{position:absolute;left:10px;right:10px;height:auto}}
 .hero.breakMode .heroCopy{max-width:100%;justify-content:flex-end;padding-bottom:28px}.hero.breakMode .heroCopy h1{display:none}.hero.breakMode .heroCopy p{max-width:850px;margin-bottom:12px}.hero.breakMode .shade{background:linear-gradient(0deg,rgba(2,9,20,.98),rgba(2,9,20,.72) 21%,transparent 43%)}
 .heroPill{display:inline-flex;width:max-content;padding:8px 12px;border:1px solid rgba(85,216,255,.5);border-radius:999px;background:rgba(6,28,47,.8);font-size:11px;font-weight:900;letter-spacing:.08em}
@@ -239,7 +241,7 @@ const DEFAULT_ACTIONS=[{label:'EXPLORE WHAT TO HUNT',key:'team'},{label:'CHECK T
 const STARS=[
  {tab:'ROOKIES',dd:'rookies',kicker:'ROOKIE SEASON',h1:'ROOKIES TODAY.<br><span>STARS TOMORROW.</span>',sub:'Discover the rookies, track their rise, and find the cards before the hobby does.',p:'#19c6ff',mode:'photo',finished:true,img:'assets/homepage/categories/rookies-hero.webp',artRatio:'1919/725',artButtons:[{x:3.44,y:64.55,w:21.05,h:10.48,key:'team',label:'Explore Rookies'},{x:25.53,y:64.55,w:17.51,h:10.48,key:'market',label:'View Top Movers'}],imageKey:'team',actions:[{label:'EXPLORE ROOKIES',key:'team'},{label:'VIEW TOP MOVERS',key:'market'}]},
  {tab:'LIVE CARDS',dd:'live',kicker:'LIVE CARDS',h1:'LIVE CARDS.<br><span>REAL ACTION.</span><br><span>RIGHT NOW.</span>',sub:'Live listings. Live sales. Live momentum. Be in the action as it happens.',p:'#ff3d4d',mode:'photo',finished:true,img:'assets/homepage/categories/live-cards-hero.webp',artRatio:'1672/941',artButtons:[{x:2.27,y:75.24,w:21.65,h:6.16,key:'live',label:'Explore Live Cards'},{x:25.0,y:75.24,w:19.86,h:6.16,key:'market',label:'View Recent Sales'}],imageKey:'live',actions:[{label:'EXPLORE LIVE CARDS',key:'live'},{label:'VIEW RECENT SALES',key:'market'}]},
- {tab:'SETS & PACKS',dd:'sets',kicker:'SETS & PACKS',h1:'KNOW<br><span>THE WORTH.</span>',sub:'Track comps, spot trends, and know what to hunt before you buy into a set.',p:'#d7a92d',mode:'photo',finished:true,img:'assets/homepage/categories/know-the-worth-hero.webp',artRatio:'1672/941',artButtons:[{x:3.59,y:55.26,w:20.33,h:6.91,key:'sets',label:'Check Card Values'}],imageKey:'sets',actions:[{label:'EXPLORE SETS & PACKS',key:'sets'},{label:'CHECK CARD VALUES',key:'sets'}]},
+ {tab:'KNOW THE WORTH',dd:'intel',kicker:'KNOW THE WORTH',h1:'KNOW<br><span>THE WORTH.</span>',sub:'Track comps, spot trends, and know what to hunt before you buy into a set.',p:'#d7a92d',mode:'photo',finished:true,img:'assets/homepage/categories/know-the-worth-hero.webp',artRatio:'1536/1024',artButtons:[{x:1.95,y:54.2,w:25.39,h:4.39,key:'market',label:'Check Card Values',visible:true}],imageKey:'market',actions:[{label:'CHECK CARD VALUES',key:'market'},{label:'VIEW MARKET TRENDS',key:'market'}]},
  {tab:'BREAK CENTER',dd:'breaks',kicker:'BREAK CENTER',h1:'REAL BREAKS.<br><span>REAL HITS.</span>',sub:'Find live and upcoming breaks, check team availability, and chase the biggest hits with the CardStorm community.',p:'#ff8a3d',mode:'photo',finished:true,img:'assets/homepage/categories/break-center-hero.webp',artRatio:'1716/916',artButtons:[{x:4.08,y:71.51,w:28.27,h:7.09,key:'breaks',label:'Find Your Next Break'}],imageKey:'breaks',actions:[{label:'ENTER BREAK CENTER',key:'breaks'},{label:'FIND YOUR NEXT BREAK',key:'breaks'}]},
  {tab:'GOATS',dd:'goats',kicker:'GOATS',h1:'LEGENDS.<br><span>SERIOUS VALUE.</span>',sub:'Legends. Case hits. Iconic cards. Serious value.',p:'#b3222f',mode:'photo',finished:true,img:'assets/homepage/categories/goats-hero.webp',artRatio:'1716/916',artButtons:[{x:38.17,y:72.05,w:21.27,h:7.10,key:'team',label:'Explore Goats'}],imageKey:'team',actions:[{label:'EXPLORE GOATS',key:'team'},{label:'VIEW LEGEND LIST',key:'team'}]},
  {tab:'POKÉMON / TCG',dd:'tcg',kicker:'POKÉMON / TCG',h1:'COLLECT. BATTLE.<br><span>BELONG.</span>',sub:'Explore top sets, track values, and dive into the world of Pokémon TCG.',p:'#ffcb05',mode:'photo',finished:true,img:'assets/homepage/categories/pokemon-tcg-hero.webp',artRatio:'1716/917',artButtons:[{x:36.13,y:71.98,w:27.10,h:7.09,key:'pokemon',label:'Explore Pokemon TCG'}],imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON',key:'pokemon'},{label:'VIEW TOP CARDS',key:'pokemon'}]}
@@ -284,7 +286,9 @@ STARS.forEach((d,i)=>{
   else sc.innerHTML='<div class="bg"><div class="cardShowcase">'+d.cards.map((src,n)=>'<img src="'+src+'" alt="Real Downtown card example '+(n+1)+'">').join('')+'</div></div>';
  }else if(d.finished){
   sc.innerHTML='<div class="bg"><div class="artFrame" data-ratio="'+d.artRatio+'"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.tab+'">'
-   +(d.artButtons||[]).map((b,bi)=>'<button class="artBtn" data-bi="'+bi+'" style="left:'+b.x+'%;top:'+b.y+'%;width:'+b.w+'%;height:'+b.h+'%" aria-label="'+b.label+'"></button>').join('')
+   +(d.artButtons||[]).map((b,bi)=>b.visible
+     ?'<button class="artBtn primary visibleArtBtn" data-bi="'+bi+'" style="left:'+b.x+'%;top:'+b.y+'%" aria-label="'+b.label+'">'+b.label.toUpperCase()+' →</button>'
+     :'<button class="artBtn" data-bi="'+bi+'" style="left:'+b.x+'%;top:'+b.y+'%;width:'+b.w+'%;height:'+b.h+'%" aria-label="'+b.label+'"></button>').join('')
    +'</div></div>';
   [...sc.querySelectorAll('.artBtn')].forEach((btn,bi)=>{const b=d.artButtons[bi];btn.onclick=()=>openApp(b.key)});
  }else{
@@ -305,19 +309,15 @@ function sizeArtFrames(){
   f.style.width=w+'px';
   f.style.height=h+'px';
  });
- if(mobile){
-  const activeFrame=document.querySelector('.scene.active.finished .artFrame');
-  if(activeFrame){
-   const parts=(activeFrame.dataset.ratio||'16/9').split('/');
-   const ratio=parseFloat(parts[0])/parseFloat(parts[1]);
-   const pw=activeFrame.parentElement.clientWidth;
-   const h=pw/ratio;
-   activeFrame.style.width=pw+'px';
-   activeFrame.style.height=h+'px';
-   hero.style.minHeight=Math.round(h+60)+'px';
-  }else{
-   hero.style.minHeight='';
-  }
+ const activeFrame=document.querySelector('.scene.active.finished .artFrame');
+ if(activeFrame){
+  const parts=(activeFrame.dataset.ratio||'16/9').split('/');
+  const ratio=parseFloat(parts[0])/parseFloat(parts[1]);
+  const pw=activeFrame.parentElement.clientWidth;
+  const h=pw/ratio;
+  activeFrame.style.width=pw+'px';
+  activeFrame.style.height=h+'px';
+  hero.style.minHeight=Math.round(h+(mobile?60:0))+'px';
  }else{
   hero.style.minHeight='';
  }
@@ -410,7 +410,7 @@ const DASH=[
  {key:'market',dd:'market',num:'02',h1:'MARKET',h2:'RADAR',desc:'Track the market. Find the edge.',cta:'EXPLORE MARKET →',ac:'#6cff9e',art:'assets/homepage/dashboard/05-market-comps.webp',pos:'center center'},
  {key:'sets',dd:'sets',num:'03',h1:'SETS &',h2:'PACKS',desc:'Explore sets. Know what to hunt.',cta:'EXPLORE SETS & PACKS →',ac:'#55d8ff',art:'assets/homepage/dashboard/02-sets-packs.webp',pos:'center center'},
  {key:'breaks',dd:'breaks',num:'04',h1:'BREAK',h2:'CENTER',desc:'Live & upcoming breaks.',cta:'FIND YOUR NEXT BREAK →',ac:'#ffb35a',art:'assets/homepage/categories/break-studio.webp',pos:'center 30%',live:true},
- {key:'team',dd:'goats',num:'05',h1:'',h2:'GOATS',desc:'Legends. Case hits. Iconic cards. Serious value.',cta:'EXPLORE GOATS →',ac:'#ff6a72',art:'assets/homepage/categories/goats.webp',pos:'center center'},
+ {key:'team',dd:'goats',num:'05',h1:'',h2:'GOATS',desc:'Legends. Case hits. Iconic cards. Serious value.',cta:'EXPLORE GOATS →',ac:'#ff6a72',art:'assets/homepage/categories/goats-tile.webp',pos:'center 40%'},
  {key:'plans',dd:'intel',num:'06',h1:'COLLECTOR',h2:'INTEL',desc:'Data. Insights. Smarter moves.',cta:'GET THE EDGE →',ac:'#55d8ff',art:'assets/homepage/dashboard/11-cardstorm-edge.webp',pos:'center center'},
  {key:'pokemon',dd:'tcg',num:'07',h1:'POKÉMON /',h2:'TCG',desc:'Cards. Sets. Culture. All in one place.',cta:'EXPLORE POKÉMON / TCG →',ac:'#ffde59',art:'assets/homepage/dashboard/09-pokemon-tcg.webp',pos:'center center'},
  {key:'live',dd:'live',num:'08',h1:'LIVE',h2:'CARDS',desc:'Live listings.<br>Real sales. Real action.',cta:'EXPLORE LIVE CARDS →',ac:'#ff3d4d',art:'assets/homepage/categories/live-cards-tile.webp',pos:'center center'}
