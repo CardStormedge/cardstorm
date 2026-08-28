@@ -220,7 +220,15 @@ function show(v){navPush();H.style.display='none';V.style.display='block';C.inne
 function inCardStormFrame(){try{return window.top!==window.self&&typeof window.parent.closeApp==='function'}catch(e){return false}}
 function goHome(){
  navStack=[];
- if(inCardStormFrame()){try{window.parent.closeApp();return}catch(e){}}
+ if(inCardStormFrame()){
+  try{
+   // Prefer the parent's own goHome() — it closes the overlay AND resets scroll/hero
+   // state on the real homepage. Falling back to closeApp() alone left the homepage
+   // scrolled wherever the user had left it (reported as "returns halfway down the hero").
+   if(typeof window.parent.goHome==='function'){window.parent.goHome();return}
+   window.parent.closeApp();return
+  }catch(e){}
+ }
  try{window.top.location.href='index.html'}catch(e){window.location.href='index.html'}
 }
 if(location.hash){const init=location.hash.slice(1);navStack=[];H.style.display='none';V.style.display='block';C.innerHTML=(F[init]||team)();}
