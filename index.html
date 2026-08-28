@@ -4,44 +4,45 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>CardStormGuide</title>
-<style>
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}iframe{display:block;width:100%;height:100%;border:0;background:#020914}
-</style>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020914}iframe{display:block;width:100%;height:100%;border:0;background:#020914}</style>
 </head>
 <body>
-<iframe id="cardstorm" src="/legacy-home.html?cardstorm-home-v2=1" title="CardStormGuide"></iframe>
+<iframe id="cardstorm" src="/legacy-home.html?cardstorm-home-v3=1" title="CardStormGuide"></iframe>
 <script>
 const frame=document.getElementById('cardstorm');
-const HERO_HEADLINES={
- 'THE NEXT GENERATION':'CHASE THE <span>ROOKIES.</span>',
- 'BREAKOUT WATCH':'FIND THE <span>NEXT STAR.</span>',
- 'LEGENDS NEVER FADE':'COLLECT THE <span>ICONS.</span>',
- 'THE CARDS EVERYONE WANTS':'HUNT THE <span>GRAILS.</span>',
- 'BUILD YOUR PERSONAL HUNT':'BUILD YOUR <span>BREAK.</span>',
- 'PLAY. LEARN. COLLECT SMARTER.':'PROVE YOUR <span>KNOWLEDGE.</span>',
- 'THE TCG CHASE':'CHASE THE <span>CARDS.</span>'
-};
 function polish(){
- const d=frame.contentDocument;if(!d||!d.body||d.getElementById('cardstormV2Patch'))return;
- const st=d.createElement('style');st.id='cardstormV2Patch';st.textContent=`
- .scene.photo .bg img{filter:saturate(1.16) contrast(1.05) brightness(1.16)!important}
- .shade{background:linear-gradient(90deg,rgba(1,7,15,.86) 0%,rgba(1,7,15,.69) 31%,rgba(1,7,15,.15) 62%,rgba(1,7,15,.02) 100%),linear-gradient(0deg,rgba(2,9,20,.56),transparent 36%)!important}
- .hero h1,.hero h1 span{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;font-style:normal!important;font-weight:950!important;letter-spacing:-.05em!important;text-transform:none!important}
- .hero h1{line-height:.92!important;text-shadow:0 10px 34px #000!important}
+ const d=frame.contentDocument;if(!d||!d.body||d.getElementById('cardstormV3Patch'))return;
+ const st=d.createElement('style');st.id='cardstormV3Patch';st.textContent=`
+ .brand .tag{display:none!important}.brand{min-width:220px!important}.brand img{height:66px!important;max-width:240px!important}
+ .scene.photo .bg img{filter:saturate(1.14) contrast(1.05) brightness(1.12)!important}
+ .heroCopy{display:none!important}.shade{display:none!important}
+ .hero{min-height:min(600px,70vh)!important}.scene.photo .bg img{object-fit:cover!important}
  .cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(4,minmax(0,1fr))!important;max-width:none!important;margin:0!important;gap:18px!important}
  .cmdCard{box-shadow:0 18px 42px rgba(0,0,0,.32);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
  .cmdCard:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(0,0,0,.48),0 0 25px rgba(85,216,255,.13)}
  .cmdCardArt img{filter:saturate(1.10) brightness(1.10) contrast(1.03)!important}
- @media(max-width:980px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.shade{background:linear-gradient(180deg,transparent 0,rgba(2,9,20,.02) 26%,#061421 43%,#020914 59%)!important}.scene.photo .bg img{filter:saturate(1.14) contrast(1.04) brightness(1.13)!important}}
- @media(max-width:620px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:1fr!important}}
+ .heroNavOverlay{position:absolute;z-index:12;left:18px;right:18px;bottom:16px;display:flex;justify-content:center;pointer-events:none}.heroNavOverlay #starRail{pointer-events:auto;margin:0!important;padding:8px;border-radius:14px;background:rgba(2,9,20,.76);backdrop-filter:blur(8px)}
+ @media(max-width:980px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.scene.photo .bg img{filter:saturate(1.12) contrast(1.04) brightness(1.10)!important}.hero{min-height:500px!important}}
+ @media(max-width:620px){.cmdGrid,.cmdGrid.cmdGrid3{grid-template-columns:1fr!important}.heroNavOverlay{left:8px;right:8px;bottom:8px}.heroNavOverlay #starRail{gap:5px!important}.starBtn{padding:6px 8px!important;font-size:9px!important}}
  `;d.head.appendChild(st);
- const applyHero=()=>{const k=d.getElementById('heroKicker');const h=d.querySelector('#hero h1');if(k&&h&&HERO_HEADLINES[k.textContent.trim()])h.innerHTML=HERO_HEADLINES[k.textContent.trim()]};
- applyHero();
- const kicker=d.getElementById('heroKicker');if(kicker)new MutationObserver(applyHero).observe(kicker,{childList:true,subtree:true,characterData:true});
  [...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('CHECKLISTS')||t.includes('DOWNTOWN /')||t.includes('DOWNTOWN/UPTOWN')||t.includes('NEVER MISS'))c.remove();});
- [...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('KNOW MORE')||t.includes('COLLECT SMARTER')){const h3=c.querySelector('h3');if(h3)h3.innerHTML='COLLECTOR <span>INTEL</span>';const p=c.querySelector('p');if(p)p.textContent='What’s hot, what’s coming and what matters — smarter hobby intelligence in one place.';const btn=c.querySelector('.cmdCardCta');if(btn)btn.textContent='OPEN COLLECTOR INTEL →';}});
- const grids=[...d.querySelectorAll('.cmdGrid')];if(grids.length){const first=grids[0];const visible=[...d.querySelectorAll('.cmdCard')];first.innerHTML='';visible.forEach(c=>first.appendChild(c));grids.slice(1).forEach(g=>g.remove());first.classList.remove('cmdGrid3');}
- const section=d.querySelector('.sectionTitle p');if(section)section.textContent='Eight focused destinations. No clutter. Just the tools collectors actually use.';
+ [...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(t.includes('KNOW MORE')||t.includes('COLLECT SMARTER')){const h3=c.querySelector('h3');if(h3)h3.innerHTML='COLLECTOR <span>INTEL</span>';const p=c.querySelector('p');if(p)p.textContent='What’s hot, what’s coming and what matters — smarter hobby intelligence in one place.';}});
+ const grids=[...d.querySelectorAll('.cmdGrid')];if(grids.length){const first=grids[0],visible=[...d.querySelectorAll('.cmdCard')];first.innerHTML='';visible.forEach(c=>first.appendChild(c));grids.slice(1).forEach(g=>g.remove());first.classList.remove('cmdGrid3');}
+ const section=d.querySelector('.sectionTitle p');if(section)section.textContent='Focused destinations. No clutter. Just the tools collectors actually use.';
+ const rail=d.getElementById('starRail'),hero=d.getElementById('hero');
+ if(rail&&hero){const overlay=d.createElement('div');overlay.className='heroNavOverlay';rail.parentNode.insertBefore(overlay,rail);overlay.appendChild(rail);}
+ const buttons=[...d.querySelectorAll('.starBtn')];
+ const rookieBtn=buttons.find(b=>(b.innerText||'').trim().toUpperCase()==='ROOKIES');const starsBtn=buttons.find(b=>(b.innerText||'').toUpperCase().includes('ROOKIE STARS'));
+ if(rookieBtn)rookieBtn.style.display='none';if(starsBtn){starsBtn.childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.includes('ROOKIE STARS'))n.textContent=n.textContent.replace('ROOKIE STARS','ROOKIES')});starsBtn.click();}
+ function syncHero(){
+   const active=[...d.querySelectorAll('.starBtn.active')][0];if(!active)return;
+   if(active===rookieBtn&&starsBtn){starsBtn.click();return;}
+   const label=(active.innerText||'').trim().toUpperCase();
+   [...d.querySelectorAll('.cmdCard')].forEach(c=>{c.style.display='';});
+   const aliases=label==='ROOKIES'?['ROOKIES']:label.includes('GOATS')?['GOATS']:label.includes('HOLY')?['HOLY GRAILS']:label.includes('BREAK')?['BREAK CENTER']:label.includes('KNOW')?['CARDSTORM CHALLENGE','PROVE YOUR KNOWLEDGE']:label.includes('POK')?['POKÉMON','POKEMON']:[];
+   if(aliases.length)[...d.querySelectorAll('.cmdCard')].forEach(c=>{const t=(c.innerText||'').toUpperCase();if(aliases.some(a=>t.includes(a)))c.style.display='none';});
+ }
+ buttons.forEach(b=>new MutationObserver(syncHero).observe(b,{attributes:true,attributeFilter:['class']}));syncHero();
 }
 frame.addEventListener('load',()=>{try{polish()}catch(e){console.error(e)}});
 </script>
