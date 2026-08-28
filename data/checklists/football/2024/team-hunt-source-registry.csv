@@ -1,0 +1,13 @@
+source_id,product,path,record_scope,team_hunt_status,trust_level,notes
+team_targets,Curated Team Targets,data/checklists/football/2024/team-targets.csv,"32 teams; four priority players per team",ENABLED,HIGH,"Ranking layer only; does not itself prove product/card availability."
+reference_cards,Reference Card Map,data/reference-cards/2024-football-reference-map.csv,"32 teams; one visual reference selection per team",RESEARCH_ONLY,MEDIUM,"Do not hotlink in production. Images must be localized and visually QA'd first."
+donruss,Donruss,data/football/2024/donruss.json,"Rated Rookies #301-400 plus verified Downtown chase data",ENABLED_AFTER_AUDIT,HIGH,"Use explicit team mappings already present; remaining categories still partial."
+optic,Donruss Optic,data/checklists/football/2024/optic-chase-manifest.csv,"Rated Rookies #201-300 plus Downtown chase list",ENABLED,HIGH,"Normalized team-mapped records; suitable for Team Hunt aggregation."
+prizm_rookies,Prizm,data/checklists/football/2024/prizm-rookies.csv,"Rookies #301-400",ENABLED,HIGH,"Trusted 2024 rookie registry and team mapping source."
+prizm_chases,Prizm,data/checklists/football/2024/prizm-chase-manifest.csv,"Aurora; Color Blast; Color Blast Duals; Manga Horizontal; Manga Vertical",ENABLED,HIGH,"Only verified chase rows should surface."
+mosaic,Mosaic,data/checklists/football/2024/mosaic-chase-manifest.csv,"Stained Glass; Micro Mosaic; initial verified rookie block; chase-family rules",PARTIAL,HIGH,"Do not infer missing rookie rows or serial numbering."
+select_base,Select,data/football/2024/select.json,"500 base cards across five levels",QUARANTINED_PENDING_ROOKIE_QA,LOW,"Do not trust rookie boolean directly. Apply validation overlay before Team Hunt use."
+select_rules,Select,data/checklists/football/2024/select-rookie-validation-rules.json,"Select rookie-validation policy",ENABLED,HIGH,"Controls whether a Select record can be labeled rookie."
+select_xrc,Select,data/checklists/football/2024/select-xrc-quarantine.csv,"XRC #501-520",BLOCKED_FROM_2024_TEAM_HUNT,HIGH,"Product-level history only; 2025 rookie class cannot surface in 2024 Team Hunt."
+coverage,All Products,data/checklists/football/2024/coverage.csv,"Product-level coverage audit",METADATA_ONLY,HIGH,"Useful for product availability/status, not card-level rendering."
+chase_taxonomy,All Products,data/checklists/football/2024/chase-taxonomy.json,"Rookie/SSP/parallel/numbered/auto/mem/insert/base classification",ENABLED,HIGH,"Use for filter labels and sorting; never infer unverified rarity or numbering."
