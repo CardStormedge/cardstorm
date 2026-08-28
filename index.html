@@ -38,7 +38,6 @@ img{max-width:100%}
 .cardShowcase{position:absolute;inset:22px 8% 105px;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px)}
 .cardShowcase>img{height:94%;width:auto;max-width:23%;object-fit:contain;border-radius:9px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.7));transform:rotate(var(--tilt,0deg))}.cardShowcase>img:nth-child(1){--tilt:-5deg}.cardShowcase>img:nth-child(2){--tilt:-1deg;z-index:2}.cardShowcase>img:nth-child(3){--tilt:2deg}.cardShowcase>img:nth-child(4){--tilt:5deg}
 .gameShowcase{inset:24px 4% 110px 43%;gap:14px;justify-content:flex-end}.gameCardTile{position:relative;height:88%;min-width:0;flex:0 1 31%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,211,90,.55);border-radius:13px;background:linear-gradient(160deg,rgba(26,39,53,.96),rgba(5,12,20,.96));box-shadow:0 18px 32px #0009;padding:9px}.gameCardTile:nth-of-type(3){transform:translateY(-10px)}.gameCardTile img{display:block;width:100%;height:100%;max-width:100%;object-fit:contain;border-radius:7px;filter:none;transform:none}.gameRank{position:absolute;z-index:2;top:-10px;left:50%;transform:translateX(-50%);display:grid;place-items:center;width:28px;height:28px;border:2px solid #ffd35a;border-radius:50%;background:#1a1204;color:#ffd35a;font-size:17px;font-weight:950;box-shadow:0 0 16px #ffd35a88}.gamePromptBadge{position:absolute;z-index:3;left:50%;bottom:-32px;transform:translateX(-50%);border:1px solid #8b6d27;border-radius:999px;background:rgba(17,12,3,.92);color:#ffe28a;padding:7px 12px;font-size:9px;font-weight:950;letter-spacing:.12em;white-space:nowrap}
-.artTheme{display:none;position:absolute;z-index:6;left:clamp(18px,4vw,58px);top:50%;width:36%;transform:translateY(-50%);color:#fff;text-align:left;text-shadow:0 6px 22px #000,0 2px 4px #000;pointer-events:none}.artTheme strong{display:block;font-family:Impact,"Arial Narrow",Inter,sans-serif;font-size:clamp(44px,6.5vw,88px);font-weight:900;line-height:.83;letter-spacing:.015em}.artTheme strong span{color:var(--p,#55d8ff)}.artTheme small{display:block;margin-top:14px;color:#fff;font-size:clamp(9px,1.05vw,13px);font-weight:950;line-height:1.35;letter-spacing:.12em}
 .scene.split .bg{display:flex}
 .splitHalf{position:relative;flex:1 1 50%;overflow:hidden}
 .splitHalf+.splitHalf{border-left:1px solid rgba(255,255,255,.14)}
@@ -122,8 +121,6 @@ img{max-width:100%}
  .scene.cards .cardShowcase{inset:10px 2% 10px;gap:5px}
  .scene.cards .cardShowcase>img{height:92%;max-width:23%;border-radius:5px}
  .scene.cards .gameShowcase{inset:12px 3% 20px;gap:6px;justify-content:center}.scene.cards .gameCardTile{height:86%;flex-basis:31%;padding:4px;border-radius:8px}.scene.cards .gameCardTile:nth-of-type(3){transform:translateY(-5px)}.scene.cards .gameCardTile img{height:100%;max-width:100%;border-radius:4px}.scene.cards .gameRank{top:-7px;width:22px;height:22px;font-size:13px}.scene.cards .gamePromptBadge{bottom:-12px;padding:4px 8px;font-size:7px}
- .scene.hasArtTheme.cards .cardShowcase{inset:12px 1% 12px 40%;gap:3px}.scene.hasArtTheme.cards .cardShowcase>img{height:82%;max-width:23%}
- .artTheme.active{display:block}.artTheme{left:14px;top:105px;width:39%;transform:translateY(-50%)}.artTheme strong{font-size:clamp(28px,8.5vw,37px);line-height:.84}.artTheme small{margin-top:8px;font-size:7px;line-height:1.35;letter-spacing:.09em}
  .cardTicker{display:block;position:absolute;z-index:8;top:210px;left:0;right:0;height:92px;overflow:hidden;border-top:1px solid rgba(85,216,255,.2);border-bottom:1px solid rgba(85,216,255,.2);background:linear-gradient(90deg,#020914,#082036 50%,#020914)}
  .imageTap.active{display:block}
  .cardTicker:before,.cardTicker:after{content:'';position:absolute;z-index:2;top:0;bottom:0;width:34px;pointer-events:none}.cardTicker:before{left:0;background:linear-gradient(90deg,#020914,transparent)}.cardTicker:after{right:0;background:linear-gradient(-90deg,#020914,transparent)}
@@ -185,7 +182,6 @@ img{max-width:100%}
  <div id="scenes"></div>
  <div class="shade"></div><div class="lightning"></div>
  <button class="imageTap active" id="imageTap" type="button" aria-label="Explore rookie hunts" onclick="openApp('team')"></button>
- <div class="artTheme" id="artTheme" aria-hidden="true"></div>
  <div class="cardTicker" aria-label="Real card showcase"><div class="cardTickerTrack" id="cardTickerTrack"></div></div>
  <div class="heroCopy">
   <div class="heroPill" id="heroKicker">THE NEXT GENERATION</div>
@@ -220,9 +216,9 @@ const STARS=[
  {tab:'ROOKIES',kicker:'THE NEXT GENERATION',sub:'Rookie heat and the first-year cards collectors are chasing now.',p:'#19c6ff',mode:'photo',img:'assets/homepage/categories/rookies.webp',imageKey:'team',actions:[{label:'EXPLORE ROOKIE HUNTS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
  {tab:'ROOKIE STARS',kicker:'BREAKOUT WATCH',sub:'The rookies turning into hobby stars and the cards moving with them.',p:'#2e69ff',mode:'photo',img:'assets/homepage/categories/rookie-stars.webp',imageKey:'team',actions:[{label:'FIND BREAKOUT ROOKIES',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
  {tab:'GOATS',kicker:'LEGENDS NEVER FADE',sub:'The iconic names and cards that set the standard for the hobby.',p:'#b3222f',mode:'photo',img:'assets/homepage/categories/goats.webp',imageKey:'team',actions:[{label:'EXPLORE THE LEGENDS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Real Downtown case hits—including Patrick Mahomes—plus clearly labeled CardStorm concept art.',p:'#ffd35a',mode:'cards',artTop:'HOLY',artAccent:'GRAILS',artSub:'DOWNTOWNS. CASE HITS. ICONS.',cards:['assets/homepage/cards/downtown-jayden-daniels.webp','assets/homepage/cards/downtown-bo-nix.webp','assets/homepage/carousel/mahomes-downtown.webp','assets/homepage/cards/kansas-city-concept.webp'],actions:[{label:'EXPLORE HOLY GRAILS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
- {tab:'BREAK CENTER',kicker:'BUILD YOUR PERSONAL HUNT',sub:'Choose the team, players, rookies, inserts and cards you want — then find the right break opportunities.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-studio.webp',artTop:'BREAK',artAccent:'CENTER',artSub:'BUILD YOUR HUNT. FIND THE BREAK.',extra:'hunt',actions:[{label:'BUILD YOUR HUNT',key:'breaks'},{label:'EXPLORE SETS',key:'sets'}]},
- {tab:'KNOW THE WORTH',kicker:'PLAY. LEARN. COLLECT SMARTER.',sub:'Rank three real Jayden Daniels rookie cards from highest recent sale to lowest — then learn what drives the difference.',p:'#d7a92d',mode:'cards',cards:['assets/homepage/cards/game-optic-rated-rookie.webp','assets/homepage/cards/game-select-rookie.webp','assets/homepage/cards/game-mosaic-red.webp'],extra:'worth',actions:[{label:'PLAY KNOW THE WORTH',key:'game'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'HOLY GRAILS',kicker:'THE CARDS EVERYONE WANTS',sub:'Three sports. Three icons. One chase — the grails collectors build their hunts around.',p:'#ffd35a',mode:'photo',img:'assets/homepage/categories/holy-grails-three-sport.webp',imageKey:'team',actions:[{label:'EXPLORE HOLY GRAILS',key:'team'},{label:'CHECK THE MARKET',key:'market'}]},
+ {tab:'BREAK CENTER',kicker:'BUILD YOUR PERSONAL HUNT',sub:'Choose the team, players, rookies, inserts and cards you want — then find the right break opportunities.',p:'#ff8a3d',mode:'photo',img:'assets/homepage/categories/break-studio.webp',imageKey:'breaks',extra:'hunt',actions:[{label:'BUILD YOUR HUNT',key:'breaks'},{label:'EXPLORE SETS',key:'sets'}]},
+ {tab:'KNOW THE WORTH',kicker:'PLAY. LEARN. COLLECT SMARTER.',sub:'Ten rounds. Rank three related cards, build your score and challenge your friends while learning what to hunt.',p:'#d7a92d',mode:'photo',img:'assets/homepage/categories/know-the-worth-game.webp',imageKey:'game',extra:'worth',actions:[{label:'PLAY KNOW THE WORTH',key:'game'},{label:'CHECK THE MARKET',key:'market'}]},
  {tab:'POKÉMON / TCG',kicker:'THE TCG CHASE',sub:'Iconic cards, premium sets and the biggest TCG chases.',p:'#ffcb05',mode:'photo',img:'assets/homepage/categories/pokemon-tcg.webp',imageKey:'pokemon',actions:[{label:'EXPLORE POKÉMON / TCG',key:'pokemon'},{label:'CHECK THE MARKET',key:'market'}]}
 ];
 
@@ -240,7 +236,6 @@ ticker.innerHTML=[...CAROUSEL_CARDS,...CAROUSEL_CARDS].map((src,i)=>'<img src="'
 STARS.forEach((d,i)=>{
  const sc=document.createElement('div');
  sc.className='scene '+d.mode+(i===0?' active':'');
- if(d.artTop)sc.classList.add('hasArtTheme');
  sc.style.setProperty('--p',d.p);
  if(d.pos)sc.style.setProperty('--pos',d.pos);
  if(d.zoom)sc.style.setProperty('--zoom',d.zoom);
@@ -264,7 +259,7 @@ STARS.forEach((d,i)=>{
 const hero=document.getElementById('hero'),scenes=[...document.querySelectorAll('.scene')],
  rail=document.getElementById('starRail'),mobDots=document.getElementById('mobDots'),
  heroKicker=document.getElementById('heroKicker'),heroSub=document.getElementById('heroSub'),
- ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary'),heroExtra=document.getElementById('heroExtra'),artTheme=document.getElementById('artTheme'),imageTap=document.getElementById('imageTap');
+ ctaPrimary=document.getElementById('ctaPrimary'),ctaSecondary=document.getElementById('ctaSecondary'),heroExtra=document.getElementById('heroExtra'),imageTap=document.getElementById('imageTap');
 let idx=0,timer=null,striking=false;
 
 STARS.forEach((d,i)=>{
@@ -286,13 +281,14 @@ function show(n){
  const d=STARS[idx];
  scenes.forEach((s,j)=>s.classList.toggle('active',j===idx));
  [...rail.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
- if(matchMedia('(max-width:760px)').matches&&rail.children[idx])rail.children[idx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+ if(matchMedia('(max-width:760px)').matches&&rail.children[idx]){
+  const activeRailItem=rail.children[idx];
+  const railLeft=activeRailItem.offsetLeft-(rail.clientWidth-activeRailItem.offsetWidth)/2;
+  rail.scrollTo({left:Math.max(0,railLeft),behavior:'smooth'});
+ }
  [...mobDots.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
  heroKicker.textContent=d.kicker;
  heroSub.textContent=d.sub;
- artTheme.innerHTML=d.artTop?'<strong>'+d.artTop+'<br><span>'+d.artAccent+'</span></strong><small>'+d.artSub+'</small>':'';
- artTheme.style.setProperty('--p',d.p);
- artTheme.classList.toggle('active',!!d.artTop);
  imageTap.classList.toggle('active',!!d.imageKey);
  imageTap.onclick=d.imageKey?()=>openApp(d.imageKey):null;
  imageTap.setAttribute('aria-label',d.imageKey?'Open '+d.tab:'');
