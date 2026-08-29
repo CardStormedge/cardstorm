@@ -72,6 +72,7 @@ img{max-width:100%}
 .scene.finished .bg{display:flex;align-items:center;justify-content:center}
 .artFrame{position:relative}
 .scene.finished .bg .artFrame img{display:block;width:100%;height:100%;object-fit:fill;object-position:center;transform:none}
+.scene.finished.cropFit .bg .artFrame img{object-fit:cover}
 .artBtn{position:absolute;background:transparent;border:0;cursor:pointer;padding:0}
 .artBtn.visibleArtBtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;height:auto;max-width:calc(100% - 20px);font:900 clamp(11px,1.6vw,15px) Inter,Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;padding:11px 16px;border-radius:10px;box-shadow:0 10px 24px -8px rgba(0,0,0,.6)}
 @media(max-width:760px){.artBtn.visibleArtBtn{font-size:12px;padding:9px 13px}}
@@ -270,7 +271,7 @@ function fillTicker(cards){
 fillTicker(CAROUSEL_CARDS);
 STARS.forEach((d,i)=>{
  const sc=document.createElement('div');
- sc.className='scene '+d.mode+(d.stretch?' stretchFit':'')+(d.mobileFill?' mobileFill':'')+(d.finished?' finished':'')+(i===0?' active':'');
+ sc.className='scene '+d.mode+(d.stretch?' stretchFit':'')+(d.mobileFill?' mobileFill':'')+(d.finished?' finished':'')+(d.cropFit?' cropFit':'')+(i===0?' active':'');
  sc.style.setProperty('--p',d.p);
  if(d.pos)sc.style.setProperty('--pos',d.pos);
  if(d.zoom)sc.style.setProperty('--zoom',d.zoom);
@@ -408,7 +409,7 @@ hero.addEventListener('pointerleave',resetTimer);
 const DASH=[
  {key:'team',dd:'rookies',num:'01',h1:'',h2:'ROOKIES',desc:'Today\'s rookies. Tomorrow\'s stars.',cta:'EXPLORE ROOKIES →',ac:'#55d8ff',art:'assets/homepage/categories/rookies.webp',pos:'center center'},
  {key:'market',dd:'market',num:'02',h1:'MARKET',h2:'RADAR',desc:'Track the market. Find the edge.',cta:'EXPLORE MARKET →',ac:'#6cff9e',art:'assets/homepage/dashboard/05-market-comps.webp',pos:'center center'},
- {key:'sets',dd:'sets',num:'03',h1:'SETS &',h2:'PACKS',desc:'Explore sets. Know what to hunt.',cta:'EXPLORE SETS & PACKS →',ac:'#55d8ff',art:'assets/homepage/dashboard/02-sets-packs.webp',pos:'center center'},
+ {key:'sets',dd:'sets',num:'03',h1:'SETS &',h2:'PACKS',desc:'Explore sets. Know what to hunt.',cta:'EXPLORE SETS & PACKS →',ac:'#55d8ff',art:'assets/homepage/categories/sets-packs-tile.webp',pos:'center 35%'},
  {key:'breaks',dd:'breaks',num:'04',h1:'BREAK',h2:'CENTER',desc:'Live & upcoming breaks.',cta:'FIND YOUR NEXT BREAK →',ac:'#ffb35a',art:'assets/homepage/categories/break-studio.webp',pos:'center 30%',live:true},
  {key:'team',dd:'goats',num:'05',h1:'',h2:'GOATS',desc:'Legends. Case hits. Iconic cards. Serious value.',cta:'EXPLORE GOATS →',ac:'#ff6a72',art:'assets/homepage/categories/goats-tile.webp',pos:'center 40%'},
  {key:'plans',dd:'intel',num:'06',h1:'COLLECTOR',h2:'INTEL',desc:'Data. Insights. Smarter moves.',cta:'GET THE EDGE →',ac:'#55d8ff',art:'assets/homepage/dashboard/11-cardstorm-edge.webp',pos:'center center'},
