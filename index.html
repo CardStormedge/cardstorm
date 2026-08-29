@@ -286,7 +286,7 @@ STARS.forEach((d,i)=>{
   if(d.extra==='worth')sc.innerHTML='<div class="bg"><div class="cardShowcase gameShowcase"><div class="gamePromptBadge">RANK HIGHEST SALE → LOWEST</div>'+d.cards.map((src,n)=>'<div class="gameCardTile"><span class="gameRank">?</span><img src="'+src+'" alt="Real card game example '+(n+1)+'"></div>').join('')+'</div></div>';
   else sc.innerHTML='<div class="bg"><div class="cardShowcase">'+d.cards.map((src,n)=>'<img src="'+src+'" alt="Real Downtown card example '+(n+1)+'">').join('')+'</div></div>';
  }else if(d.finished){
-  sc.innerHTML='<div class="bg"><div class="artFrame" data-ratio="'+d.artRatio+'"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.tab+'">'
+  sc.innerHTML='<div class="bg"><div class="artFrame" data-ratio="'+d.artRatio+'" style="width:100%;aspect-ratio:'+d.artRatio.replace('/', ' / ')+'"><img src="'+d.img+'" alt="CardStorm featured chase — '+d.tab+'">'
    +(d.artButtons||[]).map((b,bi)=>b.visible
      ?'<button class="artBtn primary visibleArtBtn" data-bi="'+bi+'" style="left:'+b.x+'%;top:'+b.y+'%" aria-label="'+b.label+'">'+b.label.toUpperCase()+' →</button>'
      :'<button class="artBtn" data-bi="'+bi+'" style="left:'+b.x+'%;top:'+b.y+'%;width:'+b.w+'%;height:'+b.h+'%" aria-label="'+b.label+'"></button>').join('')
