@@ -1,0 +1,38 @@
+name: Rebuild Rookies hero safely
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rebuild-rookies-hero.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Restore known-good Rookies artwork and rebuild without stretching
+        run: |
+          set -e
+          git show d350cc0d3deef658aa10c5d7dceb0828e23cb201:assets/homepage/categories/rookies-hero.webp > /tmp/rookies-source.webp
+          ffmpeg -y -i /tmp/rookies-source.webp -filter_complex "[0:v]scale=1672:941:force_original_aspect_ratio=increase,crop=1672:941,boxblur=20:10[bg];[0:v]scale=1672:941:force_original_aspect_ratio=decrease[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2" -frames:v 1 -c:v libwebp -quality 90 assets/homepage/categories/rookies-hero.webp
+          file assets/homepage/categories/rookies-hero.webp
+          test $(stat -c%s assets/homepage/categories/rookies-hero.webp) -gt 100000
+
+      - name: Verify homepage points to normal 16:9 frame
+        run: |
+          grep -q "img:'assets/homepage/categories/rookies-hero.webp',artRatio:'1672/941'" index.html
+
+      - name: Commit rebuilt hero
+        run: |
+          git config user.name 'CardStorm Fix Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add assets/homepage/categories/rookies-hero.webp
+          git commit -m 'Rebuild Rookies hero without stretching or broken asset' || exit 0
+          git push origin main
