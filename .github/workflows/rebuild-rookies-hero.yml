@@ -17,6 +17,11 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
       - name: Restore known-good Rookies artwork and rebuild without stretching
         run: |
           set -e
