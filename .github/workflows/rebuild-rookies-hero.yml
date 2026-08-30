@@ -1,0 +1,54 @@
+name: Convert Rookies hero to JPEG
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rebuild-rookies-hero.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Convert the current Rookies artwork to JPEG
+        run: |
+          set -e
+          ffmpeg -y -i assets/homepage/categories/rookies-hero.webp -frames:v 1 -q:v 2 assets/homepage/categories/rookies-hero.jpg
+          file assets/homepage/categories/rookies-hero.jpg
+          test $(stat -c%s assets/homepage/categories/rookies-hero.jpg) -gt 100000
+          identify assets/homepage/categories/rookies-hero.jpg | grep -q '1672x941'
+
+      - name: Point only Rookies to JPEG
+        run: |
+          set -e
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          old="img:'assets/homepage/categories/rookies-hero.webp',artRatio:'1672/941'"
+          new="img:'assets/homepage/categories/rookies-hero.jpg',artRatio:'1672/941'"
+          if old not in s:
+              raise SystemExit('Rookies source reference not found')
+          p.write_text(s.replace(old,new,1))
+          PY
+          grep -q "img:'assets/homepage/categories/rookies-hero.jpg',artRatio:'1672/941'" index.html
+
+      - name: Commit JPEG fallback
+        run: |
+          git config user.name 'CardStorm Fix Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add index.html assets/homepage/categories/rookies-hero.jpg
+          git commit -m 'Serve Rookies hero as JPEG to eliminate broken image' || exit 0
+          git push origin main

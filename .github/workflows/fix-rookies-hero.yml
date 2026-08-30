@@ -1,0 +1,36 @@
+name: Fix Rookies hero layout
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-rookies-hero.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Match Rookies to Live Cards hero frame
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+          old = "artRatio:'1919/725',artButtons:[{x:3.44,y:64.55,w:21.05,h:10.48,key:'team',label:'Explore Rookies'},{x:25.53,y:64.55,w:17.51,h:10.48,key:'market',label:'View Top Movers'}]"
+          new = "artRatio:'1672/941',artButtons:[{x:2.8,y:68.0,w:21.0,h:8.0,key:'team',label:'Explore Rookies'},{x:24.2,y:68.0,w:19.0,h:8.0,key:'market',label:'View Top Movers'}]"
+          if old not in s:
+              raise SystemExit('Expected Rookies hero layout string not found')
+          p.write_text(s.replace(old, new, 1))
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name 'CardStorm Fix Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Match Rookies hero frame to Live Cards' || exit 0
+          git push origin main
