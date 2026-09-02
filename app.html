@@ -247,6 +247,12 @@ else if(!inCardStormFrame()){goHome();}
 .watchgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}.watchplayer{background:linear-gradient(145deg,#081c2c,#020a12);border:1px solid #2c6b95;border-radius:13px;padding:15px;min-height:150px;cursor:pointer;position:relative;transition:.18s}.watchplayer:hover{border-color:#52c8ff;transform:translateY(-2px);box-shadow:0 0 20px #168fff30}.watchsport{font-size:10px;letter-spacing:.12em;color:#5bdcff;font-weight:900}.watchplayer h3{font-size:19px;margin:8px 0 5px}.watchhits{display:flex;gap:5px;flex-wrap:wrap;margin-top:11px}.watchhits span{font-size:10px;border:1px solid #2a6f9c;border-radius:999px;padding:4px 7px;color:#9fe5ff}.playerdetail{display:grid;grid-template-columns:.7fr 1.3fr;gap:14px}.hit3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.hit3>div{background:linear-gradient(145deg,#0a2238,#030b14);border:1px solid #2b719e;border-radius:12px;padding:14px;min-height:135px}.hit3 .rank{font-size:11px;color:#ffd15a;font-weight:900;letter-spacing:.08em}.catalogue{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}.cat{border:1px solid #285b7f;background:#061521;border-radius:10px;padding:10px;cursor:pointer}.cat:hover{border-color:#56c9ff}.cat .state{font-size:10px;color:#8eb6d5;margin-top:4px}.cat .ok{color:#48e0bd}.cat .pending{color:#ffd257}.compcount{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:99px;background:#0b69d3;font-size:11px;font-weight:900;margin-left:6px}@media(max-width:1100px){.watchgrid{grid-template-columns:repeat(2,1fr)}.catalogue{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.watchgrid,.hit3,.playerdetail,.catalogue{grid-template-columns:1fr}}
 </style>
 <script>
+// WATCHCAT is curated/unverified data: the 3 chase strings per player are
+// editorially chosen suggestions, not per-card checklist records, and are not
+// cross-checked against CHECKLIST_MANIFEST the way Team Hunt's verified-chase
+// pills are (see scanProductForPlayer). Render these as suggestions - never
+// label them "verified" or imply checklist confirmation - until this feature
+// is integrated with the same manifest-driven scanning Team Hunt now uses.
 const WATCHCAT=[
 ['C.J. Stroud','football','Downtown','Prizm Silver / Color','Rookie Auto'],
 ['Jayden Daniels','football','Downtown','Optic Rated Rookie Holo','Prizm Color / Auto'],
@@ -267,8 +273,8 @@ const WATCHCAT=[
 ['Bobby Witt Jr.','baseball','Chrome Refractor / SSP','Gold / Red parallels','Autograph'],
 ['Jackson Chourio','baseball','Topps Chrome RC','Refractor / numbered color','Rookie Auto']
 ];
-function watch(){return shell('WATCHLIST','Track your favorites.','Click any player to open a three-hit chase card. Add/remove functionality can be connected to CardStorm accounts later.',`<div class=watchgrid>${WATCHCAT.map((p,i)=>`<div class=watchplayer onclick="openWatch(${i})"><div class=watchsport>${p[1].toUpperCase()}</div><h3>${p[0]}</h3><div class=target>3 featured hits • recent comps • alerts</div><div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('')}<div class=watchplayer onclick="alert('Player search/add will connect to the CardStorm account layer.')"><div class=watchsport>WATCHLIST</div><h3>+ Add Player</h3><div class=target>Search the full player catalogue</div></div></div>`)}
-function openWatch(i){navPush();const p=WATCHCAT[i];const verified=COMPS.filter(c=>c[0]===p[0]);C.innerHTML=shell('PLAYER WATCH',p[0],p[1].toUpperCase()+' • three featured chase paths',`<div class=playerdetail><div class=feature><div class=k>${p[1].toUpperCase()} WATCHLIST</div><h2>${p[0]}</h2><p class=sub>Use this player card as the quick intelligence hub for hits, comps and future alerts.</p><button class=cta onclick="goBack()">← BACK</button></div><div class=feature><h2>3 HITS TO WATCH</h2><div class=hit3>${[p[2],p[3],p[4]].map((h,j)=>`<div class="watchHitTile" onclick="openWatchHit(${i},${j})"><div class=rank>HIT ${j+1}</div><h3>${h}</h3><div class=target>${j===0?'Premium SSP / collector-demand target':j===1?'Parallel hierarchy / scarcity target':'Autograph, numbered or premium chase path'}</div></div>`).join('')}</div></div></div><div class=feature style="margin-top:14px"><h2>RECENT VERIFIED COMPS ${verified.length?`<span class=compcount>${verified.length}</span>`:''}</h2>${verified.length?`<table class=comptable><thead><tr><th>Card</th><th>Grade</th><th>Sale</th><th>Date</th><th>Source</th><th></th></tr></thead><tbody>${verified.map(c=>`<tr><td>${c[2]}</td><td>${c[3]}</td><td class=price>${c[1]}</td><td>${c[4]}</td><td>${c[5]}</td><td><a class=verify href="${c[6]}" target=_blank>VERIFY →</a></td></tr>`).join('')}</tbody></table>`:`<div class=compPending><b>LIVE COMPS PENDING</b><span>No verified recent sale is loaded for ${p[0]} yet. This player is queued for the CardStorm/eBay comp feed.</span></div>`}</div>`)}
+function watch(){return shell('WATCHLIST','Track your favorites.','Click any player to open a three-hit chase card. Add/remove functionality can be connected to CardStorm accounts later.',`<div class=watchgrid>${WATCHCAT.map((p,i)=>`<div class=watchplayer onclick="openWatch(${i})"><div class=watchsport>${p[1].toUpperCase()}</div><h3>${p[0]}</h3><div class=target>Suggested chases • recent comps • alerts</div><div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('')}<div class=watchplayer onclick="alert('Player search/add will connect to the CardStorm account layer.')"><div class=watchsport>WATCHLIST</div><h3>+ Add Player</h3><div class=target>Search the full player catalogue</div></div></div>`)}
+function openWatch(i){navPush();const p=WATCHCAT[i];const verified=COMPS.filter(c=>c[0]===p[0]);C.innerHTML=shell('PLAYER WATCH',p[0],p[1].toUpperCase()+' • three featured chase paths',`<div class=playerdetail><div class=feature><div class=k>${p[1].toUpperCase()} WATCHLIST</div><h2>${p[0]}</h2><p class=sub>Use this player card as the quick intelligence hub for hits, comps and future alerts.</p><button class=cta onclick="goBack()">← BACK</button></div><div class=feature><h2>SUGGESTED CHASES</h2><p class=sub>Curated by CardStorm, not yet cross-checked against verified checklist data.</p><div class=hit3>${[p[2],p[3],p[4]].map((h,j)=>`<div class="watchHitTile" onclick="openWatchHit(${i},${j})"><div class=rank>HIT ${j+1}</div><h3>${h}</h3><div class=target>${j===0?'Premium SSP / collector-demand target':j===1?'Parallel hierarchy / scarcity target':'Autograph, numbered or premium chase path'}</div></div>`).join('')}</div></div></div><div class=feature style="margin-top:14px"><h2>RECENT VERIFIED COMPS ${verified.length?`<span class=compcount>${verified.length}</span>`:''}</h2>${verified.length?`<table class=comptable><thead><tr><th>Card</th><th>Grade</th><th>Sale</th><th>Date</th><th>Source</th><th></th></tr></thead><tbody>${verified.map(c=>`<tr><td>${c[2]}</td><td>${c[3]}</td><td class=price>${c[1]}</td><td>${c[4]}</td><td>${c[5]}</td><td><a class=verify href="${c[6]}" target=_blank>VERIFY →</a></td></tr>`).join('')}</tbody></table>`:`<div class=compPending><b>LIVE COMPS PENDING</b><span>No verified recent sale is loaded for ${p[0]} yet. This player is queued for the CardStorm/eBay comp feed.</span></div>`}</div>`)}
 
 function openWatchHit(i,j){
   navPush();
@@ -466,6 +472,12 @@ function market(){
 }
 F.market=market;
 
+// HIT_LIBRARY_V83 is curated product-level data: the insert/parallel names
+// listed per product/year are general product knowledge, not per-player
+// checklist records, and are NOT cross-checked against CHECKLIST_MANIFEST -
+// note the '2025' entries below have no backing checklist file at all yet.
+// Never present these as player-level verified checklist evidence; that's
+// what scanProductForPlayer/verifiedChaseCardsHTML (Team Hunt) are for.
 const HIT_LIBRARY_V83={
  football:{
   '2024':{'Donruss':['Rated Rookie','Downtown','Elite Series Rookies','The Rookies','Autographs'],'Donruss Optic':['Rated Rookie Holo','Downtown','My House!','Rookie Kings','Numbered Color'],'Prizm':['Base Rookie','Silver Prizm','Color / Numbered','Color Blast','Rookie Autograph'],'Select':['Concourse/Premier/Field Level Rookie','Silver','Zebra','Color Wheel','Rookie Signatures'],'Mosaic':['Base Rookie','Silver Mosaic','Genesis','Stained Glass','Rookie Autographs']},
@@ -493,16 +505,38 @@ function openHitLibrary(ab,focus,player){navPush();hitLibSport=sport;hitLibYear=
 function setHitLib(s,y,player){hitLibSport=s;hitLibYear=y;renderHitLibrary(player||'')}
 function renderHitLibrary(player){
  const lib=(HIT_LIBRARY_V83[hitLibSport]||{})[hitLibYear]||{};
- C.innerHTML=shell('CARDSTORM HIT LIBRARY',hitLibSport.toUpperCase()+' • '+hitLibYear,(player?player+' • ':'')+'Exact chase families by product. Click a set to open its collector checklist.',`${hitLibFocus&&player?hitExampleFor(player,hitLibFocus):''}<div class=v83tabs>${['football','baseball','basketball'].map(s=>`<button class="${hitLibSport===s?'active':''}" onclick="setHitLib('${s}','${hitLibYear}','${String(player).replace(/'/g,"\\'")}')">${s.toUpperCase()}</button>`).join('')}${['2024','2025','2026'].map(y=>`<button class="${hitLibYear===y?'active':''}" onclick="setHitLib('${hitLibSport}','${y}','${String(player).replace(/'/g,"\\'")}')">${y}</button>`).join('')}</div><div class=hitlibgrid>${Object.entries(lib).map(([set,hunts])=>`<div class=hitset><div class=k>${hitLibYear} • ${hitLibSport.toUpperCase()}</div><h3>${set}</h3>${hunts.map(h=>`<div class=huntrow><b>${h}</b>${player?`<div class=target>${player}</div>`:''}</div>`).join('')}<button class=cta onclick="sport='${hitLibSport}';year='${hitLibYear}';openSetChecklist('${set.replace(/'/g,"\\'")}')">OPEN CHECKLIST ✓</button></div>`).join('')}</div>`)
+ const hasVerifiedManifest=!!(CHECKLIST_MANIFEST[hitLibSport+'|'+hitLibYear]||[]).length;
+ const unverifiedNote=hasVerifiedManifest?'':`<div class=notice>General product intelligence for ${hitLibYear} — CardStorm has not yet loaded a verified per-card checklist for ${hitLibSport} ${hitLibYear}. These are known insert/parallel names, not confirmed player-level chase cards.</div>`;
+ C.innerHTML=shell('CARDSTORM HIT LIBRARY',hitLibSport.toUpperCase()+' • '+hitLibYear,(player?player+' • ':'')+'General chase families by product — not yet cross-checked against verified checklists. Click a set to open its collector checklist.',`${hitLibFocus&&player?hitExampleFor(player,hitLibFocus):''}<div class=v83tabs>${['football','baseball','basketball'].map(s=>`<button class="${hitLibSport===s?'active':''}" onclick="setHitLib('${s}','${hitLibYear}','${String(player).replace(/'/g,"\\'")}')">${s.toUpperCase()}</button>`).join('')}${['2024','2025','2026'].map(y=>`<button class="${hitLibYear===y?'active':''}" onclick="setHitLib('${hitLibSport}','${y}','${String(player).replace(/'/g,"\\'")}')">${y}</button>`).join('')}</div>${unverifiedNote}<div class=hitlibgrid>${Object.entries(lib).map(([set,hunts])=>`<div class=hitset><div class=k>${hitLibYear} • ${hitLibSport.toUpperCase()}</div><h3>${set}</h3>${hunts.map(h=>`<div class=huntrow><b>${h}</b>${player?`<div class=target>${player}</div>`:''}</div>`).join('')}<button class=cta onclick="sport='${hitLibSport}';year='${hitLibYear}';openSetChecklist('${set.replace(/'/g,"\\'")}')">OPEN CHECKLIST ✓</button></div>`).join('')}</div>`)
 }
 function openAllHitLibrary(){navPush();hitLibSport=sport;hitLibYear=year;hitLibFocus='';renderHitLibrary('')}
 
 /* ---------------- TEAM HUNT: verified checklist data layer ---------------- */
+// CHECKLIST_MANIFEST is the single source of truth for which sport/year/product
+// combinations CardStorm has verified per-card checklist data for. Team Hunt's
+// verified-chase scanning (scanProductForPlayer, verifiedChaseCardsHTML) reads
+// this manifest at runtime and never hardcodes a year or product - dropping in
+// a new data/<sport>/<year>/<product>.json file plus a manifest entry here is
+// the entire integration step for a new checklist. `chaseMap` declares which of
+// the product's own category names (as they appear in its raw JSON, after
+// normalization) count as evidence for which CardStorm chase type, and is
+// intentionally an allowlist: any category not listed here is never scanned,
+// so a product can never accidentally imply a chase type it has no per-card
+// records for. `normalizer` names the shape-specific parser in NORMALIZERS
+// that turns this product's raw JSON into the common {player,category,...}
+// record shape the scanner consumes.
 const CHECKLIST_MANIFEST={
  'football|2024':[
-  {key:'donruss',name:'Donruss',file:'data/football/2024/donruss.json',teamMapped:true,status:'RELEASED'},
-  {key:'prizm',name:'Prizm',file:'data/football/2024/prizm.json',teamMapped:true,status:'RELEASED'},
-  {key:'select',name:'Select',file:'data/football/2024/select.json',teamMapped:false,status:'RELEASED'}
+  {key:'donruss',name:'Donruss',file:'data/football/2024/donruss.json',teamMapped:true,status:'RELEASED',normalizer:'donruss',
+   chaseMap:{'Rated Rookies':'rookie'}},
+  {key:'prizm',name:'Prizm',file:'data/football/2024/prizm.json',teamMapped:true,status:'RELEASED',normalizer:'prizm',
+   chaseMap:{'Case Hits / SSPs':'caseHit','Autographs':'auto','Parallels':'numbered','Rookies':'rookie'}},
+  {key:'select',name:'Select',file:'data/football/2024/select.json',teamMapped:false,status:'RELEASED',normalizer:'select',
+   // Select's Parallels/Inserts/Autographs/Memorabilia sections are family-name
+   // lists only (no player/card-number records - see normalizeSelect, which
+   // already skips any category whose kind isn't 'cards'), so only the six
+   // base-set tiers are mapped, and only ever as rookie evidence.
+   chaseMap:{'Concourse':'rookie','Premier':'rookie','Club':'rookie','Suite':'rookie','Field':'rookie','XRC':'rookie'}}
  ]
 };
 const _checklistCache={};
@@ -558,55 +592,125 @@ function teamTopCardsHTML(players){
  if(!found.length)return `<div class=notice>Card photography coming as verified assets are added for this roster.</div>`;
  return `<div class=thCardGrid>${found.slice(0,6).map(c=>`<div class=thCardTile><img src="${c.img}" loading=lazy decoding=async alt="${c.player} ${c.card}"><div class=thCardCap><b>${c.player}</b><span>${c.card}</span></div></div>`).join('')}</div>`;
 }
-function scanDonrussRookie(player){
- if(!DONRUSS_FULL||DONRUSS_FULL==='error')return null;
- for(const cat of Object.values(DONRUSS_FULL.categories||{})){
-  if(cat.kind!=='cards')continue;
-  for(const c of cat.cards||[]){
-   if(c.player===player&&(c.ratedRookie||c.rookie))return{cardNumber:c.cardNumber};
+// Product-shape normalizers already exist (normalizeDonruss/normalizePrizm/
+// normalizeSelect, defined above) and already convert each product's raw JSON
+// into a common {product,category,cardNumber,player,team,rookie,ratedRookie,
+// serialNumberedTo,group,id} record shape - normalizeSelect and normalizeDonruss
+// already skip any category whose kind isn't 'cards', so Select's family-only
+// sections never produce a record in the first place. NORMALIZERS just wires
+// each manifest entry's declared `normalizer` name to the right parser.
+const NORMALIZERS={donruss:normalizeDonruss,prizm:normalizePrizm,select:normalizeSelect};
+// Pulls a product's own cited source(s) out of its raw JSON instead of a
+// hardcoded string in app.html - the three 2024 products each cite sources in
+// a different shape (Donruss: product.source.sourceURLs[], Prizm: product.
+// source.{name,url}, Select: top-level sources[]), so this normalizes all
+// three into a common [{name,url}] list.
+function extractProductSources(raw){
+ if(!raw)return[];
+ if(Array.isArray(raw.sources))return raw.sources.map(s=>({name:s.name||'Source',url:s.url||null}));
+ const s=raw.product&&raw.product.source;
+ if(!s)return[];
+ if(Array.isArray(s.sourceURLs))return s.sourceURLs.map((u,idx)=>({name:'Source '+(idx+1),url:u}));
+ if(s.name||s.url)return[{name:s.name||'Source',url:s.url||null}];
+ return[];
+}
+// The generic, manifest-driven scanner. It only ever considers categories the
+// manifest entry explicitly lists in chaseMap (an allowlist, per-product), so
+// a category with no chaseMap mapping - like Select's family-only sections,
+// which normalizeSelect already drops - can never surface as chase evidence.
+// 'rookie' additionally requires the record's own rookie/ratedRookie flag when
+// that record carries one (a base-set tier can mix rookies and veterans), and
+// 'numbered' requires a real serialNumberedTo value - presence in a category
+// alone is never enough for either.
+function scanProductForPlayer(entry,raw,player){
+ const norm=NORMALIZERS[entry.normalizer];
+ if(!norm||!raw||raw==='error')return[];
+ const sources=extractProductSources(raw);
+ const evidence=[];
+ norm(raw).forEach(rec=>{
+  if(rec.player!==player)return;
+  const chaseType=entry.chaseMap[rec.category];
+  if(!chaseType)return;
+  if(chaseType==='rookie'){
+   const hasFlag=('rookie' in rec)||('ratedRookie' in rec);
+   if(hasFlag&&!(rec.rookie||rec.ratedRookie))return;
   }
+  if(chaseType==='numbered'&&!rec.serialNumberedTo)return;
+  evidence.push({chaseType,product:entry.name,category:rec.category,group:rec.group||null,cardNumber:rec.cardNumber,serialNumberedTo:rec.serialNumberedTo||null,sources});
+ });
+ return evidence;
+}
+function firstAvailableManifestYear(sportKey){
+ for(const k of Object.keys(CHECKLIST_MANIFEST)){
+  const parts=k.split('|');
+  if(parts[0]===sportKey&&CHECKLIST_MANIFEST[k].length)return parts[1];
  }
  return null;
 }
-function scanPrizmForPlayer(player){
- if(!PRIZM_FULL||PRIZM_FULL==='error')return null;
- const out={caseHit:[],auto:[],numbered:[],rookie:false};
- for(const[catName,groups]of Object.entries(PRIZM_FULL.categories||{})){
-  for(const g of groups||[]){
-   for(const c of g.cards||[]){
-    if(c.athlete!==player)continue;
-    if(catName==='Case Hits / SSPs')out.caseHit.push({group:g.name,cardNumber:c.cardNumber});
-    else if(catName==='Autographs')out.auto.push({group:g.name,cardNumber:c.cardNumber});
-    else if(catName==='Parallels'&&c.serialNumberedTo)out.numbered.push({group:g.name,cardNumber:c.cardNumber,to:c.serialNumberedTo});
-    else if(catName==='Rookies')out.rookie=true;
-   }
-  }
+const CHASE_LABELS={rookie:'ROOKIE',caseHit:'CASE HIT',auto:'AUTO',numbered:'NUMBERED'};
+function verifiedChaseCardsHTML(player,ab,i,rawByKey){
+ const manifest=CHECKLIST_MANIFEST[sport+'|'+year];
+ if(!manifest||!manifest.length){
+  const altYear=firstAvailableManifestYear(sport);
+  if(altYear)return `<div class=notice>${year} card data — official checklists have not yet been verified by CardStorm for ${sport}.</div><p style="margin-top:10px"><button class=cta onclick="switchChaseYear('${altYear}','${ab}',${i})">VIEW ${altYear} VERIFIED CHASES →</button></p>`;
+  return `<div class=notice>Verified per-card checklist data is not available for ${sport} yet.</div>`;
  }
- out.numbered.sort((a,b)=>a.to-b.to);
- return out;
-}
-function verifiedChaseCardsHTML(player,ab,i){
- if(sport!=='football')return `<div class=notice>Verified per-card checklist data is currently only loaded for football. ${player}'s ${sport} chase types aren't available yet.</div>`;
- if(year!=='2024')return `<div class=notice>${year} card data — official checklists have not yet been verified by CardStorm.</div><p style="margin-top:10px"><button class=cta onclick="switchChaseYear('2024','${ab}',${i})">VIEW 2024 VERIFIED CHASES →</button></p>`;
- const donRookie=scanDonrussRookie(player),prizm=scanPrizmForPlayer(player);
- const items=[];
- if(donRookie)items.push(['ROOKIE','2024 Donruss #'+donRookie.cardNumber,[{label:'2024 Donruss Rated Rookie #'+donRookie.cardNumber,source:'2024 Panini Donruss Football'}]]);
- else if(prizm&&prizm.rookie)items.push(['ROOKIE','2024 Prizm Rookie',[{label:'2024 Prizm Rookie',source:'2024 Panini Prizm Football'}]]);
- if(prizm&&prizm.caseHit.length)items.push(['CASE HIT',prizm.caseHit.length+' verified',prizm.caseHit.map(x=>({label:x.group+' #'+x.cardNumber,source:'2024 Panini Prizm Football'}))]);
- if(prizm&&prizm.auto.length)items.push(['AUTO',prizm.auto.length+' verified',prizm.auto.map(x=>({label:x.group+' #'+x.cardNumber,source:'2024 Panini Prizm Football'}))]);
- if(prizm&&prizm.numbered.length)items.push(['NUMBERED','as low as /'+prizm.numbered[0].to,prizm.numbered.slice(0,12).map(x=>({label:x.group+' #'+x.cardNumber+' /'+x.to,source:'2024 Panini Prizm Football'}))]);
- if(!items.length)return `<div class=notice>No verified 2024 chase-card records found for ${player} yet.</div>`;
+ let allEvidence=[];
+ manifest.forEach(entry=>{allEvidence=allEvidence.concat(scanProductForPlayer(entry,(rawByKey||{})[entry.key],player))});
+ if(!allEvidence.length)return `<div class=notice>No verified ${year} chase-card records found for ${player} yet.</div>`;
+ const byType={};
+ allEvidence.forEach(e=>{(byType[e.chaseType]=byType[e.chaseType]||[]).push(e)});
+ const items=['rookie','caseHit','auto','numbered'].filter(t=>byType[t]&&byType[t].length).map(t=>{
+  const list=byType[t];
+  let sub;
+  if(t==='rookie'){
+   const products=[...new Set(list.map(e=>e.product))];
+   sub=products.length>1?'confirmed by '+products.length+' checklist sources':list[0].product+(list[0].cardNumber?' #'+list[0].cardNumber:'');
+  }else if(t==='numbered'){
+   sub='as low as /'+Math.min(...list.map(e=>e.serialNumberedTo));
+  }else{
+   sub=list.length+' verified';
+  }
+  return[t,sub,list];
+ });
  const pid='thChase'+i;
- return `<div class=thChaseRow>${items.map(([label,sub],idx)=>`<button type=button class=thChaseBtn onclick="toggleChaseReveal('${pid}r${idx}')"><b>${label}</b><span>${sub}</span></button>`).join('')}</div>${items.map(([label,sub,detail],idx)=>`<div id="${pid}r${idx}" class=thChaseDetail style="display:none"><div class=thChaseTitle>${label} — verified records</div>${detail.map(d=>`<div class=thChaseRecord>${d.label}<span>${d.source}</span></div>`).join('')}</div>`).join('')}`;
+ return `<div class=thChaseRow>${items.map(([t,sub],idx)=>`<button type=button class=thChaseBtn onclick="toggleChaseReveal('${pid}r${idx}')"><b>${CHASE_LABELS[t]}</b><span>${sub}</span></button>`).join('')}</div>${items.map(([t,sub,list],idx)=>`<div id="${pid}r${idx}" class=thChaseDetail style="display:none"><div class=thChaseTitle>${CHASE_LABELS[t]} — verified records</div>${list.map(e=>`<div class=thChaseRecord>${e.product}${e.group?' '+e.group:''}${e.cardNumber?' #'+e.cardNumber:''}${e.serialNumberedTo?' /'+e.serialNumberedTo:''}<span>${e.sources.length?e.sources.map(s=>s.name).join(' • '):e.product+' checklist'}</span></div>`).join('')}</div>`).join('')}`;
 }
 function toggleChaseReveal(id){const el=document.getElementById(id);if(el)el.style.display=el.style.display==='none'?'block':'none'}
 function loadChaseSection(hostId,player,ab,i){
- Promise.all([loadPrizmFull(),loadDonrussFull()]).then(()=>{
+ const manifest=CHECKLIST_MANIFEST[sport+'|'+year]||[];
+ Promise.all(manifest.map(entry=>loadChecklistProduct(sport,year,entry.key))).then(rawList=>{
+  const rawByKey={};
+  manifest.forEach((entry,idx)=>{rawByKey[entry.key]=rawList[idx]});
   const host=document.getElementById(hostId);
-  if(host)host.innerHTML=verifiedChaseCardsHTML(player,ab,i);
+  if(host)host.innerHTML=verifiedChaseCardsHTML(player,ab,i,rawByKey);
  });
 }
 function switchChaseYear(y,ab,i){year=y;renderPlayerHunt(ab,i)}
+// Debug-only coverage report, not wired into any UI. Call from the console as
+// debugChecklistCoverage('football','2024').then(console.table) to see, per
+// product: whether its file loaded, whether it cites a source, which chaseMap
+// categories are configured, and which of the file's own categories actually
+// have per-card records vs are family-name-only (never scanned).
+function debugChecklistCoverage(sportKey,yr){
+ const manifest=CHECKLIST_MANIFEST[sportKey+'|'+yr]||[];
+ return Promise.all(manifest.map(entry=>loadChecklistProduct(sportKey,yr,entry.key).then(raw=>{
+  const recordBacked=[],familyOnly=[];
+  if(raw&&raw.categories){
+   Object.entries(raw.categories).forEach(([catName,cat])=>{
+    // Only Array (Prizm's group-of-cards shape) or an explicit kind:'cards'
+    // object actually carry per-player records - normalizeDonruss/
+    // normalizeSelect only read kind:'cards' too. Everything else (kind:
+    // 'families', 'pending', 'subgroups', or any other placeholder the raw
+    // file uses for a section it hasn't enumerated yet) is not yet scannable
+    // and must never be reported as record-backed.
+    const isRecordBacked=Array.isArray(cat)||(cat&&cat.kind==='cards');
+    (isRecordBacked?recordBacked:familyOnly).push(catName);
+   });
+  }
+  return{sport:sportKey,year:yr,product:entry.name,file:entry.file,loaded:!!raw&&raw!=='error',sourcePresent:extractProductSources(raw).length>0,chaseMapCategories:Object.keys(entry.chaseMap||{}),recordBackedCategories:recordBacked,familyOnlyCategories:familyOnly};
+ })));
+}
 function openTeam(ab){
  navPush();
  const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1];
@@ -716,7 +820,7 @@ function watch(){
  const sportOrder=['football','baseball','basketball'];
  const sports=Object.keys(bySport).sort((a,b)=>{const ai=sportOrder.indexOf(a),bi=sportOrder.indexOf(b);return (ai<0?99:ai)-(bi<0?99:bi);});
  const rows=sports.map(sport=>{
-  const cards=bySport[sport].map(([i,p])=>`<div class=watchplayer onclick="openWatch(${i})"><button class=watchremove onclick="removeWatchName('${p[0].replace(/'/g,"\\'")}',event)">REMOVE</button><div class=watchsport>${p[1].toUpperCase()}</div><h3>${p[0]}</h3><div class=target>3 featured hits • recent comps • alerts</div><div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('');
+  const cards=bySport[sport].map(([i,p])=>`<div class=watchplayer onclick="openWatch(${i})"><button class=watchremove onclick="removeWatchName('${p[0].replace(/'/g,"\\'")}',event)">REMOVE</button><div class=watchsport>${p[1].toUpperCase()}</div><h3>${p[0]}</h3><div class=target>Suggested chases • recent comps • alerts</div><div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('');
   return `<div class=homeSectionLabel>${sport.toUpperCase()} (${bySport[sport].length})</div><div class=watchgrid>${cards}</div>`;
  }).join('');
  return shell('WATCHLIST','Track your favorites.','Your watchlist is saved in this browser. Click a player for hits and comps, or add/remove players anytime.',`<div class=watchtoolbar><div class=watchcount>${mine.length} PLAYERS WATCHED</div><button class=cta onclick="openWatchManager()">+ ADD / MANAGE PLAYERS</button><button class=cta onclick="show('market')">MARKET RADAR →</button></div>${rows||'<div class=feature><h3>Your watchlist is empty.</h3><button class=cta onclick="openWatchManager()">ADD PLAYERS</button></div>'}`);
