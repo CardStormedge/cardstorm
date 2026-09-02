@@ -547,7 +547,7 @@ function renderTeamChecklistBlock(ab,teamFullName){
   refreshTeamChecklistStats();
  });
 }
-const TH_STYLE=`<style>.thPlayerGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:14px}.thPlayerCard{text-align:left;background:linear-gradient(145deg,#0b2948,#050d16);border:1px solid #2b78a7;border-radius:12px;padding:14px;cursor:pointer;color:#fff;font-family:inherit}.thPlayerCard:hover{border-color:#55d8ff;box-shadow:0 0 18px #168fff33}.thPlayerRole{font-size:10px;color:#57dfff;font-weight:900;letter-spacing:.06em}.thPlayerCard h3{margin:6px 0 4px;font-size:17px}.thPlayerSub{font-size:11.5px;color:#8fb3d1}.thMoverList{display:grid;gap:8px;margin-top:8px}.thMoverRow{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center;background:#04101c;border:1px solid #1c4463;border-radius:10px;padding:10px 12px}.thMoverName{font-weight:900;font-size:14px}.thMoverMeta{font-size:11.5px;color:#8fb3d1;grid-column:1}.thMoverPrice{font-weight:900;color:#48e0bd;text-align:right}.thMoverPrice span{display:block;font-weight:700;color:#7fb8dc;font-size:10px}.thCardGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:8px}.thCardTile{border:1px solid #2b6488;border-radius:10px;overflow:hidden;background:#061521}.thCardTile img{width:100%;height:140px;object-fit:cover;display:block}.thCardCap{padding:8px}.thCardCap b{display:block;font-size:12px}.thCardCap span{font-size:10.5px;color:#8fb3d1}@media(max-width:600px){.thPlayerGrid{grid-template-columns:1fr}.thMoverRow{grid-template-columns:1fr}.thMoverPrice{text-align:left}}</style>`;
+const TH_STYLE=`<style>.thPlayerGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:14px}.thPlayerCard{text-align:left;background:linear-gradient(145deg,#0b2948,#050d16);border:1px solid #2b78a7;border-radius:12px;padding:14px;cursor:pointer;color:#fff;font-family:inherit}.thPlayerCard:hover{border-color:#55d8ff;box-shadow:0 0 18px #168fff33}.thPlayerRole{font-size:10px;color:#57dfff;font-weight:900;letter-spacing:.06em}.thPlayerCard h3{margin:6px 0 4px;font-size:17px}.thPlayerSub{font-size:11.5px;color:#8fb3d1}.thMoverList{display:grid;gap:8px;margin-top:8px}.thMoverRow{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center;background:#04101c;border:1px solid #1c4463;border-radius:10px;padding:10px 12px}.thMoverName{font-weight:900;font-size:14px}.thMoverMeta{font-size:11.5px;color:#8fb3d1;grid-column:1}.thMoverPrice{font-weight:900;color:#48e0bd;text-align:right}.thMoverPrice span{display:block;font-weight:700;color:#7fb8dc;font-size:10px}.thCardGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:8px}.thCardTile{border:1px solid #2b6488;border-radius:10px;overflow:hidden;background:#061521}.thCardTile img{width:100%;height:140px;object-fit:cover;display:block}.thCardCap{padding:8px}.thCardCap b{display:block;font-size:12px}.thCardCap span{font-size:10.5px;color:#8fb3d1}.thChaseRow{display:flex;flex-wrap:wrap;gap:8px}.thChaseBtn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:#04101c;border:1px solid #2b6488;border-radius:10px;padding:9px 13px;color:#fff;font-family:inherit;cursor:pointer}.thChaseBtn:hover{border-color:#55d8ff}.thChaseBtn b{font-size:12.5px;letter-spacing:.03em}.thChaseBtn span{font-size:10.5px;color:#8fb3d1}.thChaseDetail{margin-top:10px;border:1px solid #1c4463;border-radius:10px;padding:10px 12px;background:#04101c}.thChaseTitle{font-size:11px;font-weight:900;letter-spacing:.06em;color:#8fc4e6;margin-bottom:6px}.thChaseRecord{font-size:12px;padding:5px 0;border-top:1px solid #142c40}.thChaseRecord:first-child{border-top:0}.thChaseRecord span{display:block;font-size:10.5px;color:#7fb8dc}@media(max-width:600px){.thPlayerGrid{grid-template-columns:1fr}.thMoverRow{grid-template-columns:1fr}.thMoverPrice{text-align:left}}</style>`;
 function teamMoversHTML(players){
  const rows=players.map(p=>({p,sales:COMPS.filter(c=>c[0]===p)})).filter(x=>x.sales.length);
  if(!rows.length)return `<div class=notice>No verified sales loaded for this roster yet. Movers will appear here as the comp feed expands.</div>`;
@@ -558,6 +558,55 @@ function teamTopCardsHTML(players){
  if(!found.length)return `<div class=notice>Card photography coming as verified assets are added for this roster.</div>`;
  return `<div class=thCardGrid>${found.slice(0,6).map(c=>`<div class=thCardTile><img src="${c.img}" loading=lazy decoding=async alt="${c.player} ${c.card}"><div class=thCardCap><b>${c.player}</b><span>${c.card}</span></div></div>`).join('')}</div>`;
 }
+function scanDonrussRookie(player){
+ if(!DONRUSS_FULL||DONRUSS_FULL==='error')return null;
+ for(const cat of Object.values(DONRUSS_FULL.categories||{})){
+  if(cat.kind!=='cards')continue;
+  for(const c of cat.cards||[]){
+   if(c.player===player&&(c.ratedRookie||c.rookie))return{cardNumber:c.cardNumber};
+  }
+ }
+ return null;
+}
+function scanPrizmForPlayer(player){
+ if(!PRIZM_FULL||PRIZM_FULL==='error')return null;
+ const out={caseHit:[],auto:[],numbered:[],rookie:false};
+ for(const[catName,groups]of Object.entries(PRIZM_FULL.categories||{})){
+  for(const g of groups||[]){
+   for(const c of g.cards||[]){
+    if(c.athlete!==player)continue;
+    if(catName==='Case Hits / SSPs')out.caseHit.push({group:g.name,cardNumber:c.cardNumber});
+    else if(catName==='Autographs')out.auto.push({group:g.name,cardNumber:c.cardNumber});
+    else if(catName==='Parallels'&&c.serialNumberedTo)out.numbered.push({group:g.name,cardNumber:c.cardNumber,to:c.serialNumberedTo});
+    else if(catName==='Rookies')out.rookie=true;
+   }
+  }
+ }
+ out.numbered.sort((a,b)=>a.to-b.to);
+ return out;
+}
+function verifiedChaseCardsHTML(player,ab,i){
+ if(sport!=='football')return `<div class=notice>Verified per-card checklist data is currently only loaded for football. ${player}'s ${sport} chase types aren't available yet.</div>`;
+ if(year!=='2024')return `<div class=notice>${year} card data — official checklists have not yet been verified by CardStorm.</div><p style="margin-top:10px"><button class=cta onclick="switchChaseYear('2024','${ab}',${i})">VIEW 2024 VERIFIED CHASES →</button></p>`;
+ const donRookie=scanDonrussRookie(player),prizm=scanPrizmForPlayer(player);
+ const items=[];
+ if(donRookie)items.push(['ROOKIE','2024 Donruss #'+donRookie.cardNumber,[{label:'2024 Donruss Rated Rookie #'+donRookie.cardNumber,source:'2024 Panini Donruss Football'}]]);
+ else if(prizm&&prizm.rookie)items.push(['ROOKIE','2024 Prizm Rookie',[{label:'2024 Prizm Rookie',source:'2024 Panini Prizm Football'}]]);
+ if(prizm&&prizm.caseHit.length)items.push(['CASE HIT',prizm.caseHit.length+' verified',prizm.caseHit.map(x=>({label:x.group+' #'+x.cardNumber,source:'2024 Panini Prizm Football'}))]);
+ if(prizm&&prizm.auto.length)items.push(['AUTO',prizm.auto.length+' verified',prizm.auto.map(x=>({label:x.group+' #'+x.cardNumber,source:'2024 Panini Prizm Football'}))]);
+ if(prizm&&prizm.numbered.length)items.push(['NUMBERED','as low as /'+prizm.numbered[0].to,prizm.numbered.slice(0,12).map(x=>({label:x.group+' #'+x.cardNumber+' /'+x.to,source:'2024 Panini Prizm Football'}))]);
+ if(!items.length)return `<div class=notice>No verified 2024 chase-card records found for ${player} yet.</div>`;
+ const pid='thChase'+i;
+ return `<div class=thChaseRow>${items.map(([label,sub],idx)=>`<button type=button class=thChaseBtn onclick="toggleChaseReveal('${pid}r${idx}')"><b>${label}</b><span>${sub}</span></button>`).join('')}</div>${items.map(([label,sub,detail],idx)=>`<div id="${pid}r${idx}" class=thChaseDetail style="display:none"><div class=thChaseTitle>${label} — verified records</div>${detail.map(d=>`<div class=thChaseRecord>${d.label}<span>${d.source}</span></div>`).join('')}</div>`).join('')}`;
+}
+function toggleChaseReveal(id){const el=document.getElementById(id);if(el)el.style.display=el.style.display==='none'?'block':'none'}
+function loadChaseSection(hostId,player,ab,i){
+ Promise.all([loadPrizmFull(),loadDonrussFull()]).then(()=>{
+  const host=document.getElementById(hostId);
+  if(host)host.innerHTML=verifiedChaseCardsHTML(player,ab,i);
+ });
+}
+function switchChaseYear(y,ab,i){year=y;renderPlayerHunt(ab,i)}
 function openTeam(ab){
  navPush();
  const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1];
@@ -568,20 +617,17 @@ function openTeam(ab){
   <p style="margin-top:14px"><button class=cta onclick="openTeamChecklist('${ab}')">VIEW FULL ${teamFullName.toUpperCase()} CHECKLIST →</button></p>`
  );
 }
-function openPlayerHunt(ab,i){
- navPush();
- const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1],player=players[i],hits=hitList(player),comps=COMPS.filter(c=>c[0]===player);
- const hitsHtml=hits.map((h,hi)=>{
-  const rarity=['CORE ROOKIE','PARALLEL','PREMIUM','SSP','CASE HIT','ULTRA RARE'][hi];
-  return `<details class=exactHit><summary><span class=rarity>${rarity}</span><strong>${h}</strong></summary><div class=exactHitBody>${hitExampleFor(player,h)}</div></details>`;
- }).join('');
+function renderPlayerHunt(ab,i){
+ const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1],player=players[i],comps=COMPS.filter(c=>c[0]===player);
  const valuesHtml=comps.length?`<table class=comptable><thead><tr><th>Card</th><th>Grade</th><th>Sale</th><th>Date</th><th>Source</th><th></th></tr></thead><tbody>${comps.map(c=>`<tr><td>${c[2]}</td><td>${c[3]}</td><td class=price>${c[1]}</td><td>${c[4]}</td><td>${c[5]}</td><td><a class=verify href="${c[6]}" target=_blank>VERIFY →</a></td></tr>`).join('')}</tbody></table>`:`<div class=notice>No verified sale loaded for ${player} yet. This player is queued for the CardStorm/eBay comp feed.</div>`;
- C.innerHTML=shell('TEAM HUNT',player,teamFullName+' • chase intelligence',
-  `${TH_STYLE}<div class=feature><h2>FEATURED CARDS</h2><div class=sub>Tap a chase tile to see a card-type example inline.</div><div class=exactHitList>${hitsHtml}</div></div>
+ C.innerHTML=shell('TEAM HUNT',player,teamFullName+' • '+year+' • chase intelligence',
+  `${TH_STYLE}<div class=feature><h2>VERIFIED CHASE CARDS</h2><div class=sub>Only chase types with a real checklist record are shown. Tap one to see the verified cards behind it.</div><div id=thChase${i}Host>Loading verified chase data…</div></div>
   <div class=feature style="margin-top:14px"><h2>VALUES</h2>${valuesHtml}</div>
   <div class=feature style="margin-top:14px"><h2>CHECKLIST</h2><p class=sub>${player}'s cards live inside the ${teamFullName} master checklist, grouped by product.</p><button class=cta onclick="openTeamChecklist('${ab}')">VIEW ${teamFullName.toUpperCase()} CHECKLIST →</button></div>`
  );
+ loadChaseSection('thChase'+i+'Host',player,ab,i);
 }
+function openPlayerHunt(ab,i){navPush();renderPlayerHunt(ab,i)}
 function openTeamChecklist(ab){
  navPush();
  const t=DATA[sport].find(x=>x[0]===ab),teamFullName=t[1];
