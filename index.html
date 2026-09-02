@@ -74,8 +74,8 @@ img{max-width:100%}
 .scene.finished .bg .artFrame img{display:block;width:100%;height:100%;object-fit:fill;object-position:center;transform:none}
 .scene.finished.cropFit .bg .artFrame img{object-fit:cover}
 .artBtn{position:absolute;background:transparent;border:0;cursor:pointer;padding:0}
-.artBtn.visibleArtBtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;height:auto;max-width:calc(100% - 20px);font:900 clamp(11px,1.6vw,15px) Inter,Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;padding:11px 16px;border-radius:10px;box-shadow:0 10px 24px -8px rgba(0,0,0,.6)}
-@media(max-width:760px){.artBtn.visibleArtBtn{font-size:12px;padding:9px 13px}}
+.artBtn.visibleArtBtn{display:inline-flex;align-items:center;justify-content:center;gap:4px;width:auto;height:auto;max-width:calc(100% - 20px);font:800 clamp(10px,1vw,12px) Inter,Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;padding:7px 12px;border-radius:7px;box-shadow:0 6px 14px -6px rgba(0,0,0,.6)}
+@media(max-width:760px){.artBtn.visibleArtBtn{font-size:10px;padding:6px 10px}}
 @media(max-width:760px){.hero.finishedMode #starRail{position:absolute;left:10px;right:10px;height:auto}}
 .hero.breakMode .heroCopy{max-width:100%;justify-content:flex-end;padding-bottom:28px}.hero.breakMode .heroCopy h1{display:none}.hero.breakMode .heroCopy p{max-width:850px;margin-bottom:12px}.hero.breakMode .shade{background:linear-gradient(0deg,rgba(2,9,20,.98),rgba(2,9,20,.72) 21%,transparent 43%)}
 .heroPill{display:inline-flex;width:max-content;padding:8px 12px;border:1px solid rgba(85,216,255,.5);border-radius:999px;background:rgba(6,28,47,.8);font-size:11px;font-weight:900;letter-spacing:.08em}
@@ -378,11 +378,11 @@ function show(n){
  if(heroH1)heroH1.innerHTML=d.h1;
  cmdActiveDD=d.dd;if(typeof renderCommandCenter==='function')renderCommandCenter();
  heroSub.textContent=d.sub;
- imageTap.classList.toggle('active',!!d.imageKey);
+ imageTap.classList.toggle('active',!!d.imageKey&&!d.finished);
  imageTap.onclick=d.imageKey?()=>openApp(d.imageKey):null;
  imageTap.setAttribute('aria-label',d.imageKey?'Open '+d.tab:'');
  hero.classList.remove('breakMode');
- hero.classList.toggle('pokemonMode',d.tab==='POKÉMON / TCG');
+ hero.classList.toggle('pokemonMode',d.tab==='POKÉMON / TCG'&&!d.finished);
  hero.classList.toggle('finishedMode',!!d.finished);
  if(d.finished)requestAnimationFrame(sizeArtFrames);
  hero.classList.toggle('hasExtra',!!d.extra);
