@@ -660,18 +660,24 @@ function verifiedChaseCardsHTML(player,ab,i,rawByKey){
  if(!allEvidence.length)return `<div class=notice>No verified ${year} chase-card records found for ${player} yet.</div>`;
  const byType={};
  allEvidence.forEach(e=>{(byType[e.chaseType]=byType[e.chaseType]||[]).push(e)});
+ // sourceCount (distinct products that independently back this chase type)
+ // and recordCount (total matching card records, which can be >1 within a
+ // single product - e.g. several Prizm parallels) are deliberately kept as
+ // two separate numbers here, computed the same way for every chase type -
+ // never let "N verified" (recordCount) get read as "N sources" (sourceCount).
+ // Currently only ROOKIE can ever have sourceCount>1, since chaseMap only
+ // maps 'caseHit'/'auto'/'numbered' to Prizm - but this is computed generically
+ // so it stays correct if a future product's chaseMap adds real records to
+ // one of those categories too.
  const items=['rookie','caseHit','auto','numbered'].filter(t=>byType[t]&&byType[t].length).map(t=>{
   const list=byType[t];
-  let sub;
-  if(t==='rookie'){
-   const products=[...new Set(list.map(e=>e.product))];
-   sub=products.length>1?'confirmed by '+products.length+' checklist sources':list[0].product+(list[0].cardNumber?' #'+list[0].cardNumber:'');
-  }else if(t==='numbered'){
-   sub='as low as /'+Math.min(...list.map(e=>e.serialNumberedTo));
-  }else{
-   sub=list.length+' verified';
-  }
-  return[t,sub,list];
+  const sourceCount=new Set(list.map(e=>e.product)).size;
+  const recordCount=list.length;
+  let sub=sourceCount>1
+   ?'confirmed by '+sourceCount+' checklist sources · '+recordCount+' verified card'+(recordCount>1?'s':'')
+   :list[0].product+' · '+recordCount+' verified card'+(recordCount>1?'s':'');
+  if(t==='numbered')sub+=' · as low as /'+Math.min(...list.map(e=>e.serialNumberedTo));
+  return[t,sub,list,sourceCount,recordCount];
  });
  const pid='thChase'+i;
  return `<div class=thChaseRow>${items.map(([t,sub],idx)=>`<button type=button class=thChaseBtn onclick="toggleChaseReveal('${pid}r${idx}')"><b>${CHASE_LABELS[t]}</b><span>${sub}</span></button>`).join('')}</div>${items.map(([t,sub,list],idx)=>`<div id="${pid}r${idx}" class=thChaseDetail style="display:none"><div class=thChaseTitle>${CHASE_LABELS[t]} — verified records</div>${list.map(e=>`<div class=thChaseRecord>${e.product}${e.group?' '+e.group:''}${e.cardNumber?' #'+e.cardNumber:''}${e.serialNumberedTo?' /'+e.serialNumberedTo:''}<span>${e.sources.length?e.sources.map(s=>s.name).join(' • '):e.product+' checklist'}</span></div>`).join('')}</div>`).join('')}`;
