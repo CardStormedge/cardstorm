@@ -534,9 +534,13 @@ const CHECKLIST_MANIFEST={
   {key:'select',name:'Select',file:'data/football/2024/select.json',teamMapped:false,status:'RELEASED',normalizer:'select',
    // Select's Parallels/Inserts/Autographs/Memorabilia sections are family-name
    // lists only (no player/card-number records - see normalizeSelect, which
-   // already skips any category whose kind isn't 'cards'), so only the six
-   // base-set tiers are mapped, and only ever as rookie evidence.
-   chaseMap:{'Concourse':'rookie','Premier':'rookie','Club':'rookie','Suite':'rookie','Field':'rookie','XRC':'rookie'}}
+   // already skips any category whose kind isn't 'cards'), so only the base-set
+   // tiers are mapped, and only ever as rookie evidence. XRC (cards #501-520) is
+   // deliberately NOT mapped here: those rows are 2025 draft-class redemption
+   // cards (Cam Ward, Jaxson Dart, Shedeur Sanders, etc.) riding on the 2024
+   // product, and would otherwise falsely verify a 2025 rookie as a 2024 Team
+   // Hunt chase for any of those players who also appear on a current roster.
+   chaseMap:{'Concourse':'rookie','Premier':'rookie','Club':'rookie','Suite':'rookie','Field':'rookie'}}
  ]
 };
 const _checklistCache={};

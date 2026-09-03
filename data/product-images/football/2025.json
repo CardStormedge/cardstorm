@@ -1,0 +1,36 @@
+{
+ "_schema": "Identity key: sport|year|product|configuration. Optional: sku, upc, manufacturerProductCode. image.url is only trusted when image.verified=true and image.source is a real, named source. configuration is required to render - a record with configuration=null must not be matched against a UI request for a specific configuration (e.g. Hobby).",
+ "_purpose": "Exact sealed-product image registry. Replaces app.html's PRODIMG (brand-only) and part of BOX_ART/REALPROD. A missing exact configuration match must render an image-unavailable state, never a substitute.",
+ "images": [
+  {
+   "sport": "football",
+   "year": 2025,
+   "product": "Select",
+   "configuration": "Hobby",
+   "sku": null,
+   "upc": null,
+   "manufacturerProductCode": null,
+   "image": {
+    "url": "assets/realprodfootball2025select.webp",
+    "source": "Local asset, provenance not documented in-repo",
+    "verified": false
+   },
+   "notes": "Local file but configuration label ('hobby-box photography') is unenforced free text today, not a structured field. Needs source documentation before verified=true."
+  },
+  {
+   "sport": "football",
+   "year": 2025,
+   "product": "Prizm",
+   "configuration": "Hobby",
+   "sku": null,
+   "upc": null,
+   "manufacturerProductCode": null,
+   "image": {
+    "url": "https://cardsmithsbreaks.com/wp-content/uploads/2025/11/2025-Panini-Prizm-Football-Box-Image-512x512.png",
+    "source": "Hotlinked third-party (cardsmithsbreaks.com)",
+    "verified": false
+   },
+   "notes": "FLAGGED: third-party hotlink, not a local asset. Recommend replacing with a manufacturer-sourced or CardStorm-localized image before this is presented as verified. See report Step 4."
+  }
+ ]
+}

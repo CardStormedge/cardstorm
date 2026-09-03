@@ -1,0 +1,21 @@
+{
+ "_schema": "Identity key (all must match exactly - no fuzzy substitution): sport|year|product|player|cardNumber|insert|parallel|serialNumberedTo. A lookup that does not find every field matching must fall back to the existing text-only chase display, never a different card's image.",
+ "_fields": {
+  "sport": "string",
+  "year": "number",
+  "product": "string (must match CHECKLIST_MANIFEST product name)",
+  "player": "string (must match roster/checklist player name exactly)",
+  "cardNumber": "string|number|null",
+  "insert": "string|null",
+  "parallel": "string|null",
+  "serialNumberedTo": "number|null",
+  "image": {
+   "url": "string",
+   "source": "string - real named source (CardStorm scan, PSA cert, manufacturer photo)",
+   "verified": "boolean",
+   "verifiedDate": "YYYY-MM-DD|null"
+  }
+ },
+ "_purpose": "Exact card-image registry. Zero records populated yet per Phase 3/Step 6 - architecture only, no bulk image import in this pass.",
+ "images": []
+}
