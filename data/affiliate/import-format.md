@@ -7,7 +7,7 @@ player-page HTML — the Gear Up module reads the data file at runtime.
 ## CSV columns (one row per offer)
 
 ```
-player,team,product_title,product_type,fanatics_url,image_url,price,sale_price,collection,source,last_verified
+player,team,product_title,product_type,fanatics_url,image_url,image_source,image_verified_date,price,sale_price,collection,source,last_verified,status
 ```
 
 - `player` — leave blank for a team-level offer (e.g. general team gear, not
@@ -21,13 +21,34 @@ player,team,product_title,product_type,fanatics_url,image_url,price,sale_price,c
 - `product_type` — e.g. "Rookie Jersey", "Alternate Jersey", "T-Shirt",
   "Hat", "Autographed Memorabilia"
 - `fanatics_url` — the exact product page URL. Used as-is, never rewritten.
-- `image_url` — a product image URL, or a path to a local asset you also
-  supply
+- `image_url` — **optional.** A verified product image URL, or a path to a
+  local CardStorm asset (e.g. `assets/fanatics/nyg-jaxson-dart-limited-royal.webp`)
+  if you supply the file separately. **Leave blank if you don't have a
+  confirmed exact-product image — never send a guessed, generic, or
+  stock-photo URL.** A blank `image_url` is a completely normal, expected
+  state: the offer still renders and is still fully clickable, just with
+  CardStorm's own "OFFICIAL FANATICS GEAR" placeholder treatment instead of
+  a photo. Image verification is independent from offer verification — a
+  product can be fully live (real URL, real title, real price) with its
+  image still pending.
+- `image_source` — optional, only meaningful alongside `image_url` (e.g.
+  "Fanatics")
+- `image_verified_date` — optional, `YYYY-MM-DD`, only meaningful alongside
+  `image_url` — when that exact photo was confirmed to match the product
 - `price` / `sale_price` — as strings, e.g. `$129.99` (`sale_price` optional)
 - `collection` — optional, e.g. "ROOKIE COLLECTION" — shown as a small
-  label above the product title
+  label above the product title. **Only send this if the source itself
+  labels the product a Rookie Collection item** — never inferred from the
+  player being a rookie.
 - `source` — where this came from, e.g. "Fanatics official product page"
 - `last_verified` — `YYYY-MM-DD`
+- `status` — optional, internal/audit-only, never shown to users:
+  `LIVE_VERIFIED` (url/title/price/image all confirmed),
+  `URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING` (url/title/price confirmed,
+  no image yet — the normal state for a freshly supplied offer), or
+  `REVIEW_REQUIRED` (something didn't check out and needs a human look
+  before this offer should be trusted). Defaults to
+  `URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING` if omitted.
 
 ## Equivalent JSON shape (also acceptable)
 
@@ -39,12 +60,15 @@ player,team,product_title,product_type,fanatics_url,image_url,price,sale_price,c
     "product_title": "Caleb Williams Chicago Bears Nike Rookie Collection Game Jersey",
     "product_type": "Rookie Jersey",
     "fanatics_url": "https://www.fanatics.com/...",
-    "image_url": "https://...",
+    "image_url": null,
+    "image_source": null,
+    "image_verified_date": null,
     "price": "$129.99",
     "sale_price": null,
     "collection": "ROOKIE COLLECTION",
     "source": "Fanatics official product page",
-    "last_verified": "2026-09-04"
+    "last_verified": "2026-09-04",
+    "status": "URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING"
   }
 ]
 ```
@@ -69,8 +93,10 @@ team with no entry simply shows no Gear Up section at all.
 
 - No offer without a real `fanatics_url` is ever added — a row missing that
   field is rejected, not filled in with a guess.
-- No product image is invented — a row with no `image_url` renders the card
-  without an image rather than a fake placeholder.
+- No product image is invented — a row with no `image_url` renders
+  CardStorm's own deliberate "image pending" treatment (a shirt-outline icon
+  and an "OFFICIAL FANATICS GEAR" label), never a broken image, a generic
+  stock photo, or something that could be mistaken for the real jersey.
 - Nothing here ever touches verified checklist data (rookie/case-hit/auto/
   numbered evidence) — commerce and card verification are separate systems,
   always.

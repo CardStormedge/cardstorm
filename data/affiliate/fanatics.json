@@ -3,19 +3,23 @@
  "_offerFields": {
   "title": "string - product name shown on the card",
   "productType": "string - e.g. 'Rookie Jersey', 'T-Shirt', 'Hat', 'Autographed Memorabilia'",
-  "image": "string - product image URL or local asset path",
+  "image": "string|null - product image URL OR a local CardStorm asset path (e.g. 'assets/fanatics/nyg-jaxson-dart-limited-royal.webp'). NOT required for an offer to render or be clickable - when null, the card shows a deliberate CardStorm merchandise-pending visual (shirt-outline icon + 'OFFICIAL FANATICS GEAR' label) instead of a broken image or a fake product photo. Never guess this field.",
+  "imageSource": "string|omit - where the image came from when present, e.g. 'Fanatics'. Independent of the offer's own 'source' field.",
+  "imageVerifiedDate": "YYYY-MM-DD|omit - when the image itself was confirmed to be the correct exact product photo. Image verification is a separate step from offer (URL/title/price) verification - an offer can be fully live with imageVerifiedDate still unset.",
   "url": "string - the exact supplied Fanatics product URL, opened as-is by openCommerceOffer(), never rewritten or guessed",
   "price": "string - current price as supplied, e.g. '$129.99'",
   "salePrice": "string|omit - sale price as supplied; when present it's shown next to a struck-through price",
   "team": "string - team full name, for display/event logging only",
   "player": "string|omit - player full name, for display/event logging only (omit on team-level offers)",
-  "collection": "string|omit - e.g. 'ROOKIE COLLECTION', shown as a small label above the title",
+  "collection": "string|omit - e.g. 'ROOKIE COLLECTION', shown as a small label above the title. Only set when the source itself labels the product this way - never inferred.",
   "source": "string - where this offer came from, e.g. 'Fanatics official product page'",
-  "lastVerified": "YYYY-MM-DD"
+  "lastVerified": "YYYY-MM-DD",
+  "status": "internal, not shown to users - LIVE_VERIFIED (url/title/price/image all confirmed) | URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING (url/title/price confirmed, no verified image yet - current normal state for a new offer) | REVIEW_REQUIRED (a discrepancy was found and needs human review before this offer should be trusted)"
  },
- "_status": "First live batch imported 2026-09-04 (2 players, 3 offers). See _importNotes below for verification detail, including the one field (image) that could not be captured this session due to no network fetch access to fanatics.com.",
+ "_status": "3 offers across 2 players, all status=URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING - title/price/URL independently corroborated, no verified product image yet for any of them. See _importNotes for detail.",
  "_importNotes": {
-  "2026-09-04": "Jaxson Dart (NYG) and Ashton Jeanty (LV) offers supplied directly by the user with exact title/price/URL. WebFetch to fanatics.com returned EGRESS_BLOCKED (same restriction as every external site this session), so the URLs could not be opened directly to confirm live price/stock or capture a product image. Cross-checked all three products via WebSearch instead: product existence and title independently corroborated across the official Giants/Raiders team shops, NFL Shop, Walmart, Macy's and FansEdge; all three prices ($199.99 Dart, $149.99 x2 Jeanty) independently matched the user-supplied prices. No sale price found or supplied for any of the three - shown as single price. image left null for all three offers (gearOfferCardHTML already renders cleanly with no <img> when image is absent) rather than guess/fabricate a product photo URL. One discrepancy noted, not acted on: a WebSearch result surfaced a fanatics.com URL for the Jeanty white jersey with different query parameters (o-8072+t-81713781+p-462258907803+z-8-840938868) than the user-supplied URL (o-8005+t-14710458+d-8600569+f-210187123+z-8-2234534070) for what appears to be the same product listing - kept the user-supplied URL exactly as instructed, flagged for the user's awareness."
+  "2026-09-04": "Jaxson Dart (NYG) and Ashton Jeanty (LV) offers supplied directly by the user with exact title/price/URL. WebFetch to fanatics.com returned EGRESS_BLOCKED (same restriction as every external site this session), so the URLs could not be opened directly to confirm live price/stock or capture a product image. Cross-checked all three products via WebSearch instead: product existence and title independently corroborated across the official Giants/Raiders team shops, NFL Shop, Walmart, Macy's and FansEdge; all three prices ($199.99 Dart, $149.99 x2 Jeanty) independently matched the user-supplied prices. No sale price found or supplied for any of the three - shown as single price. image left null for all three offers rather than guess/fabricate a product photo URL. One discrepancy noted, not acted on: a WebSearch result surfaced a fanatics.com URL for the Jeanty white jersey with different query parameters (o-8072+t-81713781+p-462258907803+z-8-840938868) than the user-supplied URL (o-8005+t-14710458+d-8600569+f-210187123+z-8-2234534070) for what appears to be the same product listing - kept the user-supplied URL exactly as instructed, flagged for the user's awareness.",
+  "2026-09-04 (polish pass)": "Added status/imageSource/imageVerifiedDate fields to all three offers (status=URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING, imageSource/imageVerifiedDate left null - no image supplied). Reordered Ashton Jeanty's offers so the Black jersey renders first, White second, per instruction. Prices and URLs unchanged. gearOfferCardHTML now renders a deliberate no-image treatment (shirt-outline SVG + 'OFFICIAL FANATICS GEAR' label) instead of no visual at all when image is null - see app.html."
  },
  "players": {
   "nyg-jaxson-dart": {
@@ -24,38 +28,47 @@
      "title": "Jaxson Dart New York Giants Nike Team Vapor F.U.S.E. Stitched Limited Jersey - Royal",
      "productType": "Player Jersey",
      "image": null,
+     "imageSource": null,
+     "imageVerifiedDate": null,
      "url": "https://www.fanatics.com/nfl/new-york-giants/jerseys/jaxson-dart-new-york-giants-nike-team-vapor-fuse-stitched-limited-jersey-royal/o-2416+t-46721202+d-64333490+f-4148909469+z-9-921272416",
      "price": "$199.99",
      "team": "New York Giants",
      "player": "Jaxson Dart",
      "source": "Fanatics",
-     "lastVerified": "2026-09-04"
+     "lastVerified": "2026-09-04",
+     "status": "URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING"
     }
    ]
   },
   "lv-ashton-jeanty": {
    "fanatics": [
     {
-     "title": "Ashton Jeanty Las Vegas Raiders Nike Game Jersey - White",
-     "productType": "Player Jersey",
-     "image": null,
-     "url": "https://www.fanatics.com/nfl/las-vegas-raiders/jerseys/ashton-jeanty-las-vegas-raiders-nike-game-jersey-white/o-8005+t-14710458+d-8600569+f-210187123+z-8-2234534070",
-     "price": "$149.99",
-     "team": "Las Vegas Raiders",
-     "player": "Ashton Jeanty",
-     "source": "Fanatics",
-     "lastVerified": "2026-09-04"
-    },
-    {
      "title": "Ashton Jeanty Las Vegas Raiders Nike Team Game Jersey - Black",
      "productType": "Player Jersey",
      "image": null,
+     "imageSource": null,
+     "imageVerifiedDate": null,
      "url": "https://www.fanatics.com/nfl/las-vegas-raiders/jerseys/ashton-jeanty-las-vegas-raiders-nike-team-game-jersey-black/o-4605+t-70934836+d-19661256+f-608292980+z-9-2664518445",
      "price": "$149.99",
      "team": "Las Vegas Raiders",
      "player": "Ashton Jeanty",
      "source": "Fanatics",
-     "lastVerified": "2026-09-04"
+     "lastVerified": "2026-09-04",
+     "status": "URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING"
+    },
+    {
+     "title": "Ashton Jeanty Las Vegas Raiders Nike Game Jersey - White",
+     "productType": "Player Jersey",
+     "image": null,
+     "imageSource": null,
+     "imageVerifiedDate": null,
+     "url": "https://www.fanatics.com/nfl/las-vegas-raiders/jerseys/ashton-jeanty-las-vegas-raiders-nike-game-jersey-white/o-8005+t-14710458+d-8600569+f-210187123+z-8-2234534070",
+     "price": "$149.99",
+     "team": "Las Vegas Raiders",
+     "player": "Ashton Jeanty",
+     "source": "Fanatics",
+     "lastVerified": "2026-09-04",
+     "status": "URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING"
     }
    ]
   }
