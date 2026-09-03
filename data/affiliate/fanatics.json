@@ -13,13 +13,16 @@
   "player": "string|omit - player full name, for display/event logging only (omit on team-level offers)",
   "collection": "string|omit - e.g. 'ROOKIE COLLECTION', shown as a small label above the title. Only set when the source itself labels the product this way - never inferred.",
   "source": "string - where this offer came from, e.g. 'Fanatics official product page'",
-  "lastVerified": "YYYY-MM-DD",
-  "status": "internal, not shown to users - LIVE_VERIFIED (url/title/price/image all confirmed) | URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING (url/title/price confirmed, no verified image yet - current normal state for a new offer) | REVIEW_REQUIRED (a discrepancy was found and needs human review before this offer should be trusted)"
+  "lastVerified": "YYYY-MM-DD - offer details (title/price/URL) were validated",
+  "lastChecked": "YYYY-MM-DD|omit - most recent availability/price re-check, separate from lastVerified and imageVerifiedDate",
+  "status": "internal, not shown to users - LIVE_VERIFIED (url/title/price/image all confirmed) | URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING (url/title/price confirmed, no verified image yet - current normal state for a new offer) | REVIEW_REQUIRED (a discrepancy was found and needs human review) | INACTIVE (offer no longer available - excluded from Gear Up by isActiveOffer() in app.html, but the record stays here for audit history, never auto-deleted)"
  },
+ "_dedupRule": "url is the strongest duplicate key. Before adding a new offer, check it against every existing offer's url (then player+title, then team+title) across both players and teams - never render/store the same exact offer twice. A future price/status update to an existing offer should edit that offer's record in place (updating price/salePrice/lastChecked) rather than appending a duplicate.",
  "_status": "3 offers across 2 players, all status=URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING - title/price/URL independently corroborated, no verified product image yet for any of them. See _importNotes for detail.",
  "_importNotes": {
   "2026-09-04": "Jaxson Dart (NYG) and Ashton Jeanty (LV) offers supplied directly by the user with exact title/price/URL. WebFetch to fanatics.com returned EGRESS_BLOCKED (same restriction as every external site this session), so the URLs could not be opened directly to confirm live price/stock or capture a product image. Cross-checked all three products via WebSearch instead: product existence and title independently corroborated across the official Giants/Raiders team shops, NFL Shop, Walmart, Macy's and FansEdge; all three prices ($199.99 Dart, $149.99 x2 Jeanty) independently matched the user-supplied prices. No sale price found or supplied for any of the three - shown as single price. image left null for all three offers rather than guess/fabricate a product photo URL. One discrepancy noted, not acted on: a WebSearch result surfaced a fanatics.com URL for the Jeanty white jersey with different query parameters (o-8072+t-81713781+p-462258907803+z-8-840938868) than the user-supplied URL (o-8005+t-14710458+d-8600569+f-210187123+z-8-2234534070) for what appears to be the same product listing - kept the user-supplied URL exactly as instructed, flagged for the user's awareness.",
-  "2026-09-04 (polish pass)": "Added status/imageSource/imageVerifiedDate fields to all three offers (status=URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING, imageSource/imageVerifiedDate left null - no image supplied). Reordered Ashton Jeanty's offers so the Black jersey renders first, White second, per instruction. Prices and URLs unchanged. gearOfferCardHTML now renders a deliberate no-image treatment (shirt-outline SVG + 'OFFICIAL FANATICS GEAR' label) instead of no visual at all when image is null - see app.html."
+  "2026-09-04 (polish pass)": "Added status/imageSource/imageVerifiedDate fields to all three offers (status=URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING, imageSource/imageVerifiedDate left null - no image supplied). Reordered Ashton Jeanty's offers so the Black jersey renders first, White second, per instruction. Prices and URLs unchanged. gearOfferCardHTML now renders a deliberate no-image treatment (shirt-outline SVG + 'OFFICIAL FANATICS GEAR' label) instead of no visual at all when image is null - see app.html.",
+  "2026-09-04 (expansion pass)": "No new offers supplied this pass for Cam Ward, Travis Hunter, Tetairoa McMillan, Matthew Golden, or Emeka Egbuka - architecture-only. Added lastChecked to the 3 existing offers (same date as lastVerified, since both were done together today). Player-ID audit performed against DATA['football'] in app.html: Cam Ward -> TEN (Tennessee Titans) -> ten-cam-ward; Travis Hunter -> JAX (Jacksonville Jaguars) -> jax-travis-hunter; Tetairoa McMillan -> CAR (Carolina Panthers) -> car-tetairoa-mcmillan; Matthew Golden -> GB (Green Bay Packers) -> gb-matthew-golden; Emeka Egbuka -> TB (Tampa Bay Buccaneers) -> tb-emeka-egbuka. All 5 found uniquely on their expected current roster, no mismatch or conflict found. Added gearOfferRank()/sortGearOffers() in app.html implementing the Rookie Collection > primary jersey > alternate > white/away > T-shirt > other priority order (confirmed it reproduces the existing Jeanty Black-then-White order without a hardcoded exception), a real ROOKIE COLLECTION badge (only when collection field is exactly that string), a 3-offer visible cap with a VIEW MORE GEAR toggle for any 4th+ offer, isActiveOffer() filtering (status=INACTIVE offers stay in this file but never render), and a team-page CTA that renders as a single secondary 'SHOP [TEAM] GEAR' button instead of a full product grid."
  },
  "players": {
   "nyg-jaxson-dart": {
@@ -36,6 +39,7 @@
      "player": "Jaxson Dart",
      "source": "Fanatics",
      "lastVerified": "2026-09-04",
+     "lastChecked": "2026-09-04",
      "status": "URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING"
     }
    ]
@@ -54,6 +58,7 @@
      "player": "Ashton Jeanty",
      "source": "Fanatics",
      "lastVerified": "2026-09-04",
+     "lastChecked": "2026-09-04",
      "status": "URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING"
     },
     {
@@ -68,6 +73,7 @@
      "player": "Ashton Jeanty",
      "source": "Fanatics",
      "lastVerified": "2026-09-04",
+     "lastChecked": "2026-09-04",
      "status": "URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING"
     }
    ]

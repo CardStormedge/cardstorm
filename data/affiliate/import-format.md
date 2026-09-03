@@ -7,7 +7,7 @@ player-page HTML — the Gear Up module reads the data file at runtime.
 ## CSV columns (one row per offer)
 
 ```
-player,team,product_title,product_type,fanatics_url,image_url,image_source,image_verified_date,price,sale_price,collection,source,last_verified,status
+player,team,product_title,product_type,fanatics_url,image_url,image_source,image_verified_date,price,sale_price,collection,source,last_verified,last_checked,status
 ```
 
 - `player` — leave blank for a team-level offer (e.g. general team gear, not
@@ -41,14 +41,43 @@ player,team,product_title,product_type,fanatics_url,image_url,image_source,image
   labels the product a Rookie Collection item** — never inferred from the
   player being a rookie.
 - `source` — where this came from, e.g. "Fanatics official product page"
-- `last_verified` — `YYYY-MM-DD`
+- `last_verified` — `YYYY-MM-DD` — offer details (title/price/URL) were
+  validated
+- `last_checked` — optional, `YYYY-MM-DD` — most recent availability/price
+  re-check. Kept separate from `last_verified` and `image_verified_date` so
+  a later "still in stock at this price" pass can update just this field.
 - `status` — optional, internal/audit-only, never shown to users:
   `LIVE_VERIFIED` (url/title/price/image all confirmed),
   `URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING` (url/title/price confirmed,
-  no image yet — the normal state for a freshly supplied offer), or
+  no image yet — the normal state for a freshly supplied offer),
   `REVIEW_REQUIRED` (something didn't check out and needs a human look
-  before this offer should be trusted). Defaults to
+  before this offer should be trusted), or `INACTIVE` (the product is no
+  longer available — the record stays in the file for history but is
+  excluded from Gear Up, never auto-deleted). Defaults to
   `URL_VERIFIED_PRICE_VERIFIED_IMAGE_PENDING` if omitted.
+
+## Featured-product order
+
+When a player has more than one offer, they're sorted automatically (never
+hand-ordered) by: (1) an offer whose `collection` is exactly "ROOKIE
+COLLECTION", (2) a primary/team jersey, (3) an alternate jersey, (4) a
+white/away jersey, (5) a T-shirt, (6) everything else. The category is read
+from `product_type`/`product_title` — nothing needs to be pre-sorted in the
+file you supply.
+
+## Display cap
+
+Only the first 3 offers (after sorting) show directly on a player's Gear Up
+card. A 4th+ offer is still stored and still real — it appears behind a
+compact "VIEW MORE GEAR" toggle rather than growing the page into a catalog.
+
+## Duplicate control
+
+Before adding a new offer, it's checked against every existing offer's `url`
+first (the strongest key), then `player`+`title`, then `team`+`title` — the
+same exact offer is never stored or rendered twice. A price/availability
+update to something already on file edits that record in place (`price`,
+`sale_price`, `last_checked`) rather than appending a duplicate.
 
 ## Equivalent JSON shape (also acceptable)
 
