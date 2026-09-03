@@ -722,7 +722,19 @@ function openTeam(ab){
  const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1];
  C.innerHTML=shell('TEAM HUNT',teamFullName,year+' '+sport.toUpperCase()+' • Pick who you\'re hunting',
   `${TH_STYLE}<div class=feature><div style="display:flex;align-items:center;gap:18px"><img class=teamlogo style="width:66px;height:66px" src="${logoUrl(t[0])}" width=66 height=66 loading=lazy decoding=async alt="${teamFullName} logo"><div><div class=k>WHO ARE YOU HUNTING?</div><h2 style="margin:4px 0 0">${teamFullName}</h2></div></div><div class=thPlayerGrid>${players.map((p,i)=>`<button type=button class=thPlayerCard onclick="openPlayerHunt('${ab}',${i})"><div class=thPlayerRole>${i===0?'FEATURED CHASE':i===1?'PRIORITY TARGET':'TEAM TARGET'}</div><h3>${p}</h3><div class=thPlayerSub>Featured cards · Values · Checklist</div></button>`).join('')}</div></div>
-  <div class=feature style="margin-top:14px"><h2>TOP ${teamFullName.toUpperCase()} ROOKIE CARDS</h2>${teamTopCardsHTML(players)}</div>
+  <p style="margin-top:14px"><button class=cta onclick="openTeamOverview('${ab}')">${teamFullName.toUpperCase()} TEAM OVERVIEW & CHECKLIST →</button></p>`
+ );
+}
+// Formerly the default landing page after picking a team (Top Rookie Cards /
+// Biggest Movers / checklist link) - kept intact and fully reachable, just no
+// longer the default: openTeam() (the player-selection screen) now links here
+// instead of rendering this content inline, per the navigation fix that makes
+// Team list -> player selection -> player detail the direct flow.
+function openTeamOverview(ab){
+ navPush();
+ const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1];
+ C.innerHTML=shell('TEAM HUNT',teamFullName+' — Team Overview',year+' '+sport.toUpperCase()+' • Rookie cards, movers and the full checklist',
+  `${TH_STYLE}<div class=feature><h2>TOP ${teamFullName.toUpperCase()} ROOKIE CARDS</h2>${teamTopCardsHTML(players)}</div>
   <div class=feature style="margin-top:14px"><h2>BIGGEST MOVERS</h2>${teamMoversHTML(players)}</div>
   <p style="margin-top:14px"><button class=cta onclick="openTeamChecklist('${ab}')">VIEW FULL ${teamFullName.toUpperCase()} CHECKLIST →</button></p>`
  );
