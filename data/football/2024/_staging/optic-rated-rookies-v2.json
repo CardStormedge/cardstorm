@@ -4,7 +4,7 @@
  "product": "Donruss Optic",
  "category": "Rated Rookie",
  "verification": {
-  "status": "RECONCILED_PENDING_APPROVAL",
+  "status": "PARTIAL_INDEPENDENT_VERIFICATION",
   "recordCount": 100,
   "note": "Clean rebuild of the #201-300 Rated Rookie block from a full Checklist Insider extraction supplied directly by the user on 2026-09-03, replacing the earlier optic-chase-manifest.csv-derived mapping (see data/football/2024/_staging/optic.json, kept as historical/research evidence, NOT the basis for this file). Every record starts at VERIFIED_ONE_SOURCE (source1 = Checklist Insider). A record is upgraded to VERIFIED_TWO_SOURCE only when a genuinely independent second source (e.g. Beckett) confirms that exact card-number/player/team identity - not merely the #201-300 Rated Rookie range, which Beckett independently establishes but which is not itself per-card proof. See data/checklists/football/2024/optic-v2-verification-report.md for the per-record breakdown and data/checklists/football/2024/optic-v1-v2-diff.csv for the full comparison against the prior (now-superseded) staged mapping.",
   "live": false,
@@ -14,11 +14,15 @@
    "Sign-off recorded in data/checklists/football/2024/launch-audit.csv",
    "Addition to CHECKLIST_MANIFEST['football|2024'] only after the above, and only with explicit approval"
   ],
-  "verifiedTwoSourceCount": 100,
+  "verifiedTwoSourceCount": 5,
   "verifiedOneSourceCount": 0,
   "needsReviewCount": 0,
   "source2ReconciliationFile": "data/checklists/football/2024/optic-v2-source2-reconciliation.csv",
-  "integrityNote": "IMPORTANT: the TCDB extraction supplied for this reconciliation is byte-for-byte identical (same 100 rows, same order, same exact name/team formatting including quirks like 'AJ Barner' and em-dash separators) to the Checklist Insider extraction used to build this v2 file's source1 data. A genuinely independent second pull from a different database would be expected to show at least minor formatting or ordering differences even where the underlying facts agree. This 100/100 match is mechanically correct per the comparison rule requested, but should NOT be read as strong independent confirmation - it is equally consistent with both 'sources' tracing back to the same underlying extraction. Flagged for human review before this is treated as satisfying the two-source requirement for CHECKLIST_MANIFEST promotion."
+  "integrityNote": "IMPORTANT: the TCDB extraction supplied for this reconciliation is byte-for-byte identical (same 100 rows, same order, same exact name/team formatting including quirks like 'AJ Barner' and em-dash separators) to the Checklist Insider extraction used to build this v2 file's source1 data. A genuinely independent second pull from a different database would be expected to show at least minor formatting or ordering differences even where the underlying facts agree. This 100/100 match is mechanically correct per the comparison rule requested, but should NOT be read as strong independent confirmation - it is equally consistent with both 'sources' tracing back to the same underlying extraction. Flagged for human review before this is treated as satisfying the two-source requirement for CHECKLIST_MANIFEST promotion.",
+  "beckettIndependentlyVerifiedCount": 5,
+  "tcdbMechanicalMatchIndependenceUnconfirmedCount": 95,
+  "source2BeckettReconciliationFile": "data/checklists/football/2024/optic-v2-beckett-reconciliation.csv",
+  "provenanceNote": "Two distinct verification tiers now tracked per record: BECKETT_INDEPENDENTLY_VERIFIED (Checklist Insider + a genuinely independent Beckett confirmation - counts toward the launch gate) vs TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED (the TCDB extraction matched 100/100 but its independence from source1 could not be established, so it does NOT count toward the launch gate). Only BECKETT_INDEPENDENTLY_VERIFIED records satisfy the two-source requirement."
  },
  "records": [
   {
@@ -31,9 +35,9 @@
    "team": "Chicago Bears",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "Beckett",
+   "verificationStatus": "BECKETT_INDEPENDENTLY_VERIFIED",
+   "source2Evidence": "Beckett's own checklist independently confirms this exact card-number/player/team identity (supplied directly by user 2026-09-03)."
   },
   {
    "product": "Donruss Optic",
@@ -45,9 +49,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -59,9 +63,9 @@
    "team": "Indianapolis Colts",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -73,9 +77,9 @@
    "team": "Seattle Seahawks",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -87,9 +91,9 @@
    "team": "Indianapolis Colts",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -101,9 +105,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -115,9 +119,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -129,9 +133,9 @@
    "team": "Los Angeles Rams",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -143,9 +147,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -157,9 +161,9 @@
    "team": "Los Angeles Rams",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -171,9 +175,9 @@
    "team": "New York Jets",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -185,9 +189,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -199,9 +203,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -213,9 +217,9 @@
    "team": "Jacksonville Jaguars",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -227,9 +231,9 @@
    "team": "Las Vegas Raiders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -241,9 +245,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -255,9 +259,9 @@
    "team": "Seattle Seahawks",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -269,9 +273,9 @@
    "team": "Houston Texans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -283,9 +287,9 @@
    "team": "Miami Dolphins",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -297,9 +301,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -311,9 +315,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -325,9 +329,9 @@
    "team": "Seattle Seahawks",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -339,9 +343,9 @@
    "team": "Pittsburgh Steelers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -353,9 +357,9 @@
    "team": "Minnesota Vikings",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -367,9 +371,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -381,9 +385,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -395,9 +399,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -409,9 +413,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -423,9 +427,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -437,9 +441,9 @@
    "team": "Las Vegas Raiders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -451,9 +455,9 @@
    "team": "Green Bay Packers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -465,9 +469,9 @@
    "team": "Detroit Lions",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -479,9 +483,9 @@
    "team": "Cincinnati Bengals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -493,9 +497,9 @@
    "team": "Tennessee Titans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -507,9 +511,9 @@
    "team": "Minnesota Vikings",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -521,9 +525,9 @@
    "team": "San Francisco 49ers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -535,9 +539,9 @@
    "team": "Kansas City Chiefs",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "Beckett",
+   "verificationStatus": "BECKETT_INDEPENDENTLY_VERIFIED",
+   "source2Evidence": "Beckett's own checklist independently confirms this exact card-number/player/team identity (supplied directly by user 2026-09-03)."
   },
   {
    "product": "Donruss Optic",
@@ -549,9 +553,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -563,9 +567,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -577,9 +581,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -591,9 +595,9 @@
    "team": "Cleveland Browns",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -605,9 +609,9 @@
    "team": "Los Angeles Rams",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -619,9 +623,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -633,9 +637,9 @@
    "team": "Carolina Panthers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -647,9 +651,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -661,9 +665,9 @@
    "team": "Green Bay Packers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -675,9 +679,9 @@
    "team": "Houston Texans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -689,9 +693,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -703,9 +707,9 @@
    "team": "Miami Dolphins",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -717,9 +721,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -731,9 +735,9 @@
    "team": "Cincinnati Bengals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -745,9 +749,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -759,9 +763,9 @@
    "team": "Tennessee Titans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -773,9 +777,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -787,9 +791,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -801,9 +805,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -815,9 +819,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -829,9 +833,9 @@
    "team": "Carolina Panthers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -843,9 +847,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -857,9 +861,9 @@
    "team": "New York Jets",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -871,9 +875,9 @@
    "team": "Houston Texans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -885,9 +889,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -899,9 +903,9 @@
    "team": "Buffalo Bills",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -913,9 +917,9 @@
    "team": "New Orleans Saints",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -927,9 +931,9 @@
    "team": "Cincinnati Bengals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -941,9 +945,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -955,9 +959,9 @@
    "team": "Indianapolis Colts",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -969,9 +973,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -983,9 +987,9 @@
    "team": "Jacksonville Jaguars",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -997,9 +1001,9 @@
    "team": "New York Jets",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1011,9 +1015,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1025,9 +1029,9 @@
    "team": "Miami Dolphins",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1039,9 +1043,9 @@
    "team": "Dallas Cowboys",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1053,9 +1057,9 @@
    "team": "Dallas Cowboys",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1067,9 +1071,9 @@
    "team": "Green Bay Packers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1081,9 +1085,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1095,9 +1099,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1109,9 +1113,9 @@
    "team": "Chicago Bears",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "Beckett",
+   "verificationStatus": "BECKETT_INDEPENDENTLY_VERIFIED",
+   "source2Evidence": "Beckett's own checklist independently confirms this exact card-number/player/team identity (supplied directly by user 2026-09-03)."
   },
   {
    "product": "Donruss Optic",
@@ -1123,9 +1127,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1137,9 +1141,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1151,9 +1155,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1165,9 +1169,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1179,9 +1183,9 @@
    "team": "Buffalo Bills",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1193,9 +1197,9 @@
    "team": "San Francisco 49ers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1207,9 +1211,9 @@
    "team": "Pittsburgh Steelers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1221,9 +1225,9 @@
    "team": "Chicago Bears",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "Beckett",
+   "verificationStatus": "BECKETT_INDEPENDENTLY_VERIFIED",
+   "source2Evidence": "Beckett's own checklist independently confirms this exact card-number/player/team identity (supplied directly by user 2026-09-03)."
   },
   {
    "product": "Donruss Optic",
@@ -1235,9 +1239,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1249,9 +1253,9 @@
    "team": "Dallas Cowboys",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1263,9 +1267,9 @@
    "team": "New Orleans Saints",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1277,9 +1281,9 @@
    "team": "Detroit Lions",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1291,9 +1295,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1305,9 +1309,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1319,9 +1323,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1333,9 +1337,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1347,9 +1351,9 @@
    "team": "Tennessee Titans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1361,9 +1365,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1375,9 +1379,9 @@
    "team": "Minnesota Vikings",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1389,9 +1393,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1403,9 +1407,9 @@
    "team": "Carolina Panthers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "TCDB (independence unconfirmed)",
+   "verificationStatus": "TCDB_MECHANICAL_MATCH_INDEPENDENCE_UNCONFIRMED",
+   "source2Evidence": "TCDB extraction mechanically matches Checklist Insider 100/100, but the TCDB extraction is byte-for-byte identical in content/order/formatting to source1 - independence not established. NOT counted toward VERIFIED_TWO_SOURCE / launch gate. See optic-v2-source2-reconciliation.csv and optic-v2-beckett-reconciliation.csv."
   },
   {
    "product": "Donruss Optic",
@@ -1417,9 +1421,9 @@
    "team": "Kansas City Chiefs",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "TCDB",
-   "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
+   "source2": "Beckett",
+   "verificationStatus": "BECKETT_INDEPENDENTLY_VERIFIED",
+   "source2Evidence": "Beckett's own checklist independently confirms this exact card-number/player/team identity (supplied directly by user 2026-09-03)."
   }
  ]
 }
