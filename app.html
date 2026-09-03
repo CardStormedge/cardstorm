@@ -724,6 +724,7 @@ function openTeam(ab){
   `${TH_STYLE}<div class=feature><div style="display:flex;align-items:center;gap:18px"><img class=teamlogo style="width:66px;height:66px" src="${logoUrl(t[0])}" width=66 height=66 loading=lazy decoding=async alt="${teamFullName} logo"><div><div class=k>WHO ARE YOU HUNTING?</div><h2 style="margin:4px 0 0">${teamFullName}</h2></div></div><div class=thPlayerGrid>${players.map((p,i)=>`<button type=button class=thPlayerCard onclick="openPlayerHunt('${ab}',${i})"><div class=thPlayerRole>${i===0?'FEATURED CHASE':i===1?'PRIORITY TARGET':'TEAM TARGET'}</div><h3>${p}</h3><div class=thPlayerSub>Featured cards · Values · Checklist</div></button>`).join('')}</div></div>
   <p style="margin-top:14px"><button class=cta onclick="openTeamOverview('${ab}')">${teamFullName.toUpperCase()} TEAM OVERVIEW & CHECKLIST →</button></p>`
  );
+ C.scrollTop=0;
 }
 // Formerly the default landing page after picking a team (Top Rookie Cards /
 // Biggest Movers / checklist link) - kept intact and fully reachable, just no
@@ -738,6 +739,7 @@ function openTeamOverview(ab){
   <div class=feature style="margin-top:14px"><h2>BIGGEST MOVERS</h2>${teamMoversHTML(players)}</div>
   <p style="margin-top:14px"><button class=cta onclick="openTeamChecklist('${ab}')">VIEW FULL ${teamFullName.toUpperCase()} CHECKLIST →</button></p>`
  );
+ C.scrollTop=0;
 }
 function renderPlayerHunt(ab,i){
  const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1],player=players[i],comps=COMPS.filter(c=>c[0]===player);
@@ -747,6 +749,7 @@ function renderPlayerHunt(ab,i){
   <div class=feature style="margin-top:14px"><h2>VALUES</h2>${valuesHtml}</div>
   <div class=feature style="margin-top:14px"><h2>CHECKLIST</h2><p class=sub>${player}'s cards live inside the ${teamFullName} master checklist, grouped by product.</p><button class=cta onclick="openTeamChecklist('${ab}')">VIEW ${teamFullName.toUpperCase()} CHECKLIST →</button></div>`
  );
+ C.scrollTop=0;
  loadChaseSection('thChase'+i+'Host',player,ab,i);
 }
 function openPlayerHunt(ab,i){navPush();renderPlayerHunt(ab,i)}
@@ -756,6 +759,7 @@ function openTeamChecklist(ab){
  C.innerHTML=shell('TEAM HUNT',teamFullName+' — Master Checklist',year+' '+sport.toUpperCase()+' • every card CardStorm has verified, grouped by product',
   `<div class=feature><div class=checklistStats id=teamChecklistStats></div><div class=progressTrack><div class=progressFill id=teamChecklistBar style="width:0%"></div></div><div id=teamChecklistHost class=notice>Loading ${teamFullName} checklist…</div></div>`
  );
+ C.scrollTop=0;
  renderTeamChecklistBlock(ab,teamFullName);
 }
 
