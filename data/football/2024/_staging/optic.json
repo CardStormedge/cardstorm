@@ -28,6 +28,15 @@
    ],
    "finding": "All 5 mismatches fall in the #276-300 range while every checked record in #201-225 matched exactly. This pattern suggests a possible alignment/identity error specific to the upper portion of the staged #201-300 Rated Rookie block, not random noise - the dataset itself is suspect in that range, not just the 5 sampled rows. Do NOT treat this as an exhaustive second-source verification, and do NOT patch only the 5 mismatched records - the full #201-300 block requires regeneration/reconciliation against an authoritative checklist before another launch-gate review. See reconciliation plan (data/checklists/football/2024/optic-201-300-reconciliation.md) for the record-by-record discrepancy report."
   },
+  "fullRangeReconciliation": {
+   "status": "IN_PROGRESS",
+   "reportFile": "data/checklists/football/2024/optic-201-300-reconciliation.md",
+   "rowsCovered": 100,
+   "matchCount": 13,
+   "mismatchCount": 6,
+   "needsReviewCount": 81,
+   "note": "Extends the spot-check above across the full #201-300 range. Found one additional mismatch (#220) beyond the original 5, which is NOT confined to the #276-300 tail - the safe working assumption is that the entire block is unverified (only 13/100 rows have any external confirmation, and that confirmation itself is a search-engine synthesis, not a directly-read independent source). Do not promote based on this report; it documents what is NOT yet known as much as what is."
+  },
   "requiresForLive": [
    "Full #201-300 Rated Rookie block regenerated/reconciled against at least two independently-read authoritative sources (not a search-engine synthesis) - see optic-201-300-reconciliation.md",
    "Team-mapping spot-check against DATA roster names for consistency",
