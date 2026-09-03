@@ -1,0 +1,691 @@
+{
+ "_schema": "Provenance-aware Base Rated Rookie (#301-400) evidence table. Each row records what every individual source actually said, never a merged/normalized guess. cardNumber/player/team at top level reflect the best-supported value (majority/consistent value across beckett/footballCardShop/checklistInsider; falls back to searchSynthesis only when no directly-reviewable source covers that number). sourceCount counts only directly-reviewable sources (beckett/footballCardShop/checklistInsider) - searchSynthesis evidence is tracked separately and never counted toward sourceCount or TWO_SOURCE_VERIFIED, since it is a search-engine synthesis rather than a page a human supplied/reviewed.",
+ "_verificationStatusVocabulary": {
+  "ONE_SOURCE_VERIFIED": "Exactly one directly-reviewable source (beckett/footballCardShop/checklistInsider) covers this card number.",
+  "TWO_SOURCE_VERIFIED": "Two or more directly-reviewable sources cover this card number and agree on player AND team. Independence was assessed (not assumed) - see notes per row and the AUDIT.",
+  "SOURCE_CONFLICT": "Two or more directly-reviewable sources cover this card number but disagree on player or team. Neither value is used/trusted until resolved.",
+  "SEARCH_SYNTHESIS_UNCONFIRMED": "Only a web-search-engine synthesized answer surfaced this row - not a page a human supplied or Claude could directly read. Weaker than ONE_SOURCE_VERIFIED. Never counts toward the two-source gate.",
+  "MISSING_EVIDENCE": "No source of any kind covers this card number yet (used for the gap report, not present as an actual row in this file)."
+ },
+ "_independenceAssessment": "For the 301-310 Checklist Insider/Beckett overlap and the 314-325 Beckett/FootballCardShop overlap: format differs meaningfully between the paired sources (Checklist Insider appends an explicit \"RC\" designation Beckett's excerpt does not; FootballCardShop gives team abbreviations (e.g. \"CAR\") where Beckett gives full team names (e.g. \"Carolina Panthers\")), and FootballCardShop's supplied range (314-334) does not start where Beckett's starts (301) or stop where Beckett's stops (325) - both are signals of independent original extractions rather than one being copy-derived from the other, unlike the 2024 Optic TCDB situation where the second source was byte-for-byte identical in every row, order, and formatting quirk. This is a positive but NOT airtight assessment - it is based on the text the user supplied directly, not a side-by-side reading of the live pages themselves (both checklistinsider.com and footballcardshop.com are EGRESS_BLOCKED for direct fetch this session). Recommend a human spot-check of the live pages before treating this as final.",
+ "records": [
+  {
+   "cardNumber": 301,
+   "player": "Travis Hunter",
+   "team": "Jacksonville Jaguars",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Travis Hunter",
+    "team": "Jacksonville Jaguars"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Travis Hunter",
+    "team": "Jacksonville Jaguars"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 302,
+   "player": "Cam Skattebo",
+   "team": "New York Giants",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Cam Skattebo",
+    "team": "New York Giants"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Cam Skattebo",
+    "team": "New York Giants"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 303,
+   "player": "Omarion Hampton",
+   "team": "Los Angeles Chargers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Omarion Hampton",
+    "team": "Los Angeles Chargers"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Omarion Hampton",
+    "team": "Los Angeles Chargers"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 304,
+   "player": "Tyler Shough",
+   "team": "New Orleans Saints",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Tyler Shough",
+    "team": "New Orleans Saints"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Tyler Shough",
+    "team": "New Orleans Saints"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 305,
+   "player": "Ashton Jeanty",
+   "team": "Las Vegas Raiders",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Ashton Jeanty",
+    "team": "Las Vegas Raiders"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Ashton Jeanty",
+    "team": "Las Vegas Raiders"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 306,
+   "player": "Shedeur Sanders",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Shedeur Sanders",
+    "team": "Cleveland Browns"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Shedeur Sanders",
+    "team": "Cleveland Browns"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 307,
+   "player": "Jalen Milroe",
+   "team": "Seattle Seahawks",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Jalen Milroe",
+    "team": "Seattle Seahawks"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Jalen Milroe",
+    "team": "Seattle Seahawks"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 308,
+   "player": "Jaydon Blue",
+   "team": "Dallas Cowboys",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Jaydon Blue",
+    "team": "Dallas Cowboys"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Jaydon Blue",
+    "team": "Dallas Cowboys"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 309,
+   "player": "Will Howard",
+   "team": "Pittsburgh Steelers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Will Howard",
+    "team": "Pittsburgh Steelers"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Will Howard",
+    "team": "Pittsburgh Steelers"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 310,
+   "player": "Colston Loveland",
+   "team": "Chicago Bears",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Colston Loveland",
+    "team": "Chicago Bears"
+   },
+   "footballCardShop": null,
+   "checklistInsider": {
+    "player": "Colston Loveland",
+    "team": "Chicago Bears"
+   },
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 311,
+   "player": "Matthew Golden",
+   "team": "Green Bay Packers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Matthew Golden",
+    "team": "Green Bay Packers"
+   },
+   "footballCardShop": null,
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 312,
+   "player": "RJ Harvey",
+   "team": "Denver Broncos",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": null,
+   "checklistInsider": null,
+   "searchSynthesis": {
+    "player": "RJ Harvey",
+    "team": "Denver Broncos"
+   },
+   "sourceCount": 0,
+   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
+   "notes": "Only a web-search-engine synthesis surfaced this row, not a directly reviewable source page - treat as weaker than ONE_SOURCE_VERIFIED until independently confirmed from an actual page."
+  },
+  {
+   "cardNumber": 313,
+   "player": "Tez Johnson",
+   "team": "Tampa Bay Buccaneers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Tez Johnson",
+    "team": "Tampa Bay Buccaneers"
+   },
+   "footballCardShop": null,
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 314,
+   "player": "Tetairoa McMillan",
+   "team": "Carolina Panthers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Tetairoa McMillan",
+    "team": "Carolina Panthers"
+   },
+   "footballCardShop": {
+    "player": "Tetairoa McMillan",
+    "team": "Carolina Panthers"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 315,
+   "player": "Abdul Carter",
+   "team": "New York Giants",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Abdul Carter",
+    "team": "New York Giants"
+   },
+   "footballCardShop": {
+    "player": "Abdul Carter",
+    "team": "New York Giants"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 316,
+   "player": "Dillon Gabriel",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Dillon Gabriel",
+    "team": "Cleveland Browns"
+   },
+   "footballCardShop": {
+    "player": "Dillon Gabriel",
+    "team": "Cleveland Browns"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 317,
+   "player": "Elijah Arroyo",
+   "team": "Seattle Seahawks",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Elijah Arroyo",
+    "team": "Seattle Seahawks"
+   },
+   "footballCardShop": {
+    "player": "Elijah Arroyo",
+    "team": "Seattle Seahawks"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 318,
+   "player": "Savion Williams",
+   "team": "Green Bay Packers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Savion Williams",
+    "team": "Green Bay Packers"
+   },
+   "footballCardShop": {
+    "player": "Savion Williams",
+    "team": "Green Bay Packers"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 319,
+   "player": "Mykel Williams",
+   "team": "San Francisco 49ers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Mykel Williams",
+    "team": "San Francisco 49ers"
+   },
+   "footballCardShop": {
+    "player": "Mykel Williams",
+    "team": "San Francisco 49ers"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 320,
+   "player": "Jack Bech",
+   "team": "Las Vegas Raiders",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Jack Bech",
+    "team": "Las Vegas Raiders"
+   },
+   "footballCardShop": {
+    "player": "Jack Bech",
+    "team": "Las Vegas Raiders"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 321,
+   "player": "Jalen Royals",
+   "team": "Kansas City Chiefs",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Jalen Royals",
+    "team": "Kansas City Chiefs"
+   },
+   "footballCardShop": {
+    "player": "Jalen Royals",
+    "team": "Kansas City Chiefs"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 322,
+   "player": "Kaleb Johnson",
+   "team": "Pittsburgh Steelers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Kaleb Johnson",
+    "team": "Pittsburgh Steelers"
+   },
+   "footballCardShop": {
+    "player": "Kaleb Johnson",
+    "team": "Pittsburgh Steelers"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 323,
+   "player": "Terrance Ferguson",
+   "team": "Los Angeles Rams",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Terrance Ferguson",
+    "team": "Los Angeles Rams"
+   },
+   "footballCardShop": {
+    "player": "Terrance Ferguson",
+    "team": "Los Angeles Rams"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 324,
+   "player": "Jaylin Noel",
+   "team": "Houston Texans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Jaylin Noel",
+    "team": "Houston Texans"
+   },
+   "footballCardShop": {
+    "player": "Jaylin Noel",
+    "team": "Houston Texans"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 325,
+   "player": "Kyle McCord",
+   "team": "Philadelphia Eagles",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": {
+    "player": "Kyle McCord",
+    "team": "Philadelphia Eagles"
+   },
+   "footballCardShop": {
+    "player": "Kyle McCord",
+    "team": "Philadelphia Eagles"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Independence positively assessed: differing display formatting between sources (see AUDIT notes) with matching underlying facts."
+  },
+  {
+   "cardNumber": 326,
+   "player": "Trevor Etienne",
+   "team": "Carolina Panthers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Trevor Etienne",
+    "team": "Carolina Panthers"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 327,
+   "player": "Kyle Williams",
+   "team": "New England Patriots",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Kyle Williams",
+    "team": "New England Patriots"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 328,
+   "player": "Mason Taylor",
+   "team": "New York Jets",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Mason Taylor",
+    "team": "New York Jets"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 329,
+   "player": "Tre Harris III",
+   "team": "Los Angeles Chargers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Tre Harris III",
+    "team": "Los Angeles Chargers"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 330,
+   "player": "Quinshon Judkins",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Quinshon Judkins",
+    "team": "Cleveland Browns"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 331,
+   "player": "Tai Felton",
+   "team": "Minnesota Vikings",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Tai Felton",
+    "team": "Minnesota Vikings"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 332,
+   "player": "TreVeyon Henderson",
+   "team": "New England Patriots",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "TreVeyon Henderson",
+    "team": "New England Patriots"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 333,
+   "player": "Bhayshul Tuten",
+   "team": "Jacksonville Jaguars",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Bhayshul Tuten",
+    "team": "Jacksonville Jaguars"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 334,
+   "player": "Jayden Higgins",
+   "team": "Houston Texans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jayden Higgins",
+    "team": "Houston Texans"
+   },
+   "checklistInsider": null,
+   "searchSynthesis": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": ""
+  },
+  {
+   "cardNumber": 398,
+   "player": "JT Tuimoloau",
+   "team": "Indianapolis Colts",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": null,
+   "checklistInsider": null,
+   "searchSynthesis": {
+    "player": "JT Tuimoloau",
+    "team": "Indianapolis Colts"
+   },
+   "sourceCount": 0,
+   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
+   "notes": "Only a web-search-engine synthesis surfaced this row, not a directly reviewable source page - treat as weaker than ONE_SOURCE_VERIFIED until independently confirmed from an actual page."
+  },
+  {
+   "cardNumber": 399,
+   "player": "Xavier Watts",
+   "team": "Atlanta Falcons",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "beckett": null,
+   "footballCardShop": null,
+   "checklistInsider": null,
+   "searchSynthesis": {
+    "player": "Xavier Watts",
+    "team": "Atlanta Falcons"
+   },
+   "sourceCount": 0,
+   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
+   "notes": "Only a web-search-engine synthesis surfaced this row, not a directly reviewable source page - treat as weaker than ONE_SOURCE_VERIFIED until independently confirmed from an actual page."
+  }
+ ]
+}

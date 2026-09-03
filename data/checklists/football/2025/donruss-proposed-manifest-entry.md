@@ -4,6 +4,14 @@ Nothing in this file is live. `CHECKLIST_MANIFEST` has no `'football|2025'` key,
 does not add one. It defines the exact process so a real supplied source can move through it
 without inventing rules mid-stream.
 
+**Progress note (2026-09-04):** the single-source-then-reconcile approach below was supplemented
+by a provenance-aware multi-source evidence table (36 of 100 Base Rated Rookie card numbers now
+have at least one directly-supplied source, 22 of those `TWO_SOURCE_VERIFIED`) — see
+`data/football/2025/_staging/donruss-base-rated-rookie-evidence.json` and
+`data/checklists/football/2025/AUDIT-2025-donruss-evidence.md`. Still nowhere near the production
+gate in §8 below (need the full 100, and a real independent check of the 22 currently-verified
+rows against the live source pages, which this session cannot fetch directly).
+
 ## 1. Identity key
 
 Primary key: **`<product>|<setName-or-subset>|<cardNumber>`** — e.g. `donruss25|Rated Rookies|301`.

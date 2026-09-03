@@ -1,4 +1,14 @@
-# 2025 Donruss — Source 1 raw ingestion lane (empty, awaiting real data)
+# 2025 Donruss — Source 1 raw ingestion lane (superseded — see note)
+
+> **Strategy update (2026-09-04):** Checklist Insider only ever supplied 10 of the required 100
+> Base Rated Rookie rows (#301-310) — not enough to treat as a standalone "Source 1." The
+> ingestion approach shifted to a **provenance-aware multi-source evidence table** instead of a
+> single-source-then-reconcile pipeline. See
+> `data/football/2025/_staging/donruss-base-rated-rookie-evidence.json` (the live evidence table,
+> now combining Checklist Insider + Beckett + FootballCardShop + search-corroborated rows) and
+> `data/checklists/football/2025/AUDIT-2025-donruss-evidence.md` (the full audit). This file and
+> `donruss-source1-normalized.json` are kept for historical continuity but are no longer the
+> active working files — do not add new rows here.
 
 No real 2025 Donruss checklist has been supplied or found yet. This file is a placeholder
 documenting the expected raw shape so a real source, once supplied, can be dropped in and

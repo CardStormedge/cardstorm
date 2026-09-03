@@ -1,0 +1,33 @@
+{
+ "_purpose": "2025 Donruss rookie-relevant cards that are NOT part of the Base Rated Rookie #301-400 subset - kept structurally separate per instruction, never merged into the Base Rated Rookie checklist even though they are legitimate rookie cards for the same players.",
+ "_note": "Only two records staged so far, both corroborated via multiple independent listings (eBay, SportsCardsPro, HobbyScan, ToyWiz, Sports Card Investor) during this session's search, not directly supplied by the user as page text - status reflects that.",
+ "records": [
+  {
+   "product": "Donruss",
+   "year": 2025,
+   "sport": "football",
+   "subset": "Rated Rookies Throwback",
+   "cardNumber": "25",
+   "player": "Cam Ward",
+   "team": null,
+   "rookie": true,
+   "sourceType": "SEARCH_SYNTHESIS_MULTI_CORROBORATED",
+   "sourceNotes": "Corroborated across sportscardinvestor.com, sportscardspro.com, and a Facebook marketplace listing - multiple independent third-party sales/price-guide trackers agree this exact product exists, but none was directly fetched/read by Claude (all blocked); team not stated in any corroborating snippet, left null rather than guessed.",
+   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED"
+  },
+  {
+   "product": "Donruss",
+   "year": 2025,
+   "sport": "football",
+   "subset": "Rated Rookies Retro",
+   "cardNumber": "1",
+   "player": "Jaxson Dart",
+   "team": "New York Giants",
+   "rookie": true,
+   "sourceType": "SEARCH_SYNTHESIS_MULTI_CORROBORATED",
+   "sourceNotes": "Corroborated across 6+ eBay listings, sportscardspro.com, hobbyscan.com, and toywiz.com - unusually strong multi-retailer corroboration for a single card, but still not a directly fetched/read source page.",
+   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED"
+  }
+ ],
+ "stillUnresolved": "Emeka Egbuka was not found in the Base Rated Rookie #301-400 evidence gathered this pass (numbers 335-397 and #400 remain unresolved gaps), and no alternate-subset evidence for him was found either. Treat as ABSENT from all evidence gathered so far, not confirmed absent from the product overall."
+}

@@ -16,6 +16,6 @@
   "verificationStatus": "ONE_SOURCE_VERIFIED | TWO_SOURCE_VERIFIED | SOURCE_CONFLICT | INDEPENDENCE_UNCONFIRMED | NOT_READY - see data/checklists/football/2025/donruss-proposed-manifest-entry.md for the full vocabulary and the rules that move a row between these",
   "rawRecord": "object - the original as-supplied row, preserved verbatim for auditability (so a later re-check can compare against exactly what was ingested, not a reconstruction)"
  },
- "_status": "EMPTY - no real source1 data has been supplied yet. Do not populate with fabricated rows.",
+ "_status": "SUPERSEDED (2026-09-04) - the single-source-then-reconcile pipeline this file belonged to was replaced by a provenance-aware multi-source evidence table before any row was ever added here (still 0 records, nothing to migrate). See data/football/2025/_staging/donruss-base-rated-rookie-evidence.json for the active working file and data/checklists/football/2025/AUDIT-2025-donruss-evidence.md for the full audit. Do not populate this file going forward.",
  "records": []
 }
