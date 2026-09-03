@@ -4,7 +4,7 @@
  "product": "Donruss Optic",
  "category": "Rated Rookie",
  "verification": {
-  "status": "IN_PROGRESS",
+  "status": "RECONCILED_PENDING_APPROVAL",
   "recordCount": 100,
   "note": "Clean rebuild of the #201-300 Rated Rookie block from a full Checklist Insider extraction supplied directly by the user on 2026-09-03, replacing the earlier optic-chase-manifest.csv-derived mapping (see data/football/2024/_staging/optic.json, kept as historical/research evidence, NOT the basis for this file). Every record starts at VERIFIED_ONE_SOURCE (source1 = Checklist Insider). A record is upgraded to VERIFIED_TWO_SOURCE only when a genuinely independent second source (e.g. Beckett) confirms that exact card-number/player/team identity - not merely the #201-300 Rated Rookie range, which Beckett independently establishes but which is not itself per-card proof. See data/checklists/football/2024/optic-v2-verification-report.md for the per-record breakdown and data/checklists/football/2024/optic-v1-v2-diff.csv for the full comparison against the prior (now-superseded) staged mapping.",
   "live": false,
@@ -14,9 +14,11 @@
    "Sign-off recorded in data/checklists/football/2024/launch-audit.csv",
    "Addition to CHECKLIST_MANIFEST['football|2024'] only after the above, and only with explicit approval"
   ],
-  "verifiedTwoSourceCount": 4,
-  "verifiedOneSourceCount": 91,
-  "needsReviewCount": 5
+  "verifiedTwoSourceCount": 100,
+  "verifiedOneSourceCount": 0,
+  "needsReviewCount": 0,
+  "source2ReconciliationFile": "data/checklists/football/2024/optic-v2-source2-reconciliation.csv",
+  "integrityNote": "IMPORTANT: the TCDB extraction supplied for this reconciliation is byte-for-byte identical (same 100 rows, same order, same exact name/team formatting including quirks like 'AJ Barner' and em-dash separators) to the Checklist Insider extraction used to build this v2 file's source1 data. A genuinely independent second pull from a different database would be expected to show at least minor formatting or ordering differences even where the underlying facts agree. This 100/100 match is mechanically correct per the comparison rule requested, but should NOT be read as strong independent confirmation - it is equally consistent with both 'sources' tracing back to the same underlying extraction. Flagged for human review before this is treated as satisfying the two-source requirement for CHECKLIST_MANIFEST promotion."
  },
  "records": [
   {
@@ -29,9 +31,9 @@
    "team": "Chicago Bears",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "Beckett (beckett.com)",
+   "source2": "TCDB",
    "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Beckett product catalog pages for 2024 Donruss Optic Green Velocity #201 Caleb Williams RR and Purple Shock #201 Caleb Williams RR (parallels of base card #201) - domain-restricted beckett.com search, distinct from Checklist Insider."
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -43,8 +45,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -56,8 +59,9 @@
    "team": "Indianapolis Colts",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -69,8 +73,9 @@
    "team": "Seattle Seahawks",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -82,8 +87,9 @@
    "team": "Indianapolis Colts",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -95,8 +101,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -108,8 +115,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -121,8 +129,9 @@
    "team": "Los Angeles Rams",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -134,8 +143,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -147,8 +157,9 @@
    "team": "Los Angeles Rams",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -160,8 +171,9 @@
    "team": "New York Jets",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -173,8 +185,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -186,8 +199,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -199,8 +213,9 @@
    "team": "Jacksonville Jaguars",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -212,8 +227,9 @@
    "team": "Las Vegas Raiders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -225,8 +241,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -238,8 +255,9 @@
    "team": "Seattle Seahawks",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -251,8 +269,9 @@
    "team": "Houston Texans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -264,8 +283,9 @@
    "team": "Miami Dolphins",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -277,9 +297,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "NEEDS_REVIEW",
-   "source2Evidence": "Beckett-domain search attempted, no clean/unambiguous per-card confirmation returned (one query for #300 returned a conflicting answer citing a different card number for the same player - treated as inconclusive, not confirming)."
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -291,8 +311,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -304,8 +325,9 @@
    "team": "Seattle Seahawks",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -317,8 +339,9 @@
    "team": "Pittsburgh Steelers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -330,8 +353,9 @@
    "team": "Minnesota Vikings",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -343,8 +367,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -356,8 +381,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -369,8 +395,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -382,8 +409,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -395,9 +423,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "NEEDS_REVIEW",
-   "source2Evidence": "Beckett-domain search attempted, no clean/unambiguous per-card confirmation returned (one query for #300 returned a conflicting answer citing a different card number for the same player - treated as inconclusive, not confirming)."
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -409,8 +437,9 @@
    "team": "Las Vegas Raiders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -422,8 +451,9 @@
    "team": "Green Bay Packers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -435,8 +465,9 @@
    "team": "Detroit Lions",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -448,8 +479,9 @@
    "team": "Cincinnati Bengals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -461,8 +493,9 @@
    "team": "Tennessee Titans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -474,8 +507,9 @@
    "team": "Minnesota Vikings",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -487,8 +521,9 @@
    "team": "San Francisco 49ers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -500,8 +535,9 @@
    "team": "Kansas City Chiefs",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -513,8 +549,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -526,8 +563,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -539,8 +577,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -552,8 +591,9 @@
    "team": "Cleveland Browns",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -565,8 +605,9 @@
    "team": "Los Angeles Rams",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -578,8 +619,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -591,8 +633,9 @@
    "team": "Carolina Panthers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -604,8 +647,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -617,8 +661,9 @@
    "team": "Green Bay Packers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -630,8 +675,9 @@
    "team": "Houston Texans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -643,9 +689,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "NEEDS_REVIEW",
-   "source2Evidence": "Beckett-domain search attempted, no clean/unambiguous per-card confirmation returned (one query for #300 returned a conflicting answer citing a different card number for the same player - treated as inconclusive, not confirming)."
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -657,8 +703,9 @@
    "team": "Miami Dolphins",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -670,8 +717,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -683,8 +731,9 @@
    "team": "Cincinnati Bengals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -696,8 +745,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -709,8 +759,9 @@
    "team": "Tennessee Titans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -722,8 +773,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -735,8 +787,9 @@
    "team": "New England Patriots",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -748,8 +801,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -761,8 +815,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -774,8 +829,9 @@
    "team": "Carolina Panthers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -787,8 +843,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -800,8 +857,9 @@
    "team": "New York Jets",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -813,8 +871,9 @@
    "team": "Houston Texans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -826,8 +885,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -839,8 +899,9 @@
    "team": "Buffalo Bills",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -852,8 +913,9 @@
    "team": "New Orleans Saints",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -865,8 +927,9 @@
    "team": "Cincinnati Bengals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -878,8 +941,9 @@
    "team": "Los Angeles Chargers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -891,8 +955,9 @@
    "team": "Indianapolis Colts",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -904,8 +969,9 @@
    "team": "Washington Commanders",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -917,8 +983,9 @@
    "team": "Jacksonville Jaguars",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -930,8 +997,9 @@
    "team": "New York Jets",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -943,8 +1011,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -956,8 +1025,9 @@
    "team": "Miami Dolphins",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -969,8 +1039,9 @@
    "team": "Dallas Cowboys",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -982,8 +1053,9 @@
    "team": "Dallas Cowboys",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -995,8 +1067,9 @@
    "team": "Green Bay Packers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1008,9 +1081,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "Beckett (beckett.com)",
+   "source2": "TCDB",
    "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Beckett-domain search (beckett.com) independently returned card #276 = Marvin Harrison Jr., Arizona Cardinals, sourced from Beckett's own 2024 Donruss Optic checklist/team-set content, not Checklist Insider."
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1022,9 +1095,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "Beckett (beckett.com)",
+   "source2": "TCDB",
    "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Beckett-domain search independently returned card #277 = Max Melton, Arizona Cardinals (including a /60 parallel print run detail), sourced from Beckett's own checklist content."
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1036,8 +1109,9 @@
    "team": "Chicago Bears",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1049,8 +1123,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1062,8 +1137,9 @@
    "team": "Tampa Bay Buccaneers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1075,8 +1151,9 @@
    "team": "Baltimore Ravens",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1088,8 +1165,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1101,8 +1179,9 @@
    "team": "Buffalo Bills",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1114,8 +1193,9 @@
    "team": "San Francisco 49ers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1127,8 +1207,9 @@
    "team": "Pittsburgh Steelers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1140,8 +1221,9 @@
    "team": "Chicago Bears",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1153,8 +1235,9 @@
    "team": "Atlanta Falcons",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1166,8 +1249,9 @@
    "team": "Dallas Cowboys",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1179,8 +1263,9 @@
    "team": "New Orleans Saints",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1192,8 +1277,9 @@
    "team": "Detroit Lions",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1205,8 +1291,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1218,9 +1305,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": "Beckett (beckett.com)",
+   "source2": "TCDB",
    "verificationStatus": "VERIFIED_TWO_SOURCE",
-   "source2Evidence": "Beckett-domain search independently returned card #292 = Tip Reiman, Arizona Cardinals, sourced from Beckett's own checklist content across multiple Optic parallel pages."
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1232,9 +1319,9 @@
    "team": "Arizona Cardinals",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "NEEDS_REVIEW",
-   "source2Evidence": "Beckett-domain search attempted, no clean/unambiguous per-card confirmation returned (one query for #300 returned a conflicting answer citing a different card number for the same player - treated as inconclusive, not confirming)."
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1246,8 +1333,9 @@
    "team": "Denver Broncos",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1259,8 +1347,9 @@
    "team": "Tennessee Titans",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1272,8 +1361,9 @@
    "team": "New York Giants",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1285,8 +1375,9 @@
    "team": "Minnesota Vikings",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1298,8 +1389,9 @@
    "team": "Philadelphia Eagles",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1311,8 +1403,9 @@
    "team": "Carolina Panthers",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "VERIFIED_ONE_SOURCE"
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   },
   {
    "product": "Donruss Optic",
@@ -1324,9 +1417,9 @@
    "team": "Kansas City Chiefs",
    "rookie": true,
    "source1": "Checklist Insider",
-   "source2": null,
-   "verificationStatus": "NEEDS_REVIEW",
-   "source2Evidence": "Beckett-domain search attempted, no clean/unambiguous per-card confirmation returned (one query for #300 returned a conflicting answer citing a different card number for the same player - treated as inconclusive, not confirming)."
+   "source2": "TCDB",
+   "verificationStatus": "VERIFIED_TWO_SOURCE",
+   "source2Evidence": "Exact card-number/player/team match against complete TCDB extraction (data/checklists/football/2024/sources/optic-tcdb-rated-rookies-201-300.csv)."
   }
  ]
 }
