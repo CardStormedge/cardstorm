@@ -1,25 +1,54 @@
 {
- "_schema": "Every entry needs verificationStatus='verified' and a real destinationUrl before any UI may render a SHOP button for it. No entry may be constructed by guessing a URL from a name. affiliateTracking holds whatever query params/tags the Fanatics program requires - populated once provided.",
- "_status": "INERT - no real destination URLs yet. Do not wire SHOP buttons into app.html until this file has verified entries.",
- "team": [],
- "player": [],
- "_exampleTeamRecord (not live data - shape reference only)": {
-  "league": "nfl",
-  "sport": "football",
-  "team": "Dallas Cowboys",
-  "merchandiseCategory": "team",
-  "destinationUrl": null,
-  "affiliateTracking": null,
-  "verificationStatus": "unverified"
+ "_schema": "Read by app.html's loadCommerceOffers(). players is keyed by playerOfferId(ab,player) = '<team-abbrev-lowercase>-<slugified-player-name>' (see playerSlug() in app.html), e.g. 'chi-caleb-williams'. teams is keyed by the team abbreviation lowercased, e.g. 'bal'. Each key maps to {fanatics:[offer, ...]}. An offer only renders (and only becomes clickable) once it exists here with a real url - no placeholder/guessed offer is ever added on your behalf.",
+ "_offerFields": {
+  "title": "string - product name shown on the card",
+  "productType": "string - e.g. 'Rookie Jersey', 'T-Shirt', 'Hat', 'Autographed Memorabilia'",
+  "image": "string - product image URL or local asset path",
+  "url": "string - the exact supplied Fanatics product URL, opened as-is by openCommerceOffer(), never rewritten or guessed",
+  "price": "string - current price as supplied, e.g. '$129.99'",
+  "salePrice": "string|omit - sale price as supplied; when present it's shown next to a struck-through price",
+  "team": "string - team full name, for display/event logging only",
+  "player": "string|omit - player full name, for display/event logging only (omit on team-level offers)",
+  "collection": "string|omit - e.g. 'ROOKIE COLLECTION', shown as a small label above the title",
+  "source": "string - where this offer came from, e.g. 'Fanatics official product page'",
+  "lastVerified": "YYYY-MM-DD"
  },
- "_examplePlayerRecord (not live data - shape reference only)": {
-  "league": "nfl",
-  "sport": "football",
-  "team": "Chicago Bears",
-  "player": "Caleb Williams",
-  "merchandiseCategory": "rookieJersey",
-  "destinationUrl": null,
-  "affiliateTracking": null,
-  "verificationStatus": "unverified"
+ "_status": "INERT - players and teams are both empty. No Gear Up module renders anywhere until real, supplied offers are added here. See data/affiliate/import-format.md for how to hand Claude a batch of real offers to ingest.",
+ "players": {},
+ "teams": {},
+ "_examplePlayerEntry (not live data - shape reference only, key is NOT real)": {
+  "chi-caleb-williams": {
+   "fanatics": [
+    {
+     "title": "Caleb Williams Chicago Bears Nike Rookie Collection Game Jersey",
+     "productType": "Rookie Jersey",
+     "image": null,
+     "url": null,
+     "price": null,
+     "salePrice": null,
+     "team": "Chicago Bears",
+     "player": "Caleb Williams",
+     "collection": "ROOKIE COLLECTION",
+     "source": null,
+     "lastVerified": null
+    }
+   ]
+  }
+ },
+ "_exampleTeamEntry (not live data - shape reference only, key is NOT real)": {
+  "bal": {
+   "fanatics": [
+    {
+     "title": "Baltimore Ravens Team Gear",
+     "productType": "Team Merchandise",
+     "image": null,
+     "url": null,
+     "price": null,
+     "team": "Baltimore Ravens",
+     "source": null,
+     "lastVerified": null
+    }
+   ]
+  }
  }
 }
