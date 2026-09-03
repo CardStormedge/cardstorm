@@ -43,7 +43,8 @@
    "Sign-off recorded in data/checklists/football/2024/launch-audit.csv (currently NOT_READY for Optic)",
    "Addition to CHECKLIST_MANIFEST['football|2024'] with a real chaseMap entry only after the above pass"
   ],
-  "note": "Do NOT reference this file from CHECKLIST_MANIFEST or any live scanner. This is staging data only, normalized from data/checklists/football/2024/optic-chase-manifest.csv for schema compatibility with normalizeDonruss-style records. It is not presented to users as verified. NOT eligible for promotion - see secondSourceSpotCheck above."
+  "note": "Do NOT reference this file from CHECKLIST_MANIFEST or any live scanner. This is staging data only, normalized from data/checklists/football/2024/optic-chase-manifest.csv for schema compatibility with normalizeDonruss-style records. It is not presented to users as verified. NOT eligible for promotion - see secondSourceSpotCheck above.",
+  "supersededBy": "data/football/2024/_staging/optic-rated-rookies-v2.json - a clean rebuild from a full Checklist Insider extraction supplied directly by the user on 2026-09-03. This file (v1) is kept only as historical/research evidence of how the original staged mapping was wrong (75/100 records differ from v2 - see data/checklists/football/2024/optic-v1-v2-diff.csv). It is NOT the basis for any future live Optic data."
  },
  "records": [
   {
