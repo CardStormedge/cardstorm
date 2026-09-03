@@ -1,0 +1,329 @@
+{
+ "sport": "football",
+ "year": 2024,
+ "product": "Mosaic",
+ "verification": {
+  "status": "STAGED",
+  "recordCount": 34,
+  "sourceCount": 1,
+  "sources": [
+   "Beckett (data/checklists/football/2024/mosaic-chase-manifest.csv)"
+  ],
+  "live": false,
+  "requiresForLive": [
+   "A second independent confirming source for the Stained Glass insert card-number-to-player mapping",
+   "Rated Rookie base block (#301-400) still has zero normalized rows anywhere in the repo - this staging file covers Stained Glass inserts only, not rookies",
+   "Sign-off recorded in data/checklists/football/2024/launch-audit.csv (currently PARTIAL for Mosaic)",
+   "Addition to CHECKLIST_MANIFEST['football|2024'] with a real chaseMap entry only after the above pass"
+  ],
+  "note": "Do NOT reference this file from CHECKLIST_MANIFEST or any live scanner. Staging only, normalized from data/checklists/football/2024/mosaic-chase-manifest.csv."
+ },
+ "records": [
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "1",
+   "player": "Patrick Mahomes II",
+   "team": "Kansas City Chiefs",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "2",
+   "player": "Joe Burrow",
+   "team": "Cincinnati Bengals",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "3",
+   "player": "C.J. Stroud",
+   "team": "Houston Texans",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "4",
+   "player": "Caleb Williams",
+   "team": "Chicago Bears",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "5",
+   "player": "Jayden Daniels",
+   "team": "Washington Commanders",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "6",
+   "player": "Drake Maye",
+   "team": "New England Patriots",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "7",
+   "player": "Bo Nix",
+   "team": "Denver Broncos",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "8",
+   "player": "Michael Penix Jr.",
+   "team": "Atlanta Falcons",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "9",
+   "player": "Marvin Harrison Jr.",
+   "team": "Arizona Cardinals",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Stained Glass",
+   "cardNumber": "10",
+   "player": "Malik Nabers",
+   "team": "New York Giants",
+   "notes": "SSP insert; Choice Peacock parallel exists",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "1",
+   "player": "Josh Allen",
+   "team": "Buffalo Bills",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "2",
+   "player": "Lamar Jackson",
+   "team": "Baltimore Ravens",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "3",
+   "player": "Patrick Mahomes II",
+   "team": "Kansas City Chiefs",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "4",
+   "player": "Joe Burrow",
+   "team": "Cincinnati Bengals",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "5",
+   "player": "Justin Jefferson",
+   "team": "Minnesota Vikings",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "6",
+   "player": "Caleb Williams",
+   "team": "Chicago Bears",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "7",
+   "player": "Jayden Daniels",
+   "team": "Washington Commanders",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "8",
+   "player": "Drake Maye",
+   "team": "New England Patriots",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "9",
+   "player": "Bo Nix",
+   "team": "Denver Broncos",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Micro Mosaic",
+   "cardNumber": "10",
+   "player": "Marvin Harrison Jr.",
+   "team": "Arizona Cardinals",
+   "notes": "SSP insert",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "301",
+   "player": "Caleb Williams",
+   "team": "Chicago Bears",
+   "notes": "Rookie block #301-400; Genesis and Honeycomb are hobby chase parallels",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "302",
+   "player": "Marvin Harrison Jr.",
+   "team": "Arizona Cardinals",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "303",
+   "player": "Jayden Daniels",
+   "team": "Washington Commanders",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "304",
+   "player": "Drake Maye",
+   "team": "New England Patriots",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "305",
+   "player": "Malik Nabers",
+   "team": "New York Giants",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "306",
+   "player": "Bo Nix",
+   "team": "Denver Broncos",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "307",
+   "player": "Michael Penix Jr.",
+   "team": "Atlanta Falcons",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "308",
+   "player": "Brock Bowers",
+   "team": "Las Vegas Raiders",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "309",
+   "player": "Rome Odunze",
+   "team": "Chicago Bears",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Base Rookie",
+   "cardNumber": "310",
+   "player": "J.J. McCarthy",
+   "team": "Minnesota Vikings",
+   "notes": "Rookie block #301-400",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Chase Family",
+   "cardNumber": "",
+   "player": "Genesis",
+   "team": "",
+   "notes": "Verified Mosaic chase parallel family; card-level eligibility follows checklist",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Chase Family",
+   "cardNumber": "",
+   "player": "Honeycomb",
+   "team": "",
+   "notes": "Verified Mosaic chase parallel family; card-level eligibility follows checklist",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Chase Family",
+   "cardNumber": "",
+   "player": "Peacock Choice",
+   "team": "",
+   "notes": "Verified Choice chase parallel; do not infer serial numbering",
+   "singleSource": "Beckett"
+  },
+  {
+   "product": "Mosaic",
+   "category": "Chase Family",
+   "cardNumber": "",
+   "player": "Storm Mosaic",
+   "team": "",
+   "notes": "Verified chase family; surface only when player/card eligibility is confirmed",
+   "singleSource": "Beckett"
+  }
+ ]
+}

@@ -1,0 +1,1148 @@
+{
+ "sport": "football",
+ "year": 2024,
+ "product": "Donruss Optic",
+ "verification": {
+  "status": "STAGED",
+  "recordCount": 125,
+  "sourceCount": 1,
+  "sources": [
+   "Checklist Insider (data/checklists/football/2024/optic-chase-manifest.csv)"
+  ],
+  "live": false,
+  "requiresForLive": [
+   "A second independent confirming source for the Rated Rookie card-number-to-player mapping (e.g. official Panini checklist, TCDB, or Beckett team-set data)",
+   "Team-mapping spot-check against DATA roster names for consistency",
+   "Sign-off recorded in data/checklists/football/2024/launch-audit.csv (currently PARTIAL/OPEN for Optic)",
+   "Addition to CHECKLIST_MANIFEST['football|2024'] with a real chaseMap entry only after the above pass"
+  ],
+  "note": "Do NOT reference this file from CHECKLIST_MANIFEST or any live scanner. This is staging data only, normalized from data/checklists/football/2024/optic-chase-manifest.csv for schema compatibility with normalizeDonruss-style records. It is not presented to users as verified."
+ },
+ "records": [
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "201",
+   "player": "Caleb Williams",
+   "team": "Chicago Bears",
+   "notes": "Rated Rookie; full Optic parallel rainbow",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "202",
+   "player": "Adisa Isaac",
+   "team": "Baltimore Ravens",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "203",
+   "player": "Adonai Mitchell",
+   "team": "Indianapolis Colts",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "204",
+   "player": "AJ Barner",
+   "team": "Seattle Seahawks",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "205",
+   "player": "Anthony Gould",
+   "team": "Indianapolis Colts",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "206",
+   "player": "Audric Estime",
+   "team": "Denver Broncos",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "207",
+   "player": "Ben Sinnott",
+   "team": "Washington Commanders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "208",
+   "player": "Blake Corum",
+   "team": "Los Angeles Rams",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "209",
+   "player": "Bo Nix",
+   "team": "Denver Broncos",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "210",
+   "player": "Braden Fiske",
+   "team": "Los Angeles Rams",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "211",
+   "player": "Braelon Allen",
+   "team": "New York Jets",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "212",
+   "player": "Bralen Trice",
+   "team": "Atlanta Falcons",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "213",
+   "player": "Brenden Rice",
+   "team": "Los Angeles Chargers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "214",
+   "player": "Brian Thomas Jr.",
+   "team": "Jacksonville Jaguars",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "215",
+   "player": "Brock Bowers",
+   "team": "Las Vegas Raiders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "216",
+   "player": "Bucky Irving",
+   "team": "Tampa Bay Buccaneers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "217",
+   "player": "Byron Murphy II",
+   "team": "Seattle Seahawks",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "218",
+   "player": "Cade Stover",
+   "team": "Houston Texans",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "219",
+   "player": "Chop Robinson",
+   "team": "Miami Dolphins",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "220",
+   "player": "Cody Schrader",
+   "team": "Los Angeles Rams",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "221",
+   "player": "Cooper DeJean",
+   "team": "Philadelphia Eagles",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "222",
+   "player": "Cornelius Johnson",
+   "team": "Los Angeles Chargers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "223",
+   "player": "Daijun Edwards",
+   "team": "Pittsburgh Steelers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "224",
+   "player": "Dallas Turner",
+   "team": "Minnesota Vikings",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "225",
+   "player": "Darius Robinson",
+   "team": "Arizona Cardinals",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "226",
+   "player": "Devaughn Vele",
+   "team": "Denver Broncos",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "227",
+   "player": "Devin Leary",
+   "team": "Baltimore Ravens",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "228",
+   "player": "Dylan Laube",
+   "team": "Las Vegas Raiders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "229",
+   "player": "Drake Maye",
+   "team": "New England Patriots",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "230",
+   "player": "Edgerrin Cooper",
+   "team": "Green Bay Packers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "231",
+   "player": "Ennis Rakestraw Jr.",
+   "team": "Detroit Lions",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "232",
+   "player": "Frank Gore Jr.",
+   "team": "Buffalo Bills",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "233",
+   "player": "Gabe Hall",
+   "team": "Philadelphia Eagles",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "234",
+   "player": "Isaac Guerendo",
+   "team": "San Francisco 49ers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "235",
+   "player": "Jaden Hicks",
+   "team": "Kansas City Chiefs",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "236",
+   "player": "Jaheim Bell",
+   "team": "New England Patriots",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "237",
+   "player": "Ja'Lynn Polk",
+   "team": "New England Patriots",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "238",
+   "player": "Jamari Thrash",
+   "team": "Cleveland Browns",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "239",
+   "player": "Jared Wiley",
+   "team": "Kansas City Chiefs",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "240",
+   "player": "Javon Baker",
+   "team": "New England Patriots",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "241",
+   "player": "Jayden Daniels",
+   "team": "Washington Commanders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "242",
+   "player": "Jaylen Wright",
+   "team": "Miami Dolphins",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "243",
+   "player": "Jeremiah Trotter Jr.",
+   "team": "Philadelphia Eagles",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "244",
+   "player": "Jermaine Burton",
+   "team": "Cincinnati Bengals",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "245",
+   "player": "Joe Milton III",
+   "team": "New England Patriots",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "246",
+   "player": "Johnny Wilson",
+   "team": "Philadelphia Eagles",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "247",
+   "player": "Jonathon Brooks",
+   "team": "Carolina Panthers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "248",
+   "player": "Jordan Travis",
+   "team": "New York Jets",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "249",
+   "player": "Keon Coleman",
+   "team": "Buffalo Bills",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "250",
+   "player": "Khyree Jackson",
+   "team": "Minnesota Vikings",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "251",
+   "player": "Kool-Aid McKinstry",
+   "team": "New Orleans Saints",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "252",
+   "player": "Ladd McConkey",
+   "team": "Los Angeles Chargers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "253",
+   "player": "Laiatu Latu",
+   "team": "Indianapolis Colts",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "254",
+   "player": "Luke McCaffrey",
+   "team": "Washington Commanders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "255",
+   "player": "Malachi Corley",
+   "team": "New York Jets",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "256",
+   "player": "Malik Nabers",
+   "team": "New York Giants",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "257",
+   "player": "Malik Washington",
+   "team": "Miami Dolphins",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "258",
+   "player": "MarShawn Lloyd",
+   "team": "Green Bay Packers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "259",
+   "player": "Marvin Harrison Jr.",
+   "team": "Arizona Cardinals",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "260",
+   "player": "Michael Penix Jr.",
+   "team": "Atlanta Falcons",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "261",
+   "player": "Michael Pratt",
+   "team": "Green Bay Packers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "262",
+   "player": "Quinyon Mitchell",
+   "team": "Philadelphia Eagles",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "263",
+   "player": "Ray Davis",
+   "team": "Buffalo Bills",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "264",
+   "player": "Ricky Pearsall",
+   "team": "San Francisco 49ers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "265",
+   "player": "Roman Wilson",
+   "team": "Pittsburgh Steelers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "266",
+   "player": "Rome Odunze",
+   "team": "Chicago Bears",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "267",
+   "player": "Spencer Rattler",
+   "team": "New Orleans Saints",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "268",
+   "player": "Taliese Fuaga",
+   "team": "New Orleans Saints",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "269",
+   "player": "Trey Benson",
+   "team": "Arizona Cardinals",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "270",
+   "player": "Troy Franklin",
+   "team": "Denver Broncos",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "271",
+   "player": "Xavier Legette",
+   "team": "Carolina Panthers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "272",
+   "player": "Xavier Worthy",
+   "team": "Kansas City Chiefs",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "273",
+   "player": "Will Shipley",
+   "team": "Philadelphia Eagles",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "274",
+   "player": "J.J. McCarthy",
+   "team": "Minnesota Vikings",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "275",
+   "player": "Tip Reiman",
+   "team": "Arizona Cardinals",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "276",
+   "player": "Theo Johnson",
+   "team": "New York Giants",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "277",
+   "player": "Tyrone Tracy Jr.",
+   "team": "New York Giants",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "278",
+   "player": "Blake Watson",
+   "team": "Denver Broncos",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "279",
+   "player": "Kimani Vidal",
+   "team": "Los Angeles Chargers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "280",
+   "player": "Rasheen Ali",
+   "team": "Baltimore Ravens",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "281",
+   "player": "Bub Means",
+   "team": "New Orleans Saints",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "282",
+   "player": "Jha'Quan Jackson",
+   "team": "Tennessee Titans",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "283",
+   "player": "Jacob Cowing",
+   "team": "San Francisco 49ers",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "284",
+   "player": "Jordan Whittington",
+   "team": "Los Angeles Rams",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "285",
+   "player": "Casey Washington",
+   "team": "Atlanta Falcons",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "286",
+   "player": "Tez Walker",
+   "team": "Baltimore Ravens",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "287",
+   "player": "Jamree Kromah",
+   "team": "Chicago Bears",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "288",
+   "player": "Tyler Owens",
+   "team": "Washington Commanders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "289",
+   "player": "Tyler Harrell",
+   "team": "Tennessee Titans",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "290",
+   "player": "Dallin Holker",
+   "team": "New Orleans Saints",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "291",
+   "player": "AJ Woods",
+   "team": "Washington Commanders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "292",
+   "player": "Ryan Flournoy",
+   "team": "Dallas Cowboys",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "293",
+   "player": "Tory Taylor",
+   "team": "Chicago Bears",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "294",
+   "player": "Marist Liufau",
+   "team": "Dallas Cowboys",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "295",
+   "player": "Caelen Carson",
+   "team": "Dallas Cowboys",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "296",
+   "player": "Tyler Guyton",
+   "team": "Dallas Cowboys",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "297",
+   "player": "Nathan Thomas",
+   "team": "Dallas Cowboys",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "298",
+   "player": "Brevyn Spann-Ford",
+   "team": "Dallas Cowboys",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "299",
+   "player": "Carson Steele",
+   "team": "Kansas City Chiefs",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Rated Rookie",
+   "cardNumber": "300",
+   "player": "Jordan Magee",
+   "team": "Washington Commanders",
+   "notes": "Rated Rookie",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "1",
+   "player": "Lamar Jackson",
+   "team": "Baltimore Ravens",
+   "notes": "SSP chase; parallels include Black Pandora /25; Gold /10; Gold Vinyl 1/1; White Sparkle 1/1",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "2",
+   "player": "Josh Allen",
+   "team": "Buffalo Bills",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "3",
+   "player": "Tyreek Hill",
+   "team": "Miami Dolphins",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "4",
+   "player": "Brock Purdy",
+   "team": "San Francisco 49ers",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "5",
+   "player": "Jordan Love",
+   "team": "Green Bay Packers",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "6",
+   "player": "Sam LaPorta",
+   "team": "Detroit Lions",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "7",
+   "player": "Travis Kelce",
+   "team": "Kansas City Chiefs",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "8",
+   "player": "Terrell Owens",
+   "team": "Dallas Cowboys",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "9",
+   "player": "Dick Butkus",
+   "team": "Chicago Bears",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "10",
+   "player": "Terry Bradshaw",
+   "team": "Pittsburgh Steelers",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "11",
+   "player": "J.J. McCarthy",
+   "team": "Minnesota Vikings",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "12",
+   "player": "Marvin Harrison Jr.",
+   "team": "Arizona Cardinals",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "13",
+   "player": "Drake Maye",
+   "team": "New England Patriots",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "14",
+   "player": "Michael Penix Jr.",
+   "team": "Atlanta Falcons",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "15",
+   "player": "Rome Odunze",
+   "team": "Chicago Bears",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "16",
+   "player": "Jayden Daniels",
+   "team": "Washington Commanders",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "17",
+   "player": "Brock Bowers",
+   "team": "Las Vegas Raiders",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "18",
+   "player": "Malik Nabers",
+   "team": "New York Giants",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "19",
+   "player": "Bo Nix",
+   "team": "Denver Broncos",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "20",
+   "player": "Puka Nacua",
+   "team": "Los Angeles Rams",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "21",
+   "player": "Caleb Williams",
+   "team": "Chicago Bears",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "22",
+   "player": "Breece Hall",
+   "team": "New York Jets",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "23",
+   "player": "Maxx Crosby",
+   "team": "Las Vegas Raiders",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "24",
+   "player": "Terrell Davis",
+   "team": "Denver Broncos",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  },
+  {
+   "product": "Donruss Optic",
+   "category": "Downtown",
+   "cardNumber": "25",
+   "player": "Michael Vick",
+   "team": "Atlanta Falcons",
+   "notes": "SSP chase",
+   "singleSource": "Checklist Insider"
+  }
+ ]
+}

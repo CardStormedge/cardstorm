@@ -1,0 +1,25 @@
+{
+ "_schema": "Every entry needs verificationStatus='verified' and a real destinationUrl before any UI may render a SHOP button for it. No entry may be constructed by guessing a URL from a name. affiliateTracking holds whatever query params/tags the Fanatics program requires - populated once provided.",
+ "_status": "INERT - no real destination URLs yet. Do not wire SHOP buttons into app.html until this file has verified entries.",
+ "team": [],
+ "player": [],
+ "_exampleTeamRecord (not live data - shape reference only)": {
+  "league": "nfl",
+  "sport": "football",
+  "team": "Dallas Cowboys",
+  "merchandiseCategory": "team",
+  "destinationUrl": null,
+  "affiliateTracking": null,
+  "verificationStatus": "unverified"
+ },
+ "_examplePlayerRecord (not live data - shape reference only)": {
+  "league": "nfl",
+  "sport": "football",
+  "team": "Chicago Bears",
+  "player": "Caleb Williams",
+  "merchandiseCategory": "rookieJersey",
+  "destinationUrl": null,
+  "affiliateTracking": null,
+  "verificationStatus": "unverified"
+ }
+}

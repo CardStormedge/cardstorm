@@ -1,0 +1,66 @@
+{
+ "_schema": "Identity key: sport|year|product|configuration. Optional: sku, upc, manufacturerProductCode. image.url is only trusted when image.verified=true and image.source is a real, named source. configuration is required to render - a record with configuration=null must not be matched against a UI request for a specific configuration (e.g. Hobby).",
+ "_purpose": "Exact sealed-product image registry. Replaces app.html's PRODIMG (brand-only) and part of BOX_ART/REALPROD. A missing exact configuration match must render an image-unavailable state, never a substitute.",
+ "images": [
+  {
+   "sport": "football",
+   "year": 2024,
+   "product": "Prizm",
+   "configuration": "unknown",
+   "sku": null,
+   "upc": null,
+   "manufacturerProductCode": null,
+   "image": {
+    "url": "assets/boxes/box-football-2024-prizm.webp",
+    "source": "CardStorm stylized artwork (AI-generated, not photography)",
+    "verified": false
+   },
+   "notes": "Stylized artwork honestly labeled in-app as artwork; configuration not determinable from artwork. Not a real product photo."
+  },
+  {
+   "sport": "football",
+   "year": 2024,
+   "product": "Select",
+   "configuration": "unknown",
+   "sku": null,
+   "upc": null,
+   "manufacturerProductCode": null,
+   "image": {
+    "url": "assets/boxes/box-football-2024-select.webp",
+    "source": "CardStorm stylized artwork (AI-generated, not photography)",
+    "verified": false
+   },
+   "notes": "Same as above."
+  },
+  {
+   "sport": "football",
+   "year": 2024,
+   "product": "Donruss",
+   "configuration": "unknown",
+   "sku": null,
+   "upc": null,
+   "manufacturerProductCode": null,
+   "image": {
+    "url": "assets/boxes/box-football-2024-donruss.webp",
+    "source": "CardStorm stylized artwork (AI-generated, not photography)",
+    "verified": false
+   },
+   "notes": "Same as above."
+  },
+  {
+   "sport": "football",
+   "year": 2024,
+   "product": "Mosaic",
+   "configuration": "unknown",
+   "sku": null,
+   "upc": null,
+   "manufacturerProductCode": null,
+   "image": {
+    "url": "assets/boxes/box-football-2024-mosaic.webp",
+    "source": "CardStorm stylized artwork (AI-generated, not photography)",
+    "verified": false
+   },
+   "notes": "Same as above."
+  }
+ ]
+}
