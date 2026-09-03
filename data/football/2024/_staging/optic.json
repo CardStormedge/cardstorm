@@ -3,20 +3,47 @@
  "year": 2024,
  "product": "Donruss Optic",
  "verification": {
-  "status": "STAGED",
+  "status": "NOT_READY",
   "recordCount": 125,
   "sourceCount": 1,
   "sources": [
    "Checklist Insider (data/checklists/football/2024/optic-chase-manifest.csv)"
   ],
   "live": false,
+  "secondSourceSpotCheck": {
+   "performedDate": "2026-09-03",
+   "method": "Targeted second-source spot-check via web search across multiple checklist sites (Beckett, TCDB, ChecklistInsider, Cardsmiths Breaks, GoGTS, ChecklistCenter, Diamond Cards Online) - NOT an exhaustive row-by-row second-source verification, and not a direct fetch/read of any single independent file.",
+   "sampleSize": 16,
+   "sampleOf": 125,
+   "matchCount": 11,
+   "mismatchCount": 5,
+   "matchedCardNumbers": ["201","202","203","204","205","206","207","208","209","210","225"],
+   "mismatchedCardNumbers": ["276","277","292","293","300"],
+   "mismatchDetail": [
+    {"cardNumber":"276","staged":"Theo Johnson","secondSource":"Marvin Harrison Jr."},
+    {"cardNumber":"277","staged":"Tyrone Tracy Jr.","secondSource":"Max Melton"},
+    {"cardNumber":"292","staged":"Ryan Flournoy","secondSource":"Tip Reiman"},
+    {"cardNumber":"293","staged":"Tory Taylor","secondSource":"Trey Benson"},
+    {"cardNumber":"300","staged":"Jordan Magee","secondSource":"Xavier Worthy","note":"Confirmed by two independent search queries"}
+   ],
+   "finding": "All 5 mismatches fall in the #276-300 range while every checked record in #201-225 matched exactly. This pattern suggests a possible alignment/identity error specific to the upper portion of the staged #201-300 Rated Rookie block, not random noise - the dataset itself is suspect in that range, not just the 5 sampled rows. Do NOT treat this as an exhaustive second-source verification, and do NOT patch only the 5 mismatched records - the full #201-300 block requires regeneration/reconciliation against an authoritative checklist before another launch-gate review. See reconciliation plan (data/checklists/football/2024/optic-201-300-reconciliation.md) for the record-by-record discrepancy report."
+  },
+  "fullRangeReconciliation": {
+   "status": "IN_PROGRESS",
+   "reportFile": "data/checklists/football/2024/optic-201-300-reconciliation.md",
+   "rowsCovered": 100,
+   "matchCount": 13,
+   "mismatchCount": 6,
+   "needsReviewCount": 81,
+   "note": "Extends the spot-check above across the full #201-300 range. Found one additional mismatch (#220) beyond the original 5, which is NOT confined to the #276-300 tail - the safe working assumption is that the entire block is unverified (only 13/100 rows have any external confirmation, and that confirmation itself is a search-engine synthesis, not a directly-read independent source). Do not promote based on this report; it documents what is NOT yet known as much as what is."
+  },
   "requiresForLive": [
-   "A second independent confirming source for the Rated Rookie card-number-to-player mapping (e.g. official Panini checklist, TCDB, or Beckett team-set data)",
+   "Full #201-300 Rated Rookie block regenerated/reconciled against at least two independently-read authoritative sources (not a search-engine synthesis) - see optic-201-300-reconciliation.md",
    "Team-mapping spot-check against DATA roster names for consistency",
-   "Sign-off recorded in data/checklists/football/2024/launch-audit.csv (currently PARTIAL/OPEN for Optic)",
+   "Sign-off recorded in data/checklists/football/2024/launch-audit.csv (currently NOT_READY for Optic)",
    "Addition to CHECKLIST_MANIFEST['football|2024'] with a real chaseMap entry only after the above pass"
   ],
-  "note": "Do NOT reference this file from CHECKLIST_MANIFEST or any live scanner. This is staging data only, normalized from data/checklists/football/2024/optic-chase-manifest.csv for schema compatibility with normalizeDonruss-style records. It is not presented to users as verified."
+  "note": "Do NOT reference this file from CHECKLIST_MANIFEST or any live scanner. This is staging data only, normalized from data/checklists/football/2024/optic-chase-manifest.csv for schema compatibility with normalizeDonruss-style records. It is not presented to users as verified. NOT eligible for promotion - see secondSourceSpotCheck above."
  },
  "records": [
   {
