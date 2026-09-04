@@ -1,0 +1,14 @@
+{
+ "sport": "Football",
+ "season": 2025,
+ "lastVerified": "2026-09-04",
+ "note": "Release-date/manufacturer facts only, independently corroborated via web search earlier this session (multiple sources: Beckett, CardboardConnection, ChecklistInsider, official team shops). NO checklist content (baseSetSize, rookieRange, coreChases, card numbers) is included here, unlike the 2024 equivalent file - none of that has been verified for any 2025 product yet, and inventing it would violate CardStorm's core data-integrity rule. Do not add baseSetSize/rookieRange/coreChases fields to this file until they come from an actual checklist source.",
+ "products": [
+  {"manufacturer":"Panini","product":"Donruss","releaseDate":"2025-09-17","checklistDataStatus":"no_data","sourceNote":"Beckett: 400-card base set (300 vets/legends + 100 Rated Rookies), 18 Rated Rookies per hobby box - product-structure facts only, not a card-by-card checklist","status":"released"},
+  {"manufacturer":"Panini","product":"Donruss Optic","releaseDate":"2026-01-26","releaseDateNote":"H2 version 2026-02-05; Premium Factory Set 2026-02-16","checklistDataStatus":"no_data","status":"released"},
+  {"manufacturer":"Panini","product":"Prizm","releaseDate":"2026-02-02","checklistDataStatus":"no_data","sourceNote":"Beckett: 400-card base set (#1-300 vets/legends, #301-400 rookies) - the final Panini-exclusive NFL Prizm release","status":"released"},
+  {"manufacturer":"Panini","product":"Select","releaseDate":"2026-02-19","releaseDateNote":"H2 version 2026-02-27","checklistDataStatus":"no_data","sourceNote":"Beckett/TCDB: 500-card base set across 5 tiers - same product structure as 2024 Select","status":"released"},
+  {"manufacturer":"Topps","product":"Topps Chrome","releaseDate":null,"checklistDataStatus":"no_data","status":"released_date_unconfirmed"}
+ ],
+ "importOrderRecommendation": "Donruss -> Prizm -> Select -> Donruss Optic, unchanged from the prior architecture report - Donruss/Prizm have the simplest proven normalizer pattern from 2024, Select needs the same rookie-only/next-class-quarantine treatment as 2024, Optic needs a two-source-verified rookie block before it can be trusted (see the 2024 Optic v2/Beckett reconciliation work for why)."
+}

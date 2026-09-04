@@ -1,0 +1,2592 @@
+{
+ "product": {
+  "sport": "Football",
+  "year": 2025,
+  "brand": "Panini",
+  "set": "Donruss",
+  "displayName": "2025 Panini Donruss Football",
+  "releaseDate": null,
+  "baseSetSize": 400,
+  "veteranLegendRange": "1-300",
+  "ratedRookieRange": "301-400",
+  "source": {
+   "sourceURLs": [
+    "https://www.beckett.com/news/2025-donruss-football-cards/",
+    "https://footballcardshop.com/by-set/2025-donruss",
+    "https://www.tcdb.com/Rookies.cfm/sid/538963/2025-Donruss"
+   ],
+   "note": "Coverage limited to the Base Rated Rookie #301-400 subset, built from a provenance-aware multi-source evidence table (see data/football/2025/_staging/donruss-base-rated-rookie-evidence.json). Veteran base #1-300 and insert/autograph/memorabilia player lists are not yet enumerated. NOT YET ACTIVE: this file is not referenced by CHECKLIST_MANIFEST and is not scanned by Team Hunt."
+  },
+  "_productionStatus": "STAGED_NOT_ACTIVE",
+  "_verificationNote": "Every card below carries internal evidence metadata: _evidenceVerificationStatus (source-count tier: TWO_SOURCE_VERIFIED/ONE_SOURCE_VERIFIED), _evidenceQualityStatus (source-quality tier: CHECKLIST_CROSS_VERIFIED > CHECKLIST_PLUS_DATABASE > DATABASE_CROSS_VERIFIED > SINGLE_STRONG_SOURCE > MARKETPLACE_CORROBORATED > SINGLE_MARKETPLACE_SOURCE > REVIEW_REQUIRED), and _passesStrictProductionGate (true only if >=2 independent Tier A checklist sources, or 1 Tier A + 1 independent Tier B card-database source - marketplace-only agreement, however many listings, never passes this gate). As of 2026-09-04 round 3: 28 of 100 records pass the strict gate. A future scanner change could filter Team Hunt's VERIFIED badge to _passesStrictProductionGate===true records only; this field is descriptive metadata only today, not read by any scanner yet."
+ },
+ "categories": {
+  "Base Cards": {
+   "kind": "pending",
+   "note": "Veteran base #1-300 not yet enumerated in this package."
+  },
+  "Rated Rookies": {
+   "kind": "cards",
+   "cards": [
+    {
+     "cardNumber": 301,
+     "player": "Travis Hunter",
+     "team": "Jacksonville Jaguars",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 302,
+     "player": "Cam Skattebo",
+     "team": "New York Giants",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 303,
+     "player": "Omarion Hampton",
+     "team": "Los Angeles Chargers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 304,
+     "player": "Tyler Shough",
+     "team": "New Orleans Saints",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 305,
+     "player": "Ashton Jeanty",
+     "team": "Las Vegas Raiders",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 306,
+     "player": "Shedeur Sanders",
+     "team": "Cleveland Browns",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 307,
+     "player": "Jalen Milroe",
+     "team": "Seattle Seahawks",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 308,
+     "player": "Jaydon Blue",
+     "team": "Dallas Cowboys",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 309,
+     "player": "Will Howard",
+     "team": "Pittsburgh Steelers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 310,
+     "player": "Colston Loveland",
+     "team": "Chicago Bears",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 311,
+     "player": "Matthew Golden",
+     "team": "Green Bay Packers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 312,
+     "player": "RJ Harvey",
+     "team": "Denver Broncos",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": [
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 313,
+     "player": "Tez Johnson",
+     "team": "Tampa Bay Buccaneers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 314,
+     "player": "Tetairoa McMillan",
+     "team": "Carolina Panthers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 315,
+     "player": "Abdul Carter",
+     "team": "New York Giants",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 316,
+     "player": "Dillon Gabriel",
+     "team": "Cleveland Browns",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 317,
+     "player": "Elijah Arroyo",
+     "team": "Seattle Seahawks",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 318,
+     "player": "Savion Williams",
+     "team": "Green Bay Packers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 319,
+     "player": "Mykel Williams",
+     "team": "San Francisco 49ers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 320,
+     "player": "Jack Bech",
+     "team": "Las Vegas Raiders",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 321,
+     "player": "Jalen Royals",
+     "team": "Kansas City Chiefs",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 322,
+     "player": "Kaleb Johnson",
+     "team": "Pittsburgh Steelers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 323,
+     "player": "Terrance Ferguson",
+     "team": "Los Angeles Rams",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 324,
+     "player": "Jaylin Noel",
+     "team": "Houston Texans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 325,
+     "player": "Kyle McCord",
+     "team": "Philadelphia Eagles",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 326,
+     "player": "Trevor Etienne",
+     "team": "Carolina Panthers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 327,
+     "player": "Kyle Williams",
+     "team": "New England Patriots",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 328,
+     "player": "Mason Taylor",
+     "team": "New York Jets",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 329,
+     "player": "Tre Harris III",
+     "team": "Los Angeles Chargers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 330,
+     "player": "Quinshon Judkins",
+     "team": "Cleveland Browns",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 331,
+     "player": "Tai Felton",
+     "team": "Minnesota Vikings",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 332,
+     "player": "TreVeyon Henderson",
+     "team": "New England Patriots",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 333,
+     "player": "Bhayshul Tuten",
+     "team": "Jacksonville Jaguars",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 334,
+     "player": "Jayden Higgins",
+     "team": "Houston Texans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 335,
+     "player": "Jaylin Lane",
+     "team": "Washington Commanders",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 336,
+     "player": "Pat Bryant",
+     "team": "Denver Broncos",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 337,
+     "player": "Tyler Warren",
+     "team": "Indianapolis Colts",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 338,
+     "player": "Isaac TeSlaa",
+     "team": "Detroit Lions",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 339,
+     "player": "Elic Ayomanor",
+     "team": "Tennessee Titans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 340,
+     "player": "Mason Graham",
+     "team": "Cleveland Browns",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 341,
+     "player": "Riley Leonard",
+     "team": "Indianapolis Colts",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 342,
+     "player": "Quinn Ewers",
+     "team": "Miami Dolphins",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 343,
+     "player": "Jihaad Campbell",
+     "team": "Philadelphia Eagles",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 344,
+     "player": "Jalon Walker",
+     "team": "Atlanta Falcons",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 345,
+     "player": "Will Campbell",
+     "team": "New England Patriots",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": [
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 346,
+     "player": "Malaki Starks",
+     "team": "Baltimore Ravens",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 347,
+     "player": "Graham Mertz",
+     "team": "Houston Texans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 348,
+     "player": "Nick Emmanwori",
+     "team": "Seattle Seahawks",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 349,
+     "player": "Dont'e Thornton Jr.",
+     "team": "Las Vegas Raiders",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    },
+    {
+     "cardNumber": 350,
+     "player": "Cam Ward",
+     "team": "Tennessee Titans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 351,
+     "player": "T.J. Sanders",
+     "team": "Buffalo Bills",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 352,
+     "player": "Jarquez Hunter",
+     "team": "Los Angeles Rams",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 353,
+     "player": "Ashton Gillotte",
+     "team": "Kansas City Chiefs",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 354,
+     "player": "Tyler Booker",
+     "team": "Dallas Cowboys",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 355,
+     "player": "Alfred Collins",
+     "team": "San Francisco 49ers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 356,
+     "player": "Jordan Watkins",
+     "team": "San Francisco 49ers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 357,
+     "player": "Jackson Hawes",
+     "team": "Buffalo Bills",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 358,
+     "player": "Armand Membou",
+     "team": "New York Jets",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 359,
+     "player": "Devin Neal",
+     "team": "New Orleans Saints",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 360,
+     "player": "Tyleik Williams",
+     "team": "Detroit Lions",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 361,
+     "player": "Benjamin Morrison",
+     "team": "Tampa Bay Buccaneers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 362,
+     "player": "Maxwell Hairston",
+     "team": "Buffalo Bills",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 363,
+     "player": "James Pearce Jr.",
+     "team": "Atlanta Falcons",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 364,
+     "player": "DJ Giddens",
+     "team": "Indianapolis Colts",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 365,
+     "player": "Jahdae Barron",
+     "team": "Denver Broncos",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 366,
+     "player": "Grey Zabel",
+     "team": "Seattle Seahawks",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 367,
+     "player": "KeAndre Lambert-Smith",
+     "team": "Los Angeles Chargers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 368,
+     "player": "Josh Simmons",
+     "team": "Kansas City Chiefs",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 369,
+     "player": "Trey Amos",
+     "team": "Washington Commanders",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 370,
+     "player": "Kenneth Grant",
+     "team": "Miami Dolphins",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 371,
+     "player": "Gunnar Helm",
+     "team": "Tennessee Titans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 372,
+     "player": "Kelvin Banks Jr.",
+     "team": "New Orleans Saints",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 373,
+     "player": "Harold Fannin Jr.",
+     "team": "Cleveland Browns",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 374,
+     "player": "Jordan James",
+     "team": "San Francisco 49ers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 375,
+     "player": "Emeka Egbuka",
+     "team": "Tampa Bay Buccaneers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor",
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 376,
+     "player": "Josaiah Stewart",
+     "team": "Los Angeles Rams",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 377,
+     "player": "Woody Marks",
+     "team": "Houston Texans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 378,
+     "player": "Kalel Mullings",
+     "team": "Tennessee Titans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 379,
+     "player": "Darius Alexander",
+     "team": "New York Giants",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 380,
+     "player": "Andrew Mukuba",
+     "team": "Philadelphia Eagles",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 381,
+     "player": "Donovan Jackson",
+     "team": "Minnesota Vikings",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor",
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 382,
+     "player": "Tyler Loop",
+     "team": "Baltimore Ravens",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 383,
+     "player": "Nic Scourton",
+     "team": "Carolina Panthers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 384,
+     "player": "Oluwafemi Oladejo",
+     "team": "Tennessee Titans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 385,
+     "player": "Demetrius Knight Jr.",
+     "team": "Cincinnati Bengals",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 386,
+     "player": "Arian Smith",
+     "team": "New York Jets",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 387,
+     "player": "Chimere Dike",
+     "team": "Tennessee Titans",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 388,
+     "player": "Tory Horton",
+     "team": "Seattle Seahawks",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 389,
+     "player": "Dylan Sampson",
+     "team": "Cleveland Browns",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 390,
+     "player": "Jack Sawyer",
+     "team": "Pittsburgh Steelers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 391,
+     "player": "Derrick Harmon",
+     "team": "Pittsburgh Steelers",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 392,
+     "player": "Carson Schwesinger",
+     "team": "Cleveland Browns",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 393,
+     "player": "Shemar Stewart",
+     "team": "Cincinnati Bengals",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 394,
+     "player": "Ollie Gordon II",
+     "team": "Miami Dolphins",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 395,
+     "player": "Luther Burden III",
+     "team": "Chicago Bears",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 396,
+     "player": "Will Johnson",
+     "team": "Arizona Cardinals",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 397,
+     "player": "Mike Green",
+     "team": "Baltimore Ravens",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 398,
+     "player": "JT Tuimoloau",
+     "team": "Indianapolis Colts",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 399,
+     "player": "Xavier Watts",
+     "team": "Atlanta Falcons",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
+    },
+    {
+     "cardNumber": 400,
+     "player": "Jaxson Dart",
+     "team": "New York Giants",
+     "rookie": true,
+     "ratedRookie": true,
+     "owned": false,
+     "rawValue": null,
+     "psa9Value": null,
+     "psa10Value": null,
+     "latestComp": null,
+     "valueSource": null,
+     "compStatus": "pending",
+     "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
+     "_evidenceQualityStatus": "CHECKLIST_PLUS_DATABASE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
+    }
+   ]
+  }
+ }
+}

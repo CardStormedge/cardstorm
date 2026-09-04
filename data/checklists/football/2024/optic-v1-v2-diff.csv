@@ -1,0 +1,101 @@
+cardNumber,oldPlayer,newPlayer,oldTeam,newTeam,status
+201,Caleb Williams,Caleb Williams,Chicago Bears,Chicago Bears,UNCHANGED
+202,Adisa Isaac,Adisa Isaac,Baltimore Ravens,Baltimore Ravens,UNCHANGED
+203,Adonai Mitchell,Adonai Mitchell,Indianapolis Colts,Indianapolis Colts,UNCHANGED
+204,AJ Barner,AJ Barner,Seattle Seahawks,Seattle Seahawks,UNCHANGED
+205,Anthony Gould,Anthony Gould,Indianapolis Colts,Indianapolis Colts,UNCHANGED
+206,Audric Estime,Audric Estime,Denver Broncos,Denver Broncos,UNCHANGED
+207,Ben Sinnott,Ben Sinnott,Washington Commanders,Washington Commanders,UNCHANGED
+208,Blake Corum,Blake Corum,Los Angeles Rams,Los Angeles Rams,UNCHANGED
+209,Bo Nix,Bo Nix,Denver Broncos,Denver Broncos,UNCHANGED
+210,Braden Fiske,Braden Fiske,Los Angeles Rams,Los Angeles Rams,UNCHANGED
+211,Braelon Allen,Braelon Allen,New York Jets,New York Jets,UNCHANGED
+212,Bralen Trice,Bralen Trice,Atlanta Falcons,Atlanta Falcons,UNCHANGED
+213,Brenden Rice,Brenden Rice,Los Angeles Chargers,Los Angeles Chargers,UNCHANGED
+214,Brian Thomas Jr.,Brian Thomas Jr.,Jacksonville Jaguars,Jacksonville Jaguars,UNCHANGED
+215,Brock Bowers,Brock Bowers,Las Vegas Raiders,Las Vegas Raiders,UNCHANGED
+216,Bucky Irving,Bucky Irving,Tampa Bay Buccaneers,Tampa Bay Buccaneers,UNCHANGED
+217,Byron Murphy II,Byron Murphy II,Seattle Seahawks,Seattle Seahawks,UNCHANGED
+218,Cade Stover,Cade Stover,Houston Texans,Houston Texans,UNCHANGED
+219,Chop Robinson,Chop Robinson,Miami Dolphins,Miami Dolphins,UNCHANGED
+220,Cody Schrader,Chris Braswell,Los Angeles Rams,Tampa Bay Buccaneers,CORRECTED
+221,Cooper DeJean,Cooper DeJean,Philadelphia Eagles,Philadelphia Eagles,UNCHANGED
+222,Cornelius Johnson,D.J. James,Los Angeles Chargers,Seattle Seahawks,CORRECTED
+223,Daijun Edwards,Daijun Edwards,Pittsburgh Steelers,Pittsburgh Steelers,UNCHANGED
+224,Dallas Turner,Dallas Turner,Minnesota Vikings,Minnesota Vikings,UNCHANGED
+225,Darius Robinson,Darius Robinson,Arizona Cardinals,Arizona Cardinals,UNCHANGED
+226,Devaughn Vele,Devin Culp,Denver Broncos,Tampa Bay Buccaneers,CORRECTED
+227,Devin Leary,Devin Leary,Baltimore Ravens,Baltimore Ravens,UNCHANGED
+228,Dylan Laube,Devontez Walker,Las Vegas Raiders,Baltimore Ravens,CORRECTED
+229,Drake Maye,Drake Maye,New England Patriots,New England Patriots,UNCHANGED
+230,Edgerrin Cooper,Dylan Laube,Green Bay Packers,Las Vegas Raiders,CORRECTED
+231,Ennis Rakestraw Jr.,Edgerrin Cooper,Detroit Lions,Green Bay Packers,CORRECTED
+232,Frank Gore Jr.,Ennis Rakestraw Jr.,Buffalo Bills,Detroit Lions,CORRECTED
+233,Gabe Hall,Erick All Jr.,Philadelphia Eagles,Cincinnati Bengals,CORRECTED
+234,Isaac Guerendo,J.C. Latham,San Francisco 49ers,Tennessee Titans,CORRECTED
+235,Jaden Hicks,J.J. McCarthy,Kansas City Chiefs,Minnesota Vikings,CORRECTED
+236,Jaheim Bell,Jacob Cowing,New England Patriots,San Francisco 49ers,CORRECTED
+237,Ja'Lynn Polk,Jaden Hicks,New England Patriots,Kansas City Chiefs,CORRECTED
+238,Jamari Thrash,Jaheim Bell,Cleveland Browns,New England Patriots,CORRECTED
+239,Jared Wiley,Jalen McMillan,Kansas City Chiefs,Tampa Bay Buccaneers,CORRECTED
+240,Javon Baker,Ja'Lynn Polk,New England Patriots,New England Patriots,CORRECTED
+241,Jayden Daniels,Jamari Thrash,Washington Commanders,Cleveland Browns,CORRECTED
+242,Jaylen Wright,Jared Verse,Miami Dolphins,Los Angeles Rams,CORRECTED
+243,Jeremiah Trotter Jr.,Jase McClellan,Philadelphia Eagles,Atlanta Falcons,CORRECTED
+244,Jermaine Burton,Ja'Tavion Sanders,Cincinnati Bengals,Carolina Panthers,CORRECTED
+245,Joe Milton III,Javon Baker,New England Patriots,New England Patriots,CORRECTED
+246,Johnny Wilson,Javon Bullard,Philadelphia Eagles,Green Bay Packers,CORRECTED
+247,Jonathon Brooks,Jawhar Jordan,Carolina Panthers,Houston Texans,CORRECTED
+248,Jordan Travis,Jayden Daniels,New York Jets,Washington Commanders,CORRECTED
+249,Keon Coleman,Jaylen Wright,Buffalo Bills,Miami Dolphins,CORRECTED
+250,Khyree Jackson,Jeremiah Trotter Jr.,Minnesota Vikings,Philadelphia Eagles,CORRECTED
+251,Kool-Aid McKinstry,Jermaine Burton,New Orleans Saints,Cincinnati Bengals,CORRECTED
+252,Ladd McConkey,Jer'Zhan Newton,Los Angeles Chargers,Washington Commanders,CORRECTED
+253,Laiatu Latu,Jha'Quan Jackson,Indianapolis Colts,Tennessee Titans,CORRECTED
+254,Luke McCaffrey,Joe Alt,Washington Commanders,Los Angeles Chargers,CORRECTED
+255,Malachi Corley,Joe Milton III,New York Jets,New England Patriots,CORRECTED
+256,Malik Nabers,Johnny Wilson,New York Giants,Philadelphia Eagles,CORRECTED
+257,Malik Washington,Jonah Elliss,Miami Dolphins,Denver Broncos,CORRECTED
+258,MarShawn Lloyd,Jonathon Brooks,Green Bay Packers,Carolina Panthers,CORRECTED
+259,Marvin Harrison Jr.,Tyrone Tracy Jr.,Arizona Cardinals,New York Giants,CORRECTED
+260,Michael Penix Jr.,Jordan Travis,Atlanta Falcons,New York Jets,CORRECTED
+261,Michael Pratt,Kamari Lassiter,Green Bay Packers,Houston Texans,CORRECTED
+262,Quinyon Mitchell,Kimani Vidal,Philadelphia Eagles,Los Angeles Chargers,CORRECTED
+263,Ray Davis,Keon Coleman,Buffalo Bills,Buffalo Bills,CORRECTED
+264,Ricky Pearsall,Kool-Aid McKinstry,San Francisco 49ers,New Orleans Saints,CORRECTED
+265,Roman Wilson,Kris Jenkins,Pittsburgh Steelers,Cincinnati Bengals,CORRECTED
+266,Rome Odunze,Ladd McConkey,Chicago Bears,Los Angeles Chargers,CORRECTED
+267,Spencer Rattler,Laiatu Latu,New Orleans Saints,Indianapolis Colts,CORRECTED
+268,Taliese Fuaga,Luke McCaffrey,New Orleans Saints,Washington Commanders,CORRECTED
+269,Trey Benson,Maason Smith,Arizona Cardinals,Jacksonville Jaguars,CORRECTED
+270,Troy Franklin,Malachi Corley,Denver Broncos,New York Jets,CORRECTED
+271,Xavier Legette,Malik Nabers,Carolina Panthers,New York Giants,CORRECTED
+272,Xavier Worthy,Malik Washington,Kansas City Chiefs,Miami Dolphins,CORRECTED
+273,Will Shipley,Marist Liufau,Philadelphia Eagles,Dallas Cowboys,CORRECTED
+274,J.J. McCarthy,Marshawn Kneeland,Minnesota Vikings,Dallas Cowboys,CORRECTED
+275,Tip Reiman,MarShawn Lloyd,Arizona Cardinals,Green Bay Packers,CORRECTED
+276,Theo Johnson,Marvin Harrison Jr.,New York Giants,Arizona Cardinals,CORRECTED
+277,Tyrone Tracy Jr.,Max Melton,New York Giants,Arizona Cardinals,CORRECTED
+278,Blake Watson,Tory Taylor,Denver Broncos,Chicago Bears,CORRECTED
+279,Kimani Vidal,Michael Penix Jr.,Los Angeles Chargers,Atlanta Falcons,CORRECTED
+280,Rasheen Ali,Michael Pratt,Baltimore Ravens,Tampa Bay Buccaneers,CORRECTED
+281,Bub Means,Nate Wiggins,New Orleans Saints,Baltimore Ravens,CORRECTED
+282,Jha'Quan Jackson,Quinyon Mitchell,Tennessee Titans,Philadelphia Eagles,CORRECTED
+283,Jacob Cowing,Ray Davis,San Francisco 49ers,Buffalo Bills,CORRECTED
+284,Jordan Whittington,Ricky Pearsall,Los Angeles Rams,San Francisco 49ers,CORRECTED
+285,Casey Washington,Roman Wilson,Atlanta Falcons,Pittsburgh Steelers,CORRECTED
+286,Tez Walker,Rome Odunze,Baltimore Ravens,Chicago Bears,CORRECTED
+287,Jamree Kromah,Ruke Orhorhoro,Chicago Bears,Atlanta Falcons,CORRECTED
+288,Tyler Owens,Ryan Flournoy,Washington Commanders,Dallas Cowboys,CORRECTED
+289,Tyler Harrell,Spencer Rattler,Tennessee Titans,New Orleans Saints,CORRECTED
+290,Dallin Holker,Terrion Arnold,New Orleans Saints,Detroit Lions,CORRECTED
+291,AJ Woods,Theo Johnson,Washington Commanders,New York Giants,CORRECTED
+292,Ryan Flournoy,Tip Reiman,Dallas Cowboys,Arizona Cardinals,CORRECTED
+293,Tory Taylor,Trey Benson,Chicago Bears,Arizona Cardinals,CORRECTED
+294,Marist Liufau,Troy Franklin,Dallas Cowboys,Denver Broncos,CORRECTED
+295,Caelen Carson,T'Vondre Sweat,Dallas Cowboys,Tennessee Titans,CORRECTED
+296,Tyler Guyton,Tyler Nubin,Dallas Cowboys,New York Giants,CORRECTED
+297,Nathan Thomas,Will Reichard,Dallas Cowboys,Minnesota Vikings,CORRECTED
+298,Brevyn Spann-Ford,Will Shipley,Dallas Cowboys,Philadelphia Eagles,CORRECTED
+299,Carson Steele,Xavier Legette,Kansas City Chiefs,Carolina Panthers,CORRECTED
+300,Jordan Magee,Xavier Worthy,Washington Commanders,Kansas City Chiefs,CORRECTED

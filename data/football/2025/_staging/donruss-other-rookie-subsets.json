@@ -1,0 +1,34 @@
+{
+ "_purpose": "2025 Donruss rookie-relevant cards that are NOT part of the Base Rated Rookie #301-400 subset - kept structurally separate per instruction, never merged into the Base Rated Rookie checklist even though they are legitimate rookie cards for the same players.",
+ "_note": "Only two records staged so far, both corroborated via multiple independent listings (eBay, SportsCardsPro, HobbyScan, ToyWiz, Sports Card Investor) during this session's search, not directly supplied by the user as page text - status reflects that.",
+ "_update_2026_09_04": "Cam Ward and Jaxson Dart BOTH now also have a Base Rated Rookie #301-400 record (Cam Ward #350 Tennessee Titans; Jaxson Dart #400 New York Giants) - see data/football/2025/_staging/donruss-base-rated-rookie-evidence.json. These records below (Throwback #25, Retro #1) are separate, additional cards for the same players, not duplicates and not merged with the Base Rated Rookie entries - a player can legitimately have multiple distinct 2025 Donruss rookie cards across different subsets.",
+ "records": [
+  {
+   "product": "Donruss",
+   "year": 2025,
+   "sport": "football",
+   "subset": "Rated Rookies Throwback",
+   "cardNumber": "25",
+   "player": "Cam Ward",
+   "team": null,
+   "rookie": true,
+   "sourceType": "SEARCH_SYNTHESIS_MULTI_CORROBORATED",
+   "sourceNotes": "Corroborated across sportscardinvestor.com, sportscardspro.com, and a Facebook marketplace listing - multiple independent third-party sales/price-guide trackers agree this exact product exists, but none was directly fetched/read by Claude (all blocked); team not stated in any corroborating snippet, left null rather than guessed.",
+   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED"
+  },
+  {
+   "product": "Donruss",
+   "year": 2025,
+   "sport": "football",
+   "subset": "Rated Rookies Retro",
+   "cardNumber": "1",
+   "player": "Jaxson Dart",
+   "team": "New York Giants",
+   "rookie": true,
+   "sourceType": "SEARCH_SYNTHESIS_MULTI_CORROBORATED",
+   "sourceNotes": "Corroborated across 6+ eBay listings, sportscardspro.com, hobbyscan.com, and toywiz.com - unusually strong multi-retailer corroboration for a single card, but still not a directly fetched/read source page.",
+   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED"
+  }
+ ],
+ "stillUnresolved": "RESOLVED 2026-09-04 (round 2): Emeka Egbuka is now confirmed at Base Rated Rookie #375 - Tampa Bay Buccaneers, TWO_SOURCE_VERIFIED (marketplaceSearch + sportsCardInvestor + priceGuideSite), see data/football/2025/_staging/donruss-base-rated-rookie-evidence.json. No separate/additional alternate-subset card for Emeka Egbuka has been found this session."
+}

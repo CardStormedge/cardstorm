@@ -1,0 +1,3538 @@
+{
+ "_schema": "Provenance-aware Base Rated Rookie (#301-400) evidence table, v2 (2026-09-04). Every field that starts with a source name (checklistInsider/beckett/footballCardShop/tcdb/marketplaceSearch/searchSynthesis/beckettAutographParallel/freshDCards/sportsCardInvestor) preserves exactly what that source said - never merged/overwritten. Top-level player/team is a display value only, preferring the highest-tier directly-named source when multiple agree (beckett > tcdb > footballCardShop > checklistInsider), and preserving the higher-tier value even where a lower-tier/marketplace source disagrees (see #345 SOURCE_CONFLICT - the conflicting freshDCards value is kept in its own field, never silently adopted or discarded).",
+ "_verificationStatusVocabulary": {
+  "ONE_SOURCE_VERIFIED": "Exactly one directly-named, specifically-attributed source covers this card number (checklistInsider/beckett/footballCardShop/tcdb).",
+  "TWO_SOURCE_VERIFIED": "Two or more directly-named sources cover this card number and agree on player AND team. Independence assessed per-pair, not assumed - see AUDIT.",
+  "SOURCE_CONFLICT": "Two or more sources disagree on player or team for the same card number. The higher-tier/majority value is shown at top level for readability, but the row is NOT treated as verified and the disagreement is preserved in full, never silently resolved.",
+  "SEARCH_SYNTHESIS_UNCONFIRMED": "Only a web-search-engine synthesis, a bundled/unnamed marketplace-source claim, or a non-base-subset (e.g. autograph/parallel checklist) piece of evidence covers this number - explicitly weaker than a directly-named base-checklist source, never counted toward the two-source gate.",
+  "MISSING_EVIDENCE": "No evidence of any kind - not present as an actual row in this pass (0 such rows remain)."
+ },
+ "_independenceNote_TCDB_vs_FootballCardShop": "Overlap at #332-334 and #348-349 (5 rows): all 5 agree exactly on player and team once FootballCardShop's abbreviations are expanded. TCDB uses full team names natively; FootballCardShop uses abbreviations - the same formatting-divergence signal already used to treat Beckett/FootballCardShop and Checklist Insider/Beckett as plausibly independent. Same caveat as before: this is a judgment call based on user-supplied text, not a side-by-side read of the live pages (tcdb.com and footballcardshop.com both EGRESS_BLOCKED this session) - not assumed independent merely because the domains differ, per instruction; recommend a human check before production.",
+ "_conflictNote_345": "Will Campbell #345: TCDB says New England Patriots (consistent with his actual 2025 NFL landing spot). A FreshDCards article instead lists his affiliation as 'LSU Tigers' - a college team, not an NFL team, which strongly suggests that particular FreshDCards mention is describing his college background rather than giving his 2025 Donruss card's NFL team field, OR is simply an error. Per instruction, this was NOT normalized away - kept as an explicit SOURCE_CONFLICT with both values preserved.",
+ "_beckettAutographParallelNote_312": "#312 RJ Harvey/Denver Broncos is corroborated by Beckett's 'Rated Rookies Autographs Orange' checklist - a parallel/autograph product tier that reuses the same base numbering, NOT the Base Rated Rookie checklist itself. Per explicit instruction, this does NOT promote #312 to a base-verified status on its own - kept at SEARCH_SYNTHESIS_UNCONFIRMED with the autograph-parallel evidence recorded as a supporting note, not as base-checklist proof.",
+ "records": [
+  {
+   "cardNumber": 301,
+   "player": "Travis Hunter",
+   "team": "Jacksonville Jaguars",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Travis Hunter",
+    "team": "Jacksonville Jaguars"
+   },
+   "beckett": {
+    "player": "Travis Hunter",
+    "team": "Jacksonville Jaguars"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 302,
+   "player": "Cam Skattebo",
+   "team": "New York Giants",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Cam Skattebo",
+    "team": "New York Giants"
+   },
+   "beckett": {
+    "player": "Cam Skattebo",
+    "team": "New York Giants"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 303,
+   "player": "Omarion Hampton",
+   "team": "Los Angeles Chargers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Omarion Hampton",
+    "team": "Los Angeles Chargers"
+   },
+   "beckett": {
+    "player": "Omarion Hampton",
+    "team": "Los Angeles Chargers"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 304,
+   "player": "Tyler Shough",
+   "team": "New Orleans Saints",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Tyler Shough",
+    "team": "New Orleans Saints"
+   },
+   "beckett": {
+    "player": "Tyler Shough",
+    "team": "New Orleans Saints"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 305,
+   "player": "Ashton Jeanty",
+   "team": "Las Vegas Raiders",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Ashton Jeanty",
+    "team": "Las Vegas Raiders"
+   },
+   "beckett": {
+    "player": "Ashton Jeanty",
+    "team": "Las Vegas Raiders"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 306,
+   "player": "Shedeur Sanders",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Shedeur Sanders",
+    "team": "Cleveland Browns"
+   },
+   "beckett": {
+    "player": "Shedeur Sanders",
+    "team": "Cleveland Browns"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 307,
+   "player": "Jalen Milroe",
+   "team": "Seattle Seahawks",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Jalen Milroe",
+    "team": "Seattle Seahawks"
+   },
+   "beckett": {
+    "player": "Jalen Milroe",
+    "team": "Seattle Seahawks"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 308,
+   "player": "Jaydon Blue",
+   "team": "Dallas Cowboys",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Jaydon Blue",
+    "team": "Dallas Cowboys"
+   },
+   "beckett": {
+    "player": "Jaydon Blue",
+    "team": "Dallas Cowboys"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 309,
+   "player": "Will Howard",
+   "team": "Pittsburgh Steelers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Will Howard",
+    "team": "Pittsburgh Steelers"
+   },
+   "beckett": {
+    "player": "Will Howard",
+    "team": "Pittsburgh Steelers"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 310,
+   "player": "Colston Loveland",
+   "team": "Chicago Bears",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": {
+    "player": "Colston Loveland",
+    "team": "Chicago Bears"
+   },
+   "beckett": {
+    "player": "Colston Loveland",
+    "team": "Chicago Bears"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 311,
+   "player": "Matthew Golden",
+   "team": "Green Bay Packers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Matthew Golden",
+    "team": "Green Bay Packers"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only beckett covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 312,
+   "player": "RJ Harvey",
+   "team": "Denver Broncos",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": {
+    "player": "RJ Harvey",
+    "team": "Denver Broncos"
+   },
+   "beckettAutographParallel": {
+    "player": "RJ Harvey",
+    "team": "Denver Broncos",
+    "note": "Rated Rookies Autographs Orange parallel checklist, NOT base"
+   },
+   "freshDCards": null,
+   "sportsCardInvestor": {
+    "player": "RJ Harvey",
+    "team": "Denver Broncos"
+   },
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: Amazon.com dedicated base-card listing + Sports Card Investor dedicated page confirm #312 RJ Harvey - Denver Broncos on the BASE Rated Rookie checklist, independent of the pre-existing beckettAutographParallel (non-base) note which remains recorded separately. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "RJ Harvey",
+    "team": "Denver Broncos"
+   },
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": [
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 313,
+   "player": "Tez Johnson",
+   "team": "Tampa Bay Buccaneers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Tez Johnson",
+    "team": "Tampa Bay Buccaneers"
+   },
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only beckett covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 314,
+   "player": "Tetairoa McMillan",
+   "team": "Carolina Panthers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Tetairoa McMillan",
+    "team": "Carolina Panthers"
+   },
+   "footballCardShop": {
+    "player": "Tetairoa McMillan",
+    "team": "Carolina Panthers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 315,
+   "player": "Abdul Carter",
+   "team": "New York Giants",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Abdul Carter",
+    "team": "New York Giants"
+   },
+   "footballCardShop": {
+    "player": "Abdul Carter",
+    "team": "New York Giants"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 316,
+   "player": "Dillon Gabriel",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Dillon Gabriel",
+    "team": "Cleveland Browns"
+   },
+   "footballCardShop": {
+    "player": "Dillon Gabriel",
+    "team": "Cleveland Browns"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 317,
+   "player": "Elijah Arroyo",
+   "team": "Seattle Seahawks",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Elijah Arroyo",
+    "team": "Seattle Seahawks"
+   },
+   "footballCardShop": {
+    "player": "Elijah Arroyo",
+    "team": "Seattle Seahawks"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 318,
+   "player": "Savion Williams",
+   "team": "Green Bay Packers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Savion Williams",
+    "team": "Green Bay Packers"
+   },
+   "footballCardShop": {
+    "player": "Savion Williams",
+    "team": "Green Bay Packers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 319,
+   "player": "Mykel Williams",
+   "team": "San Francisco 49ers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Mykel Williams",
+    "team": "San Francisco 49ers"
+   },
+   "footballCardShop": {
+    "player": "Mykel Williams",
+    "team": "San Francisco 49ers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 320,
+   "player": "Jack Bech",
+   "team": "Las Vegas Raiders",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Jack Bech",
+    "team": "Las Vegas Raiders"
+   },
+   "footballCardShop": {
+    "player": "Jack Bech",
+    "team": "Las Vegas Raiders"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 321,
+   "player": "Jalen Royals",
+   "team": "Kansas City Chiefs",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Jalen Royals",
+    "team": "Kansas City Chiefs"
+   },
+   "footballCardShop": {
+    "player": "Jalen Royals",
+    "team": "Kansas City Chiefs"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 322,
+   "player": "Kaleb Johnson",
+   "team": "Pittsburgh Steelers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Kaleb Johnson",
+    "team": "Pittsburgh Steelers"
+   },
+   "footballCardShop": {
+    "player": "Kaleb Johnson",
+    "team": "Pittsburgh Steelers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 323,
+   "player": "Terrance Ferguson",
+   "team": "Los Angeles Rams",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Terrance Ferguson",
+    "team": "Los Angeles Rams"
+   },
+   "footballCardShop": {
+    "player": "Terrance Ferguson",
+    "team": "Los Angeles Rams"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 324,
+   "player": "Jaylin Noel",
+   "team": "Houston Texans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Jaylin Noel",
+    "team": "Houston Texans"
+   },
+   "footballCardShop": {
+    "player": "Jaylin Noel",
+    "team": "Houston Texans"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 325,
+   "player": "Kyle McCord",
+   "team": "Philadelphia Eagles",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": {
+    "player": "Kyle McCord",
+    "team": "Philadelphia Eagles"
+   },
+   "footballCardShop": {
+    "player": "Kyle McCord",
+    "team": "Philadelphia Eagles"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 326,
+   "player": "Trevor Etienne",
+   "team": "Carolina Panthers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Trevor Etienne",
+    "team": "Carolina Panthers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 327,
+   "player": "Kyle Williams",
+   "team": "New England Patriots",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Kyle Williams",
+    "team": "New England Patriots"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 328,
+   "player": "Mason Taylor",
+   "team": "New York Jets",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Mason Taylor",
+    "team": "New York Jets"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 329,
+   "player": "Tre Harris III",
+   "team": "Los Angeles Chargers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Tre Harris III",
+    "team": "Los Angeles Chargers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 330,
+   "player": "Quinshon Judkins",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Quinshon Judkins",
+    "team": "Cleveland Browns"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 331,
+   "player": "Tai Felton",
+   "team": "Minnesota Vikings",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Tai Felton",
+    "team": "Minnesota Vikings"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 332,
+   "player": "TreVeyon Henderson",
+   "team": "New England Patriots",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "TreVeyon Henderson",
+    "team": "New England Patriots"
+   },
+   "tcdb": {
+    "player": "TreVeyon Henderson",
+    "team": "New England Patriots"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 333,
+   "player": "Bhayshul Tuten",
+   "team": "Jacksonville Jaguars",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Bhayshul Tuten",
+    "team": "Jacksonville Jaguars"
+   },
+   "tcdb": {
+    "player": "Bhayshul Tuten",
+    "team": "Jacksonville Jaguars"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 334,
+   "player": "Jayden Higgins",
+   "team": "Houston Texans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jayden Higgins",
+    "team": "Houston Texans"
+   },
+   "tcdb": {
+    "player": "Jayden Higgins",
+    "team": "Houston Texans"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 335,
+   "player": "Jaylin Lane",
+   "team": "Washington Commanders",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Jaylin Lane",
+    "team": "Washington Commanders"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 336,
+   "player": "Pat Bryant",
+   "team": "Denver Broncos",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Pat Bryant",
+    "team": "Denver Broncos"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 337,
+   "player": "Tyler Warren",
+   "team": "Indianapolis Colts",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Tyler Warren",
+    "team": "Indianapolis Colts"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 338,
+   "player": "Isaac TeSlaa",
+   "team": "Detroit Lions",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Isaac TeSlaa",
+    "team": "Detroit Lions"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 339,
+   "player": "Elic Ayomanor",
+   "team": "Tennessee Titans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Elic Ayomanor",
+    "team": "Tennessee Titans"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 340,
+   "player": "Mason Graham",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Mason Graham",
+    "team": "Cleveland Browns"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 341,
+   "player": "Riley Leonard",
+   "team": "Indianapolis Colts",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Riley Leonard",
+    "team": "Indianapolis Colts"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 342,
+   "player": "Quinn Ewers",
+   "team": "Miami Dolphins",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Quinn Ewers",
+    "team": "Miami Dolphins"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 343,
+   "player": "Jihaad Campbell",
+   "team": "Philadelphia Eagles",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Jihaad Campbell",
+    "team": "Philadelphia Eagles"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 344,
+   "player": "Jalon Walker",
+   "team": "Atlanta Falcons",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Jalon Walker",
+    "team": "Atlanta Falcons"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 345,
+   "player": "Will Campbell",
+   "team": "New England Patriots",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Will Campbell",
+    "team": "New England Patriots"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": {
+    "player": "Will Campbell",
+    "team": "LSU Tigers"
+   },
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "RESOLVED 2026-09-04 round 2: tcdb + amazon (both individually attributable, both 'New England Patriots') now meet TWO_SOURCE_VERIFIED. freshDCards' 'LSU Tigers' value is preserved verbatim in its own field (never deleted) and documented as a resolved outlier: every other source found this session (TCDB, Amazon, multiple eBay listings) independently and consistently gives 'New England Patriots', and 'LSU Tigers' cannot be a valid 2025 NFL team field - consistent with FreshDCards having substituted a college affiliation in that one field. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Will Campbell",
+    "team": "New England Patriots"
+   },
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": [
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 346,
+   "player": "Malaki Starks",
+   "team": "Baltimore Ravens",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Malaki Starks",
+    "team": "Baltimore Ravens"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 347,
+   "player": "Graham Mertz",
+   "team": "Houston Texans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": {
+    "player": "Graham Mertz",
+    "team": "Houston Texans"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 348,
+   "player": "Nick Emmanwori",
+   "team": "Seattle Seahawks",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Nick Emmanwori",
+    "team": "Seattle Seahawks"
+   },
+   "tcdb": {
+    "player": "Nick Emmanwori",
+    "team": "Seattle Seahawks"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 349,
+   "player": "Dont'e Thornton Jr.",
+   "team": "Las Vegas Raiders",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Dont'e Thornton Jr.",
+    "team": "Las Vegas Raiders"
+   },
+   "tcdb": {
+    "player": "Dont'e Thornton Jr.",
+    "team": "Las Vegas Raiders"
+   },
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
+  },
+  {
+   "cardNumber": 350,
+   "player": "Cam Ward",
+   "team": "Tennessee Titans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Cam Ward",
+    "team": "Tennessee Titans"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 351,
+   "player": "T.J. Sanders",
+   "team": "Buffalo Bills",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "T.J. Sanders",
+    "team": "Buffalo Bills"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 352,
+   "player": "Jarquez Hunter",
+   "team": "Los Angeles Rams",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jarquez Hunter",
+    "team": "Los Angeles Rams"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 353,
+   "player": "Ashton Gillotte",
+   "team": "Kansas City Chiefs",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Ashton Gillotte",
+    "team": "Kansas City Chiefs"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 354,
+   "player": "Tyler Booker",
+   "team": "Dallas Cowboys",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Tyler Booker",
+    "team": "Dallas Cowboys"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 355,
+   "player": "Alfred Collins",
+   "team": "San Francisco 49ers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Alfred Collins",
+    "team": "San Francisco 49ers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 356,
+   "player": "Jordan Watkins",
+   "team": "San Francisco 49ers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jordan Watkins",
+    "team": "San Francisco 49ers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 357,
+   "player": "Jackson Hawes",
+   "team": "Buffalo Bills",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jackson Hawes",
+    "team": "Buffalo Bills"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 358,
+   "player": "Armand Membou",
+   "team": "New York Jets",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Armand Membou",
+    "team": "New York Jets"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 359,
+   "player": "Devin Neal",
+   "team": "New Orleans Saints",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Devin Neal",
+    "team": "New Orleans Saints"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 360,
+   "player": "Tyleik Williams",
+   "team": "Detroit Lions",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Tyleik Williams",
+    "team": "Detroit Lions"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 361,
+   "player": "Benjamin Morrison",
+   "team": "Tampa Bay Buccaneers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Benjamin Morrison",
+    "team": "Tampa Bay Buccaneers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 362,
+   "player": "Maxwell Hairston",
+   "team": "Buffalo Bills",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Maxwell Hairston",
+    "team": "Buffalo Bills"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 363,
+   "player": "James Pearce Jr.",
+   "team": "Atlanta Falcons",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "James Pearce Jr.",
+    "team": "Atlanta Falcons"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 364,
+   "player": "DJ Giddens",
+   "team": "Indianapolis Colts",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "DJ Giddens",
+    "team": "Indianapolis Colts"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 365,
+   "player": "Jahdae Barron",
+   "team": "Denver Broncos",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jahdae Barron",
+    "team": "Denver Broncos"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 366,
+   "player": "Grey Zabel",
+   "team": "Seattle Seahawks",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Grey Zabel",
+    "team": "Seattle Seahawks"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 367,
+   "player": "KeAndre Lambert-Smith",
+   "team": "Los Angeles Chargers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "KeAndre Lambert-Smith",
+    "team": "Los Angeles Chargers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 368,
+   "player": "Josh Simmons",
+   "team": "Kansas City Chiefs",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Josh Simmons",
+    "team": "Kansas City Chiefs"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 369,
+   "player": "Trey Amos",
+   "team": "Washington Commanders",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Trey Amos",
+    "team": "Washington Commanders"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 370,
+   "player": "Kenneth Grant",
+   "team": "Miami Dolphins",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Kenneth Grant",
+    "team": "Miami Dolphins"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: multiple individually attributable eBay/Mercari listings. marketplaceSearch counted as one source type. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 371,
+   "player": "Gunnar Helm",
+   "team": "Tennessee Titans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Gunnar Helm",
+    "team": "Tennessee Titans"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: multiple individually attributable eBay listings (e.g. ebay.com/itm/398241611207, ebay.com/itm/389272611083). Only one independent source type found. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 372,
+   "player": "Kelvin Banks Jr.",
+   "team": "New Orleans Saints",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Kelvin Banks Jr.",
+    "team": "New Orleans Saints"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: individually attributable eBay listings + SportsCardsPro dedicated page. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Kelvin Banks Jr.",
+    "team": "New Orleans Saints",
+    "site": "SportsCardsPro"
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 373,
+   "player": "Harold Fannin Jr.",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Harold Fannin Jr.",
+    "team": "Cleveland Browns"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": {
+    "player": "Harold Fannin Jr.",
+    "team": "Cleveland Browns"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Amazon.com dedicated listing + Sports Card Investor dedicated page. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Harold Fannin Jr.",
+    "team": "Cleveland Browns"
+   },
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 374,
+   "player": "Jordan James",
+   "team": "San Francisco 49ers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Jordan James",
+    "team": "San Francisco 49ers"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing (ebay.com/itm/800226983206) + TradingCardsMarketplace.com dedicated product listing. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Jordan James",
+    "team": "San Francisco 49ers",
+    "site": "TradingCardsMarketplace"
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 375,
+   "player": "Emeka Egbuka",
+   "team": "Tampa Bay Buccaneers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Emeka Egbuka",
+    "team": "Tampa Bay Buccaneers"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": {
+    "player": "Emeka Egbuka",
+    "team": "Tampa Bay Buccaneers"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: 7+ individually attributable eBay listings, Sports Card Investor dedicated page, and ToyWiz/SportsCardsPro price-guide pages all agree. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Emeka Egbuka",
+    "team": "Tampa Bay Buccaneers",
+    "site": "SportsCardsPro/ToyWiz"
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor",
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 376,
+   "player": "Josaiah Stewart",
+   "team": "Los Angeles Rams",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Josaiah Stewart",
+    "team": "Los Angeles Rams"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing (ebay.com/itm/800055653827) + COMC/SportsCardsPro dedicated pages. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Josaiah Stewart",
+    "team": "Los Angeles Rams",
+    "site": "SportsCardsPro/COMC"
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 377,
+   "player": "Woody Marks",
+   "team": "Houston Texans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Woody Marks",
+    "team": "Houston Texans"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": {
+    "player": "Woody Marks",
+    "team": "Houston Texans"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing + two Amazon.com listings + Sports Card Investor dedicated pages. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Woody Marks",
+    "team": "Houston Texans"
+   },
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 378,
+   "player": "Kalel Mullings",
+   "team": "Tennessee Titans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Kalel Mullings",
+    "team": "Tennessee Titans"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing (ebay.com/itm/257415234015) + SportsCardsPro/COMC dedicated pages. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Kalel Mullings",
+    "team": "Tennessee Titans",
+    "site": "SportsCardsPro/COMC"
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 379,
+   "player": "Darius Alexander",
+   "team": "New York Giants",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Darius Alexander",
+    "team": "New York Giants"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Amazon.com dedicated listing (amazon.com/DARIUS-ALEXANDER-Donruss-Football-Giants/dp/B0G1JDCCFL). See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Darius Alexander",
+    "team": "New York Giants"
+   },
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 380,
+   "player": "Andrew Mukuba",
+   "team": "Philadelphia Eagles",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Andrew Mukuba",
+    "team": "Philadelphia Eagles"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing + two Amazon.com listings + SportsCardsPro dedicated page. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Andrew Mukuba",
+    "team": "Philadelphia Eagles"
+   },
+   "priceGuideSite": {
+    "player": "Andrew Mukuba",
+    "team": "Philadelphia Eagles",
+    "site": "SportsCardsPro"
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 381,
+   "player": "Donovan Jackson",
+   "team": "Minnesota Vikings",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Donovan Jackson",
+    "team": "Minnesota Vikings"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": {
+    "player": "Donovan Jackson",
+    "team": "Minnesota Vikings"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Sports Card Investor dedicated page + SportsCardsPro dedicated page. No Amazon listing found this round. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Donovan Jackson",
+    "team": "Minnesota Vikings",
+    "site": "SportsCardsPro"
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor",
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 382,
+   "player": "Tyler Loop",
+   "team": "Baltimore Ravens",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": null,
+   "tcdb": null,
+   "marketplaceSearch": {
+    "player": "Tyler Loop",
+    "team": "Baltimore Ravens"
+   },
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Amazon.com dedicated listing (amazon.com/Donruss-Rookie-Baltimore-Football-Trading/dp/B0GGC4HDQN). See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Tyler Loop",
+    "team": "Baltimore Ravens"
+   },
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 383,
+   "player": "Nic Scourton",
+   "team": "Carolina Panthers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Nic Scourton",
+    "team": "Carolina Panthers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 384,
+   "player": "Oluwafemi Oladejo",
+   "team": "Tennessee Titans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Oluwafemi Oladejo",
+    "team": "Tennessee Titans"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 385,
+   "player": "Demetrius Knight Jr.",
+   "team": "Cincinnati Bengals",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Demetrius Knight Jr.",
+    "team": "Cincinnati Bengals"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 386,
+   "player": "Arian Smith",
+   "team": "New York Jets",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Arian Smith",
+    "team": "New York Jets"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 387,
+   "player": "Chimere Dike",
+   "team": "Tennessee Titans",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Chimere Dike",
+    "team": "Tennessee Titans"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 388,
+   "player": "Tory Horton",
+   "team": "Seattle Seahawks",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Tory Horton",
+    "team": "Seattle Seahawks"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 389,
+   "player": "Dylan Sampson",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Dylan Sampson",
+    "team": "Cleveland Browns"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 390,
+   "player": "Jack Sawyer",
+   "team": "Pittsburgh Steelers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jack Sawyer",
+    "team": "Pittsburgh Steelers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 391,
+   "player": "Derrick Harmon",
+   "team": "Pittsburgh Steelers",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Derrick Harmon",
+    "team": "Pittsburgh Steelers"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 392,
+   "player": "Carson Schwesinger",
+   "team": "Cleveland Browns",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Carson Schwesinger",
+    "team": "Cleveland Browns"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 393,
+   "player": "Shemar Stewart",
+   "team": "Cincinnati Bengals",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Shemar Stewart",
+    "team": "Cincinnati Bengals"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 394,
+   "player": "Ollie Gordon II",
+   "team": "Miami Dolphins",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Ollie Gordon II",
+    "team": "Miami Dolphins"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 395,
+   "player": "Luther Burden III",
+   "team": "Chicago Bears",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Luther Burden III",
+    "team": "Chicago Bears"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 396,
+   "player": "Will Johnson",
+   "team": "Arizona Cardinals",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Will Johnson",
+    "team": "Arizona Cardinals"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 397,
+   "player": "Mike Green",
+   "team": "Baltimore Ravens",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Mike Green",
+    "team": "Baltimore Ravens"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 398,
+   "player": "JT Tuimoloau",
+   "team": "Indianapolis Colts",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "JT Tuimoloau",
+    "team": "Indianapolis Colts"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": {
+    "player": "JT Tuimoloau",
+    "team": "Indianapolis Colts"
+   },
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 399,
+   "player": "Xavier Watts",
+   "team": "Atlanta Falcons",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Xavier Watts",
+    "team": "Atlanta Falcons"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": {
+    "player": "Xavier Watts",
+    "team": "Atlanta Falcons"
+   },
+   "beckettAutographParallel": null,
+   "freshDCards": null,
+   "sportsCardInvestor": null,
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
+  },
+  {
+   "cardNumber": 400,
+   "player": "Jaxson Dart",
+   "team": "New York Giants",
+   "subset": "Base Rated Rookie",
+   "rookie": true,
+   "checklistInsider": null,
+   "beckett": null,
+   "footballCardShop": {
+    "player": "Jaxson Dart",
+    "team": "New York Giants"
+   },
+   "tcdb": null,
+   "marketplaceSearch": null,
+   "searchSynthesis": null,
+   "beckettAutographParallel": null,
+   "freshDCards": {
+    "player": "Jaxson Dart",
+    "team": "New York Giants"
+   },
+   "sportsCardInvestor": {
+    "player": "Jaxson Dart",
+    "team": "New York Giants"
+   },
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "footballCardShop + freshDCards + sportsCardInvestor all agree (Jaxson Dart, New York Giants). Independence weaker than the formatting-based cases above since exact raw text for freshDCards/sportsCardInvestor wasn't supplied verbatim - named-source corroboration, not confirmed-format-divergent. [sourceCount field corrected 2026-09-04 round 2 to match footballCardShop+sportsCardInvestor=2 non-null named fields; freshDCards not in the counted-field list above but is also non-null and agrees; status TWO_SOURCE_VERIFIED unchanged, was already correct]",
+   "amazon": null,
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_PLUS_DATABASE",
+   "_passesStrictProductionGate": true
+  }
+ ],
+ "_note_2026_09_04_round2": "Added 'amazon' and 'priceGuideSite' named source fields this round (individually attributable Amazon.com listings and named price-guide sites like Sports Card Investor/SportsCardsPro/ToyWiz/COMC/TradingCardsMarketplace), distinct from the bundled/unattributed 'searchSynthesis' catch-all which is never counted toward sourceCount. Resolved #375, #312, #345 (conflict), #370-382. See donruss-websearch-round2-raw.md for full listing-level detail."
+}

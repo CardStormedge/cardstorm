@@ -1,0 +1,21 @@
+{
+ "_schema": "Normalized 2025 Donruss per-card records, one entry per real supplied checklist row. Every field is populated FROM the source - never inferred, never guessed. Empty until a real source1 file is supplied to data/football/2025/_staging/donruss-source1-raw.md.",
+ "_fields": {
+  "identityKey": "string - '<product>|<setName-or-category>|<cardNumber>' e.g. 'donruss25|Rated Rookies|301'. Card number + product + subset ONLY - player is deliberately excluded from the identity key per instruction, so a genuine duplicate card number within the same subset is caught as a data problem rather than silently disambiguated by player name.",
+  "product": "string - 'Donruss'",
+  "year": "number - 2025",
+  "sport": "string - 'football'",
+  "setName": "string - the subset/category name from the raw source, e.g. 'Rated Rookies' (also stored as 'category' for symmetry with the existing 2024 normalizer output shape)",
+  "category": "string - same as setName, kept for compatibility with scanProductForPlayer()'s existing rec.category field name",
+  "cardNumber": "string|number - exactly as given by the source, not renumbered",
+  "player": "string - exactly as given by the source",
+  "team": "string - exactly as given by the source, empty string if the source doesn't provide it (never guessed from the player's other-year team)",
+  "rookie": "boolean - only true if the source itself marks this record as a rookie card; never inferred from card-number range alone",
+  "source1": "string - name/URL of the first source this row came from",
+  "source2": "string|null - name/URL of a second, independently-confirming source, once one exists",
+  "verificationStatus": "ONE_SOURCE_VERIFIED | TWO_SOURCE_VERIFIED | SOURCE_CONFLICT | INDEPENDENCE_UNCONFIRMED | NOT_READY - see data/checklists/football/2025/donruss-proposed-manifest-entry.md for the full vocabulary and the rules that move a row between these",
+  "rawRecord": "object - the original as-supplied row, preserved verbatim for auditability (so a later re-check can compare against exactly what was ingested, not a reconstruction)"
+ },
+ "_status": "SUPERSEDED (2026-09-04) - the single-source-then-reconcile pipeline this file belonged to was replaced by a provenance-aware multi-source evidence table before any row was ever added here (still 0 records, nothing to migrate). See data/football/2025/_staging/donruss-base-rated-rookie-evidence.json for the active working file and data/checklists/football/2025/AUDIT-2025-donruss-evidence.md for the full audit. Do not populate this file going forward.",
+ "records": []
+}
