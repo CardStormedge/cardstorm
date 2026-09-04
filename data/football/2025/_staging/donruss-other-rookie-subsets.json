@@ -30,5 +30,5 @@
    "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED"
   }
  ],
- "stillUnresolved": "Emeka Egbuka was not found in the Base Rated Rookie #301-400 evidence gathered this pass (numbers 335-397 and #400 remain unresolved gaps), and no alternate-subset evidence for him was found either. Treat as ABSENT from all evidence gathered so far, not confirmed absent from the product overall."
+ "stillUnresolved": "RESOLVED 2026-09-04 (round 2): Emeka Egbuka is now confirmed at Base Rated Rookie #375 - Tampa Bay Buccaneers, TWO_SOURCE_VERIFIED (marketplaceSearch + sportsCardInvestor + priceGuideSite), see data/football/2025/_staging/donruss-base-rated-rookie-evidence.json. No separate/additional alternate-subset card for Emeka Egbuka has been found this session."
 }

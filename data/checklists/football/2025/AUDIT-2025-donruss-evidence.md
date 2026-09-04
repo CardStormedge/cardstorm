@@ -4,6 +4,100 @@ Not wired into production. `CHECKLIST_MANIFEST` has no `'football|2025'` key; th
 add one. See `data/football/2025/_staging/donruss-base-rated-rookie-evidence.json` for the live
 evidence table and `donruss-base-rated-rookie-evidence.csv` for the same data as a spreadsheet.
 
+## UPDATE (2026-09-04, third pass) — weak-row resolution + production-shape file staged
+
+All 14 previously-weak rows (#312, #370-382) were individually re-searched against a stricter
+"individually attributable source" standard (specific eBay item numbers, specific Amazon ASIN
+listings, or dedicated price-guide pages — never bundled/unattributed search summaries). Every one
+resolved. The #345 SOURCE_CONFLICT was also resolved. Full per-card findings and source URLs are in
+`data/football/2025/_staging/donruss-websearch-round2-raw.md`. A production-shape file,
+`data/football/2025/donruss.json`, was built from this evidence but is **NOT wired into
+`CHECKLIST_MANIFEST` and NOT active in Team Hunt**.
+
+### Production readiness report (A-O)
+
+**A. Total records in production-shape file:** 100 (all of #301-400, Base Rated Rookie only;
+veteran base #1-300 remains an unenumerated `kind:"pending"` stub, matching the 2024 Donruss shape).
+
+**B. TWO_SOURCE_VERIFIED count:** 41
+
+**C. ONE_SOURCE_VERIFIED count:** 59
+
+**D. SEARCH_SYNTHESIS_UNCONFIRMED count:** 0 (down from 14)
+
+**E. SOURCE_CONFLICT count:** 0 (down from 1 — #345 resolved, see H)
+
+**F. Weak rows resolved this pass:** all 14 — #312, #370, #371, #372, #373, #374, #375, #376, #377,
+#378, #379, #380, #381, #382. 9 reached `TWO_SOURCE_VERIFIED` (#312, #372, #373, #374, #375, #376,
+#377, #378, #379, #380, #381, #382 — see raw file for exact per-row source pairing); #370 and #371
+reached `ONE_SOURCE_VERIFIED` only (single eBay-listing source type found, no second independent
+named source located this pass).
+
+**G. Status of #312:** `TWO_SOURCE_VERIFIED` (amazon + sportsCardInvestor, both explicitly base-set
+listings). This is independent of the pre-existing `beckettAutographParallel` note (Rated Rookies
+Autographs Orange, a non-base parallel), which remains recorded separately and does not itself
+count toward this status.
+
+**H. Status of #345:** `TWO_SOURCE_VERIFIED` (tcdb + amazon, both "New England Patriots"). The
+FreshDCards "LSU Tigers" value is preserved verbatim in its own field — never deleted — and
+documented as a resolved source-quality outlier: no other source found this session corroborates
+it, "LSU Tigers" cannot be a valid 2025 NFL team value, and every other independent source
+(TCDB, Amazon, multiple eBay listings) agrees on "New England Patriots".
+
+**I. Status of #375 (Emeka Egbuka, priority row):** `TWO_SOURCE_VERIFIED` (marketplaceSearch +
+sportsCardInvestor + priceGuideSite — 3 independent source types), directly tying 375 + Emeka
+Egbuka + Tampa Bay Buccaneers to the Base Rated Rookie checklist.
+
+**J. Featured seven vs. the TWO_SOURCE_VERIFIED gate:**
+
+| Player | Card # | Team | Status | Passes 2-source gate? |
+|---|---|---|---|---|
+| Travis Hunter | #301 | Jacksonville Jaguars | TWO_SOURCE_VERIFIED | Yes |
+| Ashton Jeanty | #305 | Las Vegas Raiders | TWO_SOURCE_VERIFIED | Yes |
+| Matthew Golden | #311 | Green Bay Packers | ONE_SOURCE_VERIFIED | No |
+| Tetairoa McMillan | #314 | Carolina Panthers | TWO_SOURCE_VERIFIED | Yes |
+| Cam Ward | #350 | Tennessee Titans | ONE_SOURCE_VERIFIED | No |
+| Emeka Egbuka | #375 | Tampa Bay Buccaneers | TWO_SOURCE_VERIFIED | Yes |
+| Jaxson Dart | #400 | New York Giants | TWO_SOURCE_VERIFIED | Yes |
+
+4 of 7 featured players pass a strict TWO_SOURCE_VERIFIED-only gate; Matthew Golden and Cam Ward
+would show no "verified" pill under that gate (each has only one directly-named source), and would
+need additional independent sourcing before they could. Cam Ward and Jaxson Dart also have separate,
+non-base Rated Rookie cards in other subsets (Throwback #25 / Retro #1 respectively — see
+`donruss-other-rookie-subsets.json`), tracked apart from these base-set numbers.
+
+**K. Rows with missing team/player/card number:** none. Verified programmatically against all 100
+records in `data/football/2025/donruss.json` — zero nulls/blanks in `player`, `team`, or
+`cardNumber`.
+
+**L. Does `donruss.json` validate cleanly?** Yes — valid JSON, exactly 100 cards, card numbers
+#301-400 with no duplicates or gaps, confirmed via script.
+
+**M. Was `CHECKLIST_MANIFEST` modified?** No. It still has only `'football|2024'`. Confirmed via
+`grep` against `app.html` before this commit.
+
+**N. Was `app.html` modified?** No. `git diff --stat app.html` is empty for this entire pass.
+
+**O. Final recommendation: NOT_READY for production activation (still).** Reasons:
+1. `donruss.json` is deliberately unwired — no `'football|2025'` key exists in `CHECKLIST_MANIFEST`,
+   and this pass does not add one, per explicit instruction.
+2. 59 of 100 records are only `ONE_SOURCE_VERIFIED` — real evidence, but short of the proposed
+   two-source production gate; two of the seven featured Team Hunt players (Matthew Golden, Cam
+   Ward) are among them.
+3. The independence-safeguard caveat from the 2024 Optic lesson still applies: every
+   "TWO_SOURCE_VERIFIED" judgment in this pass is based on formatting/operator divergence between
+   named sources (e.g. eBay listing vs. Amazon ASIN vs. Sports Card Investor page), not a
+   side-by-side direct fetch of the live pages (WebFetch/curl remain EGRESS_BLOCKED to every
+   external domain tried this session).
+4. Veteran base #1-300 remains entirely unenumerated (`kind:"pending"` stub) — this file only
+   covers the Rated Rookies #301-400 subset.
+5. No independent human/QA review of this pass's WebSearch-sourced upgrades has occurred yet.
+
+Activating this file in Team Hunt requires: (a) adding a `'football|2025'` entry to
+`CHECKLIST_MANIFEST` pointing at `data/football/2025/donruss.json`, and (b) either accepting
+`ONE_SOURCE_VERIFIED` rows into the gate (broadening beyond the current explicit approval) or doing
+further sourcing work on the 59 single-source rows — neither of which this commit does.
+
 ## UPDATE (2026-09-04, same day, second pass) — all 100 numbers now have evidence
 
 New sources (TCDB, a second FootballCardShop batch, bundled marketplace/search corroboration for

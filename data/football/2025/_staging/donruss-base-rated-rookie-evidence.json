@@ -34,7 +34,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 302,
@@ -59,7 +61,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 303,
@@ -84,7 +88,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 304,
@@ -109,7 +115,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 305,
@@ -134,7 +142,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 306,
@@ -159,7 +169,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 307,
@@ -184,7 +196,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 308,
@@ -209,7 +223,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 309,
@@ -234,7 +250,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 310,
@@ -259,7 +277,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 311,
@@ -281,7 +301,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only beckett covers this number."
+   "notes": "Only beckett covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 312,
@@ -304,10 +326,18 @@
     "note": "Rated Rookies Autographs Orange parallel checklist, NOT base"
    },
    "freshDCards": null,
-   "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only a web-search-engine synthesis, not a directly reviewable page."
+   "sportsCardInvestor": {
+    "player": "RJ Harvey",
+    "team": "Denver Broncos"
+   },
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: Amazon.com dedicated base-card listing + Sports Card Investor dedicated page confirm #312 RJ Harvey - Denver Broncos on the BASE Rated Rookie checklist, independent of the pre-existing beckettAutographParallel (non-base) note which remains recorded separately. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "RJ Harvey",
+    "team": "Denver Broncos"
+   },
+   "priceGuideSite": null
   },
   {
    "cardNumber": 313,
@@ -329,7 +359,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only beckett covers this number."
+   "notes": "Only beckett covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 314,
@@ -354,7 +386,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 315,
@@ -379,7 +413,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 316,
@@ -404,7 +440,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 317,
@@ -429,7 +467,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 318,
@@ -454,7 +494,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 319,
@@ -479,7 +521,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 320,
@@ -504,7 +548,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 321,
@@ -529,7 +575,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 322,
@@ -554,7 +602,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 323,
@@ -579,7 +629,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 324,
@@ -604,7 +656,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 325,
@@ -629,7 +683,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 326,
@@ -651,7 +707,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 327,
@@ -673,7 +731,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 328,
@@ -695,7 +755,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 329,
@@ -717,7 +779,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 330,
@@ -739,7 +803,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 331,
@@ -761,7 +827,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 332,
@@ -786,7 +854,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 333,
@@ -811,7 +881,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 334,
@@ -836,7 +908,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 335,
@@ -858,7 +932,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 336,
@@ -880,7 +956,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 337,
@@ -902,7 +980,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 338,
@@ -924,7 +1004,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 339,
@@ -946,7 +1028,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 340,
@@ -968,7 +1052,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 341,
@@ -990,7 +1076,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 342,
@@ -1012,7 +1100,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 343,
@@ -1034,7 +1124,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 344,
@@ -1056,7 +1148,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 345,
@@ -1079,9 +1173,14 @@
     "team": "LSU Tigers"
    },
    "sportsCardInvestor": null,
-   "sourceCount": 1,
-   "verificationStatus": "SOURCE_CONFLICT",
-   "notes": "FreshDCards lists team as 'LSU Tigers' (a college affiliation, not an NFL team) vs ['tcdb'] agreeing on 'New England Patriots' - flagged, not overwritten, kept conservative."
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "RESOLVED 2026-09-04 round 2: tcdb + amazon (both individually attributable, both 'New England Patriots') now meet TWO_SOURCE_VERIFIED. freshDCards' 'LSU Tigers' value is preserved verbatim in its own field (never deleted) and documented as a resolved outlier: every other source found this session (TCDB, Amazon, multiple eBay listings) independently and consistently gives 'New England Patriots', and 'LSU Tigers' cannot be a valid 2025 NFL team field - consistent with FreshDCards having substituted a college affiliation in that one field. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Will Campbell",
+    "team": "New England Patriots"
+   },
+   "priceGuideSite": null
   },
   {
    "cardNumber": 346,
@@ -1103,7 +1202,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 347,
@@ -1125,7 +1226,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only tcdb covers this number."
+   "notes": "Only tcdb covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 348,
@@ -1150,7 +1253,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 349,
@@ -1175,7 +1280,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session)."
+   "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 350,
@@ -1197,7 +1304,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 351,
@@ -1219,7 +1328,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 352,
@@ -1241,7 +1352,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 353,
@@ -1263,7 +1376,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 354,
@@ -1285,7 +1400,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 355,
@@ -1307,7 +1424,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 356,
@@ -1329,7 +1448,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 357,
@@ -1351,7 +1472,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 358,
@@ -1373,7 +1496,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 359,
@@ -1395,7 +1520,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 360,
@@ -1417,7 +1544,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 361,
@@ -1439,7 +1568,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 362,
@@ -1461,7 +1592,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 363,
@@ -1483,7 +1616,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 364,
@@ -1505,7 +1640,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 365,
@@ -1527,7 +1664,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 366,
@@ -1549,7 +1688,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 367,
@@ -1571,7 +1712,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 368,
@@ -1593,7 +1736,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 369,
@@ -1615,7 +1760,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 370,
@@ -1635,9 +1782,11 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: multiple individually attributable eBay/Mercari listings. marketplaceSearch counted as one source type. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 371,
@@ -1657,9 +1806,11 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 1,
+   "verificationStatus": "ONE_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: multiple individually attributable eBay listings (e.g. ebay.com/itm/398241611207, ebay.com/itm/389272611083). Only one independent source type found. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 372,
@@ -1679,9 +1830,15 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: individually attributable eBay listings + SportsCardsPro dedicated page. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Kelvin Banks Jr.",
+    "team": "New Orleans Saints",
+    "site": "SportsCardsPro"
+   }
   },
   {
    "cardNumber": 373,
@@ -1700,10 +1857,18 @@
    "searchSynthesis": null,
    "beckettAutographParallel": null,
    "freshDCards": null,
-   "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sportsCardInvestor": {
+    "player": "Harold Fannin Jr.",
+    "team": "Cleveland Browns"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Amazon.com dedicated listing + Sports Card Investor dedicated page. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Harold Fannin Jr.",
+    "team": "Cleveland Browns"
+   },
+   "priceGuideSite": null
   },
   {
    "cardNumber": 374,
@@ -1723,9 +1888,15 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing (ebay.com/itm/800226983206) + TradingCardsMarketplace.com dedicated product listing. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Jordan James",
+    "team": "San Francisco 49ers",
+    "site": "TradingCardsMarketplace"
+   }
   },
   {
    "cardNumber": 375,
@@ -1744,10 +1915,19 @@
    "searchSynthesis": null,
    "beckettAutographParallel": null,
    "freshDCards": null,
-   "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sportsCardInvestor": {
+    "player": "Emeka Egbuka",
+    "team": "Tampa Bay Buccaneers"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: 7+ individually attributable eBay listings, Sports Card Investor dedicated page, and ToyWiz/SportsCardsPro price-guide pages all agree. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Emeka Egbuka",
+    "team": "Tampa Bay Buccaneers",
+    "site": "SportsCardsPro/ToyWiz"
+   }
   },
   {
    "cardNumber": 376,
@@ -1767,9 +1947,15 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing (ebay.com/itm/800055653827) + COMC/SportsCardsPro dedicated pages. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Josaiah Stewart",
+    "team": "Los Angeles Rams",
+    "site": "SportsCardsPro/COMC"
+   }
   },
   {
    "cardNumber": 377,
@@ -1788,10 +1974,18 @@
    "searchSynthesis": null,
    "beckettAutographParallel": null,
    "freshDCards": null,
-   "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sportsCardInvestor": {
+    "player": "Woody Marks",
+    "team": "Houston Texans"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing + two Amazon.com listings + Sports Card Investor dedicated pages. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Woody Marks",
+    "team": "Houston Texans"
+   },
+   "priceGuideSite": null
   },
   {
    "cardNumber": 378,
@@ -1811,9 +2005,15 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing (ebay.com/itm/257415234015) + SportsCardsPro/COMC dedicated pages. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Kalel Mullings",
+    "team": "Tennessee Titans",
+    "site": "SportsCardsPro/COMC"
+   }
   },
   {
    "cardNumber": 379,
@@ -1833,9 +2033,14 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Amazon.com dedicated listing (amazon.com/DARIUS-ALEXANDER-Donruss-Football-Giants/dp/B0G1JDCCFL). See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Darius Alexander",
+    "team": "New York Giants"
+   },
+   "priceGuideSite": null
   },
   {
    "cardNumber": 380,
@@ -1855,9 +2060,18 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listing + two Amazon.com listings + SportsCardsPro dedicated page. See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Andrew Mukuba",
+    "team": "Philadelphia Eagles"
+   },
+   "priceGuideSite": {
+    "player": "Andrew Mukuba",
+    "team": "Philadelphia Eagles",
+    "site": "SportsCardsPro"
+   }
   },
   {
    "cardNumber": 381,
@@ -1876,10 +2090,19 @@
    "searchSynthesis": null,
    "beckettAutographParallel": null,
    "freshDCards": null,
-   "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sportsCardInvestor": {
+    "player": "Donovan Jackson",
+    "team": "Minnesota Vikings"
+   },
+   "sourceCount": 3,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Sports Card Investor dedicated page + SportsCardsPro dedicated page. No Amazon listing found this round. See donruss-websearch-round2-raw.md.",
+   "amazon": null,
+   "priceGuideSite": {
+    "player": "Donovan Jackson",
+    "team": "Minnesota Vikings",
+    "site": "SportsCardsPro"
+   }
   },
   {
    "cardNumber": 382,
@@ -1899,9 +2122,14 @@
    "beckettAutographParallel": null,
    "freshDCards": null,
    "sportsCardInvestor": null,
-   "sourceCount": 0,
-   "verificationStatus": "SEARCH_SYNTHESIS_UNCONFIRMED",
-   "notes": "Only bundled 'multiple marketplace/search sources' evidence, not one specific reviewable checklist page - treated conservatively per instruction."
+   "sourceCount": 2,
+   "verificationStatus": "TWO_SOURCE_VERIFIED",
+   "notes": "Upgraded 2026-09-04 round 2: eBay listings + Amazon.com dedicated listing (amazon.com/Donruss-Rookie-Baltimore-Football-Trading/dp/B0GGC4HDQN). See donruss-websearch-round2-raw.md.",
+   "amazon": {
+    "player": "Tyler Loop",
+    "team": "Baltimore Ravens"
+   },
+   "priceGuideSite": null
   },
   {
    "cardNumber": 383,
@@ -1923,7 +2151,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 384,
@@ -1945,7 +2175,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 385,
@@ -1967,7 +2199,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 386,
@@ -1989,7 +2223,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 387,
@@ -2011,7 +2247,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 388,
@@ -2033,7 +2271,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 389,
@@ -2055,7 +2295,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 390,
@@ -2077,7 +2319,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 391,
@@ -2099,7 +2343,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 392,
@@ -2121,7 +2367,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 393,
@@ -2143,7 +2391,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 394,
@@ -2165,7 +2415,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 395,
@@ -2187,7 +2439,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 396,
@@ -2209,7 +2463,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 397,
@@ -2231,7 +2487,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 398,
@@ -2256,7 +2514,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 399,
@@ -2281,7 +2541,9 @@
    "sportsCardInvestor": null,
    "sourceCount": 1,
    "verificationStatus": "ONE_SOURCE_VERIFIED",
-   "notes": "Only footballCardShop covers this number."
+   "notes": "Only footballCardShop covers this number.",
+   "amazon": null,
+   "priceGuideSite": null
   },
   {
    "cardNumber": 400,
@@ -2307,9 +2569,12 @@
     "player": "Jaxson Dart",
     "team": "New York Giants"
    },
-   "sourceCount": 1,
+   "sourceCount": 2,
    "verificationStatus": "TWO_SOURCE_VERIFIED",
-   "notes": "footballCardShop + freshDCards + sportsCardInvestor all agree (Jaxson Dart, New York Giants). Independence weaker than the formatting-based cases above since exact raw text for freshDCards/sportsCardInvestor wasn't supplied verbatim - named-source corroboration, not confirmed-format-divergent."
+   "notes": "footballCardShop + freshDCards + sportsCardInvestor all agree (Jaxson Dart, New York Giants). Independence weaker than the formatting-based cases above since exact raw text for freshDCards/sportsCardInvestor wasn't supplied verbatim - named-source corroboration, not confirmed-format-divergent. [sourceCount field corrected 2026-09-04 round 2 to match footballCardShop+sportsCardInvestor=2 non-null named fields; freshDCards not in the counted-field list above but is also non-null and agrees; status TWO_SOURCE_VERIFIED unchanged, was already correct]",
+   "amazon": null,
+   "priceGuideSite": null
   }
- ]
+ ],
+ "_note_2026_09_04_round2": "Added 'amazon' and 'priceGuideSite' named source fields this round (individually attributable Amazon.com listings and named price-guide sites like Sports Card Investor/SportsCardsPro/ToyWiz/COMC/TradingCardsMarketplace), distinct from the bundled/unattributed 'searchSynthesis' catch-all which is never counted toward sourceCount. Resolved #375, #312, #345 (conflict), #370-382. See donruss-websearch-round2-raw.md for full listing-level detail."
 }
