@@ -36,7 +36,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 302,
@@ -63,7 +73,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 303,
@@ -90,7 +110,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 304,
@@ -117,7 +147,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 305,
@@ -144,7 +184,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 306,
@@ -171,7 +221,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 307,
@@ -198,7 +258,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 308,
@@ -225,7 +295,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 309,
@@ -252,7 +332,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 310,
@@ -279,7 +369,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across checklistInsider, beckett. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "checklistInsider",
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 311,
@@ -303,7 +403,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only beckett covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 312,
@@ -337,7 +446,18 @@
     "player": "RJ Harvey",
     "team": "Denver Broncos"
    },
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": [
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 313,
@@ -361,7 +481,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only beckett covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 314,
@@ -388,7 +517,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 315,
@@ -415,7 +554,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 316,
@@ -442,7 +591,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 317,
@@ -469,7 +628,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 318,
@@ -496,7 +665,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 319,
@@ -523,7 +702,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 320,
@@ -550,7 +739,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 321,
@@ -577,7 +776,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 322,
@@ -604,7 +813,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 323,
@@ -631,7 +850,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 324,
@@ -658,7 +887,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 325,
@@ -685,7 +924,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across beckett, footballCardShop. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "beckett",
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 326,
@@ -709,7 +958,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 327,
@@ -733,7 +991,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 328,
@@ -757,7 +1024,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 329,
@@ -781,7 +1057,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 330,
@@ -805,7 +1090,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 331,
@@ -829,7 +1123,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 332,
@@ -856,7 +1159,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 333,
@@ -883,7 +1196,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 334,
@@ -910,7 +1233,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 335,
@@ -934,7 +1267,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 336,
@@ -958,7 +1300,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 337,
@@ -982,7 +1333,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 338,
@@ -1006,7 +1366,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 339,
@@ -1030,7 +1399,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 340,
@@ -1054,7 +1432,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 341,
@@ -1078,7 +1465,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 342,
@@ -1102,7 +1498,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 343,
@@ -1126,7 +1531,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 344,
@@ -1150,7 +1564,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 345,
@@ -1180,7 +1603,18 @@
     "player": "Will Campbell",
     "team": "New England Patriots"
    },
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": [
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 346,
@@ -1204,7 +1638,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 347,
@@ -1228,7 +1671,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only tcdb covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 348,
@@ -1255,7 +1707,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 349,
@@ -1282,7 +1744,17 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "Agreement across footballCardShop, tcdb. Independence positively assessed (formatting differs - see AUDIT) but not certain (no direct page fetch this session).",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop",
+     "tcdb"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+   "_passesStrictProductionGate": true
   },
   {
    "cardNumber": 350,
@@ -1306,7 +1778,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 351,
@@ -1330,7 +1811,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 352,
@@ -1354,7 +1844,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 353,
@@ -1378,7 +1877,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 354,
@@ -1402,7 +1910,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 355,
@@ -1426,7 +1943,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 356,
@@ -1450,7 +1976,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 357,
@@ -1474,7 +2009,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 358,
@@ -1498,7 +2042,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 359,
@@ -1522,7 +2075,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 360,
@@ -1546,7 +2108,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 361,
@@ -1570,7 +2141,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 362,
@@ -1594,7 +2174,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 363,
@@ -1618,7 +2207,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 364,
@@ -1642,7 +2240,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 365,
@@ -1666,7 +2273,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 366,
@@ -1690,7 +2306,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 367,
@@ -1714,7 +2339,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 368,
@@ -1738,7 +2372,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 369,
@@ -1762,7 +2405,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 370,
@@ -1786,7 +2438,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Upgraded 2026-09-04 round 2: multiple individually attributable eBay/Mercari listings. marketplaceSearch counted as one source type. See donruss-websearch-round2-raw.md.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 371,
@@ -1810,7 +2471,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Upgraded 2026-09-04 round 2: multiple individually attributable eBay listings (e.g. ebay.com/itm/398241611207, ebay.com/itm/389272611083). Only one independent source type found. See donruss-websearch-round2-raw.md.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 372,
@@ -1838,7 +2508,18 @@
     "player": "Kelvin Banks Jr.",
     "team": "New Orleans Saints",
     "site": "SportsCardsPro"
-   }
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 373,
@@ -1868,7 +2549,19 @@
     "player": "Harold Fannin Jr.",
     "team": "Cleveland Browns"
    },
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 374,
@@ -1896,7 +2589,18 @@
     "player": "Jordan James",
     "team": "San Francisco 49ers",
     "site": "TradingCardsMarketplace"
-   }
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 375,
@@ -1927,7 +2631,19 @@
     "player": "Emeka Egbuka",
     "team": "Tampa Bay Buccaneers",
     "site": "SportsCardsPro/ToyWiz"
-   }
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor",
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 376,
@@ -1955,7 +2671,18 @@
     "player": "Josaiah Stewart",
     "team": "Los Angeles Rams",
     "site": "SportsCardsPro/COMC"
-   }
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 377,
@@ -1985,7 +2712,19 @@
     "player": "Woody Marks",
     "team": "Houston Texans"
    },
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 378,
@@ -2013,7 +2752,18 @@
     "player": "Kalel Mullings",
     "team": "Tennessee Titans",
     "site": "SportsCardsPro/COMC"
-   }
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 379,
@@ -2040,7 +2790,17 @@
     "player": "Darius Alexander",
     "team": "New York Giants"
    },
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 380,
@@ -2071,7 +2831,19 @@
     "player": "Andrew Mukuba",
     "team": "Philadelphia Eagles",
     "site": "SportsCardsPro"
-   }
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 381,
@@ -2102,7 +2874,19 @@
     "player": "Donovan Jackson",
     "team": "Minnesota Vikings",
     "site": "SportsCardsPro"
-   }
+   },
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [
+     "sportsCardInvestor",
+     "priceGuideSite"
+    ],
+    "tierC": [
+     "marketplaceSearch"
+    ]
+   },
+   "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 382,
@@ -2129,7 +2913,17 @@
     "player": "Tyler Loop",
     "team": "Baltimore Ravens"
    },
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [],
+    "tierB": [],
+    "tierC": [
+     "marketplaceSearch",
+     "amazon"
+    ]
+   },
+   "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 383,
@@ -2153,7 +2947,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 384,
@@ -2177,7 +2980,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 385,
@@ -2201,7 +3013,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 386,
@@ -2225,7 +3046,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 387,
@@ -2249,7 +3079,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 388,
@@ -2273,7 +3112,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 389,
@@ -2297,7 +3145,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 390,
@@ -2321,7 +3178,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 391,
@@ -2345,7 +3211,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 392,
@@ -2369,7 +3244,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 393,
@@ -2393,7 +3277,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 394,
@@ -2417,7 +3310,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 395,
@@ -2441,7 +3343,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 396,
@@ -2465,7 +3376,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 397,
@@ -2489,7 +3409,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 398,
@@ -2516,7 +3445,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 399,
@@ -2543,7 +3481,16 @@
    "verificationStatus": "ONE_SOURCE_VERIFIED",
    "notes": "Only footballCardShop covers this number.",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+   "_passesStrictProductionGate": false
   },
   {
    "cardNumber": 400,
@@ -2573,7 +3520,18 @@
    "verificationStatus": "TWO_SOURCE_VERIFIED",
    "notes": "footballCardShop + freshDCards + sportsCardInvestor all agree (Jaxson Dart, New York Giants). Independence weaker than the formatting-based cases above since exact raw text for freshDCards/sportsCardInvestor wasn't supplied verbatim - named-source corroboration, not confirmed-format-divergent. [sourceCount field corrected 2026-09-04 round 2 to match footballCardShop+sportsCardInvestor=2 non-null named fields; freshDCards not in the counted-field list above but is also non-null and agrees; status TWO_SOURCE_VERIFIED unchanged, was already correct]",
    "amazon": null,
-   "priceGuideSite": null
+   "priceGuideSite": null,
+   "_sourceTiers": {
+    "tierA": [
+     "footballCardShop"
+    ],
+    "tierB": [
+     "sportsCardInvestor"
+    ],
+    "tierC": []
+   },
+   "_evidenceQualityStatus": "CHECKLIST_PLUS_DATABASE",
+   "_passesStrictProductionGate": true
   }
  ],
  "_note_2026_09_04_round2": "Added 'amazon' and 'priceGuideSite' named source fields this round (individually attributable Amazon.com listings and named price-guide sites like Sports Card Investor/SportsCardsPro/ToyWiz/COMC/TradingCardsMarketplace), distinct from the bundled/unattributed 'searchSynthesis' catch-all which is never counted toward sourceCount. Resolved #375, #312, #345 (conflict), #370-382. See donruss-websearch-round2-raw.md for full listing-level detail."

@@ -18,7 +18,7 @@
    "note": "Coverage limited to the Base Rated Rookie #301-400 subset, built from a provenance-aware multi-source evidence table (see data/football/2025/_staging/donruss-base-rated-rookie-evidence.json). Veteran base #1-300 and insert/autograph/memorabilia player lists are not yet enumerated. NOT YET ACTIVE: this file is not referenced by CHECKLIST_MANIFEST and is not scanned by Team Hunt."
   },
   "_productionStatus": "STAGED_NOT_ACTIVE",
-  "_verificationNote": "Every card below carries an internal _evidenceVerificationStatus field (TWO_SOURCE_VERIFIED or ONE_SOURCE_VERIFIED as of 2026-09-04 - zero SEARCH_SYNTHESIS_UNCONFIRMED or SOURCE_CONFLICT remain). Proposed production gate: only TWO_SOURCE_VERIFIED counts as scanner-verified chase evidence; ONE_SOURCE_VERIFIED stays in this file for audit/completeness but must not be treated as verified until the gate is explicitly broadened. This gate is NOT implemented in app.html - the field is descriptive metadata only, present so a future scanner change can filter on it."
+  "_verificationNote": "Every card below carries internal evidence metadata: _evidenceVerificationStatus (source-count tier: TWO_SOURCE_VERIFIED/ONE_SOURCE_VERIFIED), _evidenceQualityStatus (source-quality tier: CHECKLIST_CROSS_VERIFIED > CHECKLIST_PLUS_DATABASE > DATABASE_CROSS_VERIFIED > SINGLE_STRONG_SOURCE > MARKETPLACE_CORROBORATED > SINGLE_MARKETPLACE_SOURCE > REVIEW_REQUIRED), and _passesStrictProductionGate (true only if >=2 independent Tier A checklist sources, or 1 Tier A + 1 independent Tier B card-database source - marketplace-only agreement, however many listings, never passes this gate). As of 2026-09-04 round 3: 28 of 100 records pass the strict gate. A future scanner change could filter Team Hunt's VERIFIED badge to _passesStrictProductionGate===true records only; this field is descriptive metadata only today, not read by any scanner yet."
  },
  "categories": {
   "Base Cards": {
@@ -42,7 +42,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 302,
@@ -58,7 +68,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 303,
@@ -74,7 +94,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 304,
@@ -90,7 +120,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 305,
@@ -106,7 +146,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 306,
@@ -122,7 +172,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 307,
@@ -138,7 +198,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 308,
@@ -154,7 +224,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 309,
@@ -170,7 +250,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 310,
@@ -186,7 +276,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "checklistInsider",
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 311,
@@ -202,7 +302,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 312,
@@ -218,7 +327,18 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": [
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 313,
@@ -234,7 +354,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 314,
@@ -250,7 +379,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 315,
@@ -266,7 +405,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 316,
@@ -282,7 +431,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 317,
@@ -298,7 +457,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 318,
@@ -314,7 +483,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 319,
@@ -330,7 +509,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 320,
@@ -346,7 +535,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 321,
@@ -362,7 +561,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 322,
@@ -378,7 +587,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 323,
@@ -394,7 +613,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 324,
@@ -410,7 +639,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 325,
@@ -426,7 +665,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "beckett",
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 326,
@@ -442,7 +691,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 327,
@@ -458,7 +716,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 328,
@@ -474,7 +741,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 329,
@@ -490,7 +766,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 330,
@@ -506,7 +791,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 331,
@@ -522,7 +816,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 332,
@@ -538,7 +841,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 333,
@@ -554,7 +867,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 334,
@@ -570,7 +893,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 335,
@@ -586,7 +919,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 336,
@@ -602,7 +944,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 337,
@@ -618,7 +969,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 338,
@@ -634,7 +994,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 339,
@@ -650,7 +1019,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 340,
@@ -666,7 +1044,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 341,
@@ -682,7 +1069,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 342,
@@ -698,7 +1094,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 343,
@@ -714,7 +1119,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 344,
@@ -730,7 +1144,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 345,
@@ -746,7 +1169,18 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": [
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 346,
@@ -762,7 +1196,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 347,
@@ -778,7 +1221,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 348,
@@ -794,7 +1246,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 349,
@@ -810,7 +1272,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_CROSS_VERIFIED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop",
+       "tcdb"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     },
     {
      "cardNumber": 350,
@@ -826,7 +1298,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 351,
@@ -842,7 +1323,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 352,
@@ -858,7 +1348,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 353,
@@ -874,7 +1373,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 354,
@@ -890,7 +1398,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 355,
@@ -906,7 +1423,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 356,
@@ -922,7 +1448,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 357,
@@ -938,7 +1473,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 358,
@@ -954,7 +1498,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 359,
@@ -970,7 +1523,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 360,
@@ -986,7 +1548,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 361,
@@ -1002,7 +1573,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 362,
@@ -1018,7 +1598,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 363,
@@ -1034,7 +1623,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 364,
@@ -1050,7 +1648,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 365,
@@ -1066,7 +1673,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 366,
@@ -1082,7 +1698,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 367,
@@ -1098,7 +1723,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 368,
@@ -1114,7 +1748,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 369,
@@ -1130,7 +1773,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 370,
@@ -1146,7 +1798,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 371,
@@ -1162,7 +1823,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_MARKETPLACE_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 372,
@@ -1178,7 +1848,18 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 373,
@@ -1194,7 +1875,19 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 3
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 374,
@@ -1210,7 +1903,18 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 375,
@@ -1226,7 +1930,19 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 3
+     "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor",
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 376,
@@ -1242,7 +1958,18 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 377,
@@ -1258,7 +1985,19 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 3
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 378,
@@ -1274,7 +2013,18 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 379,
@@ -1290,7 +2040,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 380,
@@ -1306,7 +2066,19 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 3
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 381,
@@ -1322,7 +2094,19 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 3
+     "_evidenceQualityStatus": "DATABASE_CROSS_VERIFIED",
+     "_evidenceSourceCount": 3,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [
+       "sportsCardInvestor",
+       "priceGuideSite"
+      ],
+      "tierC": [
+       "marketplaceSearch"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 382,
@@ -1338,7 +2122,17 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "MARKETPLACE_CORROBORATED",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [],
+      "tierB": [],
+      "tierC": [
+       "marketplaceSearch",
+       "amazon"
+      ]
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 383,
@@ -1354,7 +2148,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 384,
@@ -1370,7 +2173,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 385,
@@ -1386,7 +2198,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 386,
@@ -1402,7 +2223,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 387,
@@ -1418,7 +2248,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 388,
@@ -1434,7 +2273,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 389,
@@ -1450,7 +2298,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 390,
@@ -1466,7 +2323,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 391,
@@ -1482,7 +2348,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 392,
@@ -1498,7 +2373,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 393,
@@ -1514,7 +2398,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 394,
@@ -1530,7 +2423,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 395,
@@ -1546,7 +2448,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 396,
@@ -1562,7 +2473,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 397,
@@ -1578,7 +2498,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 398,
@@ -1594,7 +2523,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 399,
@@ -1610,7 +2548,16 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "ONE_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 1
+     "_evidenceQualityStatus": "SINGLE_STRONG_SOURCE",
+     "_evidenceSourceCount": 1,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": false
     },
     {
      "cardNumber": 400,
@@ -1626,7 +2573,18 @@
      "valueSource": null,
      "compStatus": "pending",
      "_evidenceVerificationStatus": "TWO_SOURCE_VERIFIED",
-     "_evidenceSourceCount": 2
+     "_evidenceQualityStatus": "CHECKLIST_PLUS_DATABASE",
+     "_evidenceSourceCount": 2,
+     "_evidenceSourceTiers": {
+      "tierA": [
+       "footballCardShop"
+      ],
+      "tierB": [
+       "sportsCardInvestor"
+      ],
+      "tierC": []
+     },
+     "_passesStrictProductionGate": true
     }
    ]
   }
