@@ -1,0 +1,1034 @@
+{
+ "_schema": "CardStorm GOAT Vault editorial roster. This file intentionally carries NO card, comp, value, population, or image data yet - only well-known biographical/editorial fields (name, sport, era, teams, position) plus an editorial hobbyRank/rankReason. hobbyRank is CardStorm's editorial ordering of hobby-icon status/collectibility, not a claim of objective statistical greatest-of-all-time ranking - see _editorialDisclaimer. cards and sources are empty arrays for every player until real, sourced Top-20-card data is researched and added sport-by-sport (see data/goat/CARD_RECORD_SCHEMA.md for the shape those records must follow). Never populate cards/sources with placeholder or estimated data.",
+ "_editorialDisclaimer": "The GOAT Vault ('All-Time Hobby Icons') is CardStorm's editorial selection of the most collectible/iconic players in each sport's history, not a claim that any specific ordering is an objective statistical fact. Individual card rankings within a player's Top 20 (once populated) represent current hobby market value from legitimate sold-comparable evidence, not asking prices or unsold listings.",
+ "_lastUpdated": "2026-09-11",
+ "football": {
+  "players": [
+   {
+    "id": "football-tom-brady",
+    "name": "Tom Brady",
+    "sport": "football",
+    "era": "1990s-2020s",
+    "teams": [
+     "New England Patriots",
+     "Tampa Bay Buccaneers"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 1,
+    "rankReason": "Widely regarded as the most collected modern-era QB; multiple championship rookie-era cards anchor high-end football hobby demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-joe-montana",
+    "name": "Joe Montana",
+    "sport": "football",
+    "era": "1970s-1990s",
+    "teams": [
+     "San Francisco 49ers",
+     "Kansas City Chiefs"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 2,
+    "rankReason": "Iconic vintage-era QB whose rookie cards are a cornerstone of pre-modern football collecting.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-peyton-manning",
+    "name": "Peyton Manning",
+    "sport": "football",
+    "era": "1990s-2010s",
+    "teams": [
+     "Indianapolis Colts",
+     "Denver Broncos"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 3,
+    "rankReason": "Consistently strong hobby demand across his full rookie-to-retirement card run.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-patrick-mahomes",
+    "name": "Patrick Mahomes",
+    "sport": "football",
+    "era": "2010s-present",
+    "teams": [
+     "Kansas City Chiefs"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 4,
+    "rankReason": "Leading active-era hobby chase across nearly every modern football product.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-jerry-rice",
+    "name": "Jerry Rice",
+    "sport": "football",
+    "era": "1980s-2000s",
+    "teams": [
+     "San Francisco 49ers",
+     "Oakland Raiders",
+     "Seattle Seahawks"
+    ],
+    "position": "WR",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 5,
+    "rankReason": "The receiver most consistently cited as the position's greatest, with strong vintage rookie demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-walter-payton",
+    "name": "Walter Payton",
+    "sport": "football",
+    "era": "1970s-1980s",
+    "teams": [
+     "Chicago Bears"
+    ],
+    "position": "RB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 6,
+    "rankReason": "Legacy vintage-era RB with enduring rookie-card collector interest.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-barry-sanders",
+    "name": "Barry Sanders",
+    "sport": "football",
+    "era": "1980s-1990s",
+    "teams": [
+     "Detroit Lions"
+    ],
+    "position": "RB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 7,
+    "rankReason": "Short, highlight-driven career that keeps his rookie-era cards in strong collector demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-dan-marino",
+    "name": "Dan Marino",
+    "sport": "football",
+    "era": "1980s-1990s",
+    "teams": [
+     "Miami Dolphins"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 8,
+    "rankReason": "One of the most heavily collected passing-era rookie cards from the 1980s.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-john-elway",
+    "name": "John Elway",
+    "sport": "football",
+    "era": "1980s-1990s",
+    "teams": [
+     "Denver Broncos"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 9,
+    "rankReason": "Longtime franchise QB with a deep, well-collected vintage card catalogue.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-brett-favre",
+    "name": "Brett Favre",
+    "sport": "football",
+    "era": "1990s-2010s",
+    "teams": [
+     "Atlanta Falcons",
+     "Green Bay Packers",
+     "New York Jets",
+     "Minnesota Vikings"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 10,
+    "rankReason": "Long, durable career spanning multiple eras of card production keeps hobby interest broad.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-johnny-unitas",
+    "name": "Johnny Unitas",
+    "sport": "football",
+    "era": "1950s-1970s",
+    "teams": [
+     "Baltimore Colts",
+     "San Diego Chargers"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 11,
+    "rankReason": "Foundational vintage-era QB whose earliest cards anchor pre-modern football sets.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-jim-brown",
+    "name": "Jim Brown",
+    "sport": "football",
+    "era": "1950s-1960s",
+    "teams": [
+     "Cleveland Browns"
+    ],
+    "position": "RB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 12,
+    "rankReason": "Frequently cited among the greatest RBs ever; earliest cards are prized vintage pieces.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-emmitt-smith",
+    "name": "Emmitt Smith",
+    "sport": "football",
+    "era": "1990s-2000s",
+    "teams": [
+     "Dallas Cowboys",
+     "Arizona Cardinals"
+    ],
+    "position": "RB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 13,
+    "rankReason": "All-time rushing leader with a well-collected rookie-era card run.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-aaron-rodgers",
+    "name": "Aaron Rodgers",
+    "sport": "football",
+    "era": "2000s-present",
+    "teams": [
+     "Green Bay Packers",
+     "New York Jets"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 14,
+    "rankReason": "Long tenured elite QB with strong sustained hobby demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-randy-moss",
+    "name": "Randy Moss",
+    "sport": "football",
+    "era": "1990s-2010s",
+    "teams": [
+     "Minnesota Vikings",
+     "Oakland Raiders",
+     "New England Patriots",
+     "Tennessee Titans",
+     "San Francisco 49ers"
+    ],
+    "position": "WR",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 15,
+    "rankReason": "One of the most collected deep-threat receivers of his generation.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-lawrence-taylor",
+    "name": "Lawrence Taylor",
+    "sport": "football",
+    "era": "1980s-1990s",
+    "teams": [
+     "New York Giants"
+    ],
+    "position": "LB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 16,
+    "rankReason": "Frequently cited as the most impactful defensive player of his era, with strong vintage demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-ray-lewis",
+    "name": "Ray Lewis",
+    "sport": "football",
+    "era": "1990s-2010s",
+    "teams": [
+     "Baltimore Ravens"
+    ],
+    "position": "LB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 17,
+    "rankReason": "Iconic modern-era defensive player with steady long-term collector interest.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-reggie-white",
+    "name": "Reggie White",
+    "sport": "football",
+    "era": "1980s-1990s",
+    "teams": [
+     "Philadelphia Eagles",
+     "Green Bay Packers",
+     "Carolina Panthers"
+    ],
+    "position": "DE",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 18,
+    "rankReason": "Hall of Fame pass rusher whose rookie cards remain a defensive-hobby staple.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-troy-aikman",
+    "name": "Troy Aikman",
+    "sport": "football",
+    "era": "1980s-1990s",
+    "teams": [
+     "Dallas Cowboys"
+    ],
+    "position": "QB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 19,
+    "rankReason": "Multiple-championship QB from a highly collected Cowboys dynasty era.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "football-bo-jackson",
+    "name": "Bo Jackson",
+    "sport": "football",
+    "era": "1980s-1990s",
+    "teams": [
+     "Los Angeles Raiders"
+    ],
+    "position": "RB",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 20,
+    "rankReason": "Short, legendary two-sport career that keeps his rookie cards in strong cross-sport demand.",
+    "cards": [],
+    "sources": []
+   }
+  ]
+ },
+ "basketball": {
+  "players": [
+   {
+    "id": "basketball-michael-jordan",
+    "name": "Michael Jordan",
+    "sport": "basketball",
+    "era": "1980s-1990s",
+    "teams": [
+     "Chicago Bulls",
+     "Washington Wizards"
+    ],
+    "position": "SG",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 1,
+    "rankReason": "Widely regarded as the most collected basketball player ever; his rookie card anchors the entire modern hobby.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-lebron-james",
+    "name": "LeBron James",
+    "sport": "basketball",
+    "era": "2000s-present",
+    "teams": [
+     "Cleveland Cavaliers",
+     "Miami Heat",
+     "Los Angeles Lakers"
+    ],
+    "position": "SF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 2,
+    "rankReason": "Leading active-era hobby chase with an unusually deep rookie-card checklist from his heavily-documented HS-to-NBA arrival.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-kobe-bryant",
+    "name": "Kobe Bryant",
+    "sport": "basketball",
+    "era": "1990s-2010s",
+    "teams": [
+     "Los Angeles Lakers"
+    ],
+    "position": "SG",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 3,
+    "rankReason": "Enduring, highly emotional collector demand across his full career card run.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-magic-johnson",
+    "name": "Magic Johnson",
+    "sport": "basketball",
+    "era": "1980s-1990s",
+    "teams": [
+     "Los Angeles Lakers"
+    ],
+    "position": "PG",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 4,
+    "rankReason": "Cornerstone of the 1980s Lakers dynasty with strong vintage rookie demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-larry-bird",
+    "name": "Larry Bird",
+    "sport": "basketball",
+    "era": "1980s-1990s",
+    "teams": [
+     "Boston Celtics"
+    ],
+    "position": "SF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 5,
+    "rankReason": "Paired with Magic Johnson as one of the two players most credited with the NBA's 1980s hobby boom.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-kareem-abdul-jabbar",
+    "name": "Kareem Abdul-Jabbar",
+    "sport": "basketball",
+    "era": "1960s-1980s",
+    "teams": [
+     "Milwaukee Bucks",
+     "Los Angeles Lakers"
+    ],
+    "position": "C",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 6,
+    "rankReason": "All-time scoring-record holder for decades; earliest cards are prized vintage pieces.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-wilt-chamberlain",
+    "name": "Wilt Chamberlain",
+    "sport": "basketball",
+    "era": "1950s-1970s",
+    "teams": [
+     "Philadelphia/San Francisco Warriors",
+     "Philadelphia 76ers",
+     "Los Angeles Lakers"
+    ],
+    "position": "C",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 7,
+    "rankReason": "Foundational vintage-era big man whose earliest cards anchor pre-modern basketball sets.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-bill-russell",
+    "name": "Bill Russell",
+    "sport": "basketball",
+    "era": "1950s-1960s",
+    "teams": [
+     "Boston Celtics"
+    ],
+    "position": "C",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 8,
+    "rankReason": "Most-decorated champion in NBA history; his vintage cards are cornerstone pieces.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-shaquille-oneal",
+    "name": "Shaquille O'Neal",
+    "sport": "basketball",
+    "era": "1990s-2010s",
+    "teams": [
+     "Orlando Magic",
+     "Los Angeles Lakers",
+     "Miami Heat",
+     "Phoenix Suns",
+     "Cleveland Cavaliers",
+     "Boston Celtics"
+    ],
+    "position": "C",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 9,
+    "rankReason": "Dominant, long-tenured center with broad rookie-era collector demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-stephen-curry",
+    "name": "Stephen Curry",
+    "sport": "basketball",
+    "era": "2000s-present",
+    "teams": [
+     "Golden State Warriors"
+    ],
+    "position": "PG",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 10,
+    "rankReason": "Redefined the position's hobby profile alongside the 3-point shooting era's rise in collector interest.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-kevin-durant",
+    "name": "Kevin Durant",
+    "sport": "basketball",
+    "era": "2000s-present",
+    "teams": [
+     "Seattle SuperSonics/Oklahoma City Thunder",
+     "Golden State Warriors",
+     "Brooklyn Nets",
+     "Phoenix Suns"
+    ],
+    "position": "SF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 11,
+    "rankReason": "Sustained elite-era scorer with strong long-term rookie demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-tim-duncan",
+    "name": "Tim Duncan",
+    "sport": "basketball",
+    "era": "1990s-2010s",
+    "teams": [
+     "San Antonio Spurs"
+    ],
+    "position": "PF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 12,
+    "rankReason": "Cornerstone of a multi-championship era with steady, durable collector interest.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-hakeem-olajuwon",
+    "name": "Hakeem Olajuwon",
+    "sport": "basketball",
+    "era": "1980s-2000s",
+    "teams": [
+     "Houston Rockets",
+     "Toronto Raptors"
+    ],
+    "position": "C",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 13,
+    "rankReason": "Two-time champion center whose rookie-era cards remain a strong vintage/modern crossover chase.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-julius-erving",
+    "name": "Julius Erving",
+    "sport": "basketball",
+    "era": "1970s-1980s",
+    "teams": [
+     "Virginia Squires",
+     "New York Nets",
+     "Philadelphia 76ers"
+    ],
+    "position": "SF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 14,
+    "rankReason": "ABA/NBA crossover legend with important early vintage-card demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-oscar-robertson",
+    "name": "Oscar Robertson",
+    "sport": "basketball",
+    "era": "1960s-1970s",
+    "teams": [
+     "Cincinnati Royals",
+     "Milwaukee Bucks"
+    ],
+    "position": "PG",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 15,
+    "rankReason": "All-around vintage-era great whose cards anchor 1960s basketball sets.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-giannis-antetokounmpo",
+    "name": "Giannis Antetokounmpo",
+    "sport": "basketball",
+    "era": "2010s-present",
+    "teams": [
+     "Milwaukee Bucks"
+    ],
+    "position": "PF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 16,
+    "rankReason": "Leading active-era international star with strong rookie-card demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-nikola-jokic",
+    "name": "Nikola Jokic",
+    "sport": "basketball",
+    "era": "2010s-present",
+    "teams": [
+     "Denver Nuggets"
+    ],
+    "position": "C",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 17,
+    "rankReason": "Rapidly rising modern-era hobby chase tied to sustained MVP-level play.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-kevin-garnett",
+    "name": "Kevin Garnett",
+    "sport": "basketball",
+    "era": "1990s-2010s",
+    "teams": [
+     "Minnesota Timberwolves",
+     "Boston Celtics",
+     "Brooklyn Nets"
+    ],
+    "position": "PF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 18,
+    "rankReason": "Long-tenured, high-intensity era star with a deep, well-collected card run.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-dirk-nowitzki",
+    "name": "Dirk Nowitzki",
+    "sport": "basketball",
+    "era": "1990s-2010s",
+    "teams": [
+     "Dallas Mavericks"
+    ],
+    "position": "PF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 19,
+    "rankReason": "Franchise-defining international star with steady long-term collector interest.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "basketball-allen-iverson",
+    "name": "Allen Iverson",
+    "sport": "basketball",
+    "era": "1990s-2010s",
+    "teams": [
+     "Philadelphia 76ers",
+     "Denver Nuggets",
+     "Detroit Pistons",
+     "Memphis Grizzlies"
+    ],
+    "position": "PG",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 20,
+    "rankReason": "Iconic crossover-era guard whose rookie cards remain a strong hobby staple.",
+    "cards": [],
+    "sources": []
+   }
+  ]
+ },
+ "baseball": {
+  "players": [
+   {
+    "id": "baseball-babe-ruth",
+    "name": "Babe Ruth",
+    "sport": "baseball",
+    "era": "1910s-1930s",
+    "teams": [
+     "Boston Red Sox",
+     "New York Yankees",
+     "Boston Braves"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 1,
+    "rankReason": "The single most iconic name in baseball card collecting; his earliest cards are among the hobby's most valuable pieces overall.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-mickey-mantle",
+    "name": "Mickey Mantle",
+    "sport": "baseball",
+    "era": "1950s-1960s",
+    "teams": [
+     "New York Yankees"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 2,
+    "rankReason": "His 1952 Topps card is one of the most recognized single cards across the entire hobby.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-willie-mays",
+    "name": "Willie Mays",
+    "sport": "baseball",
+    "era": "1950s-1970s",
+    "teams": [
+     "New York/San Francisco Giants",
+     "New York Mets"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 3,
+    "rankReason": "Widely cited among the greatest all-around players ever, with strong vintage rookie demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-hank-aaron",
+    "name": "Hank Aaron",
+    "sport": "baseball",
+    "era": "1950s-1970s",
+    "teams": [
+     "Milwaukee/Atlanta Braves",
+     "Milwaukee Brewers"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 4,
+    "rankReason": "All-time home run great whose vintage rookie cards anchor 1950s sets.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-jackie-robinson",
+    "name": "Jackie Robinson",
+    "sport": "baseball",
+    "era": "1940s-1950s",
+    "teams": [
+     "Brooklyn Dodgers"
+    ],
+    "position": "IF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 5,
+    "rankReason": "Historic and cultural significance make his rookie-era cards among the most important in the hobby.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-ted-williams",
+    "name": "Ted Williams",
+    "sport": "baseball",
+    "era": "1930s-1960s",
+    "teams": [
+     "Boston Red Sox"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 6,
+    "rankReason": "One of the game's greatest hitters, with important early vintage-card demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-ty-cobb",
+    "name": "Ty Cobb",
+    "sport": "baseball",
+    "era": "1900s-1920s",
+    "teams": [
+     "Detroit Tigers",
+     "Philadelphia Athletics"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 7,
+    "rankReason": "Deadball-era legend whose earliest tobacco-era cards are cornerstone hobby pieces.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-lou-gehrig",
+    "name": "Lou Gehrig",
+    "sport": "baseball",
+    "era": "1920s-1930s",
+    "teams": [
+     "New York Yankees"
+    ],
+    "position": "IF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 8,
+    "rankReason": "Iconic Yankees-era great with prized, scarce vintage cards.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-roberto-clemente",
+    "name": "Roberto Clemente",
+    "sport": "baseball",
+    "era": "1950s-1970s",
+    "teams": [
+     "Pittsburgh Pirates"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 9,
+    "rankReason": "Historic and cultural significance keep his vintage rookie cards in strong long-term demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-ken-griffey",
+    "name": "Ken Griffey Jr.",
+    "sport": "baseball",
+    "era": "1980s-2000s",
+    "teams": [
+     "Seattle Mariners",
+     "Cincinnati Reds",
+     "Chicago White Sox"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 10,
+    "rankReason": "One of the most iconic modern-era rookie cards (1989 Upper Deck) in the entire hobby.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-derek-jeter",
+    "name": "Derek Jeter",
+    "sport": "baseball",
+    "era": "1990s-2010s",
+    "teams": [
+     "New York Yankees"
+    ],
+    "position": "IF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 11,
+    "rankReason": "Long-tenured Yankees captain with sustained, broad rookie-card demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-mike-trout",
+    "name": "Mike Trout",
+    "sport": "baseball",
+    "era": "2010s-present",
+    "teams": [
+     "Los Angeles Angels"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 12,
+    "rankReason": "Leading active-era hobby chase among position players.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-shohei-ohtani",
+    "name": "Shohei Ohtani",
+    "sport": "baseball",
+    "era": "2010s-present",
+    "teams": [
+     "Los Angeles Angels",
+     "Los Angeles Dodgers"
+    ],
+    "position": "P/DH",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 13,
+    "rankReason": "Unique two-way star driving major active-era hobby demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-nolan-ryan",
+    "name": "Nolan Ryan",
+    "sport": "baseball",
+    "era": "1960s-1990s",
+    "teams": [
+     "New York Mets",
+     "California Angels",
+     "Houston Astros",
+     "Texas Rangers"
+    ],
+    "position": "P",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 14,
+    "rankReason": "Long, record-setting career keeps his card run in strong, sustained collector demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-cal-ripken",
+    "name": "Cal Ripken Jr.",
+    "sport": "baseball",
+    "era": "1980s-2000s",
+    "teams": [
+     "Baltimore Orioles"
+    ],
+    "position": "IF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 15,
+    "rankReason": "Iron Man consecutive-games legacy with steady long-term collector interest.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-albert-pujols",
+    "name": "Albert Pujols",
+    "sport": "baseball",
+    "era": "2000s-2020s",
+    "teams": [
+     "St. Louis Cardinals",
+     "Los Angeles Angels",
+     "Los Angeles Dodgers"
+    ],
+    "position": "IF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 16,
+    "rankReason": "One of the most productive hitters of his generation, with strong rookie-era demand.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-sandy-koufax",
+    "name": "Sandy Koufax",
+    "sport": "baseball",
+    "era": "1950s-1960s",
+    "teams": [
+     "Brooklyn/Los Angeles Dodgers"
+    ],
+    "position": "P",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 17,
+    "rankReason": "Dominant peak-era pitcher whose vintage cards are a strong 1960s hobby staple.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-joe-dimaggio",
+    "name": "Joe DiMaggio",
+    "sport": "baseball",
+    "era": "1930s-1950s",
+    "teams": [
+     "New York Yankees"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 18,
+    "rankReason": "Iconic Yankees-era great whose vintage cards are cornerstone hobby pieces.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-pete-rose",
+    "name": "Pete Rose",
+    "sport": "baseball",
+    "era": "1960s-1980s",
+    "teams": [
+     "Cincinnati Reds",
+     "Philadelphia Phillies",
+     "Montreal Expos"
+    ],
+    "position": "IF/OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 19,
+    "rankReason": "All-time hits leader with a long, heavily-collected card run across multiple decades.",
+    "cards": [],
+    "sources": []
+   },
+   {
+    "id": "baseball-rickey-henderson",
+    "name": "Rickey Henderson",
+    "sport": "baseball",
+    "era": "1970s-2000s",
+    "teams": [
+     "Oakland Athletics",
+     "New York Yankees",
+     "and several other clubs across a long career"
+    ],
+    "position": "OF",
+    "playerImage": null,
+    "summary": null,
+    "hobbyRank": 20,
+    "rankReason": "All-time stolen-base leader with a long, well-collected career card run.",
+    "cards": [],
+    "sources": []
+   }
+  ]
+ }
+}

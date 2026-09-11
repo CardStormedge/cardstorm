@@ -1,0 +1,49 @@
+{
+ "_schema": "Machine-readable companion to site-completion-audit.md. status values: COMPLETE, PARTIAL, STAGED, MISSING_DATA, MISSING_IMAGE, UNVERIFIED_DATA, BROKEN_UNUSED.",
+ "auditDate": "2026-09-11",
+ "againstCommit": "f415758015015eda81b1462943cf530013594ab0",
+ "areas": [
+  {"area": "HOME / HERO", "status": "COMPLETE", "notes": "index.html hero rotation, dashboard tiles, mobile nav functional."},
+  {"area": "TEAM HUNT", "status": "PARTIAL", "notes": "Roster/scan flow works for all 3 sports; real checklist verification exists only for football 2024/2025."},
+  {"area": "FOOTBALL CHECKLISTS", "status": "PARTIAL", "notes": "2024 Donruss/Prizm/Select RELEASED; 2024 Optic/Mosaic staged, unwired, NOT_READY. 2025 Donruss PARTIAL, 28/100 records pass strict gate."},
+  {"area": "BASKETBALL CHECKLISTS", "status": "MISSING_DATA", "notes": "No CHECKLIST_MANIFEST entries for any year. No data/basketball directory exists."},
+  {"area": "BASEBALL CHECKLISTS", "status": "MISSING_DATA", "notes": "No CHECKLIST_MANIFEST entries for any year. No data/baseball directory exists."},
+  {"area": "POKEMON", "status": "COMPLETE", "notes": "Landing/set-detail redesigned with real approved art; no fabricated per-card data; explicit 'will not invent' language on set-detail checklist status."},
+  {"area": "GOAT / LEGENDS", "status": "STAGED", "notes": "Was a WATCHCAT-backed placeholder with explicit 'historical legend data not loaded yet' copy. This PR adds goat-vault.json (editorial roster only, zero card records) and a new GOAT Vault UI."},
+  {"area": "GEAR UP / FANATICS", "status": "PARTIAL", "notes": "UI complete. 6 players / 13 offers live, all 13 image-pending. 0 team-level offers."},
+  {"area": "SETS & PACKS", "status": "PARTIAL", "notes": "set-catalog.js covers released/announced products; only 6 football product-image records populated, rest show honest pending state."},
+  {"area": "WATCHLIST", "status": "COMPLETE", "notes": "19 current-era players tracked; 5 have real comp records, rest show 'Comp feed pending' honestly."},
+  {"area": "BREAK CENTER", "status": "PARTIAL", "notes": "Fully interactive collector-submitted listings; no external break-calendar integration by design."},
+  {"area": "DAILY CARD GAME", "status": "COMPLETE", "notes": "Driven by populated game-data.json."},
+  {"area": "COLLECTION / VALUES", "status": "PARTIAL", "notes": "14 curated items, 4 resolve to a real comp value, rest show VALUE PENDING. No basketball/baseball comp data."}
+ ],
+ "missingImages": {
+  "cardImageRegistries": [
+   {"file": "data/card-images/football/2024.json", "populated": 0, "note": "architecture-only, images: []"},
+   {"file": "data/card-images/football/2025.json", "populated": 0, "note": "architecture-only, images: []"}
+  ],
+  "fanaticsOffers": {"total": 13, "imagePending": 13},
+  "productImages": [
+   {"file": "data/product-images/football/2024.json", "populated": 4, "products": ["Prizm", "Select", "Donruss", "Mosaic"]},
+   {"file": "data/product-images/football/2025.json", "populated": 2, "products": ["Select (Hobby)", "Prizm (Hobby)"]}
+  ],
+  "goatVault": {"playerImagesPopulated": 0, "playerImagesTotal": 60, "cardImagesPopulated": 0}
+ },
+ "checklistGaps": [
+  {"sport": "football", "year": 2024, "status": "RELEASED_PARTIAL", "wired": ["Donruss", "Prizm", "Select"], "stagedUnwired": ["Optic (NOT_READY)", "Mosaic"]},
+  {"sport": "football", "year": 2025, "status": "PARTIAL", "wired": ["Donruss (28/100 records strict-gate-eligible)"], "stagedUnwired": []},
+  {"sport": "football", "year": 2026, "status": "MISSING_DATA", "wired": [], "stagedUnwired": []},
+  {"sport": "basketball", "year": "any", "status": "MISSING_DATA", "wired": [], "stagedUnwired": []},
+  {"sport": "baseball", "year": "any", "status": "MISSING_DATA", "wired": [], "stagedUnwired": []}
+ ],
+ "stagedButUnwired": [
+  "data/football/2024/_staging/optic-rated-rookies-v2.json",
+  "data/football/2024/_staging/mosaic.json",
+  "72 of 100 records in data/football/2025/donruss.json (fail strict production gate)"
+ ],
+ "unverifiedDataExposedToUsers": [],
+ "deadOrIncompleteCode": [
+  {"item": "data/football/2024/team-pilots/denver-broncos.json", "note": "Superseded pilot file, not referenced by app.html"},
+  {"item": "index.html GOATS dashboard tile key:'team'", "note": "Pre-existing routing bug, routed to Team Hunt instead of the GOAT Vault; fixed in this PR"}
+ ]
+}
