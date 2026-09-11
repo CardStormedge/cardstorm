@@ -1096,8 +1096,9 @@ function openGoatPlayer(id){
 }
 function setGoatGradeFilter(g){_goatGradeFilter=g;if(_goatCurrentPlayer)C.innerHTML=goatPlayerDetailHTML(_goatCurrentPlayer)}
 function toggleGoatShowAll(){_goatShowAll=!_goatShowAll;if(_goatCurrentPlayer)C.innerHTML=goatPlayerDetailHTML(_goatCurrentPlayer)}
+function goatMoney(n){return typeof n==='number'?'$'+n.toLocaleString(undefined,{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2}):n}
 function goatCardRowHTML(c){
- const compLine=c.comps&&c.comps.lastSale?`${c.comps.lastSale} · ${c.comps.lastSaleDate||'date pending'}`:'Comp not yet sourced';
+ const compLine=c.comps&&c.comps.lastSale?`${goatMoney(c.comps.lastSale)} · ${c.comps.lastSaleDate||'date pending'}`:'Comp not yet sourced';
  return `<div class=goatCardRow><div class=goatCardRowRank>#${c.rank}</div><div class=goatCardRowThumb>${(c.image&&(c.image.localAsset||c.image.externalVerifiedImage))?`<img src="${c.image.localAsset||c.image.externalVerifiedImage}" loading=lazy decoding=async alt="${c.cardName}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">`:GOAT_CARD_PENDING_SVG}</div><div class=goatCardRowBody><b>${c.year} ${c.manufacturer} ${c.set} ${c.cardName}${c.cardNumber?' #'+c.cardNumber:''}</b><div class=goatCardRowMeta>${c.grade||'Grade pending'} · ${compLine}${c.trend?' · '+c.trend:''}</div></div></div>`;
 }
 function goatPlayerCardsHTML(player){

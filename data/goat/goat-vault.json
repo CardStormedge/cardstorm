@@ -1,7 +1,7 @@
 {
  "_schema": "CardStorm GOAT Vault editorial roster. This file intentionally carries NO card, comp, value, population, or image data yet - only well-known biographical/editorial fields (name, sport, era, teams, position) plus an editorial hobbyRank/rankReason. hobbyRank is CardStorm's editorial ordering of hobby-icon status/collectibility, not a claim of objective statistical greatest-of-all-time ranking - see _editorialDisclaimer. cards and sources are empty arrays for every player until real, sourced Top-20-card data is researched and added sport-by-sport (see data/goat/CARD_RECORD_SCHEMA.md for the shape those records must follow). Never populate cards/sources with placeholder or estimated data.",
  "_editorialDisclaimer": "The GOAT Vault ('All-Time Hobby Icons') is CardStorm's editorial selection of the most collectible/iconic players in each sport's history, not a claim that any specific ordering is an objective statistical fact. Individual card rankings within a player's Top 20 (once populated) represent current hobby market value from legitimate sold-comparable evidence, not asking prices or unsold listings.",
- "_lastUpdated": "2026-09-11",
+ "_lastUpdated": "2026-09-18",
  "football": {
   "players": [
    {
@@ -18,8 +18,206 @@
     "summary": null,
     "hobbyRank": 1,
     "rankReason": "Widely regarded as the most collected modern-era QB; multiple championship rookie-era cards anchor high-end football hobby demand.",
-    "cards": [],
-    "sources": []
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-tom-brady-2000-playoff-contenders-championship-ticket-auto-144",
+      "year": 2000,
+      "manufacturer": "Playoff",
+      "set": "Contenders",
+      "cardName": "Championship Ticket Autograph",
+      "cardNumber": "144",
+      "rookie": true,
+      "parallel": "Championship Ticket (serial-numbered parallel of the Rookie Ticket Autograph)",
+      "serialNumberedTo": 100,
+      "autograph": true,
+      "grade": "BGS 9 / Auto 10",
+      "gradeFilterGroup": "BGS9",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 3107000,
+       "lastSaleDate": "2021 (Leland's Mid-Spring Classic Auction)",
+       "threeSaleAverage": null,
+       "highSale": 3107000,
+       "lowSale": 2252854,
+       "compCount": 2,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Two individually graded, serial-numbered /100 copies sold in 2021 (BGS 9 for $3,107,000; a separate BGS 8.5 example for $2,252,854 on April 2, 2021, Leland's Spring Classic) - each is a distinct physical card, not repeat sales of one card, so no blended average is computed. lastSale reflects the higher, more recently reported of the two."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "ESPN / CBS Boston (Leland's auction reporting)",
+        "url": "https://www.espn.com/nfl/story/_/id/31572344/rookie-card-tampa-bay-buccaneers-qb-tom-brady-sells-record-3107-million-auction"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-tom-brady-2000-sp-authentic-118",
+      "year": 2000,
+      "manufacturer": "Upper Deck",
+      "set": "SP Authentic",
+      "cardName": "Rookie Card",
+      "cardNumber": "118",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": 1250,
+      "autograph": false,
+      "grade": "PSA 10",
+      "gradeFilterGroup": "PSA10",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 181200,
+       "lastSaleDate": "2021-03",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single well-corroborated sale (Goldin Auctions, March 2021); exact day within the month not confirmed by available sources, so compDate is recorded at month precision rather than guessed."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "cllct / public.com (Goldin Auctions March 2021 $45.2M sale reporting)",
+        "url": "https://www.cllct.com/sports-collectibles/sports-cards/buyback-tom-brady-rookie-card-goes-to-auction-at-goldin"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "cardId": "football-tom-brady-2000-playoff-contenders-rookie-ticket-auto-144-base",
+      "year": 2000,
+      "manufacturer": "Playoff",
+      "set": "Contenders",
+      "cardName": "Rookie Ticket Autograph",
+      "cardNumber": "144",
+      "rookie": true,
+      "parallel": "Base Rookie Ticket Autograph (unnumbered, distinct from the Championship Ticket parallel above)",
+      "serialNumberedTo": null,
+      "autograph": true,
+      "grade": "SGC 9.5 / Auto 10",
+      "gradeFilterGroup": "SGC9.5",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 120000,
+       "lastSaleDate": "2024-09-24",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single sale, widely corroborated (CBS News, ESPN, Fox Business, Sports Illustrated, TMZ, Yahoo Sports, Patriots.com all report the same $120,000 price, buyer, grade and Sept. 24, 2024 auction date)."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "CBS News / ESPN (Sotheby's x Fanatics \"Holy Grails\" auction)",
+        "url": "https://www.cbsnews.com/boston/news/robert-kraft-tom-brady-autographed-rookie-card-sothebys-fanatics-auction/"
+       }
+      ]
+     },
+     {
+      "rank": 4,
+      "cardId": "football-tom-brady-2000-bowman-chrome-236",
+      "year": 2000,
+      "manufacturer": "Topps",
+      "set": "Bowman Chrome",
+      "cardName": "Rookie Card",
+      "cardNumber": "236",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10",
+      "gradeFilterGroup": "PSA10",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 29177.51,
+       "lastSaleDate": "2026-06-23",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single specifically-dated sale found this pass. Other sources describe a broader recent trading range (roughly $11,000-$19,000 in early 2026) but without a specific dated single-sale figure, so that range was not used as a comp."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "Card Ladder (eBay sale)",
+        "url": "https://cardladder.com/ladder/card/2000-bowman-chrome-tom-brady-base-236-psa-10"
+       }
+      ]
+     }
+    ],
+    "sources": [
+     {
+      "name": "ESPN",
+      "url": "https://www.espn.com/nfl/story/_/id/31572344/rookie-card-tampa-bay-buccaneers-qb-tom-brady-sells-record-3107-million-auction"
+     },
+     {
+      "name": "CBS Boston / CBS News",
+      "url": "https://www.cbsnews.com/boston/news/robert-kraft-tom-brady-autographed-rookie-card-sothebys-fanatics-auction/"
+     },
+     {
+      "name": "cllct.com",
+      "url": "https://www.cllct.com/sports-collectibles/sports-cards/buyback-tom-brady-rookie-card-goes-to-auction-at-goldin"
+     },
+     {
+      "name": "Card Ladder",
+      "url": "https://cardladder.com/ladder/card/2000-bowman-chrome-tom-brady-base-236-psa-10"
+     }
+    ]
    },
    {
     "id": "football-joe-montana",
@@ -1030,5 +1228,6 @@
     "sources": []
    }
   ]
- }
+ },
+ "_researchNote": "Card records were researched via WebSearch result summaries (this environment has no direct page-fetch access to auction-house or price-guide sites), cross-checked against multiple independent, reputable outlets before being recorded as a comp. Every comp is a single dated sale unless explicitly noted otherwise - no three-sale average is computed unless 3+ distinct dated sales of the same specific card were found. This is the same sourcing-honesty standard used throughout CardStorm (see the 2025 Donruss evidence work in data/checklists/football/2025/)."
 }
