@@ -1040,6 +1040,9 @@ F.worth=worth;
 // this shows an honest "not yet connected" state instead, same pattern
 // as Gear Up's image-pending treatment and the GOAT Vault's empty state.
 const ASK_CARDSTORM_STYLE=`<style>
+.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:14px}
+.ackHeroWrap img{display:block;width:100%;aspect-ratio:1672/941;max-height:460px;object-fit:cover;object-position:center 12%}
+@media(max-width:600px){.ackHeroWrap img{max-height:220px;object-position:center 10%}}
 .ackUploadGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
 .ackSlot{border:1px dashed #2b6488;border-radius:12px;background:#04101c;padding:12px;text-align:center;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .ackSlot.filled{border-style:solid;padding:8px}
@@ -1257,7 +1260,7 @@ function ackResultHTML(){
 }
 function askCardstorm(){
  return shell('KNOW THY WORTH','Ask CardStorm Anything','Upload the front and back of your card. Ask about value, rarity, comps, grading, rookies, teams, breaks, retail products, or what to chase next.',
-  `${ASK_CARDSTORM_STYLE}<div class=feature>
+  `${ASK_CARDSTORM_STYLE}<div class=ackHeroWrap><img src="assets/mascot/ask-cardstorm-mascot-hero.webp" loading=lazy decoding=async alt="Ask CardStorm Anything — the CardStorm mascot with his CardStorm-branded bat, ready to answer your card questions"></div><div class=feature>
    <h2>Show CardStorm Your Card</h2>
    <div class=sub>Real photos, real questions. CardStorm only ever shows verified data or an honest "not yet available" - never a guess.</div>
    <div class=ackUploadGrid>
