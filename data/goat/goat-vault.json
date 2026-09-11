@@ -62,10 +62,61 @@
         "name": "ESPN / CBS Boston (Leland's auction reporting)",
         "url": "https://www.espn.com/nfl/story/_/id/31572344/rookie-card-tampa-bay-buccaneers-qb-tom-brady-sells-record-3107-million-auction"
        }
-      ]
+      ],
+      "marketStatus": "HISTORIC_RECORD"
      },
      {
       "rank": 2,
+      "cardId": "football-tom-brady-2000-playoff-contenders-championship-ticket-auto-144-psa8",
+      "year": 2000,
+      "manufacturer": "Playoff",
+      "set": "Contenders",
+      "cardName": "Championship Ticket Autograph",
+      "cardNumber": "144",
+      "rookie": true,
+      "parallel": "Championship Ticket (serial-numbered /100) - this specific copy numbered 83/100",
+      "serialNumberedTo": 100,
+      "autograph": true,
+      "grade": "PSA NM-MT 8 / PSA-DNA Auto 10",
+      "gradeFilterGroup": "PSA8",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 1113250,
+       "lastSaleDate": "2026-07-10",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single dated sale found this pass (Heritage Auctions Summer catalog, July 10-11 2026, serial 83/100). Distinct grade/grading-company combination (PSA 8, not BGS) from the other two Championship Ticket copies already on file, so not averaged with them - each grade/copy is its own market per CardStorm sourcing rules."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "Auction Report (Heritage Summer catalog results)",
+        "url": "https://www.auctionreport.com/1-56-million-mickey-mantle-and-1-11-million-tom-brady-rookie-autograph-lead-heritage-results/"
+       },
+       {
+        "name": "Heritage Auctions",
+        "url": "https://sports.ha.com/sports-player-index/tom-brady.s?id=159"
+       }
+      ]
+     },
+     {
+      "rank": 3,
       "cardId": "football-tom-brady-2000-sp-authentic-118",
       "year": 2000,
       "manufacturer": "Upper Deck",
@@ -107,10 +158,11 @@
         "name": "cllct / public.com (Goldin Auctions March 2021 $45.2M sale reporting)",
         "url": "https://www.cllct.com/sports-collectibles/sports-cards/buyback-tom-brady-rookie-card-goes-to-auction-at-goldin"
        }
-      ]
+      ],
+      "marketStatus": "STALE"
      },
      {
-      "rank": 3,
+      "rank": 4,
       "cardId": "football-tom-brady-2000-playoff-contenders-rookie-ticket-auto-144-base",
       "year": 2000,
       "manufacturer": "Playoff",
@@ -152,10 +204,11 @@
         "name": "CBS News / ESPN (Sotheby's x Fanatics \"Holy Grails\" auction)",
         "url": "https://www.cbsnews.com/boston/news/robert-kraft-tom-brady-autographed-rookie-card-sothebys-fanatics-auction/"
        }
-      ]
+      ],
+      "marketStatus": "STALE"
      },
      {
-      "rank": 4,
+      "rank": 5,
       "cardId": "football-tom-brady-2000-bowman-chrome-236",
       "year": 2000,
       "manufacturer": "Topps",
@@ -197,7 +250,8 @@
         "name": "Card Ladder (eBay sale)",
         "url": "https://cardladder.com/ladder/card/2000-bowman-chrome-tom-brady-base-236-psa-10"
        }
-      ]
+      ],
+      "marketStatus": "RECENT"
      }
     ],
     "sources": [
@@ -233,8 +287,68 @@
     "summary": null,
     "hobbyRank": 2,
     "rankReason": "Iconic vintage-era QB whose rookie cards are a cornerstone of pre-modern football collecting.",
-    "cards": [],
-    "sources": []
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-joe-montana-1981-topps-216-bgs-pristine-10",
+      "year": 1981,
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Rookie Card",
+      "cardNumber": "216",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "BGS Pristine 10 (population 4, none graded higher)",
+      "gradeFilterGroup": "BGS10",
+      "marketStatus": "HISTORIC_RECORD",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 65880,
+       "lastSaleDate": "2009-04-25",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single sale, but the defining record for this card: BGS's own Pristine 10 population is 4 with none graded higher, so this is inherently a rarely-traded grade tier, not a frequent-sale market. Reported by Beckett as the highest price ever paid for a professionally graded modern-era football card at the time (Modern Marvels online auction, ended April 25 - year inferred from the original Beckett blog post's 2009 timestamp, not independently reconfirmed this pass). Vintage PSA 10 / standard PSA 9 copies of this same card were also found in this research pass, but with conflicting or undated sale prices ($41,000 vs $48,800 claimed for 'PSA 10' with no reconcilable date, and a PSA 9 sale described only as 'recent' with no specific date) - excluded rather than guessed."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 4,
+       "source": "Beckett (BGS Pristine 10 population as of the original 2009 reporting)",
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "Beckett News",
+        "url": "https://www.beckett.com/news/record-breaker-pristine-montana-rc-sells-for-65k/"
+       },
+       {
+        "name": "Heritage Auctions (card identification)",
+        "url": "https://sports.ha.com/itm/football-cards/singles-1970-now-/1981-topps-joe-montana-rookie-216-bgs-pristine-10/a/50068-80035.s"
+       }
+      ]
+     }
+    ],
+    "sources": [
+     {
+      "name": "Beckett News",
+      "url": "https://www.beckett.com/news/record-breaker-pristine-montana-rc-sells-for-65k/"
+     },
+     {
+      "name": "Heritage Auctions (card identification)",
+      "url": "https://sports.ha.com/itm/football-cards/singles-1970-now-/1981-topps-joe-montana-rookie-216-bgs-pristine-10/a/50068-80035.s"
+     }
+    ]
    },
    {
     "id": "football-peyton-manning",
@@ -250,7 +364,108 @@
     "summary": null,
     "hobbyRank": 3,
     "rankReason": "Consistently strong hobby demand across his full rookie-to-retirement card run.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-peyton-manning-1998-skybox-metal-universe-gem-masters-1of1",
+      "year": "1998",
+      "manufacturer": "SkyBox",
+      "set": "Metal Universe Gem Masters",
+      "cardName": "Peyton Manning Rookie Card",
+      "cardNumber": null,
+      "rookie": true,
+      "parallel": "Gem Masters (1/1)",
+      "serialNumberedTo": "1/1",
+      "autograph": false,
+      "grade": "PSA NM-MT+ 8.5",
+      "gradeFilterGroup": "PSA8.5",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 414800,
+       "lastSaleDate": "2026-08",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "One-of-one card; no comparable sale exists by definition. $414,800 includes Heritage's buyer's premium on a $340,000 winning bid (Heritage Auctions Summer Platinum Night Sports Auction). Reported as the priciest Peyton Manning card ever sold at the time."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 1,
+       "source": "PSA (1/1 parallel)",
+       "asOf": "2026-08"
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Yahoo Sports \u2014 'Peyton Manning Rookie Card Sells for Record $414,800 Without an Autograph'",
+        "url": "https://sports.yahoo.com/articles/peyton-manning-rookie-card-sells-020437325.html"
+       },
+       {
+        "name": "Sports Collectors Digest \u2014 'Barry Sanders, Peyton Manning cards set records in historic Heritage auction'",
+        "url": "https://sportscollectorsdigest.com/barry-sanders-peyton-manning-cards-set-records-in-historic-heritage-auction"
+       },
+       {
+        "name": "Heavy.com \u2014 'Peyton Manning Rookie Card Sells for Record $414,800 Without an Autograph'",
+        "url": "https://heavy.com/sports/cards/peyton-manning-rookie-colts-auction-record/"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-peyton-manning-1998-playoff-contenders-rookie-ticket-auto-87-psa10",
+      "year": "1998",
+      "manufacturer": "Playoff",
+      "set": "Contenders",
+      "cardName": "Peyton Manning Rookie Ticket Autograph",
+      "cardNumber": "87",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": "200",
+      "autograph": true,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 207400,
+       "lastSaleDate": "2025-08",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Manning's most sought-after pack-issued rookie autograph (short-printed to 200 copies, along with Ryan Leaf, in the 1998 Playoff Contenders set). Only one specifically dated PSA 10 sale could be confirmed; a separate earlier Beckett report of a PSA 10 copy 'topping $40,000 in early bidding' describes an in-progress auction rather than a confirmed final sale price and was excluded."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "PSA CardFacts / Auction Prices Realized \u2014 1998 Playoff Contenders Ticket Peyton Manning",
+        "url": "https://www.psacard.com/auctionprices/football-cards/1998-playoff-contenders-ticket/peyton-manning/auction/120980"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -266,8 +481,168 @@
     "summary": null,
     "hobbyRank": 4,
     "rankReason": "Leading active-era hobby chase across nearly every modern football product.",
-    "cards": [],
-    "sources": []
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-patrick-mahomes-2017-national-treasures-rpa-shield-1of1",
+      "year": 2017,
+      "manufacturer": "Panini",
+      "set": "National Treasures",
+      "cardName": "Rookie Patch Autograph - NFL Shield",
+      "cardNumber": null,
+      "rookie": true,
+      "parallel": "NFL Shield logo patch parallel, 1/1",
+      "serialNumberedTo": 1,
+      "autograph": true,
+      "grade": "BGS 8.5",
+      "gradeFilterGroup": "BGS8.5",
+      "marketStatus": "HISTORIC_RECORD",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 4300000,
+       "lastSaleDate": "2021-07-31",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single but extremely well-corroborated private-sale record (PWCC Marketplace), reported consistently by CNN, CBS Sports, Beckett and Hypebeast. A true 1/1 - no additional comparable sale can exist for this exact card."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "CNN",
+        "url": "https://www.cnn.com/2021/07/31/us/patrick-mahomes-card-record-trnd"
+       },
+       {
+        "name": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/news/patrick-mahomes-rookie-card-sells-for-4-3-million-shattering-previous-record-involving-tom-brady-card"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-patrick-mahomes-2017-national-treasures-rpa-161-99",
+      "year": 2017,
+      "manufacturer": "Panini",
+      "set": "National Treasures",
+      "cardName": "Rookie Patch Autograph",
+      "cardNumber": "161",
+      "rookie": true,
+      "parallel": "Base RPA parallel, serial-numbered",
+      "serialNumberedTo": 99,
+      "autograph": true,
+      "grade": "BGS 9 / Auto 10",
+      "gradeFilterGroup": "BGS9",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 173240,
+       "lastSaleDate": "2025-02",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single dated sale (Goldin Auctions, reported February 2025); exact day within the month not confirmed by available sources."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "Goldin Auctions",
+        "url": "https://goldin.co/item/2017-national-treasures-rookie-patch-auto-rpa-161-patrick-mahomes-ii-sncsa8"
+       },
+       {
+        "name": "Bleacher Report",
+        "url": "https://bleacherreport.com/articles/10127426-goldin-patrick-mahomes-most-iconic-nfl-rookie-card-ever-produced-sells-for-173k"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "cardId": "football-patrick-mahomes-2017-optic-holo-177",
+      "year": 2017,
+      "manufacturer": "Panini",
+      "set": "Donruss Optic",
+      "cardName": "Rated Rookie - Holo",
+      "cardNumber": "177",
+      "rookie": true,
+      "parallel": "Holo parallel",
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 3800,
+       "lastSaleDate": "2026-08-05",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single specifically-dated sale found this pass."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-18",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/JoZu7vnz8ZcaqBerTsEa"
+       }
+      ]
+     }
+    ],
+    "sources": [
+     {
+      "name": "CNN",
+      "url": "https://www.cnn.com/2021/07/31/us/patrick-mahomes-card-record-trnd"
+     },
+     {
+      "name": "Goldin Auctions",
+      "url": "https://goldin.co/item/2017-national-treasures-rookie-patch-auto-rpa-161-patrick-mahomes-ii-sncsa8"
+     },
+     {
+      "name": "Card Ladder",
+      "url": "https://www.cardladder.com/ladder/card/JoZu7vnz8ZcaqBerTsEa"
+     }
+    ]
    },
    {
     "id": "football-jerry-rice",
@@ -284,7 +659,58 @@
     "summary": null,
     "hobbyRank": 5,
     "rankReason": "The receiver most consistently cited as the position's greatest, with strong vintage rookie demand.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-jerry-rice-1986-topps-161-psa10",
+      "year": "1986",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Jerry Rice Rookie Card",
+      "cardNumber": "161",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 87000,
+       "lastSaleDate": "2024-10-04",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Only one specifically dated PSA 10 sale could be confirmed (cllct.com, reporting a sale that closed the Friday before its Oct. 4, 2024 publication). cllct and a later SI.com piece (Nov. 2025) both describe roughly six PSA 10 sales since 2023 averaging near $70,000-$84,000, but individual dates/venues for those other sales were not specific enough to verify, so no 3-sale average is calculated here. PSA 10 pop is extremely scarce (~63 of ~39,000 graded, per cllct), making this one of the most condition-sensitive vintage rookies in the hobby."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 63,
+       "source": "PSA population report, cited via cllct.com",
+       "asOf": "2024-10"
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "cllct.com \u2014 'Why the 1986 Jerry Rice rookie card rarely makes the grade'",
+        "url": "https://www.cllct.com/sports-collectibles/auctions/why-the-1986-jerry-rice-rookie-card-rarely-makes-the-grade"
+       },
+       {
+        "name": "SI.com \u2014 '1986 Topps Jerry Rice rookie card prices growing more expensive'",
+        "url": "https://www.si.com/collectibles/1986-topps-jerry-rice-rookie-card-prices-growing-more-expensive"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {

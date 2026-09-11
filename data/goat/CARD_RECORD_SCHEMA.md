@@ -22,6 +22,8 @@ it with placeholder, estimated, or "looks right" values to make the UI look comp
   "serialNumberedTo": 100,
   "grade": "PSA 10",
   "gradeFilterGroup": "PSA10",
+  "autograph": true,
+  "marketStatus": "HISTORIC_RECORD",
   "image": {
     "localAsset": null,
     "externalVerifiedImage": null,
@@ -60,6 +62,15 @@ it with placeholder, estimated, or "looks right" values to make the UI look comp
   what the future PSA 10 / PSA 9 / RAW / ALL filter switches on. Default the *displayed* ranking to
   PSA 10 / Gem Mint comps when sufficient PSA 10 evidence exists; if it doesn't, use the most liquid
   relevant grade and **label it clearly** in the UI — never hide the grade.
+- **marketStatus**: one of `RECENT` (a comp within roughly the last 90-120 days), `STALE` (the best
+  traceable comp is older than that but the card still trades occasionally), `SPARSE` (only 1-2 comps
+  exist at all for this grade/variation), or `HISTORIC_RECORD` (an iconic card that trades rarely — the
+  best evidence may legitimately be years old and is being kept *because* it's the record, not because
+  it's current). This is a judgment call set explicitly per card during research, never auto-computed
+  from a date threshold — a rare card's only evidence can be old and still legitimate, as long as it is
+  never presented as if it were a current price. The UI maps this to an explicit label
+  (`RECORD SALE` / `LAST VERIFIED SALE` / `RECENT COMP`) rendered directly before the dollar amount so a
+  2021 sale is never shown as if it were a 2026 price.
 - **comps**: `threeSaleAverage`, `highSale`, `lowSale` must only be populated when `compCount >= 3`
   legitimate sold comps exist inside `compWindowDays`. If fewer than 3 exist, leave those fields `null`
   and say so via `insufficientCompsNote` rather than computing a misleading average from 1-2 sales.

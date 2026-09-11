@@ -1097,9 +1097,21 @@ function openGoatPlayer(id){
 function setGoatGradeFilter(g){_goatGradeFilter=g;if(_goatCurrentPlayer)C.innerHTML=goatPlayerDetailHTML(_goatCurrentPlayer)}
 function toggleGoatShowAll(){_goatShowAll=!_goatShowAll;if(_goatCurrentPlayer)C.innerHTML=goatPlayerDetailHTML(_goatCurrentPlayer)}
 function goatMoney(n){return typeof n==='number'?'$'+n.toLocaleString(undefined,{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2}):n}
+// marketStatus is set explicitly per card during data entry (a judgment call
+// about whether a card's best evidence is current or historic), never
+// auto-computed from a date threshold - a 2021 sale can legitimately stay
+// the best known evidence for a rarely-traded card (HISTORIC_RECORD), while
+// CardStorm must never present that as if it were today's market ("CURRENT
+// VALUE: $3.1M"). The label always makes clear which situation applies.
+const GOAT_MARKET_STATUS_LABEL={RECENT:'RECENT COMP',STALE:'LAST VERIFIED SALE',SPARSE:'LAST VERIFIED SALE',HISTORIC_RECORD:'RECORD SALE'};
 function goatCardRowHTML(c){
- const compLine=c.comps&&c.comps.lastSale?`${goatMoney(c.comps.lastSale)} · ${c.comps.lastSaleDate||'date pending'}`:'Comp not yet sourced';
- return `<div class=goatCardRow><div class=goatCardRowRank>#${c.rank}</div><div class=goatCardRowThumb>${(c.image&&(c.image.localAsset||c.image.externalVerifiedImage))?`<img src="${c.image.localAsset||c.image.externalVerifiedImage}" loading=lazy decoding=async alt="${c.cardName}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">`:GOAT_CARD_PENDING_SVG}</div><div class=goatCardRowBody><b>${c.year} ${c.manufacturer} ${c.set} ${c.cardName}${c.cardNumber?' #'+c.cardNumber:''}</b><div class=goatCardRowMeta>${c.grade||'Grade pending'} · ${compLine}${c.trend?' · '+c.trend:''}</div></div></div>`;
+ const hasComp=c.comps&&typeof c.comps.lastSale==='number';
+ const use3=c.comps&&c.comps.compCount>=3&&typeof c.comps.threeSaleAverage==='number';
+ const statLabel=use3?'3-SALE AVG':(GOAT_MARKET_STATUS_LABEL[c.marketStatus]||'LAST VERIFIED SALE');
+ const statValue=use3?goatMoney(c.comps.threeSaleAverage):goatMoney(c.comps&&c.comps.lastSale);
+ const compLine=hasComp?`${statLabel}: ${statValue} · ${c.comps.lastSaleDate||'date pending'}`:'Comp not yet sourced';
+ const setLabel=(c.set&&c.set!==c.manufacturer)?' '+c.set:'';
+ return `<div class=goatCardRow><div class=goatCardRowRank>#${c.rank}</div><div class=goatCardRowThumb>${(c.image&&(c.image.localAsset||c.image.externalVerifiedImage))?`<img src="${c.image.localAsset||c.image.externalVerifiedImage}" loading=lazy decoding=async alt="${c.cardName}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">`:GOAT_CARD_PENDING_SVG}</div><div class=goatCardRowBody><b>${c.year} ${c.manufacturer}${setLabel} ${c.cardName}${c.cardNumber?' #'+c.cardNumber:''}</b><div class=goatCardRowMeta>${c.grade||'Grade pending'} · ${compLine}${c.trend?' · '+c.trend:''}</div></div></div>`;
 }
 function goatPlayerCardsHTML(player){
  const cards=(player.cards||[]).filter(c=>_goatGradeFilter==='ALL'||c.gradeFilterGroup===_goatGradeFilter).slice().sort((a,b)=>a.rank-b.rank);
@@ -1114,7 +1126,7 @@ function goatPlayerCardsHTML(player){
 }
 function goatPlayerDetailHTML(player){
  return shell('THE GOAT VAULT',player.name,`${player.position} · ${player.sport.toUpperCase()} Hobby Icon`,
-  `${GOAT_STYLE}<div class=feature><div class=goatPlayerHead><div class=goatAvatarLg>${player.playerImage?`<img src="${player.playerImage}" loading=lazy decoding=async alt="${player.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`:GOAT_AVATAR_SVG}</div><div><div class=goatEyebrow>#${player.hobbyRank} ALL-TIME HOBBY ICON</div><div class=goatPlayerMeta>${player.era} · ${player.teams.join(', ')}</div></div></div>${player.rankReason?`<p class=goatRankReason>"${player.rankReason}"</p>`:''}</div><div class=feature style="margin-top:14px"><h2>TOP ${(player.cards||[]).length>5?'5':(player.cards||[]).length||'20'} CARDS BY CURRENT MARKET VALUE</h2><div class=sub>PSA 10 / Gem Mint comps shown by default when enough evidence exists. Grade is always labeled — never hidden or mixed across conditions.</div>${goatPlayerCardsHTML(player)}</div>`);
+  `${GOAT_STYLE}<div class=feature><div class=goatPlayerHead><div class=goatAvatarLg>${player.playerImage?`<img src="${player.playerImage}" loading=lazy decoding=async alt="${player.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`:GOAT_AVATAR_SVG}</div><div><div class=goatEyebrow>#${player.hobbyRank} ALL-TIME HOBBY ICON</div><div class=goatPlayerMeta>${player.era} · ${player.teams.join(', ')}</div></div></div>${player.rankReason?`<p class=goatRankReason>"${player.rankReason}"</p>`:''}</div><div class=feature style="margin-top:14px"><h2>TOP VERIFIED CARDS</h2><div class=sub>${(player.cards||[]).length?`${(player.cards||[]).length} verified card${(player.cards||[]).length===1?'':'s'} currently tracked (target: up to 20)`:'No verified cards tracked yet (target: up to 20)'} · PSA 10 / Gem Mint comps shown by default when enough evidence exists. Grade is always labeled — never hidden or mixed across conditions.</div>${goatPlayerCardsHTML(player)}</div>`);
 }
 F.watch=watch;
 
