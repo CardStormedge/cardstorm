@@ -1110,7 +1110,8 @@ function goatCardRowHTML(c){
  const statLabel=use3?'3-SALE AVG':(GOAT_MARKET_STATUS_LABEL[c.marketStatus]||'LAST VERIFIED SALE');
  const statValue=use3?goatMoney(c.comps.threeSaleAverage):goatMoney(c.comps&&c.comps.lastSale);
  const compLine=hasComp?`${statLabel}: ${statValue} · ${c.comps.lastSaleDate||'date pending'}`:'Comp not yet sourced';
- const setLabel=(c.set&&c.set!==c.manufacturer)?' '+c.set:'';
+ const setStartsWithMfr=c.set&&c.manufacturer&&c.set.toLowerCase().indexOf(c.manufacturer.toLowerCase())===0;
+ const setLabel=(c.set&&c.set!==c.manufacturer)?' '+(setStartsWithMfr?c.set.slice(c.manufacturer.length).trim():c.set):'';
  return `<div class=goatCardRow><div class=goatCardRowRank>#${c.rank}</div><div class=goatCardRowThumb>${(c.image&&(c.image.localAsset||c.image.externalVerifiedImage))?`<img src="${c.image.localAsset||c.image.externalVerifiedImage}" loading=lazy decoding=async alt="${c.cardName}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">`:GOAT_CARD_PENDING_SVG}</div><div class=goatCardRowBody><b>${c.year} ${c.manufacturer}${setLabel} ${c.cardName}${c.cardNumber?' #'+c.cardNumber:''}</b><div class=goatCardRowMeta>${c.grade||'Grade pending'} · ${compLine}${c.trend?' · '+c.trend:''}</div></div></div>`;
 }
 function goatPlayerCardsHTML(player){

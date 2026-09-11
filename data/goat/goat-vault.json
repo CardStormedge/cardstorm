@@ -750,7 +750,154 @@
     "summary": null,
     "hobbyRank": 7,
     "rankReason": "Short, highlight-driven career that keeps his rookie-era cards in strong collector demand.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-barry-sanders-1998-metal-universe-pmg-gem-master-1of1",
+      "year": "1998",
+      "manufacturer": "SkyBox",
+      "set": "Metal Universe Precious Metal Gems Gem Master",
+      "cardName": "Barry Sanders Card",
+      "cardNumber": "20",
+      "rookie": false,
+      "parallel": "Gem Master (1/1)",
+      "serialNumberedTo": "1/1",
+      "autograph": false,
+      "grade": "PSA NM 7 (MBA Gold)",
+      "gradeFilterGroup": "PSA7",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 512400,
+       "lastSaleDate": "2026-08",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "One-of-one card; no comparable different-copy sale exists by definition. Sold at Heritage Auctions' Aug. 21-23, 2026 Summer Platinum Night Sports Auction ($62.9M total, the largest sports auction ever held), setting a new record for any Barry Sanders item. This same physical card previously sold for $168,000 in April 2024 - recorded here as price-history context only, not averaged, since it is the same item resold rather than a comparable different copy."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 1,
+       "source": "PSA (1/1 parallel)",
+       "asOf": "2026-08"
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Sports Collectors Digest - 'Barry Sanders, Peyton Manning cards set records in historic Heritage auction'",
+        "url": "https://sportscollectorsdigest.com/barry-sanders-peyton-manning-cards-set-records-in-historic-heritage-auction"
+       },
+       {
+        "name": "Auction Report - '$62.9 Million Heritage Summer Platinum Night Sets Record'",
+        "url": "https://www.auctionreport.com/62-9-million-heritage-summer-platinum-night-sets-record-as-highest-grossing-sports-auction-of-all-time/"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-barry-sanders-1997-metal-universe-pmg-green-psa8",
+      "year": "1997",
+      "manufacturer": "SkyBox",
+      "set": "Metal Universe Precious Metal Gems Green",
+      "cardName": "Barry Sanders Card",
+      "cardNumber": null,
+      "rookie": false,
+      "parallel": "PMG Green (/15)",
+      "serialNumberedTo": "15",
+      "autograph": false,
+      "grade": "PSA 8 (1 of 2 at this grade, none higher)",
+      "gradeFilterGroup": "PSA8",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 372000,
+       "lastSaleDate": "2025-08",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Sold at Fanatics Collect, August 2025, at the time setting a new record for any Barry Sanders card (since surpassed by the 1998 PMG Gem Master 1/1's August 2026 Heritage sale, recorded separately above as a different physical card/parallel). PMG Green parallel limited to 15 copies; this PSA 8 is 1 of 2 at that grade with none higher."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 15,
+       "source": "SkyBox print run (PMG Green parallel)",
+       "asOf": "2025-08"
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "cllct.com - 'Barry Sanders PMG card sells for record $372k at Fanatics Collect'",
+        "url": "https://www.cllct.com/sports-collectibles/sports-cards/barry-sanders-pmg-card-sells-for-record-at-fanatics-collect"
+       },
+       {
+        "name": "Yahoo Sports - 'Barry Sanders PMG card sells for record $372k at Fanatics Collect'",
+        "url": "https://sports.yahoo.com/article/barry-sanders-pmg-card-sells-070000241.html"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "cardId": "football-barry-sanders-1989-score-257-psa10",
+      "year": "1989",
+      "manufacturer": "Score",
+      "set": "Score",
+      "cardName": "Barry Sanders Rookie Card",
+      "cardNumber": "257",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "SPARSE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 1325,
+       "lastSaleDate": "2025-08-18",
+       "threeSaleAverage": null,
+       "highSale": 1325,
+       "lowSale": 1300,
+       "compCount": 2,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Two Card-Ladder-tracked completed eBay sales on the same date (2025-08-18): $1,325 and $1,300. Only 2 comps found this pass, so no three-sale average is computed."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder (eBay completed sales)",
+        "url": "https://www.cardladder.com/ladder/card/XTDILE03SLSOXGu8HJ3d"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -851,7 +998,150 @@
     "summary": null,
     "hobbyRank": 13,
     "rankReason": "All-time rushing leader with a well-collected rookie-era card run.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-emmitt-smith-1990-score-supplemental-101t-psa10",
+      "year": "1990",
+      "manufacturer": "Score",
+      "set": "Score Supplemental",
+      "cardName": "Emmitt Smith Rookie Card",
+      "cardNumber": "101T",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 2300.0,
+       "lastSaleDate": "2026-05-10",
+       "threeSaleAverage": 2216.08,
+       "highSale": 2456.0,
+       "lowSale": 1800.0,
+       "compCount": 12,
+       "compWindowDays": null,
+       "insufficientCompsNote": null
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/1990-score-emmitt-smith-supplemental-101-t-psa-10"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-emmitt-smith-1990-topps-traded-27t-psa10",
+      "year": "1990",
+      "manufacturer": "Topps",
+      "set": "Topps Traded",
+      "cardName": "Emmitt Smith Rookie Card",
+      "cardNumber": "27T",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 212.5,
+       "lastSaleDate": "2026-08-18",
+       "threeSaleAverage": 216.13,
+       "highSale": 260.0,
+       "lowSale": 177.77,
+       "compCount": 11,
+       "compWindowDays": null,
+       "insufficientCompsNote": null
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/M0bEqFVMMug9w00l6WzQ"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "cardId": "football-emmitt-smith-1990-action-packed-rookie-update-34-psa10",
+      "year": "1990",
+      "manufacturer": "Action Packed",
+      "set": "Rookie Update",
+      "cardName": "Emmitt Smith Rookie Card",
+      "cardNumber": "34",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 999.99,
+       "lastSaleDate": "2025-11-15",
+       "threeSaleAverage": null,
+       "highSale": 999.99,
+       "lowSale": 957.0,
+       "compCount": 2,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Card Ladder sale ($999.99, 2025-11-15) corroborated by a separate PSA Auction Prices Realized eBay sale ($957, 2025-09-15). This card grades PSA 10 only about 5.5% of the time, making it Smith's toughest rookie-era card to find gem mint. Only 2 comps found this pass, so no three-sale average is computed."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": "PSA population (approx. 5.5% PSA 10 rate reported by Card Ladder)",
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/TjQxzk2UpjfxTOcWmo0c"
+       },
+       {
+        "name": "PSA Auction Prices Realized",
+        "url": "https://www.psacard.com/auctionprices/football-cards/action-packed-rookie-update/emmitt-smith/287926"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -868,7 +1158,146 @@
     "summary": null,
     "hobbyRank": 14,
     "rankReason": "Long tenured elite QB with strong sustained hobby demand.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-aaron-rodgers-2005-sp-authentic-rpa-252-psa9",
+      "year": "2005",
+      "manufacturer": "Upper Deck",
+      "set": "SP Authentic",
+      "cardName": "Aaron Rodgers Rookie Patch Autograph",
+      "cardNumber": "252",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": "99",
+      "autograph": true,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 15100.0,
+       "lastSaleDate": "2022-08-23",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed dated Card Ladder sale; no more recent comparable-grade sale found this pass."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card?id=yFo9NkgruMdTCLsui5q5"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-aaron-rodgers-2005-exquisite-rpa-106-psa9",
+      "year": "2005",
+      "manufacturer": "Upper Deck",
+      "set": "Exquisite Collection",
+      "cardName": "Aaron Rodgers Rookie Patch Autograph",
+      "cardNumber": "106",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": "199",
+      "autograph": true,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 4034.54,
+       "lastSaleDate": "2024-09-02",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed dated Card Ladder sale; no more recent comparable-grade sale found this pass."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/xuQNfzbGpdbbOLBd8He8"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "cardId": "football-aaron-rodgers-2005-topps-431-psa10",
+      "year": "2005",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Aaron Rodgers Rookie Card",
+      "cardNumber": "431",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 300.0,
+       "lastSaleDate": "2026-06-18",
+       "threeSaleAverage": 193.55,
+       "highSale": 315.0,
+       "lowSale": 100.0,
+       "compCount": 80,
+       "compWindowDays": null,
+       "insufficientCompsNote": null
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/OfFqrj595ELsB4NQJB35"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -888,7 +1317,104 @@
     "summary": null,
     "hobbyRank": 15,
     "rankReason": "One of the most collected deep-threat receivers of his generation.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-randy-moss-1998-playoff-contenders-rookie-ticket-auto-bgs8",
+      "year": "1998",
+      "manufacturer": "Playoff",
+      "set": "Contenders",
+      "cardName": "Randy Moss Rookie Ticket Autograph",
+      "cardNumber": null,
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": "300",
+      "autograph": true,
+      "grade": "BGS 8 (On-Card Auto)",
+      "gradeFilterGroup": "BGS8",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 23750.0,
+       "lastSaleDate": "2026-01",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Reported as the most expensive item carrying a Randy Moss signature ever sold, per Beckett/cardboardconnection reporting of a completed eBay sale; exact day within January 2026 not specified by the source, so the date is recorded at month precision rather than guessed."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Beckett News - '1998 Playoff Contenders Randy Moss Rookie Ticket Autograph'",
+        "url": "https://www.beckett.com/news/1998-playoff-contenders-randy-moss-rookie-ticket-autograph/"
+       },
+       {
+        "name": "Cardboard Connection - Randy Moss Cards Checklist",
+        "url": "https://www.cardboardconnection.com/randy-moss-cards"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-randy-moss-1998-score-rookie-autographs-psa9",
+      "year": "1998",
+      "manufacturer": "Score",
+      "set": "Score Rookie Autographs",
+      "cardName": "Randy Moss Rookie Autograph",
+      "cardNumber": null,
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": true,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 263.0,
+       "lastSaleDate": "2025-07-21",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed dated sale (eBay, per PSA Auction Prices Realized). PSA APR separately reports 14 total auction sales of this card across grades combined for $4,081.81, but individual grade/date breakdowns for the other 13 were not confirmable this pass, so no three-sale average is computed."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "PSA Auction Prices Realized",
+        "url": "https://www.psacard.com/auctionprices/football-cards/1998-score-rookie-autographs/randy-moss/468040"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -970,7 +1496,58 @@
     "summary": null,
     "hobbyRank": 20,
     "rankReason": "Short, legendary two-sport career that keeps his rookie cards in strong cross-sport demand.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-bo-jackson-1988-topps-327-psa10",
+      "year": "1988",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Bo Jackson Super Rookie",
+      "cardNumber": "327",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 3800.0,
+       "lastSaleDate": "2026-08-05",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Jackson's lone mainstream football rookie card (Los Angeles Raiders, Topps 'Super Rookie' subset). Only 1 fully dated comp confirmed this pass; a separate un-dated PSA 10 figure (~$3,428) was seen but excluded as a duplicate/imprecise reference to this same card rather than a distinct comparable sale."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/DjzqjOlFlay5Ez4642rD"
+       },
+       {
+        "name": "Sports Card Investor - Bo Jackson 1988 Topps #327 Base Price Guide",
+        "url": "https://www.sportscardinvestor.com/cards/bo-jackson-football/1988-topps-base-327"
+       }
+      ]
+     }
+    ],
     "sources": []
    }
   ]
