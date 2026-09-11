@@ -1033,14 +1033,88 @@ function worth(){
   <div id=cvResults style="margin-top:10px">${cardValueResultsHTML('')}</div></div>`);
 }
 F.worth=worth;
-let legendSport='all';
-function setLegendSport(s){legendSport=s;C.innerHTML=legends()}
-function legends(){
- const players=WATCHCAT.filter(p=>legendSport==='all'||p[1]===legendSport);
- return shell('LEGEND VAULT','Featured player vault',"CardStorm hasn't loaded historical legend data yet, so this vault currently covers today's most-watched stars. Tap a player for real chase categories and verified sales.",
-  `<div class=v83tabs>${['all','football','baseball','basketball'].map(s=>`<button class="${legendSport===s?'active':''}" onclick="setLegendSport('${s}')">${s.toUpperCase()}</button>`).join('')}</div><div class=catalogue>${players.map(p=>{const i=WATCHCAT.findIndex(x=>x[0]===p[0]),ct=COMPS.filter(c=>c[0]===p[0]).length;return `<div class=cat onclick="openWatch(${i})"><b>${p[0]}</b><div class="state ${ct?'ok':'pending'}">${ct?ct+' verified sale'+(ct>1?'s':''):'Comp feed pending'}</div></div>`}).join('')}</div>`);
+// ---- THE GOAT VAULT (All-Time Hobby Icons) ----------------------------
+// Entirely data-driven from data/goat/goat-vault.json - never hardcode a
+// player or card row in this file. Player bio fields (name/era/teams/
+// position) are well-known historical facts; hobbyRank/rankReason are
+// explicitly editorial (see the JSON's _editorialDisclaimer), never framed
+// as an objective statistical ranking. Every player's cards array is empty
+// until real, sourced Top-20 card/comp/image data is researched - see
+// data/goat/CARD_RECORD_SCHEMA.md for the record shape and the sourcing
+// rules that gate adding one. This module never fabricates a card, comp,
+// value, or image to fill a gap - it renders the honest "not researched
+// yet" state instead, same pattern as Gear Up's image-pending treatment.
+const GOAT_STYLE=`<style>.goatTabs{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 16px}.goatTabs button{background:#0b0904;color:#e8d8b0;border:1px solid #6b5320;border-radius:8px;padding:9px 14px;font-weight:900;cursor:pointer;letter-spacing:.02em}.goatTabs button.active{background:linear-gradient(120deg,#ffd257,#c99328);color:#150f02;border-color:#ffd257}.goatGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}.goatCard{text-align:left;font-family:inherit;color:#fff;cursor:pointer;background:linear-gradient(155deg,#1a1509,#0a0805);border:1px solid #5c4a22;border-radius:13px;padding:14px;transition:.15s}.goatCard:hover{border-color:#ffd257;box-shadow:0 0 20px #ffd25733;transform:translateY(-2px)}.goatRankBadge{display:inline-block;font-size:9.5px;font-weight:950;letter-spacing:.08em;color:#150f02;background:linear-gradient(120deg,#ffd257,#c99328);padding:3px 8px;border-radius:5px;margin-bottom:8px}.goatCardAvatar{width:100%;height:90px;border-radius:9px;background:radial-gradient(circle at 50% 35%,#2a220c,#0c0a05 75%);display:flex;align-items:center;justify-content:center;margin-bottom:9px}.goatCardAvatar svg{width:34px;height:34px;opacity:.85}.goatCard h3{margin:0 0 3px;font-size:15px}.goatCardMeta{font-size:11px;color:#b3a06a}.goatHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #6b5320;box-shadow:0 0 34px #ffd25722}.goatHeroWrap img{display:block;width:100%;aspect-ratio:1716/916;max-height:380px;object-fit:cover;object-position:center 28%}.goatEyebrow{font-size:11px;font-weight:950;letter-spacing:.12em;color:#ffd257}.goatPlayerHead{display:flex;gap:16px;align-items:center;margin-top:16px}.goatAvatarLg{width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 50% 35%,#2a220c,#0c0a05 75%);border:1px solid #6b5320;display:flex;align-items:center;justify-content:center;flex:0 0 auto}.goatAvatarLg svg{width:36px;height:36px;opacity:.85}.goatPlayerMeta{font-size:12.5px;color:#b3a06a;margin-top:3px}.goatRankReason{font-size:12.5px;color:#c9bd94;margin-top:8px;font-style:italic}.goatGradeTabs{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 10px}.goatGradeTabs button{background:#0b0904;color:#c9bd94;border:1px solid #5c4a22;border-radius:7px;padding:7px 11px;font-size:11.5px;font-weight:800;cursor:pointer}.goatGradeTabs button.active{background:#ffd257;color:#150f02;border-color:#ffd257}.goatCardRow{display:flex;gap:12px;align-items:center;background:#0b0904;border:1px solid #3d3115;border-radius:11px;padding:10px 12px;margin-bottom:8px}.goatCardRowThumb{width:52px;height:72px;border-radius:6px;background:radial-gradient(circle at 50% 35%,#2a220c,#0c0a05 75%);display:flex;align-items:center;justify-content:center;flex:0 0 auto}.goatCardRowThumb svg{width:22px;height:22px;opacity:.8}.goatCardRowRank{font-size:16px;font-weight:950;color:#ffd257;flex:0 0 26px}.goatCardRowBody{flex:1;min-width:0}.goatCardRowBody b{display:block;font-size:13px}.goatCardRowMeta{font-size:11px;color:#b3a06a;margin-top:2px}.goatEmpty{text-align:center;padding:26px 16px;border:1px dashed #5c4a22;border-radius:14px;background:#0b0904}.goatEmpty h3{margin:0 0 6px;font-size:15px}.goatEmpty p{margin:0 auto;max-width:380px;color:#b3a06a;font-size:12.5px;line-height:1.5}.goatViewAllBtn{display:block;width:100%;margin-top:8px;background:transparent;border:1px solid #5c4a22;color:#e8d8b0;font-family:inherit;font-size:12px;font-weight:800;padding:10px 14px;border-radius:9px;cursor:pointer}.goatViewAllBtn:hover{border-color:#ffd257;color:#fff}@media(max-width:900px){.goatGrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}}@media(max-width:600px){.goatHeroWrap img{max-height:220px;object-position:center 26%}.goatPlayerHead{gap:11px}.goatAvatarLg{width:58px;height:58px}.goatGrid{grid-template-columns:1fr 1fr}}</style>`;
+const GOAT_SPORTS=['football','basketball','baseball'];
+const GOAT_AVATAR_SVG=`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="#c99328" stroke-width="1.6"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke="#c99328" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+const GOAT_CARD_PENDING_SVG=`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="2" width="18" height="20" rx="2" stroke="#c99328" stroke-width="1.6"/><path d="M7 8h10M7 12h10M7 16h6" stroke="#c99328" stroke-width="1.4" stroke-linecap="round"/></svg>`;
+let goatSport='football';
+let _goatVaultPromise=null;
+function loadGoatVault(){
+ if(!_goatVaultPromise)_goatVaultPromise=fetch('data/goat/goat-vault.json').then(r=>r.json()).catch(()=>({football:{players:[]},basketball:{players:[]},baseball:{players:[]}}));
+ return _goatVaultPromise;
 }
-F.legends=legends;
+function setGoatSport(s){goatSport=s;loadGoatGrid()}
+function goatCardHTML(p){
+ return `<button type=button class=goatCard onclick="openGoatPlayer('${p.id}')"><div class=goatRankBadge>#${p.hobbyRank} HOBBY ICON</div><div class=goatCardAvatar>${p.playerImage?`<img src="${p.playerImage}" loading=lazy decoding=async alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:9px">`:GOAT_AVATAR_SVG}</div><h3>${p.name}</h3><div class=goatCardMeta>${p.position} · ${p.era}</div></button>`;
+}
+function loadGoatGrid(){
+ loadGoatVault().then(data=>{
+  const host=document.getElementById('goatGridAnchor');
+  if(!host)return;
+  const players=((data[goatSport]||{}).players||[]).slice().sort((a,b)=>a.hobbyRank-b.hobbyRank);
+  host.innerHTML=players.length?`<div class=goatGrid>${players.map(goatCardHTML).join('')}</div>`:`<div class=goatEmpty><h3>No ${goatSport} icons loaded yet</h3><p>This sport's GOAT Vault roster hasn't been added to data/goat/goat-vault.json.</p></div>`;
+ });
+}
+function goatVault(){
+ // goatVault() is reached both via the generic F[v] show() dispatch (which
+ // has no post-render hook, unlike openTeam()/renderPlayerHunt()) and via
+ // setGoatSport()'s direct re-render - so the initial async data load is
+ // triggered here with setTimeout(...,0), the same deferred-side-effect
+ // pattern collectionChecks() already uses, guaranteeing #goatGridAnchor
+ // exists in the DOM before loadGoatGrid() looks for it.
+ setTimeout(loadGoatGrid,0);
+ return shell('THE GOAT VAULT','All-Time Hobby Icons',"CardStorm's editorial pick of the most collectible hobby icons in each sport's history - not a claim of objective statistical ranking.",
+  `${GOAT_STYLE}<div class=goatHeroWrap><img src="assets/homepage/categories/goats-hero.webp" loading=lazy decoding=async alt="The GOAT Vault — legendary players, iconic cards"></div><div class=goatTabs>${GOAT_SPORTS.map(s=>`<button class="${goatSport===s?'active':''}" onclick="goatSport='${s}';setGoatSport('${s}')">${s.toUpperCase()}</button>`).join('')}</div><div id=goatGridAnchor>Loading THE GOAT VAULT…</div>`);
+}
+F.legends=goatVault;
+let _goatCurrentPlayer=null,_goatShowAll=false,_goatGradeFilter='ALL';
+function openGoatPlayer(id){
+ navPush();H.style.display='none';V.style.display='block';
+ C.innerHTML=shell('THE GOAT VAULT','Loading…','',`${GOAT_STYLE}<div class=notice>Loading player…</div>`);
+ C.scrollTop=0;
+ loadGoatVault().then(data=>{
+  const all=GOAT_SPORTS.flatMap(s=>(data[s]||{}).players||[]);
+  const player=all.find(p=>p.id===id);
+  if(!player){C.innerHTML=shell('THE GOAT VAULT','Player not found','',`${GOAT_STYLE}<div class=notice>This player is not yet in the GOAT Vault.</div>`);return}
+  _goatCurrentPlayer=player;_goatShowAll=false;
+  const cards=player.cards||[];
+  _goatGradeFilter=cards.some(c=>c.gradeFilterGroup==='PSA10')?'PSA10':'ALL';
+  C.innerHTML=goatPlayerDetailHTML(player);
+  C.scrollTop=0;
+ });
+}
+function setGoatGradeFilter(g){_goatGradeFilter=g;if(_goatCurrentPlayer)C.innerHTML=goatPlayerDetailHTML(_goatCurrentPlayer)}
+function toggleGoatShowAll(){_goatShowAll=!_goatShowAll;if(_goatCurrentPlayer)C.innerHTML=goatPlayerDetailHTML(_goatCurrentPlayer)}
+function goatCardRowHTML(c){
+ const compLine=c.comps&&c.comps.lastSale?`${c.comps.lastSale} · ${c.comps.lastSaleDate||'date pending'}`:'Comp not yet sourced';
+ return `<div class=goatCardRow><div class=goatCardRowRank>#${c.rank}</div><div class=goatCardRowThumb>${(c.image&&(c.image.localAsset||c.image.externalVerifiedImage))?`<img src="${c.image.localAsset||c.image.externalVerifiedImage}" loading=lazy decoding=async alt="${c.cardName}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">`:GOAT_CARD_PENDING_SVG}</div><div class=goatCardRowBody><b>${c.year} ${c.manufacturer} ${c.set} ${c.cardName}${c.cardNumber?' #'+c.cardNumber:''}</b><div class=goatCardRowMeta>${c.grade||'Grade pending'} · ${compLine}${c.trend?' · '+c.trend:''}</div></div></div>`;
+}
+function goatPlayerCardsHTML(player){
+ const cards=(player.cards||[]).filter(c=>_goatGradeFilter==='ALL'||c.gradeFilterGroup===_goatGradeFilter).slice().sort((a,b)=>a.rank-b.rank);
+ const gradeGroups=['ALL',...new Set((player.cards||[]).map(c=>c.gradeFilterGroup).filter(Boolean))];
+ const filterHtml=`<div class=goatGradeTabs>${gradeGroups.map(g=>`<button class="${_goatGradeFilter===g?'active':''}" onclick="setGoatGradeFilter('${g}')">${g}</button>`).join('')}</div>`;
+ if(!cards.length){
+  return `${(player.cards||[]).length?filterHtml:''}<div class=goatEmpty><h3>No researched cards yet</h3><p>CardStorm hasn't sourced verified Top 20 card data for ${player.name} yet. This player is queued for research and will only show real sold-comp evidence once it's added — never an estimated or placeholder value.</p></div>`;
+ }
+ const shown=_goatShowAll?cards:cards.slice(0,5);
+ const viewAllBtn=(!_goatShowAll&&cards.length>5)?`<button type=button class=goatViewAllBtn onclick="toggleGoatShowAll()">VIEW ALL ${cards.length} CARDS →</button>`:'';
+ return `${filterHtml}${shown.map(goatCardRowHTML).join('')}${viewAllBtn}`;
+}
+function goatPlayerDetailHTML(player){
+ return shell('THE GOAT VAULT',player.name,`${player.position} · ${player.sport.toUpperCase()} Hobby Icon`,
+  `${GOAT_STYLE}<div class=feature><div class=goatPlayerHead><div class=goatAvatarLg>${player.playerImage?`<img src="${player.playerImage}" loading=lazy decoding=async alt="${player.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`:GOAT_AVATAR_SVG}</div><div><div class=goatEyebrow>#${player.hobbyRank} ALL-TIME HOBBY ICON</div><div class=goatPlayerMeta>${player.era} · ${player.teams.join(', ')}</div></div></div>${player.rankReason?`<p class=goatRankReason>"${player.rankReason}"</p>`:''}</div><div class=feature style="margin-top:14px"><h2>TOP ${(player.cards||[]).length>5?'5':(player.cards||[]).length||'20'} CARDS BY CURRENT MARKET VALUE</h2><div class=sub>PSA 10 / Gem Mint comps shown by default when enough evidence exists. Grade is always labeled — never hidden or mixed across conditions.</div>${goatPlayerCardsHTML(player)}</div>`);
+}
 F.watch=watch;
 
 // Shared scoped styles for the Pokémon landing + set-detail pages, following
