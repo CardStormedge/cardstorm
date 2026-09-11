@@ -541,6 +541,20 @@ const CHECKLIST_MANIFEST={
    // product, and would otherwise falsely verify a 2025 rookie as a 2024 Team
    // Hunt chase for any of those players who also appear on a current roster.
    chaseMap:{'Concourse':'rookie','Premier':'rookie','Club':'rookie','Suite':'rookie','Field':'rookie'}}
+ ],
+ // Partial launch (2026-09-11): only Base Rated Rookie is mapped, and only
+ // ROOKIE evidence. scanProductForPlayer's _passesStrictProductionGate===false
+ // check (see normalizeDonruss/scanProductForPlayer above) further narrows
+ // this to the 28/100 records that pass CardStorm's strict two-Tier-A-source
+ // (or Tier-A+Tier-B) evidence-quality gate - see
+ // data/checklists/football/2025/AUDIT-2025-donruss-evidence.md. The other 72
+ // records stay in donruss.json for audit/completeness but can never surface
+ // as verified here. No caseHit/auto/numbered/parallel/insert/memorabilia
+ // chase types are mapped yet - none of those have passed the same gate for
+ // any 2025 Donruss player.
+ 'football|2025':[
+  {key:'donruss',name:'Donruss',file:'data/football/2025/donruss.json',teamMapped:true,status:'PARTIAL',normalizer:'donruss',
+   chaseMap:{'Rated Rookies':'rookie'}}
  ]
 };
 const _checklistCache={};
@@ -681,7 +695,12 @@ function loadTeamGearSection(hostId,ab,teamFullName){
   host.outerHTML=`<p style="margin-top:10px"><button type=button class=gearTeamCta onclick="openCommerceOfferByIndex(${idx})">SHOP ${teamFullName.toUpperCase()} GEAR →</button></p>`;
  });
 }
-function normalizeDonruss(raw){const out=[];Object.entries(raw.categories||{}).forEach(([catName,cat])=>{if(cat.kind!=='cards')return;(cat.cards||[]).forEach(c=>{out.push({product:'Donruss',category:catName,cardNumber:c.cardNumber,player:c.player||'',team:c.team||'',rookie:!!c.rookie,ratedRookie:!!c.ratedRookie,id:donrussCardKey(catName,c)})})});return out}
+// _passesStrictProductionGate is passed through only when the source record
+// actually carries it (2025 Donruss's evidence-quality metadata) - 2024
+// Donruss records never set this field, so it stays undefined for them and
+// scanProductForPlayer's `=== false` check below is a no-op for 2024,
+// exactly as it always was.
+function normalizeDonruss(raw){const out=[];Object.entries(raw.categories||{}).forEach(([catName,cat])=>{if(cat.kind!=='cards')return;(cat.cards||[]).forEach(c=>{out.push({product:'Donruss',category:catName,cardNumber:c.cardNumber,player:c.player||'',team:c.team||'',rookie:!!c.rookie,ratedRookie:!!c.ratedRookie,_passesStrictProductionGate:c._passesStrictProductionGate,id:donrussCardKey(catName,c)})})});return out}
 function normalizePrizm(raw){const out=[];Object.entries(raw.categories||{}).forEach(([catName,groups])=>{(groups||[]).forEach(g=>{(g.cards||[]).forEach(c=>{out.push({product:'Prizm',category:catName,group:g.name,cardNumber:c.cardNumber,player:c.athlete||'',team:c.team||'',serialNumberedTo:c.serialNumberedTo||g.serialNumberedTo||null,id:prizmCardKey(catName,g.name,c)})})})});return out}
 function normalizeSelect(raw){const out=[];Object.entries(raw.categories||{}).forEach(([catName,cat])=>{if(cat.kind!=='cards')return;(cat.cards||[]).forEach(c=>{out.push({product:'Select',category:catName,cardNumber:c.cardNumber,player:c.player||'',team:'',rookie:!!c.rookie,id:selectCardKey(catName,c)})})});return out}
 function teamMatches(cardTeam,teamFullName){return !!cardTeam&&cardTeam.trim().toLowerCase()===teamFullName.trim().toLowerCase()}
@@ -764,6 +783,12 @@ function scanProductForPlayer(entry,raw,player){
  const evidence=[];
  norm(raw).forEach(rec=>{
   if(rec.player!==player)return;
+  // A record explicitly marked as failing its strict evidence-quality gate
+  // (currently only 2025 Donruss carries this field) never counts as
+  // verified chase evidence, no matter what chaseType/rookie flags it also
+  // carries - it stays in the source file for audit only. Records that
+  // don't carry this field at all (every other product/year) are unaffected.
+  if(rec._passesStrictProductionGate===false)return;
   const chaseType=entry.chaseMap[rec.category];
   if(!chaseType)return;
   if(chaseType==='rookie'){
