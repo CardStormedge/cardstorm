@@ -317,16 +317,16 @@
        "lowSale": null,
        "compCount": 1,
        "compWindowDays": null,
-       "insufficientCompsNote": "Single sale, but the defining record for this card: BGS's own Pristine 10 population is 4 with none graded higher, so this is inherently a rarely-traded grade tier, not a frequent-sale market. Reported by Beckett as the highest price ever paid for a professionally graded modern-era football card at the time (Modern Marvels online auction, ended April 25 - year inferred from the original Beckett blog post's 2009 timestamp, not independently reconfirmed this pass). Vintage PSA 10 / standard PSA 9 copies of this same card were also found in this research pass, but with conflicting or undated sale prices ($41,000 vs $48,800 claimed for 'PSA 10' with no reconcilable date, and a PSA 9 sale described only as 'recent' with no specific date) - excluded rather than guessed."
+       "insufficientCompsNote": "Single sale, but the defining record for this card: BGS's own Pristine 10 population is 4 with none graded higher, so this is inherently a rarely-traded grade tier, not a frequent-sale market. Reported by Beckett as the highest price ever paid for a professionally graded modern-era football card at the time. Sale date independently confirmed: the Beckett News article itself states the sale closed through Modern Marvels' online auction, which 'began in January and officially ended April 25' 2009 - corroborated by the original Beckett.com article, its 2009-dated blog mirror, and a separate SI.com background piece, not merely inferred from a single blog timestamp. Vintage PSA 10 / standard PSA 9 copies of this same card were also found in this research pass, but with conflicting or undated sale prices ($41,000 vs $48,800 claimed for 'PSA 10' with no reconcilable date, and a PSA 9 sale described only as 'recent' with no specific date) - excluded rather than guessed."
       },
       "previousComp": null,
       "trend": null,
       "population": {
        "count": 4,
        "source": "Beckett (BGS Pristine 10 population as of the original 2009 reporting)",
-       "asOf": null
+       "asOf": "2009-04"
       },
-      "lastChecked": "2026-09-18",
+      "lastChecked": "2026-09-11",
       "sources": [
        {
         "name": "Beckett News",
@@ -335,6 +335,14 @@
        {
         "name": "Heritage Auctions (card identification)",
         "url": "https://sports.ha.com/itm/football-cards/singles-1970-now-/1981-topps-joe-montana-rookie-216-bgs-pristine-10/a/50068-80035.s"
+       },
+       {
+        "name": "The Beckett Blog (2009-06-02 mirror, corroborates original article date/content)",
+        "url": "https://blogbeckett.wordpress.com/2009/06/02/record-breaker-pristine-montana-rc-sells-for-65k/"
+       },
+       {
+        "name": "Sports Illustrated (SI.com) - Collector owns unique 1981 Topps Joe Montana rookie card (background corroboration)",
+        "url": "https://www.si.com/collectibles/collector-owns-unique-1981-topps-joe-montana-rookie-card"
        }
       ]
      }
