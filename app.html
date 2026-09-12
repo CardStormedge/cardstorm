@@ -1546,6 +1546,62 @@ function loadGoatGrid(){
   host.innerHTML=players.length?`<div class=goatGrid>${players.map(goatCardHTML).join('')}</div>`:`<div class=goatEmpty><h3>No ${goatSport} icons loaded yet</h3><p>This sport's GOAT Vault roster hasn't been added to data/goat/goat-vault.json.</p></div>`;
  });
 }
+// ---- CARDSTORM GRAIL BOARD: compact, curated real-card showcase ----
+// Replaces the 60-player GOAT wall as the primary destination for this
+// section. Every card here is a real, identifiable card (year/brand/set/
+// number/parallel/grade) paired with a real sold/completed-sale comp traced
+// to a named source in data/intelligence/grail-board.json - never a
+// fabricated card, cert, grade, serial number, or price. See that file's
+// _sourcingMethod for exactly how each comp was researched and its
+// limitations (this environment cannot directly fetch PSA/Goldin/Fanatics
+// pages, so every figure is cross-referenced via search-result summaries,
+// same convention as data/goat/goat-vault.json).
+const GRAIL_STYLE=`<style>.grailHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #6b5320;box-shadow:0 0 34px #ffd25722;margin-bottom:16px}.grailHeroWrap img{display:block;width:100%;aspect-ratio:1716/916;max-height:280px;object-fit:cover;object-position:center 28%}.grailGroupHead{margin:22px 0 12px}.grailGroupHead:first-child{margin-top:0}.grailGroupLabel{display:inline-block;font-size:11px;font-weight:950;letter-spacing:.1em;color:#150f02;background:linear-gradient(120deg,#ffd257,#c99328);padding:4px 10px;border-radius:6px}.grailGroupNote{font-size:11.5px;color:#b3a06a;margin-top:5px}.grailPlayerGroup{background:linear-gradient(155deg,#171208,#0a0805);border:1px solid #5c4a22;border-radius:14px;padding:14px;margin-bottom:14px}.grailPlayerHead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:10px}.grailPlayerHead h3{margin:0;font-size:18px}.grailPlayerSub{font-size:11.5px;color:#b3a06a}.grailRow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.grailTile{background:#0b0904;border:1px solid #3d3115;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;min-width:0}.grailTileTags{display:flex;flex-wrap:wrap;gap:4px}.grailTag{font-size:8.5px;font-weight:900;letter-spacing:.04em;color:#150f02;background:#ffd257;padding:2px 6px;border-radius:4px}.grailTileId b{display:block;font-size:12px;color:#f4e8c9;line-height:1.25}.grailTileId span{display:block;font-size:11px;color:#c9bd94;margin-top:2px;line-height:1.25}.grailTileGrade{font-size:10.5px;font-weight:800;color:#ffd257}.grailTileComp{border-top:1px solid #3d3115;padding-top:6px;margin-top:2px}.grailCompLabel{display:block;font-size:8.5px;font-weight:900;letter-spacing:.05em;color:#8fb3d1;text-transform:uppercase}.grailPrice{display:block;font-size:15px;font-weight:950;color:#4ee6a8;margin-top:1px}.grailCompMeta{display:block;font-size:10px;color:#b3a06a;margin-top:1px}.grailNoComp{font-size:11px;color:#8a7550;font-style:italic;padding-top:6px;border-top:1px solid #3d3115;margin-top:2px}.grailSourceLink{align-self:flex-start;font-size:10px;font-weight:800;color:#55d8ff;text-decoration:none;margin-top:2px}.grailSourceLink:hover{text-decoration:underline}.grailTake{margin-top:11px;padding-top:9px;border-top:1px dashed #3d3115;font-size:12px;color:#c9bd94;line-height:1.45}.grailTake b{color:#ffd257}@media(max-width:900px){.grailRow{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}}@media(max-width:600px){.grailRow{grid-auto-flow:column;grid-auto-columns:74vw;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}.grailTile{scroll-snap-align:start}.grailHeroWrap img{max-height:190px}}</style>`;
+let _grailBoardPromise=null;
+function loadGrailBoard(){
+ if(!_grailBoardPromise)_grailBoardPromise=fetch('data/intelligence/grail-board.json').then(r=>r.json()).catch(()=>({groups:[],cards:[]}));
+ return _grailBoardPromise;
+}
+function grailMoney(n){return typeof n==='number'?'$'+n.toLocaleString():n}
+function grailDateLabel(d){return d||'date pending'}
+function grailCardTileHTML(c){
+ const parallelStr=c.parallel?' · '+c.parallel:'';
+ const numStr=c.serialNumberedTo?' /'+c.serialNumberedTo:'';
+ const idLine=`${c.cardName||''}${c.cardNumber?' #'+c.cardNumber:''}${parallelStr}${numStr}`;
+ const hasComp=typeof c.lastVerifiedSalePrice==='number';
+ const compLabel=c.compType==='EXACT_CERT_CONFIRMED'?'Confirmed sale (this cert)':'Recent comp (same card + grade)';
+ const compBlock=hasComp?`<div class=grailTileComp><span class=grailCompLabel>${compLabel}</span><b class=grailPrice>${grailMoney(c.lastVerifiedSalePrice)}</b><span class=grailCompMeta>${c.saleSource||'source pending'} · ${grailDateLabel(c.lastVerifiedSaleDate)}</span></div>`:`<div class=grailNoComp>No verified recent sale loaded</div>`;
+ return `<div class=grailTile><div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${compBlock}${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
+}
+const GRAIL_TAKE={
+ 'Tom Brady':'The rookie-card market\'s gold standard - a reachable PSA 10 SP Authentic sits alongside a seven-figure Championship Ticket autograph.',
+ 'Michael Jordan':'The card that defined modern rookie chasing. The 1986 Fleer #57 is still the entry point; the ultra-scarce PMG Green sits at the top of the market.',
+ 'Shohei Ohtani':'Two-way stardom, one-of-a-kind hobby demand - his rookie autograph checklist keeps pulling strong interest across parallels.',
+ 'Patrick Mahomes':'From an affordable Optic parallel to a six-figure RPA - arguably the deepest rookie class in modern football collecting.',
+ 'Cooper Flagg':'The market is pricing him before his rookie NBA season even wraps - a real, fast-moving watch, not a settled legacy.'
+};
+function grailPlayerGroupHTML(playerName,cards){
+ const sport=(cards[0]&&cards[0].sport)||'';
+ return `<div class=grailPlayerGroup><div class=grailPlayerHead><h3>${playerName}</h3><span class=grailPlayerSub>${cards.length} verified card${cards.length===1?'':'s'} · ${sport}</span></div><div class=grailRow>${cards.map(grailCardTileHTML).join('')}</div>${GRAIL_TAKE[playerName]?`<div class=grailTake><b>CARDSTORM TAKE:</b> ${GRAIL_TAKE[playerName]}</div>`:''}</div>`;
+}
+function grailBoardHTML(data){
+ const cardsByPlayer={};
+ (data.cards||[]).forEach(c=>{(cardsByPlayer[c.player]=cardsByPlayer[c.player]||[]).push(c)});
+ const groupsHtml=(data.groups||[]).map(g=>{
+  const playersHtml=g.players.map(pid=>{
+   const cards=(data.cards||[]).filter(c=>c.player.toLowerCase().replace(/[^a-z]+/g,'-')===pid||c.player===pid);
+   return cards.length?grailPlayerGroupHTML(cards[0].player,cards):'';
+  }).join('');
+  return `<div class=grailGroupHead><span class=grailGroupLabel>${g.groupLabel}</span>${g.note?`<div class=grailGroupNote>${g.note}</div>`:''}</div>${playersHtml}`;
+ }).join('');
+ return `${GRAIL_STYLE}<div class=grailHeroWrap><img src="assets/homepage/categories/goats-hero.webp" loading=lazy decoding=async alt="CardStorm Grail Board — iconic real cards and verified sold comps"></div>${groupsHtml}<p style="margin-top:6px;text-align:center"><a href="#" onclick="event.preventDefault();show('goatlegacy')" style="color:#8fb3d1;font-size:12px">Browse the full historical Hobby Icon list →</a></p>`;
+}
+function grailBoard(){
+ setTimeout(()=>{loadGrailBoard().then(data=>{const host=document.getElementById('grailBoardAnchor');if(host)host.innerHTML=grailBoardHTML(data)})},0);
+ return shell('CARDSTORM GRAIL BOARD','Real cards. Real sold comps.','A curated showcase, not an encyclopedia - verified sold/completed-sale comps only, never asking prices, active listings, or guessed values.',
+  `<div id=grailBoardAnchor>Loading the Grail Board…</div>`);
+}
+F.legends=grailBoard;
 function goatVault(){
  // goatVault() is reached both via the generic F[v] show() dispatch (which
  // has no post-render hook, unlike openTeam()/renderPlayerHunt()) and via
@@ -1555,9 +1611,13 @@ function goatVault(){
  // exists in the DOM before loadGoatGrid() looks for it.
  setTimeout(loadGoatGrid,0);
  return shell('THE GOAT VAULT','All-Time Hobby Icons',"CardStorm's editorial pick of the most collectible hobby icons in each sport's history - not a claim of objective statistical ranking.",
-  `${GOAT_STYLE}<div class=goatHeroWrap><img src="assets/homepage/categories/goats-hero.webp" loading=lazy decoding=async alt="The GOAT Vault — legendary players, iconic cards"></div><div class=goatTabs>${GOAT_SPORTS.map(s=>`<button class="${goatSport===s?'active':''}" onclick="goatSport='${s}';setGoatSport('${s}')">${s.toUpperCase()}</button>`).join('')}</div><div id=goatGridAnchor>Loading THE GOAT VAULT…</div>`);
+  `${GOAT_STYLE}<div class=goatHeroWrap><img src="assets/homepage/categories/goats-hero.webp" loading=lazy decoding=async alt="The GOAT Vault — legendary players, iconic cards"></div><div class=goatTabs>${GOAT_SPORTS.map(s=>`<button class="${goatSport===s?'active':''}" onclick="goatSport='${s}';setGoatSport('${s}')">${s.toUpperCase()}</button>`).join('')}</div><div id=goatGridAnchor>Loading THE GOAT VAULT…</div><p style="margin-top:18px;text-align:center"><a href="#" onclick="event.preventDefault();show('legends')" style="color:#8fb3d1;font-size:12px">← Back to the Grail Board</a></p>`);
 }
-F.legends=goatVault;
+// The 60-player wall above is kept working (real code, real data) but is no
+// longer the primary destination for this section - retired to a secondary
+// route ('goatlegacy') linked only from the bottom of the new Grail Board,
+// per the pivot to a compact curated real-card showcase below.
+F.goatlegacy=goatVault;
 let _goatCurrentPlayer=null,_goatShowAll=false,_goatGradeFilter='ALL';
 function openGoatPlayer(id){
  navPush();H.style.display='none';V.style.display='block';
