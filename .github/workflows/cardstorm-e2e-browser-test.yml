@@ -43,25 +43,29 @@ jobs:
           node-version: "22"
       - name: Install Playwright
         run: |
-          npm install --no-save playwright
+          npm install --no-save playwright sharp
           npx playwright install --with-deps chromium
       - name: Generate an intentionally unclear/blurry test image
         run: |
           mkdir -p scripts/fixtures
-          # ImageMagick is preinstalled on ubuntu-latest runners. Down/up-sample
-          # a REAL card photo already in the repo with heavy blur - a genuinely
-          # degraded version of a real image, not a fabricated one.
-          if command -v convert >/dev/null 2>&1; then
-            convert assets/reference-cards/2024-donruss-bo-nix.webp -resize 10x10 -resize 500x500 -blur 0x10 scripts/fixtures/unclear-test-image.jpg
-          else
-            python3 -c "
-          from PIL import Image, ImageFilter
-          im = Image.open('assets/reference-cards/2024-donruss-bo-nix.webp').convert('RGB')
-          small = im.resize((12,12))
-          blurry = small.resize((500,500)).filter(ImageFilter.GaussianBlur(8))
-          blurry.save('scripts/fixtures/unclear-test-image.jpg', quality=60)
+          # ImageMagick and Pillow both turned out to be absent on this
+          # runner image (verified, not assumed, after a real CI failure) -
+          # sharp is a pure-Node lib with prebuilt binaries, installed
+          # above alongside Playwright, so this has no system-tool
+          # dependency. Down/up-samples a REAL card photo already in the
+          # repo with heavy blur - a genuinely degraded version of a real
+          # image, not a fabricated one.
+          node -e "
+            const sharp = require('sharp');
+            sharp('assets/reference-cards/2024-donruss-bo-nix.webp')
+              .resize(12, 12)
+              .resize(500, 500)
+              .blur(8)
+              .jpeg({ quality: 60 })
+              .toFile('scripts/fixtures/unclear-test-image.jpg')
+              .then(() => console.log('unclear-test-image.jpg generated'))
+              .catch((e) => { console.error(e); process.exit(1); });
           "
-          fi
       - name: Prepare a test copy of the site with the endpoint pointed at THIS PR's preview
         run: |
           mkdir -p /tmp/site
