@@ -42,7 +42,7 @@ jobs:
       # same default URL.
       PREVIEW_URL: ${{ inputs.preview_url || 'https://cardstorm-api-git-claude-cardstorm-homepage-a-c0fda6-card-storm.vercel.app/api/cardstorm' }}
     steps:
-      - name: Run the 6 mandatory text questions
+      - name: Run the 8 mandatory text questions
         run: |
           set -uo pipefail
 
@@ -69,10 +69,12 @@ jobs:
 
           ask "1-downtown-value" "What makes Downtown inserts so valuable?"
           ask "2-downtown-product" "Where can I find a Downtown insert? What product/set?"
-          ask "3-topps-2026-rookies" "What are the top rookies for Topps flagship 2026?"
-          ask "4-hot-rookies" "What rookies are hot?"
-          ask "5-travis-hunter-comps" "What has Travis Hunter sold for recently?"
-          ask "6-price-check-no-context" "Is \$75 a good price for this card?"
+          ask "3-downtown-not-topps" "Is Downtown a Topps insert?"
+          ask "4-prizm-product" "What product has Prizm?"
+          ask "5-donruss-optic-downtown" "What product has Donruss Optic Downtowns?"
+          ask "6-topps-2026-rookies" "What are the top rookies for Topps flagship 2026?"
+          ask "7-hot-rookies" "What rookies are hot?"
+          ask "8-travis-hunter-comps" "What has Travis Hunter sold for recently?"
 
       - name: CORS - approved origin (stormguide.com)
         run: |
