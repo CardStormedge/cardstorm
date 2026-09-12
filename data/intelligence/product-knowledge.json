@@ -1,0 +1,34 @@
+{
+  "_schema": "Small, hand-curated, conservative reference table of well-established sports-card manufacturer/brand/insert facts (e.g. 'Downtown is a Panini insert, not Topps'). This is NOT sourced from checklist scraping or a model - it is basic, stable, widely-documented hobby-industry fact, kept intentionally short. Only add an entry here when you are highly confident it is correct and unlikely to be disputed - a wrong entry here is worse than no entry, since the backend treats this file as ground truth it will never let the model contradict. Mirrors the same manufacturer/brand set app.html's own PRODIMG/REALPROD constants already assume (Prizm/Select/Donruss/Donruss Optic/Mosaic = Panini, Topps Chrome/Bowman Chrome/Finest = Topps), so this file does not introduce any fact the rest of the app doesn't already treat as true.",
+  "manufacturers": {
+    "Panini": {
+      "brands": ["Donruss", "Donruss Optic", "Prizm", "Select", "Mosaic"]
+    },
+    "Topps": {
+      "brands": ["Topps Series 1", "Topps Series 2", "Topps Update", "Topps Chrome", "Bowman", "Bowman Chrome", "Finest"]
+    }
+  },
+  "inserts": [
+    {
+      "name": "Downtown",
+      "manufacturer": "Panini",
+      "family": "case-hit insert",
+      "typicalHomeBrands": ["Donruss", "Donruss Optic", "Mosaic"],
+      "notes": "A Panini case-hit insert seeded across multiple Panini brands and sports depending on the year (most consistently Donruss/Donruss Optic Football). It is not a Topps product."
+    },
+    {
+      "name": "Kaboom",
+      "manufacturer": "Panini",
+      "family": "case-hit insert",
+      "typicalHomeBrands": ["Mosaic"],
+      "notes": "A Panini Mosaic case-hit insert. Not a Topps product."
+    },
+    {
+      "name": "Color Blast",
+      "manufacturer": "Panini",
+      "family": "case-hit insert",
+      "typicalHomeBrands": ["Phoenix"],
+      "notes": "A Panini Phoenix case-hit insert. Not a Topps product."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+name: COMPS/WATCHCAT parity check
+
+# Enforces the intentional-duplication rule documented in
+# data/intelligence/README.md: app.html's inline COMPS/WATCHCAT constants
+# and data/intelligence/*.json must always match exactly. This does NOT
+# build or deploy the static site - GitHub Pages still deploys the raw repo
+# files as-is (see pages.yml) - it only fails the PR check if the two
+# verified-data copies have drifted apart.
+on:
+  pull_request:
+    paths:
+      - "app.html"
+      - "data/intelligence/**"
+      - "api/lib/cardstormData.js"
+      - "api/lib/cardstormAI.js"
+      - "scripts/check-comps-sync.js"
+      - "scripts/test-comps-parity.js"
+      - "scripts/test-routing.js"
+      - "scripts/test-product-grounding.js"
+  push:
+    branches: ["main"]
+    paths:
+      - "app.html"
+      - "data/intelligence/**"
+      - "api/lib/cardstormData.js"
+      - "api/lib/cardstormAI.js"
+      - "scripts/check-comps-sync.js"
+      - "scripts/test-comps-parity.js"
+      - "scripts/test-routing.js"
+      - "scripts/test-product-grounding.js"
+
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm install --no-save
+      - name: COMPS/WATCHCAT sync check
+        run: npm run test:comps-sync
+      - name: COMPS/WATCHCAT parity test
+        run: npm run test:comps-parity
+      - name: API handler tests (no network - no key present in CI)
+        run: npm run test:api-handler
+      - name: Model/research routing tests
+        run: npm run test:routing
+      - name: Product/insert grounding + manufacturer-conflict guard tests
+        run: npm run test:product-grounding

@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/cardstorm.js": {
+      "maxDuration": 60
+    }
+  }
+}
