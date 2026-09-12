@@ -1124,7 +1124,11 @@ const ASK_CARDSTORM_STYLE=`<style>
 // returns an honest "not connected" result instead of ever inventing an
 // answer, identity, or comp. No API key ever belongs here - the backend
 // holds its own credentials server-side, this is just a public URL.
-const CARDSTORM_API_ENDPOINT=null;
+//
+// Wired to the stable Vercel production alias (not a per-commit PREVIEW
+// URL) - this project's own production domain, confirmed live in the PR
+// discussion. Only a public endpoint URL, no secret.
+const CARDSTORM_API_ENDPOINT='https://cardstorm-api.vercel.app/api/cardstorm';
 async function cardstormBackendCall(body){
  if(!CARDSTORM_API_ENDPOINT){
   return {connected:false};
@@ -1150,6 +1154,11 @@ async function analyzeCardImages(frontImg,backImg,question,isGeneral){
    match:(result.identifiedPlayers&&result.identifiedPlayers[0])||null,
    confidence:result.confidence,
    possibleMatches:[],
+   contentType:result.contentType||null,
+   identifiedPlayers:result.identifiedPlayers||[],
+   identifiedProducts:result.identifiedProducts||[],
+   identifiedSets:result.identifiedSets||[],
+   identifiedTeams:result.identifiedTeams||[],
    rarity:result.rarityGuidance,hitLevel:null,recentComps:result.soldComps,fairRawValue:null,goodBuy:null,gradeIt:null,
    gradingCandidate:result.gradingGuidance||'UNABLE_TO_DETERMINE',
    gradingNote:result.gradingGuidance?null:"Automated centering/corner/edge/surface review needs a connected vision service.",
@@ -1397,7 +1406,7 @@ function ackResultHTML(){
    <div class=ackWhy style="margin-top:10px">${r.gradingNote}</div>
   </div>`;
  }
- return `<div class=ackResult><div class=ackResultHead>CARDSTORM FOUND IT</div><div class=ackWhy>${r.why||''}</div>${ackSourcesHTML(r.sources)}</div>`;
+ return `<div class=ackResult><div class=ackResultHead>CARDSTORM FOUND IT</div><div class=ackWhy>${r.why||''}</div>${ackStructuredResultHTML(r)}${ackSourcesHTML(r.sources)}</div>`;
 }
 // Compact, non-cluttering source line for a backend-produced answer.
 // CardStorm-internal data is always labeled as such - never presented as
@@ -1407,6 +1416,29 @@ function ackSourcesHTML(sources){
  if(!sources||!sources.length)return '';
  const items=sources.map(s=>s.url?`<a href="${s.url}" target=_blank rel="noopener">${(s.label||s.url).replace(/</g,'&lt;')}</a>`:`<span>${(s.label||'').replace(/</g,'&lt;')}</span>`).join(' · ');
  return `<div class=ackSources><b>Sources:</b> ${items}</div>`;
+}
+// Renders the backend's structured vision/analysis fields as compact
+// verdict cells - but only the ones actually present. No empty "N/A" boxes
+// here (that's the not-connected stub's job) - a field the model/backend
+// didn't populate just doesn't get a cell, keeping this chat-first and
+// uncluttered per the UI requirements.
+function ackStructuredResultHTML(r){
+ const esc=s=>(s+'').replace(/</g,'&lt;');
+ const cells=[];
+ if(r.confidence!=null&&r.confidence!=='')cells.push(['CONFIDENCE',r.confidence]);
+ if(r.contentType)cells.push(['CONTENT TYPE',String(r.contentType).replace(/_/g,' ')]);
+ const identified=[...(r.identifiedPlayers||[]),...(r.identifiedProducts||[]),...(r.identifiedSets||[]),...(r.identifiedTeams||[])];
+ if(identified.length)cells.push(['IDENTIFIED',identified.slice(0,6).join(', ')]);
+ if(r.rarity)cells.push(['RARITY',r.rarity]);
+ if(r.gradingCandidate&&r.gradingCandidate!=='UNABLE_TO_DETERMINE')cells.push(['GRADING CANDIDATE',String(r.gradingCandidate).replace(/_/g,' ')]);
+ let compsCell='';
+ if(r.recentComps&&r.recentComps.length){
+  compsCell=`<div class=ackVerdictCell style="grid-column:1/-1"><div class=k>RECENT VERIFIED COMPS</div><div class=v style="font-size:12px;line-height:1.6">${r.recentComps.slice(0,3).map(c=>`${esc(c[2])} (${esc(c[3])}) — <b>${esc(c[1])}</b> · ${esc(c[4])}`).join('<br>')}</div></div>`;
+ }
+ const gridHtml=(cells.length||compsCell)?`<div class=ackVerdictGrid>${cells.map(([k,v])=>`<div class=ackVerdictCell><div class=k>${k}</div><div class=v>${esc(v)}</div></div>`).join('')}${compsCell}</div>`:'';
+ const followupsHtml=(r.whatToLookFor&&r.whatToLookFor.length)?`<div class=ackQuickGrid style="margin-top:10px">${r.whatToLookFor.slice(0,3).map(q=>`<button type=button class=ackQuick onclick="ackQuickAsk('${(q+'').replace(/'/g,"\\'")}')">${esc(q)}</button>`).join('')}</div>`:'';
+ const warningsHtml=(r.warnings&&r.warnings.length)?`<div class=ackWhy style="margin-top:8px;opacity:.65;font-size:11px">${r.warnings.map(esc).join(' · ')}</div>`:'';
+ return gridHtml+followupsHtml+warningsHtml;
 }
 function askCardstorm(){
  const hasCard=_ackFrontImg||_ackBackImg;

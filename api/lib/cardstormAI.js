@@ -336,7 +336,11 @@ async function analyze({ question, conversation, images, groundedData }) {
   const sources = [];
   if (
     hasVerifiedComps ||
-    (groundedData && (groundedData.matchedCards.length || groundedData.matchedProducts.length))
+    (groundedData &&
+      (groundedData.matchedCards.length ||
+        groundedData.matchedProducts.length ||
+        groundedData.matchedInserts.length ||
+        groundedData.matchedBrands.length))
   ) {
     sources.push({ type: "internal", label: "CardStorm Verified Data" });
   }
