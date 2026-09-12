@@ -114,9 +114,33 @@ function lookup(question) {
 
   // watchcat.json record shape: [player, sport, hit1, hit2, hit3] - curated
   // chase suggestions, never to be presented as verified checklist data.
-  const matchedChases = corpus.watchcat.filter((w) => q.includes(normalize(w[0])));
+  let matchedChases = corpus.watchcat.filter((w) => q.includes(normalize(w[0])));
+
+  // Generic "which rookies are hot" style questions name no specific
+  // player, so the name-match above finds nothing even though CardStorm
+  // has real curated coverage for exactly this question - mirrors the
+  // frontend's ackHotRookiesHTML() fast path (same regex, same football
+  // filter, same slice) so the backend doesn't send a question to live
+  // web research that CardStorm's own data already answers.
+  const GENERIC_HOT_ROOKIES = /hot rookie|rookies.*hot|which rookies/i;
+  if (!matchedChases.length && GENERIC_HOT_ROOKIES.test(question || "")) {
+    matchedChases = corpus.watchcat.filter((w) => w[1] === "football").slice(0, 6);
+  }
 
   return { matchedCards, matchedProducts, matchedComps, matchedChases };
 }
 
-module.exports = { lookup };
+// True when CardStorm's own verified/curated data already has enough to
+// answer the question, so the caller should skip live web research even if
+// the question superficially looks time-sensitive.
+function hasInternalCoverage(groundedData) {
+  return !!(
+    groundedData &&
+    (groundedData.matchedComps.length ||
+      groundedData.matchedChases.length ||
+      groundedData.matchedCards.length ||
+      groundedData.matchedProducts.length)
+  );
+}
+
+module.exports = { lookup, hasInternalCoverage };

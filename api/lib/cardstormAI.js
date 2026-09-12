@@ -1,23 +1,48 @@
 // cardstormAI.analyze(...) - the single adapter the rest of the backend
-// talks to. Everything Claude-specific (model id, tool wiring, system
+// talks to. Everything Claude-specific (model ids, tool wiring, system
 // prompt) lives here so the provider can be swapped later without touching
 // api/cardstorm.js.
 //
-// Model ID verified current for this account/environment as of this build:
-// "claude-opus-5" is the Claude 5 family's flagship model (per this
-// environment's own model directory and the bundled claude-api skill docs),
-// with native image understanding in the same request as text (no separate
-// vision credential/service) and the server-side "web_search_20260209" tool
-// for live research under the same API key - covering vision + research +
-// reasoning in one adapter, one credential, one call.
+// Model IDs verified current for this account/environment as of this build
+// (this environment's own model directory + the bundled claude-api skill
+// docs - not guessed): both models below support native image understanding
+// in the same request as text (no separate vision credential/service) and
+// the server-side "web_search_20260209" tool.
 const Anthropic = require("@anthropic-ai/sdk");
+const cardstormData = require("./cardstormData");
 
-const MODEL_ID = "claude-opus-5";
+// Fast path: general hobby knowledge, CardStorm-internal-data-backed
+// answers (verified comps, checklist/product grounding), simple image
+// identification. Picked for latency/cost - Sonnet 5 is the current
+// mid-tier Claude 5 model with full vision + tool support.
+const MODEL_FAST = "claude-sonnet-5";
+// Stronger path: live web research (tool-use reasoning over search results)
+// and anything image-based, where identification mistakes are the exact
+// failure mode this build must avoid fabricating past.
+const MODEL_STRONG = "claude-opus-5";
+// Kept for any external caller (tests, logging) that wants "the default
+// model" without caring about the routing rule below.
+const MODEL_ID = MODEL_STRONG;
+
+// A model call is aborted client-side this many ms before Vercel's own
+// function maxDuration would kill the whole invocation, so OUR code gets to
+// return a clean, honest JSON error instead of the platform's raw
+// FUNCTION_INVOCATION_TIMEOUT page ever reaching the user.
+const MODEL_CALL_TIMEOUT_MS = 55_000;
 
 function getClient() {
   const apiKey = process.env.CARDSTORM_AI_API_KEY || process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return null;
   return new Anthropic({ apiKey });
+}
+
+// Model-routing rule, kept in code (not just a prompt) per the routing
+// priority: verified internal data and simple general knowledge don't need
+// the strongest/slowest model; live research and any image do.
+function chooseModel({ hasImages, needsResearch }) {
+  if (hasImages) return MODEL_STRONG;
+  if (needsResearch) return MODEL_STRONG;
+  return MODEL_FAST;
 }
 
 // The model is asked to end every answer with one trailing line of JSON so
@@ -27,11 +52,13 @@ function getClient() {
 // CARDSTORM_JSON_MARKER must never appear in normal answer text.
 const CARDSTORM_JSON_MARKER = "<<CARDSTORM_DATA>>";
 
-const SYSTEM_PROMPT = `You are the answer engine behind "Ask CardStorm" inside the CardStorm sports-card app. You talk like an experienced, sharp sports-card collector giving a direct answer to another collector - not like an encyclopedia and not like a generic AI assistant. Be concise by default; expand only when the question calls for it.
+const SYSTEM_PROMPT = `You are the answer engine behind "Ask CardStorm" inside the CardStorm sports-card app. You talk like an experienced, sharp sports-card collector giving a direct answer to another collector - not like an encyclopedia and not like a generic AI assistant.
+
+LENGTH - keep the visible answer tight by default: a short direct answer, then at most 3-5 short bullets or a couple of short paragraphs. Do not write a long essay for a simple question ("What makes Downtown inserts valuable?" needs a few sharp points, not a treatise). Only go longer when the question explicitly asks for depth or the evidence genuinely requires it (e.g. listing several distinct verified comps). You have a hard output budget shared with the required JSON line at the end of your response - a long visible answer that leaves no room for that JSON is a failure, so stop the visible answer while you still have plenty of room left, then always emit the JSON line.
 
 ROUTING PRIORITY - use the highest-priority source that actually applies, and say so honestly when none do:
-1. CARDSTORM_VERIFIED_DATA passed to you in this request - this includes CardStorm's own verified sold comps (verifiedComps), curated-but-unverified chase suggestions (curatedChases - never call these "verified"), and on-disk checklist/product records. Treat verifiedComps and checklist/product records as ground truth.
-2. Verified current external research via the web_search tool, when the question is time-sensitive (current rookies, recent releases, this year's hot cards) - cite what you found.
+1. CARDSTORM_VERIFIED_DATA passed to you in this request - this includes CardStorm's own verified sold comps (verifiedComps), curated-but-unverified chase suggestions (curatedChases - never call these "verified"), and on-disk checklist/product records. Treat verifiedComps and checklist/product records as ground truth. If this data already answers the question, use it and do not treat the question as needing live research even if it sounds current.
+2. Verified current external research via the web_search tool (only available to you when the backend decided this question genuinely needs fresh information - if the tool isn't in this request, don't ask for it, just answer from what you have) - cite what you found.
 3. Direct interpretation of any image(s) provided.
 4. Your own general sports-card knowledge (product history, insert mechanics, grading concepts, market dynamics in general terms).
 5. If none of the above actually supports an answer, say so honestly instead of guessing.
@@ -144,23 +171,56 @@ async function analyze({ question, conversation, images, groundedData }) {
   messages.push({ role: "user", content: buildUserContent({ question, images, groundedData }) });
 
   const hasImages = !!(images.front || images.back || images.general);
-  const needsResearch = /\b(current|this year|latest|hot|recent|new release|202[4-9])\b/i.test(question || "");
+
+  // Research is only worth its latency/cost when (a) CardStorm's own
+  // verified/curated data doesn't already cover the question and (b) the
+  // question actually signals a need for fresh information - a bare "hot"
+  // or "recent" used to be enough to trigger this and was firing (and
+  // timing out) on questions CardStorm's own WATCHCAT/COMPS data already
+  // answers, like "what rookies are hot?". Explicit freshness language or
+  // an explicit near-future product year still qualifies.
+  const alreadyCovered = cardstormData.hasInternalCoverage(groundedData);
+  const RESEARCH_SIGNALS =
+    /\b(this week|this month|this year|right now|currently|latest|newest|new release|just released|top rookies|flagship|chasing)\b/i;
+  const YEAR_SIGNAL = /\b202[4-9]\b/;
+  const needsResearch =
+    !alreadyCovered && !hasImages && (RESEARCH_SIGNALS.test(question || "") || YEAR_SIGNAL.test(question || ""));
 
   const tools = [];
-  if (needsResearch && !hasImages) {
+  if (needsResearch) {
     tools.push({ type: "web_search_20260209", name: "web_search" });
   }
 
+  const model = chooseModel({ hasImages, needsResearch });
+
   let response;
   try {
-    response = await client.messages.create({
-      model: MODEL_ID,
-      max_tokens: 1500,
-      system: SYSTEM_PROMPT,
-      messages,
-      ...(tools.length ? { tools } : {}),
-    });
+    response = await client.messages.create(
+      {
+        model,
+        max_tokens: 2500,
+        system: SYSTEM_PROMPT,
+        messages,
+        ...(tools.length ? { tools } : {}),
+      },
+      { timeout: MODEL_CALL_TIMEOUT_MS }
+    );
   } catch (err) {
+    // Verified against the installed SDK: these error classes don't set
+    // .name to their class name (it stays "Error" on the instance), so
+    // detection must use instanceof, not a name string match.
+    const isTimeout =
+      err instanceof Anthropic.APIConnectionTimeoutError || (err && /timeout/i.test(err.message || ""));
+    if (isTimeout) {
+      return {
+        connected: true,
+        error: true,
+        answer:
+          "CardStorm couldn't finish the live research in time. Try again, or ask me to answer from CardStorm's verified data instead.",
+        answerType: "research_timeout",
+        warnings: ["provider_timeout"],
+      };
+    }
     return {
       connected: true,
       error: true,
@@ -221,4 +281,4 @@ async function analyze({ question, conversation, images, groundedData }) {
   };
 }
 
-module.exports = { analyze, MODEL_ID, extractStructured, CARDSTORM_JSON_MARKER };
+module.exports = { analyze, MODEL_ID, MODEL_FAST, MODEL_STRONG, chooseModel, extractStructured, CARDSTORM_JSON_MARKER };

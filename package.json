@@ -5,10 +5,11 @@
   "description": "Serverless backend for Ask CardStorm (deployed as Vercel functions alongside the GitHub Pages static frontend).",
   "type": "commonjs",
   "scripts": {
-    "test": "npm run test:comps-sync && npm run test:comps-parity && npm run test:api-handler",
+    "test": "npm run test:comps-sync && npm run test:comps-parity && npm run test:api-handler && npm run test:routing",
     "test:comps-sync": "node scripts/check-comps-sync.js",
     "test:comps-parity": "node scripts/test-comps-parity.js",
-    "test:api-handler": "node scripts/test-api-handler.js"
+    "test:api-handler": "node scripts/test-api-handler.js",
+    "test:routing": "node scripts/test-routing.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0"

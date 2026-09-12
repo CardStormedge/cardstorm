@@ -12,16 +12,20 @@ on:
       - "app.html"
       - "data/intelligence/**"
       - "api/lib/cardstormData.js"
+      - "api/lib/cardstormAI.js"
       - "scripts/check-comps-sync.js"
       - "scripts/test-comps-parity.js"
+      - "scripts/test-routing.js"
   push:
     branches: ["main"]
     paths:
       - "app.html"
       - "data/intelligence/**"
       - "api/lib/cardstormData.js"
+      - "api/lib/cardstormAI.js"
       - "scripts/check-comps-sync.js"
       - "scripts/test-comps-parity.js"
+      - "scripts/test-routing.js"
 
 jobs:
   parity:
@@ -41,3 +45,5 @@ jobs:
         run: npm run test:comps-parity
       - name: API handler tests (no network - no key present in CI)
         run: npm run test:api-handler
+      - name: Model/research routing tests
+        run: npm run test:routing
