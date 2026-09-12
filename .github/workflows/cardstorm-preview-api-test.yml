@@ -1,0 +1,84 @@
+name: TEMPORARY - CardStorm preview API test
+
+# TEMPORARY DIAGNOSTIC WORKFLOW - not part of the permanent CI/CD setup.
+# This sandbox's dev environment has no outbound network access to Vercel
+# preview URLs, so this workflow exists solely to let a GitHub-hosted
+# runner (which has normal internet access) call the live PR #25 Vercel
+# Preview API and print the raw JSON so results can be read back via the
+# GitHub Actions logs instead of being faked. Manual trigger only - never
+# runs on push/PR/merge. No secrets are used or exposed: the Anthropic key
+# lives only in Vercel's own environment variables, never in GitHub.
+#
+# DELETE THIS FILE once the live test pass is reviewed and no longer needed
+# - it is not meant to ship to main.
+on:
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: "Preview API endpoint to test"
+        required: true
+        default: "https://cardstorm-api-git-claude-cardstorm-homepage-a-c0fda6-card-storm.vercel.app/api/cardstorm"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run the 6 mandatory text questions
+        env:
+          PREVIEW_URL: ${{ inputs.preview_url }}
+        run: |
+          set -uo pipefail
+
+          ask() {
+            local label="$1"
+            local question="$2"
+            echo "::group::Q: $label"
+            echo "question=$question"
+            local start end elapsed
+            start=$(date +%s.%N)
+            # -w appends status/timing AFTER the body on its own line, so
+            # the raw JSON above it is never truncated or reformatted.
+            response=$(curl -sS -X POST "$PREVIEW_URL" \
+              -H "Content-Type: application/json" \
+              -H "Origin: https://stormguide.com" \
+              -d "$(node -e "console.log(JSON.stringify({question: process.argv[1], conversation: [], images: {}}))" "$question")" \
+              -w $'\n---HTTP_STATUS:%{http_code}---TIME_TOTAL:%{time_total}---')
+            end=$(date +%s.%N)
+            echo "raw_response_begin"
+            echo "$response"
+            echo "raw_response_end"
+            echo "::endgroup::"
+          }
+
+          ask "1-downtown-value" "What makes Downtown inserts so valuable?"
+          ask "2-downtown-product" "Where can I find a Downtown insert? What product/set?"
+          ask "3-topps-2026-rookies" "What are the top rookies for Topps flagship 2026?"
+          ask "4-hot-rookies" "What rookies are hot?"
+          ask "5-travis-hunter-comps" "What has Travis Hunter sold for recently?"
+          ask "6-price-check-no-context" "Is \$75 a good price for this card?"
+
+      - name: CORS - approved origin (stormguide.com)
+        env:
+          PREVIEW_URL: ${{ inputs.preview_url }}
+        run: |
+          set -uo pipefail
+          echo "::group::CORS approved origin"
+          curl -sS -i -X POST "$PREVIEW_URL" \
+            -H "Content-Type: application/json" \
+            -H "Origin: https://stormguide.com" \
+            -d '{"question":"CORS check","conversation":[],"images":{}}'
+          echo
+          echo "::endgroup::"
+
+      - name: CORS - unapproved origin (evil.example.com)
+        env:
+          PREVIEW_URL: ${{ inputs.preview_url }}
+        run: |
+          set -uo pipefail
+          echo "::group::CORS unapproved origin"
+          curl -sS -i -X POST "$PREVIEW_URL" \
+            -H "Content-Type: application/json" \
+            -H "Origin: https://evil.example.com" \
+            -d '{"question":"CORS check","conversation":[],"images":{}}'
+          echo
+          echo "::endgroup::"
