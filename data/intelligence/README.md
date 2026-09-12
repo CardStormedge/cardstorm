@@ -63,3 +63,7 @@ time, rather than a runtime fetch) — `data/intelligence/*.json` should become
 the **single source of truth**, with `app.html`'s inline constants generated
 from it instead of hand-maintained in parallel. That refactor is intentionally
 out of scope for this stage.
+
+---
+
+Preview deployment trigger after CardStorm Vercel project connection.
