@@ -1027,12 +1027,264 @@ function worth(){
   <div class=feature><div class=cvOptions>
    <button type=button class=cvOption onclick="focusCardValueSearch()"><div class=cvIcon>🔍</div><h3>SEARCH PLAYER</h3><p>Find a player's verified recent sales.</p></button>
    <div class="cvOption disabled"><div class=cvIcon>🗂️</div><h3>SEARCH CARD / SET</h3><p>Look up an exact card or set.</p><span class=cvBadge>COMING SOON</span></div>
-   <div class="cvOption disabled"><div class=cvIcon>📷</div><h3>SCAN / UPLOAD</h3><p>Identify a card from a photo.</p><span class=cvBadge>COMING SOON</span></div>
+   <button type=button class=cvOption onclick="show('askcardstorm')"><div class=cvIcon>📷</div><h3>SCAN / UPLOAD</h3><p>Identify a card from a photo and ask CardStorm anything.</p></button>
   </div>
   <input id=cvSearch class=watchsearch placeholder="Search player name..." oninput="filterCardValueSearch(this.value)">
   <div id=cvResults style="margin-top:10px">${cardValueResultsHTML('')}</div></div>`);
 }
 F.worth=worth;
+// ---- KNOW THY WORTH / ASK CARDSTORM -----------------------------------
+// Real upload + Q&A workflow. CardStorm never invents a card identity,
+// comp, or grade - if a claim can't be backed by real tracked CardStorm
+// data (COMPS/WATCHCAT/GOAT vault) or a connected vision/market service,
+// this shows an honest "not yet connected" state instead, same pattern
+// as Gear Up's image-pending treatment and the GOAT Vault's empty state.
+const ASK_CARDSTORM_STYLE=`<style>
+.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:14px}
+.ackHeroWrap img{display:block;width:100%;aspect-ratio:1672/941;max-height:460px;object-fit:cover;object-position:center 12%}
+@media(max-width:600px){.ackHeroWrap img{max-height:220px;object-position:center 10%}}
+.ackUploadGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.ackSlot{border:1px dashed #2b6488;border-radius:12px;background:#04101c;padding:12px;text-align:center;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.ackSlot.filled{border-style:solid;padding:8px}
+.ackSlot img{max-width:100%;max-height:150px;border-radius:8px;object-fit:contain}
+.ackSlot h4{margin:0;font-size:12.5px;color:#8fb3d1;font-weight:900;letter-spacing:.04em}
+.ackSlotBtns{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.ackSlotBtn{background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-size:11px;font-weight:800;padding:7px 10px;border-radius:7px;cursor:pointer}
+.ackSlotBtn:hover{border-color:#55d8ff}
+.ackSlotBtn.danger{border-color:#7a3544;color:#ff9cab}
+.ackAnalyzeBtn{display:block;width:100%;background:linear-gradient(120deg,#1e88e5,#0d5bb8);border:0;color:#fff;font-family:inherit;font-weight:950;letter-spacing:.03em;padding:13px;border-radius:10px;cursor:pointer;font-size:13.5px}
+.ackAnalyzeBtn:disabled{opacity:.45;cursor:not-allowed}
+.ackAskRow{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.ackQBox{flex:1;min-width:220px;padding:11px 13px;border:1px solid #2b668d;border-radius:9px;background:#03101d;color:#fff;font-family:inherit;font-size:13px;resize:vertical;min-height:44px}
+.ackMicBtn{background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-weight:900;padding:11px 14px;border-radius:9px;cursor:pointer}
+.ackMicBtn.listening{border-color:#ff5a7a;color:#ff9cab;animation:ackPulse 1.1s infinite}
+@keyframes ackPulse{0%,100%{box-shadow:0 0 0 0 #ff5a7a44}50%{box-shadow:0 0 0 8px #ff5a7a00}}
+.ackAskBtn{background:#126de1;border:0;color:#fff;font-family:inherit;font-weight:900;padding:11px 16px;border-radius:9px;cursor:pointer}
+.ackQuickGrid{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.ackQuick{background:#04101c;border:1px solid #2b6488;color:#a8d4f5;font-family:inherit;font-size:11px;font-weight:800;padding:7px 11px;border-radius:999px;cursor:pointer}
+.ackQuick:hover{border-color:#55d8ff;color:#fff}
+.ackChatLog{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.ackMsg{padding:10px 13px;border-radius:10px;font-size:13px;line-height:1.5;max-width:92%}
+.ackMsg.user{background:#0d2540;border:1px solid #2b6488;align-self:flex-end;color:#e8f4ff}
+.ackMsg.bot{background:#071928;border:1px solid #28648f;align-self:flex-start;color:#dbeaf7}
+.ackMsg.bot b{color:#58d6ff}
+.ackResult{margin-top:16px;border:1px solid #2b6488;border-radius:12px;background:#04101c;padding:14px}
+.ackResultHead{font-size:11px;font-weight:950;letter-spacing:.08em;color:#58d6ff;margin-bottom:8px}
+.ackFactRow{display:grid;grid-template-columns:140px 1fr;gap:6px;font-size:12.5px;padding:4px 0;border-bottom:1px solid #10263a}
+.ackFactRow b{color:#8fb3d1;font-weight:800}
+.ackVerdictGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ackVerdictCell{background:#071928;border:1px solid #28648f;border-radius:8px;padding:9px 11px}
+.ackVerdictCell .k{font-size:9.5px;font-weight:950;letter-spacing:.07em;color:#8fb3d1}
+.ackVerdictCell .v{font-size:13px;font-weight:900;margin-top:2px}
+.ackWhy{margin-top:10px;font-size:12.5px;color:#c9dcee;line-height:1.55}
+.ackPendingTag{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.06em;color:#ffb06f;border:1px solid #6b4a1f;background:rgba(107,74,31,.18);border-radius:999px;padding:3px 8px;margin-left:6px}
+.ackChaseGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}
+.ackChaseCard{background:#071928;border:1px solid #28648f;border-radius:9px;padding:9px 11px;font-size:11.5px}
+.ackChaseCard b{display:block;font-size:12.5px;margin-bottom:3px}
+@media(max-width:640px){.ackUploadGrid{grid-template-columns:1fr}.ackVerdictGrid{grid-template-columns:1fr}.ackFactRow{grid-template-columns:120px 1fr}}
+</style>`;
+// Single pluggable hook for real card-image identification / grading.
+// No vision service is wired into this build yet - set
+// CARDSTORM_VISION_ENDPOINT to a real backend URL to connect one without
+// touching any rendering code below. Until then this returns an honest
+// "not connected" result instead of ever inventing a card identity.
+const CARDSTORM_VISION_ENDPOINT=null;
+async function analyzeCardImages(frontImg,backImg,question){
+ if(CARDSTORM_VISION_ENDPOINT){
+  const res=await fetch(CARDSTORM_VISION_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({front:frontImg,back:backImg,question:question||null})});
+  if(!res.ok)throw new Error('CardStorm vision service returned an error');
+  return res.json();
+ }
+ return {
+  connected:false,
+  match:null,
+  confidence:null,
+  possibleMatches:[],
+  rarity:null,hitLevel:null,recentComps:null,fairRawValue:null,goodBuy:null,gradeIt:null,
+  gradingCandidate:'UNABLE_TO_DETERMINE',
+  gradingNote:"Automated centering/corner/edge/surface review needs a connected vision service - not yet wired into this build.",
+  why:"CardStorm can't identify a card from a photo yet in this build - no vision service is connected. Front and back images are saved and ready to send the moment one is. In the meantime, name the player, year, or set in the question box and CardStorm will check it against real tracked comps and chases.",
+  whatToLookFor:[]
+ };
+}
+// Real, grounded text Q&A - no live LLM is connected in this build, so
+// this only ever answers from three real sources: (1) the fixed favorite-
+// team joke, (2) an exact player match against CardStorm's own verified
+// COMPS / WATCHCAT / GOAT Vault data, (3) an honest explanation of what
+// isn't connected yet. It never fabricates a comp, rarity, or value.
+function ackFindPlayer(q){
+ q=(q||'').toLowerCase();
+ const names=new Set();
+ COMPS.forEach(c=>names.add(c[0]));
+ WATCHCAT.forEach(w=>names.add(w[0]));
+ for(const n of names){if(q.includes(n.toLowerCase()))return n}
+ return null;
+}
+function ackPlayerAnswerHTML(name){
+ const comps=COMPS.filter(c=>c[0]===name);
+ const watch=WATCHCAT.find(w=>w[0]===name);
+ let html=`<b>${name}</b> — here's what CardStorm has on file:<br>`;
+ if(comps.length){
+  html+=comps.slice(0,3).map(c=>`• ${c[2]} (${c[3]}) — <b>${c[1]}</b> · ${c[4]} · ${c[5]}`).join('<br>');
+ } else {
+  html+="No verified sold comps tracked for this player yet - CardStorm never estimates a value without one.";
+ }
+ if(watch){
+  html+=`<br><br>Chase targets CardStorm has tagged for ${name}: ${watch[2]}, ${watch[3]}, ${watch[4]}.`;
+ }
+ return html;
+}
+function ackHotRookiesHTML(){
+ const rows=WATCHCAT.filter(w=>w[1]==='football').slice(0,6);
+ return `Rookies CardStorm currently has flagged for hunting: <br>`+rows.map(w=>`• <b>${w[0]}</b> — ${w[2]}, ${w[3]}`).join('<br>');
+}
+function ackChaseTeamsHTML(){
+ const bySport={};
+ WATCHCAT.forEach(w=>{(bySport[w[1]]=bySport[w[1]]||[]).push(w[0])});
+ return Object.entries(bySport).map(([sport,names])=>`<b>${sport.toUpperCase()}</b>: ${names.slice(0,5).join(', ')}`).join('<br>');
+}
+async function ackAskQuestion(text){
+ text=(text||'').trim();
+ if(!text)return;
+ _ackChatLog.push({role:'user',text});
+ render_askCardstorm();
+ let reply;
+ const lower=text.toLowerCase();
+ if(/favorite team|favourite team/.test(lower)){
+  reply="Well obviously it's the CARD-inals.<br><br>Your turn. Ask me something harder.";
+ } else if(/hot rookie|rookies.*hot|which rookies/.test(lower)){
+  reply=ackHotRookiesHTML();
+ } else if(/team.*chase|chase.*team|target.*team/.test(lower)){
+  reply="Teams CardStorm has the most active chases tracked for right now:<br>"+ackChaseTeamsHTML();
+ } else {
+  const name=ackFindPlayer(text);
+  if(name){
+   reply=ackPlayerAnswerHTML(name);
+  } else if(_ackFrontImg||_ackBackImg){
+   reply="I can't identify a card from a photo yet in this build - no vision service is connected, so I'm not going to guess. Tap ANALYZE MY CARD to see exactly what's pending, or name the player/set here and I'll check it against real tracked comps.";
+  } else {
+   reply="I can answer from CardStorm's real tracked data - name a player (I'll check verified comps and chase targets), ask which rookies are hot, or upload a card photo. I won't guess at anything I can't back with real data.";
+  }
+ }
+ _ackChatLog.push({role:'bot',text:reply});
+ render_askCardstorm();
+}
+let _ackFrontImg=null,_ackBackImg=null,_ackAnalyzing=false,_ackResult=null,_ackChatLog=[],_ackListening=false;
+function ackReadFile(side,input){
+ const file=input.files&&input.files[0];
+ if(!file)return;
+ const reader=new FileReader();
+ reader.onload=e=>{
+  if(side==='front')_ackFrontImg=e.target.result;else _ackBackImg=e.target.result;
+  _ackResult=null;
+  render_askCardstorm();
+ };
+ reader.readAsDataURL(file);
+}
+function ackTriggerUpload(side){document.getElementById('ackInput_'+side).click()}
+function ackRemoveImage(side){if(side==='front')_ackFrontImg=null;else _ackBackImg=null;_ackResult=null;render_askCardstorm()}
+async function ackAnalyze(){
+ if(!_ackFrontImg&&!_ackBackImg)return;
+ _ackAnalyzing=true;render_askCardstorm();
+ const q=document.getElementById('ackQuestion')?document.getElementById('ackQuestion').value:'';
+ try{
+  _ackResult=await analyzeCardImages(_ackFrontImg,_ackBackImg,q);
+ }catch(e){
+  _ackResult={connected:false,error:true,why:"CardStorm couldn't reach the analysis service just now. Your photos are still saved above - try again in a moment."};
+ }
+ _ackAnalyzing=false;render_askCardstorm();
+}
+function ackMicToggle(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){
+  const el=document.getElementById('ackVoiceNote');
+  if(el)el.textContent="Voice input isn't supported in this browser - just type your question below.";
+  return;
+ }
+ if(_ackListening)return;
+ const rec=new SR();
+ rec.lang='en-US';rec.interimResults=false;rec.maxAlternatives=1;
+ _ackListening=true;render_askCardstorm();
+ rec.onresult=(e)=>{
+  const said=e.results[0][0].transcript;
+  const box=document.getElementById('ackQuestion');
+  if(box)box.value=said;
+ };
+ rec.onerror=()=>{const el=document.getElementById('ackVoiceNote');if(el)el.textContent="Didn't catch that - please type your question instead."};
+ rec.onend=()=>{_ackListening=false;render_askCardstorm()};
+ rec.start();
+}
+function ackSubmitQuestion(){
+ const box=document.getElementById('ackQuestion');
+ const text=box?box.value:'';
+ if(box)box.value='';
+ ackAskQuestion(text);
+}
+function ackQuickAsk(text){
+ const box=document.getElementById('ackQuestion');
+ if(box)box.value=text;
+ ackAskQuestion(text);
+}
+const ACK_QUICK_QUESTIONS=['What card is this?','Is this rare?','Is this worth anything?','What are the best comps?','Should I grade this?','Did I get a hit?','Is this a rookie?','Is this a parallel?','What rookies are hot?','What team should I chase?','What should I look for at retail?','What should I hunt next?'];
+function ackSlotHTML(side,img,label){
+ if(img){
+  return `<div class="ackSlot filled"><img src="${img}" alt="${label} of card"><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('${side}')">REMOVE</button></div></div>`;
+ }
+ return `<div class=ackSlot><h4>${label} of Card</h4><div style="font-size:26px">📷</div><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">UPLOAD / TAKE PHOTO</button></div></div>`;
+}
+function ackResultHTML(){
+ if(_ackAnalyzing){
+  return `<div class=ackResult><div class=ackResultHead>ANALYZING YOUR CARD…</div><div class=ackWhy>Reading front and back images and checking CardStorm's verified data.</div></div>`;
+ }
+ const r=_ackResult;
+ if(!r)return '';
+ if(r.error){
+  return `<div class=ackResult><div class=ackResultHead>CARDSTORM HIT A SNAG</div><div class=ackWhy>${r.why}</div></div>`;
+ }
+ if(!r.connected){
+  return `<div class=ackResult>
+   <div class=ackResultHead>CARDSTORM FOUND IT <span class=ackPendingTag>VISION SERVICE NOT CONNECTED</span></div>
+   <div class=ackWhy>${r.why}</div>
+   <div class=ackVerdictGrid>
+    <div class=ackVerdictCell><div class=k>RARITY</div><div class=v>Not available yet</div></div>
+    <div class=ackVerdictCell><div class=k>HIT LEVEL</div><div class=v>Not available yet</div></div>
+    <div class=ackVerdictCell><div class=k>RECENT COMPS</div><div class=v>Not available yet</div></div>
+    <div class=ackVerdictCell><div class=k>FAIR RAW VALUE</div><div class=v>Not available yet</div></div>
+    <div class=ackVerdictCell><div class=k>GRADING CANDIDATE</div><div class=v>${r.gradingCandidate.replace(/_/g,' ')}</div></div>
+    <div class=ackVerdictCell><div class=k>CONFIDENCE</div><div class=v>N/A</div></div>
+   </div>
+   <div class=ackWhy style="margin-top:10px">${r.gradingNote}</div>
+  </div>`;
+ }
+ return `<div class=ackResult><div class=ackResultHead>CARDSTORM FOUND IT</div><div class=ackWhy>${r.why||''}</div></div>`;
+}
+function askCardstorm(){
+ return shell('KNOW THY WORTH','Ask CardStorm Anything','Upload the front and back of your card. Ask about value, rarity, comps, grading, rookies, teams, breaks, retail products, or what to chase next.',
+  `${ASK_CARDSTORM_STYLE}<div class=ackHeroWrap><img src="assets/mascot/ask-cardstorm-mascot-hero.webp" loading=lazy decoding=async alt="Ask CardStorm Anything — the CardStorm mascot with his CardStorm-branded bat, ready to answer your card questions"></div><div class=feature>
+   <h2>Show CardStorm Your Card</h2>
+   <div class=sub>Real photos, real questions. CardStorm only ever shows verified data or an honest "not yet available" - never a guess.</div>
+   <div class=ackUploadGrid>
+    ${ackSlotHTML('front',_ackFrontImg,'Front')}
+    ${ackSlotHTML('back',_ackBackImg,'Back')}
+   </div>
+   <input type=file accept="image/*" capture="environment" id=ackInput_front style="display:none" onchange="ackReadFile('front',this)">
+   <input type=file accept="image/*" capture="environment" id=ackInput_back style="display:none" onchange="ackReadFile('back',this)">
+   <button type=button class=ackAnalyzeBtn ${(!_ackFrontImg&&!_ackBackImg)||_ackAnalyzing?'disabled':''} onclick="ackAnalyze()">${_ackAnalyzing?'ANALYZING…':'ANALYZE MY CARD'}</button>
+   ${ackResultHTML()}
+   <div class=ackAskRow>
+    <textarea id=ackQuestion class=ackQBox placeholder="Ask about this card, a player, a box, a break, a team, a rookie, a comp, or what you should hunt next..."></textarea>
+   </div>
+   <div class=ackAskRow>
+    <button type=button class="ackMicBtn ${_ackListening?'listening':''}" onclick="ackMicToggle()">🎙️ ${_ackListening?'LISTENING…':'ASK BY VOICE'}</button>
+    <button type=button class=ackAskBtn onclick="ackSubmitQuestion()">ASK CARDSTORM</button>
+   </div>
+   <div id=ackVoiceNote class=sub style="min-height:14px"></div>
+   <div class=ackQuickGrid>${ACK_QUICK_QUESTIONS.map(q=>`<button type=button class=ackQuick onclick="ackQuickAsk('${q.replace(/'/g,"\\'")}')">${q}</button>`).join('')}</div>
+   <div class=ackChatLog>${_ackChatLog.map(m=>`<div class="ackMsg ${m.role}">${m.role==='user'?m.text.replace(/</g,'&lt;'):m.text}</div>`).join('')}</div>
+  </div>`);
+}
+function render_askCardstorm(){C.innerHTML=askCardstorm()}
+F.askcardstorm=askCardstorm;
 // ---- THE GOAT VAULT (All-Time Hobby Icons) ----------------------------
 // Entirely data-driven from data/goat/goat-vault.json - never hardcode a
 // player or card row in this file. Player bio fields (name/era/teams/
