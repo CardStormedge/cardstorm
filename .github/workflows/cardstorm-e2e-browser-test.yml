@@ -1,21 +1,27 @@
 name: TEMPORARY - CardStorm E2E browser test
 
 # TEMPORARY DIAGNOSTIC WORKFLOW - not part of the permanent CI/CD setup.
-# Drives the REAL Ask CardStorm UI in a real headless browser against a
-# LIVE backend deployment, because this sandbox's own dev environment has
-# no outbound network access to any *.vercel.app domain and so cannot run
-# this itself. GitHub-hosted runners have normal internet access.
+# Drives the REAL Ask CardStorm UI in a real headless browser against the
+# REAL, LIVE PRODUCTION backend, because this sandbox's own dev environment
+# has no outbound network access to any *.vercel.app domain and so cannot
+# run this itself. GitHub-hosted runners have normal internet access.
 #
-# Serves a COPY of the site with only CARDSTORM_API_ENDPOINT swapped from
-# the shipped production URL to this PR's own preview deployment URL - not
-# a shortcut, a necessity: the production endpoint's CORS allow-list
-# intentionally rejects a CI runner's localhost origin once
-# VERCEL_ENV==="production" (see api/lib/cors.js), while a preview
-# deployment relaxes that specifically for pre-merge testing like this.
+# Serves the site UNMODIFIED (app.html already points at the real
+# production endpoint - no URL swap). The only wrinkle: production's CORS
+# allow-list (api/lib/cors.js) only accepts https://cardstormguide.com /
+# stormguide.com (+www. variants) and correctly rejects a bare CI-runner
+# origin like localhost. Rather than relax production CORS (never do that)
+# or fall back to a Preview deployment (which may not even exist once a
+# branch's latest deployment has been promoted straight to Production),
+# this maps cardstormguide.com to 127.0.0.1 in /etc/hosts and serves this
+# copy of the site over HTTPS on the default port 443 with a throwaway
+# self-signed cert, so the runner's own Chromium instance sends a real,
+# exactly-matching `Origin: https://cardstormguide.com` header - the
+# production CORS check passes honestly, not bypassed.
 #
 # A second job independently confirms the real PRODUCTION endpoint itself
-# is live and correctly CORS-configured, using an actually-approved Origin
-# header (https://cardstormguide.com) rather than a browser.
+# is live and correctly CORS-configured via plain curl, both for an
+# approved Origin and a rejected one.
 #
 # DELETE THIS FILE (and cardstorm-preview-api-test.yml, and
 # scripts/e2e-live-backend-test.js) once end-to-end testing is reviewed and
@@ -32,8 +38,6 @@ on:
 jobs:
   browser-e2e:
     runs-on: ubuntu-latest
-    env:
-      PREVIEW_URL: "https://cardstorm-api-git-claude-cardstorm-homepage-a-c0fda6-card-storm.vercel.app/api/cardstorm"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,20 +70,26 @@ jobs:
               .then(() => console.log('unclear-test-image.jpg generated'))
               .catch((e) => { console.error(e); process.exit(1); });
           "
-      - name: Prepare a test copy of the site with the endpoint pointed at THIS PR's preview
+      - name: Prepare an unmodified copy of the site (app.html already points at production)
         run: |
           mkdir -p /tmp/site
           rsync -a --exclude node_modules --exclude .git ./ /tmp/site/
-          sed -i "s#https://cardstorm-api.vercel.app/api/cardstorm#${PREVIEW_URL}#" /tmp/site/app.html
           grep -o "CARDSTORM_API_ENDPOINT='[^']*'" /tmp/site/app.html
-      - name: Serve the test copy
+      - name: Make this runner's browser a real, approved CORS origin (cardstormguide.com)
         run: |
-          npx --yes http-server /tmp/site -p 8080 -s &
+          echo "127.0.0.1 cardstormguide.com" | sudo tee -a /etc/hosts
+          mkdir -p /tmp/tls
+          openssl req -x509 -newkey rsa:2048 -nodes -days 1 \
+            -keyout /tmp/tls/key.pem -out /tmp/tls/cert.pem \
+            -subj "/CN=cardstormguide.com"
+      - name: Serve the test copy over HTTPS on the default port (443) as cardstormguide.com
+        run: |
+          sudo npx --yes http-server /tmp/site -p 443 -S -C /tmp/tls/cert.pem -K /tmp/tls/key.pem -s &
           sleep 2
-          curl -sI http://localhost:8080/index.html | head -1
-      - name: Run the real-browser E2E test against the live preview backend
+          curl -sIk https://cardstormguide.com/index.html | head -1
+      - name: Run the real-browser E2E test against the live PRODUCTION backend
         env:
-          SITE_URL: "http://localhost:8080"
+          SITE_URL: "https://cardstormguide.com"
         run: node scripts/e2e-live-backend-test.js
 
   verify-production-endpoint:

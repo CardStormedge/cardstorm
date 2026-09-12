@@ -9,15 +9,23 @@
 // against a local mock backend on SITE_URL/MOCK_URL to shake out DOM/script
 // bugs before ever trusting a live CI run - see scripts/mock-backend-for-e2e-dryrun.js.)
 //
-// Serves a COPY of the real site (not the committed app.html) with only
-// CARDSTORM_API_ENDPOINT swapped from the shipped production URL to the
-// PR's own preview deployment URL. Not a shortcut, a necessity: the
-// production endpoint's CORS allow-list intentionally rejects a CI
-// runner's localhost origin once VERCEL_ENV==="production" (see
-// api/lib/cors.js), while a preview deployment relaxes that specifically
-// for pre-merge testing like this. The production endpoint itself is
-// verified separately (with a real approved Origin header) by a plain-curl
-// job, not by this browser script.
+// Now that the production endpoint is confirmed live, this drives the
+// UNMODIFIED committed app.html (already pointed at the real production
+// URL) straight against the real PRODUCTION backend - no URL swap needed.
+// The one wrinkle: api/lib/cors.js's production allow-list only accepts
+// https://cardstormguide.com / stormguide.com (and www. variants) - a CI
+// runner's bare localhost is correctly rejected there, by design, once
+// VERCEL_ENV==="production". So the workflow makes the runner's own
+// browser present as that origin: it maps cardstormguide.com to 127.0.0.1
+// in /etc/hosts and serves this copy of the site over HTTPS on the
+// default port 443 with a throwaway self-signed cert (trusted here via
+// --ignore-certificate-errors/ignoreHTTPSErrors - that only affects what
+// THIS browser accepts locally, not what the server returns). Chromium
+// then sends a real, exactly-matching `Origin: https://cardstormguide.com`
+// header on every request, so the production CORS check passes honestly
+// rather than being bypassed. The plain-curl job in the same workflow
+// independently double-checks both the approved- and rejected-origin CORS
+// behavior directly against production.
 //
 // IMPORTANT DOM NOTE: index.html embeds the actual app (app.html, with all
 // of Ask CardStorm's markup/JS) inside an <iframe id="appFrame">. Every
@@ -29,7 +37,7 @@
 const { chromium } = require("playwright");
 const path = require("path");
 
-const SITE_URL = process.env.SITE_URL || "http://localhost:8080";
+const SITE_URL = process.env.SITE_URL || "https://cardstormguide.com";
 const HEADLESS = true;
 
 let pass = 0;
@@ -107,12 +115,18 @@ async function waitForAnalyzeResult(frame) {
 async function run() {
   const browser = await chromium.launch({
     headless: HEADLESS,
+    // Now that this script hits the real PRODUCTION endpoint from a spoofed
+    // https://cardstormguide.com origin (see the workflow's /etc/hosts +
+    // self-signed cert setup), the TLS cert Chromium sees is self-signed and
+    // must be explicitly trusted here - this has no effect on what the
+    // server actually returns, only on the local browser's cert check.
+    args: ["--ignore-certificate-errors"],
     ...(process.env.PLAYWRIGHT_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } : {}),
   });
 
   // ---- Desktop viewport: 7 text questions ----
   {
-    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true });
     const page = await context.newPage();
     const consoleErrors = [];
     page.on("console", (msg) => {
@@ -202,7 +216,7 @@ async function run() {
 
   // ---- Mobile viewport: subset of the same questions + layout checks ----
   {
-    const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const context = await browser.newContext({ viewport: { width: 390, height: 844 }, ignoreHTTPSErrors: true });
     const page = await context.newPage();
     const frame = await gotoAskCardstorm(page);
 
@@ -231,7 +245,7 @@ async function run() {
 
   // ---- Image tests: front/back, general screenshot, unclear image ----
   {
-    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true });
     const page = await context.newPage();
     let frame = await gotoAskCardstorm(page);
 
@@ -292,7 +306,7 @@ async function run() {
 
   // ---- Error state: force the fetch to fail without touching any real network ----
   {
-    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true });
     const page = await context.newPage();
     await page.goto(SITE_URL + "/index.html", { waitUntil: "networkidle" });
     await page.evaluate(() => window.openApp && window.openApp("market"));
