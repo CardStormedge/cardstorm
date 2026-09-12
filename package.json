@@ -1,0 +1,10 @@
+{
+  "name": "cardstorm-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serverless backend for Ask CardStorm (deployed as Vercel functions alongside the GitHub Pages static frontend).",
+  "type": "commonjs",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0"
+  }
+}

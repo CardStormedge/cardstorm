@@ -1090,6 +1090,7 @@ const ASK_CARDSTORM_STYLE=`<style>
 .ackMsg.user{background:#0d2540;border:1px solid #2b6488;align-self:flex-end;color:#e8f4ff}
 .ackMsg.bot{background:#071928;border:1px solid #28648f;align-self:flex-start;color:#dbeaf7}
 .ackMsg.bot b{color:#58d6ff}
+.ackMsg.ackThinking{opacity:.65;font-style:italic;letter-spacing:.04em}
 .ackResult{margin-top:14px;border:1px solid #2b6488;border-radius:12px;background:#04101c;padding:14px}
 .ackResultHead{font-size:11px;font-weight:950;letter-spacing:.08em;color:#58d6ff;margin-bottom:8px}
 .ackVerdictGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
@@ -1100,17 +1101,47 @@ const ASK_CARDSTORM_STYLE=`<style>
 .ackPendingTag{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.06em;color:#ffb06f;border:1px solid #6b4a1f;background:rgba(107,74,31,.18);border-radius:999px;padding:3px 8px;margin-left:6px}
 @media(max-width:640px){.ackVerdictGrid{grid-template-columns:1fr}}
 </style>`;
-// Single pluggable hook for real card-image identification / grading.
-// No vision service is wired into this build yet - set
-// CARDSTORM_VISION_ENDPOINT to a real backend URL to connect one without
-// touching any rendering code below. Until then this returns an honest
-// "not connected" result instead of ever inventing a card identity.
-const CARDSTORM_VISION_ENDPOINT=null;
-async function analyzeCardImages(frontImg,backImg,question){
- if(CARDSTORM_VISION_ENDPOINT){
-  const res=await fetch(CARDSTORM_VISION_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({front:frontImg,back:backImg,question:question||null})});
-  if(!res.ok)throw new Error('CardStorm vision service returned an error');
-  return res.json();
+// Single pluggable hook for the real Ask CardStorm backend (text answers
+// AND card-image identification/grading both go through the same
+// serverless endpoint - see /api/cardstorm.js). Set CARDSTORM_API_ENDPOINT
+// to the deployed backend's absolute URL (e.g.
+// "https://<your-vercel-project>.vercel.app/api/cardstorm") once it's
+// deployed. Until then, every call below returns an honest "not connected"
+// result instead of ever inventing an answer, identity, or comp. No API key
+// ever belongs here - the backend holds its own credentials server-side.
+const CARDSTORM_API_ENDPOINT=null;
+async function cardstormBackendCall(body){
+ if(!CARDSTORM_API_ENDPOINT){
+  return {connected:false};
+ }
+ const res=await fetch(CARDSTORM_API_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+ if(!res.ok){
+  let msg='CardStorm\'s answer engine hit a snag.';
+  try{const err=await res.json();if(err&&err.error)msg=err.error}catch(e){}
+  throw new Error(msg);
+ }
+ const data=await res.json();
+ return {connected:true,...data};
+}
+async function analyzeCardImages(frontImg,backImg,question,isGeneral){
+ const result=await cardstormBackendCall({
+  mode:'analyze',
+  question:question||'',
+  images:isGeneral?{front:null,back:null,general:frontImg}:{front:frontImg,back:backImg,general:null}
+ });
+ if(result.connected){
+  return {
+   connected:true,
+   match:(result.identifiedPlayers&&result.identifiedPlayers[0])||null,
+   confidence:result.confidence,
+   possibleMatches:[],
+   rarity:result.rarityGuidance,hitLevel:null,recentComps:result.soldComps,fairRawValue:null,goodBuy:null,gradeIt:null,
+   gradingCandidate:result.gradingGuidance||'UNABLE_TO_DETERMINE',
+   gradingNote:result.gradingGuidance?null:"Automated centering/corner/edge/surface review needs a connected vision service.",
+   why:result.answer,
+   whatToLookFor:result.suggestedFollowups||[],
+   warnings:result.warnings||[]
+  };
  }
  return {
   connected:false,
@@ -1181,27 +1212,69 @@ async function ackAskQuestion(text){
   } else if(_ackFrontImg||_ackBackImg||_ackGeneralImg){
    reply="I can't analyze photos yet in this build - no vision service is connected, so I'm not going to guess. Tap ANALYZE to see exactly what's pending, or name the player/set here and I'll check it against real tracked comps.";
   } else {
-   reply="I can answer from CardStorm's real tracked data - name a player (I'll check verified comps and chase targets), ask which rookies are hot, or upload a card photo or screenshot. I won't guess at anything I can't back with real data.";
+   reply=await ackBackendAnswer(text);
   }
  }
  _ackChatLog.push({role:'bot',text:reply});
  render_askCardstorm();
  ackScrollLastMessageIntoView();
 }
+// Fallback path once local COMPS/WATCHCAT/joke matching comes up empty -
+// asks the real backend so free-form questions aren't stuck on a canned
+// message. Shows a THINKING… bubble while the request is in flight and
+// never surfaces a raw network/server error to the user.
+async function ackBackendAnswer(text){
+ _ackThinking=true;render_askCardstorm();ackScrollLastMessageIntoView();
+ try{
+  const conversation=_ackChatLog.slice(-8).map(m=>({role:m.role==='user'?'user':'assistant',text:m.text.replace(/<[^>]+>/g,'')}));
+  const result=await cardstormBackendCall({mode:'ask',question:text,conversation});
+  if(!result.connected){
+   return "I can answer from CardStorm's real tracked data - name a player (I'll check verified comps and chase targets), ask which rookies are hot, or upload a card photo or screenshot. Ask CardStorm's full answer engine isn't connected on this deployment yet, so I can't take a free-form question like that one just yet.";
+  }
+  return result.answer||"CardStorm couldn't come up with an answer for that just now - try rephrasing, or ask about a specific player, set, or upload a photo.";
+ }catch(e){
+  return "CardStorm couldn't reach the answer engine just now. Please try again in a moment, or ask about a specific player and I'll check real tracked data.";
+ }finally{
+  _ackThinking=false;
+ }
+}
 function ackScrollLastMessageIntoView(){
  const msgs=document.querySelectorAll('.ackMsg');
  const last=msgs[msgs.length-1];
  if(last)last.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-let _ackFrontImg=null,_ackBackImg=null,_ackGeneralImg=null,_ackAnalyzing=false,_ackResult=null,_ackChatLog=[],_ackListening=false,_ackShowMoreQuestions=false,_ackQuestionDraft='';
+let _ackFrontImg=null,_ackBackImg=null,_ackGeneralImg=null,_ackAnalyzing=false,_ackResult=null,_ackChatLog=[],_ackListening=false,_ackShowMoreQuestions=false,_ackQuestionDraft='',_ackThinking=false;
+// Resize/compress on-device before it ever leaves the browser - keeps
+// uploads fast, keeps them under the backend's size limit, and still
+// preserves enough detail to read card text/serial numbers.
+const ACK_MAX_IMAGE_DIM=1600;
+const ACK_JPEG_QUALITY=0.85;
+function ackResizeImage(dataUrl){
+ return new Promise(resolve=>{
+  const img=new Image();
+  img.onload=()=>{
+   let{width:w,height:h}=img;
+   if(w<=ACK_MAX_IMAGE_DIM&&h<=ACK_MAX_IMAGE_DIM){resolve(dataUrl);return}
+   const scale=ACK_MAX_IMAGE_DIM/Math.max(w,h);
+   w=Math.round(w*scale);h=Math.round(h*scale);
+   const canvas=document.createElement('canvas');
+   canvas.width=w;canvas.height=h;
+   canvas.getContext('2d').drawImage(img,0,0,w,h);
+   resolve(canvas.toDataURL('image/jpeg',ACK_JPEG_QUALITY));
+  };
+  img.onerror=()=>resolve(dataUrl);
+  img.src=dataUrl;
+ });
+}
 function ackReadFile(side,input){
  const file=input.files&&input.files[0];
  if(!file)return;
  const reader=new FileReader();
- reader.onload=e=>{
-  if(side==='front')_ackFrontImg=e.target.result;
-  else if(side==='back')_ackBackImg=e.target.result;
-  else _ackGeneralImg=e.target.result;
+ reader.onload=async e=>{
+  const resized=await ackResizeImage(e.target.result);
+  if(side==='front')_ackFrontImg=resized;
+  else if(side==='back')_ackBackImg=resized;
+  else _ackGeneralImg=resized;
   _ackResult=null;
   render_askCardstorm();
  };
@@ -1223,9 +1296,9 @@ async function ackAnalyze(){
  try{
   // Same analyzeCardImages() hook either way - a general photo/screenshot
   // just fills the first image slot with nothing in the second.
-  _ackResult=hasCard?await analyzeCardImages(_ackFrontImg,_ackBackImg,q):await analyzeCardImages(_ackGeneralImg,null,q);
+  _ackResult=hasCard?await analyzeCardImages(_ackFrontImg,_ackBackImg,q,false):await analyzeCardImages(_ackGeneralImg,null,q,true);
  }catch(e){
-  _ackResult={connected:false,error:true,why:"CardStorm couldn't reach the analysis service just now. Your image(s) are still saved above - try again in a moment."};
+  _ackResult={connected:false,error:true,why:(e&&e.message)||"CardStorm couldn't reach the analysis service just now. Your image(s) are still saved above - try again in a moment."};
  }
  _ackAnalyzing=false;render_askCardstorm();
 }
@@ -1285,7 +1358,7 @@ function ackGeneralSlotHTML(){
 }
 function ackResultHTML(){
  if(_ackAnalyzing){
-  return `<div class=ackResult><div class=ackResultHead>ANALYZING YOUR CARD…</div><div class=ackWhy>Reading front and back images and checking CardStorm's verified data.</div></div>`;
+  return `<div class=ackResult><div class=ackResultHead>CARDSTORM IS LOOKING…</div><div class=ackWhy>Reading the image(s) and checking CardStorm's verified data.</div></div>`;
  }
  const r=_ackResult;
  if(!r)return '';
@@ -1341,7 +1414,7 @@ function askCardstorm(){
    <button type=button class=ackMoreBtn onclick="ackToggleMoreQuestions()">${_ackShowMoreQuestions?'FEWER QUESTIONS ▴':'MORE QUESTIONS ▾'}</button>
 
    ${ackResultHTML()}
-   <div class=ackChatLog>${_ackChatLog.map(m=>`<div class="ackMsg ${m.role}">${m.role==='user'?m.text.replace(/</g,'&lt;'):m.text}</div>`).join('')}</div>
+   <div class=ackChatLog>${_ackChatLog.map(m=>`<div class="ackMsg ${m.role}">${m.role==='user'?m.text.replace(/</g,'&lt;'):m.text}</div>`).join('')}${_ackThinking?'<div class="ackMsg bot ackThinking">THINKING…</div>':''}</div>
    <div class=ackTrustNote>Real photos, real questions. CardStorm only ever shows verified data or an honest "not yet available" - never a guess.</div>
   </div>`);
 }
