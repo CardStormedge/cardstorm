@@ -16,6 +16,7 @@ on:
       - "scripts/check-comps-sync.js"
       - "scripts/test-comps-parity.js"
       - "scripts/test-routing.js"
+      - "scripts/test-product-grounding.js"
   push:
     branches: ["main"]
     paths:
@@ -26,6 +27,7 @@ on:
       - "scripts/check-comps-sync.js"
       - "scripts/test-comps-parity.js"
       - "scripts/test-routing.js"
+      - "scripts/test-product-grounding.js"
 
 jobs:
   parity:
@@ -47,3 +49,5 @@ jobs:
         run: npm run test:api-handler
       - name: Model/research routing tests
         run: npm run test:routing
+      - name: Product/insert grounding + manufacturer-conflict guard tests
+        run: npm run test:product-grounding

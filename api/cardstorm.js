@@ -85,7 +85,11 @@ module.exports = async (req, res) => {
     const dedupMerge = (fromGrounding, fromModel) => [
       ...new Set([...fromGrounding, ...(Array.isArray(fromModel) ? fromModel : [])]),
     ];
-    const groundedProducts = groundedData.matchedProducts.map((p) => `${p.brand} ${p.product}`.trim());
+    const groundedProducts = [
+      ...groundedData.matchedProducts.map((p) => `${p.brand} ${p.product}`.trim()),
+      ...groundedData.matchedBrands.map((b) => b.brand),
+      ...groundedData.matchedInserts.map((i) => i.name),
+    ];
     const groundedPlayers = [
       ...new Set([
         ...groundedData.matchedCards.map((c) => c.player),

@@ -31,7 +31,7 @@ function safeReadJSON(filePath) {
 
 function loadCorpus() {
   if (cache) return cache;
-  const corpus = { products: [], checklistCards: [], goat: null, comps: [], watchcat: [] };
+  const corpus = { products: [], checklistCards: [], goat: null, comps: [], watchcat: [], productKnowledge: null };
 
   // data/products/football/<year>.json - sealed product registry
   const productsDir = path.join(DATA_ROOT, "products", "football");
@@ -80,12 +80,37 @@ function loadCorpus() {
   const watchDoc = safeReadJSON(path.join(DATA_ROOT, "intelligence", "watchcat.json"));
   if (watchDoc && Array.isArray(watchDoc.watchcat)) corpus.watchcat = watchDoc.watchcat;
 
+  // data/intelligence/product-knowledge.json - small hand-curated
+  // manufacturer/brand/insert facts (e.g. "Downtown is Panini, not
+  // Topps"), treated as ground truth the model is never allowed to
+  // contradict. See that file's own _schema note for why this is safe to
+  // hardcode (stable, undisputed hobby facts, kept intentionally short).
+  corpus.productKnowledge = safeReadJSON(path.join(DATA_ROOT, "intelligence", "product-knowledge.json"));
+
   cache = corpus;
   return corpus;
 }
 
 function normalize(s) {
   return (s || "").toLowerCase();
+}
+
+// Whole-word/phrase containment (not substring) - so "Prizm" doesn't match
+// inside some future "Prizmatic" brand, and matching stays conservative per
+// the "false positives are worse than misses" rule for this data.
+function containsPhrase(haystackLower, phrase) {
+  const re = new RegExp(`\\b${phrase.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+  return re.test(haystackLower);
+}
+
+// Same as containsPhrase but also matches a simple trailing plural ("s") -
+// e.g. "Downtowns" should still ground to the "Downtown" insert entry.
+// Kept as its own function (rather than loosening containsPhrase generally)
+// so brand-name matching stays fully exact.
+function containsPhraseOrPlural(haystackLower, phrase) {
+  const escaped = phrase.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp(`\\b${escaped}s?\\b`);
+  return re.test(haystackLower);
 }
 
 // Best-effort, non-fuzzy grounding: find checklist cards / products / comps
@@ -96,7 +121,9 @@ function normalize(s) {
 function lookup(question) {
   const corpus = loadCorpus();
   const q = normalize(question);
-  if (!q) return { matchedCards: [], matchedProducts: [], matchedComps: [], matchedChases: [] };
+  if (!q) {
+    return { matchedCards: [], matchedProducts: [], matchedComps: [], matchedChases: [], matchedInserts: [], matchedBrands: [] };
+  }
 
   const matchedCards = corpus.checklistCards
     .filter((c) => c.player && q.includes(normalize(c.player)))
@@ -127,7 +154,23 @@ function lookup(question) {
     matchedChases = corpus.watchcat.filter((w) => w[1] === "football").slice(0, 6);
   }
 
-  return { matchedCards, matchedProducts, matchedComps, matchedChases };
+  // product-knowledge.json - conservative whole-word match against the
+  // small curated insert/brand table (see that file's header). A miss
+  // just falls through to research/general knowledge; a false match would
+  // inject a wrong "ground truth" manufacturer, which is the exact failure
+  // this exists to prevent - so matching stays exact and small on purpose.
+  const pk = corpus.productKnowledge;
+  const matchedInserts = pk && Array.isArray(pk.inserts) ? pk.inserts.filter((i) => containsPhraseOrPlural(q, i.name)) : [];
+  const matchedBrands = [];
+  if (pk && pk.manufacturers) {
+    for (const [manufacturer, info] of Object.entries(pk.manufacturers)) {
+      for (const brand of info.brands || []) {
+        if (containsPhrase(q, brand)) matchedBrands.push({ brand, manufacturer });
+      }
+    }
+  }
+
+  return { matchedCards, matchedProducts, matchedComps, matchedChases, matchedInserts, matchedBrands };
 }
 
 // True when CardStorm's own verified/curated data already has enough to
@@ -139,8 +182,24 @@ function hasInternalCoverage(groundedData) {
     (groundedData.matchedComps.length ||
       groundedData.matchedChases.length ||
       groundedData.matchedCards.length ||
-      groundedData.matchedProducts.length)
+      groundedData.matchedProducts.length ||
+      groundedData.matchedInserts.length ||
+      groundedData.matchedBrands.length)
   );
 }
 
-module.exports = { lookup, hasInternalCoverage };
+// Questions that ask "what/which product/set/box is X in" or "is X a
+// <manufacturer> product" name a specific manufacturer/product/insert
+// identity - these must never be answered from ungrounded model memory.
+// When CardStorm's own product-knowledge table doesn't cover the named
+// entity, the caller should route to live research (an authoritative
+// manufacturer source) rather than let the model guess with false
+// confidence - this is what caught the "Downtown is a Topps insert" error.
+const PRODUCT_IDENTITY_SIGNALS =
+  /\b(what product|what set|what box|which product|which set|where (can|do) i find|is\s+.+\s+a\s+(topps|panini)\s+(product|insert)|what company makes|which manufacturer)\b/i;
+
+function isProductIdentityQuestion(question) {
+  return PRODUCT_IDENTITY_SIGNALS.test(question || "");
+}
+
+module.exports = { lookup, hasInternalCoverage, isProductIdentityQuestion };

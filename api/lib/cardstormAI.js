@@ -57,11 +57,13 @@ const SYSTEM_PROMPT = `You are the answer engine behind "Ask CardStorm" inside t
 LENGTH - keep the visible answer tight by default: a short direct answer, then at most 3-5 short bullets or a couple of short paragraphs. Do not write a long essay for a simple question ("What makes Downtown inserts valuable?" needs a few sharp points, not a treatise). Only go longer when the question explicitly asks for depth or the evidence genuinely requires it (e.g. listing several distinct verified comps). You have a hard output budget shared with the required JSON line at the end of your response - a long visible answer that leaves no room for that JSON is a failure, so stop the visible answer while you still have plenty of room left, then always emit the JSON line.
 
 ROUTING PRIORITY - use the highest-priority source that actually applies, and say so honestly when none do:
-1. CARDSTORM_VERIFIED_DATA passed to you in this request - this includes CardStorm's own verified sold comps (verifiedComps), curated-but-unverified chase suggestions (curatedChases - never call these "verified"), and on-disk checklist/product records. Treat verifiedComps and checklist/product records as ground truth. If this data already answers the question, use it and do not treat the question as needing live research even if it sounds current.
-2. Verified current external research via the web_search tool (only available to you when the backend decided this question genuinely needs fresh information - if the tool isn't in this request, don't ask for it, just answer from what you have) - cite what you found.
+1. CARDSTORM_VERIFIED_DATA passed to you in this request - this includes CardStorm's own verified sold comps (verifiedComps), curated-but-unverified chase suggestions (curatedChases - never call these "verified"), on-disk checklist/product records, and productKnowledge (manufacturer/brand/insert identity facts). Treat verifiedComps, checklist/product records, and productKnowledge as ground truth. If this data already answers the question, use it and do not treat the question as needing live research even if it sounds current.
+2. Verified current external research via the web_search tool (only available to you when the backend decided this question genuinely needs fresh information or an unfamiliar product/insert identity - if the tool isn't in this request, don't ask for it, just answer from what you have) - cite what you found, preferring the manufacturer's own site/press materials over hobby blogs when both are available.
 3. Direct interpretation of any image(s) provided.
 4. Your own general sports-card knowledge (product history, insert mechanics, grading concepts, market dynamics in general terms).
 5. If none of the above actually supports an answer, say so honestly instead of guessing.
+
+PRODUCT / INSERT / MANUFACTURER IDENTITY - this is a common failure mode, be careful here. If CARDSTORM_VERIFIED_DATA.productKnowledge names an insert's or brand's manufacturer, that is ground truth - never contradict it (for example, if productKnowledge says an insert's manufacturer is "Panini", never call it a Topps product, and vice versa). If a question asks "what product/set/box is X in" or "is X a Topps/Panini product" and X is NOT in productKnowledge, do not guess confidently from memory - use web_search if it's available to you for this request, and if it isn't, say plainly that you're not certain which manufacturer/product that is rather than stating a guess as fact.
 
 ABSOLUTE RULE ON SOLD COMPS AND PRICES - this is the most important rule you follow. For a sold-comp/price question, your priority is exactly:
   1. CARDSTORM_VERIFIED_DATA.verifiedComps for that player/card, if present - use these first and only these when they exist.
@@ -112,7 +114,9 @@ function buildUserContent({ question, images, groundedData }) {
     (groundedData.matchedCards.length ||
       groundedData.matchedProducts.length ||
       groundedData.matchedComps.length ||
-      groundedData.matchedChases.length);
+      groundedData.matchedChases.length ||
+      groundedData.matchedInserts.length ||
+      groundedData.matchedBrands.length);
   if (hasGrounding) {
     text += `CARDSTORM_VERIFIED_DATA (on-disk, ground truth - not from you or the internet):\n${JSON.stringify(
       {
@@ -122,6 +126,10 @@ function buildUserContent({ question, images, groundedData }) {
         curatedChasesSchema: "[player, sport, hit1, hit2, hit3] - editorial suggestions, NOT verified sales/checklist facts",
         checklistCards: groundedData.matchedCards,
         products: groundedData.matchedProducts,
+        productKnowledge: {
+          insertsNamedInQuestion: groundedData.matchedInserts,
+          brandsNamedInQuestion: groundedData.matchedBrands,
+        },
       }
     )}\n\n`;
   }
@@ -133,6 +141,48 @@ function buildUserContent({ question, images, groundedData }) {
   text += question || "What can you tell me about the image(s) above?";
   content.push({ type: "text", text });
   return content;
+}
+
+// Deterministic factual-conflict guard: if the model's answer confidently
+// attributes a grounded insert to the WRONG manufacturer (the exact "Downtown
+// is a Topps insert" failure this was built to catch), don't try to patch
+// the model's prose - discard it and substitute a plain answer built
+// directly from the grounded fact, so correctness never depends on the
+// model reliably obeying the prompt. Internal verified data always wins.
+const KNOWN_MANUFACTURERS = ["Panini", "Topps"];
+function detectManufacturerConflict(answerText, groundedData) {
+  if (!groundedData || !groundedData.matchedInserts || !groundedData.matchedInserts.length) return null;
+  const lower = (answerText || "").toLowerCase();
+  for (const insert of groundedData.matchedInserts) {
+    const truth = insert.manufacturer;
+    const truthMentioned = new RegExp(`\\b${truth}\\b`, "i").test(lower);
+    if (truthMentioned) continue; // answer already agrees with ground truth
+    for (const wrong of KNOWN_MANUFACTURERS) {
+      if (wrong === truth) continue;
+      // Conservative: only flag when the wrong manufacturer is mentioned
+      // close to the insert's own name (avoids false positives from an
+      // unrelated sentence about the other manufacturer elsewhere).
+      const proximityPattern = new RegExp(
+        `\\b${wrong}\\b[^.]{0,60}\\b${insert.name}\\b|\\b${insert.name}\\b[^.]{0,60}\\b${wrong}\\b`,
+        "i"
+      );
+      if (proximityPattern.test(answerText)) {
+        return { insert, wrongManufacturer: wrong };
+      }
+    }
+  }
+  return null;
+}
+
+function buildInsertIdentityAnswer(insert) {
+  const brands = (insert.typicalHomeBrands || []).join(", ");
+  return (
+    `<b>${insert.name}</b> is a <b>${insert.manufacturer}</b> ${insert.family || "insert"} - it is not a ${
+      insert.manufacturer === "Panini" ? "Topps" : "Panini"
+    } product.<br><br>` +
+    (brands ? `Most commonly found in: <b>${brands}</b>.<br><br>` : "") +
+    (insert.notes || "")
+  );
 }
 
 // Splits the model's trailing <<CARDSTORM_DATA>>{...} line from the
@@ -149,6 +199,35 @@ function extractStructured(rawText) {
   } catch (e) {
     return { answer, structured: {} };
   }
+}
+
+// Single source of truth for the research/model routing decision - used by
+// analyze() and directly by scripts/test-routing.js, so the tests can never
+// silently drift out of sync with the real logic the way a second
+// hand-copied regex would.
+const RESEARCH_SIGNALS =
+  /\b(this week|this month|this year|right now|currently|latest|newest|new release|just released|top rookies|flagship|chasing)\b/i;
+const YEAR_SIGNAL = /\b202[4-9]\b/;
+
+function computeRouting({ question, hasImages, groundedData }) {
+  // Research is only worth its latency/cost when (a) CardStorm's own
+  // verified/curated data doesn't already cover the question and (b) the
+  // question actually signals a need for fresh information - a bare "hot"
+  // or "recent" used to be enough to trigger this and was firing (and
+  // timing out) on questions CardStorm's own WATCHCAT/COMPS data already
+  // answers, like "what rookies are hot?". Explicit freshness language, an
+  // explicit near-future product year, or a product/insert/manufacturer
+  // identity question CardStorm's own productKnowledge table doesn't cover
+  // ("what product is X in", "is X a Topps product") still qualifies - the
+  // last of those is exactly the class of question that produced a wrong
+  // "Downtown is a Topps insert" answer before this rule existed.
+  const alreadyCovered = cardstormData.hasInternalCoverage(groundedData);
+  const isUngroundedIdentityQuestion = !alreadyCovered && cardstormData.isProductIdentityQuestion(question || "");
+  const needsResearch =
+    !alreadyCovered &&
+    !hasImages &&
+    (RESEARCH_SIGNALS.test(question || "") || YEAR_SIGNAL.test(question || "") || isUngroundedIdentityQuestion);
+  return { needsResearch, model: chooseModel({ hasImages, needsResearch }) };
 }
 
 async function analyze({ question, conversation, images, groundedData }) {
@@ -171,27 +250,12 @@ async function analyze({ question, conversation, images, groundedData }) {
   messages.push({ role: "user", content: buildUserContent({ question, images, groundedData }) });
 
   const hasImages = !!(images.front || images.back || images.general);
-
-  // Research is only worth its latency/cost when (a) CardStorm's own
-  // verified/curated data doesn't already cover the question and (b) the
-  // question actually signals a need for fresh information - a bare "hot"
-  // or "recent" used to be enough to trigger this and was firing (and
-  // timing out) on questions CardStorm's own WATCHCAT/COMPS data already
-  // answers, like "what rookies are hot?". Explicit freshness language or
-  // an explicit near-future product year still qualifies.
-  const alreadyCovered = cardstormData.hasInternalCoverage(groundedData);
-  const RESEARCH_SIGNALS =
-    /\b(this week|this month|this year|right now|currently|latest|newest|new release|just released|top rookies|flagship|chasing)\b/i;
-  const YEAR_SIGNAL = /\b202[4-9]\b/;
-  const needsResearch =
-    !alreadyCovered && !hasImages && (RESEARCH_SIGNALS.test(question || "") || YEAR_SIGNAL.test(question || ""));
+  const { needsResearch, model } = computeRouting({ question, hasImages, groundedData });
 
   const tools = [];
   if (needsResearch) {
     tools.push({ type: "web_search_20260209", name: "web_search" });
   }
-
-  const model = chooseModel({ hasImages, needsResearch });
 
   let response;
   try {
@@ -242,9 +306,26 @@ async function analyze({ question, conversation, images, groundedData }) {
 
   const textBlocks = response.content.filter((b) => b.type === "text").map((b) => b.text);
   const rawAnswer = textBlocks.join("\n").trim();
-  const { answer, structured } = extractStructured(
+  let { answer, structured } = extractStructured(
     rawAnswer || "CardStorm couldn't produce an answer for that just now."
   );
+
+  const conflict = detectManufacturerConflict(answer, groundedData);
+  const conflictWarnings = [];
+  if (conflict) {
+    answer = buildInsertIdentityAnswer(conflict.insert);
+    conflictWarnings.push(
+      `corrected_manufacturer_conflict: model attributed ${conflict.insert.name} to ${conflict.wrongManufacturer}, CardStorm verified data says ${conflict.insert.manufacturer}`
+    );
+    // The visible answer was replaced with a grounded-only statement, so
+    // the structured fields describing it must come from the same
+    // grounded fact, not from the (already-proven-wrong) model output.
+    structured = {
+      ...structured,
+      identifiedProducts: conflict.insert.typicalHomeBrands || [],
+      identifiedSets: [`${conflict.insert.name} insert`],
+    };
+  }
 
   // CardStorm-verified comps always win over anything the model self-reports
   // in its structured block - the model never gets to be the source of
@@ -277,8 +358,19 @@ async function analyze({ question, conversation, images, groundedData }) {
     soldComps,
     suggestedFollowups: Array.isArray(structured.suggestedFollowups) ? structured.suggestedFollowups : [],
     sources,
-    warnings: Array.isArray(structured.warnings) ? structured.warnings : [],
+    warnings: [...(Array.isArray(structured.warnings) ? structured.warnings : []), ...conflictWarnings],
   };
 }
 
-module.exports = { analyze, MODEL_ID, MODEL_FAST, MODEL_STRONG, chooseModel, extractStructured, CARDSTORM_JSON_MARKER };
+module.exports = {
+  analyze,
+  MODEL_ID,
+  MODEL_FAST,
+  MODEL_STRONG,
+  chooseModel,
+  computeRouting,
+  extractStructured,
+  detectManufacturerConflict,
+  buildInsertIdentityAnswer,
+  CARDSTORM_JSON_MARKER,
+};
