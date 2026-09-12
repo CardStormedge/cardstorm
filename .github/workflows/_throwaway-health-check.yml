@@ -1,0 +1,18 @@
+name: THROWAWAY - post-merge production health check
+on:
+  push:
+    branches:
+      - "chore/post-merge-health-check"
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm production endpoint is healthy after merge
+        run: |
+          set -uo pipefail
+          URL="https://cardstorm-api.vercel.app/api/cardstorm"
+          curl -sS -i -X POST "$URL" \
+            -H "Content-Type: application/json" \
+            -H "Origin: https://cardstormguide.com" \
+            -d '{"question":"post-merge health check","conversation":[],"images":{}}' \
+            -w $'\n---HTTP_STATUS:%{http_code}---TIME_TOTAL:%{time_total}---'
