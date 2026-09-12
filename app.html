@@ -1040,48 +1040,65 @@ F.worth=worth;
 // this shows an honest "not yet connected" state instead, same pattern
 // as Gear Up's image-pending treatment and the GOAT Vault's empty state.
 const ASK_CARDSTORM_STYLE=`<style>
-.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:14px}
+.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:12px}
 .ackHeroWrap img{display:block;width:100%;aspect-ratio:1672/941;max-height:460px;object-fit:cover;object-position:center 12%}
-@media(max-width:600px){.ackHeroWrap img{max-height:220px;object-position:center 10%}}
-.ackUploadGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
-.ackSlot{border:1px dashed #2b6488;border-radius:12px;background:#04101c;padding:12px;text-align:center;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.ackSlot.filled{border-style:solid;padding:8px}
-.ackSlot img{max-width:100%;max-height:150px;border-radius:8px;object-fit:contain}
-.ackSlot h4{margin:0;font-size:12.5px;color:#8fb3d1;font-weight:900;letter-spacing:.04em}
-.ackSlotBtns{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.ackSlotBtn{background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-size:11px;font-weight:800;padding:7px 10px;border-radius:7px;cursor:pointer}
-.ackSlotBtn:hover{border-color:#55d8ff}
-.ackSlotBtn.danger{border-color:#7a3544;color:#ff9cab}
-.ackAnalyzeBtn{display:block;width:100%;background:linear-gradient(120deg,#1e88e5,#0d5bb8);border:0;color:#fff;font-family:inherit;font-weight:950;letter-spacing:.03em;padding:13px;border-radius:10px;cursor:pointer;font-size:13.5px}
-.ackAnalyzeBtn:disabled{opacity:.45;cursor:not-allowed}
-.ackAskRow{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
-.ackQBox{flex:1;min-width:220px;padding:11px 13px;border:1px solid #2b668d;border-radius:9px;background:#03101d;color:#fff;font-family:inherit;font-size:13px;resize:vertical;min-height:44px}
-.ackMicBtn{background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-weight:900;padding:11px 14px;border-radius:9px;cursor:pointer}
+@media(max-width:600px){.ackHeroWrap img{max-height:170px;object-position:center 8%}}
+.ackTrustNote{font-size:10.5px;color:#6f93b3;line-height:1.4;margin-top:10px}
+/* Ask box is the primary interaction - textarea + mic in one compact row */
+.ackAskPrimary{margin-bottom:14px}
+.ackAskInputRow{display:flex;gap:8px;align-items:stretch}
+.ackQBox{flex:1;min-width:0;padding:11px 13px;border:1px solid #2b668d;border-radius:9px;background:#03101d;color:#fff;font-family:inherit;font-size:13px;resize:vertical;min-height:44px}
+.ackMicBtn{flex:0 0 auto;background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-weight:900;padding:0 14px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
 .ackMicBtn.listening{border-color:#ff5a7a;color:#ff9cab;animation:ackPulse 1.1s infinite}
 @keyframes ackPulse{0%,100%{box-shadow:0 0 0 0 #ff5a7a44}50%{box-shadow:0 0 0 8px #ff5a7a00}}
-.ackAskBtn{background:#126de1;border:0;color:#fff;font-family:inherit;font-weight:900;padding:11px 16px;border-radius:9px;cursor:pointer}
-.ackQuickGrid{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
-.ackQuick{background:#04101c;border:1px solid #2b6488;color:#a8d4f5;font-family:inherit;font-size:11px;font-weight:800;padding:7px 11px;border-radius:999px;cursor:pointer}
+.ackAskBtn{display:block;width:100%;margin-top:8px;background:#126de1;border:0;color:#fff;font-family:inherit;font-weight:900;padding:12px;border-radius:9px;cursor:pointer;font-size:13.5px}
+.ackVoiceNote{font-size:11px;color:#8fb3d1;margin-top:6px;min-height:14px}
+/* Compact upload panels */
+.ackUploadHead{font-size:11px;font-weight:950;letter-spacing:.07em;color:#8fb3d1;margin:16px 0 8px}
+.ackUploadGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ackSlot{border:1px dashed #2b6488;border-radius:10px;background:#04101c;padding:8px;display:flex;align-items:center;gap:8px;min-height:64px}
+.ackSlot.filled{border-style:solid}
+.ackSlot .ackSlotThumb{flex:0 0 auto;width:46px;height:46px;border-radius:7px;overflow:hidden;background:#03101d;display:flex;align-items:center;justify-content:center;font-size:18px}
+.ackSlot .ackSlotThumb img{width:100%;height:100%;object-fit:cover}
+.ackSlot .ackSlotBody{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.ackSlot h4{margin:0;font-size:11px;color:#8fb3d1;font-weight:900;letter-spacing:.03em}
+.ackSlotBtns{display:flex;gap:5px;flex-wrap:wrap}
+.ackSlotBtn{background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-size:10.5px;font-weight:800;padding:6px 8px;border-radius:6px;cursor:pointer;min-height:30px}
+.ackSlotBtn:hover{border-color:#55d8ff}
+.ackSlotBtn.danger{border-color:#7a3544;color:#ff9cab}
+.ackGeneralSlot{margin-top:8px;border:1px dashed #2b6488;border-radius:10px;background:#04101c;padding:10px;display:flex;align-items:center;gap:10px;min-height:64px}
+.ackGeneralSlot.filled{border-style:solid}
+.ackGeneralSlot .ackSlotThumb{flex:0 0 auto;width:46px;height:46px;border-radius:7px;overflow:hidden;background:#03101d;display:flex;align-items:center;justify-content:center;font-size:18px}
+.ackGeneralSlot .ackSlotThumb img{width:100%;height:100%;object-fit:cover}
+.ackGeneralSlot .ackSlotBody{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ackGeneralSlot h4{margin:0;font-size:11.5px;color:#8fb3d1;font-weight:900;letter-spacing:.03em}
+.ackGeneralSlot .ackSlotHelp{font-size:10px;color:#6f93b3;line-height:1.3}
+.ackAnalyzeBtn{display:block;width:100%;margin-top:10px;background:linear-gradient(120deg,#1e88e5,#0d5bb8);border:0;color:#fff;font-family:inherit;font-weight:950;letter-spacing:.03em;padding:13px;border-radius:10px;cursor:pointer;font-size:13.5px}
+.ackAnalyzeBtn:disabled{opacity:.45;cursor:not-allowed}
+/* Quick questions */
+.ackQuickGrid{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ackQuick{background:#04101c;border:1px solid #2b6488;color:#a8d4f5;font-family:inherit;font-size:10.5px;font-weight:800;padding:7px 10px;border-radius:999px;cursor:pointer}
 .ackQuick:hover{border-color:#55d8ff;color:#fff}
-.ackChatLog{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.ackQuickExtra{display:none;gap:6px;flex-wrap:wrap;margin-top:6px}
+.ackQuickExtra.open{display:flex}
+.ackMoreBtn{background:transparent;border:1px dashed #2b6488;color:#8fb3d1;font-family:inherit;font-size:10.5px;font-weight:800;padding:7px 10px;border-radius:999px;cursor:pointer;margin-top:6px}
+.ackMoreBtn:hover{border-color:#55d8ff;color:#fff}
+@media(min-width:641px){.ackQuickExtra{display:flex!important}.ackMoreBtn{display:none}}
+/* Results / conversation */
+.ackChatLog{margin-top:14px;display:flex;flex-direction:column;gap:10px}
 .ackMsg{padding:10px 13px;border-radius:10px;font-size:13px;line-height:1.5;max-width:92%}
 .ackMsg.user{background:#0d2540;border:1px solid #2b6488;align-self:flex-end;color:#e8f4ff}
 .ackMsg.bot{background:#071928;border:1px solid #28648f;align-self:flex-start;color:#dbeaf7}
 .ackMsg.bot b{color:#58d6ff}
-.ackResult{margin-top:16px;border:1px solid #2b6488;border-radius:12px;background:#04101c;padding:14px}
+.ackResult{margin-top:14px;border:1px solid #2b6488;border-radius:12px;background:#04101c;padding:14px}
 .ackResultHead{font-size:11px;font-weight:950;letter-spacing:.08em;color:#58d6ff;margin-bottom:8px}
-.ackFactRow{display:grid;grid-template-columns:140px 1fr;gap:6px;font-size:12.5px;padding:4px 0;border-bottom:1px solid #10263a}
-.ackFactRow b{color:#8fb3d1;font-weight:800}
 .ackVerdictGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .ackVerdictCell{background:#071928;border:1px solid #28648f;border-radius:8px;padding:9px 11px}
 .ackVerdictCell .k{font-size:9.5px;font-weight:950;letter-spacing:.07em;color:#8fb3d1}
 .ackVerdictCell .v{font-size:13px;font-weight:900;margin-top:2px}
 .ackWhy{margin-top:10px;font-size:12.5px;color:#c9dcee;line-height:1.55}
 .ackPendingTag{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.06em;color:#ffb06f;border:1px solid #6b4a1f;background:rgba(107,74,31,.18);border-radius:999px;padding:3px 8px;margin-left:6px}
-.ackChaseGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}
-.ackChaseCard{background:#071928;border:1px solid #28648f;border-radius:9px;padding:9px 11px;font-size:11.5px}
-.ackChaseCard b{display:block;font-size:12.5px;margin-bottom:3px}
-@media(max-width:640px){.ackUploadGrid{grid-template-columns:1fr}.ackVerdictGrid{grid-template-columns:1fr}.ackFactRow{grid-template-columns:120px 1fr}}
+@media(max-width:640px){.ackVerdictGrid{grid-template-columns:1fr}}
 </style>`;
 // Single pluggable hook for real card-image identification / grading.
 // No vision service is wired into this build yet - set
@@ -1103,7 +1120,7 @@ async function analyzeCardImages(frontImg,backImg,question){
   rarity:null,hitLevel:null,recentComps:null,fairRawValue:null,goodBuy:null,gradeIt:null,
   gradingCandidate:'UNABLE_TO_DETERMINE',
   gradingNote:"Automated centering/corner/edge/surface review needs a connected vision service - not yet wired into this build.",
-  why:"CardStorm can't identify a card from a photo yet in this build - no vision service is connected. Front and back images are saved and ready to send the moment one is. In the meantime, name the player, year, or set in the question box and CardStorm will check it against real tracked comps and chases.",
+  why:"CardStorm can't analyze photos yet in this build - no vision service is connected. Your image(s) are saved above and ready to send the moment one is. In the meantime, name the player, year, or set in the question box and CardStorm will check it against real tracked comps and chases.",
   whatToLookFor:[]
  };
 }
@@ -1146,6 +1163,7 @@ function ackChaseTeamsHTML(){
 async function ackAskQuestion(text){
  text=(text||'').trim();
  if(!text)return;
+ _ackQuestionDraft='';
  _ackChatLog.push({role:'user',text});
  render_askCardstorm();
  let reply;
@@ -1160,37 +1178,48 @@ async function ackAskQuestion(text){
   const name=ackFindPlayer(text);
   if(name){
    reply=ackPlayerAnswerHTML(name);
-  } else if(_ackFrontImg||_ackBackImg){
-   reply="I can't identify a card from a photo yet in this build - no vision service is connected, so I'm not going to guess. Tap ANALYZE MY CARD to see exactly what's pending, or name the player/set here and I'll check it against real tracked comps.";
+  } else if(_ackFrontImg||_ackBackImg||_ackGeneralImg){
+   reply="I can't analyze photos yet in this build - no vision service is connected, so I'm not going to guess. Tap ANALYZE to see exactly what's pending, or name the player/set here and I'll check it against real tracked comps.";
   } else {
-   reply="I can answer from CardStorm's real tracked data - name a player (I'll check verified comps and chase targets), ask which rookies are hot, or upload a card photo. I won't guess at anything I can't back with real data.";
+   reply="I can answer from CardStorm's real tracked data - name a player (I'll check verified comps and chase targets), ask which rookies are hot, or upload a card photo or screenshot. I won't guess at anything I can't back with real data.";
   }
  }
  _ackChatLog.push({role:'bot',text:reply});
  render_askCardstorm();
 }
-let _ackFrontImg=null,_ackBackImg=null,_ackAnalyzing=false,_ackResult=null,_ackChatLog=[],_ackListening=false;
+let _ackFrontImg=null,_ackBackImg=null,_ackGeneralImg=null,_ackAnalyzing=false,_ackResult=null,_ackChatLog=[],_ackListening=false,_ackShowMoreQuestions=false,_ackQuestionDraft='';
 function ackReadFile(side,input){
  const file=input.files&&input.files[0];
  if(!file)return;
  const reader=new FileReader();
  reader.onload=e=>{
-  if(side==='front')_ackFrontImg=e.target.result;else _ackBackImg=e.target.result;
+  if(side==='front')_ackFrontImg=e.target.result;
+  else if(side==='back')_ackBackImg=e.target.result;
+  else _ackGeneralImg=e.target.result;
   _ackResult=null;
   render_askCardstorm();
  };
  reader.readAsDataURL(file);
 }
 function ackTriggerUpload(side){document.getElementById('ackInput_'+side).click()}
-function ackRemoveImage(side){if(side==='front')_ackFrontImg=null;else _ackBackImg=null;_ackResult=null;render_askCardstorm()}
+function ackRemoveImage(side){
+ if(side==='front')_ackFrontImg=null;
+ else if(side==='back')_ackBackImg=null;
+ else _ackGeneralImg=null;
+ _ackResult=null;render_askCardstorm();
+}
+function ackToggleMoreQuestions(){_ackShowMoreQuestions=!_ackShowMoreQuestions;render_askCardstorm()}
 async function ackAnalyze(){
- if(!_ackFrontImg&&!_ackBackImg)return;
+ const hasCard=_ackFrontImg||_ackBackImg;
+ if(!hasCard&&!_ackGeneralImg)return;
  _ackAnalyzing=true;render_askCardstorm();
  const q=document.getElementById('ackQuestion')?document.getElementById('ackQuestion').value:'';
  try{
-  _ackResult=await analyzeCardImages(_ackFrontImg,_ackBackImg,q);
+  // Same analyzeCardImages() hook either way - a general photo/screenshot
+  // just fills the first image slot with nothing in the second.
+  _ackResult=hasCard?await analyzeCardImages(_ackFrontImg,_ackBackImg,q):await analyzeCardImages(_ackGeneralImg,null,q);
  }catch(e){
-  _ackResult={connected:false,error:true,why:"CardStorm couldn't reach the analysis service just now. Your photos are still saved above - try again in a moment."};
+  _ackResult={connected:false,error:true,why:"CardStorm couldn't reach the analysis service just now. Your image(s) are still saved above - try again in a moment."};
  }
  _ackAnalyzing=false;render_askCardstorm();
 }
@@ -1207,6 +1236,7 @@ function ackMicToggle(){
  _ackListening=true;render_askCardstorm();
  rec.onresult=(e)=>{
   const said=e.results[0][0].transcript;
+  _ackQuestionDraft=said;
   const box=document.getElementById('ackQuestion');
   if(box)box.value=said;
  };
@@ -1216,21 +1246,25 @@ function ackMicToggle(){
 }
 function ackSubmitQuestion(){
  const box=document.getElementById('ackQuestion');
- const text=box?box.value:'';
- if(box)box.value='';
+ const text=box?box.value:_ackQuestionDraft;
  ackAskQuestion(text);
 }
 function ackQuickAsk(text){
- const box=document.getElementById('ackQuestion');
- if(box)box.value=text;
  ackAskQuestion(text);
 }
-const ACK_QUICK_QUESTIONS=['What card is this?','Is this rare?','Is this worth anything?','What are the best comps?','Should I grade this?','Did I get a hit?','Is this a rookie?','Is this a parallel?','What rookies are hot?','What team should I chase?','What should I look for at retail?','What should I hunt next?'];
+const ACK_QUICK_QUESTIONS_PRIMARY=['What card is this?','Is this rare?','What are the best comps?','Should I grade this?','What rookies are hot?','What should I look for at retail?'];
+const ACK_QUICK_QUESTIONS_MORE=['Is this worth anything?','Did I get a hit?','Is this a rookie?','Is this a parallel?','What team should I chase?','What should I hunt next?'];
 function ackSlotHTML(side,img,label){
  if(img){
-  return `<div class="ackSlot filled"><img src="${img}" alt="${label} of card"><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('${side}')">REMOVE</button></div></div>`;
+  return `<div class="ackSlot filled"><div class=ackSlotThumb><img src="${img}" alt="${label} of card"></div><div class=ackSlotBody><h4>${label}</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('${side}')">REMOVE</button></div></div></div>`;
  }
- return `<div class=ackSlot><h4>${label} of Card</h4><div style="font-size:26px">📷</div><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">UPLOAD / TAKE PHOTO</button></div></div>`;
+ return `<div class=ackSlot><div class=ackSlotThumb>📷</div><div class=ackSlotBody><h4>${label}</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">UPLOAD / PHOTO</button></div></div></div>`;
+}
+function ackGeneralSlotHTML(){
+ if(_ackGeneralImg){
+  return `<div class="ackGeneralSlot filled"><div class=ackSlotThumb><img src="${_ackGeneralImg}" alt="Uploaded photo or screenshot"></div><div class=ackSlotBody><h4>Photo / Screenshot</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('general')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('general')">REMOVE</button></div></div></div>`;
+ }
+ return `<div class=ackGeneralSlot><div class=ackSlotThumb>🖼️</div><div class=ackSlotBody><h4>Other Photo / Screenshot</h4><div class=ackSlotHelp>Break screenshot, retail shelf, card shop, listing, multiple cards, or anything card-related.</div><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('general')">UPLOAD WHAT YOU'RE LOOKING AT</button></div></div></div>`;
 }
 function ackResultHTML(){
  if(_ackAnalyzing){
@@ -1259,28 +1293,39 @@ function ackResultHTML(){
  return `<div class=ackResult><div class=ackResultHead>CARDSTORM FOUND IT</div><div class=ackWhy>${r.why||''}</div></div>`;
 }
 function askCardstorm(){
- return shell('KNOW THY WORTH','Ask CardStorm Anything','Upload the front and back of your card. Ask about value, rarity, comps, grading, rookies, teams, breaks, retail products, or what to chase next.',
+ const hasCard=_ackFrontImg||_ackBackImg;
+ const hasAnyImg=hasCard||_ackGeneralImg;
+ const analyzeLabel=_ackAnalyzing?'ANALYZING…':(hasCard?'ANALYZE MY CARD':(_ackGeneralImg?'ANALYZE PHOTO':'ANALYZE'));
+ return shell('KNOW THY WORTH','Ask CardStorm Anything','Card in hand? Upload front + back. Watching a break, shopping retail, or checking a listing? Upload a photo or screenshot and ask away.',
   `${ASK_CARDSTORM_STYLE}<div class=ackHeroWrap><img src="assets/mascot/ask-cardstorm-mascot-hero.webp" loading=lazy decoding=async alt="Ask CardStorm Anything — the CardStorm mascot with his CardStorm-branded bat, ready to answer your card questions"></div><div class=feature>
-   <h2>Show CardStorm Your Card</h2>
-   <div class=sub>Real photos, real questions. CardStorm only ever shows verified data or an honest "not yet available" - never a guess.</div>
+   <h2>Show CardStorm What You're Looking At</h2>
+   <div class=ackAskPrimary>
+    <div class=ackAskInputRow>
+     <textarea id=ackQuestion class=ackQBox placeholder="What rookies are hot? Is $45 a good price? What should I buy at Walmart?" oninput="_ackQuestionDraft=this.value">${_ackQuestionDraft.replace(/</g,'&lt;')}</textarea>
+     <button type=button class="ackMicBtn ${_ackListening?'listening':''}" onclick="ackMicToggle()" aria-label="Ask by voice">🎙️</button>
+    </div>
+    <button type=button class=ackAskBtn onclick="ackSubmitQuestion()">ASK CARDSTORM</button>
+    <div id=ackVoiceNote class=ackVoiceNote></div>
+   </div>
+
+   <div class=ackUploadHead>OR SHOW CARDSTORM A PHOTO</div>
    <div class=ackUploadGrid>
     ${ackSlotHTML('front',_ackFrontImg,'Front')}
     ${ackSlotHTML('back',_ackBackImg,'Back')}
    </div>
+   ${ackGeneralSlotHTML()}
    <input type=file accept="image/*" capture="environment" id=ackInput_front style="display:none" onchange="ackReadFile('front',this)">
    <input type=file accept="image/*" capture="environment" id=ackInput_back style="display:none" onchange="ackReadFile('back',this)">
-   <button type=button class=ackAnalyzeBtn ${(!_ackFrontImg&&!_ackBackImg)||_ackAnalyzing?'disabled':''} onclick="ackAnalyze()">${_ackAnalyzing?'ANALYZING…':'ANALYZE MY CARD'}</button>
+   <input type=file accept="image/*" capture="environment" id=ackInput_general style="display:none" onchange="ackReadFile('general',this)">
+   <button type=button class=ackAnalyzeBtn ${!hasAnyImg||_ackAnalyzing?'disabled':''} onclick="ackAnalyze()">${analyzeLabel}</button>
+
+   <div class=ackQuickGrid>${ACK_QUICK_QUESTIONS_PRIMARY.map(q=>`<button type=button class=ackQuick onclick="ackQuickAsk('${q.replace(/'/g,"\\'")}')">${q}</button>`).join('')}</div>
+   <div class="ackQuickExtra${_ackShowMoreQuestions?' open':''}">${ACK_QUICK_QUESTIONS_MORE.map(q=>`<button type=button class=ackQuick onclick="ackQuickAsk('${q.replace(/'/g,"\\'")}')">${q}</button>`).join('')}</div>
+   <button type=button class=ackMoreBtn onclick="ackToggleMoreQuestions()">${_ackShowMoreQuestions?'FEWER QUESTIONS ▴':'MORE QUESTIONS ▾'}</button>
+
    ${ackResultHTML()}
-   <div class=ackAskRow>
-    <textarea id=ackQuestion class=ackQBox placeholder="Ask about this card, a player, a box, a break, a team, a rookie, a comp, or what you should hunt next..."></textarea>
-   </div>
-   <div class=ackAskRow>
-    <button type=button class="ackMicBtn ${_ackListening?'listening':''}" onclick="ackMicToggle()">🎙️ ${_ackListening?'LISTENING…':'ASK BY VOICE'}</button>
-    <button type=button class=ackAskBtn onclick="ackSubmitQuestion()">ASK CARDSTORM</button>
-   </div>
-   <div id=ackVoiceNote class=sub style="min-height:14px"></div>
-   <div class=ackQuickGrid>${ACK_QUICK_QUESTIONS.map(q=>`<button type=button class=ackQuick onclick="ackQuickAsk('${q.replace(/'/g,"\\'")}')">${q}</button>`).join('')}</div>
    <div class=ackChatLog>${_ackChatLog.map(m=>`<div class="ackMsg ${m.role}">${m.role==='user'?m.text.replace(/</g,'&lt;'):m.text}</div>`).join('')}</div>
+   <div class=ackTrustNote>Real photos, real questions. CardStorm only ever shows verified data or an honest "not yet available" - never a guess.</div>
   </div>`);
 }
 function render_askCardstorm(){C.innerHTML=askCardstorm()}
