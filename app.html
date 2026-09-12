@@ -1569,7 +1569,13 @@ function grailCardTileHTML(c){
  const numStr=c.serialNumberedTo?' /'+c.serialNumberedTo:'';
  const idLine=`${c.cardName||''}${c.cardNumber?' #'+c.cardNumber:''}${parallelStr}${numStr}`;
  const hasComp=typeof c.lastVerifiedSalePrice==='number';
- const compLabel=c.compType==='EXACT_CERT_CONFIRMED'?'Confirmed sale (this cert)':'Recent comp (same card + grade)';
+ // Label wording is driven by compType, never by a raw price alone - see
+ // data/intelligence/grail-board.json's _compLabelGuide. Only an explicit
+ // EXACT_CERT_CONFIRMED record may read as a plain sale; everything else
+ // must read as a same-card/grade (or similar-item) comparable, never
+ // "this slab sold for X".
+ const gradeShort=(c.grade||'').split(' ').slice(0,2).join(' ');
+ const compLabel=c.compType==='EXACT_CERT_CONFIRMED'?'Exact Cert Sale':c.compType==='SIMILAR_ITEM_COMP'?'Similar Item Comp':`Recent ${gradeShort} Comp`;
  const compBlock=hasComp?`<div class=grailTileComp><span class=grailCompLabel>${compLabel}</span><b class=grailPrice>${grailMoney(c.lastVerifiedSalePrice)}</b><span class=grailCompMeta>${c.saleSource||'source pending'} · ${grailDateLabel(c.lastVerifiedSaleDate)}</span></div>`:`<div class=grailNoComp>No verified recent sale loaded</div>`;
  return `<div class=grailTile><div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${compBlock}${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
 }
