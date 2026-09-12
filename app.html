@@ -1186,6 +1186,12 @@ async function ackAskQuestion(text){
  }
  _ackChatLog.push({role:'bot',text:reply});
  render_askCardstorm();
+ ackScrollLastMessageIntoView();
+}
+function ackScrollLastMessageIntoView(){
+ const msgs=document.querySelectorAll('.ackMsg');
+ const last=msgs[msgs.length-1];
+ if(last)last.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 let _ackFrontImg=null,_ackBackImg=null,_ackGeneralImg=null,_ackAnalyzing=false,_ackResult=null,_ackChatLog=[],_ackListening=false,_ackShowMoreQuestions=false,_ackQuestionDraft='';
 function ackReadFile(side,input){
@@ -1245,8 +1251,19 @@ function ackMicToggle(){
  rec.start();
 }
 function ackSubmitQuestion(){
+ // Always read the live textarea value at tap time (not a cached JS
+ // variable) - this is what actually protects against stale state after
+ // voice dictation or a mobile keyboard interaction. If it's genuinely
+ // empty, say so instead of silently doing nothing - a dead-feeling
+ // button is itself the bug this exists to prevent.
  const box=document.getElementById('ackQuestion');
- const text=box?box.value:_ackQuestionDraft;
+ const text=((box?box.value:_ackQuestionDraft)||'').trim();
+ const note=document.getElementById('ackVoiceNote');
+ if(!text){
+  if(note)note.textContent='Ask CardStorm a question first.';
+  return;
+ }
+ if(note)note.textContent='';
  ackAskQuestion(text);
 }
 function ackQuickAsk(text){
@@ -1301,7 +1318,7 @@ function askCardstorm(){
    <h2>Show CardStorm What You're Looking At</h2>
    <div class=ackAskPrimary>
     <div class=ackAskInputRow>
-     <textarea id=ackQuestion class=ackQBox placeholder="What rookies are hot? Is $45 a good price? What should I buy at Walmart?" oninput="_ackQuestionDraft=this.value">${_ackQuestionDraft.replace(/</g,'&lt;')}</textarea>
+     <textarea id=ackQuestion class=ackQBox placeholder="What rookies are hot? Is $45 a good price? What should I buy at Walmart?" oninput="_ackQuestionDraft=this.value" onchange="_ackQuestionDraft=this.value" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();ackSubmitQuestion();}">${_ackQuestionDraft.replace(/</g,'&lt;')}</textarea>
      <button type=button class="ackMicBtn ${_ackListening?'listening':''}" onclick="ackMicToggle()" aria-label="Ask by voice">🎙️</button>
     </div>
     <button type=button class=ackAskBtn onclick="ackSubmitQuestion()">ASK CARDSTORM</button>
