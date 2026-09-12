@@ -11,6 +11,15 @@ name: TEMPORARY - CardStorm preview API test
 #
 # DELETE THIS FILE once the live test pass is reviewed and no longer needed
 # - it is not meant to ship to main.
+# NOTE: workflow_dispatch cannot be manually triggered until a workflow
+# file exists on the repo's default branch (GitHub platform limitation,
+# confirmed via a 404 from the dispatch API and its absence from
+# list_workflows while only on this PR branch). Rather than merge anything
+# to main to work around that, this instead triggers on push - but scoped
+# ONLY to this exact PR branch name via the `branches` filter below, so it
+# still never runs on main, on any other branch, or as a result of merging
+# this PR. Revert to workflow_dispatch-only (or just delete this file)
+# once the live test pass is done being reviewed.
 on:
   workflow_dispatch:
     inputs:
@@ -18,14 +27,22 @@ on:
         description: "Preview API endpoint to test"
         required: true
         default: "https://cardstorm-api-git-claude-cardstorm-homepage-a-c0fda6-card-storm.vercel.app/api/cardstorm"
+  push:
+    branches:
+      - "claude/cardstorm-homepage-audit-3s3222"
+    paths:
+      - ".github/workflows/cardstorm-preview-api-test.yml"
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      # inputs.* only exists on a workflow_dispatch run - on the
+      # branch-scoped push run there is no input, so fall back to the
+      # same default URL.
+      PREVIEW_URL: ${{ inputs.preview_url || 'https://cardstorm-api-git-claude-cardstorm-homepage-a-c0fda6-card-storm.vercel.app/api/cardstorm' }}
     steps:
       - name: Run the 6 mandatory text questions
-        env:
-          PREVIEW_URL: ${{ inputs.preview_url }}
         run: |
           set -uo pipefail
 
@@ -58,8 +75,6 @@ jobs:
           ask "6-price-check-no-context" "Is \$75 a good price for this card?"
 
       - name: CORS - approved origin (stormguide.com)
-        env:
-          PREVIEW_URL: ${{ inputs.preview_url }}
         run: |
           set -uo pipefail
           echo "::group::CORS approved origin"
@@ -71,8 +86,6 @@ jobs:
           echo "::endgroup::"
 
       - name: CORS - unapproved origin (evil.example.com)
-        env:
-          PREVIEW_URL: ${{ inputs.preview_url }}
         run: |
           set -uo pipefail
           echo "::group::CORS unapproved origin"
