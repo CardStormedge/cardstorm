@@ -1,0 +1,131 @@
+{
+ "_schema": "Each record: [player, sport, hit1, hit2, hit3]. Curated/unverified chase suggestions - NOT verified checklist data, do not present as verified. Extracted verbatim from app.html WATCHCAT constant - keep in sync (see scripts/check-comps-sync.js).",
+ "watchcat": [
+  [
+   "C.J. Stroud",
+   "football",
+   "Downtown",
+   "Prizm Silver / Color",
+   "Rookie Auto"
+  ],
+  [
+   "Jayden Daniels",
+   "football",
+   "Downtown",
+   "Optic Rated Rookie Holo",
+   "Prizm Color / Auto"
+  ],
+  [
+   "Drake Maye",
+   "football",
+   "Downtown",
+   "Prizm Silver / Color",
+   "Select Zebra / Auto"
+  ],
+  [
+   "Caleb Williams",
+   "football",
+   "Downtown",
+   "Optic Rated Rookie Holo",
+   "Prizm Color / Auto"
+  ],
+  [
+   "Bo Nix",
+   "football",
+   "Downtown",
+   "Prizm Silver / Color",
+   "Select Zebra / Auto"
+  ],
+  [
+   "Jaxson Dart",
+   "football",
+   "Kaboom / Downtown",
+   "Mosaic Genesis",
+   "Select Silver / SSP"
+  ],
+  [
+   "Ashton Jeanty",
+   "football",
+   "Color Blast",
+   "Prizm / Select Color",
+   "Rookie Auto"
+  ],
+  [
+   "Travis Hunter",
+   "football",
+   "Downtown / SSP",
+   "Select Silver / Zebra",
+   "Rookie Auto"
+  ],
+  [
+   "Cam Ward",
+   "football",
+   "Select Zebra",
+   "Prizm / Select Color",
+   "Rookie Auto"
+  ],
+  [
+   "Victor Wembanyama",
+   "basketball",
+   "Color Blast / Manga",
+   "Prizm Silver / Color",
+   "Select Courtside / Auto"
+  ],
+  [
+   "Anthony Edwards",
+   "basketball",
+   "Kaboom / Color Blast",
+   "Prizm Gold / Color",
+   "Select Zebra"
+  ],
+  [
+   "Luka Doncic",
+   "basketball",
+   "Kaboom / Color Blast",
+   "Prizm Gold / Color",
+   "Select Zebra"
+  ],
+  [
+   "Cooper Flagg",
+   "basketball",
+   "Rated Rookie / Prizm RC",
+   "Select / Optic Color",
+   "Rookie Auto / SSP"
+  ],
+  [
+   "Elly De La Cruz",
+   "baseball",
+   "Topps Chrome RC / SSP",
+   "Bowman Chrome Color",
+   "Autograph / Superfractor"
+  ],
+  [
+   "Paul Skenes",
+   "baseball",
+   "Topps Chrome RC / SSP",
+   "Bowman Chrome Color",
+   "Rookie Auto"
+  ],
+  [
+   "Shohei Ohtani",
+   "baseball",
+   "Chrome Refractor / SSP",
+   "Gold / Red / Superfractor",
+   "Autograph"
+  ],
+  [
+   "Bobby Witt Jr.",
+   "baseball",
+   "Chrome Refractor / SSP",
+   "Gold / Red parallels",
+   "Autograph"
+  ],
+  [
+   "Jackson Chourio",
+   "baseball",
+   "Topps Chrome RC",
+   "Refractor / numbered color",
+   "Rookie Auto"
+  ]
+ ]
+}

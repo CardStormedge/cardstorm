@@ -79,28 +79,40 @@ module.exports = async (req, res) => {
       groundedData,
     });
 
+    // Merge the model's self-reported identifications with what CardStorm
+    // itself already matched on disk - on-disk grounding is never
+    // overwritten, only added to (dedup by exact string).
+    const dedupMerge = (fromGrounding, fromModel) => [
+      ...new Set([...fromGrounding, ...(Array.isArray(fromModel) ? fromModel : [])]),
+    ];
+    const groundedProducts = groundedData.matchedProducts.map((p) => `${p.brand} ${p.product}`.trim());
+    const groundedPlayers = [
+      ...new Set([
+        ...groundedData.matchedCards.map((c) => c.player),
+        ...groundedData.matchedComps.map((c) => c[0]),
+        ...groundedData.matchedChases.map((c) => c[0]),
+      ]),
+    ];
+
     res.status(200).json({
       answer: result.answer,
       answerType: result.answerType,
+      contentType: result.contentType || null,
       confidence: result.confidence ?? null,
-      identifiedCards: [],
-      identifiedProducts: groundedData.matchedProducts.length
-        ? groundedData.matchedProducts.map((p) => `${p.brand} ${p.product}`.trim())
-        : [],
-      identifiedPlayers: groundedData.matchedCards.length
-        ? [...new Set(groundedData.matchedCards.map((c) => c.player))]
-        : [],
-      identifiedTeams: [],
-      identifiedSets: [],
+      identifiedCards: result.identifiedCards || [],
+      identifiedProducts: dedupMerge(groundedProducts, result.identifiedProducts),
+      identifiedPlayers: dedupMerge(groundedPlayers, result.identifiedPlayers),
+      identifiedTeams: result.identifiedTeams || [],
+      identifiedSets: result.identifiedSets || [],
       marketData: null,
-      soldComps: null,
-      rarityGuidance: null,
-      gradingGuidance: null,
+      soldComps: result.soldComps || null,
+      rarityGuidance: result.rarityGuidance || null,
+      gradingGuidance: result.gradingGuidance || null,
       breakGuidance: null,
       retailGuidance: null,
       listingGuidance: null,
       sources: result.sources || [],
-      suggestedFollowups: [],
+      suggestedFollowups: result.suggestedFollowups || [],
       warnings: result.warnings || [],
     });
   } catch (err) {

@@ -1,13 +1,19 @@
 // cardstormData.lookup(question) - grounds free-form questions against the
-// real, on-disk verified checklist/product JSON that ships with the repo
-// (data/football/<year>/<brand>.json, data/products/football/<year>.json,
-// data/checklists/football/<year>/*.json, data/goat/goat-vault.json).
+// real, on-disk verified checklist/product/comp JSON that ships with the
+// repo (data/football/<year>/<brand>.json, data/products/football/<year>.json,
+// data/goat/goat-vault.json, data/intelligence/comps.json,
+// data/intelligence/watchcat.json).
 //
-// NOTE ON SCOPE: this does NOT have access to COMPS / WATCHCAT / the
-// CHECKLIST_MANIFEST used for Team Hunt - those are hardcoded client-side
-// constants inside app.html, not separate data files, so the frontend
-// continues to answer those questions locally (fast path) before ever
-// calling this backend. This module only sees genuine on-disk JSON.
+// data/intelligence/comps.json and data/intelligence/watchcat.json are an
+// exact, verbatim copy of app.html's COMPS/WATCHCAT constants - the
+// frontend still owns the fast, synchronous local-match path (COMPS[0] is
+// read on the very first homepage render, so switching that to an async
+// fetch was rejected as too risky - see scripts/check-comps-sync.js),
+// but the backend now reads the same verified sold-comp data from here
+// instead of having no access to it at all. Run
+// `node scripts/check-comps-sync.js` (and scripts/test-comps-parity.js)
+// to confirm the two copies still match exactly before merging any change
+// to either one.
 const fs = require("fs");
 const path = require("path");
 
@@ -25,7 +31,7 @@ function safeReadJSON(filePath) {
 
 function loadCorpus() {
   if (cache) return cache;
-  const corpus = { products: [], checklistCards: [], goat: null };
+  const corpus = { products: [], checklistCards: [], goat: null, comps: [], watchcat: [] };
 
   // data/products/football/<year>.json - sealed product registry
   const productsDir = path.join(DATA_ROOT, "products", "football");
@@ -67,6 +73,13 @@ function loadCorpus() {
   // data/goat/goat-vault.json - editorial hobby-icon roster (bio fields only)
   corpus.goat = safeReadJSON(path.join(DATA_ROOT, "goat", "goat-vault.json"));
 
+  // data/intelligence/*.json - CardStorm's verified sold comps + curated
+  // chase watchlist, kept in exact sync with app.html (see file header).
+  const compsDoc = safeReadJSON(path.join(DATA_ROOT, "intelligence", "comps.json"));
+  if (compsDoc && Array.isArray(compsDoc.comps)) corpus.comps = compsDoc.comps;
+  const watchDoc = safeReadJSON(path.join(DATA_ROOT, "intelligence", "watchcat.json"));
+  if (watchDoc && Array.isArray(watchDoc.watchcat)) corpus.watchcat = watchDoc.watchcat;
+
   cache = corpus;
   return corpus;
 }
@@ -75,15 +88,15 @@ function normalize(s) {
   return (s || "").toLowerCase();
 }
 
-// Best-effort, non-fuzzy grounding: find checklist cards / products whose
-// player or product name appears in the question text. This is deliberately
-// conservative - a miss just means the model falls through to general
-// knowledge / web research, which is fine; a false match would inject wrong
-// "verified" data, which is not.
+// Best-effort, non-fuzzy grounding: find checklist cards / products / comps
+// whose player or product name appears in the question text. This is
+// deliberately conservative - a miss just means the model falls through to
+// general knowledge / web research, which is fine; a false match would
+// inject wrong "verified" data, which is not.
 function lookup(question) {
   const corpus = loadCorpus();
   const q = normalize(question);
-  if (!q) return { matchedCards: [], matchedProducts: [] };
+  if (!q) return { matchedCards: [], matchedProducts: [], matchedComps: [], matchedChases: [] };
 
   const matchedCards = corpus.checklistCards
     .filter((c) => c.player && q.includes(normalize(c.player)))
@@ -96,7 +109,14 @@ function lookup(question) {
     })
     .slice(0, 5);
 
-  return { matchedCards, matchedProducts };
+  // comps.json record shape: [player, price, cardDescription, grade, saleDate, source, verifyUrl]
+  const matchedComps = corpus.comps.filter((c) => q.includes(normalize(c[0])));
+
+  // watchcat.json record shape: [player, sport, hit1, hit2, hit3] - curated
+  // chase suggestions, never to be presented as verified checklist data.
+  const matchedChases = corpus.watchcat.filter((w) => q.includes(normalize(w[0])));
+
+  return { matchedCards, matchedProducts, matchedComps, matchedChases };
 }
 
 module.exports = { lookup };

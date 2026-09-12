@@ -1091,6 +1091,10 @@ const ASK_CARDSTORM_STYLE=`<style>
 .ackMsg.bot{background:#071928;border:1px solid #28648f;align-self:flex-start;color:#dbeaf7}
 .ackMsg.bot b{color:#58d6ff}
 .ackMsg.ackThinking{opacity:.65;font-style:italic;letter-spacing:.04em}
+.ackSources{margin-top:8px;font-size:11px;color:#8fb3d1}
+.ackSources b{color:#8fb3d1;font-weight:800;margin-right:4px}
+.ackSources a{color:#58d6ff;text-decoration:none}
+.ackSources a:hover{text-decoration:underline}
 .ackResult{margin-top:14px;border:1px solid #2b6488;border-radius:12px;background:#04101c;padding:14px}
 .ackResultHead{font-size:11px;font-weight:950;letter-spacing:.08em;color:#58d6ff;margin-bottom:8px}
 .ackVerdictGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
@@ -1103,12 +1107,23 @@ const ASK_CARDSTORM_STYLE=`<style>
 </style>`;
 // Single pluggable hook for the real Ask CardStorm backend (text answers
 // AND card-image identification/grading both go through the same
-// serverless endpoint - see /api/cardstorm.js). Set CARDSTORM_API_ENDPOINT
-// to the deployed backend's absolute URL (e.g.
-// "https://<your-vercel-project>.vercel.app/api/cardstorm") once it's
-// deployed. Until then, every call below returns an honest "not connected"
-// result instead of ever inventing an answer, identity, or comp. No API key
-// ever belongs here - the backend holds its own credentials server-side.
+// serverless endpoint - see /api/cardstorm.js).
+//
+// ENDPOINT STRATEGY - set this ONCE, not on every deploy:
+// A Vercel project's production alias (either its default
+// "https://<project-name>.vercel.app" domain, or a custom domain you attach
+// to it) points at whatever was most recently deployed to production and
+// does NOT change between deployments - only per-commit PREVIEW URLs change,
+// and this must never be pointed at one of those. So there is no "URL
+// changes every deploy" problem to solve here: deploy the api/ function to
+// Vercel once, note its stable production URL (or better, attach a stable
+// custom subdomain such as api.cardstormguide.com / api.stormguide.com to
+// the Vercel project in its dashboard - see the PR description for the
+// one-time DNS step), then set CARDSTORM_API_ENDPOINT below to that single
+// URL and it never needs to change again. Until it's set, every call below
+// returns an honest "not connected" result instead of ever inventing an
+// answer, identity, or comp. No API key ever belongs here - the backend
+// holds its own credentials server-side, this is just a public URL.
 const CARDSTORM_API_ENDPOINT=null;
 async function cardstormBackendCall(body){
  if(!CARDSTORM_API_ENDPOINT){
@@ -1140,7 +1155,8 @@ async function analyzeCardImages(frontImg,backImg,question,isGeneral){
    gradingNote:result.gradingGuidance?null:"Automated centering/corner/edge/surface review needs a connected vision service.",
    why:result.answer,
    whatToLookFor:result.suggestedFollowups||[],
-   warnings:result.warnings||[]
+   warnings:result.warnings||[],
+   sources:result.sources||[]
   };
  }
  return {
@@ -1231,7 +1247,8 @@ async function ackBackendAnswer(text){
   if(!result.connected){
    return "I can answer from CardStorm's real tracked data - name a player (I'll check verified comps and chase targets), ask which rookies are hot, or upload a card photo or screenshot. Ask CardStorm's full answer engine isn't connected on this deployment yet, so I can't take a free-form question like that one just yet.";
   }
-  return result.answer||"CardStorm couldn't come up with an answer for that just now - try rephrasing, or ask about a specific player, set, or upload a photo.";
+  const answer=result.answer||"CardStorm couldn't come up with an answer for that just now - try rephrasing, or ask about a specific player, set, or upload a photo.";
+  return answer+ackSourcesHTML(result.sources);
  }catch(e){
   return "CardStorm couldn't reach the answer engine just now. Please try again in a moment, or ask about a specific player and I'll check real tracked data.";
  }finally{
@@ -1380,7 +1397,16 @@ function ackResultHTML(){
    <div class=ackWhy style="margin-top:10px">${r.gradingNote}</div>
   </div>`;
  }
- return `<div class=ackResult><div class=ackResultHead>CARDSTORM FOUND IT</div><div class=ackWhy>${r.why||''}</div></div>`;
+ return `<div class=ackResult><div class=ackResultHead>CARDSTORM FOUND IT</div><div class=ackWhy>${r.why||''}</div>${ackSourcesHTML(r.sources)}</div>`;
+}
+// Compact, non-cluttering source line for a backend-produced answer.
+// CardStorm-internal data is always labeled as such - never presented as
+// if it came from a web search - and a source with a URL is a clickable
+// link; one without (the internal-data label) is plain text.
+function ackSourcesHTML(sources){
+ if(!sources||!sources.length)return '';
+ const items=sources.map(s=>s.url?`<a href="${s.url}" target=_blank rel="noopener">${(s.label||s.url).replace(/</g,'&lt;')}</a>`:`<span>${(s.label||'').replace(/</g,'&lt;')}</span>`).join(' · ');
+ return `<div class=ackSources><b>Sources:</b> ${items}</div>`;
 }
 function askCardstorm(){
  const hasCard=_ackFrontImg||_ackBackImg;

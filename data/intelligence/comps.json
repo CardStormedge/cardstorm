@@ -1,0 +1,158 @@
+{
+ "_schema": "Each record: [player, price, cardDescription, grade, saleDate, source, verifyUrl]. This is the CANONICAL verified sold-comp dataset - extracted verbatim from app.html COMPS constant. Do not add, remove, or alter a record here without also updating app.html, or run the sync check in scripts/check-comps-sync.js to confirm they still match exactly.",
+ "comps": [
+  [
+   "Cam Ward",
+   "$1,290",
+   "2025 Select #426 Zebra Prizm",
+   "PSA 10",
+   "May 18, 2026",
+   "Fanatics Collect Auction",
+   "https://www.psacard.com/cert/156610576/psa"
+  ],
+  [
+   "Cam Ward",
+   "$87",
+   "2025 Select #26 Silver Prizm",
+   "PSA 10",
+   "May 6, 2026",
+   "eBay Auction",
+   "https://www.psacard.com/cert/151529034/psa"
+  ],
+  [
+   "Cam Ward",
+   "$80",
+   "2025 Select #26 Silver Prizm",
+   "PSA 10",
+   "Jun 8, 2026",
+   "eBay Best Offer",
+   "https://www.psacard.com/cert/151529034/psa"
+  ],
+  [
+   "Travis Hunter",
+   "$56",
+   "2025 Select #28 Silver Prizm",
+   "PSA 10",
+   "May 24, 2026",
+   "eBay Auction",
+   "https://www.psacard.com/cert/151460207/psa"
+  ],
+  [
+   "Travis Hunter",
+   "$46",
+   "2025 Select #228 Silver Prizm",
+   "PSA 10",
+   "Mar 30, 2026",
+   "eBay Auction",
+   "https://www.psacard.com/cert/150165555/psa"
+  ],
+  [
+   "Travis Hunter",
+   "$44",
+   "2025 Select #228 Silver Prizm",
+   "PSA 10",
+   "Apr 23, 2026",
+   "eBay Best Offer",
+   "https://www.psacard.com/cert/150165555/psa"
+  ],
+  [
+   "Shedeur Sanders",
+   "$435",
+   "2025 Prizm Draft Picks Signing Day Orange Wave",
+   "PSA 10",
+   "Apr 20, 2026",
+   "Fanatics Collect",
+   "https://www.psacard.com/cert/150550419/psa"
+  ],
+  [
+   "Shedeur Sanders",
+   "$79",
+   "2025 Select #54 Tri-Color Prizm",
+   "PSA 10",
+   "Jul 16, 2026",
+   "eBay Auction",
+   "https://www.psacard.com/cert/150724814/psa"
+  ],
+  [
+   "Shedeur Sanders",
+   "$66.22",
+   "2025 Select #54 Silver Prizm",
+   "PSA 10",
+   "Jul 16, 2026",
+   "eBay Best Offer",
+   "https://www.psacard.com/cert/150925232/psa"
+  ],
+  [
+   "Jaxson Dart",
+   "$4,200",
+   "2025 Absolute Kaboom! Horizontal #34",
+   "PSA 10",
+   "Jul 20, 2026",
+   "eBay Fixed Price",
+   "https://www.psacard.com/cert/146006611/psa"
+  ],
+  [
+   "Jaxson Dart",
+   "$1,920",
+   "2025 Donruss Optic Downtown #14",
+   "PSA 10",
+   "Jul 20, 2026",
+   "Fanatics Collect Auction",
+   "https://www.psacard.com/cert/159135952/psa"
+  ],
+  [
+   "Jaxson Dart",
+   "$600",
+   "2025 Mosaic #288 Genesis",
+   "PSA 10",
+   "May 15, 2026",
+   "eBay Auction",
+   "https://www.psacard.com/cert/139445173/psa"
+  ],
+  [
+   "Jaxson Dart",
+   "$320.02",
+   "2025 Select #493 Silver Prizm",
+   "PSA 10",
+   "Jun 12, 2026",
+   "eBay Auction",
+   "https://www.psacard.com/cert/157040211/psa"
+  ],
+  [
+   "Jaxson Dart",
+   "$150",
+   "2025 Select Score Throwback #14",
+   "PSA 10",
+   "Jul 27, 2026",
+   "Fanatics Collect Auction",
+   "https://www.psacard.com/cert/150304590/psa"
+  ],
+  [
+   "Ashton Jeanty",
+   "$825",
+   "2025 Phoenix Color Blast #13",
+   "PSA 10",
+   "Jul 7, 2026",
+   "eBay Best Offer",
+   "https://www.psacard.com/cert/157491027/psa"
+  ],
+  [
+   "Ashton Jeanty",
+   "$785",
+   "2025 Phoenix Color Blast #13",
+   "PSA 10",
+   "Jun 9, 2026",
+   "eBay Best Offer",
+   "https://www.psacard.com/cert/157491027/psa"
+  ],
+  [
+   "Ashton Jeanty",
+   "$714.14",
+   "2025 Phoenix Color Blast #13",
+   "PSA 10",
+   "Jul 27, 2026",
+   "eBay Auction",
+   "https://www.psacard.com/cert/157491027/psa"
+  ]
+ ]
+}
