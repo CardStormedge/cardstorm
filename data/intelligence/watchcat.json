@@ -1,5 +1,5 @@
 {
- "_schema": "Each record: [player, sport, hit1, hit2, hit3]. Curated/unverified chase suggestions - NOT verified checklist data, do not present as verified. Extracted verbatim from app.html WATCHCAT constant - keep in sync (see scripts/check-comps-sync.js).",
+ "_schema": "Each record: [player, sport, hit1, hit2, hit3]. Curated/unverified chase suggestions - NOT verified checklist data, do not present as verified. This is the server-readable copy of app.html's WATCHCAT constant - an intentional, temporary duplication (see data/intelligence/README.md). Keep in sync: any edit here needs the identical edit in app.html in the same commit, verified by `npm test`.",
  "watchcat": [
   [
    "C.J. Stroud",

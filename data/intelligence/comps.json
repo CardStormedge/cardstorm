@@ -1,5 +1,5 @@
 {
- "_schema": "Each record: [player, price, cardDescription, grade, saleDate, source, verifyUrl]. This is the CANONICAL verified sold-comp dataset - extracted verbatim from app.html COMPS constant. Do not add, remove, or alter a record here without also updating app.html, or run the sync check in scripts/check-comps-sync.js to confirm they still match exactly.",
+ "_schema": "Each record: [player, price, cardDescription, grade, saleDate, source, verifyUrl]. This is the server-readable copy of app.html's COMPS constant - an intentional, temporary duplication (see data/intelligence/README.md for why, and the long-term plan to make this file the single source of truth). Do not add, remove, or alter a record here without making the identical change in app.html in the same commit, then run `npm test` (scripts/check-comps-sync.js + scripts/test-comps-parity.js) to confirm the two copies still match exactly - this also runs in CI on every PR touching either file.",
  "comps": [
   [
    "Cam Ward",
