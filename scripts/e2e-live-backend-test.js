@@ -70,6 +70,14 @@ async function askQuestion(frame, text) {
   // Wait for the THINKING bubble to be replaced by a real bot reply (last
   // .ackMsg.bot no longer showing the thinking class), generous timeout for
   // real research-path questions.
+  // IMPORTANT: Frame.waitForFunction(pageFunction, arg, options) - the
+  // 2nd positional parameter is the ARG passed into pageFunction, not
+  // options. Passing {timeout} as the 2nd argument (as an earlier version
+  // of this script did) silently makes it the (unused) arg instead, so the
+  // call falls back to Playwright's default 30s timeout - this was caught
+  // by a real CI run against the live backend (a research question that
+  // legitimately took >30s), not by local dry-run testing against a fast
+  // mock. `undefined` must be passed explicitly for arg here.
   await frame.waitForFunction(
     () => {
       const msgs = document.querySelectorAll(".ackMsg.bot");
@@ -77,6 +85,7 @@ async function askQuestion(frame, text) {
       const last = msgs[msgs.length - 1];
       return !last.classList.contains("ackThinking");
     },
+    undefined,
     { timeout: 50000 }
   );
   const botMsgs = await frame.$$eval(".ackMsg.bot", (els) => els.map((e) => e.innerHTML));
@@ -89,6 +98,7 @@ async function waitForAnalyzeResult(frame) {
       const head = document.querySelector(".ackResultHead");
       return head && !/CARDSTORM IS LOOKING/.test(head.textContent);
     },
+    undefined,
     { timeout: 50000 }
   );
   return frame.$eval(".ackResult", (el) => el.innerHTML);
@@ -236,7 +246,7 @@ async function run() {
     await frame.setInputFiles("#ackInput_front", cardImage);
     await frame.waitForSelector(".ackSlot.filled img", { timeout: 10000 });
     await frame.setInputFiles("#ackInput_back", cardImage);
-    await frame.waitForFunction(() => document.querySelectorAll(".ackSlot.filled img").length >= 2, { timeout: 10000 });
+    await frame.waitForFunction(() => document.querySelectorAll(".ackSlot.filled img").length >= 2, undefined, { timeout: 10000 });
     await frame.fill("#ackQuestion", "What card is this?");
     await frame.click(".ackAnalyzeBtn");
     const frontBackResultHtml = await waitForAnalyzeResult(frame);
@@ -301,6 +311,7 @@ async function run() {
         if (!msgs.length) return false;
         return !msgs[msgs.length - 1].classList.contains("ackThinking");
       },
+      undefined,
       { timeout: 10000 }
     );
     const botMsgs = await frame.$$eval(".ackMsg.bot", (els) => els.map((e) => e.innerHTML));
