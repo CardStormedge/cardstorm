@@ -1,0 +1,49 @@
+name: TEMPORARY - Card image/database provider live POC test
+
+# TEMPORARY DIAGNOSTIC WORKFLOW - not part of the permanent CI/CD setup.
+# Calls the live Vercel PREVIEW deployment of api/card-image-poc.js (this
+# PR's own branch deployment) from a GitHub-hosted runner, because this
+# sandbox's own dev environment has no outbound network access to
+# thecardapi.com (confirmed via a direct curl returning
+# "CONNECT tunnel failed, response 403" - not assumed).
+#
+# THE_CARD_API_KEY itself is never touched by this workflow - it lives only
+# in Vercel's own environment variables for the cardstorm-api project. This
+# workflow only calls the already-deployed Preview URL over HTTPS and prints
+# the JSON response, which api/card-image-poc.js already guarantees never
+# contains a raw secret (see scripts/test-the-card-api-adapter.js's
+# no-secret-leakage test).
+#
+# workflow_dispatch is included for completeness/future manual runs, but per
+# GitHub platform behavior a workflow_dispatch trigger cannot actually be
+# invoked via the Actions API until the workflow file exists on the repo's
+# default branch (confirmed in an earlier round via a 404 from the dispatch
+# API) - so this also triggers on push, scoped ONLY to this exact PR branch
+# name, matching the same pattern used for prior live-validation workflows
+# in this repo (see git history for cardstorm-preview-api-test.yml).
+#
+# DELETE THIS FILE once live validation is reviewed and no longer needed -
+# none of this is meant to ship to main.
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - "claude/card-image-provider-poc"
+    paths:
+      - ".github/workflows/card-image-poc-live-test.yml"
+      - "scripts/live-test-card-image-poc.js"
+
+jobs:
+  live-test:
+    runs-on: ubuntu-latest
+    env:
+      POC_ENDPOINT: "https://cardstorm-api-git-claude-card-image-provider-poc-card-storm.vercel.app/api/card-image-poc"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run the live 10-card POC test against the Vercel Preview endpoint
+        run: node scripts/live-test-card-image-poc.js
