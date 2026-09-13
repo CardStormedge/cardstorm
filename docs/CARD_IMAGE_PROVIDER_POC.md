@@ -2,74 +2,119 @@
 
 **Status: research + adapter scaffold only. No production UI wired. No live provider credentials available in this environment.**
 
-This document records what was actually found about each provider, what could and could not be verified, and what a real integration would require. Nothing here should be read as "confirmed working" beyond what's explicitly marked as verified — this environment has no direct page-fetch access to any of these providers' own sites (confirmed via repeated `EGRESS_BLOCKED` errors on `tradingcardapi.com`, `api.tradingcardapi.com`, and others — not assumed), so everything below comes from WebSearch result summaries of the providers' own public marketing/docs pages, cross-checked across multiple sources where possible. No live API call was made to any paid provider — no credentials exist in this sandbox for any of them.
+This document records what was actually found about each provider, what could and could not be verified, and what a real integration would require. Nothing here should be read as "confirmed working" beyond what's explicitly marked as verified — this environment has no direct page-fetch access to any of these providers' own sites (confirmed via repeated `EGRESS_BLOCKED` errors on `tradingcardapi.com`, `thecardapi.com`, and others — not assumed), so everything below comes from WebSearch result summaries of the providers' own public marketing/docs pages, cross-checked across multiple queries where possible. No live API call was made to any paid provider — no credentials exist in this sandbox for any of them (confirmed via `env | grep`, not assumed).
 
 ## 1. Providers evaluated
 
 | Provider | Role evaluated | Depth |
 |---|---|---|
-| **Trading Card API** (tradingcardapi.com) | Primary — catalog identity + images | Deep (adapter built) |
+| **The Card API** (thecardapi.com) | Primary, this round — sold comps + catalog identity + images | Deep (adapter built) |
+| **Trading Card API** (tradingcardapi.com) | Primary, prior round — catalog identity + images | Deep (adapter built) |
 | **SportsCardsPro** (sportscardspro.com / pricecharting.com) | Secondary — comparison, pricing | Documented only, not integrated |
-| **TCGGraph** (tcggraph.com) | Pokémon/TCG suitability only | Documented only, single-query depth |
-| **The Card API** (thecardapi.com) | Discovered during research, not requested but relevant | Documented only, flagged as worth a look |
+| **TCGGraph** (tcggraph.com) | Pokémon/TCG suitability only | Documented only |
 
-## 2. Trading Card API (tradingcardapi.com) — primary provider
+## 2. CORRECTION to prior-round Trading Card API pricing
 
-### 2.1 Access model — the most important finding
+The previous version of this doc stated Trading Card API's early-access pricing as "~$99/month." **That figure could not be independently re-confirmed and appears to have been a mis-attribution** — this round's re-search surfaced an identical-looking `$19.99/mo Starter` / `$49.99/mo Pro` structure, but attributed to a *different, similarly-named product* (`tcgapi.dev`, a TCG-pricing API, not sports cards), not `tradingcardapi.com` itself.
 
-**This is NOT a self-serve API.** It's currently in a gated beta reached via an "Apply for Early Access" page. Public pricing found: **$99/month for early-access pricing**, with "founding access" limited to as few as 5 slots at a time, opened as the provider scales. There is no documented free tier. This means a real integration requires a business decision to apply and likely pay, not just a signup form — and there's no guarantee of being granted a slot on request.
+The requester separately supplied a corrected figure for Trading Card API itself: **Starter $19/month (1,000 requests/24h), Pro $49/month (10,000 requests/24h), 14-day free trial, still invite-only/founding-access gated.** This document records that as the current figure **per the requester**, since this environment still cannot fetch `tradingcardapi.com` directly to independently verify it — flagged transparently rather than presented as independently confirmed, same convention used for the Grail Board's Brady/Ohtani comp figures in PR #26.
 
-### 2.2 Authentication (as documented)
+**Lesson applied this round**: every pricing/spec figure below for every provider is checked against multiple independent search results before being stated, specifically to avoid repeating this mis-attribution.
 
-- Bearer token: `Authorization: Bearer <token>`
-- JSON:API content negotiation: `Accept: application/vnd.api+json`, `Content-Type: application/vnd.api+json`
-- API served under a stable `/v1` prefix; the API key is shown in the docs portal after subscribing.
+## 3. The Card API (thecardapi.com) — primary focus this round
 
-### 2.3 Data model (as documented)
+### 3.1 Access model — much lower barrier than Trading Card API
 
-The provider describes its entities as: **Cards, Sets, Players, Teams, Card Images, Attributes, and OnCard Relationships** — a normalized relational model (JSON:API `relationships`/`included`), not one flat card object. It claims coverage across sports card and general trading card data (sets, cards, players, teams, variations).
+**Self-serve, free to start.** Multiple independent search results confirm: free API key issued in seconds, no credit card required. This is a materially lower barrier than Trading Card API's invite-only founding-access gate.
 
-### 2.4 What could NOT be verified
+### 3.2 Authentication (as documented)
 
-- **Exact endpoint path and query-param shape** for search (e.g., the precise filter param name) — one search result stated the cards resource lives at `https://api.tradingcardapi.com/cards`; another described a `/v1` prefix. The adapter uses `https://api.tradingcardapi.com/v1/cards` as the most consistent reading, flagged as needing live confirmation.
-- **Exact JSON:API attribute key names** (e.g., whether year is `attributes.year` or something else) — not published in any page this environment could reach. **Per the "do not guess field names" instruction, the adapter does not hardcode a confident mapping** — see §5.
-- **Rate limits, storage/caching rules, and commercial-use terms** — the provider's rate-limits doc page exists (`tradingcardapi.com/docs/api/rate-limits`) but its contents weren't retrievable via search snippets, and this environment cannot fetch the page directly. Image delivery is described as "global CDN via DigitalOcean Spaces with versioned URLs for automatic cache invalidation" — this implies images are meant to be hotlinked/CDN-served rather than downloaded and re-hosted, but no explicit caching/storage policy was found.
-- **Image dimensions/quality** — described only as "front/back images with 3 auto-generated thumbnail sizes (small/medium/large)," no pixel dimensions found.
+- REST: `x-market-api-key` header.
+- A separate MCP server interface exists using `Authorization: Bearer` — not used by this adapter (REST only).
 
-### 2.5 Live POC result
+### 3.3 Sales (sold-comp) API
 
-**Not run.** `TRADING_CARD_API_KEY` is not set anywhere in this environment (confirmed: `env | grep -i TRADING_CARD` returns nothing). Per the task's explicit instruction, no response was faked. The adapter (`api/lib/cardProviders/tradingCardApi.js`) throws a typed `TradingCardApiError` when the key is absent rather than returning any card data — this is unit-tested (`scripts/test-card-provider-adapter.js`).
+- Tracks **200,000+ daily card transactions**, described as "true sold prices including Best Offer" (i.e., the accepted Best Offer price, not the initial ask).
+- Confirmed sale-record field names from docs: `id`, `title`, `price`, `listing_type`, `sold_at`, `print_run`.
+- Rate/quota model: **1,000 rows max per request on all plans**; the enforced limits are total sales rows returned per day and how far back you can query (**default lookback window: 90 days**, per an "Unlimited Lookback" $99/mo add-on description implying a 90-day default on lower tiers); daily counters reset at 00:00:00 UTC; API calls and CSV exports **draw from the same shared daily budget**.
+- Paid add-ons found: **Full Daily Feed ($99/mo)** — unlimited pulls for yesterday's sales only; **Unlimited Lookback ($99/mo)** — removes the 90-day query-window limit.
+- **This appears usable on the free/self-serve tier** for at least small-scale sales lookups — the free-tier exact daily row cap was not found in accessible search results, only that a cap exists and resets daily.
 
-## 3. SportsCardsPro / PriceCharting
+### 3.4 Catalog (identity) API
 
-- Base URL: `https://www.pricecharting.com`, endpoint `/api/product`.
-- Auth: a 40-character access token per subscription, passed as the `t` query parameter.
-- **Requires a paid subscription** to use the API at all; CSV bulk export is gated further, to "Legendary" tier subscribers only.
-- **Rate limit: 1 request/second**, documented as strictly enforced — "any more than that and your calls will be blocked and your account permissions revoked if it persists."
-- **Values only, no historical sales**: the API returns *current* item values in various grades/conditions, built from a proprietary algorithm blending eBay + their own Marketplace sold listings. It does **not** expose the underlying individual sold transactions or historical price-over-time data via the API (CSV/API access is to current guide values, not a sales ledger) — this makes it **unsuitable as a sold-comps source** on its own terms, consistent with the instruction to never blend catalog/pricing-guide data into the sold-comps pipeline.
-- No explicit commercial-use terms were found in accessible search results; would need direct confirmation from PriceCharting before any commercial use.
-- **Suitability assessment**: reasonable for *current market value* estimates and possibly base identity data (their product catalog is broad and includes sports cards), weak for real sold-comp evidence and weak for card images specifically (its core product is a price guide, not an image database) — not evaluated further, per instructions, beyond this documentation pass.
+- **15.2M+ cards across 306,000+ sets and 15 sports** (confirmed via 2 independent search passes this round; the requester's figures of "16.6M+ cards / 331K+ sets" could not be independently confirmed — could reflect real catalog growth since the 15.2M figure was published, but this document records both rather than silently picking one).
+- Every card and set carries a **`ucid`** — a permanent, typed identifier like `UC-1KJZD-TZG7C-6` with a trailing check digit (a typo produces an error, not a wrong card); case-insensitive, dashes optional; **never changes and is never reused** even if the card's own name/year metadata is later corrected. This is a strong stable-ID design — confirmed directly from docs language, not inferred.
+- **Catalog access is NOT free**: it's included with the **Pro** plan, or available as a **$29/month add-on on the Builder plan**. All paid plans include a **7-day free trial**.
+- Confirmed endpoint shape: fetch-by-id at `/catalog/{ucid}`. **No free-text catalog search endpoint was found** in accessible docs — meaning "search the catalog by player name + year + set" as a single call is not confirmed to exist; only "look up a specific card once you already know its ucid" is documented. This is a real limitation for a workflow that needs to *discover* a ucid from a text query in the first place.
 
-## 4. TCGGraph — Pokémon/TCG suitability only
+### 3.5 What could NOT be verified
 
-- Positioned as "one API for every trading card game," with both REST and GraphQL, Bearer-token auth, and a shared core schema (`id, name, set, rarity, artist, images, prices, legalities`) plus a game-specific `gameData` payload.
-- Provides both TCGplayer (USD) and Cardmarket (EUR) pricing on the same card record, with trend/rolling-average and foil pricing quoted separately — a real pricing-comparison feature, though these prices are market/listing-style pricing-guide figures, not necessarily individually traceable sold transactions; treat as **pricing data, not sold comps**, unless a specific endpoint is confirmed to expose real completed-sale records.
-- **Sports card coverage: none found.** TCGGraph's own positioning explicitly focuses on trading card games (Pokémon, Magic, Lorcana, etc.) rather than sports cards — confirms it is Pokémon/TCG-only, as expected, and not a candidate for the sports-card catalog/image role.
-- No live query was run (no credentials, and this environment cannot reach tcggraph.com directly to test unauthenticated/public access). Pricing tiers and exact rate limits were not found in accessible search results.
-- **Suitability for CardStorm's Pokémon section**: plausible for a *future* Pokémon pricing/catalog integration given its stated multi-source pricing and shared schema, but this needs a real credentialed test before any commitment — not attempted here per the "no full Pokémon integration in this PR" instruction.
+- The Sales API's exact free-tier daily row/request cap (a cap exists; the number wasn't found).
+- Any free-text catalog search endpoint or its query-param shape (only `/catalog/{ucid}` is confirmed).
+- **Terms of Service**: no dedicated ToS/legal page for thecardapi.com surfaced in any search pass — commercial-use rights, image caching/storage permissions, and redistribution restrictions are **UNKNOWN** and unconfirmed. The docs mention "per-key allowances and bulk catalog licensing are available" via emailing `hello@thecardapi.com`, implying commercial terms are negotiated/clarified directly rather than published on a standard page. **Do not assume broad rights to display, cache, or redistribute returned data or images until this is confirmed directly with the provider** — this document does not overstate rights that were never confirmed.
+- Whether Sales-API image URLs (if any are actually returned — not confirmed either) are catalog-canonical images, marketplace listing photos, or something else.
+- Exact marketplace/grade/grader/slab-serial field names on a sale record — only `id/title/price/listing_type/sold_at/print_run` are confirmed.
 
-## 5. Normalized adapter (built, not live-verified)
+### 3.6 Live POC result
 
-Files:
-- `api/lib/cardProviders/normalizeCard.js` — provider-agnostic normalization to CardStorm's shared shape (`provider, providerCardId, player, sport, year, manufacturer, brand, set, cardNumber, parallel, frontImageUrl, backImageUrl, sourceUrl, confidence, verificationStatus`). Every field is `null` unless the provider actually supplied it.
-- `api/lib/cardProviders/tradingCardApi.js` — the Trading Card API adapter: correct (as-documented) base URL, auth headers, and JSON:API request shape; a best-effort `mapCardResource()` that extracts fields from the *documented entity model* (Cards/Sets/Players/relationships) but explicitly does **not** claim the exact attribute key names are confirmed — every guessable key is marked `TODO(live-verify)` in the source and must be checked against one real captured response before this is trusted beyond this POC.
-- `api/card-image-poc.js` — temporary, backend-only endpoint (`POST /api/card-image-poc`, marked `X-CardStorm-POC` header, not linked from any frontend page). Returns an honest "provider not configured" response when `TRADING_CARD_API_KEY` is absent; never fabricates a card record.
+**Not run.** `THE_CARD_API_KEY` is not set anywhere in this environment. Per instructions, no response was faked. The adapter (`api/lib/cardProviders/theCardApi.js`) throws a typed `TheCardApiError` for both the no-key case and a simulated paid-plan-required (402/403) response on the catalog endpoint — both paths are unit-tested (`scripts/test-the-card-api-adapter.js`).
 
-`verificationStatus` values: `PROVIDER_MATCHED`, `PROVIDER_AMBIGUOUS` (multiple candidates — never auto-picked), `PROVIDER_NO_MATCH`, `PROVIDER_ERROR`.
+## 4. Trading Card API (tradingcardapi.com) — unchanged findings, pricing corrected (see §2)
 
-## 6. The 10 proof-of-concept test cards (identities only — no live search possible)
+- Still gated: reached via an "Apply for Early Access" page, still invite-only/"founding access" per the requester.
+- Auth: `Authorization: Bearer <token>`, JSON:API content type (`Accept`/`Content-Type: application/vnd.api+json`), stable `/v1` prefix.
+- Documented entity model: Cards, Sets, Players, Teams, Card Images, Attributes, OnCard Relationships.
+- Exact JSON:API attribute key names remain unconfirmed — the adapter's `mapCardResource()` is explicitly best-effort/`TODO(live-verify)`, unchanged from last round.
+- Live POC: not run (no credentials).
 
-Reused from the already-verified Grail Board dataset (`data/intelligence/grail-board.json`) where possible, plus two additional real, independently-identifiable cards to reach 2-per-player without inventing anything:
+## 5. SportsCardsPro / PriceCharting
+
+- Base URL `https://www.pricecharting.com`, endpoint `/api/product`, a 40-character access token per subscription passed as the `t` query parameter.
+- **Paid subscription required** for any API access; CSV bulk export gated further to "Legendary" tier.
+- **Rate limit: 1 request/second**, strictly enforced (account permissions revoked on sustained violation, per docs language).
+- **Values only, no historical sales or individual sold transactions exposed via the API** — built from a proprietary blend of eBay + their own Marketplace sold listings, but the API surfaces only the *current computed value*, not the underlying sales ledger. **Confirmed unsuitable as a sold-comp source** on its own terms.
+- No commercial-use terms found in accessible search results.
+
+## 6. TCGGraph — Pokémon/TCG suitability only (kept separate from sports-card coverage)
+
+- **Pricing (confirmed this round, 2 independent sources)**: Starter **$19/month, 25,000 credits** (~12,500 searches), 2,500 credits/day cap, **60 req/min**, commercial-use license included. Growth tier: $59/mo, 150,000 credits, 300 req/min. These figures match what the requester independently stated — genuinely corroborated this time, unlike the earlier Trading Card API pricing mix-up.
+- Shared core schema (`id, name, set, rarity, artist, images, prices, legalities`) plus a game-specific `gameData` payload; both REST and GraphQL.
+- Provides TCGplayer (USD) and Cardmarket (EUR) pricing on the same record — a real dual-source pricing signal, but this is market/listing-style pricing data, not confirmed as individually-traceable sold transactions.
+- **Sports-card coverage: none** — confirmed again this round; TCGGraph is explicitly TCG-only (Pokémon, Magic, Lorcana, etc.).
+- Image CDN reported as unmetered per the requester's figures; not independently re-confirmed via search this round (not the focus of this round's research pass).
+- **No live query run** — no credentials, and this environment cannot reach tcggraph.com directly.
+- **Recommendation unchanged: remains the leading Pokémon/TCG candidate**, kept entirely separate from sports-card provider decisions.
+
+## 7. Provider comparison
+
+| | The Card API | Trading Card API | SportsCardsPro | TCGGraph |
+|---|---|---|---|---|
+| Signup friction | Low — free key, self-serve, no CC | High — invite-only founding access | Medium — paid subscription required | Low-medium — paid, self-serve |
+| Pricing | Free tier + Pro/Builder+add-on for Catalog | Starter $19/mo, Pro $49/mo (per requester, unconfirmed by us) | Paid only; tier unclear from public docs | $19/mo Starter, $59/mo Growth (confirmed) |
+| Sports coverage | 15 sports, 15.2M+ cards (or 16.6M+ per requester) | Claimed broad sports+TCG coverage, unconfirmed depth | Broad, price-guide focused | None |
+| TCG coverage | Not confirmed as a focus | Claimed, unconfirmed depth | None found | Primary focus (Pokémon, Magic, Lorcana, etc.) |
+| Catalog size | 306,000+ sets (or 331K+ per requester) | Not found | Not found (price-guide product, not a card catalog) | Not applicable (TCG, not sports) |
+| Images | Catalog images described; Sales-API image fields unconfirmed | Front/back + 3 thumbnail sizes described | Not a focus | CDN-delivered, unmetered per requester |
+| Sold comps | **Yes — explicit sales API, 200K+ daily transactions, true Best Offer prices** | Not confirmed to exist | **No — current values only, no sales ledger** | Pricing data, not confirmed sold comps |
+| Best Offer accuracy | Documented as "true accepted price," not asking price | Unconfirmed | Not applicable | Not applicable |
+| Stable card IDs | **Yes — `ucid`, permanent, check-digit format, confirmed** | Relational IDs implied (JSON:API), format unconfirmed | Not confirmed | Standard `id` field, permanence unconfirmed |
+| Rate limits | 1,000 rows/request; daily cap (exact free number unconfirmed) | 1,000/day (Starter) or 10,000/day (Pro), per requester | **1 req/second, hard-enforced** | 60 req/min (Starter), confirmed |
+| Commercial-use terms | **Unconfirmed — no ToS page found; contact required** | Unconfirmed | Unconfirmed | **Confirmed — commercial-use license included in paid tiers** |
+| Caching/storage terms | Unconfirmed | Implied CDN-hotlink model, not explicit | Unconfirmed | Confirmed permitted, per requester |
+| Suitability for CardStorm | **Best-positioned candidate found so far** — see §9 | Viable but gated and unconfirmed on key details | Pricing cross-check only, never sold comps/images | Pokémon-only, future work |
+
+## 8. Normalized adapter (built, not live-verified)
+
+Files (extends, does not replace, the abstraction from the prior round):
+- `api/lib/cardProviders/normalizeCard.js` — provider-agnostic catalog/identity normalization (unchanged).
+- `api/lib/cardProviders/tradingCardApi.js` — Trading Card API adapter (unchanged).
+- `api/lib/cardProviders/theCardApi.js` (**new**) — The Card API adapter: `searchSales()` (Sales API), `getCatalogCardByUcid()` (Catalog-by-id), `mapSaleRecord()` (uses only the 6 confirmed field names), `mapCatalogRecord()` (recognizes `ucid`, leaves everything else null pending live verification), and `scoreCardMatch()` — a strong-field match scorer (player/year/set/cardNumber/parallel/grade/grader) that explicitly does **not** use title-text similarity as identity evidence.
+- `api/lib/cardProviders/normalizeSaleComp.js` (**new**) — normalizes a sale record into the same comp vocabulary already used by `data/intelligence/grail-board.json` (`EXACT_CERT_CONFIRMED` / `SAME_CARD_AND_GRADE_COMP` / `SIMILAR_ITEM_COMP` / `UNVERIFIED`). **Actively rejects active/asking-price listings in code** — an `active`/`for_sale`/`asking`-type record is never returned as if it were a comp, regardless of match score.
+- `api/card-image-poc.js` — extended (not rebuilt) to accept `{ provider: "tradingcardapi" | "thecardapi", mode: "catalog" | "sales", query, expectedFields }`. Honest "provider not configured" responses per-provider; the catalog mode for The Card API honestly reports that no free-text catalog search endpoint is confirmed to exist, rather than guessing one.
+
+`verificationStatus` values (catalog): `PROVIDER_MATCHED`, `PROVIDER_AMBIGUOUS`, `PROVIDER_NO_MATCH`, `PROVIDER_ERROR`. `compType` values (sales/comps): `EXACT_CERT_CONFIRMED`, `SAME_CARD_AND_GRADE_COMP`, `SIMILAR_ITEM_COMP`, `UNVERIFIED`.
+
+## 9. The 10 proof-of-concept test cards (unchanged from prior round — reused, not redefined)
 
 | # | Player | Card |
 |---|---|---|
@@ -84,30 +129,40 @@ Reused from the already-verified Grail Board dataset (`data/intelligence/grail-b
 | 9 | Cooper Flagg | 2025 Topps Bowman Chrome Superfractor #BCV-1 (1/1), PSA 9 |
 | 10 | Cooper Flagg | 2024 Topps Chrome McDonald's All-American Autograph SuperFractor #78 (1/1), CGC Authentic |
 
-Card #5 (2018 Topps Chrome base #150) is the one identity in this list not already present in the Grail Board dataset — it surfaced during Trading Card API research as a real, well-documented Ohtani rookie (seen listed on Goldin's own site), added here only as a second, cheaper/more-common test case to see whether the provider indexes base cards as reliably as premium ones. **No sold-comp value is claimed or needed for it in this POC** — it is a search-target identity only.
+**Live search was not run against The Card API (or any provider) for any of these 10 cards** — `THE_CARD_API_KEY` is not set anywhere in this environment, and this sandbox cannot reach `thecardapi.com` directly to test even unauthenticated/public access. Reported plainly, not simulated.
 
-**Live search was not run against any provider for any of these 10 cards** — no credentials exist in this environment for Trading Card API, SportsCardsPro, or TCGGraph, and this sandbox cannot reach any of their live endpoints to test unauthenticated access either. This is reported plainly rather than simulated.
+## 10. Grail Board suitability — specific assessment
 
-## 7. Architecture rule compliance
+Per the five questions posed:
+1. **Can it return a real image?** Unconfirmed — no live test possible; Sales-record image fields aren't even confirmed to exist by name.
+2. **Can it return recent completed sales?** Very likely yes, based on documented scope (200K+ daily transactions, explicit Best Offer handling) — but unverified live.
+3. **Can CardStorm distinguish exact-cert from same-card/grade comp?** The adapter is built to do this correctly (`scoreCardMatch()` + `classifyCompType()`, unit-tested), but this depends on the live API actually returning grade/grader/slab-serial fields, which aren't confirmed to exist by name yet.
+4. **Can we retain a direct source URL?** Not confirmed — no `sourceUrl`-equivalent field found in the 6 confirmed sale fields.
+5. **Can we safely label Exact Cert Sale / Recent PSA 10 Comp / Similar Item Comp?** Yes, structurally — the normalizer enforces this vocabulary and never lets an active listing through as a comp. Whether the *live data* ever actually qualifies as `EXACT_CERT_CONFIRMED` depends on whether slab-serial data is really in the response.
+
+**Not yet flagged as a major win** — the building blocks look promising on paper, but this is exactly the gap a live credentialed run would close, and this PR could not obtain credentials.
+
+## 11. Architecture rule compliance
 
 - No provider API key appears in `app.html`, any browser-executed JS, any committed JSON, or any client-visible config.
-- All provider calls are server-side only (`api/lib/cardProviders/`, `api/card-image-poc.js`), reading the key exclusively from `process.env.TRADING_CARD_API_KEY`.
-- `api/card-image-poc.js` is not referenced from `index.html` or `app.html` — it exists only as a backend route for manual/POC testing.
-- Unit tests explicitly assert the configured key never appears in a normalized record or its JSON serialization (`scripts/test-card-provider-adapter.js`, test 9).
+- All provider calls are server-side only, reading exclusively from `process.env.TRADING_CARD_API_KEY` or `process.env.THE_CARD_API_KEY`.
+- `api/card-image-poc.js` is not referenced from `index.html` or `app.html`.
+- Unit tests explicitly assert both keys never appear in a normalized record/comp or its JSON serialization (`scripts/test-card-provider-adapter.js` test 9; `scripts/test-the-card-api-adapter.js`'s no-secret-leakage test).
 
-## 8. Recommendation
+## 12. Recommendation
 
-- **Primary provider candidate remains Trading Card API**, on paper — broadest documented sports-card coverage and a purpose-built image pipeline — but it cannot be evaluated further without either (a) applying for and being granted early access (currently ~$99/month, limited slots) or (b) the requester providing existing credentials.
-- **SportsCardsPro** is a plausible *pricing-guide* secondary signal (current values only, not sold comps, not images) but was not deeply evaluated per instructions and has real rate-limit (1 req/sec) and access-tier constraints of its own.
-- **TCGGraph** is out of scope for sports cards entirely; worth a real credentialed look for the Pokémon section specifically, in a future PR.
-- **The Card API (thecardapi.com)** surfaced during research as a real alternative worth flagging: 15.2M+ card catalog across 306,000+ sets and 15 sports, with a free API key (no credit card, per its own marketing) and an explicit "sold-price" sales API separate from its catalog — potentially a stronger, more accessible primary candidate than Trading Card API's gated beta, **but not evaluated in depth in this PR** since it wasn't the requested primary target; worth a dedicated look in a follow-up given it appears to have a lower access barrier.
+- **The Card API is now the stronger near-term candidate**: free self-serve access removes the biggest blocker Trading Card API has (invite-only gating), it has an explicit sold-comps API (which Trading Card API doesn't appear to have at all), and its `ucid` stable-identifier design is genuinely well thought out. **Recommended next step: actually get a free key and re-run this exact adapter against the 10 cards** — this is now cheap and fast to try, unlike Trading Card API's application process.
+- **Trading Card API** remains a fallback/comparison candidate once (if) founding access is granted — its catalog-only focus and unconfirmed sales capability make it a weaker fit for the sold-comp use case specifically.
+- **SportsCardsPro**: pricing cross-check only, never sold comps or images.
+- **TCGGraph**: unchanged, Pokémon/TCG only.
 
-## 9. Risks
+## 13. Risks
 
-- No provider evaluated here has been proven, with real evidence, to reliably return front+back images for the exact certs shown on the Grail Board — this POC could not close that gap without credentials.
-- Trading Card API's gated/paid beta access model is itself a project risk (cost + uncertain approval), separate from its technical fit.
-- Any future integration must keep this reminder from the requester's own rule intact: **catalog/image data must never be treated as a sold-comp source unless a provider explicitly supplies traceable completed sales** — none of the three primary candidates evaluated here were confirmed to do that reliably (SportsCardsPro explicitly does not expose historical sales; Trading Card API's sales/pricing capability, if any, was not found in accessible docs).
+- **The Card API's commercial-use/caching/redistribution terms are entirely unconfirmed** — this is the single biggest open risk before any real integration; must be resolved directly with the provider (`hello@thecardapi.com`) before displaying any returned image or data in production.
+- Catalog access requires paid tier ($29/mo add-on minimum) — a text-searchable catalog (needed to go from "player + year + set" to a `ucid`) is not confirmed to exist at all, paid or free; this could mean Catalog is only usable if you already know the ucid, which undercuts its usefulness as a discovery layer.
+- Sales-API field names beyond the 6 confirmed ones are unknown — grade/grader/slab-serial/image/source-URL support cannot be assumed.
+- Trading Card API's pricing was already mis-attributed once this project; the requester's corrected figures for it are recorded here as unconfirmed-by-us, not as independently verified fact.
 
-## 10. Next step
+## 14. Next step
 
-Get real credentials for at least one candidate (Trading Card API via its early-access application, or The Card API via its apparently-free signup) and re-run this exact adapter against the same 10 cards to produce the first real, evidence-based per-card table this document is currently missing.
+Obtain a free `THE_CARD_API_KEY` (self-serve signup, no credit card per its own marketing) and re-run `scripts/test-the-card-api-adapter.js`-style calls for real against all 10 cards via `api/card-image-poc.js`. This is now the cheapest, fastest way to close the biggest open gap in this document — whether the Sales API's real response shape actually supports exact-cert vs comparable-sale labeling and returns usable images.
