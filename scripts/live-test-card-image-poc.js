@@ -72,6 +72,14 @@ async function callPoc(card, provider, mode) {
   } finally {
     clearTimeout(timeout);
   }
+  // A non-200 status is diagnostic information regardless of whether the
+  // body happens to be valid JSON - print it raw (safe: this is our own
+  // endpoint's or Vercel's own error body, never a request we sent, so it
+  // cannot contain a secret we hold) rather than only printing recognized
+  // fields and silently dropping the actual reason.
+  if (res.status !== 200) {
+    console.log(`  Raw response body (status ${res.status}, for diagnosis): ${text.slice(0, 500)}`);
+  }
   try {
     json = JSON.parse(text);
   } catch (e) {
@@ -81,8 +89,6 @@ async function callPoc(card, provider, mode) {
     console.log(`  HTTP ${res.status} - response was not JSON.`);
     if (looksLikeVercelAuth) {
       console.log("  DEPLOYMENT_PROTECTION_BLOCKED: this looks like a Vercel Deployment Protection auth page, not the API response.");
-    } else {
-      console.log(`  Raw response (first 200 chars, for diagnosis only): ${text.slice(0, 200)}`);
     }
     return { httpStatus: res.status, parsed: false };
   }
@@ -97,6 +103,7 @@ async function run() {
   let anyBestOffer = false;
   let notConfigured = false;
   let deploymentProtectionBlocked = false;
+  let non200Count = 0;
 
   for (const card of CARDS) {
     console.log(`=== ${card.label} ===`);
@@ -104,8 +111,20 @@ async function run() {
     const result = await callPoc(card, "thecardapi", "sales");
     if (!result) continue;
     console.log(`  HTTP status: ${result.httpStatus}`);
-    if (!result.parsed) {
+    if (result.httpStatus !== 200) {
+      non200Count++;
       if (result.httpStatus === 401) deploymentProtectionBlocked = true;
+    }
+    if (!result.parsed) {
+      continue;
+    }
+    if (result.httpStatus !== 200) {
+      // Reached this endpoint (our own handler always returns 200, even for
+      // no-match/no-config/error cases - see api/card-image-poc.js), so a
+      // non-200 with a parseable body is coming from the Vercel platform
+      // layer in front of it (most likely Deployment Protection), not from
+      // our own code. Print whatever it actually says rather than guessing.
+      console.log(`  This is a platform-level response (our own handler never returns HTTP ${result.httpStatus}) - see raw body above.`);
       continue;
     }
     const { json } = result;
@@ -146,8 +165,9 @@ async function run() {
   }
 
   console.log("\n=== SUMMARY ===");
-  console.log(`THE_CARD_API_KEY appears configured on Vercel: ${notConfigured ? "NO" : "YES (or endpoint did not report it as missing)"}`);
-  console.log(`Deployment Protection blocked this run: ${deploymentProtectionBlocked}`);
+  console.log(`Requests that did not return HTTP 200 from our own handler: ${non200Count} / ${CARDS.length}`);
+  console.log(`THE_CARD_API_KEY configuration status: ${notConfigured ? "CONFIRMED NOT CONFIGURED" : non200Count > 0 ? "UNKNOWN - blocked before our handler could report it" : "appears configured (endpoint reached and did not report it missing)"}`);
+  console.log(`Deployment Protection (or another platform-layer 401) blocked this run: ${deploymentProtectionBlocked}`);
   console.log(`Any live sale price data returned: ${anyLiveSalesData}`);
   console.log(`Any completed Best Offer sale observed: ${anyBestOffer}`);
 }
