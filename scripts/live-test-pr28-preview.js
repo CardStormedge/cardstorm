@@ -48,9 +48,9 @@ async function testFrontendPreview() {
   try {
     const res = await req(FRONTEND_PREVIEW + "/app.html");
     console.log("HTTP status:", res.status);
-    const isProtection =
-      res.status === 401 &&
-      /Authentication Required|vercel/i.test(res.body || "");
+    if (res.headers && res.headers.location) {
+      console.log("Location header:", res.headers.location);
+    }
     if (res.status === 200) {
       const hasTitle = /CardStorm/i.test(res.body);
       console.log("PASS - preview reachable, 200, CardStorm content present:", hasTitle);
