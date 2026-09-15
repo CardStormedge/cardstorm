@@ -11,6 +11,7 @@ const assert = require('assert');
 
 const { parseToppsChecklistHtml, ingestTopps } = require('./checklists/ingest-topps');
 const { parseCheckListRowsHtml, ingestPanini } = require('./checklists/ingest-panini');
+const { parseToppsChecklistPdfText, parseChecklistLine } = require('./checklists/ingest-topps-pdf');
 const { normalizeChecklist } = require('./checklists/normalize-checklist');
 const { validateChecklist } = require('./checklists/validate-checklist');
 const { normalizeCard, buildSourceMeta } = require('./checklists/schema');
@@ -27,6 +28,7 @@ function check(cond, msg) { cond ? ok(msg) : fail(msg); }
 const ROOT = path.join(__dirname, '..');
 const TOPPS_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/topps-fixture-checklist.html'), 'utf8');
 const PANINI_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/panini-fixture-checklist.html'), 'utf8');
+const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/topps-pdf-fixture-checklist.txt'), 'utf8');
 
 (async function main() {
   // ---- 1. Importer parsing (real parser logic against fixtures) -------------
@@ -38,6 +40,32 @@ const PANINI_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures
   check(paniniRows.length === 3, `Panini fixture parser extracted 3 rows (got ${paniniRows.length})`);
   check(paniniRows.every((r) => r.rookie === true), 'Panini parser correctly reads the RR rookie marker');
   check(paniniRows[2].team === null, 'Panini parser stores null (not empty string) for a genuinely empty team cell');
+
+  // ---- 1b. Topps PDF checklist parser (real text extracted from real ---------
+  //          2024/2025/2026 Topps Series 1 Baseball checklist PDFs fetched
+  //          from cdn.shopify.com during the live PDF-ingestion round - see
+  //          fixtures/topps-pdf-fixture-checklist.txt and the PR #30 "LIVE
+  //          TOPPS CDN PDF INGESTION" comment for the reachability evidence.
+  const pdfRows = parseToppsChecklistPdfText(TOPPS_PDF_TEXT_FIXTURE, 'baseball');
+  check(pdfRows.length === 11, `Topps PDF-text parser extracted 11 real card rows from the fixture (got ${pdfRows.length})`);
+  check(pdfRows[0].player === 'Aaron Judge' && pdfRows[0].team === 'New York Yankees', 'Topps PDF-text parser correctly splits a real space-concatenated "<player> <Team Name><®>" line with no delimiter');
+  check(pdfRows.find((r) => r.cardNumber === '4').rookie === true, 'Topps PDF-text parser reads a real trailing "Rookie" subset label as rookie:true');
+  check(pdfRows.filter((r) => r.cardNumber === '11').length === 3, 'Topps PDF-text parser correctly keeps all 3 real players of a shared-card-number "League Leaders" combo row as separate rows, not collapsed or dropped');
+  check(pdfRows.find((r) => r.cardNumber === '34').player === null, 'Topps PDF-text parser correctly yields no player (not a fabricated one) for a real "Team Card" row, since the team\'s own name prints where a player normally would');
+  check(pdfRows.find((r) => r.cardNumber === '43').team === 'Angels', 'Topps PDF-text parser correctly matches the real short "no city" team form Topps prints for the Angels');
+  const tabRow = pdfRows.find((r) => r.player === 'Shohei Ohtani');
+  check(!!tabRow && tabRow.team === 'Los Angeles Dodgers', 'Topps PDF-text parser correctly splits a real tab-delimited "<player>\\t<team>" line (a different real layout than the space-concatenated one)');
+  check(parseChecklistLine('BASE SET', 'baseball') === null, 'Topps PDF-text parser skips a real bare section-header line (no team-name match) rather than guessing a row out of it');
+  check(parseChecklistLine('-- 1 of 53 --', 'baseball') === null, 'Topps PDF-text parser skips a real page-separator line');
+  check(parseChecklistLine('Checklists provided by Topps reflect the intended configuration of that product at', 'baseball') === null, 'Topps PDF-text parser skips the real disclaimer line Topps prints on every checklist PDF');
+
+  const pdfMeta = { sport: 'baseball', year: '2099', manufacturer: 'Topps', brand: 'Topps', product: 'Fixture PDF Test Set', sourceType: 'manufacturer-checklist-pdf', sourceUrl: 'https://example.invalid/fixture.pdf' };
+  const { rows: normPdfRows, excluded: exclPdfRows } = normalizeChecklist(pdfRows, pdfMeta);
+  check(exclPdfRows.some((e) => e.reason.includes('missing player name')), 'normalizeChecklist excludes (with a logged reason, not silently) the real Team Card row\'s empty player field');
+  check(normPdfRows.length === pdfRows.length - exclPdfRows.length, 'every real PDF-parsed row is accounted for as either normalized or excluded-with-reason - none silently vanish');
+  const pdfValidation = validateChecklist(normPdfRows, { ...pdfMeta });
+  check(pdfValidation.duplicateCardNumbers.includes('11'), 'validateChecklist flags the real shared card number #11 (the League Leaders combo) as a duplicate - an honest, unmodified application of the existing duplicate-detection rule to a real multi-player insert card, not weakened to force a pass');
+  check(pdfValidation.status !== 'RELEASED', 'a real checklist with a genuine shared-card-number combo card is never marked RELEASED outright (PARTIAL at best), matching the existing validator\'s unweakened rule');
 
   // ---- 2. Row normalization: only source-supported fields populated ---------
   const meta = { sport: 'football', year: '2099', manufacturer: 'Topps', brand: 'Topps', product: 'Fixture Test Set', sourceType: 'manufacturer-checklist-page', sourceUrl: 'https://example.invalid/fixture' };
