@@ -44,7 +44,11 @@ on:
       - ".github/workflows/pr30-topps-live-ingestion-test.yml"
       - "scripts/checklists/live-test-topps.js"
       - "scripts/checklists/live-pdf-probe.js"
+      - "scripts/checklists/live-pdf-probe-bb-fb.js"
       - "scripts/checklists/live-pdf-ingestion.js"
+      - "scripts/checklists/ingest-basketball-pdf.js"
+      - "scripts/checklists/ingest-football-pdf.js"
+      - "scripts/checklists/team-names-by-sport.js"
       - "scripts/checklists/fetch-source.js"
       - "scripts/checklists/ingest-topps.js"
       - "scripts/checklists/ingest-topps-pdf.js"
@@ -105,6 +109,10 @@ jobs:
       - name: Run full live PDF ingestion (all real CDN sources, parser + validate)
         if: hashFiles('scripts/checklists/live-pdf-ingestion.js') != ''
         run: node scripts/checklists/live-pdf-ingestion.js "$GITHUB_WORKSPACE/live-test-output"
+
+      - name: Probe real PDF text structure (one basketball + one football source) - never assume baseball's rules transfer
+        if: hashFiles('scripts/checklists/live-pdf-probe-bb-fb.js') != ''
+        run: node scripts/checklists/live-pdf-probe-bb-fb.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Upload live test output (raw fetches + normalized JSON, NOT committed to the repo)
         if: always()

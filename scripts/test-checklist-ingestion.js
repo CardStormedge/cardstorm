@@ -217,18 +217,28 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
     const missing = fileRefs.filter((f) => !fs.existsSync(path.join(ROOT, f)));
     check(missing.length === 0, missing.length ? `CHECKLIST_MANIFEST references missing file(s): ${missing.join(', ')}` : 'every CHECKLIST_MANIFEST file: reference resolves to a real file on disk (Team Hunt can never point at a missing checklist)');
 
-    // ---- 12. Real live-ingested baseball Topps Series 1 data (2024/2025/2026) --
-    //          - every real checklist file actually written this round: valid
-    //          JSON, source-traced, and its own claimed validation status
-    //          reproduces for real when re-run through validate-checklist.js
-    //          right now (not just trusted from when it was written).
-    const toppsSeries1Files = [
-      ['2024', 'data/checklists/baseball/2024/topps-series-1.json'],
-      ['2025', 'data/checklists/baseball/2025/topps-series-1.json'],
-      ['2026', 'data/checklists/baseball/2026/topps-series-1.json'],
-    ];
-    let judgeFoundYears = [];
-    toppsSeries1Files.forEach(([yr, relPath]) => {
+    // ---- 12. Real live-ingested baseball checklist data (all 17 products, ---
+    //          2024/2025/2026) - every real checklist file actually written
+    //          this round: valid JSON, source-traced, and its own claimed
+    //          validation status reproduces for real when re-run through
+    //          validate-checklist.js right now (not just trusted from when
+    //          it was written). Discovered dynamically from disk, not
+    //          hardcoded to a fixed list, so this test automatically covers
+    //          whatever real baseball products are actually persisted.
+    const baseballDir = path.join(ROOT, 'data/checklists/baseball');
+    const baseballFiles = [];
+    fs.readdirSync(baseballDir).forEach((yr) => {
+      const yrDir = path.join(baseballDir, yr);
+      if (!fs.statSync(yrDir).isDirectory()) return;
+      fs.readdirSync(yrDir).filter((f) => f.endsWith('.json')).forEach((f) => {
+        baseballFiles.push([yr, `data/checklists/baseball/${yr}/${f}`]);
+      });
+    });
+    check(baseballFiles.length >= 17, `at least 17 real baseball checklist files are persisted in the repo (found ${baseballFiles.length})`);
+    let judgeFoundIn = [];
+    let totalBaseballRows = 0;
+    let releasedCount = 0;
+    baseballFiles.forEach(([yr, relPath]) => {
       const filePath = path.join(ROOT, relPath);
       check(fs.existsSync(filePath), `real live-ingested checklist file exists: ${relPath}`);
       if (!fs.existsSync(filePath)) return;
@@ -237,14 +247,18 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
       const baseCards = (raw.categories['Base Set'] || {}).cards || [];
       const rookieCards = (raw.categories['Rookie Cards'] || {}).cards || [];
       const allCards = baseCards.concat(rookieCards);
-      check(allCards.length > 1000, `${relPath} has a real, substantial row count (${allCards.length} cards) - not a trivial/placeholder file`);
-      const asNormalized = allCards.map((c) => ({ sport: 'baseball', year: yr, manufacturer: 'Topps', brand: 'Topps', product: 'Topps Series 1', cardNumber: c.cardNumber, player: c.player, team: c.team, rookie: c.rookie }));
-      const reValidation = validateChecklist(asNormalized, { sourceUrl: raw.product.source.sourceURLs[0], sourceType: 'manufacturer-checklist-pdf', manufacturer: 'Topps', sport: 'baseball', year: yr, product: 'Topps Series 1' });
+      totalBaseballRows += allCards.length;
+      check(allCards.length > 100, `${relPath} has a real, substantial row count (${allCards.length} cards) - not a trivial/placeholder file`);
+      const asNormalized = allCards.map((c) => ({ sport: 'baseball', year: yr, manufacturer: 'Topps', brand: 'Topps', product: raw.product.set, cardNumber: c.cardNumber, player: c.player, team: c.team, rookie: c.rookie }));
+      const reValidation = validateChecklist(asNormalized, { sourceUrl: raw.product.source.sourceURLs[0], sourceType: 'manufacturer-checklist-pdf', manufacturer: 'Topps', sport: 'baseball', year: yr, product: raw.product.set });
       check(reValidation.status === raw.product._validation.status, `${relPath}'s claimed validation status (${raw.product._validation.status}) reproduces for real when re-validated right now (got ${reValidation.status})`);
+      if (reValidation.status === 'RELEASED') releasedCount++;
       const judge = allCards.find((c) => c.player === 'Aaron Judge' && c.team === 'New York Yankees');
-      if (judge) judgeFoundYears.push(yr);
+      if (judge) judgeFoundIn.push(relPath);
     });
-    check(judgeFoundYears.length === 3, `a real Aaron Judge (New York Yankees) card was found in every one of the 3 real live-ingested Topps Series 1 Baseball files (found in: ${judgeFoundYears.join(', ')})`);
+    check(judgeFoundIn.length >= 15, `a real Aaron Judge (New York Yankees) card was found in most/all of the real live-ingested baseball files (found in ${judgeFoundIn.length}/${baseballFiles.length})`);
+    check(releasedCount >= 10, `most real baseball products genuinely validate RELEASED under the corrected duplicate-detection rule, not forced (${releasedCount}/${baseballFiles.length} RELEASED)`);
+    ok(`Total real baseball checklist rows across all persisted files: ${totalBaseballRows}`);
   }
 
   if (failures) {

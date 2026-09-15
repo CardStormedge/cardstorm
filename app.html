@@ -79,6 +79,9 @@ const NFLLOGOS={"ARI": "ari", "ATL": "atl", "BAL": "bal", "BUF": "buf", "CAR": "
 const REALPROD={
   "baseball|2025": [
     {name:"Topps Series 1",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
+    {name:"Topps Series 2",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
+    {name:"Topps Update Series",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
+    {name:"Bowman",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
     {name:"Topps Chrome",img:"assets/realprodbaseball2025toppschrome.webp",note:"Official 2025 Topps Chrome Baseball hobby-box photography"},
     {name:"Bowman Chrome",img:"assets/realprodbaseball2025bowmanchrome.webp",note:"Official 2025 Bowman Chrome Baseball hobby-box photography"},
     {name:"Finest",img:"assets/realprodbaseball2025finest.webp",note:"Official 2025 Topps Finest Baseball hobby-box photography"},
@@ -95,6 +98,9 @@ const REALPROD={
   ],
   "baseball|2024": [
     {name:"Topps Series 1",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
+    {name:"Topps Series 2",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
+    {name:"Topps Update Series",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
+    {name:"Bowman",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
     {name:"Prizm",img:"https://tradingcardmarket.com/cdn/shop/files/2024_Panini_Prizm_Baseball_Hobby_Box.jpg?v=1734707923&width=1946",note:"2024 Panini Prizm Baseball hobby-box photography"},
     {name:"Topps Chrome",img:null,note:"Verified product photo pending"},
     {name:"Bowman Chrome",img:null,note:"Verified product photo pending"},
@@ -154,7 +160,7 @@ function hitList(player){if(sport==='football')return ['Donruss Rated Rookie','O
 function productSlate(){
   const key=sport+'|'+year;
   if(REALPROD[key]) return REALPROD[key];
-  const names=sport==='baseball'?['Topps Series 1','Topps Chrome','Bowman Chrome','Finest','Prizm','Select','Donruss']:sport==='football'?['Prizm','Select','Donruss','Donruss Optic','Mosaic']:['Prizm','Select','Donruss','Donruss Optic','Mosaic'];
+  const names=sport==='baseball'?['Topps Series 1','Topps Series 2','Topps Update Series','Topps Chrome','Bowman','Bowman Chrome','Finest','Prizm','Select','Donruss']:sport==='football'?['Prizm','Select','Donruss','Donruss Optic','Mosaic']:['Prizm','Select','Donruss','Donruss Optic','Mosaic'];
   return names.map(name=>({name,img:null,note:year+' '+sport+' product photo pending verification'}));
 }
 function productVisual(p){
@@ -596,16 +602,44 @@ const CHECKLIST_MANIFEST={
  // from a LEGITIMATE shared card number (different players under one
  // number, e.g. a real "League Leaders" combo card, which is not an
  // anomaly and never blocks RELEASED by itself).
- 'baseball|2024':[
+  'baseball|2024':[
   {key:'topps-series-1',name:'Topps Series 1',file:'data/checklists/baseball/2024/topps-series-1.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-series-2',name:'Topps Series 2',file:'data/checklists/baseball/2024/topps-series-2.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-update-series',name:'Topps Update Series',file:'data/checklists/baseball/2024/topps-update-series.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-chrome',name:'Topps Chrome',file:'data/checklists/baseball/2024/topps-chrome.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'bowman',name:'Bowman',file:'data/checklists/baseball/2024/bowman.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'bowman-chrome',name:'Bowman Chrome',file:'data/checklists/baseball/2024/bowman-chrome.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}}
  ],
  'baseball|2025':[
   {key:'topps-series-1',name:'Topps Series 1',file:'data/checklists/baseball/2025/topps-series-1.json',teamMapped:true,status:'PARTIAL',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-series-2',name:'Topps Series 2',file:'data/checklists/baseball/2025/topps-series-2.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-update-series',name:'Topps Update Series',file:'data/checklists/baseball/2025/topps-update-series.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'bowman',name:'Bowman',file:'data/checklists/baseball/2025/bowman.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'bowman-chrome',name:'Bowman Chrome',file:'data/checklists/baseball/2025/bowman-chrome.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}}
  ],
  'baseball|2026':[
   {key:'topps-series-1',name:'Topps Series 1',file:'data/checklists/baseball/2026/topps-series-1.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-series-2',name:'Topps Series 2',file:'data/checklists/baseball/2026/topps-series-2.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-update-series',name:'Topps Update Series',file:'data/checklists/baseball/2026/topps-update-series.json',teamMapped:true,status:'PARTIAL',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-chrome',name:'Topps Chrome',file:'data/checklists/baseball/2026/topps-chrome.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'bowman',name:'Bowman',file:'data/checklists/baseball/2026/bowman.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'bowman-chrome',name:'Bowman Chrome',file:'data/checklists/baseball/2026/bowman-chrome.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}}
  ]
 };
