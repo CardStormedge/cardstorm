@@ -286,6 +286,40 @@ const TOPPS_PDF_FOOTBALL_FIXTURE = fs.readFileSync(path.join(__dirname, 'checkli
     check(releasedCount >= 10, `most real baseball products genuinely validate RELEASED under the corrected duplicate-detection rule, not forced (${releasedCount}/${baseballFiles.length} RELEASED)`);
     ok(`Total real baseball checklist rows across all persisted files: ${totalBaseballRows}`);
 
+    // ---- 12b. Real live-ingested basketball/football data - same false- ----
+    //           positive-prevention discipline: only persisted after the
+    //           real parser fix was proven against real fetched PDF text
+    //           (see fixtures/topps-pdf-fixture-basketball.txt and
+    //           topps-pdf-fixture-football.txt), never forced.
+    const bbFile = 'data/checklists/basketball/2025/topps-basketball.json';
+    const bbPath = path.join(ROOT, bbFile);
+    check(fs.existsSync(bbPath), `real live-ingested basketball checklist file exists: ${bbFile}`);
+    if (fs.existsSync(bbPath)) {
+      const raw = JSON.parse(fs.readFileSync(bbPath, 'utf8'));
+      const allCards = (raw.categories['Base Set'].cards || []).concat(raw.categories['Rookie Cards'].cards || []);
+      check(allCards.length > 1500, `${bbFile} has a real, substantial row count (${allCards.length} cards) - not a trivial/placeholder file`);
+      const distinctTeams = new Set(allCards.map((c) => c.team)).size;
+      check(distinctTeams >= 25, `${bbFile} covers real cards across most/all real NBA teams (${distinctTeams} distinct teams) - not a narrow false-positive match`);
+      const asNormalized = allCards.map((c) => ({ sport: 'basketball', year: '2025', manufacturer: 'Topps', brand: 'Topps', product: raw.product.set, cardNumber: c.cardNumber, player: c.player, team: c.team, rookie: c.rookie }));
+      const reValidation = validateChecklist(asNormalized, { sourceUrl: raw.product.source.sourceURLs[0], sourceType: 'manufacturer-checklist-pdf', manufacturer: 'Topps', sport: 'basketball', year: '2025', product: raw.product.set });
+      check(reValidation.status === raw.product._validation.status, `${bbFile}'s claimed validation status (${raw.product._validation.status}) reproduces for real when re-validated right now (got ${reValidation.status})`);
+    }
+
+    const fbFile = 'data/checklists/football/2024/topps-chrome.json';
+    const fbPath = path.join(ROOT, fbFile);
+    check(fs.existsSync(fbPath), `real live-ingested football checklist file exists: ${fbFile}`);
+    if (fs.existsSync(fbPath)) {
+      const raw = JSON.parse(fs.readFileSync(fbPath, 'utf8'));
+      const allCards = (raw.categories['Base Set'].cards || []).concat(raw.categories['Rookie Cards'].cards || []);
+      check(allCards.length > 700, `${fbFile} has a real, substantial row count (${allCards.length} cards) - not a trivial/placeholder file`);
+      const distinctTeams = new Set(allCards.map((c) => c.team)).size;
+      check(distinctTeams >= 25, `${fbFile} covers real cards across most/all real NFL cities (${distinctTeams} distinct cities) - not a narrow false-positive match`);
+      check(raw.product._validation.status === 'RELEASED', `${fbFile} genuinely validates RELEASED (got ${raw.product._validation.status}) - not forced`);
+      const asNormalized = allCards.map((c) => ({ sport: 'football', year: '2024', manufacturer: 'Topps', brand: 'Topps', product: raw.product.set, cardNumber: c.cardNumber, player: c.player, team: c.team, rookie: c.rookie }));
+      const reValidation = validateChecklist(asNormalized, { sourceUrl: raw.product.source.sourceURLs[0], sourceType: 'manufacturer-checklist-pdf', manufacturer: 'Topps', sport: 'football', year: '2024', product: raw.product.set });
+      check(reValidation.status === raw.product._validation.status, `${fbFile}'s claimed validation status reproduces for real when re-validated right now (got ${reValidation.status})`);
+    }
+
     // ---- 13. Player page UX: real checklist cards lead, accent-safe match --
     check(/function playerNamesMatch\(/.test(appHtml), 'app.html defines playerNamesMatch(), an accent/case-insensitive player-name comparator');
     check(/const fold=\(s\)=>String\(s\)\.normalize\('NFD'\)/.test(appHtml), 'playerNamesMatch folds accents (e.g. roster "Ronald Acuna Jr." matches a real checklist row spelled "Ronald Acuña Jr.") without fuzzy/partial matching');

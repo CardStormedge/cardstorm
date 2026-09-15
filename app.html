@@ -160,7 +160,7 @@ function hitList(player){if(sport==='football')return ['Donruss Rated Rookie','O
 function productSlate(){
   const key=sport+'|'+year;
   if(REALPROD[key]) return REALPROD[key];
-  const names=sport==='baseball'?['Topps Series 1','Topps Series 2','Topps Update Series','Topps Chrome','Bowman','Bowman Chrome','Finest','Prizm','Select','Donruss']:sport==='football'?['Prizm','Select','Donruss','Donruss Optic','Mosaic']:['Prizm','Select','Donruss','Donruss Optic','Mosaic'];
+  const names=sport==='baseball'?['Topps Series 1','Topps Series 2','Topps Update Series','Topps Chrome','Bowman','Bowman Chrome','Finest','Prizm','Select','Donruss']:sport==='football'?['Topps Chrome','Prizm','Select','Donruss','Donruss Optic','Mosaic']:sport==='basketball'?['Topps Basketball','Prizm','Select','Donruss','Donruss Optic','Mosaic']:['Prizm','Select','Donruss','Donruss Optic','Mosaic'];
   return names.map(name=>({name,img:null,note:year+' '+sport+' product photo pending verification'}));
 }
 function productVisual(p){
@@ -572,7 +572,16 @@ const CHECKLIST_MANIFEST={
    // cards (Cam Ward, Jaxson Dart, Shedeur Sanders, etc.) riding on the 2024
    // product, and would otherwise falsely verify a 2025 rookie as a 2024 Team
    // Hunt chase for any of those players who also appear on a current roster.
-   chaseMap:{'Concourse':'rookie','Premier':'rookie','Club':'rookie','Suite':'rookie','Field':'rookie'}}
+   chaseMap:{'Concourse':'rookie','Premier':'rookie','Club':'rookie','Suite':'rookie','Field':'rookie'}},
+  // Real, live-ingested from the official 2024 Topps Chrome Football checklist
+  // PDF (see the "FINAL CHECKLIST-DATA HARDENING PASS" PR comment). teamMapped
+  // is deliberately false: the real source PDF's "team" field is only the CITY
+  // (e.g. "Dallas"), not the full "Dallas Cowboys" name the roster/Team Hunt
+  // pages use, so a per-team filter would never match - shown honestly as
+  // "not yet mapped by team" (same pattern as Select above) rather than
+  // silently rendering as 0 cards for every team.
+  {key:'topps-chrome',name:'Topps Chrome',file:'data/checklists/football/2024/topps-chrome.json',teamMapped:false,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}}
  ],
  // Partial launch (2026-09-11): only Base Rated Rookie is mapped, and only
  // ROOKIE evidence. scanProductForPlayer's _passesStrictProductionGate===false
@@ -640,6 +649,14 @@ const CHECKLIST_MANIFEST={
   {key:'bowman',name:'Bowman',file:'data/checklists/baseball/2026/bowman.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}},
   {key:'bowman-chrome',name:'Bowman Chrome',file:'data/checklists/baseball/2026/bowman-chrome.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}}
+ ],
+ // Real, live-ingested from the official 2025-26 Topps Basketball checklist
+ // PDF. Unlike football, the real basketball PDF text prints the full
+ // "City Team" name per row (no trademark symbol either, but no mascot
+ // ambiguity), so teamMapped:true is accurate here.
+ 'basketball|2025':[
+  {key:'topps-basketball',name:'Topps Basketball',file:'data/checklists/basketball/2025/topps-basketball.json',teamMapped:true,status:'PARTIAL',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}}
  ]
 };
