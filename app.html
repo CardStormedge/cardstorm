@@ -598,7 +598,25 @@ const CHECKLIST_MANIFEST={
  // any 2025 Donruss player.
  'football|2025':[
   {key:'donruss',name:'Donruss',file:'data/football/2025/donruss.json',teamMapped:true,status:'PARTIAL',normalizer:'donruss',
-   chaseMap:{'Rated Rookies':'rookie'}}
+   chaseMap:{'Rated Rookies':'rookie'}},
+  // Real, live-ingested from the official 2025 Topps Cosmic Chrome Football
+  // checklist PDF (hardening round 5). Same city-only source structure and
+  // deterministic city->team mapping as 2024 Topps Chrome Football above -
+  // teamMappingStatus PARTIAL (Los Angeles/New York honestly left
+  // unresolved), checklistStatus RELEASED on its own clean card data.
+  {key:'topps-cosmic-chrome',name:'Topps Cosmic Chrome',file:'data/checklists/football/2025/topps-cosmic-chrome.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}}
+ ],
+ // Real, live-ingested from the official 2026 Topps Football checklist PDF
+ // (hardening round 5) - discovered via a real external index of the same
+ // cdn.shopify.com store path every other persisted product uses, since
+ // topps.com itself now returns HTTP 403 on every path (even "/") and can
+ // no longer be crawled directly. Same city-only structure as the other
+ // real football products; teamMappingStatus PARTIAL (Los Angeles/New York
+ // honestly left unresolved).
+ 'football|2026':[
+  {key:'topps-football',name:'Topps Football',file:'data/checklists/football/2026/topps-football.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}}
  ],
  // Real, live-ingested from official Topps checklist PDFs (see each file's
  // own product.source.sourceURLs) via scripts/checklists/ingest-topps-pdf.js
@@ -658,8 +676,22 @@ const CHECKLIST_MANIFEST={
  // PDF. Unlike football, the real basketball PDF text prints the full
  // "City Team" name per row (no trademark symbol either, but no mascot
  // ambiguity), so teamMapped:true is accurate here.
+ // Real, live-ingested basketball products beyond the original 2025-26
+ // Topps Basketball (hardening round 5) - each independently structure-
+ // checked against its own real fetched PDF text before persisting, not
+ // assumed to match the already-proven product. All confirmed to print the
+ // full "City Team" name per row (no trademark symbol), same as the
+ // original, so teamMapped:true is accurate for each.
  'basketball|2025':[
   {key:'topps-basketball',name:'Topps Basketball',file:'data/checklists/basketball/2025/topps-basketball.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-holiday-basketball',name:'Topps Holiday Basketball',file:'data/checklists/basketball/2025/topps-holiday-basketball.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-midnight-basketball',name:'Topps Midnight Basketball',file:'data/checklists/basketball/2025/topps-midnight-basketball.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-chrome-basketball',name:'Topps Chrome Basketball',file:'data/checklists/basketball/2025/topps-chrome-basketball.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
+   chaseMap:{'Rookie Cards':'rookie'}},
+  {key:'topps-finest-basketball',name:'Topps Finest Basketball',file:'data/checklists/basketball/2025/topps-finest-basketball.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}}
  ]
 };

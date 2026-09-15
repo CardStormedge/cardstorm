@@ -321,6 +321,45 @@ const TOPPS_PDF_FOOTBALL_FIXTURE = fs.readFileSync(path.join(__dirname, 'checkli
       check(reValidation.status === raw.product._validation.status, `${fbFile}'s claimed validation status reproduces for real when re-validated right now (got ${reValidation.status})`);
     }
 
+    // ---- 12c. Round-5 expansion: additional real basketball/football -------
+    //           products (Topps Holiday/Midnight/Chrome/Finest Basketball,
+    //           2026 Topps Football, 2025 Topps Cosmic Chrome Football),
+    //           each independently structure-checked against its own real
+    //           fetched PDF text before being persisted (never assumed to
+    //           match another product's structure) - see the "FINAL
+    //           PRE-MERGE HARDENING PASS" PR #30 comments for the real
+    //           probe output, including the 2 real candidates found but
+    //           deliberately NOT persisted (2024-25 Topps Inception
+    //           Basketball - 0 rows, real format mismatch; 2026 Bowman
+    //           Football - real college-team-name data shape, not the
+    //           proven city-only NFL structure).
+    const additionalBbfb = [
+      { file: 'data/checklists/basketball/2025/topps-holiday-basketball.json', sport: 'basketball', year: '2025', minRows: 400 },
+      { file: 'data/checklists/basketball/2025/topps-midnight-basketball.json', sport: 'basketball', year: '2025', minRows: 400 },
+      { file: 'data/checklists/basketball/2025/topps-chrome-basketball.json', sport: 'basketball', year: '2025', minRows: 900 },
+      { file: 'data/checklists/basketball/2025/topps-finest-basketball.json', sport: 'basketball', year: '2025', minRows: 500 },
+      { file: 'data/checklists/football/2026/topps-football.json', sport: 'football', year: '2026', minRows: 1500 },
+      { file: 'data/checklists/football/2025/topps-cosmic-chrome.json', sport: 'football', year: '2025', minRows: 500 },
+    ];
+    let bbfbTotalAdditionalRows = 0;
+    additionalBbfb.forEach(({ file, sport, year, minRows }) => {
+      const fPath = path.join(ROOT, file);
+      check(fs.existsSync(fPath), `round-5 real live-ingested checklist file exists: ${file}`);
+      if (!fs.existsSync(fPath)) return;
+      const raw = JSON.parse(fs.readFileSync(fPath, 'utf8'));
+      const allCards = (raw.categories['Base Set'].cards || []).concat(raw.categories['Rookie Cards'].cards || []);
+      bbfbTotalAdditionalRows += allCards.length;
+      check(allCards.length >= minRows, `${file} has a real, substantial row count (${allCards.length} cards) - not a trivial/placeholder file`);
+      check(raw.product.sourceURLs || raw.product.source.sourceURLs[0], `${file} carries a real source URL (cdn.shopify.com, Topps's own checklist-PDF CDN) - not fabricated`);
+      const distinctTeams = new Set(allCards.map((c) => c.team)).size;
+      check(distinctTeams >= 20, `${file} covers real cards across most/all real ${sport === 'basketball' ? 'NBA' : 'NFL'} teams/cities (${distinctTeams} distinct) - not a narrow false-positive match`);
+      const asNormalized = allCards.map((c) => ({ sport, year, manufacturer: 'Topps', brand: 'Topps', product: raw.product.set, cardNumber: c.cardNumber, player: c.player, team: c.team, rookie: c.rookie }));
+      const reValidation = validateChecklist(asNormalized, { sourceUrl: raw.product.source.sourceURLs[0], sourceType: 'manufacturer-checklist-pdf', manufacturer: 'Topps', sport, year, product: raw.product.set });
+      check(reValidation.status === raw.product.checklistStatus, `${file}'s claimed checklistStatus (${raw.product.checklistStatus}) reproduces for real when re-validated right now (got ${reValidation.status})`);
+      check(!!raw.product.teamMappingStatus, `${file} carries its own teamMappingStatus field, tracked separately from checklistStatus`);
+    });
+    check(bbfbTotalAdditionalRows > 6000, `round-5 additional basketball/football rows total a real, substantial amount (${bbfbTotalAdditionalRows})`);
+
     // ---- 13. Player page UX: real checklist cards lead, accent-safe match --
     check(/function playerNamesMatch\(/.test(appHtml), 'app.html defines playerNamesMatch(), an accent/case-insensitive player-name comparator');
     check(/const fold=\(s\)=>String\(s\)\.normalize\('NFD'\)/.test(appHtml), 'playerNamesMatch folds accents (e.g. roster "Ronald Acuna Jr." matches a real checklist row spelled "Ronald Acuña Jr.") without fuzzy/partial matching');
