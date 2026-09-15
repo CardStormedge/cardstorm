@@ -1,0 +1,81 @@
+name: TEMPORARY - PR30 live Topps checklist ingestion test
+
+# TEMPORARY DIAGNOSTIC WORKFLOW - not part of the permanent CI/CD setup, and
+# NOT intended to be merged to main. Exists only so a GitHub-hosted runner
+# (which has real outbound network access) can prove or disprove
+# scripts/checklists/ingest-topps.js against real topps.com pages, because
+# this session's own sandbox cannot reach topps.com at all (confirmed via
+# both curl and WebFetch: "CONNECT tunnel failed, response 403" /
+# EGRESS_BLOCKED - see the PR #30 description and README for the exact
+# evidence from the prior round).
+#
+# This workflow:
+#   1. Discovers real, current official Topps checklist URLs by fetching
+#      topps.com's own checklist/navigation pages and reading their actual
+#      links (scripts/checklists/live-test-topps.js) - it never guesses a
+#      URL pattern from outside the sandbox.
+#   2. Fetches each real source, detects its real format, and only for an
+#      HTML table runs the real production parser
+#      (parseToppsChecklistHtml -> normalizeChecklist -> validateChecklist).
+#   3. Uploads the raw fetched bodies + normalized JSON as a workflow
+#      artifact for inspection. Nothing fetched here is committed to the
+#      repo - see the PR's explicit instruction not to commit manufacturer
+#      files.
+#
+# workflow_dispatch is included for completeness/future manual re-runs, but
+# per GitHub platform behavior a workflow_dispatch trigger cannot actually
+# be invoked via the Actions API until the workflow file exists on the
+# repo's default branch (confirmed in earlier PR rounds via a 404 from the
+# dispatch API) - so this also triggers on push, scoped ONLY to this exact
+# PR branch name, matching the same pattern used for prior temporary
+# live-validation workflows in this repo's history (see
+# card-image-poc-live-test.yml from PR #27, and the PR #28 preview
+# smoke-test workflow).
+#
+# Per the user's explicit instruction this round, this file is left in
+# place on the branch (not deleted) for reviewer visibility - it remains
+# unmerged as long as PR #30 itself is unmerged.
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - "claude/checklist-recovery-ingestion"
+    paths:
+      - ".github/workflows/pr30-topps-live-ingestion-test.yml"
+      - "scripts/checklists/live-test-topps.js"
+      - "scripts/checklists/fetch-source.js"
+      - "scripts/checklists/ingest-topps.js"
+      - "scripts/checklists/normalize-checklist.js"
+      - "scripts/checklists/validate-checklist.js"
+      - "scripts/checklists/schema.js"
+
+permissions:
+  contents: read
+
+jobs:
+  live-topps-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Confirm real network reachability to topps.com (no mocking)
+        run: |
+          echo "HTTP status for https://www.topps.com/checklists:"
+          curl -s -o /dev/null -w "%{http_code}\n" https://www.topps.com/checklists || true
+
+      - name: Run live Topps discovery + ingestion test
+        run: node scripts/checklists/live-test-topps.js "$GITHUB_WORKSPACE/live-test-output"
+
+      - name: Upload live test output (raw fetches + normalized JSON, NOT committed to the repo)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr30-live-topps-test-output
+          path: live-test-output/
+          retention-days: 14

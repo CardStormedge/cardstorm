@@ -69,4 +69,48 @@ function fetchSource(url, { timeoutMs = 15000, userAgent = 'CardStormChecklistBo
   });
 }
 
-module.exports = { fetchSource, NetworkBlockedError };
+/**
+ * Same real-fetch contract as fetchSource(), but resolves with
+ * { statusCode, headers, body } instead of just the body text. Used by
+ * diagnostic/discovery tooling (e.g. the live Topps ingestion test) that
+ * needs the real Content-Type/Content-Disposition headers to tell an HTML
+ * page apart from a served CSV/XLSX/PDF download - fetchSource() itself is
+ * left untouched so every existing caller/test keeps its exact contract.
+ */
+function fetchSourceMeta(url, { timeoutMs = 15000, userAgent = 'CardStormChecklistBot/1.0' } = {}) {
+  return new Promise((resolve, reject) => {
+    let parsed;
+    try {
+      parsed = new URL(url);
+    } catch (e) {
+      reject(new NetworkBlockedError(url, `invalid URL: ${e.message}`));
+      return;
+    }
+
+    const transport = parsed.protocol === 'http:' ? http : https;
+    const req = transport.get(
+      parsed,
+      { headers: { 'User-Agent': userAgent, Accept: '*/*' }, timeout: timeoutMs },
+      (res) => {
+        const chunks = [];
+        res.on('data', (chunk) => chunks.push(chunk));
+        res.on('end', () => {
+          resolve({
+            statusCode: res.statusCode || null,
+            headers: res.headers || {},
+            body: Buffer.concat(chunks),
+          });
+        });
+      }
+    );
+
+    req.on('timeout', () => {
+      req.destroy(new NetworkBlockedError(url, `timed out after ${timeoutMs}ms`));
+    });
+    req.on('error', (err) => {
+      reject(new NetworkBlockedError(url, err.message));
+    });
+  });
+}
+
+module.exports = { fetchSource, fetchSourceMeta, NetworkBlockedError };
