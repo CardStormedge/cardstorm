@@ -1,0 +1,36 @@
+<!--
+  TEST FIXTURE - NOT REAL PRODUCT DATA.
+
+  This file exists only to exercise scripts/checklists/ingest-panini.js's
+  HTML parser in scripts/test-checklist-ingestion.js. It mimics the
+  *structure* of a manufacturer checklist page built from repeated
+  `checklist-row` divs (a different markup shape than the Topps fixture, on
+  purpose, to prove the pipeline handles more than one real-world source
+  shape). Every player/card/team name below is a placeholder and must never
+  be imported into data/, referenced from CHECKLIST_MANIFEST, or presented
+  anywhere in the app as real card data.
+-->
+<html>
+<body>
+<div class="checklist-container">
+  <div class="checklist-row">
+    <span class="card-num">301</span>
+    <span class="card-player">Fixture Rookie One</span>
+    <span class="card-team">Placeholder Town Testers</span>
+    <span class="card-flag">RR</span>
+  </div>
+  <div class="checklist-row">
+    <span class="card-num">302</span>
+    <span class="card-player">Fixture Rookie Two</span>
+    <span class="card-team">Sample City Somethings</span>
+    <span class="card-flag">RR</span>
+  </div>
+  <div class="checklist-row">
+    <span class="card-num">303</span>
+    <span class="card-player">Fixture Rookie Three</span>
+    <span class="card-team"></span>
+    <span class="card-flag">RR</span>
+  </div>
+</div>
+</body>
+</html>
