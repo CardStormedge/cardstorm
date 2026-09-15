@@ -48,6 +48,7 @@ on:
       - "scripts/checklists/live-pdf-persist-bbfb.js"
       - "scripts/checklists/discover-bbfb-products.js"
       - "scripts/checklists/probe-additional-bbfb.js"
+      - "scripts/checklists/dump-selected-bbfb.js"
       - "scripts/checklists/live-pdf-ingestion.js"
       - "scripts/checklists/ingest-basketball-pdf.js"
       - "scripts/checklists/ingest-football-pdf.js"
@@ -135,8 +136,12 @@ jobs:
         run: node scripts/checklists/discover-bbfb-products.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Probe additional real basketball/football checklist PDFs found via real external index of the same cdn.shopify.com store (topps.com itself now 403s every path, even "/", confirmed above - see script header)
-        if: hashFiles('scripts/checklists/probe-additional-bbfb.js') != ''
+        if: false
         run: node scripts/checklists/probe-additional-bbfb.js "$GITHUB_WORKSPACE/live-test-output"
+
+      - name: Dump full normalized rows for the specific candidates that already probed clean (phase B, see script header for what was excluded and why)
+        if: hashFiles('scripts/checklists/dump-selected-bbfb.js') != ''
+        run: node scripts/checklists/dump-selected-bbfb.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Upload live test output (raw fetches + normalized JSON, NOT committed to the repo)
         if: always()
