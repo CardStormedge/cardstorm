@@ -734,7 +734,54 @@
     "summary": null,
     "hobbyRank": 6,
     "rankReason": "Legacy vintage-era RB with enduring rookie-card collector interest.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-walter-payton-1976-topps-148-psa9",
+      "year": "1976",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Walter Payton Rookie Card",
+      "cardNumber": "148",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 8500.0,
+       "lastSaleDate": "2026-07-17",
+       "threeSaleAverage": 7601.14,
+       "highSale": 8500.0,
+       "lowSale": 7050.28,
+       "compCount": 17,
+       "compWindowDays": null,
+       "insufficientCompsNote": null
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 749,
+       "source": "Card Ladder (PSA 9 population)",
+       "asOf": "2026-07"
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/1976-topps-walter-payton-base-148-psa-9"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -948,7 +995,146 @@
     "summary": null,
     "hobbyRank": 10,
     "rankReason": "Long, durable career spanning multiple eras of card production keeps hobby interest broad.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-brett-favre-1991-wild-card-1000-stripe-119-psa10",
+      "year": "1991",
+      "manufacturer": "Wild Card",
+      "set": "Wild Card College Draft Picks 1000 Stripe",
+      "cardName": "Brett Favre Rookie Card",
+      "cardNumber": "119",
+      "rookie": true,
+      "parallel": "1000 Stripe",
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 18600.0,
+       "lastSaleDate": "2026-02-08",
+       "threeSaleAverage": null,
+       "highSale": 18600.0,
+       "lowSale": 15860.0,
+       "compCount": 2,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Two dated sales of this specific parallel/grade: $18,600 (Fanatics, Feb. 8, 2026, a new record) and $15,860 (Aug. 2025). Only 2 comps found this pass, so no three-sale average is computed."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Sports Illustrated (SI.com) - '1991 Wild Card Brett Favre \"1000\" Stripe PSA 10 Rookie Card Sets New Record'",
+        "url": "https://www.si.com/collectibles/1991-wild-card-brett-favre-1000-stripe-psa-10-rc-sets-new-record"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-brett-favre-1991-stadium-club-94-psa9",
+      "year": "1991",
+      "manufacturer": "Topps",
+      "set": "Stadium Club",
+      "cardName": "Brett Favre Rookie Card (misspelled \"Farve\")",
+      "cardNumber": "94",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 3150.0,
+       "lastSaleDate": "2021-05-25",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed dated eBay sale (per PSA Auction Prices Realized). This is Favre's true and most widely recognized rookie card, notable for the printing error misspelling his name \"Farve.\""
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "PSA Auction Prices Realized",
+        "url": "https://www.psacard.com/auctionprices/football-cards/1991-stadium-club/brett-farve/values/292990"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "cardId": "football-brett-favre-1991-score-611-psa10",
+      "year": "1991",
+      "manufacturer": "Score",
+      "set": "Score",
+      "cardName": "Brett Favre Rookie Card",
+      "cardNumber": "611",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 93.0,
+       "lastSaleDate": "2024-11-02",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed dated Card Ladder sale; low value reflects this being a high-print-run base issue rather than a premium parallel."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder / Fanatics Collect",
+        "url": "https://www.fanaticscollect.com/fixed/0398ffaa-8c46-11ef-9af4-0a58a9feac02"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -965,7 +1151,100 @@
     "summary": null,
     "hobbyRank": 11,
     "rankReason": "Foundational vintage-era QB whose earliest cards anchor pre-modern football sets.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-johnny-unitas-1957-topps-138-psa9",
+      "year": "1957",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Johnny Unitas Rookie Card",
+      "cardNumber": "138",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "HISTORIC_RECORD",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 167300,
+       "lastSaleDate": "2016-11",
+       "threeSaleAverage": null,
+       "highSale": 167300,
+       "lowSale": 151200,
+       "compCount": 2,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Peak graded tier - only 8 PSA 9s exist out of roughly 2,600 submissions, none higher. Two comparable PSA 9 sales found: $167,300 (Heritage Auctions, Nov. 2016, 3 bids) and $151,200 (Memory Lane Spring Classic Rarities Auction, May 2016, 103 bids) - different physical copies, same grade. A separately reported '$144,000 Heritage, August' figure was excluded because no source confirmed which year that sale occurred in."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 8,
+       "source": "PSA population (Sports Collectors Daily)",
+       "asOf": "2021"
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Sports Collectors Daily - 'High-Grade 1957 Topps Johnny Unitas Rookie Cards Tough To Find'",
+        "url": "https://www.sportscollectorsdaily.com/johnny-unitas-rookie-card-1957-topps-football/"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-johnny-unitas-1957-topps-138-psa8",
+      "year": "1957",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Johnny Unitas Rookie Card",
+      "cardNumber": "138",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 8 (NM-MT)",
+      "gradeFilterGroup": "PSA8",
+      "marketStatus": "SPARSE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 7600,
+       "lastSaleDate": "2025-05-19",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed dated eBay sale (per PSA Auction Prices Realized). Represents a more liquid, more attainable grade tier than the extremely scarce PSA 9."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "PSA Auction Prices Realized",
+        "url": "https://www.psacard.com/auctionprices/football-cards/1957-topps/john-unitas/265767"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -981,7 +1260,100 @@
     "summary": null,
     "hobbyRank": 12,
     "rankReason": "Frequently cited among the greatest RBs ever; earliest cards are prized vintage pieces.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-jim-brown-1958-topps-62-psa9",
+      "year": "1958",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Jim Brown Rookie Card",
+      "cardNumber": "62",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "HISTORIC_RECORD",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 358500,
+       "lastSaleDate": "2016-11-19",
+       "threeSaleAverage": null,
+       "highSale": 358500,
+       "lowSale": 336000,
+       "compCount": 2,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Peak graded tier - PSA has graded only 5 PSA 9 copies, none higher. Two dated Heritage Auctions sales of different physical copies: $358,500 (Nov. 19, 2016, then a record) and $336,000 (Nov. 2017)."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": 5,
+       "source": "PSA population (Sports Collectors Daily)",
+       "asOf": "2017-03"
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Sports Collectors Daily - 'Jim Brown Rookie Cards Soaring in Red Hot Vintage Market'",
+        "url": "https://www.sportscollectorsdaily.com/jim-brown-rookie-cards-ebay/"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-jim-brown-1958-topps-62-bccg8",
+      "year": "1958",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Jim Brown Rookie Card",
+      "cardNumber": "62",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "BCCG 8",
+      "gradeFilterGroup": "BCCG8",
+      "marketStatus": "SPARSE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 49509.4,
+       "lastSaleDate": "2026-06",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed eBay sale, month precision only (exact day not specified by source). BCCG (Beckett Collectors Club Grading) is a distinct authentication scale from PSA and not compared to the PSA 9 record above."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "GradedCardInvestor - Jim Brown Football Card List",
+        "url": "https://gradedcardinvestor.com/jim-brown-football-card/"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
@@ -1430,7 +1802,146 @@
     "summary": null,
     "hobbyRank": 16,
     "rankReason": "Frequently cited as the most impactful defensive player of his era, with strong vintage demand.",
-    "cards": [],
+    "cards": [
+     {
+      "rank": 1,
+      "cardId": "football-lawrence-taylor-1982-topps-434-psa9",
+      "year": "1982",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Lawrence Taylor Rookie Card (All-Pro)",
+      "cardNumber": "434",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 9 (Mint)",
+      "gradeFilterGroup": "PSA9",
+      "marketStatus": "RECENT",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 7801.2,
+       "lastSaleDate": "2026-05-07",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "The 1982 Topps All-Pro #434 is Taylor's only recognized rookie card. Single confirmed dated Card Ladder sale this pass."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "Card Ladder",
+        "url": "https://www.cardladder.com/ladder/card/1982-topps-lawrence-taylor-all-pro-434-psa-10"
+       }
+      ]
+     },
+     {
+      "rank": 2,
+      "cardId": "football-lawrence-taylor-1982-topps-434-psa10",
+      "year": "1982",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Lawrence Taylor Rookie Card (All-Pro)",
+      "cardNumber": "434",
+      "rookie": true,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "HISTORIC_RECORD",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 537.75,
+       "lastSaleDate": "2014-12",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Only 2.8% of submissions grade PSA 10. Only one specifically dated sale was confirmable this pass (Huggins & Scott, Dec. 2014); a frequently-cited '$16,500 highest recorded' figure and current $15,000-$17,500 range were excluded as undated / asking-price references rather than confirmed sales."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": "PSA population report (2.8% PSA 10 rate)",
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "SI.com - '1982 Topps Lawrence Taylor Rookie Card PSA 10 Extremely Rare'",
+        "url": "https://www.si.com/collectibles/inside-the-hobby/1982-topps-lawrence-taylor-rookie-card"
+       }
+      ]
+     },
+     {
+      "rank": 3,
+      "cardId": "football-lawrence-taylor-1986-topps-151-psa10",
+      "year": "1986",
+      "manufacturer": "Topps",
+      "set": "Topps",
+      "cardName": "Lawrence Taylor",
+      "cardNumber": "151",
+      "rookie": false,
+      "parallel": null,
+      "serialNumberedTo": null,
+      "autograph": false,
+      "grade": "PSA 10 (Gem Mint)",
+      "gradeFilterGroup": "PSA10",
+      "marketStatus": "STALE",
+      "image": {
+       "localAsset": null,
+       "externalVerifiedImage": null,
+       "imageSource": null,
+       "imageVerifiedDate": null
+      },
+      "comps": {
+       "lastSale": 1288.0,
+       "lastSaleDate": "2025-12-01",
+       "threeSaleAverage": null,
+       "highSale": null,
+       "lowSale": null,
+       "compCount": 1,
+       "compWindowDays": null,
+       "insufficientCompsNote": "Single confirmed dated eBay sale (per PSA Auction Prices Realized). Not Taylor's rookie card, but a recognized, actively-traded later-year issue."
+      },
+      "previousComp": null,
+      "trend": null,
+      "population": {
+       "count": null,
+       "source": null,
+       "asOf": null
+      },
+      "lastChecked": "2026-09-11",
+      "sources": [
+       {
+        "name": "PSA Auction Prices Realized",
+        "url": "https://www.psacard.com/auctionprices/football-cards/1986-topps/LAWRENCE%20TAYLOR/275691"
+       }
+      ]
+     }
+    ],
     "sources": []
    },
    {
