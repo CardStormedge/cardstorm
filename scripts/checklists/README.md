@@ -16,6 +16,34 @@ pipeline below is real, working code, validated against clearly-labeled
 test fixtures (`fixtures/*.html`, `scripts/test-checklist-ingestion.js`) —
 not against real manufacturer pages, because none were reachable.
 
+### Live-network follow-up (same session, GitHub Actions runner)
+
+A later round of this same session added a temporary GitHub Actions
+workflow (`.github/workflows/pr30-topps-live-ingestion-test.yml` +
+`scripts/checklists/live-test-topps.js`) to test from a GitHub-hosted
+`ubuntu-latest` runner, which has real, unfiltered outbound network access
+(not this sandbox's proxy). **Result: topps.com is unreachable from there
+too, for a different and more conclusive reason.** Both `curl` and a real
+Node HTTPS request got a flat `HTTP 403` from `www.topps.com` on `/`,
+`/checklists`, `/robots.txt`, and `/sitemap.xml`, using six different
+request shapes (default `curl` UA, a real Chrome desktop User-Agent +
+`Accept`/`Accept-Language`, and a plain Node request) — every single one
+403'd. The response headers show `server: cloudflare` and a `set-cookie:
+__cf_bm=...` (Cloudflare Bot Management's challenge cookie), and the fact
+that even `robots.txt`/`sitemap.xml` (normally always public, even to bots)
+were blocked confirms this is topps.com's own blanket Cloudflare Bot
+Management challenge, not a sandbox-specific egress restriction and not a
+narrowly-targeted checklist-page auth wall.
+
+This pipeline does not attempt to solve or bypass that challenge (e.g. via
+a headless browser executing Cloudflare's JS challenge) — doing so would
+mean actively circumventing an anti-bot protection, which this repo does
+not do. **Conclusion: `parseToppsChecklistHtml` remains unproven against
+real topps.com data, honestly, because topps.com has never once returned
+its actual page content to any fetch attempted from this pipeline (sandbox
+or GitHub Actions runner) across two full sessions.** See the PR #30 "LIVE
+TOPPS INGESTION TEST" comment for the full per-source breakdown.
+
 ## Layout
 
 - `registry.js` — single source of truth for `SPORTS`/`YEARS` (mirrors
