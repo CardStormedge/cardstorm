@@ -140,11 +140,13 @@ async function ingestOne(target) {
   const waveAClean = waveAResults.every((r) => r.summary.networkOk && r.summary.rowsParsed > 0 && r.summary.validationStatus !== 'NOT_READY');
   console.log(`\n[gate] Wave A clean (reachable, real rows parsed, not NOT_READY for all 3): ${waveAClean}`);
 
+  const restOutput = {};
   if (waveAClean) {
     console.log('\n========== WAVE B: rest of baseball (Series 2 / Update / Chrome / Bowman / Bowman Chrome, 2024-2026) ==========');
     for (const target of BASEBALL_REST) {
       const r = await ingestOne(target);
       allSummaries.push(r.summary);
+      restOutput[slug(target.label)] = r;
     }
 
     console.log('\n========== WAVE C: basketball ==========');
@@ -169,8 +171,8 @@ async function ingestOne(target) {
     console.log(`${s.validationStatus.padEnd(10)} | rows=${String(s.rowsParsed).padStart(4)} | ${s.label}`);
   }
 
-  console.log('\n\n===== FIRST-WAVE NORMALIZED ROWS (for repo write-up - Wave A only, minified JSON) =====');
-  for (const [key, r] of Object.entries(firstWaveOutput)) {
+  console.log('\n\n===== NORMALIZED ROWS FOR REPO WRITE-UP (all baseball products, minified JSON) =====');
+  for (const [key, r] of Object.entries({ ...firstWaveOutput, ...restOutput })) {
     if (r.summary.rowsParsed > 0) {
       console.log(`\n###NORMALIZED-JSON-START:${key}###`);
       console.log(JSON.stringify(r.rows));

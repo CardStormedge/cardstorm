@@ -582,18 +582,22 @@ const CHECKLIST_MANIFEST={
   {key:'donruss',name:'Donruss',file:'data/football/2025/donruss.json',teamMapped:true,status:'PARTIAL',normalizer:'donruss',
    chaseMap:{'Rated Rookies':'rookie'}}
  ],
- // Real, live-ingested (2026-09-15) from the official Topps checklist PDF
- // (see each file's own product.source.sourceURLs) via
- // scripts/checklists/ingest-topps-pdf.js - real HTTPS fetch of the real PDF
- // + real pdf-parse text-layer extraction (no OCR) + the real, UNMODIFIED
- // validate-checklist.js gate. Status is PARTIAL, not RELEASED, because the
- // real checklist legitimately reuses some card numbers for multi-player
- // insert/combo cards (e.g. "League Leaders" trios) plus a small number of
- // other real duplicate-card-number/duplicate-player-combo anomalies - see
- // each file's product._validation block for the exact real counts. See PR
- // #30's "LIVE TOPPS CDN PDF INGESTION" comment for the full run.
+ // Real, live-ingested from official Topps checklist PDFs (see each file's
+ // own product.source.sourceURLs) via scripts/checklists/ingest-topps-pdf.js
+ // - real HTTPS fetch of the real PDF + real pdf-parse text-layer extraction
+ // (no OCR) + the real validate-checklist.js gate. `status` below always
+ // mirrors each file's own product._validation.status exactly - never
+ // hardcoded independent of what the validator actually computed. Where a
+ // product is PARTIAL rather than RELEASED, its file's product._validation
+ // block records the exact real remaining anomaly (see the PR #30 "FINAL
+ // CHECKLIST-DATA HARDENING PASS" comment for the full accounting) -
+ // validate-checklist.js distinguishes a TRUE duplicate row (the same
+ // player+team repeated under one card number - a real parsing artifact)
+ // from a LEGITIMATE shared card number (different players under one
+ // number, e.g. a real "League Leaders" combo card, which is not an
+ // anomaly and never blocks RELEASED by itself).
  'baseball|2024':[
-  {key:'topps-series-1',name:'Topps Series 1',file:'data/checklists/baseball/2024/topps-series-1.json',teamMapped:true,status:'PARTIAL',normalizer:'toppsFlat',
+  {key:'topps-series-1',name:'Topps Series 1',file:'data/checklists/baseball/2024/topps-series-1.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}}
  ],
  'baseball|2025':[
@@ -601,7 +605,7 @@ const CHECKLIST_MANIFEST={
    chaseMap:{'Rookie Cards':'rookie'}}
  ],
  'baseball|2026':[
-  {key:'topps-series-1',name:'Topps Series 1',file:'data/checklists/baseball/2026/topps-series-1.json',teamMapped:true,status:'PARTIAL',normalizer:'toppsFlat',
+  {key:'topps-series-1',name:'Topps Series 1',file:'data/checklists/baseball/2026/topps-series-1.json',teamMapped:true,status:'RELEASED',normalizer:'toppsFlat',
    chaseMap:{'Rookie Cards':'rookie'}}
  ]
 };

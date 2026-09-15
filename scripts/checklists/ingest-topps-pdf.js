@@ -124,31 +124,44 @@ function parseChecklistLine(rawLine, sport) {
  * page separators), consistent with the rest of this pipeline's "exclude
  * with a reason, never guess" rule at the row level.
  *
- * De-duplicates EXACT repeats (same cardNumber + player + team + rookie +
- * subset) before returning. This is a real extraction artifact discovered
- * by running this parser against real fetched Topps checklist PDFs (the
+ * De-duplicates repeats of the SAME card - same cardNumber + player + team -
+ * before returning. This is a real extraction artifact discovered by
+ * running this parser against real fetched Topps checklist PDFs (the
  * 2024/2025/2026 Series 1 Baseball PDFs each had roughly a third to two
- * thirds of their raw parsed lines come back as byte-for-byte-identical
- * repeats of another row, confirmed by direct inspection of the real
- * parsed output - see the PR #30 "LIVE TOPPS CDN PDF INGESTION" comment).
- * It is NOT the same thing as a legitimate shared-card-number combo/
- * League-Leaders row, which has a DIFFERENT player for the same card
- * number and is deliberately left alone (and still correctly flagged by
- * validate-checklist.js's duplicate-card-number check, unmodified). Only a
- * fully identical row - same card number AND same player AND same team AND
- * same subset label - is collapsed, since a real checklist never lists the
- * exact same player on the exact same card number twice.
+ * thirds of their raw parsed lines come back as repeats of another row -
+ * see the PR #30 "LIVE TOPPS CDN PDF INGESTION" comment). Deliberately NOT
+ * keyed on the subset label: a later ingestion pass found a real residual
+ * case where the exact same card (card #38, Pete Alonso, New York Mets, in
+ * the real 2024 file) was re-extracted twice with slightly different
+ * trailing subset text each time ("Combo Card/Checklist" vs. "Combo
+ * Cards" - a nearby section-header fragment glued onto the second copy) -
+ * a real checklist never lists the exact same player on the exact same
+ * team under the exact same card number twice, regardless of what its
+ * subset label happens to say, so subset text is deliberately excluded
+ * from the identity used here.
+ * This is NOT the same thing as a legitimate shared-card-number combo/
+ * League-Leaders row, which has a DIFFERENT player (or, rarely, a
+ * different team) for the same card number and is deliberately left alone
+ * - and is still correctly distinguished from a true duplicate by
+ * validate-checklist.js's player+team+card-number duplicate check.
  */
 function parseToppsChecklistPdfText(text, sport) {
   const lines = String(text || '').split(/\r?\n/);
   const rows = [];
-  const seen = new Set();
+  const indexByKey = new Map();
   for (const line of lines) {
     const row = parseChecklistLine(line, sport);
     if (!row) continue;
-    const key = `${row.cardNumber}${row.player}${row.team}${row.rookie}${row.subset}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
+    const key = `${row.cardNumber}\u0001${row.player}\u0001${row.team}`;
+    if (indexByKey.has(key)) {
+      // Keep the first-seen row's subset text, but never let a real
+      // "Rookie" marker get lost just because it happened to be the
+      // second copy extracted.
+      const existing = rows[indexByKey.get(key)];
+      if (row.rookie && !existing.rookie) existing.rookie = true;
+      continue;
+    }
+    indexByKey.set(key, rows.length);
     rows.push(row);
   }
   return rows;

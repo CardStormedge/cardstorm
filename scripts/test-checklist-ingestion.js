@@ -33,7 +33,7 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
 (async function main() {
   // ---- 1. Importer parsing (real parser logic against fixtures) -------------
   const toppsRows = parseToppsChecklistHtml(TOPPS_FIXTURE);
-  check(toppsRows.length === 6, `Topps fixture parser extracted 6 rows (got ${toppsRows.length})`);
+  check(toppsRows.length === 7, `Topps fixture parser extracted 7 rows (got ${toppsRows.length})`);
   check(toppsRows[1].rookie === true && toppsRows[0].rookie === false, 'Topps parser correctly reads the RC rookie marker per-row');
 
   const paniniRows = parseCheckListRowsHtml(PANINI_FIXTURE);
@@ -64,8 +64,9 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
   check(exclPdfRows.some((e) => e.reason.includes('missing player name')), 'normalizeChecklist excludes (with a logged reason, not silently) the real Team Card row\'s empty player field');
   check(normPdfRows.length === pdfRows.length - exclPdfRows.length, 'every real PDF-parsed row is accounted for as either normalized or excluded-with-reason - none silently vanish');
   const pdfValidation = validateChecklist(normPdfRows, { ...pdfMeta });
-  check(pdfValidation.duplicateCardNumbers.includes('11'), 'validateChecklist flags the real shared card number #11 (the League Leaders combo) as a duplicate - an honest, unmodified application of the existing duplicate-detection rule to a real multi-player insert card, not weakened to force a pass');
-  check(pdfValidation.status !== 'RELEASED', 'a real checklist with a genuine shared-card-number combo card is never marked RELEASED outright (PARTIAL at best), matching the existing validator\'s unweakened rule');
+  check(pdfValidation.duplicateCardNumbers.includes('11'), 'validateChecklist still reports the real shared card number #11 (the League Leaders combo) informationally in duplicateCardNumbers');
+  check(pdfValidation.duplicatePlayerCardCombos.length === 0, 'a real multi-player combo card (different players under one shared card number) produces zero duplicatePlayerCardCombos - it is legitimate, not an anomaly');
+  check(pdfValidation.status === 'RELEASED', 'a checklist whose only repeated card numbers are legitimate multi-player combo cards (a DIFFERENT player each time) is no longer incorrectly blocked from RELEASED - the corrected validator distinguishes a true duplicate row from a legitimate shared card number');
 
   // ---- 2. Row normalization: only source-supported fields populated ---------
   const meta = { sport: 'football', year: '2099', manufacturer: 'Topps', brand: 'Topps', product: 'Fixture Test Set', sourceType: 'manufacturer-checklist-page', sourceUrl: 'https://example.invalid/fixture' };
@@ -74,13 +75,43 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
   check(card.parallel === null && card.autograph === null && card.relic === null, 'normalizeCard leaves unsupported boolean fields as null, not false');
   check(card.verificationStatus === null, 'normalizeCard never sets verificationStatus itself - that is validate-checklist.js\'s job');
 
-  // ---- 3. Duplicate detection --------------------------------------------------
+  // ---- 3. Duplicate detection: TRUE duplicate vs. LEGITIMATE shared number ----
   const { rows: normTopps, excluded: exclTopps } = normalizeChecklist(toppsRows, meta);
   check(exclTopps.some((e) => e.reason.includes('missing player name') || e.reason.includes('empty player name')), 'normalizeChecklist excludes (not silently drops-without-record) the malformed empty-name fixture row');
   const dupValidation = validateChecklist(normTopps, { sourceUrl: meta.sourceUrl, sourceType: meta.sourceType, manufacturer: meta.manufacturer, sport: meta.sport, year: meta.year, product: meta.product });
-  check(dupValidation.duplicateCardNumbers.includes('3'), 'validateChecklist flags the intentional duplicate card number #3 in the Topps fixture');
-  check(dupValidation.status !== 'RELEASED', 'a checklist with a duplicate card number is never marked RELEASED');
+  check(dupValidation.duplicateCardNumbers.includes('3'), 'validateChecklist still reports the shared card number #3 informationally in duplicateCardNumbers');
+  check(!dupValidation.duplicatePlayerCardCombos.some((k) => k.includes('|3')), 'card #3\'s two DIFFERENT players (a legitimate shared-number/combo-card case) do NOT produce a duplicatePlayerCardCombos anomaly');
+  check(dupValidation.duplicatePlayerCardCombos.some((k) => k.includes('|6')), 'validateChecklist flags card #6\'s TRUE duplicate (the SAME player repeated under the same card number) as a duplicatePlayerCardCombos anomaly');
+  check(dupValidation.status !== 'RELEASED', 'a checklist that still contains a TRUE duplicate row (same player/team/card-number repeated) is never marked RELEASED - the fix only stops a legitimate shared card number from blocking RELEASED, it does not weaken true-duplicate detection');
   check(dupValidation.missingCardNumbers.includes(5), 'validateChecklist flags the intentional gap (missing #5) in the fixture sequence');
+
+  // ---- 3b. The same distinction, proven against REAL rows already ingested ---
+  //          into the repo (data/checklists/baseball/*/topps-series-1.json) -
+  //          not invented examples. #5 in the real 2025 file legitimately
+  //          lists 3 different players (a real "League Leaders" card); #38 in
+  //          the real 2024 file has a genuine parsing-artifact duplicate (the
+  //          same player, "Pete Alonso, New York Mets", repeated under card
+  //          #38 with only the trailing subset text differing between the two
+  //          rows: "Combo Card/Checklist" vs "Combo Cards" - a section-header
+  //          fragment that glued onto a re-extracted copy of the same row).
+  const realMeta = { sport: 'baseball', year: '2025', manufacturer: 'Topps', brand: 'Topps', product: 'Topps Series 1', sourceType: 'manufacturer-checklist-pdf', sourceUrl: 'https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2025_Topps_Series_1_BB_Checklist_-_updated.pdf?v=1784567528' };
+  const realLeagueLeadersRows = [
+    { ...realMeta, cardNumber: '5', player: 'Tarik Skubal', team: 'Detroit Tigers', rookie: false },
+    { ...realMeta, cardNumber: '5', player: 'Ronel Blanco', team: 'Houston Astros', rookie: false },
+    { ...realMeta, cardNumber: '5', player: 'Framber Valdez', team: 'Houston Astros', rookie: false },
+  ];
+  const realLeagueLeadersValidation = validateChecklist(realLeagueLeadersRows, realMeta);
+  check(realLeagueLeadersValidation.duplicatePlayerCardCombos.length === 0, 'the REAL 2025 Topps Series 1 card #5 "League Leaders" trio (Tarik Skubal / Ronel Blanco / Framber Valdez, 3 different players sharing one real card number) produces zero duplicatePlayerCardCombos');
+  check(realLeagueLeadersValidation.status === 'RELEASED', 'the REAL card #5 League Leaders trio, on its own, validates RELEASED - a legitimate shared card number never blocks it');
+
+  const real2024Meta = { sport: 'baseball', year: '2024', manufacturer: 'Topps', brand: 'Topps', product: 'Topps Series 1', sourceType: 'manufacturer-checklist-pdf', sourceUrl: 'https://cdn.shopify.com/s/files/1/0662/9749/5709/files/MLB2401-2024ToppsSeries1BBChecklistV1.pdf' };
+  const realArtifactRows = [
+    { ...real2024Meta, cardNumber: '38', player: 'Pete Alonso', team: 'New York Mets', rookie: false, subset: 'Combo Card/Checklist' },
+    { ...real2024Meta, cardNumber: '38', player: 'Pete Alonso', team: 'New York Mets', rookie: false, subset: 'Combo Cards' },
+  ];
+  const realArtifactValidation = validateChecklist(realArtifactRows, real2024Meta);
+  check(realArtifactValidation.duplicatePlayerCardCombos.length === 1, 'the REAL 2024 Topps Series 1 card #38 true-duplicate artifact (Pete Alonso repeated under the same card number/team, only the subset text differs) is correctly flagged as a duplicatePlayerCardCombos anomaly - differing subset text alone does not let a true duplicate escape detection');
+  check(realArtifactValidation.status !== 'RELEASED', 'the REAL card #38 true-duplicate artifact, on its own, is never marked RELEASED');
 
   // ---- 4. Team-alias normalization (without over-merging) ---------------------
   check(normalizeTeam('NY Yankees') === 'New York Yankees', 'NY Yankees normalizes to New York Yankees');
@@ -153,8 +184,8 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
     // ---- end-to-end ingestTopps() against the local fixture server --------------
     const e2e = await ingestTopps(`http://127.0.0.1:${port}/topps-fixture`, meta);
     check(e2e.networkOk === true, 'ingestTopps end-to-end run succeeds against a real (loopback) HTTP source');
-    check(e2e.rows.length === toppsRows.length - dupValidation.duplicateCardNumbers.length - exclTopps.length + (dupValidation.duplicateCardNumbers.length ? 1 : 0), 'ingestTopps end-to-end row count is internally consistent with the parse+normalize step run separately') ;
-    check(e2e.validation.status !== 'RELEASED', 'ingestTopps end-to-end correctly downgrades status given the fixture\'s intentional duplicate/gap/malformed rows');
+    check(e2e.rows.length === toppsRows.length - exclTopps.length, 'ingestTopps end-to-end row count is internally consistent with the parse+normalize step run separately (validation only flags rows, it never removes them)');
+    check(e2e.validation.status !== 'RELEASED', 'ingestTopps end-to-end correctly downgrades status given the fixture\'s intentional TRUE-duplicate (card #6) and malformed (empty-name) rows');
   } finally {
     server.close();
   }
