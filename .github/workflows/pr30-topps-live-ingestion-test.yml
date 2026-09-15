@@ -46,6 +46,7 @@ on:
       - "scripts/checklists/live-pdf-probe.js"
       - "scripts/checklists/live-pdf-probe-bb-fb.js"
       - "scripts/checklists/live-pdf-persist-bbfb.js"
+      - "scripts/checklists/discover-bbfb-products.js"
       - "scripts/checklists/live-pdf-ingestion.js"
       - "scripts/checklists/ingest-basketball-pdf.js"
       - "scripts/checklists/ingest-football-pdf.js"
@@ -125,8 +126,12 @@ jobs:
         run: node scripts/checklists/live-pdf-probe-bb-fb.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Persist-check the 2 basketball/football products the real-structure fix targets (lean, no raw-text dump)
-        if: hashFiles('scripts/checklists/live-pdf-persist-bbfb.js') != ''
+        if: false
         run: node scripts/checklists/live-pdf-persist-bbfb.js "$GITHUB_WORKSPACE/live-test-output"
+
+      - name: Discover + probe additional real basketball/football checklist PDFs (never guesses a URL - real links only, from topps.com's own real pages)
+        if: hashFiles('scripts/checklists/discover-bbfb-products.js') != ''
+        run: node scripts/checklists/discover-bbfb-products.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Upload live test output (raw fetches + normalized JSON, NOT committed to the repo)
         if: always()
