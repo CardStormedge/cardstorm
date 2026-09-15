@@ -259,6 +259,22 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
     check(judgeFoundIn.length >= 15, `a real Aaron Judge (New York Yankees) card was found in most/all of the real live-ingested baseball files (found in ${judgeFoundIn.length}/${baseballFiles.length})`);
     check(releasedCount >= 10, `most real baseball products genuinely validate RELEASED under the corrected duplicate-detection rule, not forced (${releasedCount}/${baseballFiles.length} RELEASED)`);
     ok(`Total real baseball checklist rows across all persisted files: ${totalBaseballRows}`);
+
+    // ---- 13. Player page UX: real checklist cards lead, accent-safe match --
+    check(/function playerNamesMatch\(/.test(appHtml), 'app.html defines playerNamesMatch(), an accent/case-insensitive player-name comparator');
+    check(/const fold=\(s\)=>String\(s\)\.normalize\('NFD'\)/.test(appHtml), 'playerNamesMatch folds accents (e.g. roster "Ronald Acuna Jr." matches a real checklist row spelled "Ronald Acuña Jr.") without fuzzy/partial matching');
+    check(appHtml.includes('if(!playerNamesMatch(rec.player,player))return;'), 'scanProductForPlayer (VERIFIED CHASE CARDS) uses the accent-safe comparator, not a brittle exact string match');
+    check(appHtml.includes('const mine=(cards||[]).filter(c=>playerNamesMatch(c.player,player));'), 'playerChecklistCardsHTML (VERIFIED CHECKLIST CARDS) uses the accent-safe comparator too');
+    const renderPlayerHuntMatch = appHtml.match(/function renderPlayerHunt\(ab,i\)\{[\s\S]*?\n\}/);
+    check(!!renderPlayerHuntMatch, 'app.html defines renderPlayerHunt()');
+    if (renderPlayerHuntMatch) {
+      const body = renderPlayerHuntMatch[0];
+      const checklistIdx = body.indexOf('>VERIFIED CHECKLIST CARDS<');
+      const valuesIdx = body.indexOf('>VALUES<');
+      const chaseIdx = body.indexOf('>VERIFIED CHASE CARDS<');
+      check(checklistIdx !== -1 && valuesIdx !== -1 && chaseIdx !== -1, 'the player page renders all 3 real-data sections (checklist, values, chase)');
+      check(checklistIdx < valuesIdx && valuesIdx < chaseIdx, 'the player page orders real data as VERIFIED CHECKLIST CARDS, then VALUES, then VERIFIED CHASE CARDS - a player with real checklist rows but no chase-type record no longer leads with a dominant empty chase block');
+    }
   }
 
   if (failures) {

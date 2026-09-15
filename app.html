@@ -813,6 +813,20 @@ function normalizeSelect(raw){const out=[];Object.entries(raw.categories||{}).fo
 function toppsFlatCardKey(productName,yr,cat,card){return 'topps-'+productName.toLowerCase().replace(/\s+/g,'-')+'-'+yr+'|'+cat+'|'+card.cardNumber+'|'+(card.player||'')}
 function normalizeToppsFlat(raw){const out=[];const productName=(raw.product&&raw.product.set)||'Topps';const yr=raw.product&&raw.product.year;Object.entries(raw.categories||{}).forEach(([catName,cat])=>{if(cat.kind!=='cards')return;(cat.cards||[]).forEach(c=>{out.push({product:productName,category:catName,cardNumber:c.cardNumber,player:c.player||'',team:c.team||'',rookie:!!c.rookie,id:toppsFlatCardKey(productName,yr,catName,c)})})});return out}
 function teamMatches(cardTeam,teamFullName){return !!cardTeam&&cardTeam.trim().toLowerCase()===teamFullName.trim().toLowerCase()}
+// Accent/case-insensitive player-name match (e.g. the CardStorm roster's
+// "Ronald Acuna Jr." vs. a real live-ingested checklist row's "Ronald Acuña
+// Jr." - the real Topps checklist PDF correctly preserves the accent, the
+// roster list doesn't) - found as a real gap during the checklist-data-
+// hardening-pass browser check (a real player's real checklist rows were
+// showing as zero purely because of the accent difference, not because the
+// data was actually missing). Case/whitespace-insensitive and accent-
+// folding only - never fuzzy/partial matching, so it still never merges two
+// different players.
+function playerNamesMatch(a,b){
+ if(!a||!b)return false;
+ const fold=(s)=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').trim().toLowerCase();
+ return fold(a)===fold(b);
+}
 function loadTeamChecklist(sportKey,yr,teamFullName){
  const manifest=CHECKLIST_MANIFEST[sportKey+'|'+yr]||[];
  return Promise.all(manifest.map(entry=>entry.teamMapped===false?Promise.resolve({entry,cards:[]}):
@@ -891,7 +905,7 @@ function scanProductForPlayer(entry,raw,player){
  const sources=extractProductSources(raw);
  const evidence=[];
  norm(raw).forEach(rec=>{
-  if(rec.player!==player)return;
+  if(!playerNamesMatch(rec.player,player))return;
   // A record explicitly marked as failing its strict evidence-quality gate
   // (currently only 2025 Donruss carries this field) never counts as
   // verified chase evidence, no matter what chaseType/rookie flags it also
@@ -1012,16 +1026,57 @@ function openTeamOverview(ab){
  );
  C.scrollTop=0;
 }
+// playerChecklistCardsHTML: real, per-player slice of the same real
+// checklist data Team Hunt's master checklist already shows (loadTeamChecklist
+// -> normalizeDonruss/normalizeSelect/normalizeToppsFlat), filtered to this
+// one player's real rows across every real-data product. This is the
+// player page's REAL data, unlike VERIFIED CHASE CARDS below (which only
+// shows evidence for the small allowlisted set of chase *types* a product's
+// chaseMap maps - e.g. 'Rookie Cards':'rookie' - so a real veteran player
+// with real checklist rows but no chase-type record correctly shows nothing
+// there, per CardStorm's honesty rule of never implying a chase status that
+// isn't backed by a real, allowlisted record).
+function playerChecklistCardsHTML(player,results){
+ let totalCards=0;
+ const blocks=results.map(({entry,cards})=>{
+  if(entry.teamMapped===false)return '';
+  const mine=(cards||[]).filter(c=>playerNamesMatch(c.player,player));
+  if(!mine.length)return '';
+  totalCards+=mine.length;
+  const owned=loadOwned();
+  const rows=mine.map(c=>`<label class=ckRow><input type=checkbox ${owned[c.id]?'checked':''} onchange="toggleTeamCardOwned('${c.id.replace(/'/g,"\\'")}',this.checked)"><span class=ckNum>#${c.cardNumber}</span><span class=ckPlayer>${c.player}</span><span class=ckCat>${c.category}${c.group?' • '+c.group:''}</span>${c.ratedRookie||c.rookie?'<span class=ckTag>RC</span>':''}${c.serialNumberedTo?'<span class=ckTag>/'+c.serialNumberedTo+'</span>':''}</label>`).join('');
+  return `<details class=prodGroup open><summary><b>${entry.name}</b><span class=prodMeta>${mine.length} card${mine.length===1?'':'s'}</span></summary><div class=prodBody>${rows}</div></details>`;
+ }).filter(Boolean).join('');
+ if(!totalCards)return {html:`<div class=notice>No verified per-card checklist rows found for ${player} in ${year} yet - CardStorm shows only real, source-traced rows here, never a guess.</div>`,count:0};
+ return {html:blocks,count:totalCards};
+}
+function loadPlayerChecklistSection(hostId,ab,player,teamFullName){
+ loadTeamChecklist(sport,year,teamFullName).then(results=>{
+  const host=document.getElementById(hostId);
+  if(!host)return;
+  const {html,count}=playerChecklistCardsHTML(player,results);
+  host.innerHTML=html;
+  const heading=document.getElementById(hostId+'Heading');
+  if(heading)heading.textContent='VERIFIED CHECKLIST CARDS'+(count?' ('+count+')':'');
+ });
+}
 function renderPlayerHunt(ab,i){
  const t=DATA[sport].find(x=>x[0]===ab),players=t[2],teamFullName=t[1],player=players[i],comps=COMPS.filter(c=>c[0]===player);
  const valuesHtml=comps.length?`<table class=comptable><thead><tr><th>Card</th><th>Grade</th><th>Sale</th><th>Date</th><th>Source</th><th></th></tr></thead><tbody>${comps.map(c=>`<tr><td>${c[2]}</td><td>${c[3]}</td><td class=price>${c[1]}</td><td>${c[4]}</td><td>${c[5]}</td><td><a class=verify href="${c[6]}" target=_blank>VERIFY →</a></td></tr>`).join('')}</tbody></table>`:`<div class=notice>No verified sale loaded for ${player} yet. This player is queued for the CardStorm/eBay comp feed.</div>`;
+ // Order: real VERIFIED CHECKLIST CARDS first (now that broad real checklist
+ // data exists, this is usually the most immediately useful real section for
+ // a player), then VALUES, then VERIFIED CHASE CARDS last - a small honest
+ // note there when a player has no chase-type record, not a dominant empty
+ // block leading the page (checklist-data-hardening-pass session, 2026-09-15).
  C.innerHTML=shell('TEAM HUNT',player,teamFullName+' • '+year+' • chase intelligence',
-  `${TH_STYLE}<div class=feature><h2>VERIFIED CHASE CARDS</h2><div class=sub>Only chase types with a real checklist record are shown. Tap one to see the verified cards behind it.</div><div id=thChase${i}Host>Loading verified chase data…</div></div>
+  `${TH_STYLE}<div class=feature><h2 id=thChecklist${i}HostHeading>VERIFIED CHECKLIST CARDS</h2><div class=sub>${player}'s real cards across every product CardStorm has verified, pulled straight from the ${teamFullName} master checklist.</div><div id=thChecklist${i}Host>Loading verified checklist data…</div></div>
   <div id="thGear${i}Anchor"></div>
   <div class=feature style="margin-top:14px"><h2>VALUES</h2>${valuesHtml}</div>
-  <div class=feature style="margin-top:14px"><h2>CHECKLIST</h2><p class=sub>${player}'s cards live inside the ${teamFullName} master checklist, grouped by product.</p><button class=cta onclick="openTeamChecklist('${ab}')">VIEW ${teamFullName.toUpperCase()} CHECKLIST →</button></div>`
+  <div class=feature style="margin-top:14px"><h2 style="font-size:13px;color:#8fc4e6">VERIFIED CHASE CARDS</h2><div class=sub style="font-size:11px">Only chase types with a real checklist record are shown.</div><div id=thChase${i}Host>Loading…</div></div>
+  <div class=feature style="margin-top:14px"><p class=sub>Browse ${player}'s full ${teamFullName} team checklist, including any real rows not shown above.</p><button class=cta onclick="openTeamChecklist('${ab}')">VIEW ${teamFullName.toUpperCase()} CHECKLIST →</button></div>`
  );
  C.scrollTop=0;
+ loadPlayerChecklistSection('thChecklist'+i+'Host',ab,player,teamFullName);
  loadChaseSection('thChase'+i+'Host',player,ab,i);
  loadGearSection('thGear'+i+'Anchor',ab,player,teamFullName);
 }
