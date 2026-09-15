@@ -45,6 +45,7 @@ on:
       - "scripts/checklists/live-test-topps.js"
       - "scripts/checklists/live-pdf-probe.js"
       - "scripts/checklists/live-pdf-probe-bb-fb.js"
+      - "scripts/checklists/live-pdf-persist-bbfb.js"
       - "scripts/checklists/live-pdf-ingestion.js"
       - "scripts/checklists/ingest-basketball-pdf.js"
       - "scripts/checklists/ingest-football-pdf.js"
@@ -102,17 +103,30 @@ jobs:
           echo "--- HEAD, 2026 Topps Series 1 Baseball checklist PDF ---"
           curl -sI -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_Topps_Series_1_Baseball_Checklist_2-23.pdf?v=1772557808" | head -20 || true
 
+      # The 3 steps below (full baseball probe, full 34-source ingestion,
+      # basketball/football raw-text probe) are kept in the file for the
+      # record - they already did their job in earlier runs (see the PR #30
+      # comments) - but are disabled (`if: false`) for this run specifically
+      # so the job log stays small enough to reliably fetch: combined, their
+      # raw-text dumps make one run's log large enough that log retrieval
+      # became unreliable. The focused step below re-fetches only the 2
+      # basketball/football products actually being validated this round,
+      # with no raw-text dump, keeping this run's log small.
       - name: Probe real PDF text structure (baseball Series 1, 2024/2025/2026) - phase 1, discovery only
-        if: hashFiles('scripts/checklists/live-pdf-probe.js') != ''
+        if: false
         run: node scripts/checklists/live-pdf-probe.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Run full live PDF ingestion (all real CDN sources, parser + validate)
-        if: hashFiles('scripts/checklists/live-pdf-ingestion.js') != ''
+        if: false
         run: node scripts/checklists/live-pdf-ingestion.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Probe real PDF text structure (one basketball + one football source) - never assume baseball's rules transfer
-        if: hashFiles('scripts/checklists/live-pdf-probe-bb-fb.js') != ''
+        if: false
         run: node scripts/checklists/live-pdf-probe-bb-fb.js "$GITHUB_WORKSPACE/live-test-output"
+
+      - name: Persist-check the 2 basketball/football products the real-structure fix targets (lean, no raw-text dump)
+        if: hashFiles('scripts/checklists/live-pdf-persist-bbfb.js') != ''
+        run: node scripts/checklists/live-pdf-persist-bbfb.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Upload live test output (raw fetches + normalized JSON, NOT committed to the repo)
         if: always()
