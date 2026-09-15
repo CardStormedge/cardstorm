@@ -123,13 +123,33 @@ function parseChecklistLine(rawLine, sport) {
  * on a line it can't parse - it just skips that line (headers/disclaimers/
  * page separators), consistent with the rest of this pipeline's "exclude
  * with a reason, never guess" rule at the row level.
+ *
+ * De-duplicates EXACT repeats (same cardNumber + player + team + rookie +
+ * subset) before returning. This is a real extraction artifact discovered
+ * by running this parser against real fetched Topps checklist PDFs (the
+ * 2024/2025/2026 Series 1 Baseball PDFs each had roughly a third to two
+ * thirds of their raw parsed lines come back as byte-for-byte-identical
+ * repeats of another row, confirmed by direct inspection of the real
+ * parsed output - see the PR #30 "LIVE TOPPS CDN PDF INGESTION" comment).
+ * It is NOT the same thing as a legitimate shared-card-number combo/
+ * League-Leaders row, which has a DIFFERENT player for the same card
+ * number and is deliberately left alone (and still correctly flagged by
+ * validate-checklist.js's duplicate-card-number check, unmodified). Only a
+ * fully identical row - same card number AND same player AND same team AND
+ * same subset label - is collapsed, since a real checklist never lists the
+ * exact same player on the exact same card number twice.
  */
 function parseToppsChecklistPdfText(text, sport) {
   const lines = String(text || '').split(/\r?\n/);
   const rows = [];
+  const seen = new Set();
   for (const line of lines) {
     const row = parseChecklistLine(line, sport);
-    if (row) rows.push(row);
+    if (!row) continue;
+    const key = `${row.cardNumber}${row.player}${row.team}${row.rookie}${row.subset}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    rows.push(row);
   }
   return rows;
 }
