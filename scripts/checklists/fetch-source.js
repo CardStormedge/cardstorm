@@ -77,7 +77,7 @@ function fetchSource(url, { timeoutMs = 15000, userAgent = 'CardStormChecklistBo
  * page apart from a served CSV/XLSX/PDF download - fetchSource() itself is
  * left untouched so every existing caller/test keeps its exact contract.
  */
-function fetchSourceMeta(url, { timeoutMs = 15000, userAgent = 'CardStormChecklistBot/1.0' } = {}) {
+function fetchSourceMeta(url, { timeoutMs = 15000, userAgent = 'CardStormChecklistBot/1.0', headers = {} } = {}) {
   return new Promise((resolve, reject) => {
     let parsed;
     try {
@@ -90,7 +90,7 @@ function fetchSourceMeta(url, { timeoutMs = 15000, userAgent = 'CardStormCheckli
     const transport = parsed.protocol === 'http:' ? http : https;
     const req = transport.get(
       parsed,
-      { headers: { 'User-Agent': userAgent, Accept: '*/*' }, timeout: timeoutMs },
+      { headers: { 'User-Agent': userAgent, Accept: '*/*', ...headers }, timeout: timeoutMs },
       (res) => {
         const chunks = [];
         res.on('data', (chunk) => chunks.push(chunk));

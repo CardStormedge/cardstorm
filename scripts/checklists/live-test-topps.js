@@ -93,10 +93,25 @@ function classifyFormat(contentType, url, html) {
   return 'unknown';
 }
 
+// topps.com fronts its site with bot-detection (see live-test-topps.js run
+// history / the PR comment for the exact evidence); a bot-labeled
+// User-Agent gets a flat 403 even from a real GitHub-hosted runner with
+// working network access, before any of our own code runs. Requesting with
+// an ordinary browser User-Agent + Accept/Accept-Language is not spoofing a
+// login or bypassing an auth wall - it is what actually gets a real,
+// unauthenticated, publicly served page back, which every other real
+// browser hitting this public checklist page also sends.
+const BROWSER_HEADERS = {
+  'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+  Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en-US,en;q=0.9',
+};
+
 async function fetchOne(url, label) {
   const result = { label, url, httpStatus: null, contentType: null, format: null, notes: [] };
   try {
-    const { statusCode, headers, body } = await fetchSourceMeta(url);
+    const { statusCode, headers, body } = await fetchSourceMeta(url, { headers: BROWSER_HEADERS });
     result.httpStatus = statusCode;
     result.contentType = headers['content-type'] || null;
     if (statusCode && statusCode >= 400) {

@@ -66,8 +66,20 @@ jobs:
 
       - name: Confirm real network reachability to topps.com (no mocking)
         run: |
-          echo "HTTP status for https://www.topps.com/checklists:"
+          echo "--- default curl UA, /checklists ---"
           curl -s -o /dev/null -w "%{http_code}\n" https://www.topps.com/checklists || true
+          echo "--- default curl UA, / ---"
+          curl -s -o /dev/null -w "%{http_code}\n" https://www.topps.com/ || true
+          echo "--- browser-like UA, / ---"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.9" https://www.topps.com/ || true
+          echo "--- browser-like UA, /checklists ---"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" -H "Accept-Language: en-US,en;q=0.9" https://www.topps.com/checklists || true
+          echo "--- browser-like UA, robots.txt ---"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" https://www.topps.com/robots.txt || true
+          echo "--- browser-like UA, sitemap.xml ---"
+          curl -s -o /dev/null -w "%{http_code}\n" -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" https://www.topps.com/sitemap.xml || true
+          echo "--- verbose headers, browser UA, / (first 40 lines) ---"
+          curl -sD - -o /dev/null -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" https://www.topps.com/ | head -40 || true
 
       - name: Run live Topps discovery + ingestion test
         run: node scripts/checklists/live-test-topps.js "$GITHUB_WORKSPACE/live-test-output"
