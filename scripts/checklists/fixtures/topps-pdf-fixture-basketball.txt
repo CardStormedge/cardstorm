@@ -1,0 +1,13 @@
+BASE
+16 Josh Hart New York Knicks
+17 Miles McBride New York Knicks
+21 Tyrese Maxey Philadelphia 76ers
+27 Kelly Oubre Jr. Philadelphia 76ers
+
+-- 1 of 68 --
+
+54 Giannis Antetokounmpo Milwaukee Bucks
+L-17 Dylan Harper San Antonio Spurs Rookie
+L-19 Kon Knueppel Charlotte Hornets Rookie
+NL-8 Egor Dëmin Brooklyn Nets Rookie
+RR-KL Kawhi Leonard Los Angeles Clippers

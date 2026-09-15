@@ -119,6 +119,24 @@ const NFL_TEAMS = [
   'Washington Commanders',
 ];
 
+// NFL_CITIES: the real, confirmed structure of Topps football checklist PDF
+// text is DIFFERENT from baseball's - no trademark symbol at all, and only
+// the CITY prints (no mascot), e.g. "2 Michael Vick Atlanta" and
+// "36 Michael Irvin Dallas", confirmed directly from a real fetched 2024
+// Topps Chrome Football checklist PDF (see the PR #30 "FINAL CHECKLIST-DATA
+// HARDENING PASS" comment). This is just the city half of each NFL_TEAMS
+// entry above, not a separate guess - and, where a real market has two
+// teams (Los Angeles: Rams/Chargers; New York: Giants/Jets), the real PDF
+// itself doesn't disambiguate which team a player is on either - that's a
+// genuine real-data limitation, not something this list can resolve.
+const NFL_CITIES = [
+  'Arizona','Atlanta','Baltimore','Buffalo','Carolina','Chicago','Cincinnati',
+  'Cleveland','Dallas','Denver','Detroit','Green Bay','Houston','Indianapolis',
+  'Jacksonville','Kansas City','Las Vegas','Los Angeles','Miami','Minnesota',
+  'New England','New Orleans','New York','Philadelphia','Pittsburgh',
+  'San Francisco','San Diego','Seattle','Tampa Bay','Tennessee','Washington',
+];
+
 const TEAMS_BY_SPORT = { baseball: MLB_TEAMS, basketball: NBA_TEAMS, football: NFL_TEAMS };
 
 /**
@@ -131,4 +149,10 @@ function teamNamesFor(sport) {
   return [...list].sort((a, b) => b.length - a.length);
 }
 
-module.exports = { MLB_TEAMS, NBA_TEAMS, NFL_TEAMS, TEAMS_BY_SPORT, teamNamesFor };
+/** Same longest-first ordering, for the football city-only match. */
+function teamCityNamesFor(sport) {
+  const list = sport === 'football' ? NFL_CITIES : TEAMS_BY_SPORT[sport] || [];
+  return [...list].sort((a, b) => b.length - a.length);
+}
+
+module.exports = { MLB_TEAMS, NBA_TEAMS, NFL_TEAMS, NFL_CITIES, TEAMS_BY_SPORT, teamNamesFor, teamCityNamesFor };

@@ -45,7 +45,7 @@ const { fetchSourceMeta } = require('./fetch-source');
 const { normalizeChecklist } = require('./normalize-checklist');
 const { validateChecklist } = require('./validate-checklist');
 const { buildSourceMeta } = require('./schema');
-const { teamNamesFor } = require('./team-names-by-sport');
+const { teamNamesFor, teamCityNamesFor } = require('./team-names-by-sport');
 
 const DISCLAIMER_RE = /^Checklists provided by Topps|^the time of production/i;
 const PAGE_SEP_RE = /^--\s*\d+\s+of\s+\d+\s*--$/;
@@ -92,27 +92,59 @@ function parseChecklistLine(rawLine, sport) {
     };
   }
 
+  // Strategy 1 (baseball's real layout): team name immediately followed by
+  // a real ®/™ trademark mark - pick the EARLIEST such match, which
+  // correctly nulls out the player field for a real "Team Card" row (where
+  // the team's own name prints twice - see parseToppsChecklistPdfText's own
+  // header comment).
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const teamNames = teamNamesFor(sport);
   let bestIdx = -1;
-  let bestName = null;
+  let bestLen = 0;
   for (const name of teamNames) {
-    const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[®™]`);
+    const re = new RegExp(`\\b${escapeRe(name)}[®™]`);
     const m = rest.match(re);
     if (m && (bestIdx === -1 || m.index < bestIdx)) {
       bestIdx = m.index;
-      bestName = name;
+      bestLen = m[0].length;
     }
   }
-  if (bestIdx === -1) return null; // no real team-name match - not a card row (header/noise)
+
+  // Strategy 2 (basketball/football's real layout): confirmed directly from
+  // real fetched checklist PDF text - NO trademark symbol at all. Basketball
+  // prints the full "City Team" name (e.g. "New York Knicks"); football
+  // prints just the city (e.g. "Dallas", "Kansas City" - no mascot). Since
+  // there's no symbol to anchor on, pick the RIGHTMOST match among the real
+  // team/city name list instead of the leftmost - the real team/city is
+  // always the LAST token(s) on the line, and a real player's own surname
+  // can coincidentally contain a city-like substring earlier in the line
+  // (e.g. a player surnamed "Washington"), so leftmost would risk landing on
+  // the wrong occurrence.
+  if (bestIdx === -1 && (sport === 'basketball' || sport === 'football')) {
+    const cityNames = teamCityNamesFor(sport);
+    for (const name of cityNames) {
+      const re = new RegExp(`\\b${escapeRe(name)}\\b`, 'g');
+      let m;
+      while ((m = re.exec(rest)) !== null) {
+        if (m.index > bestIdx) {
+          bestIdx = m.index;
+          bestLen = m[0].length;
+        }
+      }
+    }
+  }
+
+  if (bestIdx === -1) return null; // no real team/city match - not a card row (header/noise)
 
   const player = rest.slice(0, bestIdx).trim();
-  const afterTeam = rest.slice(bestIdx + bestName.length + 1); // +1 for the ®/™ char
+  const team = rest.slice(bestIdx, bestIdx + bestLen).replace(/[®™]\s*$/, '').trim();
+  const afterTeam = rest.slice(bestIdx + bestLen);
   const subset = afterTeam.trim() || null;
 
   return {
     cardNumber,
     player: player || null,
-    team: bestName,
+    team: team || null,
     rookie: !!(subset && /rookie/i.test(subset)),
     subset,
   };

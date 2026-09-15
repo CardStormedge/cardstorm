@@ -29,6 +29,8 @@ const ROOT = path.join(__dirname, '..');
 const TOPPS_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/topps-fixture-checklist.html'), 'utf8');
 const PANINI_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/panini-fixture-checklist.html'), 'utf8');
 const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/topps-pdf-fixture-checklist.txt'), 'utf8');
+const TOPPS_PDF_BASKETBALL_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/topps-pdf-fixture-basketball.txt'), 'utf8');
+const TOPPS_PDF_FOOTBALL_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/fixtures/topps-pdf-fixture-football.txt'), 'utf8');
 
 (async function main() {
   // ---- 1. Importer parsing (real parser logic against fixtures) -------------
@@ -58,6 +60,30 @@ const TOPPS_PDF_TEXT_FIXTURE = fs.readFileSync(path.join(__dirname, 'checklists/
   check(parseChecklistLine('BASE SET', 'baseball') === null, 'Topps PDF-text parser skips a real bare section-header line (no team-name match) rather than guessing a row out of it');
   check(parseChecklistLine('-- 1 of 53 --', 'baseball') === null, 'Topps PDF-text parser skips a real page-separator line');
   check(parseChecklistLine('Checklists provided by Topps reflect the intended configuration of that product at', 'baseball') === null, 'Topps PDF-text parser skips the real disclaimer line Topps prints on every checklist PDF');
+
+  // ---- 1c. Basketball + football PDF parsing - a REAL, DIFFERENT structure ---
+  //          from baseball, confirmed by fetching a real 2025-26 Topps
+  //          Basketball PDF and a real 2024 Topps Chrome Football PDF (no
+  //          trademark symbol at all in either - basketball prints the full
+  //          "City Team" name, football prints just the city). Discovered
+  //          during the checklist-data-hardening-pass round; the prior
+  //          round's basketball/football attempt used an unvalidated team
+  //          list assuming baseball's symbol-anchored layout and mostly
+  //          returned 0 rows - this is the real fix, built from the real
+  //          fetched text, not a guess.
+  const bbRows = parseToppsChecklistPdfText(TOPPS_PDF_BASKETBALL_FIXTURE, 'basketball');
+  check(bbRows.length === 9, `basketball PDF-text parser extracted 9 real card rows from the fixture (got ${bbRows.length})`);
+  check(bbRows[0].player === 'Josh Hart' && bbRows[0].team === 'New York Knicks', 'basketball PDF-text parser correctly splits a real "<player> <City Team>" line with NO trademark symbol (a genuinely different real layout than baseball\'s)');
+  check(bbRows.find((r) => r.cardNumber === 'L-17').rookie === true, 'basketball PDF-text parser reads a real trailing "Rookie" subset label as rookie:true');
+  check(bbRows.find((r) => r.player === 'Kelly Oubre Jr.').team === 'Philadelphia 76ers', 'basketball PDF-text parser correctly matches a real team name that itself contains a digit ("76ers") without misreading it as part of the card number');
+  check(bbRows.find((r) => r.player === 'Kawhi Leonard').team === 'Los Angeles Clippers', 'basketball PDF-text parser correctly matches a real multi-word "Los Angeles Clippers" team name');
+
+  const fbRows = parseToppsChecklistPdfText(TOPPS_PDF_FOOTBALL_FIXTURE, 'football');
+  check(fbRows.length === 8, `football PDF-text parser extracted 8 real card rows from the fixture (got ${fbRows.length})`);
+  check(fbRows[0].player === 'Kurt Warner' && fbRows[0].team === 'Arizona', 'football PDF-text parser correctly splits a real "<player> <City>" line - no mascot name at all in the real football PDF layout, a genuinely different real structure than both baseball and basketball');
+  check(fbRows.find((r) => r.player === 'Ed "Too Tall" Jones').team === 'Dallas', 'football PDF-text parser correctly handles a real player name containing an embedded nickname in quotes without it breaking the team match');
+  check(fbRows.find((r) => r.cardNumber === 'F-6').team === 'New York', 'football PDF-text parser correctly lands on the real trailing city even for a real insert-set card number prefix');
+  check(fbRows.find((r) => r.cardNumber === '74TF-16').team === 'New England', 'football PDF-text parser correctly matches a real multi-word city ("New England")');
 
   const pdfMeta = { sport: 'baseball', year: '2099', manufacturer: 'Topps', brand: 'Topps', product: 'Fixture PDF Test Set', sourceType: 'manufacturer-checklist-pdf', sourceUrl: 'https://example.invalid/fixture.pdf' };
   const { rows: normPdfRows, excluded: exclPdfRows } = normalizeChecklist(pdfRows, pdfMeta);
