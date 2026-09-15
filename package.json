@@ -15,6 +15,7 @@
     "test:checklist-ingestion": "node scripts/test-checklist-ingestion.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.68.0"
+    "@anthropic-ai/sdk": "^0.68.0",
+    "pdf-parse": "^2.4.5"
   }
 }

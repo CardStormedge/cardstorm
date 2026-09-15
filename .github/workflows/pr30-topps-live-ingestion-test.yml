@@ -43,11 +43,15 @@ on:
     paths:
       - ".github/workflows/pr30-topps-live-ingestion-test.yml"
       - "scripts/checklists/live-test-topps.js"
+      - "scripts/checklists/live-pdf-probe.js"
+      - "scripts/checklists/live-pdf-ingestion.js"
       - "scripts/checklists/fetch-source.js"
       - "scripts/checklists/ingest-topps.js"
+      - "scripts/checklists/ingest-topps-pdf.js"
       - "scripts/checklists/normalize-checklist.js"
       - "scripts/checklists/validate-checklist.js"
       - "scripts/checklists/schema.js"
+      - "package.json"
 
 permissions:
   contents: read
@@ -63,6 +67,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
+
+      - name: Install dependencies (incl. pdf-parse, for real PDF checklist extraction)
+        run: npm install --no-save
 
       - name: Confirm real network reachability to topps.com (no mocking)
         run: |
@@ -83,6 +90,21 @@ jobs:
 
       - name: Run live Topps discovery + ingestion test
         run: node scripts/checklists/live-test-topps.js "$GITHUB_WORKSPACE/live-test-output"
+
+      - name: Confirm real network reachability to cdn.shopify.com (Topps's own checklist-PDF CDN - a different host than www.topps.com)
+        run: |
+          echo "--- HEAD, 2024 Topps Series 1 Baseball checklist PDF ---"
+          curl -sI -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/MLB2401-2024ToppsSeries1BBChecklistV1.pdf" | head -20 || true
+          echo "--- HEAD, 2026 Topps Series 1 Baseball checklist PDF ---"
+          curl -sI -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "https://cdn.shopify.com/s/files/1/0662/9749/5709/files/2026_Topps_Series_1_Baseball_Checklist_2-23.pdf?v=1772557808" | head -20 || true
+
+      - name: Probe real PDF text structure (baseball Series 1, 2024/2025/2026) - phase 1, discovery only
+        if: hashFiles('scripts/checklists/live-pdf-probe.js') != ''
+        run: node scripts/checklists/live-pdf-probe.js "$GITHUB_WORKSPACE/live-test-output"
+
+      - name: Run full live PDF ingestion (all real CDN sources, parser + validate)
+        if: hashFiles('scripts/checklists/live-pdf-ingestion.js') != ''
+        run: node scripts/checklists/live-pdf-ingestion.js "$GITHUB_WORKSPACE/live-test-output"
 
       - name: Upload live test output (raw fetches + normalized JSON, NOT committed to the repo)
         if: always()
