@@ -54,14 +54,36 @@ function malformedNameReason(name) {
 }
 
 /**
- * Identity key for duplicate detection: normalized name, case-folded. Two
- * rows only collide here if their formatted names are identical after
- * normalization - a different suffix (or no suffix) yields a different key
- * on purpose.
+ * Identity key for duplicate detection / roster linkage: SAFE normalization
+ * only - case folding, accent folding, punctuation/whitespace
+ * normalization, and standard literal suffix handling (via
+ * normalizePlayerName above). This is comparison-only: the row's own
+ * displayed player name (from normalizePlayerName / the source) is never
+ * altered by this function, only the key used to decide "is this the same
+ * person as that other row".
+ *
+ * What this deliberately does NOT do: fuzzy/phonetic matching, nickname
+ * guessing, or merging two names that differ by more than case/accent/
+ * punctuation/whitespace. Real example this exists for: a real 2025 Topps
+ * Series 1 Baseball row for "Jung Hoo Lee" and another for "Jung HOO Lee"
+ * (a real PDF-extraction casing inconsistency, same real player, same real
+ * card #277) must collide here; "Ronald Acuna Jr." (CardStorm's roster
+ * spelling) and "Ronald Acuña Jr." (the real Topps PDF's spelling) must
+ * also collide here for roster-linkage purposes. Two genuinely different
+ * players (e.g. "Mike Trout" and "Mike Tauchman") must never collide, and
+ * never do, since nothing here does substring/phonetic/fuzzy comparison -
+ * only exact-after-safe-normalization comparison.
  */
 function playerIdentityKey(name) {
   const normalized = normalizePlayerName(name);
-  return normalized ? normalized.toLowerCase() : null;
+  if (!normalized) return null;
+  return normalized
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '') // strip accents/diacritics for comparison only
+    .toLowerCase()
+    .replace(/[.,'’]/g, '') // punctuation-normalize (periods, commas, apostrophe variants)
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 module.exports = { normalizePlayerName, malformedNameReason, playerIdentityKey };

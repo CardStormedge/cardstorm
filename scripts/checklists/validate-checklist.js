@@ -177,4 +177,37 @@ function validateChecklist(rows, sourceMeta) {
   };
 }
 
-module.exports = { validateChecklist };
+/**
+ * Team-mapping completeness is tracked SEPARATELY from card-data
+ * (checklist) status on purpose - a product's real card data (numbers,
+ * players, source traceability) can be completely clean and RELEASED-
+ * worthy even when its team names can't all be linked to a specific
+ * roster team yet (e.g. a real football checklist PDF that only prints a
+ * city, and that city is a genuine 2-team NFL market - see
+ * nfl-city-team-map.js). Downgrading clean, real card data to PARTIAL
+ * just because team-mapping is incomplete would conflate two different
+ * kinds of "not fully verified" - this keeps them distinct instead.
+ *
+ * @param {object[]} rows - normalized rows (schema.js shape)
+ * @param {(team: string) => boolean} [isResolved] - returns true if a
+ *   row's `team` value is considered fully resolved/linkable to a roster
+ *   team. Defaults to "team is a non-empty string" (true for every sport
+ *   whose rows already carry a full, unambiguous team name - baseball,
+ *   basketball). A sport whose source data is only partly resolvable
+ *   (e.g. football's city-only rows) should pass a resolver that checks
+ *   against its real, deterministic, unambiguous mapping only.
+ * @returns {'FULL'|'PARTIAL'|'NONE'}
+ */
+function computeTeamMappingStatus(rows, isResolved) {
+  const resolved = isResolved || ((team) => !!team);
+  if (!Array.isArray(rows) || rows.length === 0) return 'NONE';
+  let mappedCount = 0;
+  rows.forEach((r) => {
+    if (resolved(r.team)) mappedCount++;
+  });
+  if (mappedCount === 0) return 'NONE';
+  if (mappedCount === rows.length) return 'FULL';
+  return 'PARTIAL';
+}
+
+module.exports = { validateChecklist, computeTeamMappingStatus };

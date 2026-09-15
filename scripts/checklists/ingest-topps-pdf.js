@@ -46,6 +46,7 @@ const { normalizeChecklist } = require('./normalize-checklist');
 const { validateChecklist } = require('./validate-checklist');
 const { buildSourceMeta } = require('./schema');
 const { teamNamesFor, teamCityNamesFor } = require('./team-names-by-sport');
+const { playerIdentityKey } = require('./player-name');
 
 const DISCLAIMER_RE = /^Checklists provided by Topps|^the time of production/i;
 const PAGE_SEP_RE = /^--\s*\d+\s+of\s+\d+\s*--$/;
@@ -184,7 +185,7 @@ function parseToppsChecklistPdfText(text, sport) {
   for (const line of lines) {
     const row = parseChecklistLine(line, sport);
     if (!row) continue;
-    const key = `${row.cardNumber}\u0001${row.player}\u0001${row.team}`;
+    const key = `${row.cardNumber}\u0001${playerIdentityKey(row.player)}\u0001${row.team}`;
     if (indexByKey.has(key)) {
       // Keep the first-seen row's subset text, but never let a real
       // "Rookie" marker get lost just because it happened to be the

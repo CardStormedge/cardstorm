@@ -13,7 +13,8 @@ const { parseToppsChecklistHtml, ingestTopps } = require('./checklists/ingest-to
 const { parseCheckListRowsHtml, ingestPanini } = require('./checklists/ingest-panini');
 const { parseToppsChecklistPdfText, parseChecklistLine } = require('./checklists/ingest-topps-pdf');
 const { normalizeChecklist } = require('./checklists/normalize-checklist');
-const { validateChecklist } = require('./checklists/validate-checklist');
+const { validateChecklist, computeTeamMappingStatus } = require('./checklists/validate-checklist');
+const { resolveNflCity, NFL_CITY_TO_TEAM } = require('./checklists/nfl-city-team-map');
 const { normalizeCard, buildSourceMeta } = require('./checklists/schema');
 const { normalizeTeam } = require('./checklists/team-alias');
 const { normalizePlayerName, malformedNameReason, playerIdentityKey } = require('./checklists/player-name');
@@ -335,6 +336,84 @@ const TOPPS_PDF_FOOTBALL_FIXTURE = fs.readFileSync(path.join(__dirname, 'checkli
       check(checklistIdx !== -1 && valuesIdx !== -1 && chaseIdx !== -1, 'the player page renders all 3 real-data sections (checklist, values, chase)');
       check(checklistIdx < valuesIdx && valuesIdx < chaseIdx, 'the player page orders real data as VERIFIED CHECKLIST CARDS, then VALUES, then VERIFIED CHASE CARDS - a player with real checklist rows but no chase-type record no longer leads with a dominant empty chase block');
     }
+  }
+
+  // ---- 14. Duplicate-detection semantics: 5 explicit cases (A-E) --------------
+  //          Uses the same meta shape as elsewhere in this file. Cases C/D are
+  //          the real casing/accent artifacts this round's hardening pass
+  //          found and fixed (Jung Hoo Lee, Luis Garcia/García, Mike Trout).
+  const dupMeta = { sport: 'baseball', year: '2099', manufacturer: 'Topps', brand: 'Topps', product: 'Dup Semantics Test Set', sourceType: 'manufacturer-checklist-pdf', sourceUrl: 'https://example.invalid/dup-fixture.pdf' };
+
+  // (A) Legitimate shared card number, different player -> informational only.
+  const caseA = [
+    { ...dupMeta, cardNumber: '5', player: 'Tarik Skubal', team: 'Detroit Tigers', rookie: false },
+    { ...dupMeta, cardNumber: '5', player: 'Ronel Blanco', team: 'Houston Astros', rookie: false },
+  ];
+  const vA = validateChecklist(caseA, dupMeta);
+  check(vA.duplicatePlayerCardCombos.length === 0, '(A) legitimate shared card number (different players) produces zero duplicatePlayerCardCombos');
+  check(vA.status === 'RELEASED', '(A) legitimate shared card number never blocks RELEASED by itself');
+
+  // (B) Exact parser duplicate - same number + normalized player + team -> hard error.
+  const caseB = [
+    { ...dupMeta, cardNumber: '10', player: 'Bryce Harper', team: 'Philadelphia Phillies', rookie: false },
+    { ...dupMeta, cardNumber: '10', player: 'Bryce Harper', team: 'Philadelphia Phillies', rookie: false },
+  ];
+  const vB = validateChecklist(caseB, dupMeta);
+  check(vB.duplicatePlayerCardCombos.length === 1, '(B) an exact duplicate row (same number+player+team) is a hard error');
+  check(vB.status !== 'RELEASED', '(B) an exact duplicate row always blocks RELEASED');
+
+  // (C) Case-only identity duplicate (real example: Jung Hoo Lee / Jung HOO Lee).
+  const caseC = [
+    { ...dupMeta, cardNumber: '277', player: 'Jung Hoo Lee', team: 'San Francisco Giants', rookie: false },
+    { ...dupMeta, cardNumber: '277', player: 'Jung HOO Lee', team: 'San Francisco Giants', rookie: false },
+  ];
+  const vC = validateChecklist(caseC, dupMeta);
+  check(vC.duplicatePlayerCardCombos.length === 1, '(C) a case-only variant of the same real player (Jung Hoo Lee / Jung HOO Lee) is correctly identified as the same identity - a hard error, not two players');
+  check(playerIdentityKey('Jung Hoo Lee') === playerIdentityKey('Jung HOO Lee'), '(C) playerIdentityKey itself collapses case-only variants');
+
+  // (D) Accent identity duplicate (real example: Luis García / Luis Garcia).
+  const caseD = [
+    { ...dupMeta, cardNumber: '657', player: 'Luis García', team: 'Washington Nationals', rookie: false },
+    { ...dupMeta, cardNumber: '657', player: 'Luis Garcia', team: 'Washington Nationals', rookie: false },
+  ];
+  const vD = validateChecklist(caseD, dupMeta);
+  check(vD.duplicatePlayerCardCombos.length === 1, '(D) an accent-only variant of the same real player (Luis García / Luis Garcia) is correctly identified as the same identity for linking purposes');
+  check(playerIdentityKey('Ronald Acuña Jr.') === playerIdentityKey('Ronald Acuna Jr.'), '(D) playerIdentityKey folds accents for roster-linkage purposes (Acuña / Acuna)');
+
+  // (E) Negative test: genuinely different players must NEVER be merged.
+  check(playerIdentityKey('Mike Trout') !== playerIdentityKey('Mike Tauchman'), '(E) two genuinely different real players (Mike Trout, Mike Tauchman) are never merged by identity normalization');
+  check(playerIdentityKey('Luis Garcia') !== playerIdentityKey('Luis Garcia Jr.'), '(E) a player and their real Jr. namesake are never merged (suffix is never dropped/guessed)');
+  const caseE = [
+    { ...dupMeta, cardNumber: '20', player: 'Mike Trout', team: 'Angels', rookie: false },
+    { ...dupMeta, cardNumber: '21', player: 'Mike Tauchman', team: 'Los Angeles Dodgers', rookie: false },
+  ];
+  const vE = validateChecklist(caseE, dupMeta);
+  check(vE.duplicatePlayerCardCombos.length === 0, '(E) two different real players under two different real card numbers never produce a false duplicatePlayerCardCombos anomaly');
+
+  // ---- 15. Deterministic NFL city->team map: no ambiguous guessing -----------
+  check(resolveNflCity('Buffalo') === 'Buffalo Bills', 'resolveNflCity resolves a real unambiguous single-team city (Buffalo -> Bills)');
+  check(resolveNflCity('Seattle') === 'Seattle Seahawks', 'resolveNflCity resolves Seattle -> Seahawks');
+  check(resolveNflCity('Los Angeles') === null, 'resolveNflCity refuses to guess for the real 2-team Los Angeles market (Rams vs. Chargers)');
+  check(resolveNflCity('New York') === null, 'resolveNflCity refuses to guess for the real 2-team New York market (Giants vs. Jets)');
+  check(resolveNflCity('') === null && resolveNflCity(null) === null, 'resolveNflCity returns null for empty/missing input rather than guessing');
+  check(Object.values(NFL_CITY_TO_TEAM).every((v) => typeof v === 'string' && v.length > 0), 'every mapped NFL_CITY_TO_TEAM entry resolves to a real, non-empty team name');
+
+  // ---- 16. computeTeamMappingStatus: separate from card-data status ----------
+  const fullyMappedRows = [{ team: 'Dallas Cowboys' }, { team: 'Denver Broncos' }];
+  check(computeTeamMappingStatus(fullyMappedRows) === 'FULL', 'computeTeamMappingStatus reports FULL when every row resolves');
+  const partiallyMappedRows = [{ team: 'Dallas Cowboys' }, { team: 'Los Angeles' }];
+  check(computeTeamMappingStatus(partiallyMappedRows, (t) => t !== 'Los Angeles') === 'PARTIAL', 'computeTeamMappingStatus reports PARTIAL when some rows are unresolved');
+  check(computeTeamMappingStatus([], () => true) === 'NONE', 'computeTeamMappingStatus reports NONE for an empty row set');
+
+  // Real persisted-file proof: the real 2024 Topps Chrome Football file's
+  // card-data status (RELEASED) is independent of its team-mapping status
+  // (PARTIAL, because Los Angeles/New York are real, honestly unresolved).
+  const fbFilePath = path.join(ROOT, 'data/checklists/football/2024/topps-chrome.json');
+  if (fs.existsSync(fbFilePath)) {
+    const fbRaw = JSON.parse(fs.readFileSync(fbFilePath, 'utf8'));
+    check(fbRaw.product.checklistStatus === 'RELEASED', 'the real 2024 Topps Chrome Football file has checklistStatus RELEASED (clean real card data)');
+    check(fbRaw.product.teamMappingStatus === 'PARTIAL', 'the same real file has teamMappingStatus PARTIAL (Los Angeles/New York real rows honestly left unresolved) - proving the two fields are tracked separately, not conflated');
+    check(Array.isArray(fbRaw.product.unresolvedCities) && fbRaw.product.unresolvedCities.includes('Los Angeles') && fbRaw.product.unresolvedCities.includes('New York'), 'the real file records exactly which real cities are unresolved, for transparency');
   }
 
   if (failures) {
