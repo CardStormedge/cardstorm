@@ -150,34 +150,38 @@ async function ingestOne(target) {
     }
 
     console.log('\n========== WAVE C: basketball ==========');
+    const bbFbOutput = {};
     for (const target of BASKETBALL) {
       const r = await ingestOne(target);
       allSummaries.push(r.summary);
+      if (target.label === '2025-26 Topps Basketball') bbFbOutput[slug(target.label)] = r;
     }
 
     console.log('\n========== WAVE D: football ==========');
     for (const target of FOOTBALL) {
       const r = await ingestOne(target);
       allSummaries.push(r.summary);
+      if (target.label === '2024 Topps Chrome Football') bbFbOutput[slug(target.label)] = r;
+    }
+
+    fs.writeFileSync(path.join(OUT_DIR, 'pdf-ingestion-summary.json'), JSON.stringify(allSummaries, null, 2));
+
+    console.log('\n\n===== FULL SUMMARY TABLE =====');
+    for (const s of allSummaries) {
+      console.log(`${s.validationStatus.padEnd(10)} | rows=${String(s.rowsParsed).padStart(4)} | ${s.label}`);
+    }
+
+    console.log('\n\n===== NORMALIZED ROWS FOR REPO WRITE-UP (all baseball products + the 1 basketball + 1 football probe product, minified JSON) =====');
+    for (const [key, r] of Object.entries({ ...firstWaveOutput, ...restOutput, ...bbFbOutput })) {
+      if (r.summary.rowsParsed > 0) {
+        console.log(`\n###NORMALIZED-JSON-START:${key}###`);
+        console.log(JSON.stringify(r.rows));
+        console.log(`###NORMALIZED-JSON-END:${key}###`);
+      }
     }
   } else {
     console.log('\n[gate] Skipping Wave B/C/D (rest of baseball, basketball, football) because Wave A was not fully clean.');
-  }
-
-  fs.writeFileSync(path.join(OUT_DIR, 'pdf-ingestion-summary.json'), JSON.stringify(allSummaries, null, 2));
-
-  console.log('\n\n===== FULL SUMMARY TABLE =====');
-  for (const s of allSummaries) {
-    console.log(`${s.validationStatus.padEnd(10)} | rows=${String(s.rowsParsed).padStart(4)} | ${s.label}`);
-  }
-
-  console.log('\n\n===== NORMALIZED ROWS FOR REPO WRITE-UP (all baseball products, minified JSON) =====');
-  for (const [key, r] of Object.entries({ ...firstWaveOutput, ...restOutput })) {
-    if (r.summary.rowsParsed > 0) {
-      console.log(`\n###NORMALIZED-JSON-START:${key}###`);
-      console.log(JSON.stringify(r.rows));
-      console.log(`###NORMALIZED-JSON-END:${key}###`);
-    }
+    fs.writeFileSync(path.join(OUT_DIR, 'pdf-ingestion-summary.json'), JSON.stringify(allSummaries, null, 2));
   }
 })().catch((err) => {
   console.error('LIVE PDF INGESTION FAILED WITH AN UNEXPECTED EXCEPTION:', err);
