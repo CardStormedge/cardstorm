@@ -89,6 +89,42 @@ else fail('app.html is missing csFallbackTile()');
 if (/\.csFallback\{/.test(appSrc)) ok('app.html defines the shared .csFallback CSS used by the fallback component');
 else fail('app.html is missing the .csFallback CSS rules');
 
+// ---- Grail Board / Team Hunt / Watchlist route through the resolver, not a
+//      hardcoded one-off image path (image-quality-pass round 2 requirement) ----
+if (/function csImageBlock\(/.test(appSrc)) ok('app.html defines csImageBlock(), the shared resolveCsImage()-first/fallback-second render helper');
+else fail('app.html is missing csImageBlock()');
+const grailUsesResolver = /function grailCardTileHTML\([\s\S]{0,3000}?\n\}/.test(appSrc) && /function grailCardTileHTML\([\s\S]{0,3000}?csImageBlock\(/.test(appSrc);
+const watchUsesResolver = /function watch\(\)\{[\s\S]{0,3000}?csImageBlock\(/.test(appSrc);
+if (grailUsesResolver) ok('Grail Board tiles call csImageBlock() (registry-first), not csFallbackTile() directly');
+else fail('Grail Board still calls csFallbackTile() directly instead of going through csImageBlock()/resolveCsImage()');
+if (watchUsesResolver) ok('Watchlist tiles call csImageBlock() (registry-first), not csFallbackTile() directly');
+else fail('Watchlist still calls csFallbackTile() directly instead of going through csImageBlock()/resolveCsImage()');
+
+// ---- No third-party hotlinked images left in REALPROD (round-2 requirement:
+//      rehost or downgrade to fallback, never leave a broken assumption) ----
+const realprodMatch = appSrc.match(/const REALPROD=\{([\s\S]*?)\n\};/);
+if (!realprodMatch) {
+  fail('could not find `const REALPROD={...}` in app.html');
+} else {
+  const hotlinks = [...realprodMatch[1].matchAll(/"img"?:"(https?:\/\/[^"]+)"/g)]
+    .concat([...realprodMatch[1].matchAll(/img:"(https?:\/\/[^"]+)"/g)])
+    .map(m => m[1]);
+  const repoControlled = hotlinks.filter(u => /(^|\.)cardstorm|githubusercontent|\/assets\//i.test(u));
+  const thirdParty = hotlinks.filter(u => !repoControlled.includes(u));
+  if (thirdParty.length) fail(`REALPROD still hotlinks ${thirdParty.length} third-party image URL(s), not rehosted or downgraded to fallback: ${thirdParty.join(', ')}`);
+  else ok('REALPROD has no third-party-hotlinked image URLs left (cardsmithsbreaks.com/tradingcardmarket.com entries were downgraded to the honest fallback)');
+}
+
+// ---- Real (repoAsset/imageUrl-backed) registry entries carry complete
+//      source/rights metadata, not just the schema keys existing ----
+const realEntries = (registry.entries || []).filter(e => e.repoAsset || e.imageUrl);
+let incompleteRights = 0;
+for (const e of realEntries) {
+  if (!e.sourceType || !e.verificationStatus || !e.usageRightsStatus || !e.notes) incompleteRights++;
+}
+if (realEntries.length && !incompleteRights) ok(`all ${realEntries.length} real-image registry entries carry complete sourceType/verificationStatus/usageRightsStatus/notes metadata`);
+else if (incompleteRights) fail(`${incompleteRights} real-image registry entries are missing sourceType/verificationStatus/usageRightsStatus/notes`);
+
 if (failures) {
   console.error(`\n${failures} IMAGE-REGISTRY TEST(S) FAILED`);
   process.exit(1);
