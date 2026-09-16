@@ -12,14 +12,28 @@
 @media(max-width:420px){.top{padding:6px 8px;gap:6px}.homebtn{padding:7px 8px;font-size:11px}.nav button,.join{padding:7px 8px;font-size:11px}}.homeTop{display:none}@media(max-width:600px){#home{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start}.homeTop{display:flex;align-items:center;gap:10px;padding:7px 10px;background:#030b16;border-bottom:1px solid #173b5d;flex:0 0 auto}.homeTop .logo{height:36px;width:auto;max-width:120px;object-fit:contain;flex:0 0 auto}.homeTop .nav{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;min-width:0}.homeTop .nav button{background:#081523;color:#d7e2ef;border:1px solid #285273;border-radius:8px;padding:8px 10px;font-weight:800;white-space:nowrap;font-size:11px;cursor:pointer}
 </style><style id="v82styles">
 .pagehead{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}.backbtn{border:1px solid #2d678b;background:#071a2a;color:#fff;font-weight:900;border-radius:9px;padding:10px 14px;cursor:pointer;white-space:nowrap}.backbtn:hover{background:#0b3150}.compPending{display:flex;gap:16px;align-items:center;border:1px solid #246081;background:#071c2b;border-radius:10px;padding:14px;color:#a8c6dc}.compPending b{color:#55d8ff}.officialProduct{position:relative;background:linear-gradient(160deg,#0c2338,#050d16);border:1px solid #2c7ba8;border-radius:12px;overflow:hidden}.officialProduct .productimg{width:100%;height:260px;object-fit:contain;background:linear-gradient(160deg,#0f2740,#060f1a);border:1px solid #1e4f6d;box-sizing:border-box;box-shadow:inset 0 0 24px #0008}
-/* BOX_ART "stylized artwork" renders (see BOX_ART const) are AI-generated product shots that
-   ship with a flat white/light canvas baked into the pixels - CSS can dim it but cannot cleanly
-   key it out without risking the product graphic itself. Framing it in a rounded dark mat + a
-   visible label keeps it from reading as a raw, ownerless white rectangle against the navy UI
-   while we wait on real or regenerated transparent-background art. Tracked as a known remaining
-   gap in the launch-readiness PR body, not silently hidden. */
-.officialProduct.stylizedArt{padding:14px;background:radial-gradient(circle at 50% 30%,#132b46,#050d16 78%)}
-.officialProduct.stylizedArt .productimg{border-radius:9px;box-shadow:0 0 0 1px #1e4f6d,inset 0 0 30px #0006;filter:brightness(.94) saturate(1.06)}.officialTag{position:absolute;left:10px;bottom:10px;background:rgba(0,14,27,.86);color:#55d8ff;border:1px solid #2c7ba8;border-radius:6px;padding:6px 8px;font-size:11px;font-weight:900}.groupList{display:grid;gap:10px;margin-top:14px}.checkGroup{border:1px solid #276d98;border-radius:12px;overflow:hidden;background:#061725}.groupHead{width:100%;display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;text-align:left;padding:16px 18px;background:#09233a;color:#fff;border:0;cursor:pointer;font-size:18px;font-weight:900}.groupHead b{font-size:12px;color:#55d8ff}.groupBody{display:none;padding:12px;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;max-height:58vh;overflow:auto}.checkGroup.open .groupBody,.groupBody.open{display:grid}.miniCheck{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;border:1px solid #1f4f6d;border-radius:8px;padding:10px;background:#05131f}.miniCheck.owned{border-color:#23d6a0;background:#08251f}.miniCheck input{width:18px;height:18px}.aiCard{cursor:pointer;transition:.15s transform,.15s border-color}.aiCard:hover{transform:translateY(-2px);border-color:#47cfff}.aiOpen{margin-top:12px;color:#55d8ff;font-weight:900}.insightActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}@media(max-width:900px){.groupBody{grid-template-columns:1fr 1fr}.pagehead{flex-direction:column}}@media(max-width:600px){.groupBody{grid-template-columns:1fr}}
+/* BOX_ART "stylized artwork" renders (see BOX_ART const) are AI-generated product shots.
+   The original assets shipped with a flat white/light canvas baked into the pixels - as of
+   this image-asset-completion pass, every BOX_ART asset has had that background actually
+   removed (flood-fill + edge-feather, see assets/boxes/transparent/ and
+   data/intelligence/image-registry.json), not just dimmed/framed. The dark radial-gradient
+   mat below is now a deliberate premium presentation choice around genuinely transparent
+   artwork, not a mitigation hiding a white rectangle. */
+.officialProduct.stylizedArt{padding:16px;background:radial-gradient(circle at 50% 30%,#132b46,#050d16 78%)}
+.officialProduct.stylizedArt .productimg{border-radius:9px;filter:saturate(1.04)}.officialTag{position:absolute;left:10px;bottom:10px;background:rgba(0,14,27,.86);color:#55d8ff;border:1px solid #2c7ba8;border-radius:6px;padding:6px 8px;font-size:11px;font-weight:900}.groupList{display:grid;gap:10px;margin-top:14px}.checkGroup{border:1px solid #276d98;border-radius:12px;overflow:hidden;background:#061725}.groupHead{width:100%;display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;text-align:left;padding:16px 18px;background:#09233a;color:#fff;border:0;cursor:pointer;font-size:18px;font-weight:900}.groupHead b{font-size:12px;color:#55d8ff}.groupBody{display:none;padding:12px;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;max-height:58vh;overflow:auto}.checkGroup.open .groupBody,.groupBody.open{display:grid}.miniCheck{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;border:1px solid #1f4f6d;border-radius:8px;padding:10px;background:#05131f}.miniCheck.owned{border-color:#23d6a0;background:#08251f}.miniCheck input{width:18px;height:18px}.aiCard{cursor:pointer;transition:.15s transform,.15s border-color}.aiCard:hover{transform:translateY(-2px);border-color:#47cfff}.aiOpen{margin-top:12px;color:#55d8ff;font-weight:900}.insightActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}@media(max-width:900px){.groupBody{grid-template-columns:1fr 1fr}.pagehead{flex-direction:column}}@media(max-width:600px){.groupBody{grid-template-columns:1fr}}
+/* One consistent premium CardStorm fallback for any missing/unverified image
+   across Product Intelligence, Grail Board, Team Hunt, checklist and
+   Watchlist - see resolveCsImage()/csFallbackTile() in the script below. */
+.csFallback{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:16px 12px;border-radius:12px;background:radial-gradient(circle at 50% 22%,color-mix(in srgb,var(--csfb,#55d8ff) 20%,#0a1c2e),#050d16 78%);border:1px solid color-mix(in srgb,var(--csfb,#55d8ff) 45%,#1e4f6d);min-height:120px;overflow:hidden}.csFallback-normal{min-height:150px}.csFallback-banner{min-height:190px}.csFallback-compact{min-height:84px;padding:10px 8px;gap:3px}.csFallbackGlyph{font-size:26px;color:var(--csfb,#55d8ff);opacity:.85;text-shadow:0 0 18px color-mix(in srgb,var(--csfb,#55d8ff) 60%,transparent)}.csFallback-compact .csFallbackGlyph{font-size:18px}.csFallbackBody b{display:block;font-size:14px;color:#f2f6fa;line-height:1.25}.csFallback-compact .csFallbackBody b{font-size:11.5px}.csFallbackBody span{display:block;font-size:11px;color:#a8c6dc;margin-top:2px}.csFallbackBody em{display:block;font-size:9.5px;font-style:normal;font-weight:900;letter-spacing:.1em;color:var(--csfb,#55d8ff);margin-top:4px}.csFallbackStatus{margin-top:2px;font-size:8.5px;font-weight:900;letter-spacing:.09em;color:#6f8ba3;border:1px solid #1e4f6d;border-radius:999px;padding:2px 8px}.csFallback-compact .csFallbackStatus{font-size:7.5px;padding:1px 6px}
+.thPlayerBanner{display:flex;align-items:center;gap:16px;padding:16px 18px;margin-bottom:14px;border-radius:14px;background:linear-gradient(120deg,color-mix(in srgb,var(--csfb,#55d8ff) 16%,#0a1c2e),#050d16 78%);border:1px solid color-mix(in srgb,var(--csfb,#55d8ff) 40%,#1e4f6d)}.thPlayerBannerLogo{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 0 10px #000)}.thPlayerBannerBody h2{margin:3px 0 5px}@media(max-width:600px){.thPlayerBanner{padding:12px 14px;gap:12px}.thPlayerBannerLogo{width:52px;height:52px}}
+/* Distinct original per-set TCG glyph banners - each set gets its own accent
+   color + motif instead of the same reused photo/logo across all 3 sets. */
+.pokeSetGlyphBanner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 25%,color-mix(in srgb,var(--pc,#55d8ff) 32%,#081523),#081523 75%)}
+.pokeSetGlyphBanner svg{width:60%;height:60%}
+.pokeSetGlyphBanner-detail{min-height:190px}
+.pokeBanner .pokeSetGlyphBanner-detail{width:100%;height:100%}
+.ckFeaturedGlyph{float:right;font-size:13px;font-weight:900;margin-left:4px}
+.watchremove{z-index:2}
 </style>
 <style>
 .watchHitTile{cursor:pointer;border:1px solid #245e86;border-radius:12px;padding:14px;transition:.18s ease;background:linear-gradient(180deg,#071b2c,#061522)}
@@ -111,7 +125,7 @@ const REALPROD={
   ],
   "football|2025": [
     {name:"Select",img:"assets/realprodfootball2025select.webp",note:"2025 Panini Select Football hobby-box photography"},
-    {name:"Prizm",img:"https://cardsmithsbreaks.com/wp-content/uploads/2025/11/2025-Panini-Prizm-Football-Box-Image-512x512.png",note:"2025 Panini Prizm Football hobby-box photography"},
+    {name:"Prizm",img:null,note:"Verified product photo pending (a third-party hotlinked image was removed during the image-asset-completion pass - this sandbox's egress proxy confirmed cardsmithsbreaks.com is unreachable/blocked, and no repo-hosted equivalent exists for this exact sport+year, so this now honestly falls back rather than depending on an unverified external link)"},
     {name:"Donruss",img:null,note:"Verified product photo pending"},
     {name:"Donruss Optic",img:null,note:"Verified product photo pending"},
     {name:"Mosaic",img:null,note:"Verified product photo pending"}
@@ -121,7 +135,7 @@ const REALPROD={
     {name:"Topps Series 2",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
     {name:"Topps Update Series",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
     {name:"Bowman",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
-    {name:"Prizm",img:"https://tradingcardmarket.com/cdn/shop/files/2024_Panini_Prizm_Baseball_Hobby_Box.jpg?v=1734707923&width=1946",note:"2024 Panini Prizm Baseball hobby-box photography"},
+    {name:"Prizm",img:null,note:"Verified product photo pending (a third-party hotlinked image was removed during the image-asset-completion pass - this sandbox's egress proxy confirmed tradingcardmarket.com is unreachable/blocked, and no repo-hosted equivalent exists for this exact sport+year, so this now honestly falls back rather than depending on an unverified external link)"},
     {name:"Topps Chrome",img:null,note:"Verified product photo pending"},
     {name:"Bowman Chrome",img:null,note:"Verified product photo pending"},
     {name:"Finest",img:null,note:"Verified product photo pending"}
@@ -130,34 +144,94 @@ const REALPROD={
 // Stylized (AI-generated) box art, correctly matched per sport+year+brand - honestly labeled
 // as artwork rather than verified photography. Separate from REALPROD's genuine official photos.
 const BOX_ART={
- "baseball|2024|Topps Chrome":"assets/boxes/box-baseball-2024-toppschrome.webp",
- "baseball|2024|Bowman Chrome":"assets/boxes/box-baseball-2024-bowmanchrome.webp",
- "baseball|2025|Bowman Chrome":"assets/boxes/box-baseball-2025-bowmanchrome.webp",
- "baseball|2025|Finest":"assets/boxes/box-baseball-2025-finest.webp",
- "baseball|2026|Topps Chrome":"assets/boxes/box-baseball-2026-toppschrome.webp",
- "baseball|2026|Bowman Chrome":"assets/boxes/box-baseball-2026-bowmanchrome.webp",
- "baseball|2026|Finest":"assets/boxes/box-baseball-2026-finest.webp",
- "football|2024|Prizm":"assets/boxes/box-football-2024-prizm.webp",
- "football|2024|Select":"assets/boxes/box-football-2024-select.webp",
- "football|2024|Donruss":"assets/boxes/box-football-2024-donruss.webp",
- "football|2024|Mosaic":"assets/boxes/box-football-2024-mosaic.webp",
- "football|2025|Donruss Optic":"assets/boxes/box-football-2025-donrussoptic.webp",
- "football|2026|Topps Chrome":"assets/boxes/box-football-2026-toppschrome.webp",
- "football|2026|Topps Resurgence":"assets/boxes/box-football-2026-toppsresurgence.webp",
- "football|2026|Prizm":"assets/boxes/box-football-2026-prizm.webp",
- "football|2026|Donruss Optic":"assets/boxes/box-football-2026-donrussoptic.webp",
- "football|2026|Select":"assets/boxes/box-football-2026-select.webp",
- "basketball|2024|Prizm":"assets/boxes/box-basketball-2024-prizm.webp",
- "basketball|2024|Select":"assets/boxes/box-basketball-2024-select.webp",
- "basketball|2024|Mosaic":"assets/boxes/box-basketball-2024-mosaic.webp",
- "basketball|2025|Prizm":"assets/boxes/box-basketball-2025-prizm.webp",
- "basketball|2025|Donruss Optic":"assets/boxes/box-basketball-2025-donrussoptic.webp",
- "basketball|2025|Select":"assets/boxes/box-basketball-2025-select.webp",
- "basketball|2026|Topps Chrome":"assets/boxes/box-basketball-2026-toppschrome.webp",
- "basketball|2026|Prizm":"assets/boxes/box-basketball-2026-prizm.webp",
- "basketball|2026|Donruss Optic":"assets/boxes/box-basketball-2026-donrussoptic.webp",
- "basketball|2026|Select":"assets/boxes/box-basketball-2026-select.webp",
+ "baseball|2024|Topps Chrome":"assets/boxes/transparent/box-baseball-2024-toppschrome-transparent.webp",
+ "baseball|2024|Bowman Chrome":"assets/boxes/transparent/box-baseball-2024-bowmanchrome-transparent.webp",
+ "baseball|2025|Bowman Chrome":"assets/boxes/transparent/box-baseball-2025-bowmanchrome-transparent.webp",
+ "baseball|2025|Finest":"assets/boxes/transparent/box-baseball-2025-finest-transparent.webp",
+ "baseball|2026|Topps Chrome":"assets/boxes/transparent/box-baseball-2026-toppschrome-transparent.webp",
+ "baseball|2026|Bowman Chrome":"assets/boxes/transparent/box-baseball-2026-bowmanchrome-transparent.webp",
+ "baseball|2026|Finest":"assets/boxes/transparent/box-baseball-2026-finest-transparent.webp",
+ "football|2024|Prizm":"assets/boxes/transparent/box-football-2024-prizm-transparent.webp",
+ "football|2024|Select":"assets/boxes/transparent/box-football-2024-select-transparent.webp",
+ "football|2024|Donruss":"assets/boxes/transparent/box-football-2024-donruss-transparent.webp",
+ "football|2024|Mosaic":"assets/boxes/transparent/box-football-2024-mosaic-transparent.webp",
+ "football|2025|Donruss Optic":"assets/boxes/transparent/box-football-2025-donrussoptic-transparent.webp",
+ "football|2026|Topps Chrome":"assets/boxes/transparent/box-football-2026-toppschrome-transparent.webp",
+ "football|2026|Topps Resurgence":"assets/boxes/transparent/box-football-2026-toppsresurgence-transparent.webp",
+ "football|2026|Prizm":"assets/boxes/transparent/box-football-2026-prizm-transparent.webp",
+ "football|2026|Donruss Optic":"assets/boxes/transparent/box-football-2026-donrussoptic-transparent.webp",
+ "football|2026|Select":"assets/boxes/transparent/box-football-2026-select-transparent.webp",
+ "basketball|2024|Prizm":"assets/boxes/transparent/box-basketball-2024-prizm-transparent.webp",
+ "basketball|2024|Select":"assets/boxes/transparent/box-basketball-2024-select-transparent.webp",
+ "basketball|2024|Mosaic":"assets/boxes/transparent/box-basketball-2024-mosaic-transparent.webp",
+ "basketball|2025|Prizm":"assets/boxes/transparent/box-basketball-2025-prizm-transparent.webp",
+ "basketball|2025|Donruss Optic":"assets/boxes/transparent/box-basketball-2025-donrussoptic-transparent.webp",
+ "basketball|2025|Select":"assets/boxes/transparent/box-basketball-2025-select-transparent.webp",
+ "basketball|2026|Topps Chrome":"assets/boxes/transparent/box-basketball-2026-toppschrome-transparent.webp",
+ "basketball|2026|Prizm":"assets/boxes/transparent/box-basketball-2026-prizm-transparent.webp",
+ "basketball|2026|Donruss Optic":"assets/boxes/transparent/box-basketball-2026-donrussoptic-transparent.webp",
+ "basketball|2026|Select":"assets/boxes/transparent/box-basketball-2026-select-transparent.webp",
 };
+// ---- Centralized image registry/resolver ----------------------------------
+// data/intelligence/image-registry.json is the single source of truth for
+// every verified image mapping across Product Intelligence, Grail Board,
+// Team Hunt and Watchlist. resolveCsImage() is the one lookup function every
+// feature calls instead of duplicating per-feature image logic. When no
+// verified entry/asset exists it returns null and callers render
+// csFallbackTile() - one consistent premium branded placeholder design used
+// everywhere in the app (see .csFallback CSS below), never a broken-image
+// icon or blank tile.
+let _imageRegistryPromise=null;
+function loadImageRegistry(){
+ if(!_imageRegistryPromise)_imageRegistryPromise=fetch('data/intelligence/image-registry.json').then(r=>r.json()).catch(()=>({entries:[]}));
+ return _imageRegistryPromise;
+}
+let _imageRegistryCache=null;
+loadImageRegistry().then(d=>{_imageRegistryCache=d.entries||[]});
+function resolveCsImage(query){
+ // query: {entityType, sport, year, player, product, set}
+ if(!_imageRegistryCache)return null;
+ const hit=_imageRegistryCache.find(e=>{
+  if(query.entityType&&e.entityType!==query.entityType)return false;
+  if(query.sport&&e.sport!==query.sport)return false;
+  if(query.year!=null&&e.year!=null&&String(e.year)!==String(query.year))return false;
+  if(query.player&&e.player!==query.player)return false;
+  if(query.product&&e.product!==query.product)return false;
+  if(query.set&&e.set!==query.set)return false;
+  return true;
+ });
+ if(!hit)return null;
+ const src=hit.repoAsset||hit.imageUrl;
+ if(!src||hit.verificationStatus==='NO_VERIFIED_CARD_IMAGE_AVAILABLE')return {entry:hit,src:null};
+ return {entry:hit,src};
+}
+function csEsc(s){return String(s==null?'':s).replace(/'/g,"\\'")}
+// Single render helper every feature (Grail Board, Team Hunt, Watchlist,
+// Product Intelligence) should call instead of deciding for itself whether
+// a real image exists: looks up the centralized registry via
+// resolveCsImage() first, and only drops to the shared csFallbackTile()
+// design when the registry has no usable src for this query.
+function csImageBlock(query,fallbackOpts,imgAttrs){
+ const hit=resolveCsImage(query);
+ if(hit&&hit.src){
+  const alt=csEsc((fallbackOpts&&fallbackOpts.title)||query.player||query.product||'');
+  return `<img class="${(imgAttrs&&imgAttrs.cls)||'csResolvedImg'}" src="${hit.src}" loading=lazy decoding=async alt="${alt}">`;
+ }
+ return csFallbackTile(fallbackOpts);
+}
+function sportAccent(sp){return sp==='football'?'#39d98a':sp==='basketball'?'#ff8a5c':sp==='baseball'?'#55d8ff':'#c792ff'}
+// Real team primary colors (public brand facts, not fabricated imagery) for
+// the small set of teams behind Team Hunt's flagship player pages, so their
+// banner reads as team-specific rather than just generic sport-accent teal.
+const TEAM_ACCENT={nyy:'#0c2340',lad:'#005a9c',atl:'#ce1141',bos:'#007a33',KC:'#e31837'};
+function teamAccent(ab,sp){return TEAM_ACCENT[ab]||sportAccent(sp)}
+// One consistent branded fallback tile - subject name/context + sport/year +
+// a subtle "IMAGE PENDING" status, never a browser broken-image icon or a
+// blank/generic gray box.
+function csFallbackTile(opts){
+ const {title='',sub='',sport='',accent='#55d8ff',icon='◆',size='normal'}=opts||{};
+ return `<div class="csFallback csFallback-${size}" style="--csfb:${accent}"><div class=csFallbackGlyph>${icon}</div><div class=csFallbackBody>${title?`<b>${title}</b>`:''}${sub?`<span>${sub}</span>`:''}${sport?`<em>${sport.toUpperCase()}</em>`:''}</div><div class=csFallbackStatus>IMAGE PENDING</div></div>`;
+}
 let GAMECARDS=[];
 let gameOrder=[]; let gamePicked=[]; let gameRound=1; let gameScore=0; let roundLocked=false; const GAME_ROUNDS=10;
 // SPORTS/YEARS: the single point of change for which sports and product
@@ -462,7 +536,13 @@ function itemEst2(it){if(it.pending)return {v:null,verified:false};return setEst
 function toggleChecklistGroup(id){const el=document.getElementById(id);if(el)el.classList.toggle('open')}
 function toggleSetOwned2(k,ch,name){const o=loadOwned();if(ch)o[k]=true;else delete o[k];saveOwned(o);refreshSetTotal2(name)}
 function refreshSetTotal2(name){const o=loadOwned(),groups=checklistGroups(name);let verifiedTotal=0,estimatedTotal=0,verifiedCount=0,pending=0,ct=0;Object.entries(groups).forEach(([g,arr])=>arr.forEach(it=>{if(!o[setOwnedKey2(name,g,it.id)])return;ct++;const e=itemEst2(it);if(e.v==null){pending++;return}if(e.verified){verifiedTotal+=e.v;verifiedCount++}else{estimatedTotal+=e.v}}));const fmt=v=>'$'+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});const el=document.getElementById('setCollectionTotal'),note=document.getElementById('setCollectionNote'),cnt=document.getElementById('setOwnedCount'),vel=document.getElementById('setVerifiedTotal'),eel=document.getElementById('setEstimatedTotal'),vcnt=document.getElementById('setVerifiedCount'),pcnt=document.getElementById('setPendingCount');if(el)el.textContent=fmt(verifiedTotal+estimatedTotal);if(cnt)cnt.textContent=ct;if(vel)vel.textContent=fmt(verifiedTotal);if(eel)eel.textContent=fmt(estimatedTotal);if(vcnt)vcnt.textContent=verifiedCount;if(pcnt)pcnt.textContent=pending;if(note)note.textContent=ct+' cards checked • '+verifiedCount+' verified value • '+pending+' value pending • verified sales are never treated as asking prices.'}
-function renderChecklistCards(name,g,arr,owned){return arr.map(it=>{const k=setOwnedKey2(name,g,it.id),ev=itemEst2(it);return `<label class="miniCheck ${owned[k]?'owned':''}"><input type=checkbox ${owned[k]?'checked':''} ${it.pending?'disabled':''} onchange="toggleSetOwned2('${k.replace(/'/g,"\\'")}',this.checked,'${name.replace(/'/g,"\\'")}')"><div><b>${it.player}</b><div class=target>${it.card}</div>${it.pending?'<span class=pendingval>CHECKLIST IMPORT PENDING</span>':ev.v!=null?`<span class=${ev.verified?'compval':'estval'}>${ev.verified?'':'~'}$${ev.v.toLocaleString(undefined,{maximumFractionDigits:2})}</span>`:'<span class=pendingval>VALUE PENDING</span>'}</div></label>`}).join('')}
+// Selective/featured-row visual: a lightweight inline SVG glyph (no network
+// image request) marks a genuinely notable row - rated rookie/RC or a
+// numbered parallel - instead of trying to load a photo for every one of the
+// 25,000+ real checklist rows, which would be both dishonest (no verified
+// photo exists per-row) and far too slow to render/lazy-load at this scale.
+function checklistRowGlyph(it){const notable=it.ratedRookie||it.rookie||it.serialNumberedTo;if(!notable)return '';const accent=it.serialNumberedTo?'#ffd257':'#55d8ff';return `<span class=ckFeaturedGlyph style="color:${accent}" title="${it.serialNumberedTo?'Numbered parallel':'Rookie / RC'}">${it.serialNumberedTo?'◆':'★'}</span>`}
+function renderChecklistCards(name,g,arr,owned){return arr.map(it=>{const k=setOwnedKey2(name,g,it.id),ev=itemEst2(it);return `<label class="miniCheck ${owned[k]?'owned':''}"><input type=checkbox ${owned[k]?'checked':''} ${it.pending?'disabled':''} onchange="toggleSetOwned2('${k.replace(/'/g,"\\'")}',this.checked,'${name.replace(/'/g,"\\'")}')"><div>${checklistRowGlyph(it)}<b>${it.player}</b><div class=target>${it.card}</div>${it.pending?'<span class=pendingval>CHECKLIST IMPORT PENDING</span>':ev.v!=null?`<span class=${ev.verified?'compval':'estval'}>${ev.verified?'':'~'}$${ev.v.toLocaleString(undefined,{maximumFractionDigits:2})}</span>`:'<span class=pendingval>VALUE PENDING</span>'}</div></label>`}).join('')}
 function openSetChecklist(name){const groups=checklistGroups(name),owned=loadOwned();setTimeout(()=>refreshSetTotal2(name),0);const displayYear=(sport==='basketball'&&year==='2026'&&name==='Topps Chrome')?'2025-26':year;C.innerHTML=shell('SET CHECKLIST',displayYear+' '+name,sport.toUpperCase()+' • Complete collector checklist by category',`<div class=collectiontop><div class=feature><h2>${name} Collector Checklist</h2><p class=sub>Open a category, check the exact cards you own, and CardStorm keeps a running collection value. Base cards, rookies, parallels, inserts, case hits and autos stay separated.</p>${sport==='basketball'&&year==='2026'&&name==='Topps Chrome'?'<div class=sourceTag>Official Topps 2025-26 checklist loaded • 299-card base set</div>':''}</div><div class=collectionvalue><div class=k>THIS SET — COLLECTION VALUE</div><div class=total id=setCollectionTotal>$0.00</div><div class=metricrow><div class=metric>Cards checked<b id=setOwnedCount>0</b></div></div><div class=valuationnote id=setCollectionNote>Values update as you check cards.</div></div></div><div class=groupList>${Object.entries(groups).map(([g,arr],idx)=>{const id='cg-'+idx;return `<section class="checkGroup ${idx===1?'open':''}"><button class=groupHead onclick="toggleChecklistGroup('${id}')"><span>${g}</span><b>${arr.length} cards / entries</b><span>⌄</span></button><div class=groupBody id="${id}">${renderChecklistCards(name,g,arr,owned)}</div></section>`}).join('')}</div>`)}
 function loadBreaks(){try{return JSON.parse(localStorage.getItem('cardstormBreakListings')||'[]')}catch(e){return[]}}
 function saveBreakListing(){const host=document.getElementById('breakHost'),platform=document.getElementById('bPlatform').value,time=document.getElementById('bTime').value,seller=document.getElementById('bSeller').value.trim(),title=document.getElementById('bTitle').value.trim(),details=document.getElementById('bDetails').value.trim();if(!seller||!title||!time){csNotice('Missing Details','Add breaker/seller, break title, and date/time before posting this listing.');return}const a=loadBreaks();a.unshift({platform,time,seller,title,details});localStorage.setItem('cardstormBreakListings',JSON.stringify(a));if(host)host.innerHTML=breakRows(a);}
@@ -1155,8 +1235,12 @@ function renderPlayerHunt(ab,i){
  // a player), then VALUES, then VERIFIED CHASE CARDS last - a small honest
  // note there when a player has no chase-type record, not a dominant empty
  // block leading the page (checklist-data-hardening-pass session, 2026-09-15).
+ // Player-context visual banner: no exact-card photo is verified for this
+ // player (see image-registry.json), so this pairs the team's real logo with
+ // a CardStorm-branded crest rather than a blank header or a fake card photo.
+ const playerBanner=`<div class=thPlayerBanner style="--csfb:${teamAccent(ab,sport)}"><img class=thPlayerBannerLogo src="${logoUrl(ab)}" width=72 height=72 loading=lazy decoding=async onerror="teamLogoFallback(this)" alt="${teamFullName} logo"><div class=thPlayerBannerBody><div class=k>${teamFullName.toUpperCase()} • ${year}</div><h2>${player}</h2><div class=sub>Verified checklist rows, values and chase intelligence below. No exact-card photo is verified for ${player} yet, so CardStorm shows a real team-branded header instead of a guessed image.</div></div></div>`;
  C.innerHTML=shell('TEAM HUNT',player,teamFullName+' • '+year+' • chase intelligence',
-  `${TH_STYLE}<div class=feature><h2 id=thChecklist${i}HostHeading>VERIFIED CHECKLIST CARDS</h2><div class=sub>${player}'s real cards across every product CardStorm has verified, pulled straight from the ${teamFullName} master checklist.</div><div id=thChecklist${i}Host>Loading verified checklist data…</div></div>
+  `${TH_STYLE}${playerBanner}<div class=feature><h2 id=thChecklist${i}HostHeading>VERIFIED CHECKLIST CARDS</h2><div class=sub>${player}'s real cards across every product CardStorm has verified, pulled straight from the ${teamFullName} master checklist.</div><div id=thChecklist${i}Host>Loading verified checklist data…</div></div>
   <div id="thGear${i}Anchor"></div>
   <div class=feature style="margin-top:14px"><h2>VALUES</h2>${valuesHtml}</div>
   <div class=feature style="margin-top:14px"><h2 style="font-size:13px;color:#8fc4e6">VERIFIED CHASE CARDS</h2><div class=sub style="font-size:11px">Only chase types with a real checklist record are shown.</div><div id=thChase${i}Host>Loading…</div></div>
@@ -1263,7 +1347,7 @@ function watch(){
  const sportOrder=SPORTS;
  const sports=Object.keys(bySport).sort((a,b)=>{const ai=sportOrder.indexOf(a),bi=sportOrder.indexOf(b);return (ai<0?99:ai)-(bi<0?99:bi);});
  const rows=sports.map(sport=>{
-  const cards=bySport[sport].map(([i,p])=>`<div class=watchplayer onclick="openWatch(${i})"><button class=watchremove onclick="removeWatchName('${p[0].replace(/'/g,"\\'")}',event)">REMOVE</button><div class=watchsport>${p[1].toUpperCase()}</div><h3>${p[0]}</h3><div class=target>Suggested chases • recent comps • alerts</div><div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('');
+  const cards=bySport[sport].map(([i,p])=>`<div class=watchplayer onclick="openWatch(${i})"><button class=watchremove onclick="removeWatchName('${p[0].replace(/'/g,"\\'")}',event)">REMOVE</button>${csImageBlock({entityType:'player',sport:p[1],player:p[0]},{title:p[0],sport:p[1],accent:sportAccent(p[1]),icon:'★',size:'compact'})}<div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('');
   return `<div class=homeSectionLabel>${sport.toUpperCase()} (${bySport[sport].length})</div><div class=watchgrid>${cards}</div>`;
  }).join('');
  return shell('WATCHLIST','Track your favorites.','Your watchlist is saved in this browser. Click a player for hits and comps, or add/remove players anytime.',`<div class=watchtoolbar><div class=watchcount>${mine.length} PLAYERS WATCHED</div><button class=cta onclick="openWatchManager()">+ ADD / MANAGE PLAYERS</button><button class=cta onclick="show('market')">MARKET RADAR →</button></div>${rows||'<div class=feature><h3>Your watchlist is empty.</h3><button class=cta onclick="openWatchManager()">ADD PLAYERS</button></div>'}`);
@@ -1835,7 +1919,12 @@ function grailCardTileHTML(c){
  const gradeShort=(c.grade||'').split(' ').slice(0,2).join(' ');
  const compLabel=c.compType==='EXACT_CERT_CONFIRMED'?'Exact Cert Sale':c.compType==='SIMILAR_ITEM_COMP'?'Similar Item Comp':`Recent ${gradeShort} Comp`;
  const compBlock=hasComp?`<div class=grailTileComp><span class=grailCompLabel>${compLabel}</span><b class=grailPrice>${grailMoney(c.lastVerifiedSalePrice)}</b><span class=grailCompMeta>${c.saleSource||'source pending'} · ${grailDateLabel(c.lastVerifiedSaleDate)}</span></div>`:`<div class=grailNoComp>No verified recent sale loaded</div>`;
- return `<div class=grailTile><div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${compBlock}${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
+ // Image presentation only - never touches compType/compLabel logic above.
+ // No real card photography exists for these certs (see grail-board.json's
+ // _sourcingMethod), so every Grail tile gets the same premium branded
+ // CardStorm fallback crest rather than a fabricated or guessed image.
+ const imgBlock=csImageBlock({entityType:'player',sport:c.sport,player:c.player},{title:c.player,sub:`${c.year} ${c.brand}`,sport:c.sport,accent:sportAccent(c.sport),icon:'♦',size:'compact'});
+ return `<div class=grailTile>${imgBlock}<div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${compBlock}${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
 }
 const GRAIL_TAKE={
  'Tom Brady':'The rookie-card market\'s gold standard - a reachable PSA 10 SP Authentic sits alongside a seven-figure Championship Ticket autograph.',
@@ -1951,12 +2040,21 @@ const POKE_CHASE_TYPES=[
  {name:'Hyper / Gold',sub:'Scarcity & premium-finish targets',c:'#39d98a'}
 ];
 const POKE_ACCENTS=['#55d8ff','#ffd43a','#ff8a5c','#39d98a','#c792ff'];
+// Distinct original CardStorm set glyphs (never official Pokémon box art,
+// which CardStorm has no source/rights to reproduce) so the 3 TCG sets read
+// as genuinely different rather than the same photo/logo recolored.
+const POKE_SET_GLYPH=[
+ `<svg viewBox="0 0 120 120"><circle cx=60 cy=60 r=52 fill="none" stroke="currentColor" stroke-width="3" opacity=".55"/><circle cx=60 cy=60 r=30 fill="currentColor" opacity=".18"/><path d="M60 20 L60 100 M20 60 L100 60" stroke="currentColor" stroke-width="2" opacity=".4"/><circle cx=60 cy=60 r=12 fill="currentColor"/></svg>`,
+ `<svg viewBox="0 0 120 120"><path d="M62 8 L34 66 L56 66 L46 112 L92 50 L66 50 Z" fill="currentColor" opacity=".85"/></svg>`,
+ `<svg viewBox="0 0 120 120"><polygon points="60,10 105,35 105,85 60,110 15,85 15,35" fill="none" stroke="currentColor" stroke-width="3" opacity=".6"/><polygon points="60,32 86,47 86,77 60,92 34,77 34,47" fill="currentColor" opacity=".25"/><circle cx=60 cy=60 r=8 fill="currentColor"/></svg>`
+];
+function pokeSetBannerHTML(i,size){const accent=POKE_ACCENTS[i%POKE_ACCENTS.length],glyph=POKE_SET_GLYPH[i%POKE_SET_GLYPH.length];return `<div class="pokeSetGlyphBanner pokeSetGlyphBanner-${size||'card'}" style="--pc:${accent};color:${accent}">${glyph}</div>`}
 function pokeChaseGridHTML(){return `<div class=pokeChaseGrid>${POKE_CHASE_TYPES.map(t=>`<div class=pokeChaseTile style="--pc:${t.c}"><b>${t.name}</b><span>${t.sub}</span></div>`).join('')}</div>`}
 // Each set card gets its own accent color + set number so the grid reads as distinct set
 // identities rather than one repeated logo tile with swapped text (no fabricated per-set box
 // art exists yet, so this is deliberately original CardStorm styling, not stand-in photography).
-function pokeSetCardHTML(set,i){const accent=POKE_ACCENTS[i%POKE_ACCENTS.length];return `<button type=button class=pokeSetCard style="--pc:${accent}" onclick="showPokemonSet(${i})"><div class=pokeSetLogo><span class=pokeSetNum>${String(i+1).padStart(2,'0')}</span><img class=pokeSetLogoMark src="${POKEMON_TCG_LOGO}" loading=lazy decoding=async alt="Pokémon Trading Card Game"></div><div class=pokeSetBadge>${set.status}</div><h3>${set.name}</h3><div class=target>${set.date}</div><p class=sub>${set.detail}</p><span class="cta" style="display:inline-block">OPEN SET INTELLIGENCE →</span></button>`}
-function pokemonSetDetail(i){const set=TCG_2026[i];if(!set)return pokemon();return shell('POKÉMON / TCG',set.name,set.date+' • CardStorm set intelligence',`${POKE_STYLE}<button type=button class="pokeBanner pokeBannerLink" onclick="show('pokemon')" aria-label="Back to Pokémon TCG hub"><img src="assets/homepage/categories/pokemon-tcg.webp" loading=lazy decoding=async alt="Pokémon TCG artwork"><div class=pokeBannerBody><div class=pokeSetBadge>${set.status}</div><h2>${set.name}</h2><p class=sub>${set.detail}</p>${pokeChaseGridHTML()}</div></button><div class=feature style="margin-top:16px"><div class=k>SET WORKFLOW</div><h2>Own it. Check it. Value it.</h2><p class=sub>Each Pokémon set uses the same CardStorm ownership engine: full checklist → rarity group → I Own This → recent comp → running collection value.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class=cta onclick="csNotice('Checklist Status','Full card-by-card Pokémon checklist import for <b>${set.name.replace(/'/g,"\\'")}</b> is queued. CardStorm will not invent missing entries — this label updates the moment a verified checklist is loaded.')">CHECKLIST STATUS</button><button class="cta pokeGhostBtn" onclick="window.open('https://www.pokemon.com/us/pokemon-tcg','_blank')">OFFICIAL SET SOURCE →</button></div></div><div class=feature style="margin-top:14px"><div class=k>WHAT TO HUNT</div><h2>${set.name} Chase Map</h2><div class=hitgrid><div class=hit><div class=rarity>CHASE</div><strong>Illustration Rares</strong><div class=target>Character-driven artwork and collector favorites.</div></div><div class=hit><div class=rarity>PREMIUM</div><strong>Special Illustration Rares</strong><div class=target>Top-end artwork and scarcity.</div></div><div class=hit><div class=rarity>POWER</div><strong>Pokémon ex / Mega</strong><div class=target>Headline Pokémon and competitive/collector demand.</div></div><div class=hit><div class=rarity>ULTRA</div><strong>Hyper / Gold</strong><div class=target>Low-pop premium-finish targets.</div></div></div></div>`)}
+function pokeSetCardHTML(set,i){const accent=POKE_ACCENTS[i%POKE_ACCENTS.length];return `<button type=button class=pokeSetCard style="--pc:${accent}" onclick="showPokemonSet(${i})"><div class=pokeSetLogo>${pokeSetBannerHTML(i,'card')}<span class=pokeSetNum>${String(i+1).padStart(2,'0')}</span></div><div class=pokeSetBadge>${set.status}</div><h3>${set.name}</h3><div class=target>${set.date}</div><p class=sub>${set.detail}</p><span class="cta" style="display:inline-block">OPEN SET INTELLIGENCE →</span></button>`}
+function pokemonSetDetail(i){const set=TCG_2026[i];if(!set)return pokemon();return shell('POKÉMON / TCG',set.name,set.date+' • CardStorm set intelligence',`${POKE_STYLE}<button type=button class="pokeBanner pokeBannerLink" onclick="show('pokemon')" aria-label="Back to Pokémon TCG hub">${pokeSetBannerHTML(i,'detail')}<div class=pokeBannerBody><div class=pokeSetBadge>${set.status}</div><h2>${set.name}</h2><p class=sub>${set.detail}</p>${pokeChaseGridHTML()}</div></button><div class=feature style="margin-top:16px"><div class=k>SET WORKFLOW</div><h2>Own it. Check it. Value it.</h2><p class=sub>Each Pokémon set uses the same CardStorm ownership engine: full checklist → rarity group → I Own This → recent comp → running collection value.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class=cta onclick="csNotice('Checklist Status','Full card-by-card Pokémon checklist import for <b>${set.name.replace(/'/g,"\\'")}</b> is queued. CardStorm will not invent missing entries — this label updates the moment a verified checklist is loaded.')">CHECKLIST STATUS</button><button class="cta pokeGhostBtn" onclick="window.open('https://www.pokemon.com/us/pokemon-tcg','_blank')">OFFICIAL SET SOURCE →</button></div></div><div class=feature style="margin-top:14px"><div class=k>WHAT TO HUNT</div><h2>${set.name} Chase Map</h2><div class=hitgrid><div class=hit><div class=rarity>CHASE</div><strong>Illustration Rares</strong><div class=target>Character-driven artwork and collector favorites.</div></div><div class=hit><div class=rarity>PREMIUM</div><strong>Special Illustration Rares</strong><div class=target>Top-end artwork and scarcity.</div></div><div class=hit><div class=rarity>POWER</div><strong>Pokémon ex / Mega</strong><div class=target>Headline Pokémon and competitive/collector demand.</div></div><div class=hit><div class=rarity>ULTRA</div><strong>Hyper / Gold</strong><div class=target>Low-pop premium-finish targets.</div></div></div></div>`)}
 function pokemon(){return shell('POKÉMON / TCG','Your Pokémon hunt starts here','Cards. Sets. Culture. All in one place — kept completely separate from NFL/MLB/NBA Team Hunt.',`${POKE_STYLE}<button type=button class=pokeHero onclick="showPokemonSet(0)" aria-label="Explore the latest Pokémon TCG set"><img src="assets/homepage/categories/pokemon-tcg-hero.webp" loading=lazy decoding=async alt="Pokémon TCG — graded slabs, Pikachu and Charizard"><span class=pokeHeroTag>EXPLORE LATEST SET →</span></button><div class=pokeHeroActions><div><div class=pokeEyebrow>⚡ CARDSTORM TCG LANE</div><div class=pokeHeroCopy><h2>Track sets. Spot chase cards. Build your collection.</h2><p class=sub>Set → rarity → chase → value → I Own This — its own Pokémon lane.</p></div></div><div class=pokeHeroBtns><button class=cta onclick="showPokemonSet(0)">OPEN LATEST SET →</button><button class="cta pokeGhostBtn" onclick="pokeCollectionNotice()">COLLECTION TRACKER — COMING SOON</button></div></div><div class=pokeBanner><img src="assets/homepage/dashboard/09-pokemon-tcg.webp" loading=lazy decoding=async alt="Charizard ex, Pikachu ex and Mewtwo ex Pokémon cards"><div class=pokeBannerBody><div class=pokeEyebrow>WHAT COLLECTORS CHASE</div><h2>Iconic Pokémon. Serious chase energy.</h2>${pokeChaseGridHTML()}<button type=button class="cta pokeGhostBtn pokeBannerCta" onclick="document.getElementById('pokeSetsAnchor').scrollIntoView({behavior:'smooth'})">SEE LIVE SETS ↓</button></div></div><div class="pokeSection pokeLiveSpotlight"><div class=pokeEyebrow>FEATURED ON CARDSTORM LIVE</div><h2 style="margin:6px 0 8px">See the cards come to life</h2><p class=sub style="margin:0 0 12px">Real @cardstormedge pulls — slabs breaking open, hits flying, Pokémon included. Same video as CardStorm Live, no duplicate upload.</p><button type=button class=pokeLiveThumb onclick="openLive(8)" aria-label="Watch CardStorm Live 09"><img src="assets/homepage/dashboard/10-cards-come-alive.webp" loading=lazy decoding=async alt="Cards coming to life — CardStorm Live pulls and hits"><span class=pokeLivePlay>▶</span><span class=pokeLiveCta>WATCH CARDSTORM LIVE 09</span></button></div><div id=pokeSetsAnchor class=pokeSection><div class=pokeSectionHead><div><div class=pokeEyebrow>BROWSE SETS</div><h2 style="margin:4px 0 0">Live Pokémon TCG Sets</h2></div><p class=sub style="margin:0">Tap a set to open its full CardStorm intelligence page.</p></div><div class=pokeSetGrid>${TCG_2026.map((set,i)=>pokeSetCardHTML(set,i)).join('')}</div></div><div class="pokeSection pokeCollectCard"><div><div class=pokeEyebrow>YOUR COLLECTION</div><h2>Own it. Check it. Value it.</h2><p class=sub>Same checkbox/value engine as sports cards. Pricing stays pending until a real data source connects — CardStorm won't invent values.</p><button class=cta onclick="pokeCollectionNotice()">COLLECTION TRACKER — COMING SOON</button></div><div class=pokeCollectVisual><img src="${POKEMON_TCG_LOGO}" loading=lazy decoding=async alt="Pokémon Trading Card Game"></div></div>`)}
 function pokeCollectionNotice(){csNotice('Collection Tracker — Coming Soon','Pokémon collection tracking isn\'t connected to real set/card data yet, so CardStorm won\'t fake your collection value. This lights up once verified Pokémon checklists are added — the sports-card tracker (Checklist Library) is a separate feature and won\'t show Pokémon cards.')}
 function showPokemonSet(i){navPush();H.style.display='none';V.style.display='block';C.innerHTML=pokemonSetDetail(i)}
