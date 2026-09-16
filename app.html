@@ -1883,9 +1883,9 @@ function askCardstorm(){
     ${ackSlotHTML('back',_ackBackImg,'BACK','Show the back for set/card details')}
     ${ackGeneralSlotHTML()}
    </div>
-   <input type=file accept="image/*" capture="environment" id=ackInput_front style="display:none" onchange="ackReadFile('front',this)">
-   <input type=file accept="image/*" capture="environment" id=ackInput_back style="display:none" onchange="ackReadFile('back',this)">
-   <input type=file accept="image/*" capture="environment" id=ackInput_general style="display:none" onchange="ackReadFile('general',this)">
+   <input type=file accept="image/*" id=ackInput_front style="display:none" onchange="ackReadFile('front',this)">
+   <input type=file accept="image/*" id=ackInput_back style="display:none" onchange="ackReadFile('back',this)">
+   <input type=file accept="image/*" id=ackInput_general style="display:none" onchange="ackReadFile('general',this)">
    <button type=button class=ackAnalyzeBtn ${!hasAnyImg||_ackAnalyzing?'disabled':''} onclick="ackAnalyze()">${analyzeLabel}</button>
 
    <div class=ackQuickGrid>${ACK_QUICK_QUESTIONS_PRIMARY.map(q=>`<button type=button class=ackQuick onclick="ackQuickAsk('${q.replace(/'/g,"\\'")}')">${q}</button>`).join('')}</div>
