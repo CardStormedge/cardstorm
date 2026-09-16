@@ -1391,8 +1391,7 @@ const ASK_CARDSTORM_STYLE=`<style>
    max-width (rather than max-height+crop) so it reads as a substantial
    but not overwhelming header on wide desktop viewports, while still
    scaling down cleanly to full-width on mobile. */
-.ackHeroRow{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:20px}
-.ackSecondaryPanel{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;flex:0 1 880px;width:100%;max-width:880px;aspect-ratio:1672/941;background:radial-gradient(circle at 30% 20%,#123a63 0,#071827 46%,#03101d 82%)}
+.ackSecondaryPanel{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;margin:0 auto 20px;width:100%;max-width:880px;aspect-ratio:1672/941;background:radial-gradient(circle at 30% 20%,#123a63 0,#071827 46%,#03101d 82%)}
 .ackSecondaryImg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1}
 /* Desktop only: the full-contain panel above reads as a ~490px-tall hero,
    too dominant for a page whose job is the upload tools below it. Switch
@@ -1402,18 +1401,6 @@ const ASK_CARDSTORM_STYLE=`<style>
    cropping only the outer books/castle-sky background. Mobile (<=600px)
    is untouched and keeps the full-contain, no-crop treatment above. */
 @media(min-width:601px){.ackSecondaryPanel{aspect-ratio:auto;height:330px}.ackSecondaryImg{object-fit:cover;object-position:center 40%}}
-/* Subtle branded support columns either side of the hero image - only on
-   wide desktop, where there's real room; hidden entirely below that so
-   the mobile layout stays exactly as approved (full-width image, nothing
-   competing with it). */
-.ackHeroSupport{display:none;flex:0 0 140px}
-.ackHeroSupportLeft{justify-content:flex-end}
-.ackHeroSupportRight{flex-direction:column;align-items:flex-start;gap:7px}
-@media(min-width:1000px){
- .ackHeroSupport{display:flex}
- .ackHeroLogo{height:30px;width:auto;object-fit:contain;opacity:.92}
- .ackHeroLabel{font-size:10.5px;font-weight:900;letter-spacing:.1em;color:#8fb3d1;white-space:nowrap}
-}
 .ackSecondaryFallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
 .ackSecondaryFallbackOrb{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fe6ff,#55d8ff 38%,#0d63b8 76%);box-shadow:0 0 34px #55d8ff77,inset 0 0 18px #ffffffaa;display:grid;place-items:center;font-size:26px}
 .ackSecondaryFallbackTitle{font-size:clamp(14px,2.4vw,19px);font-weight:950;letter-spacing:.03em;color:#fff}
@@ -1875,18 +1862,9 @@ function askCardstorm(){
    </div>
    <img class=ackSecondaryImg src="assets/mascot/ask-cardstorm-analyzing-panel.webp" loading=lazy decoding=async onerror="this.style.display='none'" alt="CardStorm mascot studying sports cards and graded slabs beside a glowing intelligence orb">
   </div>`;
- // Subtle branded support either side of the hero image on wide desktop
- // only (.ackHeroSupport is display:none below 1000px) - the logo on the
- // left, three short intelligence labels on the right. Never a second
- // major illustration; the analyzing panel stays the sole focal point.
- const heroRow=`<div class=ackHeroRow>
-   <div class="ackHeroSupport ackHeroSupportLeft"><img class=ackHeroLogo src="assets/logo-horizontal.webp" alt="CardStorm"></div>
-   ${secondaryPanel}
-   <div class="ackHeroSupport ackHeroSupportRight"><div class=ackHeroLabel>VALUE</div><div class=ackHeroLabel>IDENTIFY</div><div class=ackHeroLabel>COMPARE</div></div>
-  </div>`;
  return shell('KNOW THY WORTH','Ask CardStorm Anything','Card in hand? Upload front + back. Watching a break, shopping retail, or checking a listing? Upload a photo or screenshot and ask away.',
   `${ASK_CARDSTORM_STYLE}<div class=feature>
-   ${heroRow}
+   ${secondaryPanel}
    <h2>Show CardStorm What You're Looking At</h2>
    <div class=ackSectionEyebrow>ASK A QUESTION</div>
    <div class=ackAskPrimary>
