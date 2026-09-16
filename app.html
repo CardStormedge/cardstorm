@@ -1382,41 +1382,55 @@ F.worth=worth;
 // this shows an honest "not yet connected" state instead, same pattern
 // as Gear Up's image-pending treatment and the GOAT Vault's empty state.
 const ASK_CARDSTORM_STYLE=`<style>
-.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:12px}
+.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:16px}
 .ackHeroWrap img{display:block;width:100%;aspect-ratio:1672/941;max-height:460px;object-fit:cover;object-position:center 12%}
 @media(max-width:600px){.ackHeroWrap img{max-height:170px;object-position:center 8%}}
+/* Secondary "CardStorm is analyzing" panel - sits between the hero and the
+   ask/upload tools. Real asset is optional: if assets/mascot/ask-cardstorm-
+   analyzing-panel.webp isn't present yet, onerror hides the <img> and the
+   branded CSS fallback underneath shows through instead - never a broken-
+   image icon. Same pattern as teamLogoFallback() elsewhere in this file. */
+.ackSecondaryPanel{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;margin-bottom:20px;aspect-ratio:21/9;max-height:280px;background:radial-gradient(circle at 30% 20%,#123a63 0,#071827 46%,#03101d 82%)}
+@media(max-width:600px){.ackSecondaryPanel{aspect-ratio:4/3;max-height:280px}}
+.ackSecondaryImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1}
+.ackSecondaryFallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.ackSecondaryFallbackOrb{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fe6ff,#55d8ff 38%,#0d63b8 76%);box-shadow:0 0 34px #55d8ff77,inset 0 0 18px #ffffffaa;display:grid;place-items:center;font-size:26px}
+.ackSecondaryFallbackTitle{font-size:clamp(14px,2.4vw,19px);font-weight:950;letter-spacing:.03em;color:#fff}
+.ackSecondaryFallbackTitle span{color:#58d6ff}
+.ackSecondaryFallbackSub{font-size:11.5px;color:#8fb3d1;max-width:420px;line-height:1.5}
+.ackSecondaryChips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:2px}
+.ackSecondaryChips span{border:1px solid #2b6488;background:rgba(4,16,28,.75);color:#a8d4f5;border-radius:999px;padding:4px 10px;font-size:9.5px;font-weight:850}
 .ackTrustNote{font-size:10.5px;color:#6f93b3;line-height:1.4;margin-top:10px}
+.ackSectionEyebrow{font-size:10.5px;font-weight:950;letter-spacing:.1em;color:#58d6ff;margin-bottom:6px}
 /* Ask box is the primary interaction - textarea + mic in one compact row */
-.ackAskPrimary{margin-bottom:14px}
+.ackAskPrimary{border:1px solid #28648f;border-radius:14px;background:linear-gradient(160deg,#071928,#03101d);padding:16px;margin-bottom:22px}
 .ackAskInputRow{display:flex;gap:8px;align-items:stretch}
-.ackQBox{flex:1;min-width:0;padding:11px 13px;border:1px solid #2b668d;border-radius:9px;background:#03101d;color:#fff;font-family:inherit;font-size:13px;resize:vertical;min-height:44px}
-.ackMicBtn{flex:0 0 auto;background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-weight:900;padding:0 14px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.ackQBox{flex:1;min-width:0;padding:13px 14px;border:1px solid #2b668d;border-radius:10px;background:#03101d;color:#fff;font-family:inherit;font-size:13.5px;line-height:1.4;resize:vertical;min-height:52px}
+.ackQBox:focus{outline:none;border-color:#55d8ff;box-shadow:0 0 0 3px #55d8ff26}
+.ackMicBtn{flex:0 0 auto;background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-weight:900;padding:0 16px;border-radius:10px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center}
 .ackMicBtn.listening{border-color:#ff5a7a;color:#ff9cab;animation:ackPulse 1.1s infinite}
 @keyframes ackPulse{0%,100%{box-shadow:0 0 0 0 #ff5a7a44}50%{box-shadow:0 0 0 8px #ff5a7a00}}
-.ackAskBtn{display:block;width:100%;margin-top:8px;background:#126de1;border:0;color:#fff;font-family:inherit;font-weight:900;padding:12px;border-radius:9px;cursor:pointer;font-size:13.5px}
+.ackAskBtn{display:block;width:100%;margin-top:10px;background:linear-gradient(120deg,#2088ff,#0e63d6);border:0;color:#fff;font-family:inherit;font-weight:900;padding:13px;border-radius:10px;cursor:pointer;font-size:13.5px;letter-spacing:.02em;box-shadow:0 10px 24px -10px #0e63d688}
 .ackVoiceNote{font-size:11px;color:#8fb3d1;margin-top:6px;min-height:14px}
-/* Compact upload panels */
-.ackUploadHead{font-size:11px;font-weight:950;letter-spacing:.07em;color:#8fb3d1;margin:16px 0 8px}
-.ackUploadGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ackSlot{border:1px dashed #2b6488;border-radius:10px;background:#04101c;padding:8px;display:flex;align-items:center;gap:8px;min-height:64px}
-.ackSlot.filled{border-style:solid}
-.ackSlot .ackSlotThumb{flex:0 0 auto;width:46px;height:46px;border-radius:7px;overflow:hidden;background:#03101d;display:flex;align-items:center;justify-content:center;font-size:18px}
-.ackSlot .ackSlotThumb img{width:100%;height:100%;object-fit:cover}
-.ackSlot .ackSlotBody{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
-.ackSlot h4{margin:0;font-size:11px;color:#8fb3d1;font-weight:900;letter-spacing:.03em}
-.ackSlotBtns{display:flex;gap:5px;flex-wrap:wrap}
-.ackSlotBtn{background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-size:10.5px;font-weight:800;padding:6px 8px;border-radius:6px;cursor:pointer;min-height:30px}
+/* Upload cards - Front / Back / Screenshot read as three matching, equally-
+   weighted panels rather than a lopsided 2-up grid plus an afterthought. */
+.ackUploadHead{font-size:11px;font-weight:950;letter-spacing:.07em;color:#8fb3d1;margin:0 0 10px}
+.ackUploadGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+@media(max-width:700px){.ackUploadGrid{grid-template-columns:1fr}}
+.ackUploadCard{border:1px dashed #2b6488;border-radius:13px;background:linear-gradient(160deg,#071928,#03101d);padding:16px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;min-height:168px}
+.ackUploadCard.filled{border-style:solid;border-color:#3486c4}
+.ackUploadCard .ackSlotThumb{flex:0 0 auto;width:52px;height:52px;border-radius:10px;overflow:hidden;background:#03101d;display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid #28648f}
+.ackUploadCard.filled .ackSlotThumb{width:100%;height:84px;border-radius:9px}
+.ackUploadCard .ackSlotThumb img{width:100%;height:100%;object-fit:cover}
+.ackUploadCard .ackSlotBody{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px}
+.ackUploadCard h4{margin:0;font-size:12.5px;color:#fff;font-weight:900;letter-spacing:.02em}
+.ackSlotHelp{font-size:10.5px;color:#6f93b3;line-height:1.35}
+.ackSlotBtns{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:auto}
+.ackSlotBtn{background:#0d2540;border:1px solid #2b6488;color:#cfe8ff;font-family:inherit;font-size:10.5px;font-weight:800;padding:7px 10px;border-radius:7px;cursor:pointer;min-height:32px}
 .ackSlotBtn:hover{border-color:#55d8ff}
 .ackSlotBtn.danger{border-color:#7a3544;color:#ff9cab}
-.ackGeneralSlot{margin-top:8px;border:1px dashed #2b6488;border-radius:10px;background:#04101c;padding:10px;display:flex;align-items:center;gap:10px;min-height:64px}
-.ackGeneralSlot.filled{border-style:solid}
-.ackGeneralSlot .ackSlotThumb{flex:0 0 auto;width:46px;height:46px;border-radius:7px;overflow:hidden;background:#03101d;display:flex;align-items:center;justify-content:center;font-size:18px}
-.ackGeneralSlot .ackSlotThumb img{width:100%;height:100%;object-fit:cover}
-.ackGeneralSlot .ackSlotBody{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
-.ackGeneralSlot h4{margin:0;font-size:11.5px;color:#8fb3d1;font-weight:900;letter-spacing:.03em}
-.ackGeneralSlot .ackSlotHelp{font-size:10px;color:#6f93b3;line-height:1.3}
-.ackAnalyzeBtn{display:block;width:100%;margin-top:10px;background:linear-gradient(120deg,#1e88e5,#0d5bb8);border:0;color:#fff;font-family:inherit;font-weight:950;letter-spacing:.03em;padding:13px;border-radius:10px;cursor:pointer;font-size:13.5px}
-.ackAnalyzeBtn:disabled{opacity:.45;cursor:not-allowed}
+.ackAnalyzeBtn{display:block;width:100%;background:linear-gradient(120deg,#1e88e5,#0d5bb8);border:0;color:#fff;font-family:inherit;font-weight:950;letter-spacing:.03em;padding:14px;border-radius:10px;cursor:pointer;font-size:13.5px;box-shadow:0 12px 26px -10px #0d5bb888}
+.ackAnalyzeBtn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
 /* Quick questions */
 .ackQuickGrid{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .ackQuick{background:#04101c;border:1px solid #2b6488;color:#a8d4f5;font-family:inherit;font-size:10.5px;font-weight:800;padding:7px 10px;border-radius:999px;cursor:pointer}
@@ -1712,17 +1726,17 @@ function ackQuickAsk(text){
 }
 const ACK_QUICK_QUESTIONS_PRIMARY=['What card is this?','Is this rare?','What are the best comps?','Should I grade this?','What rookies are hot?','What should I look for at retail?'];
 const ACK_QUICK_QUESTIONS_MORE=['Is this worth anything?','Did I get a hit?','Is this a rookie?','Is this a parallel?','What team should I chase?','What should I hunt next?'];
-function ackSlotHTML(side,img,label){
+function ackSlotHTML(side,img,label,help){
  if(img){
-  return `<div class="ackSlot filled"><div class=ackSlotThumb><img src="${img}" alt="${label} of card"></div><div class=ackSlotBody><h4>${label}</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('${side}')">REMOVE</button></div></div></div>`;
+  return `<div class="ackUploadCard filled"><div class=ackSlotThumb><img src="${img}" alt="${label} of card"></div><div class=ackSlotBody><h4>${label}</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('${side}')">REMOVE</button></div></div></div>`;
  }
- return `<div class=ackSlot><div class=ackSlotThumb>📷</div><div class=ackSlotBody><h4>${label}</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">UPLOAD / PHOTO</button></div></div></div>`;
+ return `<div class=ackUploadCard><div class=ackSlotThumb>📷</div><div class=ackSlotBody><h4>${label}</h4><div class=ackSlotHelp>${help}</div><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('${side}')">UPLOAD / PHOTO</button></div></div></div>`;
 }
 function ackGeneralSlotHTML(){
  if(_ackGeneralImg){
-  return `<div class="ackGeneralSlot filled"><div class=ackSlotThumb><img src="${_ackGeneralImg}" alt="Uploaded photo or screenshot"></div><div class=ackSlotBody><h4>Photo / Screenshot</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('general')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('general')">REMOVE</button></div></div></div>`;
+  return `<div class="ackUploadCard filled"><div class=ackSlotThumb><img src="${_ackGeneralImg}" alt="Uploaded photo or screenshot"></div><div class=ackSlotBody><h4>Photo / Screenshot</h4><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('general')">REPLACE</button><button class="ackSlotBtn danger" onclick="ackRemoveImage('general')">REMOVE</button></div></div></div>`;
  }
- return `<div class=ackGeneralSlot><div class=ackSlotThumb>🖼️</div><div class=ackSlotBody><h4>Other Photo / Screenshot</h4><div class=ackSlotHelp>Break screenshot, retail shelf, card shop, listing, multiple cards, or anything card-related.</div><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('general')">UPLOAD WHAT YOU'RE LOOKING AT</button></div></div></div>`;
+ return `<div class=ackUploadCard><div class=ackSlotThumb>🖼️</div><div class=ackSlotBody><h4>Screenshot / Listing</h4><div class=ackSlotHelp>Break screenshot, retail shelf, card shop, listing, or multiple cards.</div><div class=ackSlotBtns><button class=ackSlotBtn onclick="ackTriggerUpload('general')">UPLOAD</button></div></div></div>`;
 }
 function ackResultHTML(){
  if(_ackAnalyzing){
@@ -1786,24 +1800,41 @@ function askCardstorm(){
  const hasCard=_ackFrontImg||_ackBackImg;
  const hasAnyImg=hasCard||_ackGeneralImg;
  const analyzeLabel=_ackAnalyzing?'ANALYZING…':(hasCard?'ANALYZE MY CARD':(_ackGeneralImg?'ANALYZE PHOTO':'ANALYZE'));
+ // Secondary "CardStorm is analyzing" panel: real asset is optional - if
+ // assets/mascot/ask-cardstorm-analyzing-panel.webp isn't in the repo yet,
+ // onerror hides the <img> and the branded CSS panel underneath (built from
+ // .ackSecondaryFallback in ASK_CARDSTORM_STYLE) shows through instead, so
+ // this never renders a broken-image icon before the real asset lands.
+ const secondaryPanel=`<div class=ackSecondaryPanel>
+   <div class=ackSecondaryFallback>
+    <div class=ackSecondaryFallbackOrb>🔮</div>
+    <div class=ackSecondaryFallbackTitle>CARDSTORM IS <span>ANALYZING</span></div>
+    <div class=ackSecondaryFallbackSub>Value, rarity, comps, grading and what to chase next — CardStorm studies every card the same way, real data only.</div>
+    <div class=ackSecondaryChips><span>What's it worth?</span><span>Did I get a hit?</span><span>Best set to buy?</span><span>What rookies are hot?</span></div>
+   </div>
+   <img class=ackSecondaryImg src="assets/mascot/ask-cardstorm-analyzing-panel.webp" loading=lazy decoding=async onerror="this.style.display='none'" alt="CardStorm mascot studying sports cards and graded slabs beside a glowing intelligence orb">
+  </div>`;
  return shell('KNOW THY WORTH','Ask CardStorm Anything','Card in hand? Upload front + back. Watching a break, shopping retail, or checking a listing? Upload a photo or screenshot and ask away.',
   `${ASK_CARDSTORM_STYLE}<div class=ackHeroWrap><img src="assets/mascot/ask-cardstorm-mascot-hero.webp" loading=lazy decoding=async alt="Ask CardStorm Anything — the CardStorm mascot with his CardStorm-branded bat, ready to answer your card questions"></div><div class=feature>
+   ${secondaryPanel}
    <h2>Show CardStorm What You're Looking At</h2>
+   <div class=ackSectionEyebrow>ASK A QUESTION</div>
    <div class=ackAskPrimary>
     <div class=ackAskInputRow>
      <textarea id=ackQuestion class=ackQBox placeholder="What rookies are hot? Is $45 a good price? What should I buy at Walmart?" oninput="_ackQuestionDraft=this.value" onchange="_ackQuestionDraft=this.value" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();ackSubmitQuestion();}">${_ackQuestionDraft.replace(/</g,'&lt;')}</textarea>
      <button type=button class="ackMicBtn ${_ackListening?'listening':''}" onclick="ackMicToggle()" aria-label="Ask by voice">🎙️</button>
     </div>
-    <button type=button class=ackAskBtn onclick="ackSubmitQuestion()">ASK CARDSTORM</button>
+    <button type=button class=ackAskBtn onclick="ackSubmitQuestion()">ASK CARDSTORM →</button>
     <div id=ackVoiceNote class=ackVoiceNote></div>
    </div>
 
-   <div class=ackUploadHead>OR SHOW CARDSTORM A PHOTO</div>
+   <div class=ackSectionEyebrow>OR SHOW CARDSTORM A PHOTO</div>
+   <div class=ackUploadHead>Front + back for a card in hand, or a screenshot for anything else.</div>
    <div class=ackUploadGrid>
-    ${ackSlotHTML('front',_ackFrontImg,'Front')}
-    ${ackSlotHTML('back',_ackBackImg,'Back')}
+    ${ackSlotHTML('front',_ackFrontImg,'Front','Clear, well-lit photo of the front.')}
+    ${ackSlotHTML('back',_ackBackImg,'Back','Flip it over — the back matters too.')}
+    ${ackGeneralSlotHTML()}
    </div>
-   ${ackGeneralSlotHTML()}
    <input type=file accept="image/*" capture="environment" id=ackInput_front style="display:none" onchange="ackReadFile('front',this)">
    <input type=file accept="image/*" capture="environment" id=ackInput_back style="display:none" onchange="ackReadFile('back',this)">
    <input type=file accept="image/*" capture="environment" id=ackInput_general style="display:none" onchange="ackReadFile('general',this)">
