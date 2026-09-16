@@ -1382,9 +1382,8 @@ F.worth=worth;
 // this shows an honest "not yet connected" state instead, same pattern
 // as Gear Up's image-pending treatment and the GOAT Vault's empty state.
 const ASK_CARDSTORM_STYLE=`<style>
-.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:12px}
-.ackHeroWrap img{display:block;width:100%;aspect-ratio:1672/941;max-height:460px;object-fit:cover;object-position:center 12%}
-@media(max-width:600px){.ackHeroWrap img{max-height:170px;object-position:center 8%}}
+.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:12px;max-width:900px}
+.ackHeroWrap img{display:block;width:100%;height:auto;aspect-ratio:1672/941;object-fit:contain;object-position:center}
 .ackTrustNote{font-size:10.5px;color:#6f93b3;line-height:1.4;margin-top:10px}
 /* Ask box is the primary interaction - textarea + mic in one compact row */
 .ackAskPrimary{margin-bottom:14px}
