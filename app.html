@@ -1382,15 +1382,16 @@ F.worth=worth;
 // this shows an honest "not yet connected" state instead, same pattern
 // as Gear Up's image-pending treatment and the GOAT Vault's empty state.
 const ASK_CARDSTORM_STYLE=`<style>
-.ackHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff22;margin-bottom:16px}
-.ackHeroWrap img{display:block;width:100%;aspect-ratio:1672/941;max-height:460px;object-fit:cover;object-position:center 12%}
-@media(max-width:600px){.ackHeroWrap img{max-height:170px;object-position:center 8%}}
-/* Secondary "CardStorm is analyzing" panel - sits between the hero and the
-   ask/upload tools. Real asset is optional: if assets/mascot/ask-cardstorm-
-   analyzing-panel.webp isn't present yet, onerror hides the <img> and the
-   branded CSS fallback underneath shows through instead - never a broken-
-   image icon. Same pattern as teamLogoFallback() elsewhere in this file. */
-.ackSecondaryPanel{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;margin:0 0 20px;aspect-ratio:1672/941;background:radial-gradient(circle at 30% 20%,#123a63 0,#071827 46%,#03101d 82%)}
+/* Primary "CardStorm is analyzing" hero panel - the page's single top
+   visual (replaces the old static mascot-hero image). Real asset is
+   optional: if assets/mascot/ask-cardstorm-analyzing-panel.webp isn't
+   present yet, onerror hides the <img> and the branded CSS fallback
+   underneath shows through instead - never a broken-image icon. Same
+   pattern as teamLogoFallback() elsewhere in this file. Capped at a
+   max-width (rather than max-height+crop) so it reads as a substantial
+   but not overwhelming header on wide desktop viewports, while still
+   scaling down cleanly to full-width on mobile. */
+.ackSecondaryPanel{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;margin:0 auto 20px;width:100%;max-width:880px;aspect-ratio:1672/941;background:radial-gradient(circle at 30% 20%,#123a63 0,#071827 46%,#03101d 82%)}
 .ackSecondaryImg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1}
 .ackSecondaryFallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
 .ackSecondaryFallbackOrb{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fe6ff,#55d8ff 38%,#0d63b8 76%);box-shadow:0 0 34px #55d8ff77,inset 0 0 18px #ffffffaa;display:grid;place-items:center;font-size:26px}
@@ -1799,11 +1800,11 @@ function askCardstorm(){
  const hasCard=_ackFrontImg||_ackBackImg;
  const hasAnyImg=hasCard||_ackGeneralImg;
  const analyzeLabel=_ackAnalyzing?'ANALYZING…':(hasCard?'ANALYZE MY CARD':(_ackGeneralImg?'ANALYZE PHOTO':'ANALYZE'));
- // Secondary "CardStorm is analyzing" panel: real asset is optional - if
- // assets/mascot/ask-cardstorm-analyzing-panel.webp isn't in the repo yet,
- // onerror hides the <img> and the branded CSS panel underneath (built from
- // .ackSecondaryFallback in ASK_CARDSTORM_STYLE) shows through instead, so
- // this never renders a broken-image icon before the real asset lands.
+ // Primary "CardStorm is analyzing" hero panel - the page's single top
+ // visual. Real asset is optional - if assets/mascot/ask-cardstorm-
+ // analyzing-panel.webp isn't in the repo yet, onerror hides the <img>
+ // and the branded CSS panel underneath (.ackSecondaryFallback) shows
+ // through instead, so this never renders a broken-image icon.
  const secondaryPanel=`<div class=ackSecondaryPanel>
    <div class=ackSecondaryFallback>
     <div class=ackSecondaryFallbackOrb>🔮</div>
@@ -1814,7 +1815,7 @@ function askCardstorm(){
    <img class=ackSecondaryImg src="assets/mascot/ask-cardstorm-analyzing-panel.webp" loading=lazy decoding=async onerror="this.style.display='none'" alt="CardStorm mascot studying sports cards and graded slabs beside a glowing intelligence orb">
   </div>`;
  return shell('KNOW THY WORTH','Ask CardStorm Anything','Card in hand? Upload front + back. Watching a break, shopping retail, or checking a listing? Upload a photo or screenshot and ask away.',
-  `${ASK_CARDSTORM_STYLE}<div class=ackHeroWrap><img src="assets/mascot/ask-cardstorm-mascot-hero.webp" loading=lazy decoding=async alt="Ask CardStorm Anything — the CardStorm mascot with his CardStorm-branded bat, ready to answer your card questions"></div><div class=feature>
+  `${ASK_CARDSTORM_STYLE}<div class=feature>
    ${secondaryPanel}
    <h2>Show CardStorm What You're Looking At</h2>
    <div class=ackSectionEyebrow>ASK A QUESTION</div>
