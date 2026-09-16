@@ -1393,6 +1393,14 @@ const ASK_CARDSTORM_STYLE=`<style>
    scaling down cleanly to full-width on mobile. */
 .ackSecondaryPanel{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;margin:0 auto 20px;width:100%;max-width:880px;aspect-ratio:1672/941;background:radial-gradient(circle at 30% 20%,#123a63 0,#071827 46%,#03101d 82%)}
 .ackSecondaryImg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1}
+/* Desktop only: the full-contain panel above reads as a ~490px-tall hero,
+   too dominant for a page whose job is the upload tools below it. Switch
+   to a fixed-height "window" with object-fit:cover so it reads as a
+   compact supporting banner instead - object-position is tuned to keep
+   the mascot, crystal ball and floating question prompts in frame while
+   cropping only the outer books/castle-sky background. Mobile (<=600px)
+   is untouched and keeps the full-contain, no-crop treatment above. */
+@media(min-width:601px){.ackSecondaryPanel{aspect-ratio:auto;height:330px}.ackSecondaryImg{object-fit:cover;object-position:center 40%}}
 .ackSecondaryFallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
 .ackSecondaryFallbackOrb{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fe6ff,#55d8ff 38%,#0d63b8 76%);box-shadow:0 0 34px #55d8ff77,inset 0 0 18px #ffffffaa;display:grid;place-items:center;font-size:26px}
 .ackSecondaryFallbackTitle{font-size:clamp(14px,2.4vw,19px);font-weight:950;letter-spacing:.03em;color:#fff}
