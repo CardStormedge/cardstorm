@@ -125,7 +125,7 @@ const REALPROD={
   ],
   "football|2025": [
     {name:"Select",img:"assets/realprodfootball2025select.webp",note:"2025 Panini Select Football hobby-box photography"},
-    {name:"Prizm",img:"https://cardsmithsbreaks.com/wp-content/uploads/2025/11/2025-Panini-Prizm-Football-Box-Image-512x512.png",note:"2025 Panini Prizm Football hobby-box photography"},
+    {name:"Prizm",img:null,note:"Verified product photo pending (a third-party hotlinked image was removed during the image-asset-completion pass - this sandbox's egress proxy confirmed cardsmithsbreaks.com is unreachable/blocked, and no repo-hosted equivalent exists for this exact sport+year, so this now honestly falls back rather than depending on an unverified external link)"},
     {name:"Donruss",img:null,note:"Verified product photo pending"},
     {name:"Donruss Optic",img:null,note:"Verified product photo pending"},
     {name:"Mosaic",img:null,note:"Verified product photo pending"}
@@ -135,7 +135,7 @@ const REALPROD={
     {name:"Topps Series 2",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
     {name:"Topps Update Series",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
     {name:"Bowman",img:null,note:"Verified product photo pending (checklist is real - live-ingested from the official Topps checklist PDF, see the Checklist Library status below)"},
-    {name:"Prizm",img:"https://tradingcardmarket.com/cdn/shop/files/2024_Panini_Prizm_Baseball_Hobby_Box.jpg?v=1734707923&width=1946",note:"2024 Panini Prizm Baseball hobby-box photography"},
+    {name:"Prizm",img:null,note:"Verified product photo pending (a third-party hotlinked image was removed during the image-asset-completion pass - this sandbox's egress proxy confirmed tradingcardmarket.com is unreachable/blocked, and no repo-hosted equivalent exists for this exact sport+year, so this now honestly falls back rather than depending on an unverified external link)"},
     {name:"Topps Chrome",img:null,note:"Verified product photo pending"},
     {name:"Bowman Chrome",img:null,note:"Verified product photo pending"},
     {name:"Finest",img:null,note:"Verified product photo pending"}
@@ -206,7 +206,25 @@ function resolveCsImage(query){
  return {entry:hit,src};
 }
 function csEsc(s){return String(s==null?'':s).replace(/'/g,"\\'")}
+// Single render helper every feature (Grail Board, Team Hunt, Watchlist,
+// Product Intelligence) should call instead of deciding for itself whether
+// a real image exists: looks up the centralized registry via
+// resolveCsImage() first, and only drops to the shared csFallbackTile()
+// design when the registry has no usable src for this query.
+function csImageBlock(query,fallbackOpts,imgAttrs){
+ const hit=resolveCsImage(query);
+ if(hit&&hit.src){
+  const alt=csEsc((fallbackOpts&&fallbackOpts.title)||query.player||query.product||'');
+  return `<img class="${(imgAttrs&&imgAttrs.cls)||'csResolvedImg'}" src="${hit.src}" loading=lazy decoding=async alt="${alt}">`;
+ }
+ return csFallbackTile(fallbackOpts);
+}
 function sportAccent(sp){return sp==='football'?'#39d98a':sp==='basketball'?'#ff8a5c':sp==='baseball'?'#55d8ff':'#c792ff'}
+// Real team primary colors (public brand facts, not fabricated imagery) for
+// the small set of teams behind Team Hunt's flagship player pages, so their
+// banner reads as team-specific rather than just generic sport-accent teal.
+const TEAM_ACCENT={nyy:'#0c2340',lad:'#005a9c',atl:'#ce1141',bos:'#007a33',KC:'#e31837'};
+function teamAccent(ab,sp){return TEAM_ACCENT[ab]||sportAccent(sp)}
 // One consistent branded fallback tile - subject name/context + sport/year +
 // a subtle "IMAGE PENDING" status, never a browser broken-image icon or a
 // blank/generic gray box.
@@ -1220,7 +1238,7 @@ function renderPlayerHunt(ab,i){
  // Player-context visual banner: no exact-card photo is verified for this
  // player (see image-registry.json), so this pairs the team's real logo with
  // a CardStorm-branded crest rather than a blank header or a fake card photo.
- const playerBanner=`<div class=thPlayerBanner style="--csfb:${sportAccent(sport)}"><img class=thPlayerBannerLogo src="${logoUrl(ab)}" width=72 height=72 loading=lazy decoding=async onerror="teamLogoFallback(this)" alt="${teamFullName} logo"><div class=thPlayerBannerBody><div class=k>${teamFullName.toUpperCase()} • ${year}</div><h2>${player}</h2><div class=sub>Verified checklist rows, values and chase intelligence below.</div></div></div>`;
+ const playerBanner=`<div class=thPlayerBanner style="--csfb:${teamAccent(ab,sport)}"><img class=thPlayerBannerLogo src="${logoUrl(ab)}" width=72 height=72 loading=lazy decoding=async onerror="teamLogoFallback(this)" alt="${teamFullName} logo"><div class=thPlayerBannerBody><div class=k>${teamFullName.toUpperCase()} • ${year}</div><h2>${player}</h2><div class=sub>Verified checklist rows, values and chase intelligence below. No exact-card photo is verified for ${player} yet, so CardStorm shows a real team-branded header instead of a guessed image.</div></div></div>`;
  C.innerHTML=shell('TEAM HUNT',player,teamFullName+' • '+year+' • chase intelligence',
   `${TH_STYLE}${playerBanner}<div class=feature><h2 id=thChecklist${i}HostHeading>VERIFIED CHECKLIST CARDS</h2><div class=sub>${player}'s real cards across every product CardStorm has verified, pulled straight from the ${teamFullName} master checklist.</div><div id=thChecklist${i}Host>Loading verified checklist data…</div></div>
   <div id="thGear${i}Anchor"></div>
@@ -1329,7 +1347,7 @@ function watch(){
  const sportOrder=SPORTS;
  const sports=Object.keys(bySport).sort((a,b)=>{const ai=sportOrder.indexOf(a),bi=sportOrder.indexOf(b);return (ai<0?99:ai)-(bi<0?99:bi);});
  const rows=sports.map(sport=>{
-  const cards=bySport[sport].map(([i,p])=>`<div class=watchplayer onclick="openWatch(${i})"><button class=watchremove onclick="removeWatchName('${p[0].replace(/'/g,"\\'")}',event)">REMOVE</button>${csFallbackTile({title:p[0],sport:p[1],accent:sportAccent(p[1]),icon:'★',size:'compact'})}<div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('');
+  const cards=bySport[sport].map(([i,p])=>`<div class=watchplayer onclick="openWatch(${i})"><button class=watchremove onclick="removeWatchName('${p[0].replace(/'/g,"\\'")}',event)">REMOVE</button>${csImageBlock({entityType:'player',sport:p[1],player:p[0]},{title:p[0],sport:p[1],accent:sportAccent(p[1]),icon:'★',size:'compact'})}<div class=watchhits><span>${p[2]}</span><span>${p[3]}</span><span>${p[4]}</span></div></div>`).join('');
   return `<div class=homeSectionLabel>${sport.toUpperCase()} (${bySport[sport].length})</div><div class=watchgrid>${cards}</div>`;
  }).join('');
  return shell('WATCHLIST','Track your favorites.','Your watchlist is saved in this browser. Click a player for hits and comps, or add/remove players anytime.',`<div class=watchtoolbar><div class=watchcount>${mine.length} PLAYERS WATCHED</div><button class=cta onclick="openWatchManager()">+ ADD / MANAGE PLAYERS</button><button class=cta onclick="show('market')">MARKET RADAR →</button></div>${rows||'<div class=feature><h3>Your watchlist is empty.</h3><button class=cta onclick="openWatchManager()">ADD PLAYERS</button></div>'}`);
@@ -1905,7 +1923,7 @@ function grailCardTileHTML(c){
  // No real card photography exists for these certs (see grail-board.json's
  // _sourcingMethod), so every Grail tile gets the same premium branded
  // CardStorm fallback crest rather than a fabricated or guessed image.
- const imgBlock=csFallbackTile({title:c.player,sub:`${c.year} ${c.brand}`,sport:c.sport,accent:sportAccent(c.sport),icon:'♦',size:'compact'});
+ const imgBlock=csImageBlock({entityType:'player',sport:c.sport,player:c.player},{title:c.player,sub:`${c.year} ${c.brand}`,sport:c.sport,accent:sportAccent(c.sport),icon:'♦',size:'compact'});
  return `<div class=grailTile>${imgBlock}<div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${compBlock}${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
 }
 const GRAIL_TAKE={

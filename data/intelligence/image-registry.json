@@ -1,7 +1,7 @@
 {
   "_purpose": "Single centralized image registry/resolver source for CardStorm's visual layer. One verified mapping is reused by Product Intelligence, Grail Board, Team Hunt, Checklist views and Watchlist instead of each feature solving image lookup independently.",
   "_schema": "entityType(product|player|card|set) sport year player product set cardNumber parallel imageUrl repoAsset sourceUrl sourceType verificationStatus usageRightsStatus notes",
-  "_lastUpdated": "2026-09-15",
+  "_lastUpdated": "2026-09-16",
   "entries": [
     {
       "entityType": "product",
@@ -13,7 +13,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -25,7 +25,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -37,7 +37,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -49,7 +49,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -61,7 +61,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -73,7 +73,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -85,7 +85,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -97,7 +97,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -109,7 +109,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -121,7 +121,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -133,7 +133,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -145,7 +145,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -157,7 +157,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -169,7 +169,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -181,7 +181,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -193,7 +193,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -205,7 +205,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -217,7 +217,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -229,7 +229,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -241,7 +241,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -253,7 +253,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -265,7 +265,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -277,7 +277,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -289,7 +289,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -301,7 +301,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -313,7 +313,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "product",
@@ -325,7 +325,7 @@
       "sourceType": "stylized-ai-artwork-background-removed",
       "verificationStatus": "PRODUCT_MATCH_VERIFIED_ARTWORK_STYLIZED",
       "usageRightsStatus": "CARDSTORM_ORIGINAL_DERIVATIVE",
-      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather pass in this PR so it renders cleanly on the dark UI. Correctly matched to this exact sport+year+product; never reused across mismatched products."
+      "notes": "AI-generated stylized product-box artwork (not official photography); background-removed via a flood-fill + edge-feather + largest-connected-component pass (the component step, added in this round's QA pass, also strips any disconnected caption-text watermark baked into the source art). Correctly matched to this exact sport+year+product; never reused across mismatched products. Reviewed at full size this round (not just a UI-thumbnail screenshot); classified PASS."
     },
     {
       "entityType": "player",
@@ -334,10 +334,11 @@
       "player": "Tom Brady",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "auction-house-listing-attempted-unreachable",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Grail Board has no card photography for this player's featured cert(s) - CardStorm has no page-fetch access to PSA/Goldin/Fanatics/Heritage/SCP for real photos, so a CardStorm-branded fallback crest is shown instead of a fabricated image."
+      "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
+      "sourceUrl": "https://www.fanaticscollect.com/fixed/b893abb4-ea63-11ef-b2a5-066eee34a58d/2000-sp-authentic-tom-brady-rookie-1250-118-psa-10-gem-mint"
     },
     {
       "entityType": "player",
@@ -346,10 +347,11 @@
       "player": "Michael Jordan",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "auction-house-listing-attempted-unreachable",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Grail Board has no card photography for this player's featured cert(s) - CardStorm has no page-fetch access to PSA/Goldin/Fanatics/Heritage/SCP for real photos, so a CardStorm-branded fallback crest is shown instead of a fabricated image."
+      "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
+      "sourceUrl": "https://catalogs.scpauctions.com/online-auctions/scp-auctions-inc/1986-fleer-57-michael-jordan---psa-gem-mint-10-9394841"
     },
     {
       "entityType": "player",
@@ -358,10 +360,11 @@
       "player": "Shohei Ohtani",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "auction-house-listing-attempted-unreachable",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Grail Board has no card photography for this player's featured cert(s) - CardStorm has no page-fetch access to PSA/Goldin/Fanatics/Heritage/SCP for real photos, so a CardStorm-branded fallback crest is shown instead of a fabricated image."
+      "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
+      "sourceUrl": "https://goldin.co/item/2018-topps-chrome-pitching-150-shohei-ohtani-rookie-card-psa-gem-mt-10csi1h"
     },
     {
       "entityType": "player",
@@ -370,10 +373,11 @@
       "player": "Patrick Mahomes",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "auction-house-listing-attempted-unreachable",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Grail Board has no card photography for this player's featured cert(s) - CardStorm has no page-fetch access to PSA/Goldin/Fanatics/Heritage/SCP for real photos, so a CardStorm-branded fallback crest is shown instead of a fabricated image."
+      "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
+      "sourceUrl": "https://www.sportscardinvestor.com/cards/patrick-mahomes-ii-football/2017-prizm-disco-269"
     },
     {
       "entityType": "player",
@@ -382,10 +386,11 @@
       "player": "Cooper Flagg",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "auction-house-listing-attempted-unreachable",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Grail Board has no card photography for this player's featured cert(s) - CardStorm has no page-fetch access to PSA/Goldin/Fanatics/Heritage/SCP for real photos, so a CardStorm-branded fallback crest is shown instead of a fabricated image."
+      "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
+      "sourceUrl": "https://heavy.com/sports/cards/cooper-flagg-dallas-mavericks-rookie-card/"
     },
     {
       "entityType": "player",
@@ -394,10 +399,10 @@
       "player": "Aaron Judge",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "no-image-field-in-checklist-data",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Team Hunt player page - no exact card+parallel identity has a verified traceable photo source yet, so this player gets a CardStorm-branded player-context banner (team colors + sport) rather than a fabricated or generic stock photo."
+      "notes": "Verified this round: PR #30's real checklist JSON files contain no image/imageUrl/photoUrl field anywhere (grepped data/checklists/**) - checklist PDFs are text-only, so there is no source-traceable per-card image to reuse. This player page instead shows a real-team-color banner with the team's real logo (teamAccent()/TEAM_ACCENT in app.html), not a fabricated card photo."
     },
     {
       "entityType": "player",
@@ -406,10 +411,11 @@
       "player": "Shohei Ohtani",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "auction-house-listing-attempted-unreachable",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Team Hunt player page - no exact card+parallel identity has a verified traceable photo source yet, so this player gets a CardStorm-branded player-context banner (team colors + sport) rather than a fabricated or generic stock photo."
+      "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
+      "sourceUrl": "https://goldin.co/item/2018-topps-chrome-pitching-150-shohei-ohtani-rookie-card-psa-gem-mt-10csi1h"
     },
     {
       "entityType": "player",
@@ -418,10 +424,10 @@
       "player": "Ronald Acuna Jr.",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "no-image-field-in-checklist-data",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Team Hunt player page - no exact card+parallel identity has a verified traceable photo source yet, so this player gets a CardStorm-branded player-context banner (team colors + sport) rather than a fabricated or generic stock photo."
+      "notes": "Verified this round: PR #30's real checklist JSON files contain no image/imageUrl/photoUrl field anywhere (grepped data/checklists/**) - checklist PDFs are text-only, so there is no source-traceable per-card image to reuse. This player page instead shows a real-team-color banner with the team's real logo (teamAccent()/TEAM_ACCENT in app.html), not a fabricated card photo."
     },
     {
       "entityType": "player",
@@ -430,10 +436,10 @@
       "player": "Jayson Tatum",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "no-image-field-in-checklist-data",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Team Hunt player page - no exact card+parallel identity has a verified traceable photo source yet, so this player gets a CardStorm-branded player-context banner (team colors + sport) rather than a fabricated or generic stock photo."
+      "notes": "Verified this round: PR #30's real checklist JSON files contain no image/imageUrl/photoUrl field anywhere (grepped data/checklists/**) - checklist PDFs are text-only, so there is no source-traceable per-card image to reuse. This player page instead shows a real-team-color banner with the team's real logo (teamAccent()/TEAM_ACCENT in app.html), not a fabricated card photo."
     },
     {
       "entityType": "player",
@@ -442,10 +448,11 @@
       "player": "Patrick Mahomes",
       "repoAsset": null,
       "imageUrl": null,
-      "sourceType": "none-sourced",
+      "sourceType": "auction-house-listing-attempted-unreachable",
       "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
       "usageRightsStatus": "NOT_APPLICABLE",
-      "notes": "Team Hunt player page - no exact card+parallel identity has a verified traceable photo source yet, so this player gets a CardStorm-branded player-context banner (team colors + sport) rather than a fabricated or generic stock photo."
+      "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
+      "sourceUrl": "https://www.sportscardinvestor.com/cards/patrick-mahomes-ii-football/2017-prizm-disco-269"
     },
     {
       "entityType": "set",
@@ -482,6 +489,78 @@
       "verificationStatus": "ORIGINAL_ART_NOT_OFFICIAL_BOX_ART",
       "usageRightsStatus": "CARDSTORM_ORIGINAL",
       "notes": "Distinct original CardStorm SVG banner (per-set accent color + motif) used instead of official Pokemon box art, which CardStorm has no rights/source to fabricate."
+    },
+    {
+      "entityType": "player",
+      "sport": "basketball",
+      "year": null,
+      "player": "Victor Wembanyama",
+      "repoAsset": null,
+      "imageUrl": null,
+      "sourceType": "none-sourced-attempted",
+      "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
+      "usageRightsStatus": "NOT_APPLICABLE",
+      "notes": "Watchlist featured subset (one of 8 highest-interest catalogue entries reviewed this round). No rights-clear, source-traceable card image was found for this exact player within this round's sandbox network access - kept on the shared csFallbackTile design, routed through resolveCsImage() like every other Watchlist entry."
+    },
+    {
+      "entityType": "player",
+      "sport": "basketball",
+      "year": null,
+      "player": "Luka Doncic",
+      "repoAsset": null,
+      "imageUrl": null,
+      "sourceType": "none-sourced-attempted",
+      "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
+      "usageRightsStatus": "NOT_APPLICABLE",
+      "notes": "Watchlist featured subset (one of 8 highest-interest catalogue entries reviewed this round). No rights-clear, source-traceable card image was found for this exact player within this round's sandbox network access - kept on the shared csFallbackTile design, routed through resolveCsImage() like every other Watchlist entry."
+    },
+    {
+      "entityType": "player",
+      "sport": "football",
+      "year": null,
+      "player": "Caleb Williams",
+      "repoAsset": null,
+      "imageUrl": null,
+      "sourceType": "none-sourced-attempted",
+      "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
+      "usageRightsStatus": "NOT_APPLICABLE",
+      "notes": "Watchlist featured subset (one of 8 highest-interest catalogue entries reviewed this round). No rights-clear, source-traceable card image was found for this exact player within this round's sandbox network access - kept on the shared csFallbackTile design, routed through resolveCsImage() like every other Watchlist entry."
+    },
+    {
+      "entityType": "player",
+      "sport": "football",
+      "year": null,
+      "player": "Ashton Jeanty",
+      "repoAsset": null,
+      "imageUrl": null,
+      "sourceType": "none-sourced-attempted",
+      "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
+      "usageRightsStatus": "NOT_APPLICABLE",
+      "notes": "Watchlist featured subset (one of 8 highest-interest catalogue entries reviewed this round). No rights-clear, source-traceable card image was found for this exact player within this round's sandbox network access - kept on the shared csFallbackTile design, routed through resolveCsImage() like every other Watchlist entry."
+    },
+    {
+      "entityType": "player",
+      "sport": "baseball",
+      "year": null,
+      "player": "Paul Skenes",
+      "repoAsset": null,
+      "imageUrl": null,
+      "sourceType": "none-sourced-attempted",
+      "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
+      "usageRightsStatus": "NOT_APPLICABLE",
+      "notes": "Watchlist featured subset (one of 8 highest-interest catalogue entries reviewed this round). No rights-clear, source-traceable card image was found for this exact player within this round's sandbox network access - kept on the shared csFallbackTile design, routed through resolveCsImage() like every other Watchlist entry."
+    },
+    {
+      "entityType": "player",
+      "sport": "baseball",
+      "year": null,
+      "player": "Bobby Witt Jr.",
+      "repoAsset": null,
+      "imageUrl": null,
+      "sourceType": "none-sourced-attempted",
+      "verificationStatus": "NO_VERIFIED_CARD_IMAGE_AVAILABLE",
+      "usageRightsStatus": "NOT_APPLICABLE",
+      "notes": "Watchlist featured subset (one of 8 highest-interest catalogue entries reviewed this round). No rights-clear, source-traceable card image was found for this exact player within this round's sandbox network access - kept on the shared csFallbackTile design, routed through resolveCsImage() like every other Watchlist entry."
     }
   ]
 }
