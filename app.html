@@ -1977,7 +1977,55 @@ function loadGoatGrid(){
 // limitations (this environment cannot directly fetch PSA/Goldin/Fanatics
 // pages, so every figure is cross-referenced via search-result summaries,
 // same convention as data/goat/goat-vault.json).
-const GRAIL_STYLE=`<style>.grailHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #6b5320;box-shadow:0 0 34px #ffd25722;margin-bottom:16px}.grailHeroWrap img{display:block;width:100%;height:auto;aspect-ratio:1916/821;object-fit:contain;object-position:center}.grailGroupHead{margin:22px 0 12px}.grailGroupHead:first-child{margin-top:0}.grailGroupLabel{display:inline-block;font-size:11px;font-weight:950;letter-spacing:.1em;color:#150f02;background:linear-gradient(120deg,#ffd257,#c99328);padding:4px 10px;border-radius:6px}.grailGroupNote{font-size:11.5px;color:#b3a06a;margin-top:5px}.grailPlayerGroup{background:linear-gradient(155deg,#171208,#0a0805);border:1px solid #5c4a22;border-radius:14px;padding:14px;margin-bottom:14px}.grailPlayerHead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:10px}.grailPlayerHead h3{margin:0;font-size:18px}.grailPlayerSub{font-size:11.5px;color:#b3a06a}.grailRow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.grailTile{background:#0b0904;border:1px solid #3d3115;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;min-width:0}.grailTileTags{display:flex;flex-wrap:wrap;gap:4px}.grailTag{font-size:8.5px;font-weight:900;letter-spacing:.04em;color:#150f02;background:#ffd257;padding:2px 6px;border-radius:4px}.grailTileId b{display:block;font-size:12px;color:#f4e8c9;line-height:1.25}.grailTileId span{display:block;font-size:11px;color:#c9bd94;margin-top:2px;line-height:1.25}.grailTileGrade{font-size:10.5px;font-weight:800;color:#ffd257}.grailTileComp{border-top:1px solid #3d3115;padding-top:6px;margin-top:2px}.grailCompLabel{display:block;font-size:8.5px;font-weight:900;letter-spacing:.05em;color:#8fb3d1;text-transform:uppercase}.grailPrice{display:block;font-size:15px;font-weight:950;color:#4ee6a8;margin-top:1px}.grailCompMeta{display:block;font-size:10px;color:#b3a06a;margin-top:1px}.grailNoComp{font-size:11px;color:#8a7550;font-style:italic;padding-top:6px;border-top:1px solid #3d3115;margin-top:2px}.grailSourceLink{align-self:flex-start;font-size:10px;font-weight:800;color:#55d8ff;text-decoration:none;margin-top:2px}.grailSourceLink:hover{text-decoration:underline}.grailTake{margin-top:11px;padding-top:9px;border-top:1px dashed #3d3115;font-size:12px;color:#c9bd94;line-height:1.45}.grailTake b{color:#ffd257}@media(max-width:900px){.grailRow{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}}@media(max-width:600px){.grailRow{grid-auto-flow:column;grid-auto-columns:74vw;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}.grailTile{scroll-snap-align:start}}</style>`;
+const GRAIL_STYLE=`<style>
+/* CardStorm Grail Board - tribute-gallery / museum-exhibit treatment.
+   Dark navy + electric blue base (matches the rest of the app), gold is
+   used only as a restrained accent (plaque labels, grade text, one pill)
+   - never the dominant palette, so this reads as a premium gallery rather
+   than a casino. */
+.grailHeroWrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid #2b6488;box-shadow:0 0 34px #55d8ff18;margin-bottom:20px}
+.grailHeroWrap img{display:block;width:100%;height:auto;aspect-ratio:1916/821;object-fit:contain;object-position:center}
+.grailGroupHead{margin:30px 0 14px;padding-top:18px;border-top:1px solid #1b3552}
+.grailGroupHead:first-child{margin-top:0;padding-top:0;border-top:0}
+.grailWing{font-size:10.5px;font-weight:950;letter-spacing:.16em;color:#58d6ff;margin-bottom:6px}
+.grailGroupLabel{display:inline-block;font-size:11px;font-weight:950;letter-spacing:.1em;color:#150f02;background:linear-gradient(120deg,#ffd257,#c99328);padding:4px 10px;border-radius:6px}
+.grailGroupBlurb{font-size:12.5px;color:#a8bbce;margin-top:7px;max-width:640px;line-height:1.5}
+.grailGroupNote{font-size:11.5px;color:#8fb3d1;margin-top:5px;font-style:italic}
+/* Each player is one exhibit case: dark navy panel, blue border, a very
+   faint spotlight glow top-center - like a display case under gallery
+   lighting rather than a flat data card. */
+.grailPlayerGroup{position:relative;background:radial-gradient(circle at 50% -10%,#123a6333,transparent 55%),linear-gradient(165deg,#0a2038,#050f1a 55%,#03101d);border:1px solid #2b6488;border-radius:16px;padding:18px;margin-bottom:18px}
+.grailPlayerHead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.grailPlayerHead h3{margin:0;font-size:20px;letter-spacing:.01em}
+.grailPlayerSub{font-size:11.5px;color:#8fb3d1}
+.grailPlaque{display:inline-block;font-size:8.5px;font-weight:950;letter-spacing:.1em;color:#ffd257;text-transform:uppercase;margin-bottom:5px}
+.grailLegacy{margin:12px 0 16px;padding:12px 14px;border:1px solid #1b3552;border-radius:12px;background:#04101c66}
+.grailLegacySub{font-size:11px;color:#6f93b3;margin-bottom:8px}
+.grailLegacyRow{display:flex;flex-wrap:wrap;gap:6px}
+.grailLegacyChip{font-size:10.5px;color:#d7e6f5;background:#0d2540;border:1px solid #2b6488;border-radius:999px;padding:5px 11px;line-height:1.3}
+.grailRow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.grailTile{background:linear-gradient(165deg,#0b1c2e,#050f1a);border:1px solid #1b3552;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;min-width:0;transition:border-color .15s ease,box-shadow .15s ease}
+@media(hover:hover){.grailTile:hover{border-color:#3fb6ff77;box-shadow:0 0 0 1px #55d8ff22,0 10px 24px -14px #55d8ff55}}
+.grailCaseFrame{border-radius:9px;overflow:hidden;border:1px solid #1b3552}
+.grailTileTags{display:flex;flex-wrap:wrap;gap:4px}
+.grailTag{font-size:8.5px;font-weight:900;letter-spacing:.04em;color:#150f02;background:#ffd257;padding:2px 6px;border-radius:4px}
+.grailTileId b{display:block;font-size:12px;color:#f4e8c9;line-height:1.25}
+.grailTileId span{display:block;font-size:11px;color:#a8bbce;margin-top:2px;line-height:1.25}
+.grailTileGrade{font-size:10.5px;font-weight:800;color:#ffd257}
+.grailWhyCard{font-size:10.5px;color:#8fb3d1;line-height:1.4;font-style:italic}
+.grailMarketMoment{border-top:1px solid #1b3552;padding-top:8px;margin-top:2px}
+.grailTileComp{margin-top:2px}
+.grailCompLabel{display:block;font-size:8.5px;font-weight:900;letter-spacing:.05em;color:#8fb3d1;text-transform:uppercase}
+.grailPrice{display:block;font-size:15px;font-weight:950;color:#4ee6a8;margin-top:1px}
+.grailCompMeta{display:block;font-size:10px;color:#6f93b3;margin-top:1px}
+.grailNoComp{font-size:11px;color:#6f93b3;font-style:italic}
+.grailSourceLink{align-self:flex-start;font-size:10px;font-weight:800;color:#55d8ff;text-decoration:none;margin-top:2px}
+.grailSourceLink:hover{text-decoration:underline}
+.grailTake{margin-top:14px;padding-top:11px;border-top:1px dashed #1b3552;font-size:12px;color:#c9d8e8;line-height:1.5}
+.grailTake b{color:#ffd257}
+@media(max-width:900px){.grailRow{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
+@media(max-width:600px){.grailRow{grid-auto-flow:column;grid-auto-columns:74vw;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}.grailTile{scroll-snap-align:start}}
+</style>`;
 let _grailBoardPromise=null;
 function loadGrailBoard(){
  if(!_grailBoardPromise)_grailBoardPromise=fetch('data/intelligence/grail-board.json').then(r=>r.json()).catch(()=>({groups:[],cards:[]}));
@@ -2003,7 +2051,7 @@ function grailCardTileHTML(c){
  // _sourcingMethod), so every Grail tile gets the same premium branded
  // CardStorm fallback crest rather than a fabricated or guessed image.
  const imgBlock=csImageBlock({entityType:'player',sport:c.sport,player:c.player},{title:c.player,sub:`${c.year} ${c.brand}`,sport:c.sport,accent:sportAccent(c.sport),icon:'♦',size:'compact'});
- return `<div class=grailTile>${imgBlock}<div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${compBlock}${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
+ return `<div class=grailTile><div class=grailCaseFrame>${imgBlock}</div><div class=grailPlaque>ICONIC CARD</div><div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${grailCardWhyHTML(c)}<div class=grailMarketMoment><span class=grailPlaque>MARKET MOMENT</span>${compBlock}</div>${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
 }
 const GRAIL_TAKE={
  'Tom Brady':'The rookie-card market\'s gold standard - a reachable PSA 10 SP Authentic sits alongside a seven-figure Championship Ticket autograph.',
@@ -2012,9 +2060,48 @@ const GRAIL_TAKE={
  'Patrick Mahomes':'From an affordable Optic parallel to a six-figure RPA - arguably the deepest rookie class in modern football collecting.',
  'Cooper Flagg':'The market is pricing him before his rookie NBA season even wraps - a real, fast-moving watch, not a settled legacy.'
 };
+// Exhibit-wing framing text per Grail Board group. Purely editorial category
+// copy (not a claim about any specific player/card), so it carries none of
+// the sourcing/verification requirements that apply to card or comp data.
+const GRAIL_GROUP_INTEL={
+ 'LEGEND GRAILS':{wing:'THE HALL OF LEGENDS',blurb:'All-time, hobby-defining legends and the cornerstone cards that built the modern collecting market.'},
+ 'MODERN ICON':{wing:'THE MODERN GALLERY',blurb:'Era-defining stars with established collector demand and modern hobby relevance.'},
+ 'CURRENT HEAT':{wing:'NOW SHOWING',blurb:'Active market movers, breakout names, rookie-era demand and current collector momentum - a watch list, not a history book.'}
+};
+// Career-legacy context per player: broad, extremely well-established public
+// facts (championships/MVPs/HOF status), not sourced hobby data. Deliberately
+// hedged toward "multiple-time" rather than a precise count anywhere this
+// session cannot verify the exact figure against a live source (this sandbox
+// has no outbound web access) - see the CARDSTORM TAKE block below it for the
+// hobby-specific commentary, which is the part actually backed by this file's
+// sourced comps. Recommend a human fact-check pass on these bios before ship.
+const GRAIL_LEGACY={
+ 'Tom Brady':{era:'NFL · 2000–2022',achievements:['7× Super Bowl champion','5× Super Bowl MVP','3× NFL MVP',"NFL's all-time leader in career passing yards and touchdowns"]},
+ 'Michael Jordan':{era:'NBA · 1984–2003',achievements:['6× NBA champion (6-0 in the Finals)','6× NBA Finals MVP','5× NBA MVP','Naismith Memorial Basketball Hall of Fame']},
+ 'Shohei Ohtani':{era:'MLB · 2018–present',achievements:['Multiple-time MVP across the American and National Leagues','First player in MLB history with a 50 home run / 50 stolen base season (2024)','Regarded as the most complete two-way player in the modern game']},
+ 'Patrick Mahomes':{era:'NFL · 2017–present',achievements:['3× Super Bowl champion','Multiple-time Super Bowl MVP','Multiple-time NFL MVP']},
+ 'Cooper Flagg':{era:'NBA rookie class · 2025–present',achievements:['Consensus top prospect entering the 2025 NBA Draft out of Duke','Immediate, fast-moving rookie-era collector demand','Tracked here as CURRENT HEAT, not a GOAT claim']}
+};
+// One short, honest line per card, built only from fields that already exist
+// on the record (tags/parallel/serialNumberedTo/grade) - never a new claim
+// about rarity, population or significance beyond what's already verified.
+function grailCardWhyHTML(c){
+ const tags=c.tags||[];
+ const bits=[];
+ if(tags.includes('Rookie'))bits.push('Rookie-year card');
+ if(tags.includes('Debut'))bits.push('From the player\'s debut-era checklist');
+ if(c.serialNumberedTo===1||tags.includes('1/1'))bits.push('A true one-of-one');
+ else if(c.serialNumberedTo)bits.push(`Limited to just ${c.serialNumberedTo} copies`);
+ if(tags.includes('RPA'))bits.push('Rookie Patch Autograph - the most complete modern rookie category');
+ else if(tags.includes('Auto'))bits.push('Includes an on-card autograph');
+ if(tags.includes('Grail')&&!bits.length)bits.push('Widely regarded as a grail-tier chase');
+ return bits.length?`<div class=grailWhyCard>${bits.slice(0,2).join(' · ')}</div>`:'';
+}
 function grailPlayerGroupHTML(playerName,cards){
  const sport=(cards[0]&&cards[0].sport)||'';
- return `<div class=grailPlayerGroup><div class=grailPlayerHead><h3>${playerName}</h3><span class=grailPlayerSub>${cards.length} verified card${cards.length===1?'':'s'} · ${sport}</span></div><div class=grailRow>${cards.map(grailCardTileHTML).join('')}</div>${GRAIL_TAKE[playerName]?`<div class=grailTake><b>CARDSTORM TAKE:</b> ${GRAIL_TAKE[playerName]}</div>`:''}</div>`;
+ const legacy=GRAIL_LEGACY[playerName];
+ const legacyHtml=legacy?`<div class=grailLegacy><div class=grailPlaque>CAREER LEGACY</div><div class=grailLegacySub>${legacy.era}</div><div class=grailLegacyRow>${legacy.achievements.map(a=>`<span class=grailLegacyChip>${a}</span>`).join('')}</div></div>`:'';
+ return `<div class=grailPlayerGroup><div class=grailPlayerHead><h3>${playerName}</h3><span class=grailPlayerSub>${cards.length} verified card${cards.length===1?'':'s'} · ${sport}</span></div>${legacyHtml}<div class=grailRow>${cards.map(grailCardTileHTML).join('')}</div>${GRAIL_TAKE[playerName]?`<div class=grailTake><b>CARDSTORM TAKE:</b> ${GRAIL_TAKE[playerName]}</div>`:''}</div>`;
 }
 function grailBoardHTML(data){
  const cardsByPlayer={};
@@ -2024,7 +2111,8 @@ function grailBoardHTML(data){
    const cards=(data.cards||[]).filter(c=>c.player.toLowerCase().replace(/[^a-z]+/g,'-')===pid||c.player===pid);
    return cards.length?grailPlayerGroupHTML(cards[0].player,cards):'';
   }).join('');
-  return `<div class=grailGroupHead><span class=grailGroupLabel>${g.groupLabel}</span>${g.note?`<div class=grailGroupNote>${g.note}</div>`:''}</div>${playersHtml}`;
+  const intel=GRAIL_GROUP_INTEL[g.groupLabel];
+  return `<div class=grailGroupHead>${intel?`<div class=grailWing>${intel.wing}</div>`:''}<span class=grailGroupLabel>${g.groupLabel}</span>${intel?`<div class=grailGroupBlurb>${intel.blurb}</div>`:''}${g.note?`<div class=grailGroupNote>${g.note}</div>`:''}</div>${playersHtml}`;
  }).join('');
  return `${GRAIL_STYLE}<div class=grailHeroWrap><img src="assets/cardstorm-grail-board-landing-v2.webp" loading=lazy decoding=async alt="CardStorm Grail Board — iconic real cards and verified sold comps"></div>${groupsHtml}<p style="margin-top:6px;text-align:center"><a href="#" onclick="event.preventDefault();show('goatlegacy')" style="color:#8fb3d1;font-size:12px">Browse the full historical Hobby Icon list →</a></p>`;
 }
