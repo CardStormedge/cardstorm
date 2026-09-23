@@ -341,6 +341,34 @@
       "sourceUrl": "https://www.fanaticscollect.com/fixed/b893abb4-ea63-11ef-b2a5-066eee34a58d/2000-sp-authentic-tom-brady-rookie-1250-118-psa-10-gem-mint"
     },
     {
+      "entityType": "card",
+      "sport": "football",
+      "year": 2000,
+      "player": "Tom Brady",
+      "set": "SP Authentic",
+      "repoAsset": "assets/goat/cards/brady-2000-sp-authentic-118-psa10.webp",
+      "imageUrl": null,
+      "sourceType": "auction-house-listing-photo-provided-by-site-owner",
+      "verificationStatus": "VERIFIED_EXACT_CARD_MATCH_IMAGE_PROVIDED",
+      "usageRightsStatus": "PROVIDED_BY_SITE_OWNER_COMMERCIAL_REUSE_RIGHTS_NOT_INDEPENDENTLY_VERIFIED",
+      "sourceUrl": "https://www.fanaticscollect.com/buy-now/7d9a58d4-46c6-4200-8b4e-f4e8b99e7127/2000-sp-authentic-tom-brady-rookie-1250-118-psa-10-gem-mint",
+      "notes": "Slab photo supplied directly by the CardStorm site owner as an image file - this sandbox has no outbound web access and could not fetch it itself. Identity independently cross-checked against the Grail Board record and confirmed exact: PSA cert #21400062, card #118, serial 1185/1250, PSA 10 - all visible on the slab/card match data/intelligence/grail-board.json's brady-2000-sp-authentic-118-psa10 record. This is a third-party auction house's own product photography (Fanatics Collect); commercial redistribution rights beyond the site owner's own use were not independently verified by CardStorm - flagged for the site owner's review before any public/commercial launch. Scoped to this exact year+set only."
+    },
+    {
+      "entityType": "card",
+      "sport": "football",
+      "year": 2000,
+      "player": "Tom Brady",
+      "set": "Contenders",
+      "repoAsset": "assets/goat/cards/brady-2000-playoff-contenders-championship-ticket-144-bgs9.webp",
+      "imageUrl": null,
+      "sourceType": "auction-house-listing-photo-provided-by-site-owner",
+      "verificationStatus": "VERIFIED_EXACT_CARD_MATCH_IMAGE_PROVIDED",
+      "usageRightsStatus": "PROVIDED_BY_SITE_OWNER_COMMERCIAL_REUSE_RIGHTS_NOT_INDEPENDENTLY_VERIFIED",
+      "sourceUrl": "https://www.fanaticscollect.com/premier/236dc51c-6f25-11ed-8c5f-0a58a9feac02",
+      "notes": "BGS slab photo supplied directly by the CardStorm site owner as an image file - this sandbox has no outbound web access and could not fetch it itself. Identity independently cross-checked against the Grail Board record and confirmed exact: '2000 Playoff Contenders Championship Ticket #144 Tom Brady AU', BGS 9 / Beckett 10 Autograph, cert #0005553969, Championship Rookie Ticket design with New England Patriots helmet - matching data/intelligence/grail-board.json's brady-2000-playoff-contenders-championship-ticket-144-bgs9 record. Source image had a large transparent/padded square canvas around the actual slab photo; cropped to the real content bounding box before saving so object-fit:contain sizing isn't diluted by empty padding. Commercial redistribution rights beyond the site owner's own use were not independently verified - flagged for review before public/commercial launch. Scoped to this exact year+set only - does not apply to Tom Brady's other Grail Board card (2000 SP Authentic), which has its own separate verified image."
+    },
+    {
       "entityType": "player",
       "sport": "basketball",
       "year": null,
@@ -352,6 +380,34 @@
       "usageRightsStatus": "NOT_APPLICABLE",
       "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
       "sourceUrl": "https://catalogs.scpauctions.com/online-auctions/scp-auctions-inc/1986-fleer-57-michael-jordan---psa-gem-mint-10-9394841"
+    },
+    {
+      "entityType": "card",
+      "sport": "basketball",
+      "year": 1986,
+      "player": "Michael Jordan",
+      "set": "Fleer",
+      "repoAsset": "assets/goat/cards/jordan-1986-fleer-57-psa10.webp",
+      "imageUrl": null,
+      "sourceType": "auction-house-listing-photo-provided-by-site-owner",
+      "verificationStatus": "VERIFIED_EXACT_CARD_MATCH_IMAGE_PROVIDED",
+      "usageRightsStatus": "PROVIDED_BY_SITE_OWNER_COMMERCIAL_REUSE_RIGHTS_NOT_INDEPENDENTLY_VERIFIED",
+      "sourceUrl": "https://www.fanaticscollect.com/premier/5828cafc-71b2-11f1-950f-066165552721/1986-fleer-basketball-michael-jordan-rookie-57-psa-10-gem-mint",
+      "notes": "Slab photo supplied directly by the CardStorm site owner as an image file - this sandbox has no outbound web access and could not fetch it itself. Identity independently cross-checked against the Grail Board record and confirmed exact: PSA cert #25780975, card #57, PSA 10, matching data/intelligence/grail-board.json's jordan-1986-fleer-57-psa10 record. This is a third-party auction house's own product photography (Fanatics Collect); commercial redistribution rights beyond the site owner's own use were not independently verified by CardStorm - flagged for the site owner's review before any public/commercial launch. Scoped to this exact year+set only."
+    },
+    {
+      "entityType": "card",
+      "sport": "basketball",
+      "year": 1997,
+      "player": "Michael Jordan",
+      "set": "Metal Universe Precious Metal Gems Green",
+      "repoAsset": "assets/goat/cards/jordan-1997-metal-universe-pmg-green-23-psa-authentic.webp",
+      "imageUrl": null,
+      "sourceType": "auction-house-listing-photo-provided-by-site-owner",
+      "verificationStatus": "VERIFIED_EXACT_CARD_MATCH_IMAGE_PROVIDED",
+      "usageRightsStatus": "PROVIDED_BY_SITE_OWNER_COMMERCIAL_REUSE_RIGHTS_NOT_INDEPENDENTLY_VERIFIED",
+      "sourceUrl": "https://www.cardladder.com/ladder/card?id=DHukjeV5w0dMPPGYlx1Z",
+      "notes": "PSA slab photo supplied directly by the CardStorm site owner as an image file - this sandbox has no outbound web access and could not fetch it itself. Identity independently cross-checked against the Grail Board record and confirmed exact: '1997 METAL UNIVERSE MICHAEL JORDAN #23 PRECIOUS METAL GEMS-GREEN AUTHENTIC', PSA cert #50801733 - matching data/intelligence/grail-board.json's jordan-1997-metal-universe-pmg-green-23-psa-authentic record's grade field ('PSA Authentic (not a numeric grade)'). Commercial redistribution rights beyond the site owner's own use were not independently verified - flagged for review before public/commercial launch. Scoped to this exact year+set only - does not apply to Michael Jordan's other Grail Board card (1986 Fleer), which has its own separate verified image."
     },
     {
       "entityType": "player",
@@ -380,6 +436,20 @@
       "sourceUrl": "https://www.sportscardinvestor.com/cards/patrick-mahomes-ii-football/2017-prizm-disco-269"
     },
     {
+      "entityType": "card",
+      "sport": "football",
+      "year": 2017,
+      "player": "Patrick Mahomes",
+      "set": "Prizm",
+      "repoAsset": "assets/goat/cards/mahomes-2017-prizm-disco-269-psa10.webp",
+      "imageUrl": null,
+      "sourceType": "auction-house-listing-photo-provided-by-site-owner",
+      "verificationStatus": "VERIFIED_EXACT_CARD_MATCH_IMAGE_PROVIDED",
+      "usageRightsStatus": "PROVIDED_BY_SITE_OWNER_COMMERCIAL_REUSE_RIGHTS_NOT_INDEPENDENTLY_VERIFIED",
+      "sourceUrl": "https://www.sportscardinvestor.com/cards/patrick-mahomes-ii-football/2017-prizm-disco-269",
+      "notes": "Slab photo supplied directly by the CardStorm site owner as an image file - this sandbox has no outbound web access and could not fetch it itself. Identity independently cross-checked against the Grail Board record and confirmed exact: PSA cert #46605291, card #269, Disco Prizm parallel, PSA 10, matching data/intelligence/grail-board.json's mahomes-2017-prizm-disco-269-psa10 record. Commercial redistribution rights beyond the site owner's own use were not independently verified by CardStorm - flagged for the site owner's review before any public/commercial launch. Scoped to this exact year+set+parallel only - does not apply to Patrick Mahomes's other two Grail Board cards (2017 Optic Red Yellow, 2017 National Treasures RPA), which still have no verified image."
+    },
+    {
       "entityType": "player",
       "sport": "basketball",
       "year": null,
@@ -391,6 +461,20 @@
       "usageRightsStatus": "NOT_APPLICABLE",
       "notes": "Real-image sourcing was attempted this round via direct fetch and WebFetch against this player's Grail Board comp source URL(s); every auction-house/grading-company domain tried (fanaticscollect.com, espn.com, scpauctions.com/catalogs.scpauctions.com, cardladder.com, goldin.co) returned EGRESS_BLOCKED from this sandbox's network proxy - the same failure mode confirmed for topps.com/panini.com elsewhere in this repo, not assumed. Even where a listing photo might exist, it is the auction house's own copyrighted product photography with no confirmed redistribution license, so CardStorm keeps the branded fallback rather than guessing at usage rights.",
       "sourceUrl": "https://heavy.com/sports/cards/cooper-flagg-dallas-mavericks-rookie-card/"
+    },
+    {
+      "entityType": "card",
+      "sport": "basketball",
+      "year": 2025,
+      "player": "Cooper Flagg",
+      "set": "Bowman Chrome",
+      "repoAsset": "assets/goat/cards/flagg-2025-bowman-chrome-superfractor-bcv1-psa9.webp",
+      "imageUrl": null,
+      "sourceType": "auction-house-listing-photo-provided-by-site-owner",
+      "verificationStatus": "VERIFIED_EXACT_CARD_MATCH_IMAGE_PROVIDED",
+      "usageRightsStatus": "PROVIDED_BY_SITE_OWNER_COMMERCIAL_REUSE_RIGHTS_NOT_INDEPENDENTLY_VERIFIED",
+      "sourceUrl": "https://heavy.com/sports/cards/cooper-flagg-dallas-mavericks-rookie-card/",
+      "notes": "PSA slab photo supplied directly by the CardStorm site owner as an image file - this sandbox has no outbound web access and could not fetch it itself. Identity independently cross-checked against the Grail Board record and confirmed exact: '2025 BOWMAN COOPER FLAGG #BCV-1 CHROME-SUPERFRACTOR 1/1', PSA cert #171855508, grade MINT 9 - matching data/intelligence/grail-board.json's flagg-2025-bowman-chrome-superfractor-bcv1-psa9 record (cardNumber BCV-1, parallel Superfractor, grade PSA 9). Commercial redistribution rights beyond the site owner's own use were not independently verified - flagged for review before public/commercial launch. Scoped to this exact year+set+cardNumber only - does not apply to Cooper Flagg's other Grail Board card (2024 Topps Chrome McDonald's All-American #78 Superfractor), which a site-owner-supplied image was also reviewed for this round but rejected: the raw (ungraded) card photo showed no visible card number, no 'Superfractor' labeling, and no 1/1 print-run marking, so CardStorm could not visually confirm it was the exact parallel described rather than a different Chrome parallel sharing the same photo - it remains on the honest museum fallback rather than risk a wrong-parallel image."
     },
     {
       "entityType": "player",
