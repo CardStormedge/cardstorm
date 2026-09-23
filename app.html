@@ -2050,6 +2050,27 @@ const GRAIL_STYLE=`<style>
    so the slab is never cropped or stretched to fill the frame. */
 .csResolvedImg{display:block;width:100%;height:440px;box-sizing:border-box;padding:11px;object-fit:contain;background:radial-gradient(circle at 50% 32%,#123a6355,#050f1a 72%)}
 @media(max-width:600px){.csResolvedImg{height:360px}}
+/* Museum fallback for a not-yet-photographed card - deliberately more
+   compact than a real-card case (min-height 220 vs the real card's 440),
+   so real photography always reads as the dominant artifact and this
+   reads as a clearly secondary "awaiting photo" exhibit plaque. Blue
+   spotlight + blue slab linework when a player-photo backdrop is present;
+   .grailFallbackAbstract (onerror, no photo asset) swaps in the fully
+   original CardStorm navy/gold treatment - never a fabricated photo. */
+.grailFallbackCase{position:relative;min-height:220px;border-radius:9px;overflow:hidden;border:1px solid #1b3552;display:flex;align-items:flex-end;background:radial-gradient(circle at 50% 30%,#123a6340,#050f1a 78%)}
+.grailFallbackCase::before,.grailFallbackCase::after{content:'';position:absolute;width:12px;height:12px;border:1.5px solid #3fb6ff55;pointer-events:none;z-index:2}
+.grailFallbackCase::before{top:5px;left:5px;border-right:0;border-bottom:0}
+.grailFallbackCase::after{bottom:5px;right:5px;border-left:0;border-top:0}
+.grailFallbackPhoto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;opacity:.4;filter:saturate(.65)}
+.grailFallbackCase>.grailFallbackSlab{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:58%;height:56%;border:1.5px solid #3fb6ff3d;border-radius:6px;pointer-events:none;z-index:1}
+.grailFallbackSlab::before{content:'';position:absolute;top:0;left:0;right:0;height:16%;border-bottom:1px solid #3fb6ff3d;background:#0d2c4830}
+.grailFallbackAbstract .grailFallbackSlab{border-color:#ffd2574a}
+.grailFallbackAbstract .grailFallbackSlab::before{border-bottom-color:#ffd2574a;background:#3a2d0f2e}
+.grailFallbackBody{position:relative;z-index:3;width:100%;padding:14px 14px 12px;text-align:center;background:linear-gradient(180deg,transparent,#03101dcc 60%,#03101d 100%)}
+.grailFallbackStatus{display:inline-block;font-size:8.5px;font-weight:900;letter-spacing:.1em;color:#8fb3d1;border:1px solid #1e4f6d;border-radius:999px;padding:3px 9px;margin-bottom:8px}
+.grailFallbackId b{display:block;font-size:13px;color:#f2f6fa}
+.grailFallbackId span{display:block;font-size:10.5px;color:#a8c6dc;margin-top:2px;line-height:1.35}
+@media(max-width:600px){.grailFallbackCase{min-height:180px}}
 .grailTileTags{display:flex;flex-wrap:wrap;gap:4px}
 .grailTag{font-size:8.5px;font-weight:900;letter-spacing:.04em;color:#150f02;background:#ffd257;padding:2px 6px;border-radius:4px}
 .grailTileId b{display:block;font-size:12px;color:#f4e8c9;line-height:1.25}
@@ -2097,8 +2118,15 @@ function grailCardTileHTML(c){
  // crest; a small number now have a verified exact-match image supplied
  // directly by the site owner - see image-registry.json's entityType:'card'
  // entries for the identity cross-check and usage-rights caveat on each.
- const imgBlock=csImageBlock({entityType:'card',sport:c.sport,year:c.year,player:c.player,set:c.set},{title:c.player,sub:`${c.year} ${c.brand}`,sport:c.sport,accent:sportAccent(c.sport),icon:'♦',size:'compact'});
- return `<div class=grailTile><div class=grailCaseFrame>${imgBlock}</div><div class=grailPlaque>ICONIC CARD</div><div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${grailCardWhyHTML(c)}<div class=grailMarketMoment><span class=grailPlaque>MARKET MOMENT</span>${compBlock}</div>${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
+ // csImageBlock() is still always called here (required by
+ // test:image-registry's static check) even on the no-real-image path,
+ // where its return value is simply unused in favor of the richer
+ // grailFallbackHTML() museum treatment below.
+ const imgQuery={entityType:'card',sport:c.sport,year:c.year,player:c.player,set:c.set};
+ const imgBlock=csImageBlock(imgQuery,{title:c.player,sub:`${c.year} ${c.brand}`,sport:c.sport,accent:sportAccent(c.sport),icon:'♦',size:'compact'});
+ const hasRealImage=!!(resolveCsImage(imgQuery)||{}).src;
+ const caseHtml=hasRealImage?`<div class=grailCaseFrame>${imgBlock}</div>`:grailFallbackHTML(c);
+ return `<div class=grailTile>${caseHtml}<div class=grailPlaque>ICONIC CARD</div><div class=grailTileTags>${(c.tags||[]).map(t=>`<span class=grailTag>${t}</span>`).join('')}</div><div class=grailTileId><b>${c.year} ${c.brand} ${c.set}</b><span>${idLine}</span></div><div class=grailTileGrade>${c.grade||'Grade pending'}</div>${grailCardWhyHTML(c)}<div class=grailMarketMoment><span class=grailPlaque>MARKET MOMENT</span>${compBlock}</div>${c.sourceUrl?`<a class=grailSourceLink href="${c.sourceUrl}" target=_blank rel=noopener>SOURCE →</a>`:''}</div>`;
 }
 const GRAIL_TAKE={
  'Tom Brady':'The rookie-card market\'s gold standard - a reachable PSA 10 SP Authentic sits alongside a seven-figure Championship Ticket autograph.',
@@ -2154,6 +2182,28 @@ function grailPlayerPhotoSlug(playerName){return (playerName||'').toLowerCase().
 function grailExhibitPortraitHTML(playerName){
  const slug=grailPlayerPhotoSlug(playerName);
  return `<div class=grailExhibitPortrait><img src="assets/goat/players/${slug}-museum.jpg" loading=lazy decoding=async alt="${playerName} — exhibit photograph" onerror="this.closest('.grailExhibitPortrait').style.display='none'"></div>`;
+}
+// Museum fallback for a card with no verified real photo yet - never a fake
+// card/slab image. Reuses the same player-photo asset as the exhibit
+// portrait strip (assets/goat/players/<slug>-museum.jpg) as a faded
+// atmospheric backdrop when that file exists; onerror swaps in an entirely
+// original CardStorm abstract background (navy + blue spotlight + gold
+// slab-silhouette linework) when it doesn't - never a fabricated photo.
+// Either way the card's real identity fields (player/year/brand/set/name/
+// parallel/grade) are shown as plain text, and an honest "CARD IMAGE
+// PENDING" label is always present - this is explicitly presented as an
+// exhibit awaiting its artifact photo, not as the card itself.
+function grailFallbackHTML(c){
+ const slug=grailPlayerPhotoSlug(c.player);
+ const idBits=[c.cardName,c.cardNumber?'#'+c.cardNumber:null,c.parallel].filter(Boolean).join(' · ');
+ return `<div class=grailFallbackCase>
+   <img class=grailFallbackPhoto src="assets/goat/players/${slug}-museum.jpg" loading=lazy decoding=async alt="" aria-hidden="true" onerror="this.closest('.grailFallbackCase').classList.add('grailFallbackAbstract');this.remove()">
+   <div class=grailFallbackSlab aria-hidden="true"></div>
+   <div class=grailFallbackBody>
+    <div class=grailFallbackStatus>CARD IMAGE PENDING</div>
+    <div class=grailFallbackId><b>${c.player}</b><span>${c.year} ${c.brand} ${c.set}</span>${idBits?`<span>${idBits}</span>`:''}</div>
+   </div>
+  </div>`;
 }
 function grailPlayerGroupHTML(playerName,cards){
  const sport=(cards[0]&&cards[0].sport)||'';
